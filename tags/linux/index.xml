@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on 3mile博客</title>
-    <link>http://3mile.github.io/tags/linux/</link>
+    <link>https://3mile.github.io/tags/linux/</link>
     <description>Recent content in Linux on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 04 Apr 2018 13:50:17 +0800</lastBuildDate>
     
-	<atom:link href="http://3mile.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CentOS7 修改默认时区</title>
-      <link>http://3mile.github.io/archives/117/</link>
+      <link>https://3mile.github.io/archives/117/</link>
       <pubDate>Wed, 04 Apr 2018 13:50:17 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/117/</guid>
+      <guid>https://3mile.github.io/archives/117/</guid>
       <description>Linux](https://www.jiloc.com/tag/linux) 系统(我特指发行版, 没说内核) 下大部分软件的风格就是不会仔细去考虑向后 的兼容性, 比如你上个版本能用这种程序配置, 没准到了下一个版本, 该程序</description>
     </item>
     
     <item>
       <title>SSH无密码登录及putty设置</title>
-      <link>http://3mile.github.io/archives/106/</link>
+      <link>https://3mile.github.io/archives/106/</link>
       <pubDate>Wed, 04 Apr 2018 13:18:03 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/106/</guid>
+      <guid>https://3mile.github.io/archives/106/</guid>
       <description>[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机</description>
     </item>
     
     <item>
       <title>CentOS7：firewall防火墙使用</title>
-      <link>http://3mile.github.io/archives/102/</link>
+      <link>https://3mile.github.io/archives/102/</link>
       <pubDate>Fri, 30 Mar 2018 05:15:21 +0000</pubDate>
       
-      <guid>http://3mile.github.io/archives/102/</guid>
+      <guid>https://3mile.github.io/archives/102/</guid>
       <description>一、Firewalld防火墙 红帽RHEL7系统已经用firewalld服务替代了iptables服务，新的防火墙管理命令firewall-c</description>
     </item>
     

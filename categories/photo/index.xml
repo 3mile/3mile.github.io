@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Photo on 3mile博客</title>
-    <link>http://3mile.github.io/categories/photo/</link>
+    <link>https://3mile.github.io/categories/photo/</link>
     <description>Recent content in Photo on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 31 Mar 2018 07:00:07 +0000</lastBuildDate>
     
-	<atom:link href="http://3mile.github.io/categories/photo/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/categories/photo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>http://3mile.github.io/archives/994/</link>
+      <link>https://3mile.github.io/archives/994/</link>
       <pubDate>Sat, 31 Mar 2018 07:00:07 +0000</pubDate>
       
-      <guid>http://3mile.github.io/archives/994/</guid>
+      <guid>https://3mile.github.io/archives/994/</guid>
       <description></description>
     </item>
     

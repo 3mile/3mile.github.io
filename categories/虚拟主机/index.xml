@@ -2,84 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>虚拟主机 on 3mile博客</title>
-    <link>http://3mile.github.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</link>
+    <link>https://3mile.github.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</link>
     <description>Recent content in 虚拟主机 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 04 Apr 2018 13:50:17 +0800</lastBuildDate>
     
-	<atom:link href="http://3mile.github.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CentOS7 修改默认时区</title>
-      <link>http://3mile.github.io/archives/117/</link>
+      <link>https://3mile.github.io/archives/117/</link>
       <pubDate>Wed, 04 Apr 2018 13:50:17 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/117/</guid>
+      <guid>https://3mile.github.io/archives/117/</guid>
       <description>Linux](https://www.jiloc.com/tag/linux) 系统(我特指发行版, 没说内核) 下大部分软件的风格就是不会仔细去考虑向后 的兼容性, 比如你上个版本能用这种程序配置, 没准到了下一个版本, 该程序</description>
     </item>
     
     <item>
       <title>SSH无密码登录及putty设置</title>
-      <link>http://3mile.github.io/archives/106/</link>
+      <link>https://3mile.github.io/archives/106/</link>
       <pubDate>Wed, 04 Apr 2018 13:18:03 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/106/</guid>
+      <guid>https://3mile.github.io/archives/106/</guid>
       <description>[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机</description>
     </item>
     
     <item>
       <title>CentOS 7一键安装Seafile搭建私有云存储</title>
-      <link>http://3mile.github.io/archives/901/</link>
+      <link>https://3mile.github.io/archives/901/</link>
       <pubDate>Tue, 03 Apr 2018 10:43:14 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/901/</guid>
+      <guid>https://3mile.github.io/archives/901/</guid>
       <description>Seafile 是一款开源企业云盘，和Owncloud类似，个人感觉Seafile更加稳定，搭建也很简单，为了方便，xiaoz写了一个一键脚本，方便快速搭</description>
     </item>
     
     <item>
       <title>Linux开放HTTP服务并下载文件到本地以测试VPS回程速度</title>
-      <link>http://3mile.github.io/archives/103/</link>
+      <link>https://3mile.github.io/archives/103/</link>
       <pubDate>Mon, 02 Apr 2018 05:19:40 +0000</pubDate>
       
-      <guid>http://3mile.github.io/archives/103/</guid>
+      <guid>https://3mile.github.io/archives/103/</guid>
       <description>内容 在 Linux中使用 路由追踪 测试VPS回程路由（回程路由比去程更影响SS速度） 文章中，我说过如果你的服务器是做代理的，那么最影响速度的就是</description>
     </item>
     
     <item>
       <title>Hugo主题pcaman介绍</title>
-      <link>http://3mile.github.io/archives/119/</link>
+      <link>https://3mile.github.io/archives/119/</link>
       <pubDate>Sun, 01 Apr 2018 05:45:46 +0000</pubDate>
       
-      <guid>http://3mile.github.io/archives/119/</guid>
+      <guid>https://3mile.github.io/archives/119/</guid>
       <description>Pacman Pacman 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：hugo-p</description>
     </item>
     
     <item>
       <title>如何用Hugo创建一个博客</title>
-      <link>http://3mile.github.io/archives/1014/</link>
+      <link>https://3mile.github.io/archives/1014/</link>
       <pubDate>Sun, 01 Apr 2018 05:45:46 +0000</pubDate>
       
-      <guid>http://3mile.github.io/archives/1014/</guid>
+      <guid>https://3mile.github.io/archives/1014/</guid>
       <description>介绍 Hugo是一款静态站点生成器，具有闪电般的渲染速度和出色的易用性。由于其面向内容的所有功能，您始终可以专注于创建内容而不是构建环境： 通过</description>
     </item>
     
     <item>
       <title>群晖SMB3多通道</title>
-      <link>http://3mile.github.io/archives/1024/</link>
+      <link>https://3mile.github.io/archives/1024/</link>
       <pubDate>Sun, 01 Apr 2018 05:45:46 +0000</pubDate>
       
-      <guid>http://3mile.github.io/archives/1024/</guid>
+      <guid>https://3mile.github.io/archives/1024/</guid>
       <description>群晖DSM 6.1-15047 带来的新福利，免费功能&amp;ndash;SMB3 Multi-Channel DS3615xs Release Notes &amp;ndash; DSM6.1-15047 \6. 文件服务 Windows 文件服务及 Mac 文件服务已分別更名为 SMB 及 AFP。 所有的 SMB 服務 (SMB1/2/3) 现</description>
     </item>
     
     <item>
       <title>Vultr VPS SSH密钥登录</title>
-      <link>http://3mile.github.io/archives/964/</link>
+      <link>https://3mile.github.io/archives/964/</link>
       <pubDate>Fri, 30 Mar 2018 05:19:40 +0000</pubDate>
       
-      <guid>http://3mile.github.io/archives/964/</guid>
+      <guid>https://3mile.github.io/archives/964/</guid>
       <description>需求 当VPS暴露在外网中，就会有人不断暴力破解你的SSH登录。于是就有必要使用SSH密钥来登录。并关闭密码登录。 用以下命令可以查看别人暴力破</description>
     </item>
     

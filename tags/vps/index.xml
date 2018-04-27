@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vps on 3mile博客</title>
-    <link>http://3mile.github.io/tags/vps/</link>
+    <link>https://3mile.github.io/tags/vps/</link>
     <description>Recent content in Vps on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 23 Apr 2018 13:26:40 +0800</lastBuildDate>
     
-	<atom:link href="http://3mile.github.io/tags/vps/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/vps/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>献给小白的GitHub入门魔法书「译」</title>
-      <link>http://3mile.github.io/archives/121/</link>
+      <link>https://3mile.github.io/archives/121/</link>
       <pubDate>Mon, 23 Apr 2018 13:26:40 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/121/</guid>
+      <guid>https://3mile.github.io/archives/121/</guid>
       <description>这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20</description>
     </item>
     
     <item>
       <title>CentOS7 修改默认时区</title>
-      <link>http://3mile.github.io/archives/117/</link>
+      <link>https://3mile.github.io/archives/117/</link>
       <pubDate>Wed, 04 Apr 2018 13:50:17 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/117/</guid>
+      <guid>https://3mile.github.io/archives/117/</guid>
       <description>Linux](https://www.jiloc.com/tag/linux) 系统(我特指发行版, 没说内核) 下大部分软件的风格就是不会仔细去考虑向后 的兼容性, 比如你上个版本能用这种程序配置, 没准到了下一个版本, 该程序</description>
     </item>
     
     <item>
       <title>SSH无密码登录及putty设置</title>
-      <link>http://3mile.github.io/archives/106/</link>
+      <link>https://3mile.github.io/archives/106/</link>
       <pubDate>Wed, 04 Apr 2018 13:18:03 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/106/</guid>
+      <guid>https://3mile.github.io/archives/106/</guid>
       <description>[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机</description>
     </item>
     
     <item>
       <title>如何在CentOS 7上安装和配置Caddy</title>
-      <link>http://3mile.github.io/archives/118/</link>
+      <link>https://3mile.github.io/archives/118/</link>
       <pubDate>Wed, 04 Apr 2018 12:58:23 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/118/</guid>
+      <guid>https://3mile.github.io/archives/118/</guid>
       <description>介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部</description>
     </item>
     

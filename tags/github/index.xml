@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on 3mile博客</title>
-    <link>http://3mile.github.io/tags/github/</link>
+    <link>https://3mile.github.io/tags/github/</link>
     <description>Recent content in Github on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 27 Apr 2018 13:13:44 +0800</lastBuildDate>
     
-	<atom:link href="http://3mile.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo &#43; Github Pages搭建静态博客</title>
-      <link>http://3mile.github.io/2018/04/27/hugo---github-pages%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://3mile.github.io/2018/04/27/hugo---github-pages%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Fri, 27 Apr 2018 13:13:44 +0800</pubDate>
       
-      <guid>http://3mile.github.io/2018/04/27/hugo---github-pages%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://3mile.github.io/2018/04/27/hugo---github-pages%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
       <description>由于最近再次安装hugo,就想纪录一下这个过程，有什么不对的地方请指出来。 一. 安装hugo hugo有两种安装方式，homebrew包管理工具</description>
     </item>
     
     <item>
       <title>献给小白的GitHub入门魔法书「译」</title>
-      <link>http://3mile.github.io/archives/121/</link>
+      <link>https://3mile.github.io/archives/121/</link>
       <pubDate>Mon, 23 Apr 2018 13:26:40 +0800</pubDate>
       
-      <guid>http://3mile.github.io/archives/121/</guid>
+      <guid>https://3mile.github.io/archives/121/</guid>
       <description>这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20</description>
     </item>
     
