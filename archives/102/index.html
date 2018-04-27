@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>CentOS7：firewall防火墙使用</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="一、Firewalld防火墙 红帽RHEL7系统已经用firewalld服务替代了iptables服务，新的防火墙管理命令firewall-c" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="CentOS7：firewall防火墙使用" />
+    <meta name="twitter:description" content="一、Firewalld防火墙 红帽RHEL7系统已经用firewalld服务替代了iptables服务，新的防火墙管理命令firewall-c" />
+    <meta name="twitter:image" content="http://3mile.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="CentOS7：firewall防火墙使用" />
+  <meta property="og:description" content="一、Firewalld防火墙 红帽RHEL7系统已经用firewalld服务替代了iptables服务，新的防火墙管理命令firewall-c" />
+  <meta property="og:url" content="http://3mile.github.io/archives/102/" />
+  <meta property="og:image" content="http://3mile.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://3mile.github.io/archives/102/" />
+<link rel="alternative" href="http://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/mile3" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">CentOS7：firewall防火墙使用</h1>
+      <p class="post-meta">@3mile · Mar 30, 2018 · 10 min read</p>
+    </header>
+    <article class="post-content">
+
+<h3 id="一-firewalld防火墙">一、Firewalld防火墙</h3>
+
+<p>红帽RHEL7系统已经用firewalld服务替代了iptables服务，新的防火墙管理命令<strong>firewall-cmd</strong>与图形化工具<strong>firewall-config</strong>。特点是拥有运行时配置与永久配置选项且能够支持动态更新以及”zone”的区域功能概念，使用图形化工具firewall-config或文本管理工具firewall-cmd，下面实验中会讲到~</p>
+
+<p>另外，你可以可以安装iptables-services服务，这样就可以按照之前的操作来操作iptables了。可以使用service save iptables来保存规则，也可以使用service iptables start|stop来开启和关闭iptables了。</p>
+
+<p><code>$ yum install iptables-services</code></p>
+
+<p><strong>1）区域概念与作用</strong></p>
+
+<p>防火墙的网络区域定义了网络连接的可信等级，我们可以根据不同场景来调用不同的firewalld区域，区域规则有：</p>
+
+<table width="712">
+  <tr>
+    <td width="95">
+      区域
+    </td>
+    
+    <td width="617">
+      默认规则策略
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      trusted
+    </td>
+    
+    <td width="617">
+      允许所有的数据包。
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      home
+    </td>
+    
+    <td width="617">
+      拒绝流入的数据包，除非与输出流量数据包相关或是ssh,mdns,ipp-client,samba-client与dhcpv6-client服务则允许。
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      internal
+    </td>
+    
+    <td width="617">
+      等同于home区域
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      work
+    </td>
+    
+    <td width="617">
+      拒绝流入的数据包，除非与输出流量数据包相关或是ssh,ipp-client与dhcpv6-client服务则允许。
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      public
+    </td>
+    
+    <td width="617">
+      拒绝流入的数据包，除非与输出流量数据包相关或是ssh,dhcpv6-client服务则允许。
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      external
+    </td>
+    
+    <td width="617">
+      拒绝流入的数据包，除非与输出流量数据包相关或是ssh服务则允许。
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      dmz
+    </td>
+    
+    <td width="617">
+      拒绝流入的数据包，除非与输出流量数据包相关或是ssh服务则允许。
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      block
+    </td>
+    
+    <td width="617">
+      拒绝流入的数据包，除非与输出流量数据包相关。
+    </td>
+  </tr>
+  
+  <tr>
+    <td width="95">
+      drop
+    </td>
+    
+    <td width="617">
+      拒绝流入的数据包，除非与输出流量数据包相关。
+    </td>
+  </tr>
+</table>
+
+<p>简单来讲就是为用户预先准备了几套规则集合，我们可以根据场景的不同选择合适的规矩集合，而默认区域是<strong>public</strong>。</p>
+
+<p><strong>2）字符管理工具</strong></p>
+
+<p>如果想要更高效的配置妥当防火墙，那么就一定要学习字符管理工具firewall-cmd命令,命令参数有：</p>
+
+<table width="712">
+  <tr>
+    <td>
+      参数
+    </td>
+    
+    <td>
+      作用
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –get-default-zone
+    </td>
+    
+    <td>
+      查询默认的区域名称。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –set-default-zone=<区域名称>
+    </td>
+    
+    <td>
+      设置默认的区域，永久生效。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –get-zones
+    </td>
+    
+    <td>
+      显示可用的区域。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –get-services
+    </td>
+    
+    <td>
+      显示预先定义的服务。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –get-active-zones
+    </td>
+    
+    <td>
+      显示当前正在使用的区域与网卡名称。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –add-source=
+    </td>
+    
+    <td>
+      将来源于此IP或子网的流量导向指定的区域。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –remove-source=
+    </td>
+    
+    <td>
+      不再将此IP或子网的流量导向某个指定区域。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –add-interface=<网卡名称>
+    </td>
+    
+    <td>
+      将来自于该网卡的所有流量都导向某个指定区域。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –change-interface=<网卡名称>
+    </td>
+    
+    <td>
+      将某个网卡与区域做关联。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –list-all
+    </td>
+    
+    <td>
+      显示当前区域的网卡配置参数，资源，端口以及服务等信息。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –list-all-zones
+    </td>
+    
+    <td>
+      显示所有区域的网卡配置参数，资源，端口以及服务等信息。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –add-service=<服务名>
+    </td>
+    
+    <td>
+      设置默认区域允许该服务的流量。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –add-port=<端口号/协议>
+    </td>
+    
+    <td>
+      允许默认区域允许该端口的流量。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –remove-service=<服务名>
+    </td>
+    
+    <td>
+      设置默认区域不再允许该服务的流量。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –remove-port=<端口号/协议>
+    </td>
+    
+    <td>
+      允许默认区域不再允许该端口的流量。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      –reload
+    </td>
+    
+    <td>
+      让“永久生效”的配置规则立即生效，覆盖当前的。
+    </td>
+  </tr>
+</table>
+
+<p>特别需要注意的是firewalld服务有两份规则策略配置记录，必需要能够区分：</p>
+
+<p>RunTime：当前正在生效的。</p>
+
+<p>Permanent：永久生效的。</p>
+
+<p>当下面实验修改的是永久生效的策略记录时，必须执行”–reload”参数后才能立即生效，否则要重启后再生效。</p>
+
+<p>查看当前的区域：</p>
+
+<pre><code>$ firewall-cmd --get-default-zone public
+$ firewall-cmd --get-default-zone public
+
+</code></pre>
+
+<p>查询eno16777728网卡的区域：</p>
+
+<div id="crayon-5abdc6c5d74a0691589426" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74a0691589426-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74a0691589426-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74a0691589426-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-r&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-t&quot;&gt;interface&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;eno16777728&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74a0691589426-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>在public中分别查询ssh与http服务是否被允许：</p>
+
+<div id="crayon-5abdc6c5d74a4006396407" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74a4006396407-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74a4006396407-2&quot;&gt;
+          2
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74a4006396407-3&quot;&gt;
+          3
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74a4006396407-4&quot;&gt;
+          4
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74a4006396407-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;ssh&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74a4006396407-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-i&quot;&gt;yes&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74a4006396407-3&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;http&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74a4006396407-4&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;no&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>设置默认规则为dmz：</p>
+
+<div id="crayon-5abdc6c5d74a8063854720" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74a8063854720-1">
+              1
+            </div>
+          </div>
+        </td></p>
+
+<pre><code>    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74a8063854720-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-st&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;dmz&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>让“永久生效”的配置文件立即生效：</p>
+
+<div id="crayon-5abdc6c5d74ac168113846" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74ac168113846-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74ac168113846-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74ac168113846-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;reload&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74ac168113846-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;success&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>启动/关闭应急状况模式，阻断所有网络连接：</p>
+
+<p>应急状况模式启动后会禁止所有的网络连接，一切服务的请求也都会被拒绝，当心，请慎用。</p>
+
+<div id="crayon-5abdc6c5d74af368243892" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74af368243892-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74af368243892-2&quot;&gt;
+          2
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74af368243892-3&quot;&gt;
+          3
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74af368243892-4&quot;&gt;
+          4
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74af368243892-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;on&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74af368243892-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-i&quot;&gt;success&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74af368243892-3&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;panic&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;off&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74af368243892-4&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;success&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>如果您已经能够完全理解上面练习中firewall-cmd命令的参数作用，不妨来尝试完成下面的模拟训练吧。</p>
+
+<p><strong>4）规则配置实战</strong></p>
+
+<p><strong>模拟训练A</strong>：允许https服务流量通过public区域，要求立即生效且永久有效。</p>
+
+<p>方法一：分别设置当前生效与永久有效的规则记录</p>
+
+<div id="crayon-5abdc6c5d74b3139077929" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74b3139077929-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74b3139077929-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74b3139077929-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;https&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74b3139077929-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;https&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>方法二：设置永久生效的规则记录后读取记录</p>
+
+<div id="crayon-5abdc6c5d74b6489520668" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74b6489520668-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74b6489520668-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74b6489520668-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;https&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74b6489520668-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;reload&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p><strong>模拟训练B</strong>：不再允许http服务流量通过public区域，要求立即生效且永久生效。</p>
+
+<div id="crayon-5abdc6c5d74ba526591798" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74ba526591798-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74ba526591798-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74ba526591798-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;remove&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;http&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74ba526591798-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;success&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>使用参数”–reload”让永久生效的配置文件立即生效：</p>
+
+<div id="crayon-5abdc6c5d74bd925646740" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74bd925646740-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74bd925646740-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74bd925646740-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;reload&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74bd925646740-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;success&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p><strong>模拟训练C</strong>：允许8080与8081端口流量通过public区域，立即生效且永久生效。</p>
+
+<div id="crayon-5abdc6c5d74c0476119097" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74c0476119097-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74c0476119097-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74c0476119097-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;8081&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;tcp&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74c0476119097-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;reload&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p><strong>模拟训练D</strong>：查看模拟实验C中要求加入的端口操作是否成功。</p>
+
+<div id="crayon-5abdc6c5d74c4754666535" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74c4754666535-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74c4754666535-2&quot;&gt;
+          2
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74c4754666535-3&quot;&gt;
+          3
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74c4754666535-4&quot;&gt;
+          4
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74c4754666535-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;ports&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74c4754666535-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-cn&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;8081&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;tcp&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74c4754666535-3&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;ports&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74c4754666535-4&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-cn&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;8081&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;tcp&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p><strong>模拟实验E</strong>：将eno16777728网卡的区域修改为external，重启后生效。</p>
+
+<div id="crayon-5abdc6c5d74c7729254600" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74c7729254600-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74c7729254600-2&quot;&gt;
+          2
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74c7729254600-3&quot;&gt;
+          3
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74c7729254600-4&quot;&gt;
+          4
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74c7729254600-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;external&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;change&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-t&quot;&gt;interface&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;eno16777728&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74c7729254600-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-i&quot;&gt;success&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74c7729254600-3&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-r&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-t&quot;&gt;interface&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;eno16777728&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74c7729254600-4&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>端口转发功能可以将原本到某端口的数据包转发到其他端口:</p>
+
+<div id="crayon-5abdc6c5d74cb360834370" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74cb360834370-1">
+              1
+            </div>
+          </div>
+        </td></p>
+
+<pre><code>    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74cb360834370-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&lt;&lt;/span&gt;区域&lt;span class=&quot;crayon-o&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&lt;&lt;/span&gt;源端口号&lt;span class=&quot;crayon-o&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&lt;&lt;/span&gt;协议&lt;span class=&quot;crayon-o&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;toport&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&lt;&lt;/span&gt;目标端口号&lt;span class=&quot;crayon-o&quot;&gt;&gt;&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;toaddr&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&lt;&lt;/span&gt;目标&lt;span class=&quot;crayon-i&quot;&gt;IP&lt;/span&gt;地址&lt;span class=&quot;crayon-o&quot;&gt;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>将访问192.168.10.10主机888端口的请求转发至22端口：</p>
+
+<div id="crayon-5abdc6c5d74ce086546388" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74ce086546388-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74ce086546388-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74ce086546388-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;forward&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;888&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;tcp&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;toport&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;toaddr&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;192.168.10.10&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74ce086546388-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;success&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>使用客户机的ssh命令访问192.168.10.10主机的888端口：</p>
+
+<div id="crayon-5abdc6c5d74d2686144421" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74d2686144421-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74d2686144421-2&quot;&gt;
+          2
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74d2686144421-3&quot;&gt;
+          3
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74d2686144421-4&quot;&gt;
+          4
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74d2686144421-5&quot;&gt;
+          5
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74d2686144421-6&quot;&gt;
+          6
+        &lt;/div&gt;
+
+        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74d2686144421-7&quot;&gt;
+          7
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74d2686144421-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;ssh&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;crayon-cn&quot;&gt;888&lt;/span&gt; &lt;span class=&quot;crayon-cn&quot;&gt;192.168.10.10&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74d2686144421-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-e&quot;&gt;The &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;authenticity &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;of &lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;host&lt;/span&gt; &lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;[192.168.10.10]:888 ([192.168.10.10]:888)&amp;#8217;&lt;/span&gt; &lt;span class=&quot;crayon-i&quot;&gt;can&lt;/span&gt;&amp;#8216;&lt;span class=&quot;crayon-i&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;crayon-e&quot;&gt;be &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;established&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;.&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74d2686144421-3&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-e&quot;&gt;ECDSA &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;key &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;fingerprint &lt;/span&gt;&lt;span class=&quot;crayon-st&quot;&gt;is&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;b8&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;88&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;89&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;5c&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;05&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;b6&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-r&quot;&gt;dd&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;ef&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;76&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;63&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;ff&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;1a&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;54&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;02&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;1a.&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74d2686144421-4&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-e&quot;&gt;Are &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;you &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;sure &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;you &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;want &lt;/span&gt;&lt;span class=&quot;crayon-st&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;crayon-st&quot;&gt;continue&lt;/span&gt; &lt;span class=&quot;crayon-e&quot;&gt;connecting&lt;/span&gt; &lt;span class=&quot;crayon-sy&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;yes&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;no&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;crayon-e&quot;&gt;yes&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74d2686144421-5&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;Warning&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;crayon-e&quot;&gt;Permanently &lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;added&lt;/span&gt; &lt;span class=&quot;crayon-s&quot;&gt;&amp;#8216;[192.168.10.10]:888&amp;#8217;&lt;/span&gt; &lt;span class=&quot;crayon-sy&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;ECDSA&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;crayon-st&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;crayon-e&quot;&gt;the &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;list &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;of &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;known &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;.&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74d2686144421-6&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;root&lt;/span&gt;&lt;span class=&quot;crayon-sy&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;192.168.10.10&lt;/span&gt;&amp;#8216;&lt;span class=&quot;crayon-i&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74d2686144421-7&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-e&quot;&gt;Last &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;login&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;crayon-e&quot;&gt;Sun &lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;Jul&lt;/span&gt; &lt;span class=&quot;crayon-cn&quot;&gt;19&lt;/span&gt; &lt;span class=&quot;crayon-cn&quot;&gt;21&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;48&lt;/span&gt; &lt;span class=&quot;crayon-cn&quot;&gt;2015&lt;/span&gt; &lt;span class=&quot;crayon-i&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;crayon-cn&quot;&gt;192.168.10.10&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>再次提示:请读者们再仔细琢磨下立即生效与重启后依然生效的差别，千万不要修改错了。</p>
+
+<p><strong>模拟实验F</strong>：设置富规则，拒绝192.168.10.0/24网段的用户访问ssh服务。</p>
+
+<p>firewalld服务的富规则用于对服务、端口、协议进行更详细的配置，规则的优先级最高。</p>
+
+<div id="crayon-5abdc6c5d74d6866482606" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74d6866482606-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74d6866482606-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74d6866482606-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;cmd&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;permanent&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;zone&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;&amp;#8212;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;rich&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;rule&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8220;rule family=&amp;#8221;&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;ipv4&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8221; source address=&amp;#8221;&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;192.168.10.0&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8221; service name=&amp;#8221;&lt;/span&gt;&lt;span class=&quot;crayon-i&quot;&gt;ssh&lt;/span&gt;&lt;span class=&quot;crayon-s&quot;&gt;&amp;#8221; reject&amp;#8221;&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74d6866482606-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;success&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<h3 id="二-图形管理工具">二、图形管理工具</h3>
+
+<p>执行firewall-config命令即可看到firewalld的防火墙图形化管理工具，真的很强大，可以完成很多复杂的工作。</p>
+
+<div id="crayon-5abdc6c5d74d9516570893" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74d9516570893-1">
+              1
+            </div>
+          </div>
+        </td></p>
+
+<pre><code>    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74d9516570893-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-e&quot;&gt;yum &lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;install &lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;firewall&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;&amp;#8211;&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;config&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>firewalld防火墙图形化管理工具界面详解：</p>
+
+<p><img class="alignnone size-full wp-image-945" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/2016122310493233-687x500-1.png" alt="CentOS7：firewall防火墙使用" width="687" height="500" srcset="https://3mile.top/media/2016122310493233-687x500-1.png 687w, https://3mile.top/media/2016122310493233-687x500-1-300x218.png 300w" sizes="(max-width: 687px) 100vw, 687px" /></p>
+
+<p>①：选择”立即生效”或”重启后依然生效”配置。</p>
+
+<p>②：区域列表。</p>
+
+<p>③：服务列表。</p>
+
+<p>④：当前选中的区域。</p>
+
+<p>⑤：被选中区域的服务。</p>
+
+<p>⑥：被选中区域的端口。</p>
+
+<p>⑦：被选中区域的伪装。</p>
+
+<p>⑧：被选中区域的端口转发。</p>
+
+<p>⑨：被选中区域的ICMP包。</p>
+
+<p>⑩：被选中区域的富规则。</p>
+
+<p>⑪：被选中区域的网卡设备。</p>
+
+<p>⑫：被选中区域的服务，前面有√的表示允许。</p>
+
+<p>⑬：firewalld防火墙的状态。</p>
+
+<p>请注意：firewall-config图形化管理工具中没有保存/完成按钮，只要修改就会生效。</p>
+
+<p>允许其他主机访问http服务，仅当前生效：</p>
+
+<p><img class="alignnone size-full wp-image-948" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/2016122310512288-738x500-1.png" alt="CentOS7：firewall防火墙使用" width="738" height="500" srcset="https://3mile.top/media/2016122310512288-738x500-1.png 738w, https://3mile.top/media/2016122310512288-738x500-1-300x203.png 300w" sizes="(max-width: 738px) 100vw, 738px" /></p>
+
+<p><strong>允许其他主机访问</strong><strong>8080-8088</strong><strong>端口且重启后依然生效：</strong></p>
+
+<p><img class="alignnone size-full wp-image-949" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/201612231052089-1.png" alt="CentOS7：firewall防火墙使用" width="720" height="486" srcset="https://3mile.top/media/201612231052089-1.png 720w, https://3mile.top/media/201612231052089-1-300x203.png 300w" sizes="(max-width: 720px) 100vw, 720px" /></p>
+
+<p><img class="alignnone size-full wp-image-951" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/2016122310531158-1.png" alt="CentOS7：firewall防火墙使用" width="724" height="432" srcset="https://3mile.top/media/2016122310531158-1.png 724w, https://3mile.top/media/2016122310531158-1-300x179.png 300w" sizes="(max-width: 724px) 100vw, 724px" /></p>
+
+<p>开启伪装功能，重启后依然生效：</p>
+
+<p>firewalld防火墙的伪装功能实际就是SNAT技术，即让内网用户不必在公网中暴露自己的真实IP地址。</p>
+
+<p><img class="alignnone size-full wp-image-953" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/2016122310540249-700x500-1.png" alt="CentOS7：firewall防火墙使用" width="700" height="500" srcset="https://3mile.top/media/2016122310540249-700x500-1.png 700w, https://3mile.top/media/2016122310540249-700x500-1-300x214.png 300w" sizes="(max-width: 700px) 100vw, 700px" /></p>
+
+<p>将向本机888端口的请求转发至本机的22端口且重启后依然生效：</p>
+
+<p><img class="alignnone size-full wp-image-955" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/2016122310544629-694x500-1.png" alt="CentOS7：firewall防火墙使用" width="694" height="500" srcset="https://3mile.top/media/2016122310544629-694x500-1.png 694w, https://3mile.top/media/2016122310544629-694x500-1-300x216.png 300w" sizes="(max-width: 694px) 100vw, 694px" /></p>
+
+<p>过滤所有”echo-reply”的ICMP协议报文数据包，仅当前生效：</p>
+
+<p>ICMP即互联网控制报文协议”<strong>I</strong>nternet <strong>C</strong>ontrol <strong>M</strong>essage <strong>P</strong>rotocol“，归属于TCP/IP协议族，主要用于检测网络间是否可通信、主机是否可达、路由是否可用等网络状态，并不用于传输用户数据。</p>
+
+<p><img class="alignnone size-full wp-image-956" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/2016122310554619-743x500-1.png" alt="CentOS7：firewall防火墙使用" width="743" height="500" srcset="https://3mile.top/media/2016122310554619-743x500-1.png 743w, https://3mile.top/media/2016122310554619-743x500-1-300x202.png 300w" sizes="(max-width: 743px) 100vw, 743px" /></p>
+
+<p>仅允许192.168.10.20主机访问本机的1234端口，仅当前生效：</p>
+
+<p>富规则代表着更细致、更详细的规则策略，针对某个服务、主机地址、端口号等选项的规则策略，<strong>优先级最高</strong>。</p>
+
+<p><img class="alignnone size-full wp-image-959" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/2016122310563474-689x500-1.png" alt="CentOS7：firewall防火墙使用" width="689" height="500" srcset="https://3mile.top/media/2016122310563474-689x500-1.png 689w, https://3mile.top/media/2016122310563474-689x500-1-300x218.png 300w" sizes="(max-width: 689px) 100vw, 689px" /></p>
+
+<p><strong>查看网卡设备信息：</strong></p>
+
+<p><img class="alignnone size-full wp-image-960" title="CentOS7：firewall防火墙使用" src="https://3mile.top/media/2016122310571556-1.png" alt="CentOS7：firewall防火墙使用" width="733" height="423" srcset="https://3mile.top/media/2016122310571556-1.png 733w, https://3mile.top/media/2016122310571556-1-300x173.png 300w" sizes="(max-width: 733px) 100vw, 733px" /></p>
+
+<p>firewall-config图形管理工具真的非常实用，很多原本复杂的长命令被用图形化按钮替代，设置规则也变得简单了，日常工作中真的非常实用。所以有必要跟读者们讲清配置防火墙的原则——只要能实现需求的功能，无论用文本管理工具还是图形管理工具都是可以的。</p>
+
+<h3 id="三-服务的访问控制列表">三、服务的访问控制列表</h3>
+
+<p>在Linux中不光可以使用iptables来做安全控制，其实简单的控制也可以使用tcp_wrappers来进行。</p>
+
+<p>Tcp_wrappers(即Transmission Control Protocol(TCP)Wrappers)是一款基于IP层的ACL访问控制列表流量监控程序，它能够根据来访主机地址与本机目标服务程序做允许或拒绝规则，控制列表修改后会立即生效，系统将会先检查允许规则，如果匹配允许则直接放行流量，若拒绝规则中匹配则直接拒绝，都不匹配默认也会放行。</p>
+
+<p>允许名单：/etc/hosts.allow</p>
+
+<p>拒绝名单：/etc/hosts.deny</p>
+
+<p>指定客户端的规则如下：</p>
+
+<table width="712">
+  <tr>
+    <td>
+      客户端类型
+    </td>
+    
+    <td>
+      示例
+    </td>
+    
+    <td>
+      满足示例的客户端列表
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      单一主机
+    </td>
+    
+    <td>
+      192.168.10.10
+    </td>
+    
+    <td>
+      IP地址为192.168.10.10的主机。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      指定网段
+    </td>
+    
+    <td>
+      192.168.10.
+    </td>
+    
+    <td>
+      IP段为192.168.10.0/24的主机。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      指定网段
+    </td>
+    
+    <td>
+      192.168.10.0/255.255.255.0
+    </td>
+    
+    <td>
+      IP段为192.168.10.0/24的主机。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      指定DNS后缀
+    </td>
+    
+    <td>
+      .linuxprobe.com
+    </td>
+    
+    <td>
+      所有DNS后缀为.linuxprobe.com的主机
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      指定主机名称
+    </td>
+    
+    <td>
+      boss.linuxprobe.com
+    </td>
+    
+    <td>
+      主机名称为boss.linuxprobe.com的主机。
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      指定所有客户端
+    </td>
+    
+    <td>
+      ALL
+    </td>
+    
+    <td>
+      所有主机全部包括在内。
+    </td>
+  </tr>
+</table>
+
+<p>限制只有192.168.10.0/24网段的主机可以访问本机的sshd服务：</p>
+
+<p>编辑允许规则：</p>
+
+<div id="crayon-5abdc6c5d74e6452947309" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74e6452947309-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74e6452947309-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74e6452947309-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-r&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;etc&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;.allow&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74e6452947309-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;sshd&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-cn&quot;&gt;192.168.10.&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>拒绝其他所有的主机：</p>
+
+<div id="crayon-5abdc6c5d74fa012080458" class="crayon-syntax crayon-theme-shell-default crayon-font-courier-new crayon-os-pc print-yes notranslate" data-settings=" minimize scroll-always">
+  <div class="crayon-plain-wrap">
+  </div>
+  
+
+<p><div class="crayon-main">
+    <table class="crayon-table">
+      <tr class="crayon-row">
+        <td class="crayon-nums " data-settings="hide">
+          <div class="crayon-nums-content">
+            <div class="crayon-num" data-line="crayon-5abdc6c5d74fa012080458-1">
+              1
+            </div></p>
+
+<pre><code>        &lt;div class=&quot;crayon-num&quot; data-line=&quot;crayon-5abdc6c5d74fa012080458-2&quot;&gt;
+          2
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+
+    &lt;td class=&quot;crayon-code&quot;&gt;
+      &lt;div class=&quot;crayon-pre&quot;&gt;
+        &lt;div id=&quot;crayon-5abdc6c5d74fa012080458-1&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-sy&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;crayon-r&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;etc&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;crayon-v&quot;&gt;hosts&lt;/span&gt;&lt;span class=&quot;crayon-e&quot;&gt;.deny&lt;/span&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;crayon-5abdc6c5d74fa012080458-2&quot; class=&quot;crayon-line&quot;&gt;
+          &lt;span class=&quot;crayon-v&quot;&gt;sshd&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;crayon-o&quot;&gt;*&lt;/span&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+
+<p></div>
+</div></p>
+
+<p>PS：对于Firewall防火墙，后面持续增加内容……..</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://3mile.github.io/tags/linux"><span class="tag">Linux</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

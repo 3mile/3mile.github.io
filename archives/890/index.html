@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>跑满带宽的爽快感，从软路由开始</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="一、起因： 我们从一个基准测试开始看： 连接方式： 采用网线连接各个设备进行测试，尽量避免无线WIFI的信号干扰与衰减。 测试环境： 笔记本自带千兆网" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="跑满带宽的爽快感，从软路由开始" />
+    <meta name="twitter:description" content="一、起因： 我们从一个基准测试开始看： 连接方式： 采用网线连接各个设备进行测试，尽量避免无线WIFI的信号干扰与衰减。 测试环境： 笔记本自带千兆网" />
+    <meta name="twitter:image" content="http://3mile.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="跑满带宽的爽快感，从软路由开始" />
+  <meta property="og:description" content="一、起因： 我们从一个基准测试开始看： 连接方式： 采用网线连接各个设备进行测试，尽量避免无线WIFI的信号干扰与衰减。 测试环境： 笔记本自带千兆网" />
+  <meta property="og:url" content="http://3mile.github.io/archives/890/" />
+  <meta property="og:image" content="http://3mile.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://3mile.github.io/archives/890/" />
+<link rel="alternative" href="http://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/mile3" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">跑满带宽的爽快感，从软路由开始</h1>
+      <p class="post-meta">@3mile · Mar 30, 2018 · 3 min read</p>
+    </header>
+    <article class="post-content"><div align="left">
+  <span style="color: black;">一、起因：</span>
+</div>
+
+<div align="left">
+  <span style="color: black;">我们从一个基准测试开始看：</span>
+</div>
+
+<div align="left">
+  <span style="color: black;">连接方式：</span>
+</div>
+
+<div align="left">
+  <span style="color: black;">采用网线连接各个设备进行测试，尽量避免无线WIFI的信号干扰与衰减。</span>
+</div>
+
+<div align="left">
+  <span style="color: black;">测试环境：</span>
+</div>
+
+<div align="left">
+  <span style="color: black;">笔记本自带千兆网卡，6类非屏蔽网线，双568B网线头。</span>
+</div>
+
+<div align="left">
+  <span style="color: black;">测速换算规则：</span>
+</div>
+
+<div align="left">
+  理论值换算公式 xxxMbps/8=xxM，而实际我们使用时，要考虑网络损耗以及各种原因，所以采用 xxxMbps/10=xxM的测算公式比较接近实际应用。
+</div>
+
+<div align="left">
+  <span style="color: black;">测试方式：</span>
+</div>
+
+<div align="left">
+  <span style="color: black;">本来应该为“光猫路由”与“光猫桥接”模式——但是，经验告诉我们“光猫与路由器，谁性能强，谁开路由”。</span>
+</div>
+
+<div align="left">
+  而现在普通光猫的芯片性能和内存基本都撑不住100M带宽+DHCP+路由转发了，很容易变成性能瓶颈，而且高负荷的运算会造成光猫芯片巨热，轻者网速卡顿，重者间断掉线！
+</div>
+
+<div align="left">
+</div>
+
+<div align="left">
+  以前用的50M，感觉网络设备足以应付，但是近期网速突然从100M——200M——500M——1000M的速率突增，路由器搞不定了！！！现在再把光猫做路由，使用感知会很差啊！
+</div>
+
+<div align="left">
+</div>
+
+<div align="left">
+</div>
+
+<p>&nbsp;</p>
+
+<div align="left">
+  二、硬件：
+</div>
+
+<p><span style="color: #000000;">设备不行怎么办？——换！</span></p>
+
+<p><span style="color: #000000;"><br /> </span></p>
+
+<p><span style="color: #000000;">于是某天</span>一不小心收到两个小盒子，还有一条小小的8G 金士顿DDR3L1600 1.3v低电压笔记本内存条 在旁边观望</p>
+
+<p><span style="color: #000000;"><br /> </span></p>
+
+<p><img src="http://3mile.github.io/media/170828b1wclp1pwqwj00di-2.jpg" alt="" /></p>
+
+<p>开箱！露出黑黑的大东西（害羞，捂脸~）</p>
+
+<p><img src="http://3mile.github.io/media/170828cspk5ppqm5qnk55p-2.jpg" alt="" /></p>
+
+<p>底下还暗藏乾坤！</p>
+
+<p><img src="http://3mile.github.io/media/170828r55y0fylfyn7drnr-2.jpg" alt="" /></p>
+
+<p>来个小侧脸看看~~~</p>
+
+<p><img src="http://3mile.github.io/media/170828wkmzkz4tldm8oq1t-2.jpg" alt="" /></p>
+
+<p>别害羞，后面美腻的菊花也要looklook~~~（这菊花真多&#8230;.）</p>
+
+<p><img src="http://3mile.github.io/media/170829jgz1coqsczoh2qdc-2.jpg" alt="" /></p>
+
+<p>怒昂！原来是IntelI211千兆网卡x4 ！！！还有12V电源插口，音频口，wifi天线出孔</p>
+
+<p><img src="http://3mile.github.io/media/170829wby8pdp464rlg2r8-2.jpg" alt="" /></p>
+
+<p>前脸，USB2.0*2，USB 3.0*2，HDMI，毫无用处的COM口与电源开关</p>
+
+<p><img src="http://3mile.github.io/media/170829ntvdddd89tvnz44j-2.jpg" alt="" /></p>
+
+<p>看到这，不就像一台电脑么？！其实确实是一台MINI的多网口主机——干脆贴个全配置好了</p>
+
+<p><img src="http://3mile.github.io/media/170829m30ozcn7nglz7ww7-2.png" alt="" /></p>
+
+<p>厚度对比照——注意看这厚实的冰翼散热外壳</p>
+
+<p><img src="http://3mile.github.io/media/170830pau2scy42ucckdds-2.jpg" alt="" /></p>
+
+<p>宽度对比照——其实非常像一块板砖，嗯，重量也像&#8230;&#8230;</p>
+
+<p><img src="http://3mile.github.io/media/170830olabwzonqwnokwal-2.jpg" alt="" /></p>
+
+<div align="left">
+  <span style="color: black;"><span style="font-family: punctuation;">拆开外壳，可看到整机没有风扇的，完全静音！</span></span>
+</div>
+
+<div align="left">
+  <span style="color: black;"><span style="font-family: punctuation;">CPU的铝制散热块通过导热胶紧紧的贴在冰翼散热外壳上，达到一个良好的散热效果</span></span>
+</div>
+
+<p><img src="http://3mile.github.io/media/170830ka6a6c5tznfqq0ak-2.jpg" alt="" /></p>
+
+<p>背面就是内存、MSATA硬盘，无线WIFI模块接口，还有主板提供的一个SATA接口，可以接一个2.5寸的笔记本硬盘。</p>
+
+<p><img src="http://3mile.github.io/media/170830rvejm7qewm6w8n1n-2.jpg" alt="" /></p>
+
+<p>插上内存，随便找了块旧的500G硬盘先接起来测试，后续准备上一块大一点的做NAS存储</p>
+
+<p><img src="http://3mile.github.io/media/170830a0nuxr6vuwlk0807-2.jpg" alt="" /></p>
+
+<p>SANDISK的24G MSATA，淘宝货，真假不知。</p>
+
+<p><img src="http://3mile.github.io/media/170831r5vz1l2515llz5ss-2.jpg" alt="" /></p>
+
+<p>一些信息，全新，状态满分</p>
+
+<p><img src="http://3mile.github.io/media/170831t8nzrzro2c57lz89-2.jpg" alt="" /></p>
+
+<p>进系统测试了一下速度，很渣，不过跑ESXI启动盘足够了</p>
+
+<p><img src="http://3mile.github.io/media/170831puvky6bb6vx25ux5-2.jpg" alt="" /></p>
+
+<p>合体，上盖板！</p>
+
+<p><img src="http://3mile.github.io/media/170831oegr7cccj4j4b5zz-2.jpg" alt="" /></p>
+
+<p><span style="color: #000000;"><strong>二、底层平台：</strong></span></p>
+
+<p><span style="color: #000000;"><strong><br /> </strong></span></p>
+
+<div align="left">
+  <span style="color: black;"><span style="font-family: punctuation;">买3215U这货最重要的就是支持VT-X，VT-D硬件虚拟化！提供了后续极高的可玩性！</span></span>
+</div>
+
+<p>&nbsp;</p>
+
+<div align="left">
+  <span style="color: black;"><span style="font-family: punctuation;">系统直接ESXI6.5！（图为到货测试时候的ESXI版本），现在装的2017.3.18的6.5bBuild 5146846</span></span>
+</div>
+
+<p><img src="http://3mile.github.io/media/170832lbbonxync1c3bhoo-2.jpg" alt="" /></p>
+
+<p>这套基本什么驱动都不要调试，一路顺风的装完ESXI，直接认出4块网卡</p>
+
+<p><img src="http://3mile.github.io/media/170832stxpxi820vhv3htl-2.jpg" alt="" /></p>
+
+<p>至此，硬件跟虚拟化底层平台部分搭建完毕。</p>
+
+<p>网卡直接直通给软路由系统，达到硬件级性能。</p>
+
+<p>引用KS坛友：<span style="color: #000000;"><a href="http://koolshare.cn/space-uid-15929.html" target="_blank" rel="noopener">glk17</a></span> 的测试：</p>
+
+<p><img src="http://3mile.github.io/media/172732jv76dozoundz47rg-2.png" alt="" /></p>
+
+<p>系统设置：</p>
+
+<p>1、LEDE软路由，1 CPU/1G内存/1G SSD占用</p>
+
+<p>2、黑群晖 6.5，1 CPU/1G内存/1G SSD占用+1T HDD存储</p>
+
+<p>3、WIN7，1 CPU/2G内存/8G SSD占用 （偶尔调试，平时不开机）</p>
+
+<p><span style="color: #000000;"><strong>三、软路由系统：</strong></span></p>
+
+<p>上一个现在使用并且调优后的网络架构：</p>
+
+<p><img src="http://3mile.github.io/media/173424yc3vc6fl6cgzg438-2.jpg" alt="" /></p>
+
+<p>系统用的 Lede X64 v1.9-Update13 by fw867，玩路由的应该都知道了，这里就不多做介绍了。功能比较丰富，选用的插件也比较适合国情，哈哈哈</p>
+
+<p>流控么，其实现在还没用其他的，就用的LEDE里面自带的石像鬼QOS做了一下简单的限制上传。用起来还行，就懒癌又犯了&#8230;&#8230;.。</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://3mile.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1"><span class="tag">软路由</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

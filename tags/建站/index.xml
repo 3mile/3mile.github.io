@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>建站 on 3mile博客</title>
+    <link>http://3mile.github.io/tags/%E5%BB%BA%E7%AB%99/</link>
+    <description>Recent content in 建站 on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 04 Apr 2018 13:18:03 +0800</lastBuildDate>
+    
+	<atom:link href="http://3mile.github.io/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SSH无密码登录及putty设置</title>
+      <link>http://3mile.github.io/archives/106/</link>
+      <pubDate>Wed, 04 Apr 2018 13:18:03 +0800</pubDate>
+      
+      <guid>http://3mile.github.io/archives/106/</guid>
+      <description>[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机</description>
+    </item>
+    
+    <item>
+      <title>如何在CentOS 7上安装和配置Caddy</title>
+      <link>http://3mile.github.io/archives/118/</link>
+      <pubDate>Wed, 04 Apr 2018 12:58:23 +0800</pubDate>
+      
+      <guid>http://3mile.github.io/archives/118/</guid>
+      <description>介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部</description>
+    </item>
+    
+  </channel>
+</rss>

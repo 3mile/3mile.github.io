@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Iptv on 3mile博客</title>
+    <link>http://3mile.github.io/tags/iptv/</link>
+    <description>Recent content in Iptv on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 05 Apr 2018 13:00:56 +0800</lastBuildDate>
+    
+	<atom:link href="http://3mile.github.io/tags/iptv/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>华为悦盒获取IPTV播放地址免抓包方法</title>
+      <link>http://3mile.github.io/archives/111/</link>
+      <pubDate>Thu, 05 Apr 2018 13:00:56 +0800</pubDate>
+      
+      <guid>http://3mile.github.io/archives/111/</guid>
+      <description>如果你想在T1上看IPTV，恰巧运营商送你的电视盒子是华为悦盒，请继续往下看，不是请退出免得浪费时间。 小白发帖求不喷！ 1.盒子和电脑必须在同</description>
+    </item>
+    
+  </channel>
+</rss>

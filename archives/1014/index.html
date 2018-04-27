@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>如何用Hugo创建一个博客</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="介绍 Hugo是一款静态站点生成器，具有闪电般的渲染速度和出色的易用性。由于其面向内容的所有功能，您始终可以专注于创建内容而不是构建环境： 通过" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="如何用Hugo创建一个博客" />
+    <meta name="twitter:description" content="介绍 Hugo是一款静态站点生成器，具有闪电般的渲染速度和出色的易用性。由于其面向内容的所有功能，您始终可以专注于创建内容而不是构建环境： 通过" />
+    <meta name="twitter:image" content="http://3mile.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="如何用Hugo创建一个博客" />
+  <meta property="og:description" content="介绍 Hugo是一款静态站点生成器，具有闪电般的渲染速度和出色的易用性。由于其面向内容的所有功能，您始终可以专注于创建内容而不是构建环境： 通过" />
+  <meta property="og:url" content="http://3mile.github.io/archives/1014/" />
+  <meta property="og:image" content="http://3mile.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://3mile.github.io/archives/1014/" />
+<link rel="alternative" href="http://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/mile3" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">如何用Hugo创建一个博客</h1>
+      <p class="post-meta">@3mile · Apr 1, 2018 · 4 min read</p>
+    </header>
+    <article class="post-content">
+
+<h3 id="介绍">介绍</h3>
+
+<p>Hugo是一款静态站点生成器，具有闪电般的渲染速度和出色的易用性。由于其面向内容的所有功能，您始终可以专注于创建内容而不是构建环境：</p>
+
+<ul>
+<li>通过Hugo，您可以在几分钟内建立一个运行在任何地方的静态站点，而不需要繁琐的依赖关系或数据库。</li>
+<li>您可以用最便捷的书写风格Markdown撰写您的内容，并即时查看您在网络上所做的更改。</li>
+<li>此外，您可以充分利用Hugo富裕的主题存储库和快速发展的社区。</li>
+</ul>
+
+<p>在本教程中，我将向您展示如何安装和使用Hugo在基于CentOS的Vultr LEMP服务器实例上构建静态博客站点。</p>
+
+<h3 id="先决条件">先决条件</h3>
+
+<p>使用sudo权限以非root用户身份登录到您的实例。了解如何在<a href="https://www.vultr.com/docs/hot-backups-with-percona-xtrabackup-on-the-one-click-wordpress-app">本文中</a>创建这样的用户。</p>
+
+<h3 id="第1步-安装hugo程序">第1步：安装Hugo程序</h3>
+
+<p>Hugo可以安装在几乎所有的主流平台上。对于CentOS，您只需要将最新的程序文件下载到<code>.tar.gz</code>档案中，并将其解压缩到一个方便的位置。在撰写本文时，最新版本是0.15。</p>
+
+<pre><code>sudo yum update -y
+sudo yum install git -y
+cd ~
+wget https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64.tar.gz
+tar -zxvf hugo_0.15_linux_amd64.tar.gz
+sudo mv hugo_0.15_linux_amd64/hugo_0.15_linux_amd64 /usr/local/bin/hugo
+</code></pre>
+
+<p>使用以下命令测试您的安装：</p>
+
+<pre><code> hugo version
+</code></pre>
+
+<h3 id="第2步-建立您的网站">第2步：建立您的网站</h3>
+
+<p>使用Hugo，您可以从服务器上的任何文件夹内建立您的网站。在这里，我<code>mysite/</code>在我的主目录下的目录中建立了一个站点。</p>
+
+<pre><code>cd ~
+hugo new site ~/mysite
+</code></pre>
+
+<p>运行以下命令以查看该站点的体系结构：</p>
+
+<pre><code>cd mysite
+ls -lF
+</code></pre>
+
+<p>如您所见，该网站的当前体系结构类似于：</p>
+
+<blockquote>
+<p>原型/</p>
+
+<p>config.toml</p>
+
+<p>内容/</p>
+
+<p>数据/</p>
+
+<p>布局/</p>
+
+<p>静态的/</p>
+</blockquote>
+
+<p>另有两个即将创建的目录，<code>themes/</code>并且<code>public/</code>Hugo站点的整个架构都是紧凑而全面的。</p>
+
+<p>作为初学者，知道你的内容应该存储在目录中<code>content/</code>。</p>
+
+<h3 id="第3步-从hugo存储库安装主题">第3步：从Hugo存储库安装主题</h3>
+
+<p>要从Hugo存储库安装所有主题，请运行以下命令。这些将创建一个名称<code>themes/</code>在您的网站目录中的目录，并从雨果主题回购下载所有主题。</p>
+
+<pre><code>cd ~/mysite/
+git clone --depth 1 --recursive https://github.com/spf13/hugoThemes.git themes
+</code></pre>
+
+<p>如果您只想安装一个主题，请访问<a href="http://themes.gohugo.io/">Hugo主题回购</a>以确定您最喜欢的主题。复制其URL并将其粘贴到<code>git clone</code>下面的命令中。</p>
+
+<pre><code>cd ~/mysite/
+mkdir themes
+cd themes
+git clone https://github.com/jaden/twentyfourteen
+</code></pre>
+
+<h3 id="第4步-进行一些基本的配置更改">第4步：进行一些基本的配置更改</h3>
+
+<p><code>config.toml</code>在您的站点目录中命名的文件包含您的Hugo站点的全局配置。使用文本编辑器编辑文件以进行一些基本的配置更改，如下所示。请记住根据您的具体情况更换这些值。</p>
+
+<pre><code>baseurl = &quot;http://[YourSiteIP]/&quot;
+languageCode = &quot;en-us&quot;
+title = &quot;Your Site Name&quot;
+theme = &quot;twentyfourteen&quot;
+</code></pre>
+
+<h3 id="第5步-撰写您的内容">第5步：撰写您的内容</h3>
+
+<p>在您的站点目录中，输入以下命令以在目录中创建内容页面<code>~/mysite/content/post/</code>。</p>
+
+<pre><code>cd ~/mysite/
+hugo new post/about.md
+</code></pre>
+
+<p>在文本编辑器中打开该文件，该文件的格式应类似于以下内容。</p>
+
+<pre><code>+++
+date = &quot;2015-12-25T03:21:23Z&quot;
+draft = true
+title = &quot;about&quot;
+
++++
+</code></pre>
+
+<p>在两行<code>+++</code>谎言之间关于你的内容页面的元信息。在这里，您可以删除该行<code>draft = true</code>并根据需要修改标题行。</p>
+
+<p>在第二<code>+++</code>行下面，添加您想要在网页上显示的内容。请记住用Markdown语言编写您的内容。</p>
+
+<pre><code>## This is an H2 headline
+
+Text goes here.
+</code></pre>
+
+<p>完成此编辑后，请保持文本编辑器处于打开状态供以后使用。</p>
+
+<h3 id="第6步-使用hugo服务器调整您的内容">第6步：使用Hugo服务器调整您的内容</h3>
+
+<p>您可以使用Hugo的内置Web服务器来部署您的网站，只要在文本编辑器中修改您的内容，即可立即在网页上显示您的更改。</p>
+
+<p>打开另一个终端，配置<code>iptables</code>规则以允许您通过Hugo服务器的默认端口1313访问您的站点：</p>
+
+<pre><code>sudo iptables -I INPUT -p tcp --dport 1313 -j ACCEPT
+</code></pre>
+
+<p>启动Hugo服务器：</p>
+
+<pre><code>hugo server --bind=&quot;[YourServerIP]&quot;
+</code></pre>
+
+<p>通过浏览器访问您的网站：</p>
+
+<pre><code>http://[YourServerIP]:1313
+</code></pre>
+
+<p>现在，您可以尝试编辑上一个终端中页面文件的内容或添加/删除页面文件。您会发现<code>content/</code>目录中的任何修改都会同时反映在您的浏览器屏幕上。对于一个忙碌的博主而言，这是一个很棒的功能，因为您总能立即看到您的修改以获得更好的创作体验。</p>
+
+<p>完成编辑后，按<code>Ctrl+C</code>停止Hugo服务器。</p>
+
+<h3 id="第7步-发布您的网站">第7步：发布您的网站</h3>
+
+<p>现在是时候在网上发布您的网站了。运行以下命令，Hugo将生成适合在<code>public/</code>目录中发布的所有静态内容。</p>
+
+<pre><code>cd ~/mysite
+hugo
+</code></pre>
+
+<p><strong>注意</strong>：在运行上述命令时，Hugo不会删除先前生成的旧文件。为了避免意外的结果，您可以<code>public/</code>在运行<code>hugo</code>命令之前始终删除目录，或者指定新的输出目标，如以下命令中所示。</p>
+
+<pre><code>hugo --destination=public2
+</code></pre>
+
+<p>由于Nginx Web服务器已经在服务器上运行，所以您只需将<code>~/mysite/public/</code>目录或其他自定义目标目录的内容复制到您的Web目录中即可<code>/usr/share/nginx/html/</code>。</p>
+
+<p>删除原始文件：</p>
+
+<pre><code>cd /usr/share/nginx/html/
+sudo rm -rf background.jpg index.php logo.png
+</code></pre>
+
+<p>将您的静态站点文件复制到Web目录中：</p>
+
+<pre><code>cd ~/mysite/public
+sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
+</code></pre>
+
+<p>而已。现在，您可以通过浏览器访问您的超级快速静态网站：<code>http://[YourServerIP]</code>。</p>
+
+<p>要查看更多详细信息，请使用该命令<code>hugo help</code>或访问<a href="http://gohugo.io/">Hugo官方网站</a>。</p>
+</article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

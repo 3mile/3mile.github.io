@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>群晖中用docker安装pi-hole给家庭局域网的设备滤除广告</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="群晖中用docker安装pi-hole给家庭局域网的设备滤除广告" />
+    <meta name="twitter:description" content="Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，" />
+    <meta name="twitter:image" content="http://3mile.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="群晖中用docker安装pi-hole给家庭局域网的设备滤除广告" />
+  <meta property="og:description" content="Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，" />
+  <meta property="og:url" content="http://3mile.github.io/archives/112/" />
+  <meta property="og:image" content="http://3mile.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://3mile.github.io/archives/112/" />
+<link rel="alternative" href="http://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/mile3" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">群晖中用docker安装pi-hole给家庭局域网的设备滤除广告</h1>
+      <p class="post-meta">@3mile · Apr 5, 2018 · 3 min read</p>
+    </header>
+    <article class="post-content">
+
+<p>Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，可以实现路由器下的所有设备都达到去除广告的作用。同时，Pi-hole中还有dnsmasq，还可以实现dns功能</p>
+
+<p>1、在DSM Docker中下载pi-hole镜像,diginc/pi-hole镜像</p>
+
+<p><img src="http://3mile.github.io/assets/194545bmy5rv6niyy8tg2j.png.thumb.jpg" alt="" /></p>
+
+<p>2、启动镜像</p>
+
+<p>A、端口设置：</p>
+
+<p><img src="http://3mile.github.io/assets/195221wxegun3g643qqtqg.png.thumb.jpg" alt="" /></p>
+
+<p>其中蓝框中的端口要一致;红框的端口如果群晖http已经占用了80端口，可以改成其它端口</p>
+
+<p>注意：</p>
+
+<p>群晖中不要安装dns server套件，也不要启用dhcp服务器</p>
+
+<p>，否则会造成53端口冲突</p>
+
+<p>B、卷设置：</p>
+
+<p><img src="http://3mile.github.io/assets/200014qwb4rrb28k8mb8v6.png.thumb.jpg" alt="" /></p>
+
+<p>红框中的文件夹是在群晖中已经建立好的文件夹，按图中所示映射文件夹，方式为读写（去掉只读的框）</p>
+
+<p>C、环境变量设置：</p>
+
+<p><img src="http://3mile.github.io/assets/200924v140o2t0twg43t14.png.thumb.jpg" alt="" /></p>
+
+<h4 id="本帖隐藏的内容">本帖隐藏的内容</h4>
+
+<p>「ServerIP」填写群晖内网ip地址，如群晖在内网的地址是192.168.1.10，则填</p>
+
+<p>192.168.1.10</p>
+
+<p>「TZ」填写时区，便于pi-hole在半夜更新广告清单</p>
+
+<p>「WEBPASSWORD」为pi-hole网页管理页面密码</p>
+
+<p>「DNS1」、「DNS2」填写网络运营商的dns服务器地址如</p>
+
+<p>D、设定完后，启动pi-hole后，稍等一会，再打开</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://ServerIP:Port /admin</code></pre></div>
+<p>就可以看到pi-hole管理页面（如果看不到，再等一会，多刷新几下），其中serverip为群晖的</p>
+
+<p>内网ip地址，如192.168.1.10，port为端口设置中的地址，此例中为36778，界面如下：</p>
+
+<p><img src="http://3mile.github.io/assets/202639u1mjmy25vyj1552y.png.thumb.jpg" alt="" /></p>
+
+<p>登录后，可以看到更详细的信息，并可以在settings设定dns服务器，可以选择google,opendns等dns服务器</p>
+
+<p><img src="http://3mile.github.io/assets/203920rrok9c5k9rqnqcv5.png.thumb.jpg" alt="" /></p>
+
+<p>E、在路由器中将dns中的第一个dns地址设为群晖的内网地址,详见后面的PC端和路由器设置说明，如</p>
+
+<p>192.168.1.10</p>
+
+<p>通过这些设置后，路由器下的设备都用群晖的pi-hole过滤广告了。</p>
+
+<p>利用pi-hole的dnsmasq还能实现</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&lt;<span style="color:#f92672">http:</span><span style="color:#960050;background-color:#1e0010">//</span><span style="color:#a6e22e">www</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">nasyun</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">com</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">thread-39869-1-1</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">html</span>&gt;</code></pre></div>
+<p>中的自动识别内网和外网连接的功能：</p>
+
+<h4 id="本帖隐藏的内容-1">本帖隐藏的内容</h4>
+
+<p>1、PC中</p>
+
+<p>新建02-lan.conf的文件，文件中写入红字所示的一句</p>
+
+<pre><code>addn-hosts=/etc/pihole/lan.list
+</code></pre>
+
+<p>利用群晖的file station 上传至/docker/pihole/dnsmasq.d/目录</p>
+
+<p><img src="http://3mile.github.io/assets/204604mj8iiljrj1bdikci.png.thumb.jpg" alt="" /></p>
+
+<p>利用群晖的file station 上传至/docker/pihole/config/目录</p>
+
+<p>3、登入</p>
+
+<pre><code>http://192.168.1.10:36778
+</code></pre>
+
+<p>/admin，其中的192.168.1.10换成你自己的群晖内网地址。利用设定的密码进入管理界面后，在</p>
+
+<p>settings页面，点击restart dnsmasq，等待10分钟后，你要解析的域名就可正常解析了，你可能ping nas.123.com试试，看解析是否成功。</p>
+
+<p>补充pc端和路由端的配置：</p>
+
+<p>1、Pc机的dns应设置为自动获取，ip也设为自动获取，同时，路由器上的dns服务器设置成群晖的ip地址。另外，查看pi-hole的管理页面dashboard上的queries blocks上显示的数字，就是过滤的域名数量。</p>
+
+<p><img src="http://3mile.github.io/assets/164110zqu7zbob15j1wowj.jpg.thumb.jpg" alt="" /></p>
+
+<p>2、路由器界面的dns设置（水星路由器原版固件为例，</p>
+
+<p>注：建议略过这步，在下面的dhcp中设置dns，有些路由只能在此设定dns服务器，不能在dhcp中设定dns，可进行此步</p>
+
+<p>）：</p>
+
+<p><img src="http://3mile.github.io/assets/164149zb0d9y4qushs89s4.jpg.thumb.jpg" alt="" /></p>
+
+<p>红框中填写你的群晖ip地址，这样所有的局域网中的设备都可以通过pi-hole dns进行广告过滤了。</p>
+
+<p>3、路由器的dhcp设置（如果上面的第2步做过了</p>
+
+<p>此步骤可省略。注：也可以只进行下面的dhcp设置，上面的第2步不操作，这样的话，局域网中通过设置固定ip的网络设备可以不走pi-hole dns，不进行广告过滤，而通过dhcp获得ip的网络设备则走pi-hole dns进行广告过滤</p>
+
+<p>）：</p>
+
+<p><img src="http://3mile.github.io/assets/220757x1cm1jc04lknatcn.png.thumb.jpg" alt="" /></p>
+
+<p>红框中填写群晖ip地址，缺省域名填写：lan，在dhcp中填写缺省域名和dns服务器是为了实现免配置局域网全自动kms激活，具体方法可在网站自行搜索</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://3mile.github.io/tags/%E7%BE%A4%E6%99%96"><span class="tag">群晖</span></a></li>
+        
+          <li><a href="http://3mile.github.io/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A"><span class="tag">去广告</span></a></li>
+        
+          <li><a href="http://3mile.github.io/tags/docker"><span class="tag">Docker</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

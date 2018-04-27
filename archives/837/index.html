@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>NETGEAR官方救砖软件，NMRP使用教程</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="喜欢折腾NETGEAR设备的坛友们，大家都应试过把路由器刷砖，这里给大家介绍一个软件“Netgear FIRMWARE REWORKING PROCEDURE”，简称NMRP 只" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="NETGEAR官方救砖软件，NMRP使用教程" />
+    <meta name="twitter:description" content="喜欢折腾NETGEAR设备的坛友们，大家都应试过把路由器刷砖，这里给大家介绍一个软件“Netgear FIRMWARE REWORKING PROCEDURE”，简称NMRP 只" />
+    <meta name="twitter:image" content="http://3mile.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="NETGEAR官方救砖软件，NMRP使用教程" />
+  <meta property="og:description" content="喜欢折腾NETGEAR设备的坛友们，大家都应试过把路由器刷砖，这里给大家介绍一个软件“Netgear FIRMWARE REWORKING PROCEDURE”，简称NMRP 只" />
+  <meta property="og:url" content="http://3mile.github.io/archives/837/" />
+  <meta property="og:image" content="http://3mile.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://3mile.github.io/archives/837/" />
+<link rel="alternative" href="http://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/mile3" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">NETGEAR官方救砖软件，NMRP使用教程</h1>
+      <p class="post-meta">@3mile · Mar 29, 2018 · 4 min read</p>
+    </header>
+    <article class="post-content"><p>喜欢折腾NETGEAR设备的坛友们，大家都应试过把路由器刷砖，这里给大家介绍一个软件“Netgear FIRMWARE REWORKING PROCEDURE”，简称NMRP</p>
+
+<p>只要路由器还能通电，ROM没有硬件损坏，只要CFE没有被修改，那么就可以通过这个软件把NETGEAR的绝大部分设备修复。</p>
+
+<p>要进行修复，必须准备几样工具</p>
+
+<p><span style="font-size: large;"><span style="color: red;"><strong>1，一台运行XP的电脑（WIN7下经常有问题，WIN10无法安装）<br /> 2，固件<br /> 3，坏路由器（有个前提，原厂的CFE还在，这一点非常重要）<br /> 4，网线一根</strong></span></span></p>
+
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;</p>
+
+<p>准备工作</p>
+
+<p>1，下载NMRP软件并解压，链接：<a href="http://pan.baidu.com/s/1i5yibPj" target="_blank" rel="noopener"><a href="http://pan.baidu.com/s/1i5yibPj">http://pan.baidu.com/s/1i5yibPj</a></a> 密码：1bhm</p>
+
+<p>2，安装，安装时需注意检查文件没有做过如下修改，如果有，请把选择去掉</p>
+
+<p><img src="http://3mile.github.io/media/124917lszeu8eukcz8nshh.png" alt="" /></p>
+
+<p>安装需要选择“Everyone”</p>
+
+<p><img src="http://3mile.github.io/media/124917hah5wwzaeg8i6xy5.png" alt="" /></p>
+
+<p>随后，会要求你安装wincap，这个不能省略，一定要安装。</p>
+
+<p>2，NMRP界面介绍</p>
+
+<p>安装完成之后运行，可以看到这样的界面</p>
+
+<p><img src="http://3mile.github.io/media/140707jvapghahr2pg0qzq.png" alt="" /></p>
+
+<p>在一开始，你是没有办法修改任何设置的，您需要登录_Supervisor_ 才可以经行修改设置</p>
+
+<p>点击 _Supervisor Login _登录，默认密码为空</p>
+
+<p><img src="http://3mile.github.io/media/141034mpaivizygdpddgoa.png" alt="" /></p>
+
+<p>然后就可以看到可以修改的地方了，界面简要说明如下</p>
+
+<p><img src="http://3mile.github.io/media/142745nsqvv288s8o8qtmg.png" alt="" /></p>
+
+<p>A，网卡选择，选择和您的路由器通信的网卡</p>
+
+<p><img src="http://3mile.github.io/media/141900hojfx73q87x0oq0z.png" alt="" /></p>
+
+<p>B,Region选择，这个和您的路由有关，不过您可以可以在这里改变您的路由器的Region，比如把北美版的改为中国版本，当然也有一些是无法更改的设备， 如果您不希望改变，你可以选择 NO-CHANGE</p>
+
+<p><img src="http://3mile.github.io/media/141900yv0xvvrxdssxl22h.png" alt="" /></p>
+
+<p>C,固件路径就是指向您下载好的设备的固件</p>
+
+<p>D,语言包这个不需要理会</p>
+
+<p>E,日志文件这个也不需要理会</p>
+
+<p>F,左下方为运行/停止，如果在运行中将会是下图的状态</p>
+
+<p><img src="http://3mile.github.io/media/141901m8lgxvvlh86hvlrm.png" alt="" /></p>
+
+<p>G,如果NMRP在运行，那么将会是以下状态</p>
+
+<p><img src="http://3mile.github.io/media/143321m5guh4i9uu72zz72.png" alt="" /></p>
+
+<p>知道以上的东西之后，就可以开始准备救砖了</p>
+
+<p>NETGEAR推荐的方式是，把电脑连接至交换机，然后把要修复的设备也连在该交换机下修复</p>
+
+<p>步骤</p>
+
+<p>1，打开NMRP</p>
+
+<p><img src="http://3mile.github.io/media/144256aqdn20iq3y700m8q.png" alt="" /></p>
+
+<p>2，连接至交换机，在电脑端的NMRP上选着好固件文件</p>
+
+<p><img src="http://3mile.github.io/media/144257ij1g99mebbz99v0z.png" alt="" /></p>
+
+<p>3，接入要修复的设备，并等待NMRP修复</p>
+
+<p><img src="http://3mile.github.io/media/144257or1r0f82f909ri41.png" alt="" /></p>
+
+<p>或者同时接入多台相同的需要修复的设备</p>
+
+<p><img src="http://3mile.github.io/media/144257h085lxcit05xjzfa.png" alt="" /></p>
+
+<p>以上办法是NETGEAR推荐的办法，当然，可能我们都没有交换机，下面说一个单机连接故障设备修复的办法</p>
+
+<p>1，打开NMRP,选好固件，选好网卡，而且建议点开Debug Windows，这样可以监控NMRP的状态</p>
+
+<p><img src="http://3mile.github.io/media/144810s5tw7b7tyir7xz5b.png" alt="" /></p>
+
+<p><img src="http://3mile.github.io/media/145400l1mgmbg1v7gof1uo.png" alt="" /></p>
+
+<p><img src="http://3mile.github.io/media/145400eygsrov1w487o75z.png" alt="" /></p>
+
+<p>2,把电脑连载坏的路由器的LAN口上，无需关心是否能拿到IP地址，只要连上了，就点击“Start”开启</p>
+
+<p>如果出现以下问题，请确保电脑和设备的连接</p>
+
+<p><img src="http://3mile.github.io/media/150003en0s06m9v6666osc.png" alt="" /></p>
+
+<p>当看到右下角的状态已经是运行中之后，快速的把需要修复的设备断电，在通电设备</p>
+
+<p><img src="http://3mile.github.io/media/150054oonpho66l6joz6oz.png" alt="" /></p>
+
+<p>3，只要没问题就可以看到Debug有输出，并且开始修复，这里，我打开了连接了TTL线，以便让大家更好的看到工作状态</p>
+
+<p>修复中1</p>
+
+<p><img src="http://3mile.github.io/media/150258axawa882sux382wr.png" alt="" /></p>
+
+<p>修复中2</p>
+
+<p><img src="http://3mile.github.io/media/150258pq6ttvenay6bdg61.png" alt="" /></p>
+
+<p>修复完成</p>
+
+<p><img src="http://3mile.github.io/media/150259nrd4qenl4ngjlm8r.png" alt="" /></p>
+
+<p>可以看到状态是DONE,到了这一步之后，只要停止NMRP，然后把设备重启即可，并且电脑最好把网卡然后再启用，以免无法获取到IP地址</p>
+
+<p>至此，NMRP修复完毕</p>
+
+<p>最后附上TTL显示的全部过程</p>
+
+<p>``</p>
+
+<ol>
+<li>U-Boot 1.1.4 (Aug 12 2014 &#8211; 15:21:46)</li>
+<li></li>
+<li>U-boot dni29 V0.5 for DNI HW ID: 29764821 NOR flash 2MB NAND flash 128MB RAM 128MB</li>
+<li>&#8211; Dragonfly 1.0DRAM:</li>
+<li>sri</li>
+<li>ath_ddr_initial_config(278): (ddr2 init)</li>
+<li>ath_sys_frequency: cpu 775 ddr 650 ahb 258</li>
+<li>Tap values = (0xf, 0xf, 0xf, 0xf)</li>
+<li>128 MB</li>
+<li>Top of RAM usable for U-Boot at: 88000000</li>
+<li>Reserving 265k for U-Boot at: 87fbc000</li>
+<li>Reserving 192k for malloc() at: 87f8c000</li>
+<li>Reserving 44 Bytes for Board Info at: 87f8bfd4</li>
+<li>Reserving 36 Bytes for Global Data at: 87f8bfb0</li>
+<li>Reserving 128k for boot params() at: 87f6bfb0</li>
+<li>Stack Pointer at: 87f6bf98</li>
+<li>Now running in RAM &#8211; U-Boot at: 87fbc000</li>
+<li>Flash Manuf Id 0xc2, DeviceId0 0x20, DeviceId1 0x15</li>
+<li>flash size 2MB, sector count = 32</li>
+<li>Flash:  2 MB</li>
+<li>Qualcomm Atheros SPI NAND Driver, Version 0.1 &copy; 2014  Qualcomm Atheros Inc.</li>
+<li>ath_parse_read_id: SPI NAND V.Id: 0xc8 D.Id: 0xf1</li>
+<li>====== NAND Parameters ======</li>
+<li>sc = 0x87ff77e4 page = 0x800 block = 0x20000In:    serial</li>
+<li>Out:   serial</li>
+<li>Err:   serial</li>
+<li>Net:   ath_gmac_enet_initialize&#8230;</li>
+<li>Fetching MAC Address from 0x87fe914c</li>
+<li>ath_gmac_enet_initialize: reset mask:c02200</li>
+<li>athr_mgmt_init ::done</li>
+<li>Dragonfly  &#8212;-&gt; S17 PHY *</li>
+<li>athrs17_reg_init: complete</li>
+<li>SGMII in forced mode</li>
+<li>athr_gmac_sgmii_setup SGMII done</li>
+<li>: cfg1 0x80000000 cfg2 0x7114</li>
+<li>eth0: 6c:b0:ce:14:f0:f4</li>
+<li>eth0 up</li>
+<li>eth0</li>
+<li>Setting 0x181162c0 to 0x48902100</li>
+<li>Hit any key to stop autoboot:  0</li>
+<li>Trying eth0</li>
+<li>dup 1 speed 1000</li>
+<li></li>
+<li><font color=&#8221;Red&#8221;>Client starts&#8230;[Listening] for ADVERTISE&#8230;Tchecksum bad #NMRP在这里启动，优先于固件启动</li>
+<li></li>
+<li>NMRP CONFIGING</li>
+<li>Recv FW-UP option</li>
+<li></li>
+<li>No ST-UP option</li>
+<li></li>
+<li>NMRP WAITING FOR UPLOAD FIRMWARE or STRING TABLES!</li>
+<li>Trying eth0</li>
+<li>Listening on Port : 69, IP Address: 10.0.0.2&#8230;</font></li>
+<li></li>
+<li>Rcv:</li>
+<li></li>
+<li>Rcv:</li>
+<li>        checksum bad</li>
+<li></li>
+<li>Rcv:</li>
+<li></li>
+<li>Rcv:</li>
+<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
+<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
+<li>        &#8230;&#8230;&#8230;&#8230;&#8230;中间很长一部分无用信息省略&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;</li>
+<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
+<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
+<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
+<li></li>
+<li></li>
+<li>Done!</li>
+<li>Bytes transferred = 14352517 (db0085 hex)</li>
+<li>TFTP upload done</li>
+<li>Ignore Magic number checking when upgrade via NMRP,Magic number is 27051956!</li>
+<li>HW ID on board: 29764821+2+128+128+3&#215;3+3&#215;3+5508012175</li>
+<li>HW ID on image: 29764821+2+128+128</li>
+<li>Firmware Image HW ID matched Board HW ID</li>
+<li></li>
+<li>nand erase: off 0, size 20000: OK</li>
+<li>nand write 0 : 20000 bytes written, OK</li>
+<li>Alive-timer 0</li>
+<li>    擦除部分很长。这里也省略了</li>
+<li>nand erase: off da0000, size 20000: OK</li>
+<li>nand write da0000 : 20000 bytes written, OK</li>
+<li>Alive-timer 11</li>
+<li>Original board MODEL ID: WNDR4500series           #设备在NG里面归类于WNDR4500下面，虽然设备是WNDR4300V2</li>
+<li>New MODEL ID from image: WNDR4500series</li>
+<li>Updating MODEL ID</li>
+<li></li>
+<li>First 0x1f last 0x1f sector size 0x10000</li>
+<li>  31</li>
+<li>write addr: 9f1f0000</li>
+<li>done</li>
+<li></li>
+<li>NMRP Send Closing REQ</li>
+<li>Trying eth0</li>
+<li></li>
+<li>NMRP CLOSEDRestore to factory default</li>
+<li>Erase Flash from 0x9f060000 to 0x9f06ffff in Bank # 1</li>
+<li>First 0x6 last 0x6 sector size 0x10000</li>
+<li>   6</li>
+<li>Erased 1 sectors</li>
+<li></li>
+<li>press ctrl+C to continue&#8230;..</li>
+</ol>
+
+<p>``</p>
+</article>
+    <footer class="post-footer">
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Comments on 3mile博客</title>
+    <link>http://3mile.github.io/tags/comments/</link>
+    <description>Recent content in Comments on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 25 Apr 2018 09:34:29 +0800</lastBuildDate>
+    
+	<atom:link href="http://3mile.github.io/tags/comments/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>第三方评论系统推荐</title>
+      <link>http://3mile.github.io/archives/128/</link>
+      <pubDate>Wed, 25 Apr 2018 09:34:29 +0800</pubDate>
+      
+      <guid>http://3mile.github.io/archives/128/</guid>
+      <description>写在前面 多说要下线了，国内博客圈哀鸿遍野。主流博主们还好，有原生评论系统可以用，只是社交分享的时候麻烦点。最近流行起来的静态博客的博主们就不</description>
+    </item>
+    
+  </channel>
+</rss>

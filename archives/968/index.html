@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>群晖玩软路由</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="大家群晖玩软路由的基本都是用virtualbox，相对于VMM稳定性差十万八千里了，甚至在群晖上Docker都不如VMM稳定，自由，便捷 但是" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="群晖玩软路由" />
+    <meta name="twitter:description" content="大家群晖玩软路由的基本都是用virtualbox，相对于VMM稳定性差十万八千里了，甚至在群晖上Docker都不如VMM稳定，自由，便捷 但是" />
+    <meta name="twitter:image" content="http://3mile.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="群晖玩软路由" />
+  <meta property="og:description" content="大家群晖玩软路由的基本都是用virtualbox，相对于VMM稳定性差十万八千里了，甚至在群晖上Docker都不如VMM稳定，自由，便捷 但是" />
+  <meta property="og:url" content="http://3mile.github.io/archives/968/" />
+  <meta property="og:image" content="http://3mile.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://3mile.github.io/archives/968/" />
+<link rel="alternative" href="http://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/mile3" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">群晖玩软路由</h1>
+      <p class="post-meta">@3mile · Mar 30, 2018 · 5 min read</p>
+    </header>
+    <article class="post-content"><div align="left">
+  <span style="font-size: medium;">大家群晖玩软路由的基本都是用</span>virtualbox，<span style="font-size: medium;">相对于VMM稳定性差十万八千里了</span>，甚至在群晖上Docker都不如VMM稳定，自由，便捷
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">但是找遍了网络上没有找到群晖vmm安装lede的教程,于是我自己摸索安装。</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">之前我发帖子有写过大概的安装过程，但是由于本人DS1515+的内存只有2G，最后安装完成后未能运行</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">所以大家照着做了以后碰上很多问题，我今天换了8G内存后把大家的问题一一解决了。</span>
+</div>
+
+<p>现在已经稳定运行快一年了！秒杀一切软路由</p>
+
+<p><span style="font-size: medium;"><br /> </span></p>
+
+<div align="left">
+  <span style="font-size: x-large;"><strong>一，前提条件：</strong></span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">x86架构群晖NAS，系统RAM内存3G以上，DSM6.1+，VMM版本2.1.0+</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">（网络端口也可以只有一个，不过要自己配置LEDE为NUC模式（独臂），并配置VLanID和准备VLan交换机，这部分这里不做教程，这里只讲两个网口群晖的玩儿法）</span>
+</div>
+
+<p><span style="font-size: medium;"> </span></p>
+
+<div align="left">
+</div>
+
+<div align="left">
+  <span style="font-size: x-large;"><strong>二，安装LEDE</strong></span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">1，下载本论坛的LEDE固件（虚拟机转盘或PE下写盘专用那个），解压得到img镜像（地址：<a href="http://firmware.koolshare.cn/LEDE_X64_fw867/%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%BD%AC%E7%9B%98%E6%88%96PE%E4%B8%8B%E5%86%99%E7%9B%98%E4%B8%93%E7%94%A8/" target="_blank" rel="noopener">http://firmware.koolshare.cn/LEDE_X64_fw867/虚拟机转盘或PE下写盘专用/</a>）</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">2，打开VMM>映像>新增>上传步骤一的img镜像</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">3，VMM>网络链接图>选中“Default VM Network”>编辑>只保留一个准备做LAN口的端口前面的勾（Default VM Network可以重命名）</span>
+</div>
+
+<div align="left">
+  <span style="color: rgba(0, 153, 0, 0);"><span style="font-size: medium;">4，VMM>网络链接图>新增>选中一个准备用做WAN口的端口并且给这个接口命名>应用（如果还有多个准备用做LAN的端口分别重复进行这个步骤即可，每一个端口设置一个，但是不要把两个端口添加到同一个虚拟口中）</span></span>
+</div>
+
+<div align="left">
+  ![](/media/162739j4l28i884fq7llrk-1.png)
+</div>
+
+<p>&nbsp;</p>
+
+<div align="left">
+  <span style="font-size: medium;">5，打开VMM>虚拟机>点击新增旁边的倒三角“导入”>“从硬盘镜像导入”>默认应该就是步骤2上传的镜像，如果不是手动选择</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">6，虚拟机的推荐配置：双核，512-1G RAM，显卡默认就好，存储空间如果有固态硬盘放在固态硬盘，启动速度快很多。名称随意，磁盘空间默认最小10G（不用担心大小问题，这里是虚拟磁盘，划分多少都不占用空间，实际存放多少东西才占用多少空间）。</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">7，配置网络>选择步骤3的端口>点击后面加号继续添加步骤4中的端口</span>
+</div>
+
+<div align="left">
+  ![](/media/162803cwksfub5aa3bz6ap-1.png)
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">8，推荐先关闭开机启动，等全都配置好了 调试无误了再打开开机“自动启动”</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">9，开机</span>
+</div>
+
+<p>&nbsp;</p>
+
+<div align="left">
+  <span style="font-size: x-large;">三，配置<strong>LEDE</strong></span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;"> </span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">开机后不管本机连接在LAN还是WAN口，都可以通过指定ip</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">192.168.1.1xx，子网掩码：255.255.255.0 网关：192.168.1.1 DNS：8.8.8.8</span>
+</div>
+
+<p><span style="font-size: medium;"> </span></p>
+
+<div align="left">
+  <span style="font-size: medium;">然后网页打开192.168.1.1</span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;">就可以登录了 ，登陆密码是koolshare</span>
+</div>
+
+<p><span style="font-size: medium;"> </span></p>
+
+<div align="left">
+  <span style="font-size: medium;">剩下的自己开始设置就可以了。如果还是登陆不了192.168.1.1 那么就需要把电脑链接一根网线到步骤3指定的LAN口上面 这时候一般不需要手动设置电脑的ip，就可以自动获取到192.168.1.xxx的ip  登陆192.168.1.1即可</span>
+</div>
+
+<p>&nbsp;</p>
+
+<div align="left">
+  <span style="font-size: large;"><span style="color: #ff0000;"><strong>如果群晖不能联接外网的话 需要如下设置：</strong></span></span>
+</div>
+
+<div align="left">
+  <span style="font-size: large;"><span style="color: #ff0000;"><strong>登陆DSM>控制面板>网络>常规>默认网关>选中LEDE中作为LAN口的端口然后点“上”，把顺序排到第一位</strong></span></span>
+</div>
+
+<div align="left">
+  <span style="font-size: large;"><span style="color: #ff0000;"><strong>这样修改默认网关为你路由器LAN口的那个就可以了</strong></span></span>
+</div>
+
+<div align="left">
+  <span style="font-size: large;"><span style="color: #ff0000;"><strong>见下图：</strong></span></span>
+</div>
+
+<div align="left">
+  ![](/media/131521w8zlj48ujj6lg864-1.png)
+</div>
+
+<div align="left">
+  <div align="left">
+    <span style="color: #ff0000;"><strong>不修改默认使用WAN口的网关，</strong></span><strong>WAN口网关是光猫 必然不能联网！！</strong>
+  </div>
+</div>
+
+<div align="left">
+</div>
+
+<div align="left">
+</div>
+
+<div align="left">
+  <span style="color: #009000;"><span style="font-size: medium;">WAN口与LAN口物理端口的设置的位置：（只勾选第一个就可以，图也错了）</span></span>
+</div>
+
+<p><img src="http://3mile.github.io/media/163611dsssisss117m199s-1.png" alt="" /></p>
+
+<div align="left">
+  <span style="font-size: medium;"> </span>
+</div>
+
+<div align="left">
+  <span style="font-size: medium;"><span style="color: #009000;">软路由玩儿法：</span></span>http://koolshare.cn/thread-128116-1-1.html
+</div>
+
+<p>&nbsp;</p>
+
+<div align="left">
+  <span style="font-size: x-large;"><strong>四，网络拓扑建议：</strong></span>
+</div>
+
+<p><span style="font-size: medium;"> </span></p>
+
+<div align="left">
+  <span style="font-size: medium;">拓扑图如下：</span>
+</div>
+
+<p><span style="font-size: medium;">（R8500设置AP模式后不再区分LAN与WAN，全都相当于交换机模式的LAN口，只需要NAS<span style="color: rgba(0, 153, 0, 0);">两个口组成Bond1(双链路聚合)连接到R8500的双链路聚合LAN口，无需连接到WAN口也无需再从AP连接回NAS </span>依据：<a href="http://koolshare.cn/thread-127079-1-1.html" target="_blank" rel="noopener"><a href="http://koolshare.cn/thread-127079-1-1.html">http://koolshare.cn/thread-127079-1-1.html</a></a>）</span></p>
+
+<p>PS：R8500完全可以用便宜的AP代替 我只是贪恋有源天线不舍得换</p>
+
+<p><img src="http://3mile.github.io/media/155713c4fll4vmlulf2ffp-1.jpg" alt="" /></p>
+
+<p>2017年12月4日更新：</p>
+
+<p>这稳定性！以后可以完全抛弃路由器了！！一台群晖+N台AP无缝漫游 简直是一个新的时代！！</p>
+
+<p>==============================================</p>
+
+<p>2017年11月18日更新：</p>
+
+<p>稳定性超过我原来的华硕AC5300刷梅林！！使用2个月至今没有一次宕机重启</p>
+
+<p>==============================================</p>
+
+<p>2017年11月15日更新：</p>
+
+<p>我原来是R8500路由器 双链路聚合到群晖DS1515+</p>
+
+<p>ipad和iPhone走smb播放1080p的蓝光原盘和4k压制视频会卡</p>
+
+<p>换了群晖的VMM+LEDE软路由 R8500只做AP 现在一点都不卡了。。。。我的LEDE分配的RAM为1G，cpu为2核心</p>
+
+<p>（提升Wi-Fi访问NAS速度，iPad播放4K不再卡顿，macOS速度秒windows：<a href="http://koolshare.cn/thread-125248-1-1.html" target="_blank" rel="noopener"><a href="http://koolshare.cn/thread-125248-1-1.html">http://koolshare.cn/thread-125248-1-1.html</a></a>）</p>
+
+<p>==============================================</p>
+
+<p>2017年10月15日更新：</p>
+
+<p>发现软路由最大的缺点 没有硬NAT转发，平时使用cpu只占用1-2%，但是一旦WAN口下载量高的时候cpu占用就偏高。</p>
+
+<p>（英特尔服务器CPU C2538 四核2.7G 分了两核给LEDE 下载速度超过10m/s的时候就会占用到30-40% 双拨22m/s更是占用到50-60%）好在温度不高。</p>
+
+<p>研究了下资料发现不仅软路由，其他刷了第三方固件的路由器也废掉了原本的硬NAT转发，变成了软NAT靠CPU转发。</p>
+
+<p>相比之下LEDE还是可以的。</p>
+
+<p>=============================</p>
+
+<p>2017年10月7日更新：</p>
+
+<p>现在已经使用了一个周，非常稳定，功耗也很低，cpu只占用1%左右，内存划分1G实际也只占用128-256m</p>
+
+<p>开了单线并发双拨，每次重新开机成功率100%，还开了广告屏蔽，SSR，爽的不要不要的！</p>
+
+<p>秒梅林100倍！！还省了买瘦客户机了</p>
+
+<p>================================</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://3mile.github.io/tags/%E7%BE%A4%E6%99%96"><span class="tag">群晖</span></a></li>
+        
+          <li><a href="http://3mile.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1"><span class="tag">软路由</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

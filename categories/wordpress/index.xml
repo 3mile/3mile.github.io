@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wordpress on 3mile博客</title>
+    <link>http://3mile.github.io/categories/wordpress/</link>
+    <description>Recent content in Wordpress on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 10 Apr 2018 09:16:52 +0800</lastBuildDate>
+    
+	<atom:link href="http://3mile.github.io/categories/wordpress/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>搭建WordPress博客网站</title>
+      <link>http://3mile.github.io/archives/104/</link>
+      <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
+      
+      <guid>http://3mile.github.io/archives/104/</guid>
+      <description>讲真，曾经我特别佩服使用服务器（比如VPS）搭建WordPress博客网站的站长们。 因为，我觉得仅仅在漆黑的屏幕上敲几行代码就能把一个网站玩</description>
+    </item>
+    
+    <item>
+      <title>Crayon Syntax Highlighter插件更改显示语言为中文</title>
+      <link>http://3mile.github.io/archives/986/</link>
+      <pubDate>Sat, 31 Mar 2018 06:48:38 +0000</pubDate>
+      
+      <guid>http://3mile.github.io/archives/986/</guid>
+      <description>Crayon Syntax Highlighter Crayon Syntax Highlighter是一个强大的代码高亮插件，强大的地方主要是它拥有多种高亮主题和多种显示字体来展示代码让使用者有足够多的搭配选</description>
+    </item>
+    
+  </channel>
+</rss>

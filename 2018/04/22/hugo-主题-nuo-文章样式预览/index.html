@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Hugo 主题 Nuo 文章样式预览</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="这篇文章集中说明本人博客主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些部分的样式，可以去修改 content.scss 和 shortcodes.scss 这两个文件" />
+
+  
+  
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="Hugo 主题 Nuo 文章样式预览" />
+    <meta name="twitter:description" content="这篇文章集中说明本人博客主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些部分的样式，可以去修改 content.scss 和 shortcodes.scss 这两个文件" />
+    <meta name="twitter:image" content="http://3mile.github.io/img/avatar.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Hugo 主题 Nuo 文章样式预览" />
+  <meta property="og:description" content="这篇文章集中说明本人博客主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些部分的样式，可以去修改 content.scss 和 shortcodes.scss 这两个文件" />
+  <meta property="og:url" content="http://3mile.github.io/2018/04/22/hugo-%E4%B8%BB%E9%A2%98-nuo-%E6%96%87%E7%AB%A0%E6%A0%B7%E5%BC%8F%E9%A2%84%E8%A7%88/" />
+  <meta property="og:image" content="http://3mile.github.io/img/avatar.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.37.1" />
+
+
+<link rel="canonical" href="http://3mile.github.io/2018/04/22/hugo-%E4%B8%BB%E9%A2%98-nuo-%E6%96%87%E7%AB%A0%E6%A0%B7%E5%BC%8F%E9%A2%84%E8%A7%88/" />
+<link rel="alternative" href="http://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="http://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="http://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="http://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="http://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="http://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="http://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="http://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="http://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="http://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="http://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/mile3" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="http://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Hugo 主题 Nuo 文章样式预览</h1>
+      <p class="post-meta">@3mile · Apr 22, 2018 · 3 min read</p>
+    </header>
+    <article class="post-content">
+
+<p>这篇文章集中说明本人博客主题所支持的 Markdown 语法和 Hugo Shortcodes 插件，你也可以在这里预览到他们的样子。如果你不喜欢某些部分的样式，可以去修改 <code>content.scss</code> 和 <code>shortcodes.scss</code> 这两个文件。预告一下，我所用的这个名为 <code>Nuo</code> 的 <code>Hugo</code> 也将于近期发布，敬请期待。</p>
+
+<h2 id="1-标题">1. 标题</h2>
+
+<h1 id="h1">H1</h1>
+
+<h2 id="h2">H2</h2>
+
+<h3 id="h3">H3</h3>
+
+<h4 id="h4">H4</h4>
+
+<h5 id="h5">H5</h5>
+
+<h6 id="h6">H6</h6>
+
+<h2 id="2-段落">2. 段落</h2>
+
+<p>使用单引号 <code>*</code> 或者单下划线 <code>_</code> 标记 <em>斜体强调</em> 或者 <em>斜体强调</em></p>
+
+<p>使用两个引号 <code>**</code> 或者两个下划线 <code>__</code> 标记 <strong>加粗强调</strong> 或者 <strong>加粗强调</strong></p>
+
+<p>引号和下划线可叠加使用 → <strong>只是加粗 <em>斜体并加粗</em></strong></p>
+
+<p>使用两个波浪线 <code>~~</code> 标记 <del>已删除文字</del></p>
+
+<p>插入文字暂无 <code>Markdown</code> 标记，直接使用 <code>HTML</code> 标签 <code>&lt;ins&gt;</code> 标记 <ins>插入文字</ins></p>
+
+<p>行内代码使用反引号标记 → <code>print(&quot;hello world&quot;)</code></p>
+
+<p>上标 X<sup>2</sup> / 下标 X<sub>2</sub></p>
+
+<p>按键 <kbd>Ctrl</kbd></p>
+
+<p>外链 <a href="https://chekun.me">chekun&rsquo;s blog</a></p>
+
+<p>页面内段落 <a href="#section-07">图片</a></p>
+
+<p><em>注意：你可以通过 <code>{#section-id}</code> 方式自定义段落锚点</em></p>
+
+<p>参考资料 <sup><a href="#ref01">[1]</a></sup><sup><a href="#ref02">[2]</a></sup></p>
+
+<p>数字引用 <a href="1">编号为 1 的链接</a></p>
+
+<h2 id="3-列表">3. 列表</h2>
+
+<p>以下的无序、有序和任务列表均支持二级嵌套，不建议使用二级以上嵌套。</p>
+
+<h3 id="3-1-无序列表">3.1 无序列表</h3>
+
+<ul>
+<li>无序列表
+
+<ul>
+<li>嵌套的无序列表</li>
+<li>嵌套的无序列表</li>
+</ul></li>
+<li>无序列表
+
+<ol>
+<li>嵌套的有序列表</li>
+<li>嵌套的有序列表</li>
+</ol></li>
+<li>无序列表</li>
+</ul>
+
+<h3 id="3-2-有序列表">3.2 有序列表</h3>
+
+<ol>
+<li>有序列表
+
+<ol>
+<li>嵌套的有序列表</li>
+<li>嵌套的有序列表</li>
+</ol></li>
+<li>有序列表
+
+<ul>
+<li>嵌套的无序列表</li>
+<li>嵌套的无序列表</li>
+</ul></li>
+<li>有序列表</li>
+</ol>
+
+<h3 id="3-3-定义列表">3.3 定义列表</h3>
+
+<dl>
+<dt>CSS</dt>
+<dd>层叠样式表</dd>
+</dl>
+
+<h3 id="3-4-任务列表">3.4 任务列表</h3>
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> Cmd Markdown 开发
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 改进 Cmd 渲染算法，使用局部渲染技术提高渲染效率</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 支持以 PDF 格式导出文稿</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> 新增Todo列表功能 <a href="https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments">语法参考</a></label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> 改进 LaTex 功能</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> 修复 LaTex 公式渲染问题</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> 新增 LaTex 公式编号功能 <a href="http://docs.mathjax.org/en/latest/tex.html#tex-eq-numbers">语法参考</a></label></li>
+</ul></label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 七月旅行准备
+
+<ul class="task-list">
+<li><label><input type="checkbox" disabled class="task-list-item"> 准备邮轮上需要携带的物品</label></li>
+<li><label><input type="checkbox" disabled class="task-list-item"> 浏览日本免税店的物品</label></li>
+<li><label><input type="checkbox" checked disabled class="task-list-item"> 购买蓝宝石公主号七月一日的船票</label></li>
+</ul></label></li>
+</ul>
+
+<h2 id="4-引用">4. 引用</h2>
+
+<blockquote>
+<p>野火烧不尽，春风吹又生。</p>
+
+<p><cite>&ndash; 白居易《赋得古原草送别》</cite></p>
+</blockquote>
+
+<h2 id="5-代码">5. 代码</h2>
+
+<p>以本站的一段 <code>JavaScript</code> 代码做演示。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Initialize video.js player
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">if</span> (document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;my-player&#39;</span>) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">null</span>) {
+  <span style="color:#75715e">/* eslint-disable no-undef */</span>
+  <span style="color:#a6e22e">videojs</span>(<span style="color:#e6db74">&#39;#my-player&#39;</span>, {
+    <span style="color:#a6e22e">aspectRatio</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;16:9&#39;</span>,
+    <span style="color:#a6e22e">fluid</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span>,
+  });
+}
+</code></pre></div>
+<h2 id="6-分割线">6. 分割线</h2>
+
+<hr />
+
+<p>中间能写字的分割线，如果你修改了分割线中字的内容，请配合修改 <code>CSS</code> 样式。</p>
+
+<h2 id="section-07">7. 图片</h2>
+
+<p>不带标题的图片，如下图👇</p>
+
+<p><img src="http://3mile.github.io/media/posts/hugo-nuo-post-preview/01.jpg" alt="这是一只梅花鹿" /></p>
+
+<p>带标题的图片，如下图👇</p>
+
+
+<figure>
+    
+        <img src="http://3mile.github.io/media/posts/hugo-nuo-post-preview/01.jpg" alt="这是一只梅花鹿" />
+    
+    
+    <figcaption>
+        <h4>显然，这是一只梅花鹿</h4>
+        
+    </figcaption>
+    
+</figure>
+
+
+<h2 id="8-表格">8. 表格</h2>
+
+<p>使用 <code>Markdown</code> 画的表格，如下表👇</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Tables</th>
+<th align="center">Are</th>
+<th align="right">Cool</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">col 3 is</td>
+<td align="center">right-aligned</td>
+<td align="right">$1600</td>
+</tr>
+
+<tr>
+<td align="left">col 2 is</td>
+<td align="center">centered</td>
+<td align="right">$12</td>
+</tr>
+
+<tr>
+<td align="left">zebra stripes</td>
+<td align="center">are neat</td>
+<td align="right">$1</td>
+</tr>
+</tbody>
+</table>
+
+<p>使用 <code>HTML</code> 画的表格，如下表👇</p>
+
+<p><em>注意：下表叠加应用了 <code>is-centered</code> <code>is-striped</code> <code>is-bordered</code> <code>is-narrow</code> 四种表格样式。</em></p>
+
+<table class="is-centered is-striped is-bordered is-narrow">
+  <tr>
+    <th rowspan="2">值班人员</th>
+    <th>星期一</th>
+    <th>星期二</th>
+    <th>星期三</th>
+  </tr>
+  <tr>
+    <td>李强</td>
+    <td>张明</td>
+    <td>王平</td>
+  </tr>
+</table>
+
+<h2 id="9-数学公式">9. 数学公式</h2>
+
+<p>主题使用了 <a href="https://www.mathjax.org/">MathJax</a> 开源库来实现对数学公式的支持，使用 <code>$$</code> 标记。</p>
+
+<p>$$ evidence_{i}=\sum_{j}W_{ij}x_{j}+b_{i} $$</p>
+
+<h2 id="10-jsfiddle">10. JSFiddle</h2>
+
+<p>引入 <a href="https://jsfiddle.net/">JSFiddle</a> 网站的代码范例，在主题目录 <code>layouts/shortcodes</code> 文件夹下的 <code>jsfiddle.html</code> 对该标签进行定义。</p>
+
+
+
+
+
+
+
+
+
+   <script async src="//jsfiddle.net/laozhu/L479wueo/embed/html,css,result/light/"></script>
+
+
+
+
+<h2 id="11-codepen">11. Codepen</h2>
+
+<p>引入 <a href="https://codepen.io/">Code Pen</a> 网站的代码演示，在主题目录 <code>layouts/shortcodes</code> 文件夹下的 <code>codepen.html</code> 对该标签进行定义。</p>
+
+
+
+
+
+
+
+
+
+
+
+  <p data-height="600" data-theme-id="light" data-slug-hash="RoaWdE" data-default-tab="result" data-user="error: cannot access positional params by string name" data-embed-version="2" data-pen-title="🐍 Snake Rush" data-preview="true"
+  class="codepen">
+    See the Pen <a href="https://codepen.io/laozhu/pen/RoaWdE/">🐍 Snake Rush</a> by Ritchie Zhu (<a href="https://codepen.io/laozhu">@laozhu</a>) on <a href="https://codepen.io">CodePen</a>.
+  </p>
+  <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+
+
+
+
+
+
+<h2 id="12-声享-ppt">12. 声享 PPT</h2>
+
+<p>引入 <a href="https://ppt.baomitu.com/">声享</a> PPT 演示文稿，在主题目录 <code>layouts/shortcodes</code> 文件夹下的 <code>shengxiang.html</code> 对该标签进行定义。</p>
+
+
+
+
+
+
+
+
+  <iframe
+    class="shengxiang"
+    width="576"
+    height="420"
+    scrolling="no"
+    frameborder="0"
+    allowfullscreen
+    src="https://ppt.baomitu.com/embed/a8a49a00?style=light">
+  </iframe>
+
+
+
+
+<h2 id="13-本地视频">13. 本地视频</h2>
+
+<p>主题使用了 <a href="http://videojs.com/">video.js</a> 播放视频文件，你还可以自己定义视频的封面，在主题目录 <code>layouts/shortcodes</code> 文件夹下的 <code>video.html</code> 对该标签进行定义。</p>
+
+
+
+
+
+
+
+
+  <video id="my-player" class="video-js vjs-big-play-centered" controls preload="auto" poster="/img/poster.jpg" data-setup="{}">
+    <source src="http://3mile.github.io/media/posts/hugo-nuo-post-preview/videojs.mp4" type="video/mp4"></source>
+    <source src="http://3mile.github.io/media/posts/hugo-nuo-post-preview/videojs.webm" type="video/webm"></source>
+    <source src="http://3mile.github.io/media/posts/hugo-nuo-post-preview/videojs.ogv" type="video/ogg"></source>
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
+
+
+
+
+<h2 id="14-网易云音乐">14. 网易云音乐</h2>
+
+<p>主题文章中可以轻松插入 <a href="https://music.163.com/">网易云音乐</a> 的指定音乐，你可以根据需要将音乐设置为自动播放，在主题目录 <code>layouts/shortcodes</code> 文件夹下的 <code>music.html</code> 对该标签进行定义。</p>
+
+
+
+
+
+
+
+
+  <iframe
+    class="music163"
+    frameborder="no"
+    border="0"
+    marginwidth="0"
+    marginheight="0"
+    width="330"
+    height="86"
+    src="//music.163.com/outchain/player?type=2&id=3950552&auto=0&height=66">
+  </iframe>
+
+
+
+
+<h2 id="15-gist-代码片段">15. Gist 代码片段</h2>
+
+<p>除了本地的代码片段，主题中可使用 <a href="https://github.com/">GitHub</a> 的 <a href="https://gist.github.com/">Gist</a> 服务轻松插入代码片段。</p>
+
+<script src="//gist.github.com/laozhu/8285349.js"></script>
+
+<h2 id="16-tweet">16. Tweet</h2>
+
+<p>由于不明原因可能无法访问。</p>
+
+<h2 id="17-youtube">17. YouTube</h2>
+
+<p>由于不明原因可能无法播放。</p>
+
+
+<div style="position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/w7Ft2ymGmfc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen frameborder="0" title="YouTube Video"></iframe>
+ </div>
+
+
+<h2 id="18-instagram">18. Instagram</h2>
+
+<p>由于不明原因可能无法访问。</p>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ol>
+<li><a id="ref01"><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown Cheatsheet</a></a></li>
+<li><a id="ref02"><a href="https://www.zybuluo.com/EncyKe/note/120103">Markdown 语法手册</a></a></li>
+</ol>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="http://3mile.github.io/tags/markdown"><span class="tag">Markdown</span></a></li>
+        
+          <li><a href="http://3mile.github.io/tags/theme"><span class="tag">Theme</span></a></li>
+        
+          <li><a href="http://3mile.github.io/tags/hugo"><span class="tag">Hugo</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="http://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>
