@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.40.2" />
 
 
 <link rel="canonical" href="https://3mile.github.io/archives/837/" />
@@ -138,13 +138,6 @@
             
             
             ">
-            <a href="https://github.com/3mile">Works</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
             <a href="https://3mile.github.io/categories/">分类</a>
           </li>
       
@@ -159,7 +152,7 @@
             
             
             ">
-            <a href="https://3mile.github.io/about/">关于</a>
+            <a href="about">关于</a>
           </li>
       
     </ul>
@@ -362,118 +355,110 @@
 <p>至此，NMRP修复完毕</p>
 
 <p>最后附上TTL显示的全部过程</p>
-
-<p>``</p>
-
-<ol>
-<li>U-Boot 1.1.4 (Aug 12 2014 &#8211; 15:21:46)</li>
-<li></li>
-<li>U-boot dni29 V0.5 for DNI HW ID: 29764821 NOR flash 2MB NAND flash 128MB RAM 128MB</li>
-<li>&#8211; Dragonfly 1.0DRAM:</li>
-<li>sri</li>
-<li>ath_ddr_initial_config(278): (ddr2 init)</li>
-<li>ath_sys_frequency: cpu 775 ddr 650 ahb 258</li>
-<li>Tap values = (0xf, 0xf, 0xf, 0xf)</li>
-<li>128 MB</li>
-<li>Top of RAM usable for U-Boot at: 88000000</li>
-<li>Reserving 265k for U-Boot at: 87fbc000</li>
-<li>Reserving 192k for malloc() at: 87f8c000</li>
-<li>Reserving 44 Bytes for Board Info at: 87f8bfd4</li>
-<li>Reserving 36 Bytes for Global Data at: 87f8bfb0</li>
-<li>Reserving 128k for boot params() at: 87f6bfb0</li>
-<li>Stack Pointer at: 87f6bf98</li>
-<li>Now running in RAM &#8211; U-Boot at: 87fbc000</li>
-<li>Flash Manuf Id 0xc2, DeviceId0 0x20, DeviceId1 0x15</li>
-<li>flash size 2MB, sector count = 32</li>
-<li>Flash:  2 MB</li>
-<li>Qualcomm Atheros SPI NAND Driver, Version 0.1 &copy; 2014  Qualcomm Atheros Inc.</li>
-<li>ath_parse_read_id: SPI NAND V.Id: 0xc8 D.Id: 0xf1</li>
-<li>====== NAND Parameters ======</li>
-<li>sc = 0x87ff77e4 page = 0x800 block = 0x20000In:    serial</li>
-<li>Out:   serial</li>
-<li>Err:   serial</li>
-<li>Net:   ath_gmac_enet_initialize&#8230;</li>
-<li>Fetching MAC Address from 0x87fe914c</li>
-<li>ath_gmac_enet_initialize: reset mask:c02200</li>
-<li>athr_mgmt_init ::done</li>
-<li>Dragonfly  &#8212;-&gt; S17 PHY *</li>
-<li>athrs17_reg_init: complete</li>
-<li>SGMII in forced mode</li>
-<li>athr_gmac_sgmii_setup SGMII done</li>
-<li>: cfg1 0x80000000 cfg2 0x7114</li>
-<li>eth0: 6c:b0:ce:14:f0:f4</li>
-<li>eth0 up</li>
-<li>eth0</li>
-<li>Setting 0x181162c0 to 0x48902100</li>
-<li>Hit any key to stop autoboot:  0</li>
-<li>Trying eth0</li>
-<li>dup 1 speed 1000</li>
-<li></li>
-<li><font color=&#8221;Red&#8221;>Client starts&#8230;[Listening] for ADVERTISE&#8230;Tchecksum bad #NMRP在这里启动，优先于固件启动</li>
-<li></li>
-<li>NMRP CONFIGING</li>
-<li>Recv FW-UP option</li>
-<li></li>
-<li>No ST-UP option</li>
-<li></li>
-<li>NMRP WAITING FOR UPLOAD FIRMWARE or STRING TABLES!</li>
-<li>Trying eth0</li>
-<li>Listening on Port : 69, IP Address: 10.0.0.2&#8230;</font></li>
-<li></li>
-<li>Rcv:</li>
-<li></li>
-<li>Rcv:</li>
-<li>        checksum bad</li>
-<li></li>
-<li>Rcv:</li>
-<li></li>
-<li>Rcv:</li>
-<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
-<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
-<li>        &#8230;&#8230;&#8230;&#8230;&#8230;中间很长一部分无用信息省略&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;</li>
-<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
-<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
-<li>        &#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;&#8230;..</li>
-<li></li>
-<li></li>
-<li>Done!</li>
-<li>Bytes transferred = 14352517 (db0085 hex)</li>
-<li>TFTP upload done</li>
-<li>Ignore Magic number checking when upgrade via NMRP,Magic number is 27051956!</li>
-<li>HW ID on board: 29764821+2+128+128+3&#215;3+3&#215;3+5508012175</li>
-<li>HW ID on image: 29764821+2+128+128</li>
-<li>Firmware Image HW ID matched Board HW ID</li>
-<li></li>
-<li>nand erase: off 0, size 20000: OK</li>
-<li>nand write 0 : 20000 bytes written, OK</li>
-<li>Alive-timer 0</li>
-<li>    擦除部分很长。这里也省略了</li>
-<li>nand erase: off da0000, size 20000: OK</li>
-<li>nand write da0000 : 20000 bytes written, OK</li>
-<li>Alive-timer 11</li>
-<li>Original board MODEL ID: WNDR4500series           #设备在NG里面归类于WNDR4500下面，虽然设备是WNDR4300V2</li>
-<li>New MODEL ID from image: WNDR4500series</li>
-<li>Updating MODEL ID</li>
-<li></li>
-<li>First 0x1f last 0x1f sector size 0x10000</li>
-<li>  31</li>
-<li>write addr: 9f1f0000</li>
-<li>done</li>
-<li></li>
-<li>NMRP Send Closing REQ</li>
-<li>Trying eth0</li>
-<li></li>
-<li>NMRP CLOSEDRestore to factory default</li>
-<li>Erase Flash from 0x9f060000 to 0x9f06ffff in Bank # 1</li>
-<li>First 0x6 last 0x6 sector size 0x10000</li>
-<li>   6</li>
-<li>Erased 1 sectors</li>
-<li></li>
-<li>press ctrl+C to continue&#8230;..</li>
-</ol>
-
-<p>``</p>
-</article>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-inf" data-lang="inf">  <span style="color:#a6e22e">1. U-Boot 1.1.4 (Aug 12 2014 &amp;#8211; 15:21:46)</span>
+  <span style="color:#a6e22e">2. </span>
+  <span style="color:#a6e22e">3. U-boot dni29 V0.5 for DNI HW ID: 29764821 NOR flash 2MB NAND flash 128MB RAM 128MB</span>
+  <span style="color:#a6e22e">4. &amp;#8211; Dragonfly 1.0DRAM:</span>
+  <span style="color:#a6e22e">5. sri</span>
+  <span style="color:#a6e22e">6. ath\_ddr\_initial_config(278): (ddr2 init)</span>
+  <span style="color:#a6e22e">7. ath\_sys\_frequency: cpu 775 ddr 650 ahb 258</span>
+  <span style="color:#a6e22e">8. Tap values</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">(0xf, 0xf, 0xf, 0xf)
+</span><span style="color:#e6db74">  9. 128 MB
+</span><span style="color:#e6db74"> 10. Top of RAM usable for U-Boot at: 88000000
+</span><span style="color:#e6db74"> 11. Reserving 265k for U-Boot at: 87fbc000
+</span><span style="color:#e6db74"> 12. Reserving 192k for malloc() at: 87f8c000
+</span><span style="color:#e6db74"> 13. Reserving 44 Bytes for Board Info at: 87f8bfd4
+</span><span style="color:#e6db74"> 14. Reserving 36 Bytes for Global Data at: 87f8bfb0
+</span><span style="color:#e6db74"> 15. Reserving 128k for boot params() at: 87f6bfb0
+</span><span style="color:#e6db74"> 16. Stack Pointer at: 87f6bf98
+</span><span style="color:#e6db74"> 17. Now running in RAM &amp;#8211; U-Boot at: 87fbc000
+</span><span style="color:#e6db74"> 18. Flash Manuf Id 0xc2, DeviceId0 0x20, DeviceId1 0x15
+</span><span style="color:#e6db74"> 19. flash size 2MB, sector count = 32
+</span><span style="color:#e6db74"> 20. Flash:  2 MB
+</span><span style="color:#e6db74"> 21. Qualcomm Atheros SPI NAND Driver, Version 0.1 (c) 2014  Qualcomm Atheros Inc.
+</span><span style="color:#e6db74"> 22. ath\_parse\_read_id: SPI NAND V.Id: 0xc8 D.Id: 0xf1
+</span><span style="color:#e6db74"> 23. ====== NAND Parameters ======
+</span><span style="color:#e6db74"> 24. sc = 0x87ff77e4 page = 0x800 block = 0x20000In:    serial
+</span><span style="color:#e6db74"> 25. Out:   serial
+</span><span style="color:#e6db74"> 26. Err:   serial
+</span><span style="color:#e6db74"> 27. Net:   ath\_gmac\_enet_initialize&amp;#8230;
+</span><span style="color:#e6db74"> 28. Fetching MAC Address from 0x87fe914c
+</span><span style="color:#e6db74"> 29. ath\_gmac\_enet_initialize: reset mask:c02200
+</span><span style="color:#e6db74"> 30. athr\_mgmt\_init ::done
+</span><span style="color:#e6db74"> 31. Dragonfly  &amp;#8212;-&gt; S17 PHY *
+</span><span style="color:#e6db74"> 32. athrs17\_reg\_init: complete
+</span><span style="color:#e6db74"> 33. SGMII in forced mode
+</span><span style="color:#e6db74"> 34. athr\_gmac\_sgmii_setup SGMII done
+</span><span style="color:#e6db74"> 35. : cfg1 0x80000000 cfg2 0x7114
+</span><span style="color:#e6db74"> 36. eth0: 6c:b0:ce:14:f0:f4
+</span><span style="color:#e6db74"> 37. eth0 up
+</span><span style="color:#e6db74"> 38. eth0
+</span><span style="color:#e6db74"> 39. Setting 0x181162c0 to 0x48902100
+</span><span style="color:#e6db74"> 40. Hit any key to stop autoboot:  0
+</span><span style="color:#e6db74"> 41. Trying eth0
+</span><span style="color:#e6db74"> 42. dup 1 speed 1000
+</span><span style="color:#e6db74"> 43. 
+</span><span style="color:#e6db74"> 44. &lt;font color=&amp;#8221;Red&amp;#8221;&gt;Client starts&amp;#8230;[Listening] for ADVERTISE&amp;#8230;Tchecksum bad #NMRP在这里启动，优先于固件启动
+</span><span style="color:#e6db74"> 45. 
+</span><span style="color:#e6db74"> 46. NMRP CONFIGING
+</span><span style="color:#e6db74"> 47. Recv FW-UP option
+</span><span style="color:#e6db74"> 48. 
+</span><span style="color:#e6db74"> 49. No ST-UP option
+</span><span style="color:#e6db74"> 50. 
+</span><span style="color:#e6db74"> 51. NMRP WAITING FOR UPLOAD FIRMWARE or STRING TABLES!
+</span><span style="color:#e6db74"> 52. Trying eth0
+</span><span style="color:#e6db74"> 53. Listening on Port : 69, IP Address: 10.0.0.2&amp;#8230;&lt;/font&gt;
+</span><span style="color:#e6db74"> 54. 
+</span><span style="color:#e6db74"> 55. Rcv:
+</span><span style="color:#e6db74"> 56. 
+</span><span style="color:#e6db74"> 57. Rcv:
+</span><span style="color:#e6db74"> 58.         checksum bad
+</span><span style="color:#e6db74"> 59. 
+</span><span style="color:#e6db74"> 60. Rcv:
+</span><span style="color:#e6db74"> 61. 
+</span><span style="color:#e6db74"> 62. Rcv:
+</span><span style="color:#e6db74"> 63.         &amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;..
+</span><span style="color:#e6db74"> 64.         &amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;..
+</span><span style="color:#e6db74"> 65.         &amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;中间很长一部分无用信息省略&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;
+</span><span style="color:#e6db74"> 66.         &amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;..
+</span><span style="color:#e6db74"> 67.         &amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;..
+</span><span style="color:#e6db74"> 68.         &amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;&amp;#8230;..
+</span><span style="color:#e6db74"> 69. 
+</span><span style="color:#e6db74"> 70. 
+</span><span style="color:#e6db74"> 71. Done!
+</span><span style="color:#e6db74"> 72. Bytes transferred = 14352517 (db0085 hex)
+</span><span style="color:#e6db74"> 73. TFTP upload done
+</span><span style="color:#e6db74"> 74. Ignore Magic number checking when upgrade via NMRP,Magic number is 27051956!
+</span><span style="color:#e6db74"> 75. HW ID on board: 29764821+2+128+128+3&amp;#215;3+3&amp;#215;3+5508012175
+</span><span style="color:#e6db74"> 76. HW ID on image: 29764821+2+128+128
+</span><span style="color:#e6db74"> 77. Firmware Image HW ID matched Board HW ID
+</span><span style="color:#e6db74"> 78. 
+</span><span style="color:#e6db74"> 79. nand erase: off 0, size 20000: OK
+</span><span style="color:#e6db74"> 80. nand write 0 : 20000 bytes written, OK
+</span><span style="color:#e6db74"> 81. Alive-timer 0
+</span><span style="color:#e6db74"> 82.     擦除部分很长。这里也省略了
+</span><span style="color:#e6db74"> 83. nand erase: off da0000, size 20000: OK
+</span><span style="color:#e6db74"> 84. nand write da0000 : 20000 bytes written, OK
+</span><span style="color:#e6db74"> 85. Alive-timer 11
+</span><span style="color:#e6db74"> 86. Original board MODEL ID: WNDR4500series           #设备在NG里面归类于WNDR4500下面，虽然设备是WNDR4300V2
+</span><span style="color:#e6db74"> 87. New MODEL ID from image: WNDR4500series
+</span><span style="color:#e6db74"> 88. Updating MODEL ID
+</span><span style="color:#e6db74"> 89. 
+</span><span style="color:#e6db74"> 90. First 0x1f last 0x1f sector size 0x10000
+</span><span style="color:#e6db74"> 91.   31
+</span><span style="color:#e6db74"> 92. write addr: 9f1f0000
+</span><span style="color:#e6db74"> 93. done
+</span><span style="color:#e6db74"> 94. 
+</span><span style="color:#e6db74"> 95. NMRP Send Closing REQ
+</span><span style="color:#e6db74"> 96. Trying eth0
+</span><span style="color:#e6db74"> 97. 
+</span><span style="color:#e6db74"> 98. NMRP CLOSEDRestore to factory default
+</span><span style="color:#e6db74"> 99. Erase Flash from 0x9f060000 to 0x9f06ffff in Bank # 1</span>
+<span style="color:#a6e22e">100. First 0x6 last 0x6 sector size 0x10000</span>
+<span style="color:#a6e22e">101.    6</span>
+<span style="color:#a6e22e">102. Erased 1 sectors</span>
+<span style="color:#a6e22e">103. </span>
+<span style="color:#a6e22e">104. press ctrl+C to continue&amp;#8230;..</span></code></pre></div></article>
     <footer class="post-footer">
       
       <p class="post-copyright">

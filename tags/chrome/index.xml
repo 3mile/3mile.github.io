@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Chrome on 3mile博客</title>
+    <link>https://3mile.github.io/tags/chrome/</link>
+    <description>Recent content in Chrome on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 05 May 2018 11:50:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/chrome/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>谷歌插件new Tab</title>
+      <link>https://3mile.github.io/archives/137/</link>
+      <pubDate>Sat, 05 May 2018 11:50:25 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/137/</guid>
+      <description>打开 Chrome 浏览器的新标签页，或者在浏览器地址栏输入chrome://newtab，我们可以看到这样的默认新标签页页面： 这种标签页最郁闷的地方就是</description>
+    </item>
+    
+    <item>
+      <title>谷歌插件Ublock Origin</title>
+      <link>https://3mile.github.io/archives/136/</link>
+      <pubDate>Sat, 05 May 2018 11:37:15 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/136/</guid>
+      <description>关于 uBlock Origin 有人曾经做过对比：uBlock Origin对比ABP有性能上的优势，其最为突然的性能优势就是其占用极低的内存和 CPU。有分析说adp</description>
+    </item>
+    
+    <item>
+      <title>谷歌插件Stylish</title>
+      <link>https://3mile.github.io/archives/135/</link>
+      <pubDate>Sat, 05 May 2018 11:17:49 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/135/</guid>
+      <description>Stylish 是什么？ 开门见山，Stylish 的作用是，它可以把百度首页变成这样： 它还能把知乎「拍扁」，让微博网页版变得简洁无比，让 Feedly 用上 Material Design</description>
+    </item>
+    
+    <item>
+      <title>谷歌插件Tampermonkey</title>
+      <link>https://3mile.github.io/archives/134/</link>
+      <pubDate>Sat, 05 May 2018 10:44:13 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/134/</guid>
+      <description>不装扩展（Extensions）的 Chrome 只能发挥它 40% 的能力。 各类实用的 Chrome 扩展是不少人选择 Chrome 浏览器的重要原因，经过多年发展，Chrome 的扩展种类</description>
+    </item>
+    
+  </channel>
+</rss>

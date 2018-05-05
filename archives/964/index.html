@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.40.2" />
 
 
 <link rel="canonical" href="https://3mile.github.io/archives/964/" />
@@ -138,13 +138,6 @@
             
             
             ">
-            <a href="https://github.com/3mile">Works</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
             <a href="https://3mile.github.io/categories/">分类</a>
           </li>
       
@@ -159,7 +152,7 @@
             
             
             ">
-            <a href="https://3mile.github.io/about/">关于</a>
+            <a href="about">关于</a>
           </li>
       
     </ul>
@@ -251,23 +244,21 @@
 
 <p>&nbsp;</figure></p>
 
-<p><img src="https://3mile.github.io/media/20170528149595407252948-1.jpg" alt="" /></p>
+<p><img src="https://3mile.github.io/media/20170528149595407252948.jpg" alt="" /></p>
 
 <p>就我自己的购买的VPS来说。暴力破解次数最多达到2475次！各位也可以去看看自己的。。</p>
 
 <h3 id="生成">生成</h3>
 
 <p>使用<code>ssh-keygen</code>在自己的PC上来生成密钥对。Linux或者macOS都可以直接通过terminal来操作！如果是windows。需要用PuTTYgen软件来生成。<figure class="highlight plain"></p>
-
-<pre class="lang:default decode:true ">[root@host ~]$ ssh-keygen -t rsa &lt;== 建立密钥对
-Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa): &lt;== 按 Enter
-Created directory '/root/.ssh'.
-Enter passphrase (empty for no passphrase): &lt;== 输入密钥锁码，或直接按 Enter 留空
-Enter same passphrase again: &lt;== 再输入一遍密钥锁码
-Your identification has been saved in /root/.ssh/id_rsa. &lt;== 私钥
-Your public key has been saved in /root/.ssh/id_rsa.pub. &lt;== 公钥</pre>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#34;&gt;[root@host ~]</span>$<span style="color:#e6db74"> ssh-keygen -t rsa &amp;lt;== 建立密钥对
+</span><span style="color:#e6db74">Generating public/private rsa key pair.
+</span><span style="color:#e6db74">Enter file in which to save the key (/root/.ssh/id_rsa): &amp;lt;== 按 Enter
+</span><span style="color:#e6db74">Created directory &#39;/root/.ssh&#39;.
+</span><span style="color:#e6db74">Enter passphrase (empty for no passphrase): &amp;lt;== 输入密钥锁码，或直接按 Enter 留空
+</span><span style="color:#e6db74">Enter same passphrase again: &amp;lt;== 再输入一遍密钥锁码
+</span><span style="color:#e6db74">Your identification has been saved in /root/.ssh/id_rsa. &amp;lt;== 私钥
+</span><span style="color:#e6db74">Your public key has been saved in /root/.ssh/id_rsa.pub. &amp;lt;== 公钥</span></code></pre></div>
 <p>&nbsp;</figure></p>
 
 <p>可参考<a href="https://www.vultr.com/docs/how-do-i-generate-ssh-keys/" target="_blank" rel="external noopener">Vultr官方生成教程</a></p>
@@ -283,15 +274,11 @@ Your public key has been saved in /root/.ssh/id_rsa.pub. &lt;== 公钥</pre>
 </ol>
 
 <p>sshd_config配置文件修改相关选项如下：</p>
-
-<pre class="lang:default decode:true ">RSAAuthentication yes #RSA认证
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-conf" data-lang="conf">RSAAuthentication yes #RSA认证
 PubkeyAuthentication yes #开启公钥验证
 AuthorizedKeysFile .ssh/authorized_keys #验证文件路径
 PasswordAuthentication no #禁止密码认证
-PermitEmptyPasswords no #禁止空密码</pre>
-
-<p>&nbsp;</p>
-
+PermitEmptyPasswords no #禁止空密码</code></pre></div>
 <p>自此。便成功更改为密钥登录！</p>
 
 <h3 id="其他">其他</h3>

@@ -30,6 +30,15 @@
     </item>
     
     <item>
+      <title>Chrome</title>
+      <link>https://3mile.github.io/tags/chrome/</link>
+      <pubDate>Sat, 05 May 2018 11:50:25 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Comments</title>
       <link>https://3mile.github.io/tags/comments/</link>
       <pubDate>Wed, 25 Apr 2018 09:34:29 +0800</pubDate>
@@ -66,11 +75,29 @@
     </item>
     
     <item>
+      <title>Github Theme</title>
+      <link>https://3mile.github.io/tags/github-theme/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/github-theme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Hexo</title>
       <link>https://3mile.github.io/tags/hexo/</link>
       <pubDate>Sat, 21 Apr 2018 11:41:05 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Highlight Code</title>
+      <link>https://3mile.github.io/tags/highlight-code/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/highlight-code/</guid>
       <description></description>
     </item>
     
@@ -147,11 +174,20 @@
     </item>
     
     <item>
-      <title>Theme</title>
-      <link>https://3mile.github.io/tags/theme/</link>
-      <pubDate>Sun, 22 Apr 2018 13:02:22 +0800</pubDate>
+      <title>Tag Plugins</title>
+      <link>https://3mile.github.io/tags/tag-plugins/</link>
+      <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
       
-      <guid>https://3mile.github.io/tags/theme/</guid>
+      <guid>https://3mile.github.io/tags/tag-plugins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Test</title>
+      <link>https://3mile.github.io/tags/test/</link>
+      <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/test/</guid>
       <description></description>
     </item>
     
@@ -192,6 +228,15 @@
     </item>
     
     <item>
+      <title>Windows软件</title>
+      <link>https://3mile.github.io/tags/windows%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Wed, 02 May 2018 11:55:04 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/windows%E8%BD%AF%E4%BB%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Wordpress</title>
       <link>https://3mile.github.io/tags/wordpress/</link>
       <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
@@ -215,6 +260,15 @@
       <pubDate>Mon, 16 Apr 2018 10:37:52 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/%E4%B8%BB%E9%A2%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>军事</title>
+      <link>https://3mile.github.io/tags/%E5%86%9B%E4%BA%8B/</link>
+      <pubDate>Wed, 02 May 2018 19:13:38 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%86%9B%E4%BA%8B/</guid>
       <description></description>
     </item>
     
@@ -248,7 +302,7 @@
     <item>
       <title>导弹</title>
       <link>https://3mile.github.io/tags/%E5%AF%BC%E5%BC%B9/</link>
-      <pubDate>Mon, 09 Apr 2018 13:46:05 +0800</pubDate>
+      <pubDate>Wed, 02 May 2018 19:13:38 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/%E5%AF%BC%E5%BC%B9/</guid>
       <description></description>
@@ -282,11 +336,29 @@
     </item>
     
     <item>
+      <title>显示网速</title>
+      <link>https://3mile.github.io/tags/%E6%98%BE%E7%A4%BA%E7%BD%91%E9%80%9F/</link>
+      <pubDate>Wed, 02 May 2018 11:55:04 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E6%98%BE%E7%A4%BA%E7%BD%91%E9%80%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>歼31</title>
       <link>https://3mile.github.io/tags/%E6%AD%BC31/</link>
       <pubDate>Wed, 04 Apr 2018 18:54:45 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/%E6%AD%BC31/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>油猴</title>
+      <link>https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4/</link>
+      <pubDate>Sat, 05 May 2018 10:44:13 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4/</guid>
       <description></description>
     </item>
     
@@ -350,6 +422,15 @@
       <pubDate>Mon, 09 Apr 2018 13:24:40 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/%E9%AB%98%E8%B6%85%E5%A3%B0%E9%80%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>高超音速</title>
+      <link>https://3mile.github.io/tags/%E9%AB%98%E8%B6%85%E9%9F%B3%E9%80%9F/</link>
+      <pubDate>Wed, 02 May 2018 19:13:38 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E9%AB%98%E8%B6%85%E9%9F%B3%E9%80%9F/</guid>
       <description></description>
     </item>
     

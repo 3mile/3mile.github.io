@@ -29,5 +29,14 @@
       <description>介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部</description>
     </item>
     
+    <item>
+      <title>CentOS7：firewall防火墙使用</title>
+      <link>https://3mile.github.io/archives/102/</link>
+      <pubDate>Fri, 30 Mar 2018 05:15:21 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/archives/102/</guid>
+      <description>一、Firewalld防火墙 红帽RHEL7系统已经用firewalld服务替代了iptables服务，新的防火墙管理命令firewall-c</description>
+    </item>
+    
   </channel>
 </rss>

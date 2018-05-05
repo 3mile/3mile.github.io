@@ -6,10 +6,20 @@
     <description>Recent content in Hugo on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 27 Apr 2018 13:13:44 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 01 May 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>highlighted code showcase</title>
+      <link>https://3mile.github.io/2018/05/01/highlighted-code-showcase/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/2018/05/01/highlighted-code-showcase/</guid>
+      <description>&lt;p&gt;Tranquilpeak Hugo theme have its own theme to highlight source code. It&amp;rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Hugo &#43; Github Pages搭建静态博客</title>
@@ -36,6 +46,15 @@
       
       <guid>https://3mile.github.io/archives/201/</guid>
       <description>目前Hugo官方一共提供了135款主题（Themes），下面归类简介其中的25款。 挑选标准：3分代表性 + 6分个人喜好 + 1分随机 :p 常规博客类 Heather</description>
+    </item>
+    
+    <item>
+      <title>Hugo主题pcaman介绍</title>
+      <link>https://3mile.github.io/archives/119/</link>
+      <pubDate>Sun, 01 Apr 2018 05:45:46 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/archives/119/</guid>
+      <description>Pacman Pacman 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：hugo-p</description>
     </item>
     
   </channel>

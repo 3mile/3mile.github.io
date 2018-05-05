@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>谷歌插件Tampermonkey</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="不装扩展（Extensions）的 Chrome 只能发挥它 40% 的能力。 各类实用的 Chrome 扩展是不少人选择 Chrome 浏览器的重要原因，经过多年发展，Chrome 的扩展种类" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="谷歌插件Tampermonkey" />
+    <meta name="twitter:description" content="不装扩展（Extensions）的 Chrome 只能发挥它 40% 的能力。 各类实用的 Chrome 扩展是不少人选择 Chrome 浏览器的重要原因，经过多年发展，Chrome 的扩展种类" />
+    <meta name="twitter:image" content="https://3mile.github.io/assets/chrome/t1.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="谷歌插件Tampermonkey" />
+  <meta property="og:description" content="不装扩展（Extensions）的 Chrome 只能发挥它 40% 的能力。 各类实用的 Chrome 扩展是不少人选择 Chrome 浏览器的重要原因，经过多年发展，Chrome 的扩展种类" />
+  <meta property="og:url" content="https://3mile.github.io/archives/134/" />
+  <meta property="og:image" content="https://3mile.github.io/assets/chrome/t1.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.40.2" />
+
+
+<link rel="canonical" href="https://3mile.github.io/archives/134/" />
+<link rel="alternative" href="https://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+<meta name="baidu-site-verification" content="LN2gf0A8Hs" />
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/3179328351" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="https://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">谷歌插件Tampermonkey</h1>
+      <p class="post-meta">@3mile · May 5, 2018 · 8 min read</p>
+    </header>
+    <article class="post-content">
+
+<p>不装扩展（Extensions）的 Chrome 只能发挥它 40% 的能力。</p>
+
+<p>各类实用的 Chrome 扩展是不少人选择 Chrome 浏览器的重要原因，经过多年发展，Chrome 的扩展种类已经非常丰富，除了那些「即装即用」的小工具之外，也有很多被誉为「神器」的强大扩展程序。</p>
+
+<p>少数派此前介绍过的 <a href="https://sspai.com/post/34508">Stylish</a> 就算一款「神器」，通过安装各类 CSS 模板，它几乎可以美化一切网页。而另一款不得不提的「神器」就是今天要介绍的 Tampermonkey，也被戏称为「油猴」。</p>
+
+<p>和 Stylish 类似，「油猴」也可以通过安装各类脚本对网站进行定制。不过它能定制的不仅仅是网站的样式，还能实现更多更强大的功能，例如：</p>
+
+<ul>
+<li>直接下载百度网盘文件</li>
+<li>重新定制繁杂的微博页面</li>
+<li>去掉视频播放广告</li>
+<li>将网站默认的「二维码登录」改回「账号密码登录」</li>
+<li>绕过搜索引擎的跳转提示</li>
+<li>还原清新的小说阅读模式</li>
+<li>豆瓣和 IMDb 互相显示评分</li>
+<li>……</li>
+</ul>
+
+<p>你可能听说过「油猴」，但是因为看到「脚本」而不敢尝试，其实它的操作非常简单，只要经过简单设置，下载一些现成脚本，就可以实现上面提到的实用的功能。</p>
+
+<h2 id="何使用-tampermonkey">何使用 Tampermonkey</h2>
+
+<p>如果能正常访问 Chrome 应用商店，可以直接在商店内下载 <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a>。</p>
+
+<p>如果不能，在这里推荐一个叫 <a href="https://www.crx4chrome.com/">Crx4Chrome</a> 的网站，可以直接下载 Chrome Store 插件，在 Crx4Chrome 搜索并下载 <a href="https://www.crx4chrome.com/extensions/dhdgffkkebhmkfjojejmpbldmpobfkfo/">Tampermonkey 插件</a> 到本地之后，再打开 Chrome 浏览器「扩展程序」页面，将下载的 crx 文件拖拽到页面即可完成安装。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t1.jpg" alt="img" /></p>
+
+<p>另外，Tampermonkey 还支持 Microsoft Edge、Safari、Opera Next、Firefox、Dolphin Browser、UC Browser 等浏览器平台，你可以在 <a href="https://tampermonkey.net/">软件官网</a> 下载到对应版本。</p>
+
+<h3 id="tampermonkey-设置选项">Tampermonkey 设置选项</h3>
+
+<p>安装好之后，会在浏览器地址栏右侧看到类似望远镜的图标，这个就是 Tampermonkey，点击右键选择选项，即可看到设置页面：</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t2.jpg" alt="img" /></p>
+
+<p>Tampermonkey 提供了友好的中文化界面，懒得折腾的用户使用默认设置即可，无需更改任何选项。</p>
+
+<p>如果需要更多高级设置选项的话，可自行打开「初学者」或者「高级」配置模式，设置将提供动作菜单、更细致的脚本更新、TESLA、加强版编辑器、安全、黑名单检查等高级选项。</p>
+
+<h3 id="脚本安装和管理">脚本安装和管理</h3>
+
+<p>油猴默认是没有安装任何脚本的，你可以通过设置页面的「已安装脚本 - 获取脚本…」来下载各种脚本。</p>
+
+<p>比较常用的下载渠道有三个：</p>
+
+<ul>
+<li><a href="https://greasyfork.org/zh-CN">Greasy Fork</a>：支持中文，按照今日安装、总安装数、得分、创建日期等的排序方式给出脚本列表，可按脚本生效的网站过滤，每一脚本都有中文介绍，并且详细列出了作者、安装数、更新日期日志、安装使用截图、兼容性、应用到、代码查看等信息描述。</li>
+<li><a href="https://openuserjs.org/">OpenUserJS</a>、<a href="https://userscripts-mirror.org/">Userscripts Mirror</a>：这两个网站都没有提供中文界面，Userscripts Mirror 已经停止了更新，用户可以在这个站点找到历史资源。</li>
+</ul>
+
+<p>找到需要的脚本后，会在介绍页面看到安装（install）按钮，点击下载脚本后会自动跳转到安装界面，再点击安装就可以享用脚本了。</p>
+
+<p>比如，在 OpenUserJS 的 Yet Another Weibo Filter 脚本页面，点击右侧 Install 之后会跳转到 Tampermonkey 的安装页面，这里列出了脚本的基本说明和源代码，再次点击页面中的「安装」按钮即可。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t3.jpg" alt="img" /></p>
+
+<p>此时打开微博网站，点击地址栏右侧的 Tampermonkey 图标，可以看到这个 Yet Another Weibo Filter 已经成功启用，用户可以点击 ON 按钮临时关闭使用该脚本。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t4.jpg" alt="img" /></p>
+
+<p>打开 Tampermonkey 设置页面的「已安装脚本」，我们可以看到刚安好的 Yet Another Weibo Filter 脚本，用户在这里可以选择是否打开脚本，或是对脚本进行编辑、提交 Bug 以及删除脚本等多项操作。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t5.jpg" alt="img" /></p>
+
+<p>建议在安装好各个脚本之后，在实用程序的页面中，将脚本存储和 Tampermonkey 设置以文件或者压缩包的形式导出，方便以后数据备份。</p>
+
+<h2 id="优秀脚本推荐">优秀脚本推荐</h2>
+
+<p>在上面提供的三个网站大家可以看到各种功能的脚本，你可以根据自己的需求进行下载，如果不知道该下载哪些，下面为大家推荐 15 个优秀实用的用户脚本，不妨先来看看。</p>
+
+<h3 id="1-userscripts-只显示中文">1. userscripts 只显示中文</h3>
+
+<p>在 userscripts、greasyfork 脚本页面只显示中文脚本，支持 AutoPager 和其它翻页脚本。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t22.jpg" alt="img" /></p>
+
+<p><a href="https://greasyfork.org/zh-CN/scripts/305-userscripts-%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87">下载地址</a></p>
+
+<h3 id="2-ac-从google-baidu-bing搜索结果中屏蔽卡饭教程">2. AC-从Google Baidu Bing搜索结果中屏蔽卡饭教程</h3>
+
+<p>从Google Baidu Bing Haosou Youdao搜索结果中屏蔽&rsquo;卡饭教程&rsquo;</p>
+
+<p><a href="https://greasyfork.org/zh-CN/scripts/13404-ac-%E4%BB%8Egoogle-baidu-bing%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E4%B8%AD%E5%B1%8F%E8%94%BD%E5%8D%A1%E9%A5%AD%E6%95%99%E7%A8%8B">点击下载</a></p>
+
+<h3 id="3-吾爱破解网盘链接激活工具-by-lsj8924">3. 吾爱破解网盘链接激活工具 by lsj8924</h3>
+
+<p>激活吾爱破解论坛的百度和360网盘的链接，可以直接点击。
+<a href="https://greasyfork.org/zh-CN/scripts/23600-%E5%90%BE%E7%88%B1%E7%A0%B4%E8%A7%A3%E7%BD%91%E7%9B%98%E9%93%BE%E6%8E%A5%E6%BF%80%E6%B4%BB%E5%B7%A5%E5%85%B7-by-lsj8924">点击下载</a></p>
+
+<h3 id="4-userscript-显示当前网站所有可用的userjs脚本-jaeger">4. Userscript+ : 显示当前网站所有可用的UserJS脚本 Jaeger</h3>
+
+<p>显示当前网站的所有可用UserJS(Tampermonkey)脚本,交流QQ群:104267383</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/userscript+cn.gif" alt="userscript+cn.gif" /></p>
+
+<p><strong>Userscript+</strong> 是一款<code>Tampermonkey</code>脚本,作用是当你浏览网页的时候,从右下角自动为你推荐适用于当前页面的<code>Tampermonkey</code>脚本，并且可以一键安装指定的脚本。</p>
+
+<p>很多时候，我们并不知道一些网站是否有用户提供用来优化页面的脚本，而<strong>Userscript+</strong> 就能帮你自动寻找适用的UserJS，并默认按照评分高低排序推荐给你,给你带来一种全新的<code>Tampermonkey</code>使用体验！
+<a href="https://greasyfork.org/zh-CN/scripts/24508-userscript-show-site-all-userjs">下载地址</a></p>
+
+<h3 id="5-百度网盘直接下载助手修改版">5.百度网盘直接下载助手修改版</h3>
+
+<p>网盘内和分享页均显示[下载助手]按钮，支持获取直接下载链接+压缩下载链接；
+大文件/单文件/多文件/文件夹，支持点击直接下载免强制调用百度网盘客户端；
+<a href="https://greasyfork.org/zh-CN/scripts/39776-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B%E4%BF%AE%E6%94%B9%E7%89%88">下载地址</a></p>
+
+<h3 id="5-看真正想看的微博-yet-another-weibo-filter-https-greasyfork-org-zh-cn-scripts-3249-yet-another-weibo-filter">5. 看真正想看的微博：<a href="https://greasyfork.org/zh-CN/scripts/3249-yet-another-weibo-filter">Yet Another Weibo Filter</a></h3>
+
+<p>Weibo 官方界面已经成为不少脚本应用必修的对象，ts 开发的这款脚本可以高度定制 Weibo 电脑端版面，去除各类广告、微博主自带的各种徽标、过滤热门话题等主要功能，用户需要在脚本的设置中启用相应功能。</p>
+
+<p>如果希望单独安装浏览器插件的话，推荐 <a href="https://openuserjs.org/scripts/ts/[https://code.google.com/p/weibo-content-filter/">眼不见心不烦</a>，其支持 <a href="https://chrome.google.com/webstore/detail/aognaapdfnnldnjglanfbbklaakbpejm">Chrome</a> 和 <a href="https://bitbucket.org/salviati/weibo-cleaner/downloads/weiboCleaner-latest.user.js">Firefox 脚本</a></p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t6.jpg" alt="img" /></p>
+
+<h3 id="6-还原真实下载地址-百度网盘直接下载助手-https-greasyfork-org-zh-cn-scripts-23635-e7-99-be-e5-ba-a6-e7-bd-91-e7-9b-98-e7-9b-b4-e6-8e-a5-e4-b8-8b-e8-bd-bd-e5-8a-a9-e6-89-8b">6. 还原真实下载地址：<a href="https://greasyfork.org/zh-CN/scripts/23635-%E7%99%BE%E5%BA%A6%E7%BD%91%E7%9B%98%E7%9B%B4%E6%8E%A5%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B">百度网盘直接下载助手</a></h3>
+
+<p>安装百度网盘直接下载助手之后，打开需要下载的资源页面，会出现下载助手的按钮，提供直接下载（支持多文件和目录下载）、显示链接以及外链下载的选项，可实现直接复制到下载工具使用。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t7.jpg" alt="img" /></p>
+
+<h3 id="7-让所有视频网页全屏-视频网页全屏-https-greasyfork-org-zh-cn-scripts-4870-maximize-video">7. 让所有视频网页全屏：<a href="https://greasyfork.org/zh-CN/scripts/4870-maximize-video">视频网页全屏</a></h3>
+
+<p>可以让网页中任何一个视频网页全屏播放的「神器」，目前支持有多个视频的任意网页、HTML5 格式的视频。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t9.jpg" alt="img" /></p>
+
+<h3 id="8-豆瓣和-imdb-互相显示评分-moremovieratings-https-greasyfork-org-zh-cn-scripts-7687-moremovieratings">8. 豆瓣和 IMDb 互相显示评分：<a href="https://greasyfork.org/zh-CN/scripts/7687-moremovieratings">MoreMovieRatings</a></h3>
+
+<p>不少人看电影时喜欢参考 IMDb 和豆瓣电源的评分，这款脚本正好满足两者需求，可以在豆瓣和 IMDb 互相显示评分，电影党必备。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t10.jpg" alt="img" /></p>
+
+<h3 id="9-查看完整的知乎回答而无需注册登录-zhihu-visitor-https-openuserjs-org-scripts-ts-zhihu-visitor">9. 查看完整的知乎回答而无需注册登录：<a href="https://openuserjs.org/scripts/ts/Zhihu_Visitor">Zhihu Visitor</a></h3>
+
+<p>知乎问题页面里，比较长的答案添加展开按钮，点击可以显示全文。点击「更多回答」可以加载更多回答而非登录框。隐藏了必须登录才能使用的相关功能的按钮，如点赞或收藏等。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t11.jpg" alt="img" /></p>
+
+<h3 id="10-增强版的-youtube-功能改造-youtube-https-openuserjs-org-scripts-particlecore-youtube">10. 增强版的 YouTube 功能改造：<a href="https://openuserjs.org/scripts/ParticleCore/YouTube_+">YouTube +</a></h3>
+
+<p>YouTube + 可以给 Youtube 增加更多的功能选项，包括但不限于小窗口播放视频、播放您最近订阅播放列表、视频截图保存、只允许你订阅频道的视频播放广告等等。不过目前 YouTube + 不支持 YouTube beta Material Layout 测试版。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t12.jpg" alt="img" /></p>
+
+<h3 id="11-自动翻页-google-搜索结果-endless-google-https-openuserjs-org-scripts-tumpio-endless-google">11.  自动翻页 Google 搜索结果：<a href="https://openuserjs.org/scripts/tumpio/Endless_Google">Endless Google</a></h3>
+
+<p>实现无需手动点击 Google 搜索结果的页码，实现自动翻页显示搜索内容。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t13.jpg" alt="img" /></p>
+
+<h3 id="12-轻松下载-instagram-图片和视频-ighelper-https-greasyfork-org-en-scripts-22660-ighelper-download-instagram-pic-vids">12. 轻松下载 Instagram 图片和视频：<a href="https://greasyfork.org/en/scripts/22660-ighelper-download-instagram-pic-vids">IGHelper</a></h3>
+
+<p>方便用户下载 Instagram 的图片和视频，将鼠标移动到图片或者视频上，即可看到下载按钮。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t14.jpg" alt="img" /></p>
+
+<h3 id="13-悬停查看和下载图片-mouseover-popup-image-viewer-https-greasyfork-org-en-scripts-404-mouseover-popup-image-viewer">13. 悬停查看和下载图片：<a href="https://greasyfork.org/en/scripts/404-mouseover-popup-image-viewer">Mouseover Popup Image Viewer</a></h3>
+
+<p>只需将鼠标光标悬停在多媒体资源的链接上，即可直接显示完整的图像和视频剪辑，避免了用户二次点击，并且通过快捷键实现下载、缩小放大、顺序浏览图册等功能。脚本已经上百个图像和视频托管服务（如 Facebook、500px、Flick 和 YouTube）。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t15.jpg" alt="img" /></p>
+
+<h3 id="14-youtube-影片下载为-mp3-格式文件-simple-youtube-mp3-button-https-greasyfork-org-en-scripts-20015-simple-youtube-mp3-button">14. YouTube 影片下载为 MP3 格式文件：<a href="https://greasyfork.org/en/scripts/20015-simple-youtube-mp3-button">Simple YouTube MP3 Button</a></h3>
+
+<p>脚本提供了即时转换功能，可将 YouTube 影片以 MP3 音频文件格式下载到本地。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t16.jpg" alt="img" /></p>
+
+<h3 id="15-github-中文化界面-github-汉化插件-https-openuserjs-org-scripts-52cik-github-e6-b1-89-e5-8c-96-e6-8f-92-e4-bb-b6">15. GitHub 中文化界面：<a href="https://openuserjs.org/scripts/52cik/GitHub_%E6%B1%89%E5%8C%96%E6%8F%92%E4%BB%B6">GitHub 汉化插件</a></h3>
+
+<p>很多新手朋友不太会玩 GitHub，可能被全英文界面所困扰，这款脚本实现汉化了 GitHub 界面的部分菜单及内容，新手熟悉之后可选择停用脚本恢复英文模式。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t17.jpg" alt="img" /></p>
+
+<h3 id="16-给你最好用的-youtube-视频下载工具-youtube-best-video-downloader-2-https-greasyfork-org-en-scripts-19592-youtube-best-video-downloader-2">16. 给你最好用的 YouTube 视频下载工具：<a href="https://greasyfork.org/en/scripts/19592-youtube-best-video-downloader-2">Youtube Best Video Downloader 2</a></h3>
+
+<p>脚本提供了 YouTube 视频下载的快捷功能，可保存为 Full-HD MP4、FLV、3GP、MP3（码率为 128kbps 或者 192kbps）、M4A 以及 AAC 格式。经测试，这款脚本会和上面提及到的 YouTube + 脚本有冲突，需要暂时停用 YouTube +，才可看到下载按钮。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t18.jpg" alt="img" /></p>
+
+<h3 id="17-feedly-订阅工具增强版-feedly-filtering-and-sorting-https-greasyfork-org-en-scripts-20483-feedly-filtering-and-sorting">17. Feedly 订阅工具增强版：<a href="https://greasyfork.org/en/scripts/20483-feedly-filtering-and-sorting">Feedly filtering and sorting</a></h3>
+
+<p>此脚本主要是为 Feedly 订阅增强了部分功能，包括了高级关键字匹配、自动加载、高亮显示自定义标题、订阅内容高级排序规则等。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t19.jpg" alt="img" /></p>
+
+<h3 id="18-还你清新的小说阅读模式-my-novel-reader-https-greasyfork-org-zh-cn-scripts-292-my-novel-reader">18. 还你清新的小说阅读模式：<a href="https://greasyfork.org/zh-CN/scripts/292-my-novel-reader">My Novel Reader</a></h3>
+
+<p>小说阅读脚本实现了统一阅读样式，内容去广告、修正拼音字、段落整理，自动下一页的功能，相当适合重度的小说阅读用户。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t20.jpg" alt="img" /></p>
+
+<h3 id="19-绕过搜索结果的自我跳转-直接访问原始网页-ac-baidu-https-greasyfork-org-zh-cn-scripts-14178-ac-baidu-e4-bc-98-e5-8c-96-e7-99-be-e5-ba-a6-e6-90-9c-e7-8b-97-e8-b0-b7-e6-ad-8c-e6-90-9c-e7-b4-a2-e7-bb-93-e6-9e-9c-e4-b9-8b-e9-87-8d-e5-ae-9a-e5-90-91-e5-8e-bb-e9-99-a4-e5-8e-bb-e5-b9-bf-e5-91-8a-favicon">19. 绕过搜索结果的自我跳转，直接访问原始网页：<a href="https://greasyfork.org/zh-CN/scripts/14178-ac-baidu-%E4%BC%98%E5%8C%96%E7%99%BE%E5%BA%A6-%E6%90%9C%E7%8B%97-%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E7%BB%93%E6%9E%9C%E4%B9%8B%E9%87%8D%E5%AE%9A%E5%90%91%E5%8E%BB%E9%99%A4-%E5%8E%BB%E5%B9%BF%E5%91%8A-favicon">AC-baidu</a></h3>
+
+<p>脚本可实现绕过百度、搜狗搜索结果中的自己的跳转链接，直接访问原始网页（间接缩短访问目标网页的时间）；可去除百度搜索结果中多余广告 ；添加 Favicon 显示；添加计数。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/t21.jpg" alt="img" /></p>
+
+<h2 id="结语-动手玩">结语 | 动手玩</h2>
+
+<p>上面给出的 15 个脚本只是很小的一部分，脚本工具可以专门改变特定网站的行为，比如过滤广告、添加下载按钮、网页界面定制等等，同时由于涉及到版权的问题，并没有向大家推荐类似绕过 VIP 视频限制之类的脚本。这些在 Greasy Fork 和 OpenUserJS 都提供了相当不错的选择，大家根据需求自行下载试玩。</p>
+
+<p>如果觉得现有的脚本还不够完善，那就动手写一个吧。最后，欢迎大家在留言中批评、指点、分享、投币，也可以留言哪些脚本神器值得推荐。</p>
+
+<p><strong>参考链接：</strong></p>
+
+<ul>
+<li><a href="https://sspai.com/post/34508">不喜欢某个网站的样子？用 Stylish 给它一键「换肤」</a></li>
+<li><a href="http://www.runningcheese.com/userscripts">有哪些值得推荐的油猴脚本?</a></li>
+</ul>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://3mile.github.io/tags/chrome"><span class="tag">Chrome</span></a></li>
+        
+          <li><a href="https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4"><span class="tag">油猴</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

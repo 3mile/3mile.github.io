@@ -37,7 +37,7 @@
 
 
 
-<meta name="generator" content="Hugo 0.37.1" />
+<meta name="generator" content="Hugo 0.40.2" />
 
 
 <link rel="canonical" href="https://3mile.github.io/archives/104/" />
@@ -138,13 +138,6 @@
             
             
             ">
-            <a href="https://github.com/3mile">Works</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
             <a href="https://3mile.github.io/categories/">分类</a>
           </li>
       
@@ -159,7 +152,7 @@
             
             
             ">
-            <a href="https://3mile.github.io/about/">关于</a>
+            <a href="about">关于</a>
           </li>
       
     </ul>
@@ -255,85 +248,58 @@
 
 <p>因为打算当做教程来写，所以会尽量写的详细一点。以下是文章目录，不想听博主唠叨的话可自行略过前面的介绍部分。</p>
 
-<ul>
-<li><a href="#cat-and-dog">Cat and dog</a>
-
-<ul>
-<li><a href="#cat">Cat</a>
-
-<ul>
-<li><a href="#a-little-cat">A little cat</a></li>
-</ul></li>
-<li><a href="#dog">Dog</a></li>
-</ul></li>
-</ul>
-
-<h2 id="cat-and-dog">Cat and dog</h2>
-
-<p>一只单身狗和一只高冷猫的故事。。。</p>
-
-<h3 id="cat">Cat</h3>
-
-<p>有一天高冷猫遇见了单身狗。。。</p>
-
-<h4 id="a-little-cat">A little cat</h4>
-
-<p>高冷猫生的很小巧但是脾气不是很好。。。</p>
-
-<h3 id="dog">Dog</h3>
-
-<p>可是，单身狗喜欢上了高冷猫。。。</p>
-
 <p>文章目录</p>
 
 <ul>
-<li><a href="#WordPress">WordPress</a></li>
-<li>2 选择虚拟主机还是VPS
+<li><a href="#1">1 WordPress</a></li>
+<li><a href="#2">2 选择虚拟主机还是VPS</a>
 
 <ul>
-<li><a href="#虚拟主机">2.1  虚拟主机</a></li>
-<li><a href="#什么是-VPS">2.2  什么是VPS</a></li>
+<li><a href="#2.1">2.1  虚拟主机</a></li>
+<li><a href="#2.2">2.2  什么是VPS</a></li>
 </ul></li>
-<li>[3 + 注册域名]()</li>
-<li>4 + 如何选购便宜的VPS
+<li><a href="#3">3 + 注册域名</a></li>
+<li><a href="#4">4 + 如何选购便宜的VPS</a>
 
 <ul>
-<li>[4.1 + 搬瓦工VPS和Vultr哪个好]()</li>
-<li>[4.2 + 如何购买搬瓦工VPS]()</li>
-<li>[4.3 + 如何购买Vultr-VPS]()</li>
+<li><a href="#4.1">4.1 + 搬瓦工VPS和Vultr哪个好</a></li>
+<li><a href="#4.2">4.2 + 如何购买搬瓦工VPS</a></li>
+<li><a href="#4.3">4.3 + 如何购买Vultr-VPS</a></li>
 </ul></li>
-<li>[5 + SSH连接VPS]()</li>
-<li>[6 + 搭建LAMP环境]()</li>
-<li>[7 + 添加域名 / 虚拟主机]()</li>
-<li>[8 + 安装WordPress程序]()</li>
-<li>9 + VPS配置优化
+<li><a href="#5">5 + SSH连接VPS</a></li>
+<li><a href="#6">6 + 搭建LAMP环境</a></li>
+<li><a href="#7">7 + 添加域名 / 虚拟主机</a></li>
+<li><a href="#8">8 + 安装WordPress程序</a></li>
+<li><a href="#9">9 + VPS配置优化</a>
 
 <ul>
-<li>[9.1 + 优化php.ini配置]()</li>
-<li>[9.2 + 添加swap交换分区]()</li>
-<li>[9.3 + 开启Keep-Alive功能 + 优化Httpd配置]()</li>
+<li><a href="#9.1">9.1 + 优化php.ini配置</a></li>
+<li><a href="#9.2">9.2 + 添加swap交换分区</a></li>
+<li><a href="#9.3">9.3 + 开启Keep-Alive功能 + 优化Httpd配置</a></li>
 </ul></li>
-<li>[10 + 删除mysql-bin.0000*日志文件]()</li>
-<li>11 + Linux-VPS安全配置 / 防护措施
+<li><a href="#10">10 + 删除mysql-bin.0000*日志文件</a></li>
+<li><a href="#9">11 + Linux-VPS安全配置 / 防护措施</a>
 
 <ul>
-<li>[11.1 + 修改SSH端口]()</li>
-<li>[11.2 + 阻止SSH暴力破解]()</li>
-<li>[11.3 + 防御DDOS攻击]()</li>
+<li><a href="#11.1">11.1 + 修改SSH端口</a></li>
+<li><a href="#11.2">11.2 + 阻止SSH暴力破解</a></li>
+<li><a href="#11.3">11.3 + 防御DDOS攻击</a></li>
 </ul></li>
-<li>[12 + MySQL数据库优化]()</li>
-<li>[13 + 创建VPS快照]()</li>
-<li>14 + WordPress博客的备份和迁移
+<li><a href="#12">12 + MySQL数据库优化</a></li>
+<li><a href="#13">13 + 创建VPS快照</a></li>
+<li><a href="#14">14 + WordPress博客的备份和迁移</a>
 
 <ul>
-<li>[14.1 + 文件备份]()</li>
-<li>[14.2 + 数据库备份]()</li>
-<li>[14.3 + WordPress迁移 / 搬家]()</li>
-<li>[14.4 + WordPress搬家脚本]()</li>
-<li>[14.5 + 备份小技巧]()</li>
+<li><a href="#14.1">14.1 + 文件备份</a></li>
+<li><a href="#14.2">14.2 + 数据库备份</a></li>
+<li><a href="#14.3">14.3 + WordPress迁移 / 搬家</a></li>
+<li><a href="#14.4">14.4 + WordPress搬家脚本</a></li>
+<li><a href="#14.5">14.5 + 备份小技巧</a></li>
 </ul></li>
-<li>[15 + 写在最后]()</li>
+<li><a href="#15">15 + 写在最后</a></li>
 </ul>
+
+<p><span id="1"></span></p>
 
 <h2 id="wordpress">WordPress</h2>
 
@@ -341,11 +307,15 @@
 
 <p>具体可参看百度文库相关介绍：<a href="http://baike.baidu.com/item/WordPress">http://baike.baidu.com/item/WordPress</a></p>
 
+<p><span id="2"></span></p>
+
 <h2 id="选择虚拟主机还是vps">选择虚拟主机还是VPS</h2>
 
 <p>在回答这个问题之前，让我们先来弄清楚虚拟主机和VPS的区别。</p>
 
-<h3 id="虚拟主机">虚拟主机</h3>
+<p><span id="2.1"></span></p>
+
+<h3 id="什么是虚拟主机">什么是虚拟主机</h3>
 
 <p><a href="https://www.seoimo.com/wp-content/uploads/2016/11/vps-vs-shared-hosting.jpg"><img src="https://3mile.github.io/assets/vps-vs-shared-hosting.jpg" alt="VPS和虚拟主机区别对比" /></a></p>
 
@@ -357,6 +327,8 @@
 <li>优点：便宜、便捷，自带被褥，拎包即住</li>
 <li>缺点：居住性能差</li>
 </ul>
+
+<p><span id="2.2"></span></p>
 
 <h3 id="什么是vps">什么是VPS</h3>
 
@@ -381,6 +353,8 @@
 
 <p>博客现已搬迁至<strong>搬瓦工年付$19.99这款小内存VPS</strong>，具体购买及安装过程详见下文。</p>
 
+<p><span id="3"></span></p>
+
 <h2 id="3注册域名">3注册域名</h2>
 
 <p>考虑到性价比（免费隐私保护）和支付便利（支持支付宝），博主目前在用以下两个域名注册商，在这也推荐给大家。</p>
@@ -398,6 +372,8 @@
 <p>【优惠活动】2018年12月31日前，使用NameSilo优惠码 <strong>the1usd</strong> 可减免一美元，首年只需 $7.99！</p>
 </blockquote>
 
+<p><span id="4"></span></p>
+
 <h2 id="4如何选购便宜的vps">4如何选购便宜的VPS</h2>
 
 <p>坦白说，虽然网上有不少推荐和介绍，比如知乎回答和一些评测博客，但如何选择一款便宜好用且性能不错的VPS还着实让我头疼了一阵。</p>
@@ -413,6 +389,8 @@
 <p>但是这三个到底哪个最适合自己呢？感觉还是一头雾水。</p>
 
 <p>纸上得来终觉浅，绝知此事要躬行。于是，就三个VPS全部试用了一遍，并通过我能用得到的各种测试，最终选定了Vultr-VPS（日本机房）。</p>
+
+<p><span id="4.1"></span></p>
 
 <h3 id="4-1搬瓦工vps和vultr哪个好">4.1搬瓦工VPS和Vultr哪个好</h3>
 
@@ -579,6 +557,8 @@
 <p>【温馨提示】DigitalOcean只支持信用卡和PayPal付款，而搬瓦工和Vultr则可使用支付宝（Alipay）。</p>
 </blockquote>
 
+<p><span id="4.2"></span></p>
+
 <h3 id="4-2如何购买搬瓦工vps">#4.2如何购买搬瓦工VPS</h3>
 
 <p>默认折叠，请单击展开 / 折叠 ..</p>
@@ -603,6 +583,8 @@
 
 <p><img src="https://3mile.github.io/assets/migrate-to-another-dc.png" alt="更换机房（Migrate to another DC）" /></p>
 
+<p><span id="4.3"></span></p>
+
 <h3 id="4-3如何购买vultr-vps">#4.3如何购买Vultr-VPS</h3>
 
 <p>默认折叠，请单击展开 / 折叠 ..</p>
@@ -620,6 +602,8 @@
 <p><img src="https://3mile.github.io/assets/domain-a-record.png" alt="域名添加A记录" /></p>
 
 <p>接下来，正式进入本文的最重要环节：<strong>通过SSH连接VPS搭建LAMP环境，进而安装WordPress博客</strong>。</p>
+
+<p><span id="5"></span></p>
 
 <h2 id="5ssh连接vps">#5SSH连接VPS</h2>
 
@@ -706,6 +690,8 @@
 
 <p>net.ipv4.tcp_available_congestion_control = <strong>bbr</strong> cubic reno</p>
 
+<p><span id="6"></span></p>
+
 <h2 id="6搭建lamp环境">#6搭建LAMP环境</h2>
 
 <p><img src="https://3mile.github.io/assets/lamp-linux-apache-mysql-php-w720.png" alt="什么是LAMP" /></p>
@@ -790,7 +776,9 @@
 
 <p>接下来就可以添加域名安装WordPress了。</p>
 
-<h2 id="7添加域名-虚拟主机">#7添加域名 / 虚拟主机</h2>
+<p>添加域名</p>
+
+<h2 id="7添加域名-虚拟主机">7添加域名 / 虚拟主机</h2>
 
 <p>请提前做好域名解析，例如：</p>
 
@@ -874,6 +862,8 @@
 
 <p><code># chown www:www -R /目录路径/</code></p>
 
+<p><span id="8"></span></p>
+
 <h2 id="8安装wordpress程序">#8安装WordPress程序</h2>
 
 <p>以下的步骤想必应该很熟悉，和带Cpanel或DirectAdmin面板安装WordPress过程比较类似。只不过，在面板上操作是可视化的，比较直观。而在这里是通过命令执行的，非可视。只要输入命令时细心点，一般是不会出问题的。</p>
@@ -936,9 +926,13 @@
 
 <p>接下来，我们来对VPS进行必要的配置优化，以便进一步提高主机性能。</p>
 
+<p><span id="9"></span></p>
+
 <h2 id="9vps配置优化">#9VPS配置优化</h2>
 
 <p>关于VPS服务器方面的配置优化绝对是个技术活，如果深入研究的话会比较复杂。博主非技术大牛，在这里仅介绍一下常用的三点：<strong>优化php.ini配置、添加swap交换分区</strong>和<strong>开启Keep-Alive功能 + 优化Httpd配置</strong>。</p>
+
+<p><span id="9.1"></span></p>
 
 <h3 id="9-1优化php-ini配置">#9.1优化php.ini配置</h3>
 
@@ -962,6 +956,8 @@ memory_limit = 64M</p>
 <p><code># lnmp restart</code></p>
 
 <p>回车。</p>
+
+<p><span id="9.2"></span></p>
 
 <h3 id="9-2添加swap交换分区">#9.2添加Swap交换分区</h3>
 
@@ -1063,6 +1059,8 @@ memory_limit = 64M</p>
 
 <p>将 /var/swap swap swap defaults 0 0 该行删除，然后保存退出。</p>
 
+<p><span id="9.3"></span></p>
+
 <h3 id="9-3开启keep-alive功能-优化httpd配置">#9.3开启Keep-Alive功能 + 优化Httpd配置</h3>
 
 <p>开启Keep-Alive功能可使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接。可见，对访问静态网页时，开启Keep-Alive是很有用的。</p>
@@ -1098,6 +1096,8 @@ KeepAliveTimeout 5</p>
 
 <p><code># service httpd restart</code></p>
 
+<p><span id="10"></span></p>
+
 <h2 id="10删除mysql-bin-0000-日志文件">#10删除mysql-bin.0000*日志文件</h2>
 
 <p>博主所用的LNMP一键安装包默认开启了日志记录，这样就会在 /usr/local/mysql/var/目录下面生成大量 mysql-bin.0000* 类似的文件，大小甚至达到几个G！</p>
@@ -1121,6 +1121,8 @@ expire_logs_days = 10</p>
 
 <p><code># /etc/init.d/mysql restart</code></p>
 
+<p><span id="11"></span></p>
+
 <h2 id="11linux-vps安全配置-防护措施">#11Linux-VPS安全配置 / 防护措施</h2>
 
 <p>博主以为，VPS的安全防护绝对是运行网站的重中之重。防护措施做不好，轻者给后期运行带来无穷无尽的烦恼，重者造成网站瘫痪甚至数据清空，那就真的欲哭无泪了。</p>
@@ -1130,6 +1132,8 @@ expire_logs_days = 10</p>
 <p>那么，VPS安全配置究竟该如何做呢？</p>
 
 <p>在这里，博主结合自己建站经验，介绍一下Linux-VPS安防措施里最有效的三个方面：<strong>修改SSH端口</strong>、<strong>阻止SSH暴力破解</strong>和<strong>防御DDOS攻击</strong>。</p>
+
+<p><span id="11.1"></span></p>
 
 <h3 id="11-1修改ssh端口-强烈推荐">#11.1修改SSH端口（强烈推荐）</h3>
 
@@ -1208,6 +1212,8 @@ COMMIT</p>
 <p>【温馨提示】搬瓦工VPS生成的SSH端口是随机的（非默认端口22），因此，可无需再次修改。</p>
 </blockquote>
 
+<p><span id="11.2"></span></p>
+
 <h3 id="11-2阻止ssh暴力破解-可选">#11.2阻止SSH暴力破解（可选）</h3>
 
 <p>更改默认的22端口后，已经可以阻止绝大多数的SSH非法请求了。</p>
@@ -1282,6 +1288,8 @@ HOSTNAME_LOOKUP = NO</p>
 
 <p>如此，就实现了停用DenyHosts的目的。</p>
 
+<p><span id="11.3"></span></p>
+
 <h3 id="11-3防御ddos攻击">#11.3防御DDOS攻击</h3>
 
 <p>这里主要用到一款优秀的免费软件DDoS Deflate：<a href="http://deflate.medialayer.com/">http://deflate.medialayer.com/</a></p>
@@ -1307,6 +1315,8 @@ APF_BAN = 0
 BAN_PERIOD = 36000</p>
 
 <p>保存后退出。</p>
+
+<p><span id="12"></span></p>
 
 <h2 id="12mysql数据库优化">#12MySQL数据库优化</h2>
 
@@ -1396,6 +1406,8 @@ max_connections = 100</p>
 
 <p><code>mysql&gt; exit</code></p>
 
+<p><span id="13"></span></p>
+
 <h2 id="13创建vps快照">#13创建VPS快照</h2>
 
 <p>为了数据安全，一定要养成定期备份的好习惯。否则一旦有个闪失，可真的要一夜回到解放前了。</p>
@@ -1418,9 +1430,13 @@ max_connections = 100</p>
 <p>【温馨提示】搬瓦工VPS快照备份请参看：<a href="http://www.seoimo.com/wordpress-vps/#how-buy-bandwagon-vps">#4.2 + 如何购买搬瓦工VPS</a></p>
 </blockquote>
 
+<p><span id="14"></span></p>
+
 <h2 id="14wordpress博客的备份和迁移">#14WordPress博客的备份和迁移</h2>
 
 <p>网站备份的重要性就不需要博主多说了。在Linux系统下，对WordPress进行备份其实并不难。主要涉及两部分：文件备份和数据库备份</p>
+
+<p><span id="14.1"></span></p>
 
 <h3 id="14-1-文件备份">#14.1 文件备份</h3>
 
@@ -1435,6 +1451,8 @@ max_connections = 100</p>
 <p><code># cd /home/wwwroot# tar -zcf seoimo.com-20171001.tar.gz seoimo.com# mv seoimo.com-20171001.tar.gz /home/backup/</code></p>
 
 <p>好了，整站已经打包备份完成。接下来，开始备份数据库。</p>
+
+<p><span id="14.2"></span></p>
 
 <h3 id="14-2-数据库备份">#14.2 数据库备份</h3>
 
@@ -1453,6 +1471,8 @@ max_connections = 100</p>
 <p>可键入命令 # ls 查看当前目录下已经存在了备份好的文件。</p>
 
 <p>此时，可以用通过 FTP 下载到本地保存，也可上传到别的 VPS 上备份保存。</p>
+
+<p><span id="14.3"></span></p>
 
 <h3 id="14-3-wordpress迁移-搬家">#14.3 WordPress迁移 / 搬家</h3>
 
@@ -1485,6 +1505,8 @@ max_connections = 100</p>
 <blockquote>
 <p>【温馨提示】数据库的导出用的符号是 &ldquo;&gt;&ldquo;，导入用的是 &ldquo;&lt;&ldquo;；注意方向，千万别搞错了。</p>
 </blockquote>
+
+<p><span id="14.4"></span></p>
 
 <h3 id="14-4-wordpress搬家脚本">#14.4 WordPress搬家脚本</h3>
 
@@ -1616,6 +1638,8 @@ echo -e &ldquo;\033[32;49;1m[Successfully done! Command takes $((time_end-time_s
 <p># 退出
 exit 0</p>
 
+<p><span id="14.5"></span></p>
+
 <h3 id="14-5-备份小技巧">#14.5 备份小技巧</h3>
 
 <p>上文提到过，备份后的文件可以通过 FTP 软件下载到本地保存，也可以通过 SCP 命令上传到其他VPS上备份。</p>
@@ -1641,6 +1665,8 @@ exit 0</p>
 <p>登录Vultr → 左侧Servers → 选中VPS → 上面Snapshot → 右下Restore-Snapshot</p>
 
 <p><a href="https://www.seoimo.com/wp-content/uploads/2016/11/restore-snapshot-how-w1150.png"><img src="https://3mile.github.io/assets/restore-snapshot-how-w640.png" alt="恢复VPS快照" /></a></p>
+
+<p><span id="15"></span></p>
 
 <h2 id="15写在最后">#15写在最后</h2>
 

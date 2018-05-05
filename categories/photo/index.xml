@@ -6,17 +6,26 @@
     <description>Recent content in Photo on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 31 Mar 2018 07:00:07 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Apr 2018 14:23:56 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/categories/photo/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title></title>
-      <link>https://3mile.github.io/archives/994/</link>
+      <title>游戏</title>
+      <link>https://3mile.github.io/archives/108/</link>
+      <pubDate>Wed, 04 Apr 2018 14:23:56 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/108/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>photo</title>
+      <link>https://3mile.github.io/archives/934/</link>
       <pubDate>Sat, 31 Mar 2018 07:00:07 +0000</pubDate>
       
-      <guid>https://3mile.github.io/archives/994/</guid>
+      <guid>https://3mile.github.io/archives/934/</guid>
       <description></description>
     </item>
     

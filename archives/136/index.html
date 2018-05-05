@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>谷歌插件Ublock Origin</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="关于 uBlock Origin 有人曾经做过对比：uBlock Origin对比ABP有性能上的优势，其最为突然的性能优势就是其占用极低的内存和 CPU。有分析说adp" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="谷歌插件Ublock Origin" />
+    <meta name="twitter:description" content="关于 uBlock Origin 有人曾经做过对比：uBlock Origin对比ABP有性能上的优势，其最为突然的性能优势就是其占用极低的内存和 CPU。有分析说adp" />
+    <meta name="twitter:image" content="https://3mile.github.io/assets/chrome/auto-orient1.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="谷歌插件Ublock Origin" />
+  <meta property="og:description" content="关于 uBlock Origin 有人曾经做过对比：uBlock Origin对比ABP有性能上的优势，其最为突然的性能优势就是其占用极低的内存和 CPU。有分析说adp" />
+  <meta property="og:url" content="https://3mile.github.io/archives/136/" />
+  <meta property="og:image" content="https://3mile.github.io/assets/chrome/auto-orient1.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.40.2" />
+
+
+<link rel="canonical" href="https://3mile.github.io/archives/136/" />
+<link rel="alternative" href="https://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+<meta name="baidu-site-verification" content="LN2gf0A8Hs" />
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/3179328351" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="https://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">谷歌插件Ublock Origin</h1>
+      <p class="post-meta">@3mile · May 5, 2018 · 4 min read</p>
+    </header>
+    <article class="post-content"><p>关于 uBlock Origin
+ 有人曾经做过对比：uBlock Origin对比ABP有性能上的优势，其最为突然的性能优势就是其占用极低的内存和 CPU。有分析说adp主要靠的是屏蔽，而ublock Origin主要靠的是阻断，ABP的工作需要在所有网页插入屏蔽脚本和css，而uBlock Origin直接阻止需要屏蔽的内容进入当前网页。一般的拦截请求的规则大家都差不多，关键的是元素隐藏规则，uBlock 把它叫做修饰规则 cosmetic filters，ABP 不管是什么网页都会插入 14000 多条元素隐藏规则，所以占用内存很大，uBlock 插入的很少，因为他是在网页开始加载以后才判断需要用到哪些元素隐藏规则。所以才在性能上面要更加优越。</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/auto-orient" alt="img" /></p>
+
+<p>uBlock Origin性能优势</p>
+
+<p><a href="http://chromecj.com/productivity/2017-06/770.html">http://chromecj.com/productivity/2017-06/770.html</a></p>
+
+<p><img src="https://3mile.github.io/assets/chrome/auto-orient1.jpg" alt="巨大的电源按钮" /></p>
+
+<p>(3)元素吸管图标：点击滴管图标可以进入元素选择器模式，在这里你可以交互地从页面选择元素并创建过滤规则来永久移除该元素。屏蔽元素按钮(用过ABP的都知道)
+ (4)列表图标：网络请求日志(个人理解:网络请求记录监控中心)：可以按照网络资源查看/屏蔽的控制系统 。网络请求日志与开发工具的网络 不同之处在于，不单单可以查看网络资源，还可以屏蔽不想要的脚本等等之流 。你可以在浏览器里实时查看网络通信情况。提示：点击图标的同时按住 Shift 键可以切换选择是在新窗口还是新标签页中打开记录台。uBO 会在你未按 Shift 键打开记录台时记住你的选择。</p>
+
+<p>(5）禁止网页弹窗按钮，开启后，该网页永久无法弹窗 。默认情况下弹出窗口是允许显示的，除非有相应的过滤规则屏蔽。但如果开启该选项，不管规则如何，当前站点的所有弹出窗口都会被屏蔽：</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/164.png" alt="img" /></p>
+
+<p>ublock origin禁止弹窗</p>
+
+<p>基于 Chromium 的浏览器请注意：</p>
+
+<p>uBlock Origin</p>
+
+<p>(7)禁止修饰生效按钮，开启，隐藏元素规则失效 。该特性生效时，图标旁边的数字表示被 uBO 修饰规则隐藏的元素数量。如果网页有被隐藏的元素，那么一旦你禁用修饰规则，这些元素就会立即显示，一旦启用立即隐藏。</p>
+
+<p>(8)禁止第三方字体：三种颜色：红(block)、灰(noop)、绿(allow) 出于安全和隐私方面考虑，许多人希望默认能屏蔽所有网页字体。你只需在控制面板的 &ldquo;自定义规则 &rdquo; 版块直接添加下面这条规则：no-remote-fonts: * true
+ 这样 uBlock 就会默认屏蔽任何地方的网页字体，而你又可以根据不同的站点点击这个开关来允许使用网页字体。
+ 基于 Chromium 的浏览器请注意：Chromium 的 webRequest API 无法准确报出 font 类的请求，所以字体会被归为 other 类型。uBlock 是根据一条 URL 路径的&rdquo;扩展名&rdquo;来判断一条请求是否属于字体资源，但一条 URL 的请求类型可以千变万化，所以对于基于 Chromium 的浏览器，uBlock 也许得在请求产生以后才能屏蔽字体，也就是从远端服务器接收到响应标头以后，毕竟从响应标头可以确认资源属于哪种类型。
+ uBlock Origin如何添加白名单
+ 许多用户的反馈希望增加能将网站加为白名单的功能，也就是在特定的网站禁用 uBlock。其实这项功能已经有了，就是那个巨大的电源按钮。点击这个按钮你可以将当前网站加入白名单，在你下次访问该网站时仍会记住你的选择。如下图所示：</p>
+
+<p><img src="https://3mile.github.io/assets/chrome/311.png" alt="img" /></p>
+
+<p>ublock origin白名单</p>
+
+<p>常见的uBlock Origin规则推荐
+ 初始默认加载和执行下列过滤规则列表：</p>
+
+<ul>
+<li>EasyList</li>
+<li>Peter Lowe’s Ad server list</li>
+<li>EasyPrivacy</li>
+<li>Malware domains</li>
+</ul>
+
+<p>这里还有更多的规则列表供你选择：</p>
+
+<ul>
+<li>Fanboy’s Enhanced Tracking List</li>
+<li>Dan Pollock’s hosts file</li>
+<li>hpHosts’s Ad and tracking servers</li>
+<li>MVPS HOSTS</li>
+<li>Spam404</li>
+<li>等等</li>
+</ul>
+
+<p>当然，启用越多的过滤规则就会产生越高的内存占用。 然而，即使再添加 Fanboy 额外的两个规则列表，如 hpHosts’s Ad 和 tracking servers，uBlock₀ 的内存占用依然比其他常见的过滤工具要低的多。
+ uBlock Origin小结
+ ABP的过滤规则建立或许比较直观方便，但对于不想详细研究直接用其他人维护的列表且对性能要求较高的人来说，uBlock Origin也许更适合（说的就是我~~）。</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://3mile.github.io/tags/chrome"><span class="tag">Chrome</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>
