@@ -6,10 +6,64 @@
     <description>Recent content in Posts on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 05 May 2018 11:50:25 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 May 2018 09:21:17 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>电影公司LOGO</title>
+      <link>https://3mile.github.io/archives/2018/5/22/</link>
+      <pubDate>Tue, 22 May 2018 09:21:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/5/22/</guid>
+      <description>看了篇文章，好莱坞的著名公司30个著名的logo，于是乎查找看看还有没，发现很多。。收集整理了75个大小LOGO。还有一些按照字母排列的公司</description>
+    </item>
+    
+    <item>
+      <title>图床上传工具PicGo V1</title>
+      <link>https://3mile.github.io/archives/142/</link>
+      <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/142/</guid>
+      <description>{{&amp;lt; alert info &amp;gt;}} 经过一个多月的努力开发，基于electron的图床上传工具PicGo终于迎来了一个minor版本的更新。如果你对此感兴趣，不妨看看都</description>
+    </item>
+    
+    <item>
+      <title>自用软件推荐</title>
+      <link>https://3mile.github.io/archives/141/</link>
+      <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/141/</guid>
+      <description>用了这么多年电脑,肯定有些高效率的软件收藏.下面推荐的软件可以说是用了很多年,并且以后会一直用下去的软件. 为什么会做这个东东呢,主要还是因为</description>
+    </item>
+    
+    <item>
+      <title>Potplayer禁止联网</title>
+      <link>https://3mile.github.io/archives/140/</link>
+      <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/140/</guid>
+      <description>potplayer是一款非常受欢迎的视频播放器，其具有非常强大的功能。不过，一些 win10系统 用户反馈，potplayer经常会弹出“自动更</description>
+    </item>
+    
+    <item>
+      <title>编辑器 Atom介绍</title>
+      <link>https://3mile.github.io/archives/139/</link>
+      <pubDate>Sun, 06 May 2018 12:35:58 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/139/</guid>
+      <description>我一直在 Windows 上寻找一款足够媲美 MWeb 和 Ulysses 的 Markdown 编辑器。可惜 Windows 上优秀的编辑器较少，于是我盯上了这款本为程序员设计的 Atom 编辑器。 我在对 Atom 有想法之前，使用的</description>
+    </item>
+    
+    <item>
+      <title>启动器 Rolan2</title>
+      <link>https://3mile.github.io/archives/138/</link>
+      <pubDate>Sun, 06 May 2018 04:08:54 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/archives/138/</guid>
+      <description>在 macOS 中，所有的软件都被放在 LaunchPad 中，只需一个手势就可以快速打开。虽然 Windows 10 中的「开始屏幕」也能做到类似的事情。但是由于 UWP 软件和传统 x86 软件的待遇完全</description>
+    </item>
     
     <item>
       <title>谷歌插件new Tab</title>
@@ -361,7 +415,7 @@
       <pubDate>Sat, 31 Mar 2018 07:00:07 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/934/</guid>
-      <description></description>
+      <description>显然，这是一只梅花鹿</description>
     </item>
     
     <item>

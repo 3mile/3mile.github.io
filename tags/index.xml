@@ -6,10 +6,19 @@
     <description>Recent content in Tags on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 23 Apr 2018 13:26:40 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 06 May 2018 12:35:58 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Atom</title>
+      <link>https://3mile.github.io/tags/atom/</link>
+      <pubDate>Sun, 06 May 2018 12:35:58 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/atom/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Blog</title>
@@ -174,6 +183,33 @@
     </item>
     
     <item>
+      <title>Picgo</title>
+      <link>https://3mile.github.io/tags/picgo/</link>
+      <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/picgo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Potplayer</title>
+      <link>https://3mile.github.io/tags/potplayer/</link>
+      <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/potplayer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rolan</title>
+      <link>https://3mile.github.io/tags/rolan/</link>
+      <pubDate>Sun, 06 May 2018 04:08:54 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/rolan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Tag Plugins</title>
       <link>https://3mile.github.io/tags/tag-plugins/</link>
       <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
@@ -224,6 +260,15 @@
       <pubDate>Thu, 05 Apr 2018 12:47:27 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/webdav/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://3mile.github.io/tags/windows/</link>
+      <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/windows/</guid>
       <description></description>
     </item>
     
@@ -300,6 +345,24 @@
     </item>
     
     <item>
+      <title>启动器</title>
+      <link>https://3mile.github.io/tags/%E5%90%AF%E5%8A%A8%E5%99%A8/</link>
+      <pubDate>Sun, 06 May 2018 04:08:54 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%90%AF%E5%8A%A8%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>图床</title>
+      <link>https://3mile.github.io/tags/%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%9B%BE%E5%BA%8A/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>导弹</title>
       <link>https://3mile.github.io/tags/%E5%AF%BC%E5%BC%B9/</link>
       <pubDate>Wed, 02 May 2018 19:13:38 +0800</pubDate>
@@ -332,6 +395,15 @@
       <pubDate>Thu, 05 Apr 2018 13:00:56 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/%E6%8A%93%E5%8C%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>播放器</title>
+      <link>https://3mile.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8/</link>
+      <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8/</guid>
       <description></description>
     </item>
     
@@ -372,6 +444,15 @@
     </item>
     
     <item>
+      <title>电影公司logo</title>
+      <link>https://3mile.github.io/tags/%E7%94%B5%E5%BD%B1%E5%85%AC%E5%8F%B8logo/</link>
+      <pubDate>Tue, 22 May 2018 09:21:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E7%94%B5%E5%BD%B1%E5%85%AC%E5%8F%B8logo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>电视盒</title>
       <link>https://3mile.github.io/tags/%E7%94%B5%E8%A7%86%E7%9B%92/</link>
       <pubDate>Thu, 05 Apr 2018 13:00:56 +0800</pubDate>
@@ -395,6 +476,15 @@
       <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>软件推荐</title>
+      <link>https://3mile.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</link>
+      <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</guid>
       <description></description>
     </item>
     

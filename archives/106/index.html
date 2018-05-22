@@ -232,7 +232,7 @@
       <h1 class="post-title">SSH无密码登录及putty设置</h1>
       <p class="post-meta">@3mile · Apr 4, 2018 · 3 min read</p>
     </header>
-    <article class="post-content"><p>[<img src="https://3mile.github.io/assets/linux.jpg" alt="Linux" />]()</p>
+    <article class="post-content"><p>[<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/linux.jpg" alt="Linux" />]()</p>
 
 <p>　　一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机生成的密码比较复杂，一般我们为了方便记忆都会改成自己能记得住的，然而这是不安全的。但凡用到密码的地方都只是看似安全。所以，在开通了Linux系统的VPS后，我们有必要对SSH登录做一些基本的安全设置。
 　　这其中利用公钥和私钥就能实现SSH无密码登录。按照如下步骤操作：
@@ -278,10 +278,10 @@ service sshd restart</p>
 
 <p><strong>4、制作用于putty的私钥</strong>
 将VPS上的/root/.ssh/id_rsa下载到本地，利用PUTTYGEN.EXE转换为putty用的ppk文件。
-<img src="https://3mile.github.io/assets/keygen_1.png" alt="keygen1" /></p>
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/keygen_1.png" alt="keygen1" /></p>
 
 <p>点击File，Load private key，导入/root/.ssh/id_rsa文件。成功后的图片如下所示：
-<img src="https://3mile.github.io/assets/keygen_2.png" alt="keygen2" /></p>
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/keygen_2.png" alt="keygen2" /></p>
 
 <p>点击Save private key按钮，生成一个后缀为ppk的文件，比如起名为teddysun.ppk，这个文件就是已经制作好的用于putty无密码登录的私钥了，妥善保存。</p>
 
