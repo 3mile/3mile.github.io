@@ -6,10 +6,19 @@
     <description>Recent content in Categories on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 Dec 2017 05:41:21 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jun 2018 14:35:24 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title></title>
+      <link>https://3mile.github.io/categories/</link>
+      <pubDate>Fri, 01 Jun 2018 14:35:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/categories/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>About</title>
@@ -80,6 +89,15 @@
       <pubDate>Thu, 05 Apr 2018 13:28:24 +0800</pubDate>
       
       <guid>https://3mile.github.io/categories/%E7%BE%A4%E6%99%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>虚拟主机</title>
+      <link>https://3mile.github.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</link>
+      <pubDate>Sat, 26 May 2018 10:44:27 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</guid>
       <description></description>
     </item>
     

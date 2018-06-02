@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta charset="utf-8" />
+
+  
+  <title>Centos7上安装和配置Caddy</title>
+
+  
+  
+
+
+
+
+
+  
+  <meta name="author" content="3mile" />
+  <meta name="description" content="介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部" />
+
+  
+  
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@3mile1" />
+    <meta name="twitter:title" content="Centos7上安装和配置Caddy" />
+    <meta name="twitter:description" content="介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部" />
+    <meta name="twitter:image" content="https://3mile.github.io/cover/3.jpg" />
+  
+
+  
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Centos7上安装和配置Caddy" />
+  <meta property="og:description" content="介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部" />
+  <meta property="og:url" content="https://3mile.github.io/archives/2018/05/26/" />
+  <meta property="og:image" content="https://3mile.github.io/cover/3.jpg" />
+
+
+
+
+<meta name="generator" content="Hugo 0.40.2" />
+
+
+<link rel="canonical" href="https://3mile.github.io/archives/2018/05/26/" />
+<link rel="alternative" href="https://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+<meta http-equiv="Cache-Control" content="no-transform" />
+
+
+<meta name="robots" content="index,follow" />
+<meta name="referrer" content="origin-when-cross-origin" />
+<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
+<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
+<meta name="baidu-site-verification" content="LN2gf0A8Hs" />
+
+
+
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="3mile博客" />
+<meta name="msapplication-tooltip" content="3mile博客" />
+<meta name='msapplication-navbutton-color' content="#5fbf5e" />
+<meta name="msapplication-TileColor" content="#5fbf5e" />
+<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
+<link rel="icon" href="https://3mile.github.io/img/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://3mile.github.io/img/favicon-16x16.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="https://3mile.github.io/img/favicon-32x32.png" />
+<link rel="icon" sizes="192x192" href="https://3mile.github.io/img/touch-icon-android.png" />
+<link rel="apple-touch-icon" href="https://3mile.github.io/img/touch-icon-apple.png" />
+<link rel="mask-icon" href="https://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
+
+
+
+<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
+
+<link rel="stylesheet" href="https://3mile.github.io/css/bundle.css" />
+
+
+  
+  <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
+  <![endif]-->
+
+<!--[if lte IE 11]>
+    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
+  <![endif]-->
+
+
+<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
+
+
+<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
+
+
+</head>
+  <body>
+    
+    <div class="suspension">
+      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
+      
+        
+      
+    </div>
+    
+    
+  <header class="site-header">
+  <img class="avatar" src="https://3mile.github.io/img/avatar.jpg" alt="Avatar">
+  
+  <h2 class="title">3mile博客</h2>
+  
+  <p class="subtitle">~ 学习,总是使人进步 ~</p>
+  <button class="menu-toggle" type="button">
+    <span class="icon icon-menu"></span>
+  </button>
+  <nav class="site-menu collapsed">
+    <h2 class="offscreen">Main Menu</h2>
+    <ul class="menu-list">
+      
+      
+      
+      
+        <li class="menu-item
+            
+            
+            
+              is-active
+            ">
+            <a href="https://3mile.github.io/">主页</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://3mile.github.io/categories/">分类</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="https://3mile.github.io/tags/">标签</a>
+          </li>
+      
+        <li class="menu-item
+            
+            
+            ">
+            <a href="about">关于</a>
+          </li>
+      
+    </ul>
+  </nav>
+  <nav class="social-menu collapsed">
+    <h2 class="offscreen">Social Networks</h2>
+    <ul class="social-list">
+
+      
+      <li class="social-item">
+        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
+      </li>
+
+      
+      <li class="social-item">
+        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="//weibo.com/3179328351" title="Weibo"><span class="icon icon-weibo"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="https://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
+      </li>
+
+      <li class="social-item">
+        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
+      </li>
+
+      
+
+      
+
+      
+
+      <li class="social-item">
+        <a href="https://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
+      </li>
+
+    </ul>
+  </nav>
+</header>
+
+  <section class="main post-detail">
+    <header class="post-header">
+      <h1 class="post-title">Centos7上安装和配置Caddy</h1>
+      <p class="post-meta">@3mile · May 26, 2018 · 3 min read</p>
+    </header>
+    <article class="post-content">
+
+<h4 id="介绍">介绍</h4>
+
+<p>Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部署支持HTTPS的站点。</p>
+
+<h4 id="先决条件">先决条件</h4>
+
+<ul>
+<li>新鲜的Vultr CentOS 7 x64服务器实例。我们将<code>203.0.113.1</code>以此为例。</li>
+<li>一个<a href="https://www.vultr.com/docs/how-to-use-sudo-on-debian-centos-and-freebsd">sudo用户</a>。</li>
+<li><a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8">使用EPEL YUM回购</a>服务器实例已<a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8">更新到最新的稳定状态</a>。</li>
+<li>一个域<code>example.com</code>已被配置为指向<code>203.0.113.1</code>服务器实例。在另一个<a href="https://www.vultr.com/docs/introduction-to-vultr-dns">Vultr教程中</a>查看细节。</li>
+</ul>
+
+<h4 id="第一步-安装caddy的最新稳定版本">第一步：安装Caddy的最新稳定版本</h4>
+
+<p>在Linux，Mac或BSD操作系统上，使用以下命令安装Caddy最新稳定的系统特定版本：</p>
+
+<pre><code>curl https://getcaddy.com | bash
+</code></pre>
+
+<p>出现提示时，输入您的sudo密码以完成安装。</p>
+
+<p>Caddy二进制文件将被安装到该<code>/usr/local/bin</code>目录。使用以下命令确认：</p>
+
+<pre><code>which caddy
+</code></pre>
+
+<p>输出应该是：</p>
+
+<pre><code>/usr/local/bin/caddy
+</code></pre>
+
+<p>为了安全起见，<strong>切勿</strong>以root身份运行Caddy二进制文件。为了让Caddy能够以非root用户身份绑定到特权端口（例如80,443），您需要<code>setcap</code>按如下所示运行命令：</p>
+
+<pre><code>sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
+</code></pre>
+
+<h4 id="第2步-配置caddy">第2步：配置Caddy</h4>
+
+<p>创建一个专门的系统用户：<code>caddy</code> 和一组同名的Caddy：</p>
+
+<pre><code>sudo useradd -r -d /var/www -M -s /sbin/nologin caddy
+</code></pre>
+
+<p><strong>注意</strong>：*此处创建*<em>的用户caddy只能用于管理Caddy服务，不能用于登录。</em></p>
+
+<p><code>/var/www</code>为Caddy Web服务器创建主目录，并<code>/var/www/example.com</code>为您的网站创建主目录：</p>
+
+<pre><code>sudo mkdir -p /var/www/example.com
+sudo chown -R caddy:caddy /var/www
+</code></pre>
+
+<p>创建一个目录来存储SSL证书：</p>
+
+<pre><code>sudo mkdir /etc/ssl/caddy
+sudo chown -R caddy:root /etc/ssl/caddy
+sudo chmod 0770 /etc/ssl/caddy
+</code></pre>
+
+<p>创建专用目录来存储Caddy配置文件<code>Caddyfile</code>：</p>
+
+<pre><code>sudo mkdir /etc/caddy
+sudo chown -R root:caddy /etc/caddy
+</code></pre>
+
+<p>创建名为的Caddy配置文件<code>Caddyfile</code>：</p>
+
+<pre><code>sudo touch /etc/caddy/Caddyfile
+sudo chown caddy:caddy /etc/caddy/Caddyfile
+sudo chmod 444 /etc/caddy/Caddyfile
+cat &lt;&lt;EOF | sudo tee -a /etc/caddy/Caddyfile
+example.com {
+    root /var/www/example.com
+    gzip
+    tls admin@example.com
+}
+EOF
+</code></pre>
+
+<p><strong>注意</strong>：*上面创建*<em>的Caddyfile文件只是运行静态网站的基本配置。您可以在这里了解更多关于如何编写Caddyfile的信息。</em></p>
+
+<p>为了方便Caddy的操作，您可以<code>systemd</code>为Caddy 设置一个单元文件，然后用它<code>systemd</code>来管理Caddy。</p>
+
+<p>使用<code>vi</code>编辑器创建Caddy <code>systemd</code>单元文件：</p>
+
+<pre><code>sudo vi /etc/systemd/system/caddy.service
+</code></pre>
+
+<p>填充文件：</p>
+
+<pre><code>[Unit]
+Description=Caddy HTTP/2 web server
+Documentation=https://caddyserver.com/docs
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+Restart=on-abnormal
+
+; User and group the process will run as.
+User=caddy
+Group=caddy
+
+; Letsencrypt-issued certificates will be written to this directory.
+Environment=CADDYPATH=/etc/ssl/caddy
+
+; Always set &quot;-root&quot; to something safe in case it gets forgotten in the Caddyfile.
+ExecStart=/usr/local/bin/caddy -log stdout -agree=true -conf=/etc/caddy/Caddyfile -root=/var/tmp
+ExecReload=/bin/kill -USR1 $MAINPID
+
+; Use graceful shutdown with a reasonable timeout
+KillMode=mixed
+KillSignal=SIGQUIT
+TimeoutStopSec=5s
+
+; Limit the number of file descriptors; see `man systemd.exec` for more limit settings.
+LimitNOFILE=1048576
+; Unmodified caddy is not expected to use more than that.
+LimitNPROC=512
+
+; Use private /tmp and /var/tmp, which are discarded after caddy stops.
+PrivateTmp=true
+; Use a minimal /dev
+PrivateDevices=true
+; Hide /home, /root, and /run/user. Nobody will steal your SSH-keys.
+ProtectHome=true
+; Make /usr, /boot, /etc and possibly some more folders read-only.
+ProtectSystem=full
+; … except /etc/ssl/caddy, because we want Letsencrypt-certificates there.
+;   This merely retains r/w access rights, it does not add any new. Must still be writable on the host!
+ReadWriteDirectories=/etc/ssl/caddy
+
+; The following additional security directives only work with systemd v229 or later.
+; They further retrict privileges that can be gained by caddy. Uncomment if you like.
+; Note that you may have to add capabilities required by any plugins in use.
+;CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+;AmbientCapabilities=CAP_NET_BIND_SERVICE
+;NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>保存并退出：</p>
+
+<pre><code>:wq!
+</code></pre>
+
+<p>启动Caddy服务并使其在系统引导时自动启动：</p>
+
+<pre><code>sudo systemctl daemon-reload
+sudo systemctl start caddy.service
+sudo systemctl enable caddy.service
+</code></pre>
+
+<h4 id="第3步-修改防火墙规则">第3步：修改防火墙规则</h4>
+
+<p>为了允许访问者访问您的Caddy网站，您需要打开端口80和443：</p>
+
+<pre><code>sudo firewall-cmd --permanent --zone=public --add-service=http 
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+</code></pre>
+
+<h4 id="第4步-为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</h4>
+
+<p>使用以下命令<code>index.html</code>在您的Caddy网站主目录中创建一个名为的文件：</p>
+
+<pre><code>echo '&lt;h1&gt;Hello World!&lt;/h1&gt;' | sudo tee /var/www/example.com/index.html
+</code></pre>
+
+<p>重新启动Caddy服务以加载新内容：</p>
+
+<pre><code>sudo systemctl restart caddy.service
+</code></pre>
+
+<p>最后，将您的网页浏览器指向<code>http://example.com</code>或<code>https://example.com</code>。您应该看到<code>Hello World!</code>预期的消息。</p>
+</article>
+    <footer class="post-footer">
+      
+      <ul class="post-tags">
+        
+          <li><a href="https://3mile.github.io/tags/vultr"><span class="tag">Vultr</span></a></li>
+        
+          <li><a href="https://3mile.github.io/tags/centos7"><span class="tag">Centos7</span></a></li>
+        
+          <li><a href="https://3mile.github.io/tags/caddy"><span class="tag">Caddy</span></a></li>
+        
+      </ul>
+      
+      <p class="post-copyright">
+        
+      </p>
+    </footer>
+    
+      
+    
+  </section>
+  <footer class="site-footer">
+  <p>© 2017-2018 3mile博客</p>
+  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
+  
+</footer>
+
+
+
+<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      processEnvironments: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      TeX: { equationNumbers: { autoNumber: "AMS" },
+      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+    }
+  });
+</script>
+<script type="text/x-mathjax-config">
+  // Fix <code> tags after MathJax finishes running. This is a
+  // hack to overcome a shortcoming of Markdown. Discussion at
+  // https://github.com/mojombo/jekyll/issues/199
+  MathJax.Hub.Queue(() => {
+    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
+  });
+</script>
+
+<script src="https://3mile.github.io/js/bundle.js"></script>
+
+
+
+
+  </body>
+</html>

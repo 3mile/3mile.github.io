@@ -6,10 +6,37 @@
     <description>Recent content in Posts on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 22 May 2018 09:21:17 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 01 Jun 2018 14:35:24 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Rufus_Usb启动制作</title>
+      <link>https://3mile.github.io/archives/2018/06/01/</link>
+      <pubDate>Fri, 01 Jun 2018 14:35:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/06/01/</guid>
+      <description>Rufus 轻松创建USB启动盘 Rufus 是一个可以帮助格式化和创建可引导USB闪存盘的工具，比如 USB 随身碟，记忆棒等等。 在如下场景中会非常有用： 你需要把一些可</description>
+    </item>
+    
+    <item>
+      <title>Caddy&#43;Hugo双GO组合并实现github的webhook钩子推送</title>
+      <link>https://3mile.github.io/archives/2018/0526/</link>
+      <pubDate>Sat, 26 May 2018 11:51:03 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/0526/</guid>
+      <description>原因 一. 首先,为什么要用这么复杂的标题? 为什么标题会这么复杂呢？原因很简单。我自己被搞昏了，为了体现我的眩晕程度，所以用了这个复杂的名字。 另</description>
+    </item>
+    
+    <item>
+      <title>Centos7上安装和配置Caddy</title>
+      <link>https://3mile.github.io/archives/2018/05/26/</link>
+      <pubDate>Sat, 26 May 2018 10:44:27 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/05/26/</guid>
+      <description>介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部</description>
+    </item>
     
     <item>
       <title>电影公司LOGO</title>
@@ -18,15 +45,6 @@
       
       <guid>https://3mile.github.io/archives/2018/5/22/</guid>
       <description>看了篇文章，好莱坞的著名公司30个著名的logo，于是乎查找看看还有没，发现很多。。收集整理了75个大小LOGO。还有一些按照字母排列的公司</description>
-    </item>
-    
-    <item>
-      <title>图床上传工具PicGo V1</title>
-      <link>https://3mile.github.io/archives/142/</link>
-      <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/archives/142/</guid>
-      <description>{{&amp;lt; alert info &amp;gt;}} 经过一个多月的努力开发，基于electron的图床上传工具PicGo终于迎来了一个minor版本的更新。如果你对此感兴趣，不妨看看都</description>
     </item>
     
     <item>
