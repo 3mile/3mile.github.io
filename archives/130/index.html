@@ -1,238 +1,289 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
 <!DOCTYPE html>
 <html lang="zh-cn">
-<head>
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+	<meta name="google-site-verification" content="1MuLqoAUgX7XQvWx-S5i3Zm-WP7yyA0LOvApqTweSrk" />
+    <title>Win10搭建Hexo博客</title>
+    <meta name="author" content="3mile">
+    <meta name="keywords" content="">
 
-  <meta charset="utf-8" />
+    <link rel="icon" href="https://3mile.github.io/favicon.png">
+    
 
-  
-  <title>Win10搭建Hexo博客</title>
+    
+    <meta name="description" content="发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不">
+    <meta property="og:description" content="发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Win10搭建Hexo博客">
+    <meta property="og:url" content="/archives/130">
+    <meta property="og:site_name" content="3mile博客">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="3mile博客">
+    <meta name="twitter:description" content="发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不">
+    
+      <meta name="twitter:creator" content="@3mile1">
+    
+    
 
-  
-  
+    
+    
 
+    
+      <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+    
 
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/2.jpg">
+    
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/2.jpg">
+    
+    
 
+    
 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
 
-  
-  <meta name="author" content="3mile" />
-  <meta name="description" content="发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不" />
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
 
-  
-  
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@3mile1" />
-    <meta name="twitter:title" content="Win10搭建Hexo博客" />
-    <meta name="twitter:description" content="发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不" />
-    <meta name="twitter:image" content="https://3mile.github.io/img/avatar.jpg" />
-  
+    
+    
+  </head>
 
-  
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="Win10搭建Hexo博客" />
-  <meta property="og:description" content="发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不" />
-  <meta property="og:url" content="https://3mile.github.io/archives/130/" />
-  <meta property="og:image" content="https://3mile.github.io/img/avatar.jpg" />
-
-
-
-
-<meta name="generator" content="Hugo 0.40.2" />
-
-
-<link rel="canonical" href="https://3mile.github.io/archives/130/" />
-<link rel="alternative" href="https://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
-
-
-<meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="format-detection" content="telephone=no,email=no,adress=no" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-
-
-<meta name="robots" content="index,follow" />
-<meta name="referrer" content="origin-when-cross-origin" />
-<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
-<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
-<meta name="baidu-site-verification" content="LN2gf0A8Hs" />
-
-
-
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="3mile博客" />
-<meta name="msapplication-tooltip" content="3mile博客" />
-<meta name='msapplication-navbutton-color' content="#5fbf5e" />
-<meta name="msapplication-TileColor" content="#5fbf5e" />
-<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://3mile.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://3mile.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://3mile.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://3mile.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://3mile.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
-
-
-
-<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
-
-<link rel="stylesheet" href="https://3mile.github.io/css/bundle.css" />
-
-
-  
-  <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
-  <![endif]-->
-
-<!--[if lte IE 11]>
-    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
-  <![endif]-->
-
-
-<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
-
-
-<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
-
-
-</head>
   <body>
-    
-    <div class="suspension">
-      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
-      
-        
-      
-    </div>
-    
-    
-  <header class="site-header">
-  <img class="avatar" src="https://3mile.github.io/img/avatar.jpg" alt="Avatar">
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
   
-  <h2 class="title">3mile博客</h2>
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
   
-  <p class="subtitle">~ 学习,总是使人进步 ~</p>
-  <button class="menu-toggle" type="button">
-    <span class="icon icon-menu"></span>
-  </button>
-  <nav class="site-menu collapsed">
-    <h2 class="offscreen">Main Menu</h2>
-    <ul class="menu-list">
-      
-      
-      
-      
-        <li class="menu-item
-            
-            
-            
-              is-active
-            ">
-            <a href="https://3mile.github.io/">主页</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="https://3mile.github.io/categories/">分类</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="https://3mile.github.io/tags/">标签</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="about">关于</a>
-          </li>
-      
-    </ul>
-  </nav>
-  <nav class="social-menu collapsed">
-    <h2 class="offscreen">Social Networks</h2>
-    <ul class="social-list">
-
-      
-      <li class="social-item">
-        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
-      </li>
-
-      
-      <li class="social-item">
-        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="//weibo.com/3179328351" title="Weibo"><span class="icon icon-weibo"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="https://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
-      </li>
-
-    </ul>
-  </nav>
 </header>
 
-  <section class="main post-detail">
-    <header class="post-header">
-      <h1 class="post-title">Win10搭建Hexo博客</h1>
-      <p class="post-meta">@3mile · Apr 21, 2018 · 8 min read</p>
-    </header>
-    <article class="post-content">
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link open-algolia-search" href="https://3mile.github.io/#search">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+      
+      <span class="sidebar-button-desc">搜索</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="tencent://message/?uin=975714080" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">QQ to Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--partial"
+       style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/2.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      Win10搭建Hexo博客
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-04-21T11:41:05&#43;08:00">
+        
+  
+  
+  
+  
+    2018 四月 21
+  
+
+      </time>
+    
+    
+  
+  
+    <span>分类于</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/%e5%8d%9a%e5%ae%a2%e7%b3%bb%e7%bb%9f">博客系统</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">A beautiful cover</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
 
 <p>发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不用担心被攻击，如果你不要独立域名直接就是0成本！</p>
 
@@ -316,14 +367,20 @@
 <h3 id="2-配置git">2.配置Git</h3>
 
 <p>安装好后需要几行命令说清楚你是谁，这样才能认对人。自行替换自己的用户名和邮箱。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git config --global user.name <span style="color:#e6db74">&#34;Your Name&#34;</span>
-git config --global user.email <span style="color:#e6db74">&#34;email@example.com&#34;</span></code></pre></div>
+
+<pre><code class="language-Bash">git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;email@example.com&quot;
+</code></pre>
+
 <p><span id="1.3"></span></p>
 
 <h3 id="3-生成密钥文件">3.生成密钥文件</h3>
 
 <p>这个操作加密你的通信过程，同时后期上传到Github都会用到。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ssh-keygen -t rsa -b <span style="color:#ae81ff">4096</span> -C <span style="color:#e6db74">&#34;email@example.com&#34;</span></code></pre></div>
+
+<pre><code class="language-Bash">ssh-keygen -t rsa -b 4096 -C &quot;email@example.com&quot;
+</code></pre>
+
 <p>按3次回车，全部无视，证书文件会在C:\User\用户名.ssh 生成两个文件。</p>
 
 <p><span id="1.4"></span></p>
@@ -337,7 +394,10 @@ git config --global user.email <span style="color:#e6db74">&#34;email@example.co
 <h3 id="5-安装hexo">5.安装Hexo</h3>
 
 <p>在Git程序里运行命令行即可安装</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">npm install -g hexo-cli</code></pre></div>
+
+<pre><code class="language-Bash">npm install -g hexo-cli
+</code></pre>
+
 <p>至此在Win上的部署安装已经完成，接下来就是如何使用了。</p>
 
 <h2 id="二-hexo的使用">二、Hexo的使用</h2>
@@ -347,12 +407,15 @@ git config --global user.email <span style="color:#e6db74">&#34;email@example.co
 <h3 id="1-新建站点">1.新建站点</h3>
 
 <p>假设代码存放在D:\hexo\blog</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd /d
+
+<pre><code class="language-Bash">cd /d
 mkdir hexo
 cd hexo
 hexo init blog
 cd blog
-npm install</code></pre></div>
+npm install
+</code></pre>
+
 <p>在D:\hexo\blog 里就能看到所有文件了，下面是文件说明：</p>
 
 <table>
@@ -398,8 +461,11 @@ npm install</code></pre></div>
 <h4 id="1-替换主题">（1）替换主题</h4>
 
 <p>推荐<a href="https://www.zrj96.com/go/?url=http://theme-next.iissnan.com/"><strong>NexT</strong></a>主题，这是一款知名的Hexo主题，非常漂亮简洁。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd /d/hexo/blog
-git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre></div>
+
+<pre><code class="language-Bash">cd /d/hexo/blog
+git clone https://github.com/iissnan/hexo-theme-next themes/next
+</code></pre>
+
 <p>回到根目录，找到_config.yml 文件，在第66行的theme字段里把默认主题名字换成next即可。</p>
 
 <p><span id="2.2.2"></span></p>
@@ -407,15 +473,21 @@ git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre></d
 <h4 id="2-插入图片">（2）插入图片</h4>
 
 <p><code>Markdown</code>支持插入本地图片或外部链接图片，要保证本地和网络上都能访问图片，使用<a href="https://www.zrj96.com/go/?url=https://github.com/CodeFalling/hexo-asset-image"><strong>hexo-asset-image</strong></a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#75715e"># 安装插件
-</span><span style="color:#75715e"></span>npm install https://github.com/CodeFalling/hexo-asset-image --save
-启用插件，确保主题配置文件D:<span style="color:#ae81ff">\h</span>exo<span style="color:#ae81ff">\b</span>log<span style="color:#ae81ff">\_</span>config.yml中
+
+<pre><code class="language-Bash"># 安装插件
+npm install https://github.com/CodeFalling/hexo-asset-image --save
+启用插件，确保主题配置文件D:\hexo\blog\_config.yml中
 post_asset_folder: true
-# 新增博文后，会在D:<span style="color:#ae81ff">\h</span>exo<span style="color:#ae81ff">\b</span>log<span style="color:#ae81ff">\s</span>ource<span style="color:#ae81ff">\_</span>posts目录下生成 xxx.md 和 xxx 目录，将图片存放该目录中，使用时 !<span style="color:#f92672">[](</span>***.jpg<span style="color:#f92672">)</span>，这样Typora预览和发布到网上时Hexo博客都能正常显示图片</code></pre></div>
+# 新增博文后，会在D:\hexo\blog\source\_posts目录下生成 xxx.md 和 xxx 目录，将图片存放该目录中，使用时 ![](***.jpg)，这样Typora预览和发布到网上时Hexo博客都能正常显示图片
+</code></pre>
+
 <p><span id="2.3"></span></p>
 
 <h3 id="3-新建博文">3.新建博文</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">hexo new <span style="color:#e6db74">&#34;Hello World&#34;</span></code></pre></div>
+
+<pre><code class="language-Bash">hexo new &quot;Hello World&quot;
+</code></pre>
+
 <p>在目录<code>D:\hexo\blog\source\_posts</code>下会生成Markdown文件Hello World.md</p>
 
 <p><strong>手动添加Markdown文件到D:\hexo\blog\source_posts目录效果一样</strong></p>
@@ -425,17 +497,23 @@ post_asset_folder: true
 <h3 id="4-本地预览">4.本地预览</h3>
 
 <p>如果以后修改了主题和写了一篇新文章都可以使用这个方法在本地查看，解决BUG。</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd /d/hexo/blog
-<span style="color:#75715e"># 生成静态文件
-</span><span style="color:#75715e"></span>hexo generate
-<span style="color:#75715e"># 启动本地服务器
-</span><span style="color:#75715e"></span>hexo server --debug</code></pre></div>
+
+<pre><code class="language-Bash">cd /d/hexo/blog
+# 生成静态文件
+hexo generate
+# 启动本地服务器
+hexo server --debug
+</code></pre>
+
 <p>打开浏览器，输入<a href="http://localhost:4000">http://localhost:4000</a> 即可看到站点的预览了。</p>
 
 <p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ui.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
 
 <p>提醒一点，生成静态化可以使用简化命令</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">hexo g</code></pre></div>
+
+<pre><code class="language-Bash">hexo g
+</code></pre>
+
 <p><strong>在后面的上传到Github中，如果你发现明明写了一篇文章，但是网站却没有？那么一定是MD的语法有问题，生成静态化文件的时候就会报错，务必检查一下哪里出问题，修复后才能成功上传和展现文章。</strong></p>
 
 <p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/error.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
@@ -471,14 +549,20 @@ post_asset_folder: true
 <h3 id="3-测试ssh连接">3.测试SSH连接</h3>
 
 <p>在本地的Git中执行，</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ssh -T git@github.com</code></pre></div>
+
+<pre><code class="language-Bash">ssh -T git@github.com
+</code></pre>
+
 <p>如果出现<code>Hi username! You've successfully authenticated, but GitHub does not provide shell access.</code>提示，则表示连接成功。如果不行就重新生成一个密钥再重新上传密钥试试。</p>
 
 <h2 id="coding中的配置方法">Coding中的配置方法</h2>
 
 <p>Github免费用户只能新建公开的代码仓库，而且是国外的服务器，而Coding可以新建私有代码仓库，国内用户访问速度更快。注册<a href="https://www.zrj96.com/go/?url=https://coding.net/"><strong>Coding</strong></a>，添加项目，<code>项目名称为Coding用户名</code>，分支选择<code>master</code>，同时还需要在<code>D:\hexo\blog\source</code>目录下创建一个空白文件<code>Staticfile</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd /d/hexo/blog/source
-touch Staticfile</code></pre></div>
+
+<pre><code class="language-Bash">cd /d/hexo/blog/source
+touch Staticfile
+</code></pre>
+
 <p><span id="3.2.1"></span></p>
 
 <h3 id="添加ssh-keys">添加SSH keys</h3>
@@ -492,7 +576,10 @@ touch Staticfile</code></pre></div>
 <h3 id="测试ssh连接">测试SSH连接</h3>
 
 <p>在<code>Git Bash</code>中执行:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ssh -T git@git.coding.net</code></pre></div>
+
+<pre><code class="language-Bash">ssh -T git@git.coding.net
+</code></pre>
+
 <p>如果出现<code>Hello username! You have connected to Coding.net by SSH successfully!</code>提示，则表示连接成功。</p>
 
 <p><span id="4"></span></p>
@@ -500,20 +587,26 @@ touch Staticfile</code></pre></div>
 <h2 id="四-部署你的博客">四、部署你的博客</h2>
 
 <p>注意<strong>站点配置文件</strong><code>D:\hexo\blog\_config.yml</code>中<code>deploy</code>参数配置如下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#75715e"># Deployment
-</span><span style="color:#75715e">## Docs: https://hexo.io/docs/deployment.html
-</span><span style="color:#75715e"></span>deploy:
+
+<pre><code class="language-Bash"># Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
   type: git
   repo: 
     github: git@github.com:zrj766/zrj766.github.io.git,master
-    coding: git@git.coding.net:zrj766/zrj766.git,master</code></pre></div>
+    coding: git@git.coding.net:zrj766/zrj766.git,master
+</code></pre>
+
 <p>在本地Git中执行：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#75715e"># git方式需要先安装插件
-</span><span style="color:#75715e"></span>npm install hexo-deployer-git --save
-<span style="color:#75715e"># 上传代码到仓库
-</span><span style="color:#75715e"></span>hexo clean <span style="color:#f92672">&amp;&amp;</span> hexo generate <span style="color:#f92672">&amp;&amp;</span> hexo deploy
+
+<pre><code class="language-Bash"># git方式需要先安装插件
+npm install hexo-deployer-git --save
+# 上传代码到仓库
+hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy
 或者:
-hexo clean <span style="color:#f92672">&amp;&amp;</span> hexo generate -d</code></pre></div>
+hexo clean &amp;&amp; hexo generate -d
+</code></pre>
+
 <p>如果出现<code>INFO Deploy done: git</code>提示，则表示部署成功。访问<code>用户名.github.io</code>和<code>用户名.coding.me</code>都可以正常打开博客了。</p>
 
 <p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-4.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
@@ -543,8 +636,11 @@ hexo clean <span style="color:#f92672">&amp;&amp;</span> hexo generate -d</code>
 <p>在<code>D:\hexo\blog\source</code>目录下新建一个文件<code>CNAME</code>，内容为要绑定的域名：</p>
 
 <p><strong>文件去掉格式，直接空白</strong></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">www.example.com
-example.com</code></pre></div>
+
+<pre><code class="language-Bash">www.example.com
+example.com
+</code></pre>
+
 <p><span id="5.4"></span></p>
 
 <h3 id="域名绑定coding-pages">域名绑定Coding Pages</h3>
@@ -612,59 +708,509 @@ example.com</code></pre></div>
 <h2 id="九-总结">九、总结</h2>
 
 <p>Hexo这种静态化博客真是轻快，打开速度飞快，比臃肿的WP强了很多。不过因为没有后台之类的东西所以新建文章等操作需要手动操作，不过Hexo的可塑性还是不错的，流行的MD语法，还有文件在本地都可以自由修改，只要懂得一些代码知识就能打造自己的站点。加上配合Github、Coding的使用，完全可以做到0成本拥有自己的博客。如果你对他感兴趣就一起来部署拥有自己的第一个博客吧！</p>
-</article>
-    <footer class="post-footer">
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/hexo/">hexo</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/201/" data-tooltip="Hugo主题简介">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/120/" data-tooltip="MarkDown页内跳转">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
       
-      <ul class="post-tags">
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-          <li><a href="https://3mile.github.io/tags/hexo"><span class="tag">Hexo</span></a></li>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/130/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
         
-      </ul>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/130/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/130/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
       
-      <p class="post-copyright">
-        
-      </p>
-    </footer>
-    
       
-    
-  </section>
-  <footer class="site-footer">
-  <p>© 2017-2018 3mile博客</p>
-  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
-  
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. 版权所有
+  </span>
 </footer>
 
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/201/" data-tooltip="Hugo主题简介">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/120/" data-tooltip="MarkDown页内跳转">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/130/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/130/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/130/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 
 
-<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true,
-      processEnvironments: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-      TeX: { equationNumbers: { autoNumber: "AMS" },
-      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F130%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F130%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F130%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fbd6395dcc216c78e791e9f7cee2ac8e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221203025/">
+                <h3 class="media-heading">Linux Mint NFS服务端与客户端配置</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">早先Sun Microsystems创建了网络文件系统以通过网络共享资源。NFS与SAMBA类似，在共享文件方面确实非常方便。而NFS大多数时</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221194849/">
+                <h3 class="media-heading">Linux Mint下oh MyZsh</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220194410/">
+                <h3 class="media-heading">Mint使用VSCode编辑MarkDown</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">为什么选择VS Code？ 在选择Visual Studio Code（以下简称Code）作为markdown主力编辑器之前，我在Mac电脑上尝试了简友们推荐</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/02/20/">
+                <h3 class="media-heading">Shutte恢复编辑选项卡</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutte</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220/">
+                <h3 class="media-heading">Linux Mint操作记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电脑使用。</p>
+
+<p>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/11/13/">
+                <h3 class="media-heading">CentOS7 安装部署MTProxy</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/10/27/">
+                <h3 class="media-heading">编译lean LEDE后transmission的使用总结</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">首先是编译过程中,需要选中 luci-app-transmission_git-17.080.69173-773734e-1_all.ipk luci-i18n-transmission-zh-cn_git-17.080.69173-773734e-1_all.ipk transmission-daemon-openssl_2.92+git-4_x86_64.ipk transmission-web_2.92+git-4_x86_64.ipk 如果编译中只选中了luci-app-transmission的话,transmission是不能运行的,可</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/25/">
+                <h3 class="media-heading">老旧笔记本单网口实机安装Lede(openwrt)_x64</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">写在前面 首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如: 安装使用Linux Mint 安装过黑群晖做NAS 安装使用过Op</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/21/">
+                <h3 class="media-heading">Caddy&#43;WebSocket&#43;TLS&#43;Web</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/02/">
+                <h3 class="media-heading">Debian系统搭建家庭NAS系统</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         62 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://3mile.github.io/images/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://3mile.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
     }
+    hljs.highlightBlock(block);
   });
-</script>
-<script type="text/x-mathjax-config">
-  // Fix <code> tags after MathJax finishes running. This is a
-  // hack to overcome a shortcoming of Markdown. Discussion at
-  // https://github.com/mojombo/jekyll/issues/199
-  MathJax.Hub.Queue(() => {
-    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
-  });
+});
 </script>
 
-<script src="https://3mile.github.io/js/bundle.js"></script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/3mile.github.io\/archives\/130\/';
+          
+            this.page.identifier = '\/archives\/130'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = '3mile';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
-
+    
   </body>
 </html>
+

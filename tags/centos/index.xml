@@ -6,10 +6,19 @@
     <description>Recent content in Centos on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 04 Apr 2018 13:50:17 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 21 Jul 2018 12:58:23 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Caddy&#43;WebSocket&#43;TLS&#43;Web</title>
+      <link>https://3mile.github.io/archives/2018/07/21/</link>
+      <pubDate>Sat, 21 Jul 2018 12:58:23 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/07/21/</guid>
+      <description>介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</description>
+    </item>
     
     <item>
       <title>CentOS7 修改默认时区</title>

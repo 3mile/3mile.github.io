@@ -6,10 +6,28 @@
     <description>Recent content in Vps on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 23 Apr 2018 13:26:40 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Nov 2018 13:37:41 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/vps/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CentOS7 安装部署MTProxy</title>
+      <link>https://3mile.github.io/archives/2018/11/13/</link>
+      <pubDate>Tue, 13 Nov 2018 13:37:41 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/11/13/</guid>
+      <description>MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软</description>
+    </item>
+    
+    <item>
+      <title>Caddy&#43;WebSocket&#43;TLS&#43;Web</title>
+      <link>https://3mile.github.io/archives/2018/07/21/</link>
+      <pubDate>Sat, 21 Jul 2018 12:58:23 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/07/21/</guid>
+      <description>介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</description>
+    </item>
     
     <item>
       <title>献给小白的GitHub入门魔法书「译」</title>

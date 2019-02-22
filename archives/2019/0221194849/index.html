@@ -1,0 +1,1181 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+	<meta name="google-site-verification" content="1MuLqoAUgX7XQvWx-S5i3Zm-WP7yyA0LOvApqTweSrk" />
+    <title>Linux Mint下oh MyZsh</title>
+    <meta name="author" content="3mile">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://3mile.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们">
+    <meta property="og:description" content="Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Linux Mint下oh MyZsh">
+    <meta property="og:url" content="/archives/2019/0221194849">
+    <meta property="og:site_name" content="3mile博客">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="3mile博客">
+    <meta name="twitter:description" content="Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们">
+    
+      <meta name="twitter:creator" content="@3mile1">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+    
+
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c_001.png">
+    
+    
+      <meta property="og:image" content="https://3mile.github.io/cover/7.jpg">
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link open-algolia-search" href="https://3mile.github.io/#search">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+      
+      <span class="sidebar-button-desc">搜索</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="tencent://message/?uin=975714080" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">QQ to Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/7.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Linux Mint下oh MyZsh
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-02-21T19:48:49&#43;08:00">
+        
+  
+  
+  
+  
+    2019 二月 21
+  
+
+      </time>
+    
+    
+  
+  
+    <span>分类于</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/mint">mint</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">oh My Zsh</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-安装-oh-my-zsh">1. 安装 Oh My Zsh</a>
+<ul>
+<li><a href="#第一步-安装-zsh">第一步：安装 Zsh</a></li>
+<li><a href="#第二步-安装-oh-my-zsh">第二步：安装 Oh My Zsh</a></li>
+</ul></li>
+<li><a href="#2-zsh-的配置">2. Zsh 的配置</a>
+<ul>
+<li><a href="#2-1-字体的安装">2.1 字体的安装</a></li>
+<li><a href="#2-2-主题及字体的配置">2.2 主题及字体的配置</a>
+<ul>
+<li><a href="#安装">安装</a></li>
+<li><a href="#使用-oh-my-zsh-安装">使用 Oh-My-Zsh 安装</a></li>
+<li><a href="#安装-awesome-terminal-fonts">安装 <code>awesome-terminal-fonts</code></a></li>
+</ul></li>
+<li><a href="#配置">配置</a>
+<ul>
+<li><a href="#两行提示符">两行提示符</a></li>
+<li><a href="#如果你想另起一行-在-zshrc-中加入以下定义即可">如果你想另起一行，在 <code>~/.zshrc</code> 中加入以下定义即可</a></li>
+<li><a href="#如果你想让右边的提示符也显示到下一行-只需在以上基础上再加以下定义即可">如果你想让右边的提示符也显示到下一行，只需在以上基础上再加以下定义即可</a></li>
+<li><a href="#如果你想自定义多行连接的符号-定义以下方式即可">如果你想自定义多行连接的符号，定义以下方式即可</a></li>
+<li><a href="#命令执行完新加一行">命令执行完新加一行</a></li>
+<li><a href="#禁用右边的提示符">禁用右边的提示符</a></li>
+<li><a href="#浅色主题">浅色主题</a></li>
+<li><a href="#自定义左边提示符的元素">自定义左边提示符的元素</a></li>
+<li><a href="#更多">更多</a></li>
+</ul></li>
+<li><a href="#2-3-另一个字体">2.3 另一个字体</a></li>
+</ul></li>
+<li><a href="#3-插件配置">3. 插件配置</a>
+<ul>
+<li><a href="#3-1-autojump-https-github-com-wting-autojump">3.1 <a href="https://github.com/wting/autojump">autojump</a></a></li>
+<li><a href="#3-2-fasd-https-github-com-clvv-fasd">3.2 <a href="https://github.com/clvv/fasd">fasd</a></a></li>
+<li><a href="#3-3-zsh-autosuggestions-https-github-com-zsh-users-zsh-autosuggestions">3.3 <a href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a></a></li>
+<li><a href="#3-4-zsh-syntax-highlighting-https-github-com-zsh-users-zsh-syntax-highlighting">3.4 <a href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a></a></li>
+<li><a href="#3-5-插件最终配置">3.5 插件最终配置</a></li>
+</ul></li>
+<li><a href="#4-zshrc-文件完整修改">4.「.zshrc」文件完整修改</a></li>
+<li><a href="#常用命令">常用命令</a></li>
+<li><a href="#参考资料">参考资料</a></li>
+</ul></li>
+</ul>
+</nav>
+
+<p>Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们一种全新的命令行使用体验。下文对 Oh My Zsh 的安装及配置方法进行总结，只总结最佳的实践。</p>
+
+<h2 id="1-安装-oh-my-zsh">1. 安装 Oh My Zsh</h2>
+
+<h3 id="第一步-安装-zsh">第一步：安装 Zsh</h3>
+
+<pre><code># 安装 Zsh
+sudo apt install zsh
+
+# 将 Zsh 设置为默认 Shell
+chsh -s /bin/zsh
+
+# 可以通过 echo $SHELL 查看当前默认的 Shell，如果没有改为 /bin/zsh，那么需要重启 Shell。
+</code></pre>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c_001.png" alt="c_001.png" /></p>
+
+<h3 id="第二步-安装-oh-my-zsh">第二步：安装 Oh My Zsh</h3>
+
+<pre><code># 安装 Oh My Zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+# 以上命令可能不好使，可使用如下两条命令
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh
+bash ./install.sh
+</code></pre>
+
+<h2 id="2-zsh-的配置">2. Zsh 的配置</h2>
+
+<h3 id="2-1-字体的安装">2.1 字体的安装</h3>
+
+<p>推荐在终端使用 Powerline 类型的主题，该类型主题可以使用图形表示尽可能多的信息，方便用户的使用。推荐安装用户量最大的 <a href="https://github.com/bhilburn/powerlevel9k">Powerlevel9k</a>。</p>
+
+<p>Powerlevel9k 中需要使用较多的图形符号，字体大多不会自带这些符号，所以需要使用专门的 Powerline 字体。</p>
+
+<h3 id="2-2-主题及字体的配置">2.2 主题及字体的配置</h3>
+
+<h4 id="安装">安装</h4>
+
+<p>该主题可以被 <strong>Oh-My-Zsh</strong>, <strong>Prezto</strong>, <strong>Antigen</strong>, and <strong>many others</strong> 使用。</p>
+
+<h4 id="使用-oh-my-zsh-安装">使用 Oh-My-Zsh 安装</h4>
+
+<p>从 Github 上克隆项目到 Oh-My-Zsh 的主题目录下，一般都在 <code>~/.oh-my-zsh/theme/</code> 目录。</p>
+
+<pre><code class="language-bash">git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+</code></pre>
+
+<p>修改 <code>~/.zshrc</code> 中的 <code>ZSH_THEME</code>：</p>
+
+<pre><code class="language-yaml">ZSH_THEME=&quot;powerlevel9k/powerlevel9k&quot;
+</code></pre>
+
+<p>然后重新打开终端就变成了 PowerLine 的形式了。但是由于没有安装相应的字体，导致符号显示不完全。</p>
+
+<h4 id="安装-awesome-terminal-fonts">安装 <code>awesome-terminal-fonts</code></h4>
+
+<p>这是一款可以在终端界面显示 awesome 图标的工具。</p>
+
+<ol>
+<li>获取该项目</li>
+</ol>
+
+<pre><code class="language-bash">git clone https://github.com/gabrielelana/awesome-terminal-fonts
+</code></pre>
+
+<ol>
+<li>进入该项目，将 <code>build/</code> 目录里的所有文件拷贝到 <code>~/.fonts/</code> 目录（没有就创建一个）下</li>
+</ol>
+
+<pre><code class="language-bash">cp -R build/* ～/.fonts/
+</code></pre>
+
+<ol>
+<li>执行以下命令让 freetype2 知道这些字体</li>
+</ol>
+
+<pre><code class="language-bash">fc-cache -fv ~/.fonts
+</code></pre>
+
+<ol>
+<li><p>自定义 <code>config/10-symbols.conf</code> 配置文件里的字体，改成自己喜欢的。当然不改就是默认的。</p></li>
+
+<li><p>拷贝 <code>config/10-symbols.conf</code> 配置文件到 <code>~/.config/fontconfig/conf.d</code> 目录（没有就创建一个）下</p></li>
+</ol>
+
+<pre><code class="language-bash">cp config/10-symbols.conf ~/.config/fontconfig/conf.d
+</code></pre>
+
+<ol>
+<li>source 所有 <code>.fonts</code> 目录下的字体到你的 shell 启动脚本</li>
+</ol>
+
+<pre><code class="language-bash">source ~/.fonts/*.sh
+</code></pre>
+
+<p>至此安装完成，再重启一下终端，效果是不是跟上面一样了。</p>
+
+<h3 id="配置">配置</h3>
+
+<p>powerlevel9k 提供了丰富的个性化配置功能。</p>
+
+<h4 id="两行提示符">两行提示符</h4>
+
+<p>powerlevel9k 默认只有一行提示符。</p>
+
+<h4 id="如果你想另起一行-在-zshrc-中加入以下定义即可">如果你想另起一行，在 <code>~/.zshrc</code> 中加入以下定义即可</h4>
+
+<pre><code>POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+</code></pre>
+
+<h4 id="如果你想让右边的提示符也显示到下一行-只需在以上基础上再加以下定义即可">如果你想让右边的提示符也显示到下一行，只需在以上基础上再加以下定义即可</h4>
+
+<pre><code>POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+</code></pre>
+
+<h4 id="如果你想自定义多行连接的符号-定义以下方式即可">如果你想自定义多行连接的符号，定义以下方式即可</h4>
+
+<pre><code>POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=&quot;↱&quot;
+POWERLEVEL9K_MULTILINE_SECOND_PROMPT_PREFIX=&quot;↳ &quot;
+</code></pre>
+
+<h4 id="命令执行完新加一行">命令执行完新加一行</h4>
+
+<pre><code>POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+</code></pre>
+
+<h4 id="禁用右边的提示符">禁用右边的提示符</h4>
+
+<pre><code>POWERLEVEL9K_DISABLE_RPROMPT=true
+</code></pre>
+
+<h4 id="浅色主题">浅色主题</h4>
+
+<pre><code>POWERLEVEL9K_COLOR_SCHEME='light'
+</code></pre>
+
+<h4 id="自定义左边提示符的元素">自定义左边提示符的元素</h4>
+
+<p>默认的元素只有提供了 context 、 root_indicator，可添加以下元素</p>
+
+<table>
+<thead>
+<tr>
+<th>元素</th>
+<th>介绍</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>os_icon</td>
+<td>系统标识</td>
+</tr>
+
+<tr>
+<td>battery</td>
+<td>电量</td>
+</tr>
+
+<tr>
+<td>context</td>
+<td>用户</td>
+</tr>
+
+<tr>
+<td>dir</td>
+<td>路径</td>
+</tr>
+
+<tr>
+<td>dir_writable</td>
+<td>目录读写状态</td>
+</tr>
+
+<tr>
+<td>load</td>
+<td>加载</td>
+</tr>
+
+<tr>
+<td>rspec_stats</td>
+<td>统计</td>
+</tr>
+
+<tr>
+<td>status</td>
+<td>状态</td>
+</tr>
+
+<tr>
+<td>symfony2_tests</td>
+<td>测试</td>
+</tr>
+
+<tr>
+<td>user</td>
+<td>当前用户</td>
+</tr>
+
+<tr>
+<td>vcs</td>
+<td>版本控制</td>
+</tr>
+
+<tr>
+<td>vi_mode</td>
+<td>vi 模式</td>
+</tr>
+</tbody>
+</table>
+
+<p>通过以下定义方式添加，例如：</p>
+
+<pre><code>POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon root_indicator dir vcs)
+</code></pre>
+
+<h4 id="更多">更多</h4>
+
+<p>它的配置还有更多，点击进入 <a href="https://link.jianshu.com?t=https://github.com/bhilburn/powerlevel9k/wiki/Stylizing-Your-Prompt">wiki</a> 查看。</p>
+
+<p>进入终端“首选项”，“自定义字体”里选择“meslo lg m dz regular for powerline”这个字体就可以了。</p>
+
+<h3 id="2-3-另一个字体">2.3 另一个字体</h3>
+
+<p>不推荐安装官方默认的 Powerline Fonts，理由是图形符号不全，符号处会有乱码。推荐安装 Nerd-Fonts 系列字体，因为该系列字体附带有尽可能全的符号，并且更新非常频繁，<a href="https://github.com/ryanoasis/nerd-fonts">项目地址在这里</a>。例如直接下载 <a href="https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Ubuntu/Regular">Ubuntu Font Family</a> 中的<a href="https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Ubuntu/Regular/complete/Ubuntu%20Nerd%20Font%20Complete.ttf"> Ubuntu Nerd Font Complete.ttf </a>，然后直接在Ubuntu下安装。</p>
+
+<p>方法同上，还是先git clone.然后sudo mv 到字体目录，然后font-cache -fv刷新字体。然后终端改字体为<code>Droid Sans Mono Dotted for Powerline</code>
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/e_024.png" alt="e_024.png" /></p>
+
+<h2 id="3-插件配置">3. 插件配置</h2>
+
+<h3 id="3-1-autojump-https-github-com-wting-autojump">3.1 <a href="https://github.com/wting/autojump">autojump</a></h3>
+
+<p>更快地切换目录，不受当前所在目录的限制。</p>
+
+<p>安装：</p>
+
+<pre><code>sudo apt install autojump
+</code></pre>
+
+<p>用法：</p>
+
+<pre><code># 跳转到目录
+j dir
+# 可以通过GUI文件管理器打开指定目录，执行命令:
+jo dir
+</code></pre>
+
+<h3 id="3-2-fasd-https-github-com-clvv-fasd">3.2 <a href="https://github.com/clvv/fasd">fasd</a></h3>
+
+<p>快速访问文件或目录，功能比前一个插件强大。</p>
+
+<p>安装：</p>
+
+<pre><code>sudo apt install fasd
+</code></pre>
+
+<p>用法：</p>
+
+<pre><code>alias f='fasd -f'          # 文件
+alias d='fasd -d'        # 目录
+alias a='fasd -a'        # 任意
+alias s='fasd -si'       # 显示并选择
+
+alias sd='fasd -sid'        # 选择目录
+alias sf='fasd -sif'          # 选择文件
+alias z='fasd_cd -d'       # 跳转至目录
+alias zz='fasd_cd -d -i'  # 选择并跳转至目录
+</code></pre>
+
+<h3 id="3-3-zsh-autosuggestions-https-github-com-zsh-users-zsh-autosuggestions">3.3 <a href="https://github.com/zsh-users/zsh-autosuggestions">zsh-autosuggestions</a></h3>
+
+<p>命令行命令键入时的历史命令建议插件</p>
+
+<p>按照官方文档提示，直接执行如下命令安装：</p>
+
+<pre><code>git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+</code></pre>
+
+<h3 id="3-4-zsh-syntax-highlighting-https-github-com-zsh-users-zsh-syntax-highlighting">3.4 <a href="https://github.com/zsh-users/zsh-syntax-highlighting">zsh-syntax-highlighting</a></h3>
+
+<p>命令行语法高亮插件</p>
+
+<p>按照官方文档提示，直接执行如下命令安装：</p>
+
+<pre><code>git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+</code></pre>
+
+<h3 id="3-5-插件最终配置">3.5 插件最终配置</h3>
+
+<pre><code># autojump 功能弱，fasd 功能强，但是没 autojump 实用
+# 值得注意的是，根据官方文档，zsh-syntax-highlighting 插件需放在最后
+plugins=(
+  git extract autojump zsh-autosuggestions zsh-syntax-highlighting
+)
+</code></pre>
+
+<h2 id="4-zshrc-文件完整修改">4.「.zshrc」文件完整修改</h2>
+
+<p>Oh My Zsh 配置文件的完整修改结果，只有对配置文件进行如下修改，才能使上述配置生效。</p>
+
+<pre><code># 设置字体模式以及配置命令行的主题，语句顺序不能颠倒
+POWERLEVEL9K_MODE='nerdfont-complete'
+ZSH_THEME=&quot;powerlevel9k/powerlevel9k&quot;
+
+# 以下内容去掉注释即可生效：
+# 启动错误命令自动更正
+ENABLE_CORRECTION=&quot;true&quot;
+
+# 在命令执行的过程中，使用小红点进行提示
+COMPLETION_WAITING_DOTS=&quot;true&quot;
+
+# 启用已安装的插件
+plugins=(
+  git extract fasd zsh-autosuggestions zsh-syntax-highlighting
+)
+</code></pre>
+
+<h2 id="常用命令">常用命令</h2>
+
+<p>下面总结 Oh My Zsh 配置相关的其他 bash 命令：</p>
+
+<pre><code>#  查看当前所用的 Shell
+echo $SHELL
+
+# 查看系统内已安装的 Shell
+cat /etc/shells
+
+# 用 GUI 文件管理器或编辑器打开指定的的文件或目录
+xdg-open fileOrDir
+</code></pre>
+
+<h2 id="参考资料">参考资料</h2>
+
+<ol>
+<li><a href="https://segmentfault.com/a/1190000013612471">Zsh + Oh My Zsh 全程指南「程序员必备」</a></li>
+<li><a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Themes">Zsh 全程指南</a></li>
+<li><a href="https://www.cnblogs.com/EasonJim/p/7863099.html">Ubuntu 16.04 下安装 Zsh 和 Oh My Zsh</a></li>
+</ol>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/mint/">mint</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/zsh/">zsh</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/0220194410/" data-tooltip="Mint使用VSCode编辑MarkDown">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/0221203025/" data-tooltip="Linux Mint NFS服务端与客户端配置">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0221194849/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0221194849/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0221194849/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. 版权所有
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/0220194410/" data-tooltip="Mint使用VSCode编辑MarkDown">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/0221203025/" data-tooltip="Linux Mint NFS服务端与客户端配置">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0221194849/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0221194849/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0221194849/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0221194849%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0221194849%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0221194849%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fbd6395dcc216c78e791e9f7cee2ac8e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221203025/">
+                <h3 class="media-heading">Linux Mint NFS服务端与客户端配置</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">早先Sun Microsystems创建了网络文件系统以通过网络共享资源。NFS与SAMBA类似，在共享文件方面确实非常方便。而NFS大多数时</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221194849/">
+                <h3 class="media-heading">Linux Mint下oh MyZsh</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220194410/">
+                <h3 class="media-heading">Mint使用VSCode编辑MarkDown</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">为什么选择VS Code？ 在选择Visual Studio Code（以下简称Code）作为markdown主力编辑器之前，我在Mac电脑上尝试了简友们推荐</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/02/20/">
+                <h3 class="media-heading">Shutte恢复编辑选项卡</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutte</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220/">
+                <h3 class="media-heading">Linux Mint操作记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电脑使用。</p>
+
+<p>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/11/13/">
+                <h3 class="media-heading">CentOS7 安装部署MTProxy</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/10/27/">
+                <h3 class="media-heading">编译lean LEDE后transmission的使用总结</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">首先是编译过程中,需要选中 luci-app-transmission_git-17.080.69173-773734e-1_all.ipk luci-i18n-transmission-zh-cn_git-17.080.69173-773734e-1_all.ipk transmission-daemon-openssl_2.92+git-4_x86_64.ipk transmission-web_2.92+git-4_x86_64.ipk 如果编译中只选中了luci-app-transmission的话,transmission是不能运行的,可</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/25/">
+                <h3 class="media-heading">老旧笔记本单网口实机安装Lede(openwrt)_x64</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">写在前面 首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如: 安装使用Linux Mint 安装过黑群晖做NAS 安装使用过Op</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/21/">
+                <h3 class="media-heading">Caddy&#43;WebSocket&#43;TLS&#43;Web</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/02/">
+                <h3 class="media-heading">Debian系统搭建家庭NAS系统</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         62 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://3mile.github.io/images/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://3mile.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/3mile.github.io\/archives\/2019\/0221194849\/';
+          
+            this.page.identifier = '\/archives\/2019\/0221194849'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = '3mile';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mint on 3mile博客</title>
+    <link>https://3mile.github.io/tags/mint/</link>
+    <description>Recent content in Mint on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 21 Feb 2019 19:48:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/mint/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux Mint下oh MyZsh</title>
+      <link>https://3mile.github.io/archives/2019/0221194849/</link>
+      <pubDate>Thu, 21 Feb 2019 19:48:49 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/0221194849/</guid>
+      <description>Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们</description>
+    </item>
+    
+    <item>
+      <title>Mint使用VSCode编辑MarkDown</title>
+      <link>https://3mile.github.io/archives/2019/0220194410/</link>
+      <pubDate>Wed, 20 Feb 2019 19:44:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/0220194410/</guid>
+      <description>为什么选择VS Code？ 在选择Visual Studio Code（以下简称Code）作为markdown主力编辑器之前，我在Mac电脑上尝试了简友们推荐</description>
+    </item>
+    
+  </channel>
+</rss>

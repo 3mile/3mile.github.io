@@ -1,0 +1,1123 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+	<meta name="google-site-verification" content="1MuLqoAUgX7XQvWx-S5i3Zm-WP7yyA0LOvApqTweSrk" />
+    <title>在github部署hugo静态网站</title>
+    <meta name="author" content="3mile">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://3mile.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="原由 颱風天那都不能去，只好繼續 Coding 人生、看看 Pocket 未讀的文章。不過也因此發現好幾個不錯的東西 Supercharging the Atom Editor for Go Development · marcio.io，最近也開始用 Atom 也開">
+    <meta property="og:description" content="原由 颱風天那都不能去，只好繼續 Coding 人生、看看 Pocket 未讀的文章。不過也因此發現好幾個不錯的東西 Supercharging the Atom Editor for Go Development · marcio.io，最近也開始用 Atom 也開">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="在github部署hugo静态网站">
+    <meta property="og:url" content="/archives/2018/04">
+    <meta property="og:site_name" content="3mile博客">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="3mile博客">
+    <meta name="twitter:description" content="原由 颱風天那都不能去，只好繼續 Coding 人生、看看 Pocket 未讀的文章。不過也因此發現好幾個不錯的東西 Supercharging the Atom Editor for Go Development · marcio.io，最近也開始用 Atom 也開">
+    
+      <meta name="twitter:creator" content="@3mile1">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+    
+
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github/first-post-screenshot.jpg">
+    
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/2.jpg">
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link open-algolia-search" href="https://3mile.github.io/#search">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+      
+      <span class="sidebar-button-desc">搜索</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="tencent://message/?uin=975714080" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">QQ to Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/2.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      在github部署hugo静态网站
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-04-27T09:32:59&#43;08:00">
+        
+  
+  
+  
+  
+    2018 四月 27
+  
+
+      </time>
+    
+    
+  
+  
+    <span>分类于</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/%e5%8d%9a%e5%ae%a2%e7%b3%bb%e7%bb%9f">博客系统</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">A beautiful cover</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<h3 id="原由">原由</h3>
+
+<p>颱風天那都不能去，只好繼續 Coding 人生、看看 Pocket 未讀的文章。不過也因此發現好幾個不錯的東西</p>
+
+<ol>
+<li><a href="http://marcio.io/2015/07/supercharging-atom-editor-for-go-development/">Supercharging the Atom Editor for Go Development · marcio.io</a>，最近也開始用 Atom 也開始學習 Golang 語言。這一篇作者說明了他自己的使用經驗。</li>
+<li><a href="http://ulricqin.com/post/how-to-use-hugo/">使用Hugo搭建免费个人Blog · Ulric Qin</a> 這一篇文章看到 Hugo，發現在他的 Blog 也是用 Hugo 架的</li>
+</ol>
+
+<p>在 Ulric Quin 的文章中得知他自己的 Blog 是架在大陸的<a href="https://gitcafe.com/">GitCafe</a>，Hugo 可以直接發佈到 GitCafe &amp; Github 的 Page <strong>免費</strong>，當然是立刻自己動手玩一玩</p>
+
+<p>在 <a href="http://gohugo.io/tutorials/github-pages-blog/#configure-git-workflow-the-alternate-way:fcefb200141ace3e7bfd6542457b7a72">Hosting on GitHub Pages</a> 的說明文件中有如何把 Hugo 靜態網站佈署到 Github Pages 中。但因為 <a href="https://pages.github.com/">GitHub Pages</a>提供了二種不同形態的頁面 <code>User or organization site</code> &amp; <code>Project Site</code>。其中個人主頁一個帳號只能有<strong>一個</strong>、而專案頁面則可以<strong>很多個</strong>。</p>
+
+<p>所以在佈署 Hugo 靜態網站也因為對應到不同的型態的 Github Pages 而有所不同。</p>
+
+<blockquote>
+<p>第一種方式是將 Hugo 靜態網站佈署到 Github Page <code>Project Site</code> 面頁中. 只需要在 github 上建立一個 repo，但是利用 git 中 <code>subtree</code> 的概念將 <code>public</code> 資料夾連結到 <code>gh-pages</code> 的分支上，git 操作過程較為繁鎖</p>
+</blockquote>
+
+<p>Url 上的差異</p>
+
+<pre><code class="language-bash"># project site url
+http://github.com/&lt;你的github账号&gt;/&lt;项目名&gt;
+
+# github pages host url
+http://&lt;你的github账号&gt;.github.io
+</code></pre>
+
+<h4 id="project-site">Project Site</h4>
+
+<h4 id="step1-安裝-hugo-並建立新專案">Step1 - 安裝 Hugo 並建立新專案</h4>
+
+<p>在<a href="https://github.com/spf13/hugo/releases">安裝</a>(詳細步驟請看這)好 Hugo 後，直接建立新的 Hugo 專案</p>
+
+<pre><code class="language-bash"># 建立 Hugo 新專案，-f 是指定 yaml 格式，預設為 toml:frontmatter format
+$ hugo new site blog-hugo -f yaml
+
+# change directory
+$ cd blog-hugo
+
+# git initialized
+$ git init
+$ echo .DS_Store &gt;&gt; .gitignore
+
+# add git remote repo
+$ git remote add origin git@github.com:&lt;your-github-account&gt;/blog-hugo.git
+</code></pre>
+
+<p>檢視新專案資料架構</p>
+
+<pre><code class="language-bash"># &lt;project-name&gt; file structure
+├── archetypes
+├── config.toml
+├── content
+├── data
+├── layouts
+└── static
+</code></pre>
+
+<h4 id="step2-安裝新的-themes-http-gohugo-io-themes-installing">Step2 - <a href="http://gohugo.io/themes/installing/">安裝新的 Themes</a></h4>
+
+<blockquote>
+<p><a href="https://github.com/spf13/hugoThemes">Hugo Themes repository</a></p>
+</blockquote>
+
+<p>本來安裝 themes 可直接新建 themes 資料夾並使用 <code>git clone &lt;themes-url&gt;</code>，不過此方法在後面 push 到 Github Pages 出，Github 會回報</p>
+
+<blockquote>
+<p>The page build failed with the following error: The submodule <code>themes/hyde</code> was not properly initialized with a <code>.gitmodules</code> file. For more information, see &gt;<a href="https://help.github.com/articles/page-build-failed-missing-submodule">https://help.github.com/articles/page-build-failed-missing-submodule</a>.
+If you have any questions you can contact us by replying to this email.</p>
+</blockquote>
+
+<p>所以這邊直接使用 git <code>submodule</code> 的方式來安裝 themes</p>
+
+<pre><code># add hugo themes to project as submodule
+# git submodule add &lt;repository&gt; [&lt;path&gt;]
+$ git submodule add https://github.com/spf13/hyde themes/hyde
+</code></pre>
+
+<h4 id="step3-編輯專案設定檔">Step3 - 編輯專案設定檔</h4>
+
+<pre><code class="language-bash">baseurl : &quot;http://&lt;你的github账号&gt;.github.com/blog-hugo&quot;
+languageCode : &quot;zh-cn&quot;
+title : &quot;My New Hugo Site&quot;
+
+# 新增 theme 的名稱
+theme : 'hyde'
+...
+</code></pre>
+
+<h4 id="step4-新增新的文章">Step4 - 新增新的文章</h4>
+
+<p>在 <code>content/posts</code> 建立 <code>first-post.md</code></p>
+
+<pre><code class="language-bash"># 會在專案 content/posts 下產生 first-post.md 檔案
+# -f 使用 yaml 檔案格式
+$ hugo new posts/first-post.md -f yaml
+</code></pre>
+
+<p>編輯 <code>first-post.md</code></p>
+
+<pre><code class="language-bash">---
+date: 2015-07-16T23:01:57+08:00
+title: first post
+---
+
+This is my first post.
+</code></pre>
+
+<h4 id="step5-預覽">Step5 - 預覽</h4>
+
+<p>此時就可以在 Local 執行， <a href="http://127.0.0.1:1313/blog-hugo/">http://127.0.0.1:1313/blog-hugo/</a></p>
+
+<pre><code class="language-bash"># -w watch filesystem for changes and recreate as needed
+# -D include content marked as draft
+# Press Ctrl+C to stop
+$ hugo server -w
+</code></pre>
+
+<p>應該可以看到下面擷圖的樣式
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github/first-post-screenshot.jpg" alt="img" /></p>
+
+<h4 id="step6-發佈-hugo-靜態網站至-github-pages">Step6 - 發佈 Hugo 靜態網站至 Github Pages</h4>
+
+<p>接下來的動作是一連串的 git 操作，把 Hugo 產生的 <code>public</code> 資料夾推送至 Github Pages</p>
+
+<pre><code class="language-bash"># 删除public文件夹,以后hugo会重新生成
+$ rm -rf public
+
+$ git add .
+$ git commit -m 'hugo project init'
+
+# 推送到github下master分枝
+$ git push -u origin master
+
+# 创建一个名为gh-pages的新的孤立分支（无提交历史记录）
+$ git checkout --orphan gh-pages
+
+# 卸载所有文件
+# -rf themes/hyde
+# 删除所有被跟踪，但在工作目录被删除的文件
+$ git rm -rf --cached $(git ls-files)
+
+# 添加并提交该文件
+$ git add .
+$ git commit -m &quot;INIT: initial commit on gh-pages branch&quot;
+
+# 推送到远程gh-pages分支
+$ git push origin gh-pages
+
+# 返回master分支
+$ git checkout master
+
+# 删除public文件夹，为gh-pages分支腾出空间
+$ rm -rf public
+
+# 添加存储库的gh-pages分支。它看起来像一个名为public的文件夹. It will look like a folder named public
+$ git subtree add --prefix=public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages --squash
+
+# 同步我们刚刚提交的文件。这有助于避免合并冲突
+$ git subtree pull --prefix=public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages
+
+# 运行hugo。生成的网站将被放置在public目录中（或者如果您未使用主题，则省略-t ThemeName）
+$ hugo
+
+# 添加所有的
+$ git add -A
+
+# Commit and push to master
+$ git commit -m &quot;Updating site&quot; 
+$ git push origin master
+
+# 将public子树推到gh-pages分支
+$ git subtree push --prefix=public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages
+</code></pre>
+
+<p>這時候，訪問 <a href="http://mile3033.github.com/blog-hugo">http://你的github账号.github.com/hugo_blog</a> 應該就可以正常運作</p>
+
+<p>之後如果有任何修改，只有執行最後的3個步驟即可或是將最後的步驟寫成 <code>deploy.sh</code></p>
+
+<pre><code class="language-shell"># deploy.sh
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+# Build the project.
+hugo
+
+# Add changes to git.
+git add -A
+
+# Commit changes.
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+git subtree push --prefix=public git@github.com:&lt;your-github-account&gt;/hugoblog.git gh-pages
+</code></pre>
+
+<hr />
+
+<h3 id="organization-site">Organization site</h3>
+
+<p>Github Pages 除了提供專案主頁(可以多個)之外，也提供了個人主頁(每一個 github 帳號只有一個)的方式。將 Hugo 靜態網站發佈到個人主頁的方式比發佈到專案主頁簡單</p>
+
+<p>在個人主頁中</p>
+
+<ul>
+<li>Github repo 必需取口 .github.io</li>
+<li>master 分支中的內容會被 Build 及發佈到你的 Github Page中 (專案主頁是利用 gh-pages 分支，這點不太一樣)</li>
+</ul>
+
+<h4 id="step1-建立-hugo-repos">Step1 - 建立 Hugo repos</h4>
+
+<ul>
+<li>建立 <code>blog-hugo</code> repo (用來 host Hugo 的內容)</li>
+<li>建立 <code>mile3033.github.io</code> repo (Hugo public 中靜態網頁的內容)</li>
+</ul>
+
+<h4 id="step2-建立-hugo-新專案">Step2 - 建立 Hugo 新專案</h4>
+
+<pre><code class="language-bash">$ hugo new site blog-hugo -f yaml
+
+# change directory
+$ cd blog-hugo
+
+# git initialized
+$ git init
+$ echo .DS_Store &gt;&gt; .gitignore
+
+# add git remote repo
+$ git remote add origin git@github.com:3033/blog-hugo.git
+</code></pre>
+
+<h4 id="step3-安裝-themes">Step3 - 安裝 Themes</h4>
+
+<pre><code class="language-bash">$ git submodule add https://github.com/laozhu/hugo-nuo themes/hugo-nuo
+</code></pre>
+
+<h4 id="step4-編輯專案設定檔">Step4 - 編輯專案設定檔</h4>
+
+<pre><code class="language-yaml">baseurl: 'http://mile3033.github.com/'
+languageCode: 'zh-cn'
+title: 'My New Hugo Site'
+
+theme: 'hyde'
+...
+</code></pre>
+
+<h4 id="step5-新增文章">Step5 - 新增文章</h4>
+
+<pre><code class="language-bash">$ hugo new posts/first-post.md -f yaml
+</code></pre>
+
+<pre><code class="language-yaml">---
+date: 2015-07-19T17:32:25+08:00
+title: first post
+---
+
+This is my first hugo post
+</code></pre>
+
+<h4 id="step6-預覽">Step6 - 預覽</h4>
+
+<p>此時就可以在 Local 執行， <a href="http://127.0.0.1:1313/hugo_blog/">http://127.0.0.1:1313/hugo_blog/</a></p>
+
+<pre><code class="language-bash"># -w watch filesystem for changes and recreate as needed
+# -D include content marked as draft
+# Press Ctrl+C to stop
+$ hugo server -w
+</code></pre>
+
+<h4 id="step7-移除-public">Step7 - 移除 public</h4>
+
+<pre><code class="language-bash"># it will created by `hugo` command after we executed `deploy.sh`
+$ rm -rf public
+</code></pre>
+
+<h2 id="step8-新增-github-io-public-as-submodule">Step8 - 新增 .github.io public as submodule</h2>
+
+<pre><code class="language-bash">$ git submodule add git@github.com:mile3033/mile3033.github.io.git public
+</code></pre>
+
+<h4 id="step8-发布">Step8 - 发布</h4>
+
+<pre><code class="language-sh">#deploy.sh
+#!/bin/bash
+
+echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
+
+# Build the project.
+hugo # if using a theme, replace by `hugo -t &lt;yourtheme&gt;`
+
+# Go To Public folder
+cd public
+# Add changes to git.
+git add -A
+
+# Commit changes.
+msg=&quot;rebuilding site `date`&quot;
+if [ $# -eq 1 ]
+  then msg=&quot;$1&quot;
+fi
+git commit -m &quot;$msg&quot;
+
+# Push source and build repos.
+git push origin master
+
+# Come Back
+cd ..
+</code></pre>
+
+<p>執行發佈shell後，內容會被推送到 <code>blog-hugo</code>，而 <code>public</code> 會被推送到 <code>mile3033.github.io</code></p>
+
+<pre><code class="language-bash">$ deploy.sh 'your commit message'
+</code></pre>
+
+<p>待 Github Page 編譯發佈後，訪問 <a href="http://mile3033.github.io/">http://mile3033.github.io</a> 就會看到結果!</p>
+
+<h3 id="參考資料">參考資料</h3>
+
+<ul>
+<li><a href="http://imcc.mobi/posts/How-to-build-gohugo-on-github/">快速搭建gohugo博客 · Mac Zealot - A.C Che</a></li>
+<li><a href="http://gohugo.io/tutorials/github-pages-blog/#configure-git-workflow-the-alternate-way:fcefb200141ace3e7bfd6542457b7a72">Hosting on GitHub Pages</a></li>
+<li><a href="https://medium.com/@LovettLovett/github-pages-godaddy-f0318c2f25a">GitHub Pages + GoDaddy — Medium</a></li>
+</ul>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/hugo/">hugo</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/github/">github</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/128/" data-tooltip="第三方评论系统推荐">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2018/04/001/" data-tooltip="Hugo &#43; Github Pages搭建静态博客">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/04/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/04/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/04/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. 版权所有
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/128/" data-tooltip="第三方评论系统推荐">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2018/04/001/" data-tooltip="Hugo &#43; Github Pages搭建静态博客">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/04/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/04/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/04/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fbd6395dcc216c78e791e9f7cee2ac8e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221203025/">
+                <h3 class="media-heading">Linux Mint NFS服务端与客户端配置</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">早先Sun Microsystems创建了网络文件系统以通过网络共享资源。NFS与SAMBA类似，在共享文件方面确实非常方便。而NFS大多数时</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221194849/">
+                <h3 class="media-heading">Linux Mint下oh MyZsh</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220194410/">
+                <h3 class="media-heading">Mint使用VSCode编辑MarkDown</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">为什么选择VS Code？ 在选择Visual Studio Code（以下简称Code）作为markdown主力编辑器之前，我在Mac电脑上尝试了简友们推荐</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/02/20/">
+                <h3 class="media-heading">Shutte恢复编辑选项卡</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutte</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220/">
+                <h3 class="media-heading">Linux Mint操作记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电脑使用。</p>
+
+<p>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/11/13/">
+                <h3 class="media-heading">CentOS7 安装部署MTProxy</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/10/27/">
+                <h3 class="media-heading">编译lean LEDE后transmission的使用总结</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">首先是编译过程中,需要选中 luci-app-transmission_git-17.080.69173-773734e-1_all.ipk luci-i18n-transmission-zh-cn_git-17.080.69173-773734e-1_all.ipk transmission-daemon-openssl_2.92+git-4_x86_64.ipk transmission-web_2.92+git-4_x86_64.ipk 如果编译中只选中了luci-app-transmission的话,transmission是不能运行的,可</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/25/">
+                <h3 class="media-heading">老旧笔记本单网口实机安装Lede(openwrt)_x64</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">写在前面 首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如: 安装使用Linux Mint 安装过黑群晖做NAS 安装使用过Op</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/21/">
+                <h3 class="media-heading">Caddy&#43;WebSocket&#43;TLS&#43;Web</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/02/">
+                <h3 class="media-heading">Debian系统搭建家庭NAS系统</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         62 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://3mile.github.io/images/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://3mile.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/3mile.github.io\/archives\/2018\/04\/';
+          
+            this.page.identifier = '\/archives\/2018\/04'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = '3mile';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

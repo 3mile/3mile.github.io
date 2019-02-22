@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lede on 3mile博客</title>
+    <link>https://3mile.github.io/tags/lede/</link>
+    <description>Recent content in Lede on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 27 Oct 2018 11:04:52 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/lede/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>编译lean LEDE后transmission的使用总结</title>
+      <link>https://3mile.github.io/archives/2018/10/27/</link>
+      <pubDate>Sat, 27 Oct 2018 11:04:52 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/10/27/</guid>
+      <description>首先是编译过程中,需要选中 luci-app-transmission_git-17.080.69173-773734e-1_all.ipk luci-i18n-transmission-zh-cn_git-17.080.69173-773734e-1_all.ipk transmission-daemon-openssl_2.92+git-4_x86_64.ipk transmission-web_2.92+git-4_x86_64.ipk 如果编译中只选中了luci-app-transmission的话,transmission是不能运行的,可</description>
+    </item>
+    
+  </channel>
+</rss>

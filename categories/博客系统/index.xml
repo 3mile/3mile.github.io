@@ -17,34 +17,24 @@
       <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/142/</guid>
-      <description>{{&amp;lt; alert info &amp;gt;}} 经过一个多月的努力开发，基于electron的图床上传工具PicGo终于迎来了一个minor版本的更新。如果你对此感兴趣，不妨看看都</description>
-    </item>
-    
-    <item>
-      <title>highlighted code showcase</title>
-      <link>https://3mile.github.io/2018/05/01/highlighted-code-showcase/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/2018/05/01/highlighted-code-showcase/</guid>
-      <description>&lt;p&gt;Tranquilpeak Hugo theme have its own theme to highlight source code. It&amp;rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.
-&lt;/p&gt;</description>
+      <description>经过一个多月的努力开发，基于electron的图床上传工具PicGo终于迎来了一个minor版本的更新。如果你对此感兴趣，不妨看看都更新了哪</description>
     </item>
     
     <item>
       <title>Hugo &#43; Github Pages搭建静态博客</title>
-      <link>https://3mile.github.io/2018/04/27/hugo---github-pages%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://3mile.github.io/archives/2018/04/001/</link>
       <pubDate>Fri, 27 Apr 2018 13:13:44 +0800</pubDate>
       
-      <guid>https://3mile.github.io/2018/04/27/hugo---github-pages%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://3mile.github.io/archives/2018/04/001/</guid>
       <description>由于最近再次安装hugo,就想纪录一下这个过程，有什么不对的地方请指出来。 一. 安装hugo hugo有两种安装方式，homebrew包管理工具</description>
     </item>
     
     <item>
       <title>在github部署hugo静态网站</title>
-      <link>https://3mile.github.io/2018/04/27/%E5%9C%A8github%E9%83%A8%E7%BD%B2hugo%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</link>
+      <link>https://3mile.github.io/archives/2018/04/</link>
       <pubDate>Fri, 27 Apr 2018 09:32:59 +0800</pubDate>
       
-      <guid>https://3mile.github.io/2018/04/27/%E5%9C%A8github%E9%83%A8%E7%BD%B2hugo%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/</guid>
+      <guid>https://3mile.github.io/archives/2018/04/</guid>
       <description>原由 颱風天那都不能去，只好繼續 Coding 人生、看看 Pocket 未讀的文章。不過也因此發現好幾個不錯的東西 Supercharging the Atom Editor for Go Development · marcio.io，最近也開始用 Atom 也開</description>
     </item>
     

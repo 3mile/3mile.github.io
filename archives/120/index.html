@@ -1,238 +1,289 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
 <!DOCTYPE html>
 <html lang="zh-cn">
-<head>
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+	<meta name="google-site-verification" content="1MuLqoAUgX7XQvWx-S5i3Zm-WP7yyA0LOvApqTweSrk" />
+    <title>MarkDown页内跳转</title>
+    <meta name="author" content="3mile">
+    <meta name="keywords" content="MarkDown">
 
-  <meta charset="utf-8" />
+    <link rel="icon" href="https://3mile.github.io/favicon.png">
+    
 
-  
-  <title>MarkDown页内跳转</title>
+    
+    <meta name="description" content="上一篇博文里跟大家一起啃了啃 Markdown 的语法，其实已经可以满足写博文的基本需求了。Markdown 的本意是想让博主们专注内容的撰写而不是排版，但是如">
+    <meta property="og:description" content="上一篇博文里跟大家一起啃了啃 Markdown 的语法，其实已经可以满足写博文的基本需求了。Markdown 的本意是想让博主们专注内容的撰写而不是排版，但是如">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="MarkDown页内跳转">
+    <meta property="og:url" content="/archives/120">
+    <meta property="og:site_name" content="3mile博客">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="3mile博客">
+    <meta name="twitter:description" content="上一篇博文里跟大家一起啃了啃 Markdown 的语法，其实已经可以满足写博文的基本需求了。Markdown 的本意是想让博主们专注内容的撰写而不是排版，但是如">
+    
+      <meta name="twitter:creator" content="@3mile1">
+    
+    
 
-  
-  
+    
+    
 
+    
+      <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+    
 
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/5.jpg">
+    
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/5.jpg">
+    
+    
 
+    
 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
 
-  
-  <meta name="author" content="3mile" />
-  <meta name="description" content="上一篇博文里跟大家一起啃了啃 Markdown 的语法，其实已经可以满足写博文的基本需求了。Markdown 的本意是想让博主们专注内容的撰写而不是排版，但是如" />
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
 
-  
-  
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@3mile1" />
-    <meta name="twitter:title" content="MarkDown页内跳转" />
-    <meta name="twitter:description" content="上一篇博文里跟大家一起啃了啃 Markdown 的语法，其实已经可以满足写博文的基本需求了。Markdown 的本意是想让博主们专注内容的撰写而不是排版，但是如" />
-    <meta name="twitter:image" content="https://3mile.github.io/img/avatar.jpg" />
-  
+    
+    
+  </head>
 
-  
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="MarkDown页内跳转" />
-  <meta property="og:description" content="上一篇博文里跟大家一起啃了啃 Markdown 的语法，其实已经可以满足写博文的基本需求了。Markdown 的本意是想让博主们专注内容的撰写而不是排版，但是如" />
-  <meta property="og:url" content="https://3mile.github.io/archives/120/" />
-  <meta property="og:image" content="https://3mile.github.io/img/avatar.jpg" />
-
-
-
-
-<meta name="generator" content="Hugo 0.40.2" />
-
-
-<link rel="canonical" href="https://3mile.github.io/archives/120/" />
-<link rel="alternative" href="https://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
-
-
-<meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="format-detection" content="telephone=no,email=no,adress=no" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-
-
-<meta name="robots" content="index,follow" />
-<meta name="referrer" content="origin-when-cross-origin" />
-<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
-<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
-<meta name="baidu-site-verification" content="LN2gf0A8Hs" />
-
-
-
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="3mile博客" />
-<meta name="msapplication-tooltip" content="3mile博客" />
-<meta name='msapplication-navbutton-color' content="#5fbf5e" />
-<meta name="msapplication-TileColor" content="#5fbf5e" />
-<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://3mile.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://3mile.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://3mile.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://3mile.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://3mile.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
-
-
-
-<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
-
-<link rel="stylesheet" href="https://3mile.github.io/css/bundle.css" />
-
-
-  
-  <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
-  <![endif]-->
-
-<!--[if lte IE 11]>
-    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
-  <![endif]-->
-
-
-<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
-
-
-<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
-
-
-</head>
   <body>
-    
-    <div class="suspension">
-      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
-      
-        
-      
-    </div>
-    
-    
-  <header class="site-header">
-  <img class="avatar" src="https://3mile.github.io/img/avatar.jpg" alt="Avatar">
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
   
-  <h2 class="title">3mile博客</h2>
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
   
-  <p class="subtitle">~ 学习,总是使人进步 ~</p>
-  <button class="menu-toggle" type="button">
-    <span class="icon icon-menu"></span>
-  </button>
-  <nav class="site-menu collapsed">
-    <h2 class="offscreen">Main Menu</h2>
-    <ul class="menu-list">
-      
-      
-      
-      
-        <li class="menu-item
-            
-            
-            
-              is-active
-            ">
-            <a href="https://3mile.github.io/">主页</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="https://3mile.github.io/categories/">分类</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="https://3mile.github.io/tags/">标签</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="about">关于</a>
-          </li>
-      
-    </ul>
-  </nav>
-  <nav class="social-menu collapsed">
-    <h2 class="offscreen">Social Networks</h2>
-    <ul class="social-list">
-
-      
-      <li class="social-item">
-        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
-      </li>
-
-      
-      <li class="social-item">
-        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="//weibo.com/3179328351" title="Weibo"><span class="icon icon-weibo"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="https://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
-      </li>
-
-    </ul>
-  </nav>
 </header>
 
-  <section class="main post-detail">
-    <header class="post-header">
-      <h1 class="post-title">MarkDown页内跳转</h1>
-      <p class="post-meta">@3mile · Apr 23, 2018 · 4 min read</p>
-    </header>
-    <article class="post-content">
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link open-algolia-search" href="https://3mile.github.io/#search">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+      
+      <span class="sidebar-button-desc">搜索</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="tencent://message/?uin=975714080" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">QQ to Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--partial"
+       style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/5.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      MarkDown页内跳转
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-04-23T13:20:06&#43;08:00">
+        
+  
+  
+  
+  
+    2018 四月 23
+  
+
+      </time>
+    
+    
+  
+  
+    <span>分类于</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/%e5%8d%9a%e5%ae%a2%e7%b3%bb%e7%bb%9f">博客系统</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">A beautiful cover</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
 
 <p>上一篇博文里跟大家一起啃了啃 Markdown 的语法，其实已经可以满足写博文的基本需求了。Markdown 的本意是想让博主们专注内容的撰写而不是排版，但是如果硬要想做出更漂亮的排版，就需要偷偷学习一些黑魔法👊🎩。</p>
 
@@ -240,21 +291,24 @@
 
 <p>方法一：Markdown 和 HTML 混编
 废话不多说直接看代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">* [主标题1](#1)
+
+<pre><code class="language-html">* [主标题1](#1)
     * [副标题1.1](#1.1)
         * [次级副标题1.1.1](#1.1.1)
     * [副标题1.2](#one-point-two)
 
-&lt;<span style="color:#f92672">h1</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span>&gt;主标题1&lt;/<span style="color:#f92672">h1</span>&gt;
+&lt;h1 id=&quot;1&quot;&gt;主标题1&lt;/h1&gt;
 文本内容。。。
 
-&lt;<span style="color:#f92672">h2</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.1&#34;</span>&gt;副标题1.1&lt;/<span style="color:#f92672">h2</span>&gt;
+&lt;h2 id=&quot;1.1&quot;&gt;副标题1.1&lt;/h2&gt;
 文本内容。。。
 
-&lt;<span style="color:#f92672">h3</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.1.1&#34;</span>&gt;次级副标题1.1.1&lt;/<span style="color:#f92672">h3</span>&gt;
+&lt;h3 id=&quot;1.1.1&quot;&gt;次级副标题1.1.1&lt;/h3&gt;
 文本内容。。。
 
-&lt;<span style="color:#f92672">h2</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;one-point-two&#34;</span>&gt;副标题1.2&lt;/<span style="color:#f92672">h2</span>&gt;</code></pre></div>
+&lt;h2 id=&quot;one-point-two&quot;&gt;副标题1.2&lt;/h2&gt;
+</code></pre>
+
 <ul>
 <li><a href="#1">主标题1</a>
 
@@ -299,29 +353,32 @@
 
 <p>方法二：Markdown 和 HTML 混编，利用 HTML 元素创建 “锚”
 其实第一种方法里已经有 “锚” 的概念了。看如下代码：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">* [主标题1](#1)
+
+<pre><code class="language-html">* [主标题1](#1)
     * [副标题1.1](#1.1)
         * [次级副标题1.1.1](#1.1.1)
     * [副标题1.2](#one-point-two)
 
-&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+&lt;span id=&quot;1&quot;&gt;&lt;/span&gt;
 
 # 主标题1
 文本内容。。。
 
-&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.1&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+&lt;span id=&quot;1.1&quot;&gt;&lt;/span&gt;
 
 ## 副标题1.1
 文本内容。。。
 
-&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.1.1&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+&lt;span id=&quot;1.1.1&quot;&gt;&lt;/span&gt;
 
 ### 次级副标题1.1.1
 文本内容。。。
 
-&lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;one-point-two&#34;</span>&gt;&lt;/<span style="color:#f92672">span</span>&gt;
+&lt;span id=&quot;one-point-two&quot;&gt;&lt;/span&gt;
 
-## 副标题1.2</code></pre></div>
+## 副标题1.2
+</code></pre>
+
 <ul>
 <li><a href="#1">主标题1</a>
 
@@ -438,59 +495,509 @@ Cat and dog
 
 <p>著作权声明
 博客内的文章如无特殊声明均为 Theo 原创，转载请保留原文链接，谢谢。</p>
-</article>
-    <footer class="post-footer">
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/markdown/">Markdown</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/130/" data-tooltip="Win10搭建Hexo博客">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/121/" data-tooltip="献给小白的GitHub入门魔法书「译」">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
       
-      <ul class="post-tags">
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-          <li><a href="https://3mile.github.io/tags/markdown"><span class="tag">Markdown</span></a></li>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/120/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
         
-      </ul>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/120/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/120/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
       
-      <p class="post-copyright">
-        
-      </p>
-    </footer>
-    
       
-    
-  </section>
-  <footer class="site-footer">
-  <p>© 2017-2018 3mile博客</p>
-  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
-  
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. 版权所有
+  </span>
 </footer>
 
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/130/" data-tooltip="Win10搭建Hexo博客">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/121/" data-tooltip="献给小白的GitHub入门魔法书「译」">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/120/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/120/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/120/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 
 
-<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true,
-      processEnvironments: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-      TeX: { equationNumbers: { autoNumber: "AMS" },
-      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F120%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F120%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F120%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fbd6395dcc216c78e791e9f7cee2ac8e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221203025/">
+                <h3 class="media-heading">Linux Mint NFS服务端与客户端配置</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">早先Sun Microsystems创建了网络文件系统以通过网络共享资源。NFS与SAMBA类似，在共享文件方面确实非常方便。而NFS大多数时</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221194849/">
+                <h3 class="media-heading">Linux Mint下oh MyZsh</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220194410/">
+                <h3 class="media-heading">Mint使用VSCode编辑MarkDown</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">为什么选择VS Code？ 在选择Visual Studio Code（以下简称Code）作为markdown主力编辑器之前，我在Mac电脑上尝试了简友们推荐</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/02/20/">
+                <h3 class="media-heading">Shutte恢复编辑选项卡</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutte</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220/">
+                <h3 class="media-heading">Linux Mint操作记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电脑使用。</p>
+
+<p>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/11/13/">
+                <h3 class="media-heading">CentOS7 安装部署MTProxy</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/10/27/">
+                <h3 class="media-heading">编译lean LEDE后transmission的使用总结</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">首先是编译过程中,需要选中 luci-app-transmission_git-17.080.69173-773734e-1_all.ipk luci-i18n-transmission-zh-cn_git-17.080.69173-773734e-1_all.ipk transmission-daemon-openssl_2.92+git-4_x86_64.ipk transmission-web_2.92+git-4_x86_64.ipk 如果编译中只选中了luci-app-transmission的话,transmission是不能运行的,可</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/25/">
+                <h3 class="media-heading">老旧笔记本单网口实机安装Lede(openwrt)_x64</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">写在前面 首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如: 安装使用Linux Mint 安装过黑群晖做NAS 安装使用过Op</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/21/">
+                <h3 class="media-heading">Caddy&#43;WebSocket&#43;TLS&#43;Web</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/02/">
+                <h3 class="media-heading">Debian系统搭建家庭NAS系统</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         62 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://3mile.github.io/images/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://3mile.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
     }
+    hljs.highlightBlock(block);
   });
-</script>
-<script type="text/x-mathjax-config">
-  // Fix <code> tags after MathJax finishes running. This is a
-  // hack to overcome a shortcoming of Markdown. Discussion at
-  // https://github.com/mojombo/jekyll/issues/199
-  MathJax.Hub.Queue(() => {
-    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
-  });
+});
 </script>
 
-<script src="https://3mile.github.io/js/bundle.js"></script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/3mile.github.io\/archives\/120\/';
+          
+            this.page.identifier = '\/archives\/120'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = '3mile';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
-
+    
   </body>
 </html>
+

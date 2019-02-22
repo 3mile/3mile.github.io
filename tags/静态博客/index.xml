@@ -13,10 +13,10 @@
     
     <item>
       <title>Hugo &#43; Github Pages搭建静态博客</title>
-      <link>https://3mile.github.io/2018/04/27/hugo---github-pages%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
+      <link>https://3mile.github.io/archives/2018/04/001/</link>
       <pubDate>Fri, 27 Apr 2018 13:13:44 +0800</pubDate>
       
-      <guid>https://3mile.github.io/2018/04/27/hugo---github-pages%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
+      <guid>https://3mile.github.io/archives/2018/04/001/</guid>
       <description>由于最近再次安装hugo,就想纪录一下这个过程，有什么不对的地方请指出来。 一. 安装hugo hugo有两种安装方式，homebrew包管理工具</description>
     </item>
     

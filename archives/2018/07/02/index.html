@@ -1,0 +1,2031 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+	<meta name="google-site-verification" content="1MuLqoAUgX7XQvWx-S5i3Zm-WP7yyA0LOvApqTweSrk" />
+    <title>Debian系统搭建家庭NAS系统</title>
+    <meta name="author" content="3mile">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://3mile.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的">
+    <meta property="og:description" content="撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Debian系统搭建家庭NAS系统">
+    <meta property="og:url" content="/archives/2018/07/02">
+    <meta property="og:site_name" content="3mile博客">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="3mile博客">
+    <meta name="twitter:description" content="撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的">
+    
+      <meta name="twitter:creator" content="@3mile1">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+    
+
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e95c89d9cfaa0df.jpg">
+    
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e95c89d9cfaa0df.jpg">
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link open-algolia-search" href="https://3mile.github.io/#search">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+      
+      <span class="sidebar-button-desc">搜索</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="tencent://message/?uin=975714080" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">QQ to Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e95c89d9cfaa0df.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Debian系统搭建家庭NAS系统
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-07-02T10:51:10&#43;08:00">
+        
+  
+  
+  
+  
+    2018 七月 2
+  
+
+      </time>
+    
+    
+  
+  
+    <span>分类于</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
+
+<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#硬件配置">硬件配置</a>
+<ul>
+<li><a href="#主板">主板</a></li>
+<li><a href="#内存">内存</a></li>
+<li><a href="#系统硬盘">系统硬盘</a></li>
+<li><a href="#nas存储硬盘">NAS存储硬盘</a></li>
+<li><a href="#机箱">机箱</a></li>
+<li><a href="#电源">电源</a></li>
+<li><a href="#1-安装工具软件">1、安装工具软件</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+
+<p>撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的DIYer们参考。</p>
+
+<p>本文内容包括：</p>
+
+<ul>
+<li>NAS方案选择</li>
+<li>硬件配置</li>
+<li>Debian系统安装及基本配置</li>
+<li>NAS存储硬盘配置</li>
+<li>Samba服务配置</li>
+<li>DLNA服务配置及音频应用</li>
+<li>与UPS互连</li>
+<li>实用工具软件介绍</li>
+</ul>
+
+<p>## NAS方案选择</p>
+
+<p>近几年来NAS越来越被大家熟识，网上相关的软硬件配置方案文章也层出不穷。结合自己的实际需求，从性能、功耗、价格、体积等方面权衡利弊深思熟虑之后，最终敲定了DIY硬件+Debian OS的方案。</p>
+
+<p>主板选择了目前市面上尺寸最小的ITX规格，机箱也是与之配套的ITX款，整机尺寸只有200*200*60mm，非常小巧。限于机箱空间，只配了一个3.5寸硬盘用于NAS存储。得益于主板的节能设计，装配完毕的NAS运行时功耗很低，只有16W左右。在性能上，配合千兆网络系统，文件的上下行传输速度都可稳定在110MBps左右（只针对大体积单文件，碎文件除外）。</p>
+
+<h2 id="硬件配置">硬件配置</h2>
+
+<h3 id="主板">主板</h3>
+
+<p>盈通玲珑N3150（￥399）</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/d1-1530500758414" alt="Debian系统搭建家庭NAS全记录" /></p>
+
+<p>Intel Celeron N3150低至6W的TDP，用来做NAS再合适不过了，况且这个U是2015年面世的新品，支持4K视频硬解，无疑是个加分项。不过它只原生支持2个SATA3.0接口，想上多硬盘组RAID的话是行不通了（不要妄想PCIE扩展卡，限于ITX尺寸，这个主板不带PCIE插槽），好在我目前并没有组RAID的打算，一是数据量不是很大，二是预算有限，单硬盘也有单硬盘的好处，省电好管理。</p>
+
+<h3 id="内存">内存</h3>
+
+<p>ELPIDA DDR3L 1600 4GB（￥149）</p>
+
+<h3 id="系统硬盘">系统硬盘</h3>
+
+<p>Intel 525 mSATA SSD 30GB（￥99）</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/d2.jpg" alt="Debian系统搭建家庭NAS全记录" /></p>
+
+<p>拿它来安装OS。其实不带桌面UI的Linux系统都很苗条，我这套系统在一切都配置妥当后，只用了将近2GB的硬盘空间。考虑到预留的swap分区以及OS占用空间的正常增长，其实一个8GB的SSD足够胜任。</p>
+
+<p>当然还有一个方案，就是外接一个U盘安装系统，这样可以腾出仅有的2个SATA接口来挂硬盘。不过在我看来，这样的外科手术破坏美感，况且我选用的机箱也没有多余的空间容纳第二块3.5寸硬盘，故此方案作罢。</p>
+
+<p>在SSD的选择上，要避开一些山寨品牌，比如地雷遍布的“三金一云”，否则一旦哪天人品拼不过就会触雷翻车。全球存储颗粒的产量就那么点儿，山寨厂为了又保证产量又打好价格战而普遍采用黑颗粒或二手颗粒已经是业内不算秘密的秘密了。</p>
+
+<h3 id="nas存储硬盘">NAS存储硬盘</h3>
+
+<p>HGST DeskStar NAS 4TB（￥899）</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/d3.jpg" alt="Debian系统搭建家庭NAS全记录" /></p>
+
+<p>不得不承认，在NAS硬盘领域，西数的4T红盘很有人气，但是它的实际性能貌似和居高不下的人气不成正比。相较之下，反而一直比较低调的HGST（原日立）在圈里口碑不错，再加上自己之前用过很多日立/东芝系的2.5寸、3.5寸、移动硬盘产品，印象颇佳，于是就选用了这款硬盘。</p>
+
+<h3 id="机箱">机箱</h3>
+
+<p>立人 E-H60（￥169）</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/d4.jpg" alt="Debian系统搭建家庭NAS全记录" /></p>
+
+<p>全铝结构，做工也还算说得过去，关键是它专为ITX主板设计，小巧的体积让它显得很Q，装饰效果也强。</p>
+
+<p>不过鱼与熊掌不可兼得，追求小体积的同时带来的副作用是它只能容纳1块3.5寸硬盘（或2块2.5寸硬盘，鉴于2.5寸硬盘的速度和容量，用来做NAS存储盘是不适合的），这也是我为什么没有选择组RAID的一个原因。</p>
+
+<h3 id="电源">电源</h3>
+
+<p>LITEON 12V 5A电源适配器（￥19）</p>
+
+<p>N3150主板节能这一天生优点，决定了它只需要使用12V外接电源适配器供电即可正常工作。</p>
+
+<hr />
+
+<p>施工完成前的全家照：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_9a3327fc560b983.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>消耗功率实测值（推送DLNA音频时）：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_c12d7872aa11d90.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>此外不得不提的一点是，用于组网的路由器、交换机等网络设备必须是千兆网口，网线也最好用六类的，这样才可以保证稳定而高速的传输，对于如今动不动数GB甚至数十GB的文件来说，这是非常必要的，否则慢如蜗牛的传输速度绝对会让人抓狂的。</p>
+
+<p>##<strong>Debian系统安装</strong>##</p>
+
+<p>Debian是Linux大家族的一员，目前最新的版本是9.4版的“Stretch”，到下面的网页下载镜像文件（推荐64位的）：</p>
+
+<p>Debian &ndash; Getting Debian?[url]www.debian.org[/url]</p>
+
+<p>找一个U盘，将下载好的ISO文件烧写到里面。注意传统的工具例如UltraISO等烧写的U盘不能正常启动，这里推荐一款名叫Rufus的烧写工具，体积小巧，界面简洁。如图所示，选择好烧写的目标设备以及待烧写的ISO文件后，点击“开始”即可。</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_62cb3a7e98f37ba.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>用这个U盘启动计算机后，开始进入Debian的安装环节，整个过程中人机交互的内容比较多，下面用图文的形式一步步予以说明（为了截图方便，以下的安装在VMware虚拟机中进行，实际的安装过程与此无异）。需要注意的一点是安装过程中会通过网络下载一些必要的安装包，故需要连网进行。</p>
+
+<p>启动后的界面中选择“Graphical install”：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_9dc05248174c6f9.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>系统语言推荐选择英文，虽然有中文选项，但是支持的并不完整：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_100b4e9d560e3a4.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>地区选择“China”：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_03e5d35f264b9a7.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>地区配置中选择“Hong Kong”（因为没有帝都选项&hellip;）：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_ee8197d425f6feb.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>键盘配置用默认的美式即可：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_035cdb504253e0a.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>网络中的主机名，NAS主机将以这个名字显示在网络中：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_75223fc57aa9939.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>域名留空：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_da2e2e82f192968.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>接下来是设置超级用户密码，这个很重要，要认真设置并准确无误地记下来（rm指令：我发起疯来连OS自己都删）：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_aefc93ca68e9ac0.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>除了默认的root用户，再建立一个来宾用户，用于一般的访问，这里取名为“guest”：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_1586cd912c20c35.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>设置guest用户的密码：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_0fcd5e6917632f2.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>接下来是系统盘分区。大体的思路是这样的，整个SSD分两个区，一个swap分区用于系统缓存，大小一般设置为与物理内存容量一致；剩下的空间分成ext4分区用于安装OS。</p>
+
+<p>分区方式选择界面，选择手动“Manual”：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e4ef2188c8cb8da.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>按图索骥，根据容量找到SSD（为了逼真，VMware中的虚拟硬盘我也设置成了30G，然而还是有些偏差，冏），一般来说对应的设备为sda，选中它，点击“Continue”（或双击该项）：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_7b728b8cf4d3f02.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>选“Yes”，Continue：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_af22f07dcc2f356.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>选中设备sda的子项“FREE SPACE”并双击它，在接下来的界面中选择“Automatically partition the free space”（也可以选择“Create a new partiton”来手动分区）并双击，在接下来的界面中选择“All files in one partiton”，然后Continue：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_3f546585689c87d.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e314f21f3136deb.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_903680454fd550c.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>之后又来到了先前的界面，不过可以发现此时分区已经分好了。双击“Finish partitioning and write changes to disk”并在接下来的界面中选择“Yes”，至此分区完成：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_d692387c490cec2.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_3f9689ab11fc111.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>接下来是配置网络安装源，用于下载必要的Debian组件。原则上是选择速度较快的源，在国内一般按如下形式选择：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_0b2729af404c95f.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_669b505d6950ceb.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>HTTP代理留空：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_f09f04e76aaee1f.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>待安装的系统组件与系统服务选择，对于NAS而言，只需要选中最后的“SSH server”与“standard system utilities”即可：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_cedaddf768610e6.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>GRUB是Linux系统启动的引导程序，选“Yes”，然后Continue：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_d32fbad9e779306.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>将GRUB安装到哪个硬盘设备，这里选择预定用来安装OS的SSD，也就是/dev/sda（我的VMware里只分配了这一个虚拟硬盘，所以这里只显示了一项。实际安装中，因为还连接了NAS存储硬盘，所以会显示为两项，这时千万不要选错了。可以根据之前分区时系统分配的字母序号来区分，分区时用的sda，这里就选/dev/sda；依此类推，sdb的话，这里就选/dev/sdb）：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_6f38f04d5d48045.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>大功告成，拔下U盘，重启，迎接即将到来的激动时刻吧：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_0cece65471d2bf5.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>嗯，重启后是这样的，果然令人无比激（zhua）动（kuang）啊：</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_efb11b3af24bc26.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
+
+<p>嘛，Linux就是这一点比较不平易近人，不过习惯就好，习惯就好。</p>
+
+<hr />
+
+<p>这里插叙一段内容，对于采用了Realtek系列网卡芯片的主板（比如我这块N3150）来说，启动后可能会有类似如下内容的错误提示：</p>
+
+<p><code>firmware: failed to load rtl_nic/rt8168e-3.fw (-2)</code></p>
+
+<p>产生这个错误的原因是系统缺失了Realtek网卡的驱动固件，解决方法是将固件仓库地址添加进/etc/apt/sources.list中，然后用apt-get安装即可，具体步骤如下：</p>
+
+<p>在<code>/etc/apt/sources.list</code>中添加如下内容：</p>
+
+<pre><code>\#realtek firmwaredeb 
+
+http://ftp.de.debian.org/debian
+
+ stretch main non-freedeb-src 
+
+http://ftp.de.debian.org/debian
+
+ stretch main non-free
+</code></pre>
+
+<p>安装Realtek firmware：</p>
+
+<pre><code>
+apt-get updateapt-get install firmware-realtek
+</code></pre>
+
+<hr />
+
+<p>##<strong>Debian基本设置</strong>##</p>
+
+<p>用之前设置好的root密码登录后，需要做一系列基本的安装及设置。</p>
+
+<h3 id="1-安装工具软件">1、安装工具软件</h3>
+
+<p>首先是安装一些必要的工具软件。安装用指令“apt-get install 软件名”实现。</p>
+
+<ul>
+<li>vim
+Linux系统常用的文本编辑工具，以它简（fu）单（za）易（bian）用（tai）的特点而著称，进行一些日常的系统文件配置全靠它了。不过不得不承认的一点是，对于初心者而言，vim并不很容易上手，所以还有另一个选择——nano，它是Debian自带的文本编辑器，可以根据自己实际情况进行取舍。</li>
+<li>Net Tools
+Debian默认是不支持诸如ifconfig、arp等一些常用的网络命令的，安装好这个工具就OK了。</li>
+<li>Samba
+实现SMB协议的文件共享服务，在Windows系统里访问NAS就是通过它来实现的。这里先把它安装上，具体的配置后面详述。</li>
+<li>miniDLNA
+Linux上实现DLNA协议的工具，可以实现向其他网络设备的音频、视频、图片的推送，嗯，比如耳熟能详的各种盒子。同样这里先安装上它，具体配置后面详述。</li>
+</ul>
+
+<p>以上各工具的安装指令罗列如下：</p>
+
+<pre><code>apt-get install vimapt-get install net-toolsapt-get install sambaapt-get install minidlna
+</code></pre>
+
+<p>此外，要定期的更新下Debian上的各种软件，这要用到下面的指令：</p>
+
+<pre><code class="language-apt-get">
+ 
+
+这两条指令常一起使用，前一条是用来更新本地的apt cache，后一条是更新所有软件。
+
+ 
+
+### 2、配置网络
+
+ 
+
+其次是进行网络的配置，主要是设置成固定IP，这一点对于NAS来说是至关重要的，否则可能会时不时的出现一些莫名其妙的问题。
+
+ 
+
+用前面刚装好的vim打开/etc/network/interfaces，注释掉“iface ens33 inet dhcp”（注意这里的ens33并不固定，不同的计算机会对应不同的字符）并在后面加上如下的几行：
+
+ 
+
+iface ens33 inet staticaddress 192.168.x.x （固定IP地址）netmask 255.255.255.0 （掩码，一般都设置成这样）gateway 192.168.x.1 （路由器IP地址）
+
+ 
+
+其中的x视实际的网络情况而定，比如我用的.2网段，设置好后是这样的：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_c9f782a24ed08a6.jpg)
+
+ 
+
+ 
+
+完成之后需要重启系统以使设置生效。
+
+ 
+
+除此之外，最好在路由器中同时设置静态地址，因为如果路由器为其他设备动态分配的IP地址恰好也是这个固定IP的话，会引起冲突，造成NAS无法访问（当然这种情况发生的前提是这个固定IP地址在路由器的DHCP池中，而我的路由器正是这种情况）。设置方法是将NAS网卡的MAC地址与固定IP地址在路由器中进行绑定，以我的路由器EdgeRouter X为例，设置如下：
+
+ 
+
+首先键入指令“ifconfig”，从显示的信息中找到NAS网卡的MAC地址（下图蓝框）：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_d639cc42968a80c.jpg)
+
+ 
+
+ 
+
+然后在路由器静态MAC/IP绑定页面新建一个条目，把MAC和IP地址填好，保存即可：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e95c89d9cfaa0df.jpg)
+
+ 
+
+ 
+
+### 3、配置SSH
+
+ 
+
+最后是配置SSH。SSH是远程登录的服务，可以理解成命令行界面的Windows中的远程桌面。配置好后就可以随便用一台连网的设备通过SSH来访问NAS了。
+
+ 
+
+&gt; 用vim打开/etc/ssh/sshd_config，将“PasswordAuthentication yes”这一行的注释取消，如下图：
+&gt;
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_489abd8a72b28c5.jpg)
+
+ 
+
+ 
+
+这样一来就可以用root以外的用户登录NAS了。如果对安全性有足够的信心，也可以允许root用户登录，方法是将“PermitRootLogin prohibit-password”这一行注释掉，并在下面新加一行：
+
+ 
+
+&gt; PermitRootLogin yes
+
+ 
+
+保存后重启下SSH服务：
+
+ 
+
+`systemctl restart ssh`
+
+ 
+
+至此SSH服务配置完毕，现在可以将NAS上连接的显示器、键盘等统统拔下，只保留电源线及网线，并将NAS放置到专用位置，以后可以在网络中任意设备上用支持SSH协议的工具访问NAS了。
+
+ 
+
+下面以常用的PuTTY为例演示如下：
+
+ 
+
+例行的下载安装后，启动PuTTY。Host Name中输入NAS的IP地址，Connection type选“SSH”，然后点“Open”即可启动命令行界面，之后的操作跟之前在NAS上直接操作时相比无异。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_88c2550d5d07a48.jpg)
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_fd3aae96ce16681.jpg)
+
+ 
+
+ 
+
+ 
+
+### **NAS存储硬盘配置**
+
+ 
+
+ 
+
+ 
+
+虽然不组RAID，虽然只有1块硬盘，但是必要的分区、格式化、挂载等操作还是要做的。
+
+ 
+
+对于4T的大硬盘，建议分成2个容量等同的分区，以便在发生异常比如其中一个分区崩溃时互相恢复数据用。关于文件系统，因为是Debian属于Linux系统，故选用嫡系的ext4是毫无疑问的，对于用惯了Windows的NTFS的人而言，不能因为对于习惯的依赖以及对于新事物的畏惧而因循守旧，否则后患无穷，我就是一个活生生的例子。起初我就沿用了NTFS文件系统，结果发现不管怎么用chmod设置，各个文件（夹）的权限都是777，以至于Linux上与安全性息息相关的权限系统沦为了彻头彻尾的摆设。其实仔细想想就不难理解，ext4分区上有特有的用于记录权限的inode，而NTFS分区上显然没有，于是Linux只好一视同仁的都认为是777了。这还不算，更悲剧的是由于Debian对于NTFS的兼容问题，写入速度只有捉襟见肘的30MBps左右。这两个问题单独拿哪一个出来都足以让人舍弃NTFS而转投ext4的怀抱了。
+
+ 
+
+下面一步一步地说明分区、格式化及挂载的操作方法（写这篇文章的时候已是这之后数日，数据宝贵，不敢冒险，故以下操作均是在VMware中进行，实际的操作与此无异，虚拟机里待操作的是一块4GB的硬盘）。
+
+ 
+
+### #1、分区#
+
+ 
+
+首先用“fdisk -l”指令列出机器上连接的硬盘：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_c604c9047a277da.jpg)
+
+ 
+
+ 
+
+从显示的信息中得知待分区的硬盘是/dev/sdb，下面对它开刀。输入指令：
+
+ 
+
+`fdisk /dev/sdb`
+
+ 
+
+进入分区操作模式，提示符后键入“n”，表示新增一个分区，之后在与控制台的交互中依次选择：
+
+- 分区类型
+  有两种，主分区与扩展分区。一个硬盘最多支持4个主分区；扩展分区可选，但最多只能有1个，其上可以再细分成数个逻辑分区。这是很古老的一个概念，对于NAS存储硬盘，待分的两个分区都简单地指定为主分区（键入“p”）即可。
+- 分区号
+  系统用来区分各个分区的序号，将来会附加在sdb后面以便于对各个分区进行访问。这里选择“1”，将来这个分区即成为/dev/sdb1。
+- 起始扇区
+  用默认的2048即可，直接回车。
+- 结束扇区
+  每个扇区为512字节，第一个主分区打算分2GB的空间，再加上前面2048的扇区偏移，计算出来是4196352，键入之；也可直接输入分区的大小，比如2GB就输入“2G”，然后回车。
+
+ 
+
+完毕后第一个分区就分好了，如下图：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_0802aaf2ea0172d.jpg)
+
+ 
+
+ 
+
+第二个分区如法炮制，注意分区号指定为“2”，起始和结束扇区用默认值即可。
+
+ 
+
+分完后在提示符后键入“w”，含义是将分区表写入硬盘，至此分区过程结束。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_7e0305b7f75225f.jpg)
+
+ 
+
+ 
+
+### #2、格式化#
+
+ 
+
+接下来是格式化操作，用指令“mkfs.ext4 待格式化分区路径”实现，
+
+注意分区千万不要错写成系统盘了
+
+，NAS数据硬盘是sdb，所以指令要写成：
+
+ 
+
+`mkfs.ext4 /dev/sdb1mkfs.ext4 /dev/sdb2`
+
+ 
+
+这表示分别把sdb1与sdb2格式化成ext4文件系统，短暂等待后格式化操作完成，同时会显示出格式好的分区信息，注意其中UUID后面的一长串数字字母组合，后面会用到：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_d416a1144266795.jpg)
+
+ 
+
+ 
+
+### #3、挂载#
+
+ 
+
+最后是分区的挂载，Linux下只有将硬盘分区挂载后才可以访问。在/mnt下新建两个目录，分别将两个分区挂载到这两个目录下：
+
+ 
+
+```mkdir /mnt/library_amkdir /mnt/library_bmount /dev/sdb1 /mnt/library_amount /dev/sdb2 /mnt/library_b```
+
+ 
+
+但总不能每次启动系统后都手动挂载一次，所以需要设定为自动挂载，方法是修改文件`/etc/fstab`，用vim打开这个文件，按下图加入相应的语句：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e27c485594e07ab.jpg)
+
+ 
+
+ 
+
+其中用来标识硬盘分区的方法有两种，一是像图中这样用UUID表示，这个UUID就是之前提到的格式完毕后显示出的那长串数字字母组合（也可通过指令“blkid /dev/sdb1”来显示sdb1的UUID，sdb2的依此类推），它相当于硬盘分区的“身份证”，可以作为这个分区的唯一标识；另一种是直接用设备名“/dev/sdb1”来表示，不推荐。
+
+ 
+
+至此NAS存储硬盘的配置完成。
+
+ 
+
+ 
+
+ 
+
+### **Samba服务配置**
+
+ 
+
+ 
+
+ 
+
+Samba服务是NAS最基本的功能之一，它可以实现文件的共享，配置好之后就可以用Windows来访问NAS上的文件了。
+
+ 
+
+Samba的配置涉及的概念比较多，过程也较为复杂，为了捋清思路，先交代下有关文件权限的规定。
+
+ 
+
+在Linux中，把能够操作文件（夹）的对象划分成了3类，分别为所有者、所属组及其他人，每一类对象又分别规定了是否可以进行以下3种操作：读（r）、写（w）、执行（x）。例如，在我的NAS上输入“ls -l /etc/samba”后，会显示如下信息：
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_45d11fc746ff89a.jpg)
+
+ 
+
+拿第3行信息（图中的第5行）来说，第1列给出了3类操作对象的读写权限（最前面的字母“d”表示这是个文件夹），第3列的“root”是这个文件夹的所有者，第4列的“root”是这个文件夹的所属组。把这些信息结合到一起我们可以得知，对tls这个文件夹来说，所有者root拥有完全的权限，所属组root可读可执行但不可写，其他人也是可读可执行但不可写。
+
+ 
+
+然后再来说说Samba的权限。Samba服务的访问是基于用户的，就是说需要用户登录后才能对共享目录进行相关的访问。同Linux相仿，它也为每个共享目录指定了用户，并对每一个用户分别赋予了读写权限，权限不足的话是不能对目录进行相应的访问的。
+
+ 
+
+现在我们看到，算上Linux系统自带的以及Samba所拥有的，访问共享目录需要涉及两套权限系统。一个用户，只有同时满足了这两套权限，才能对某个目录进行访问。例如，Samba中设定了用户U可以对目录D进行读写操作，但Linux系统中的设定是用户U只能对目录D进行读操作，那么用户U在网络中通过Samba共享访问目录D时，只能进行读操作，写操作是被拒绝的。
+
+ 
+
+明确了以上的这一系列权限关系，自然就有了Samba服务配置的大体思路。
+
+ 
+
+/mnt/library_a下挂载的是整个分区，上面有Debian系统专用的目录，因而不适合整个拿来作为共享目录之用，而是需要新建一个子文件夹作为共享根目录。之前安装系统时建立的用户“guest”是用来作为一般的登录用的，本着泾渭分明的原则，用于访问Samba服务的用户应当另行建立。在初期，至少需要建立一个拥有最高权限的管理员用户以及一个来宾用户才能满足基本的访问需求。考虑到用户不止一个，可以新建一个专门用来访问NAS的用户组，把这些用户都添加到这个组内。在权限的设定上，为了体现逻辑清晰以及避免设定混乱，姑且把共享根目录的权限设置为777，来访用户的读写权限则完全通过Samba来设定；若是出于更高的安全性的考虑，则把共享根目录的权限设置为755，所有者为NAS管理员用户，所属组为NAS用户组，组内成员的具体读写权限通过Samba再设定一次。这里采用后者的方案，具体的操作如下。
+
+ 
+
+（1）
+
+ 
+
+新建NAS用户组“nasusers”：
+
+ 
+
+`groupadd nasusers`
+
+ 
+
+新建用户`“nasadmin”（管理员）以及“nasguest”（来宾）`，设定他们的密码，并将他们都加入到nasusers组中：
+
+ 
+
+</code></pre>
+
+<p>useradd -g nasusers -s /usr/sbin/nologin -M nasadminpasswd nasadminuseradd -g nasusers -s /usr/sbin/nologin -M nasguestpasswd nasguest</p>
+
+<pre><code>
+
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e736e025ec96e01.jpg)
+
+ 
+
+ 
+
+（2）
+
+ 
+
+在两个挂载的目录下分别建立用于共享的根目录，不妨都命名为“nasshare”（如果没有用“umask”修改过权限掩码，那么建立后它们的权限应该就是755），然后设定它们的所有者为nasadmin，所属组为nasusers：
+
+ 
+
+</code></pre>
+
+<p>mkdir /mnt/library_a/nassharechown -R nasadmin:nasusers /mnt/library_a/nassharemkdir /mnt/library_b/nassharechown -R nasadmin:nasusers /mnt/library_b/nasshare</p>
+
+<pre><code>
+
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_3a0f24f8eb037db.jpg)
+
+ 
+
+ 
+
+（3）
+
+ 
+
+将用户nasadmin和nasguest都添加到Samba中并设置登录密码（这个密码是远程访问共享目录时登录用的，由Samba管理和使用，不是Debian系统的用户密码，不要搞混淆了）：
+
+ 
+
+```smbpasswd -a nasadminsmbpasswd -a nasaguest```
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_bc20a885873251c.jpg)
+
+ 
+
+ 
+
+（4）
+
+ 
+
+用vim打开/etc/samba/smb.conf进行必要的配置：
+
+- 设置可以访问的主机IP地址列表
+  找到“hosts allow”项，根据内网实际情况进行设定，多个IP地址间用逗号隔开。比如我设定成了“hosts allow = 192.168.2.”，这表示允许192.168.2.2~255的IP访问。
+- 禁止Samba默认的共享
+  最初的smb.conf文件开启了一系列的共享，这些都不是NAS共享需要的，找到“[homes]”、“[printers]”、“[print$]”节，将其连同其下的子项一起注释掉。
+- 配置NAS共享目录
+  按照下图在文件的末尾增加数行内容：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_0c1c575aaaa15a6.jpg)
+
+ 
+
+原则上是一个共享目录对应文件中由“[ ]”标识的一节，下面以图中的“[NAS-CLOUD-A]”节为例进行说明。
+
+- comment
+  这个共享目录的注释。
+- path
+  共享目录的路径。
+- browseable
+  此目录是否可以显示在客户机中。
+- guest ok（同义项public）
+  不属于Samba的用户（来宾）是否可以访问此共享目录。
+- writeable（同义项read only）
+  该共享目录是否可写。此项省略时认为不可写（即只读，因为只要能访问，至少目录是可读的）。当此项设置为“yes”时，可以用“read list”列出例外（即只读）的用户；当此项设置为“no”时，可以用“write list”列出例外（即可写）的用户。
+- create mask（同义项create mode）
+  规定新建文件的权限掩码，格式上与Linux系统权限的定义一致。例如“0640”表示所有者可读写，所属组可读，其他人什么也不能干。
+- directory mask（同义项directory mode）
+  规定新建文件夹的权限掩码，格式上与Linux系统权限的定义一致。例如“0750”表示所有者可读写及执行，所属组可读及执行，其他人什么也不能干。
+- valid users
+  能够访问该共享目录的用户（组），为用户组时前面加“[@”](http://bbs.mydigit.cn/u.php?uid=2336656)  号，多个用户（组）之间用逗号隔开。
+- write list
+  拥有对共享目录写操作的用户（组），值的格式与valid users的相同。
+- read list
+  拥有对共享目录只读操作的用户（组），值的格式与valid users的相同。
+- vfs objects及以下数行
+  在客户端执行删除操作时，不是将文件立即彻底删除，而是移动到一个临时目录中，便于以后需要的时候予以恢复。关于各项的含义，可以参考下面的网页：
+
+`Samba VFS recycle bin?manpages.ubuntu.com`
+
+ 
+
+ 
+
+编辑完成后保存退出，至此整个Samba服务的配置完毕。为了使配置生效，将Samba服务重启一下：
+
+ 
+
+</code></pre>
+
+<p>systemctl restart smbd</p>
+
+<pre><code>
+
+
+ 
+
+接下来就是真正激动人心的时刻了（这次没有坑，放心）。在任意一台连网的Windows电脑上找到NAS的共享，点击它，输入用户名和密码，哇，进去了，素晴らしい！
+
+ 
+
+![Debian系统搭建家庭NAS全记录(../../../hugo/static/https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_f6fa2ce9d548b79.jpg)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_f6fa2ce9d548b79.jpg)
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_4c57addeeb6d973.jpg)
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_5a0e8948d098488.jpg)
+
+ 
+
+ 
+
+这之后就可以像访问本地分区一样操作这两个目录了，方便起见，可以把它们映射为本地磁盘。以下是传送一个900MB+的单个文件时的实测速度：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_859b06c96b106bf.jpg)
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_c50c6eca4a3a7f6.jpg)
+
+ 
+
+ 
+
+------
+
+ 
+
+这里插叙一段内容，对于Windows10而言，默认SMB协议是未启用的，需要像下图那样启动后才可以访问到共享目录。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_d896d8a1cb06b55.jpg)
+
+ 
+
+------
+
+ 
+
+ 
+
+ 
+
+### **DLNA服务配置**
+
+ 
+
+ 
+
+ 
+
+作为家用NAS，可以说大部分场合下扮演着媒体服务器的角色，DLNA就是为了分享多媒体资源而生的，在这方面，比起简单的目录共享，它有着更多得天独厚的优势。
+
+ 
+
+针对Debian系统的DLNA服务，常用的是miniDLNA，前面已经将它安装好了，下面介绍它的配置方法。
+
+ 
+
+首先是权限的设置。不管怎么说，待推送的文件显然位于我们之前设置好的共享目录下（如果你打算不厌其烦地把它们放到这个目录以外的话，当我没说），回忆一下这个目录的权限、所有者和所属组都是什么。当初把它的权限设定成了755，之后Samba中又设定了权限掩码为750和640，所以其下的所有子文件夹的权限为750，所有子文件的权限为640；另一方面，它的所有者是nasadmin，所属组是nasusers，又因为当时设定时用了“-R”递归，故其下的所有子文件夹和子文件都具有同样的所有者和所属组。miniDLNA服务在访问文件时用的是“minidlna”这个用户的身份，他属于“minidlna”这个用户组，那么问题来了，miniDLNA服务是不具备访问共享目录下的文件的权限的。怎么办呢？答案是将用户“minidlna”添加到“nasusers”组中：
+
+ 
+
+</code></pre>
+
+<p>usermod -a -G nasusers minidlna</p>
+
+<pre><code>
+
+
+ 
+
+这样一来miniDLNA服务就具备了读取权限了。
+
+ 
+
+接下来用vim打开/etc/minidlna.conf，进行如下几项的配置：
+
+- friendly_name
+  设置DLNA服务的网络名称，将来这个名称会出现在客户设备的DLNA服务列表中。这里设置为“NAS DLNA”。
+- media_dir
+  媒体文件目录，打算共享给其他媒体设备的文件位于这个目录中。可以用以下字母限定媒体文件的类型（后面需要跟一个逗号），限定以后将会无视这种类型以外的媒体文件：
+  A - 音频文件
+  P - 图片文件
+  V - 视频文件
+  每次只能定义一个目录，如果打算共享的目录有多个，那么就一行一行地添加。
+
+ 
+
+作为演示，我添加了一个音频目录和一个图片目录，如下图：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_520ab8199d418f7.jpg)
+
+ 
+
+ 
+
+保存退出后需要强制重载下miniDLNA服务，这样它才能搜到新追加的媒体文件：
+
+ 
+
+</code></pre>
+
+<p>systemctl force-reload minidlna</p>
+
+<pre><code>
+
+
+ 
+
+为了确认是不是真的已经更新了媒体资源，可以在网络中的任一浏览器上访问地址“NAS IP:8200”，成功的话页面中会列出媒体库中的媒体数量，如下图：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_dbdebec2547ea5c.jpg)
+
+ 
+
+ 
+
+至此DLNA服务的配置完成。关于它的应用，可以说是相当丰富多彩，我平时喜欢听音乐，所以下面打算从音频应用这个角度谈一下。
+
+ 
+
+ 
+
+ 
+
+### **DLNA音频应用**
+
+ 
+
+ 
+
+ 
+
+先用一张图来说明DLNA音频应用的组网思路：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_0faca242d6e31ac.jpg)
+
+ 
+
+ 
+
+开通DLNA服务后，只要连接到网络中的音频播放设备支持DLNA协议，就可以播放DLNA服务器中的共享资源。将播放设备连接到网络中的可以是网线，也可以是无线Wifi，也就是说轻量级的桌面播放设备可以零连线播放，比如小米AI音箱：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_9fc13d80891a915.jpg)
+
+ 
+
+ 
+
+此外还有相对高大上些的有源音箱产品，比如漫步者S1000MA：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_aa303af6150be79.jpg)
+
+ 
+
+ 
+
+不过上面这些产品受制于体积与成本，都采用的是D类数字功放芯片，声音还原虽然精准，但是听感生硬，缺乏音乐味，听音时间稍长容易有“累”的感觉；此外功率也不够大，推不动低音单元6寸以上的落地式音箱。所以对于真正的音乐发烧友来说，更倾向于选择一台支持Wifi DLNA的功放，然后另配一套落地式音箱，比如雅马哈R-N402：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_98ee14a725551b0.jpg)
+
+ 
+
+ 
+
+以上走马观花地把市场上DLNA播放设备的几个类型基本都盘点了一遍，当然还有未涵盖的方面，比如颇受发烧友青睐的“Wifi模块+DAC解码器+电子管功放”的组合式方案。
+
+ 
+
+在播放的控制方面，用传统的遥控器上一曲下一曲地按来按去的操作已经过时了，这个时候该轮到安卓触屏手机上场大展拳脚了。就像在KTV K歌时在触屏上选曲及播放控制时的爽快体验一样，只要在安卓手机上装一个App，就可以用手机完成选曲、播放控制等一系列操作了，如果嫌手机的屏幕小，可以选用触屏平板电脑来控制。
+
+ 
+
+安卓手机上的DLNA控制软件首推BubbleUPnP这款App，功能强大又不失专业，同时还可作为播放器用手机直接播放DLNA服务器上的音视频和图片资源，可谓是全能型选手。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_95d0d3d2a8cb0b4.jpg)
+
+ 
+
+ 
+
+安装好启动后，向右划屏，出现设备及媒体库选择界面：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_d395ee9f367acda.jpg)
+
+ 
+
+ 
+
+在“RENDERER”中选择DLNA播放设备（之前需要先将其连网），接着在“LIBRARY”中选择DLNA服务，即图中的“NAS DLNA”，这个字串就是之前在DLNA服务配置时friendly_name项后面输入的值。然后点击“Media”展开媒体列表，第一项“Browse Folders”下包含了所有的DLNA共享目录，下面的三项分别按音频、图片、视频将DLNA共享目录归类，点击“Music”，然后左划屏，切换到“LIBRARY”页。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_d7cd1386a6e7eea.jpg)
+
+ 
+
+ 
+
+LIBRARY页里列出了所有共享的音频资源，长按选中待播放的曲目，点击屏幕右上方的“+”将其加入播放列表，然后其会显示在“PLAYLIST”页中，切换到该页后点击该项就可开始播放了。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_2ec235df5d14a24.jpg)
+
+ 
+
+ 
+
+在“NOW PLAYING”页中，除了常用的播放控制项外，快速上下滑动屏幕可以调节音量（需要在设置中使能此功能），单击屏幕可以显示曲目标签信息。
+
+ 
+
+顺手放上一张BubbleUPnP显示的DLNA共享目录里的图片^_^：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e18eb3d5a6a4efb.jpg)
+
+ 
+
+ 
+
+DLNA只是一种网络协议，其数据传输依托的载体是有线或Wifi网络，所以只要网速足够，理论上可以实时传送任何高音质的音频。以SONY推出的Hi-Res音频标准为例，典型的音源是24bit/96kHz的，换算出的码率为4.6Mbps，千兆的网络应付它是绰绰有余的。
+
+ 
+
+ 
+
+ 
+
+### **与UPS互连**
+
+ 
+
+ 
+
+ 
+
+突然的断电对于NAS来说害处很大，不仅会使传输中的数据丢失，还会缩短机械硬盘的寿命，导致SSD固件损坏而变砖。虽说现在电网很稳定，但我们这里三伏天时还是有因过负荷而跳闸断电的情况，所以给NAS配一台可靠的UPS的做法是十分必要的。
+
+ 
+
+在产品的选择上，除了可靠性以外，我还希望其能实现断电时无人值守情况下的自动关机功能，挑来选去最终入手的是APC旗下的一款UPS产品——BX650CI。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_ead2985d1a790bd.jpg)
+
+ 
+
+ 
+
+这款UPS可以在市电断电时提供无间断的390W功率输出，并且带有USB接口，与计算机连接后，可以通过软件对其进行管理。我最关心的断电自动关机功能，在Windows上有APC自家的PowerChute软件支持，群晖原生支持，Debian上呢？很幸运，有一款开源软件“apcupsd”可以支持。
+
+ 
+
+apcupsd是一款跨平台的开源软件，专门用于APC旗下的UPS产品，其开发得到了APC官方的大力支持，所以对APC UPS的兼容性很好。我安装配置完成后，模拟断电测试时一次成功，可以说很简单易用。
+
+ 
+
+首先是安装apcupsd：
+
+ 
+
+</code></pre>
+
+<p>apt-get install apcupsd</p>
+
+<pre><code>
+
+
+ 
+
+接下来用vim打开/etc/apcupsd/apcupsd.conf，进行一些必要的配置：
+
+- UPSNAME
+  UPS名称，不妨输入UPS型号“BX650CI”。
+- UPSCABLE
+  UPS连接方式，输入“usb”。
+- UPSTYPE
+  UPS类型，输入“usb”。
+- DEVICE
+  留空，对于usb类型的UPS来说，这样可以自动检测设备。
+
+ 
+
+这样必要的配置就算完成了，很简单吧。注意项名和值之间不是用等号连接的，而是用一个空格隔开。此外，如果需要的话，可以同时配置一下断电后自动关机的触发条件，apcupsd用了3个参数来限定触发条件：
+
+- BATTERYLEVEL
+  断电后UPS的剩余电量（以百分比计）小于等于此值时触发自动关机。
+- MINUTS
+  断电后UPS可继续工作的时间（以分钟计）小于等于此值时触发自动关机。
+- TIMEOUT
+  断电后经过的时间（以秒计）大于等于此值时触发自动关机，设置为0时忽略此条件。
+
+ 
+
+断电后这3个条件中只要有1个满足便会触发自动关机。为了测试方便，可以将TIMEOUT暂且设置为一个较短的时间，比如60。
+
+ 
+
+保存退出后再用vim打开/etc/default/apcupsd，将“ISCONFIGURED”的值设置为“yes”，这样就可以启用apcupsd了。完成之后重启下apcupsd：
+
+ 
+
+</code></pre>
+
+<p>systemctl restart apcupsd</p>
+
+<pre><code>
+
+
+ 
+
+没有意外的话，apcupsd就可以正常工作了，可以在终端命令行中键入以下指令来验证：
+
+ 
+
+</code></pre>
+
+<p>apcaccess status</p>
+
+<pre><code>
+
+
+ 
+
+正常情况下会显示出UPS的一系列信息，比如我的就是这样：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_db8d725b6a9c8e8.jpg)
+
+ 
+
+ 
+
+至此整个UPS的配置告一段落，之后它就可以坚守岗位保障NAS的可靠运行了。apcupsd的功能还有很多，详细内容可以登录它的官网进一步了解：
+
+A daemon for controlling APC UPSes?[url]www.apcupsd.org
+
+[/url]
+
+ 
+
+ 
+
+ 
+
+##**实用工具软件介绍**##
+
+ 
+
+ 
+
+ 
+
+除了以上这些必不可少的配置以外，一些实用工具软件的引入可以使NAS的日常使用更为得心应手，这里抛砖引玉地介绍几款。
+
+ 
+
+Better Terminal
+
+ 
+
+既然用SSH协议可以远程操作NAS，那么我在安卓手机上安装一款支持SSH的App，不就可以用手机操作NAS了？没错，现在IT技术的发展已经到了越来越让人感到“没有做不到，只有想不到”的高度了。安卓系统上的好用的这种App有那么三五款，统一叫做“超级终端”，这里推荐其中的一款“Better Terminal”。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_6789ee1ca61f76f.jpg)
+
+ 
+
+ 
+
+安装并启动后，展开屏幕右上方的菜单，点击“Preferences”项进入设置页面，勾选第一项“SSH Client GUI”:
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_7928beccf50f0d4.jpg)
+
+ 
+
+ 
+
+然后退出并重启Better Terminal，之后会来到如下的界面。选中“SSH”，“Host”栏填入NAS的IP地址，“Username”栏填入登录用户名，“Identity Key”栏用来指定证书文件，可以实现免密码登录，这里不表，留空即可。之后点击“Start Session”按钮即可进入命令行界面。方便起见，可以点击下方的“Create Shortcut”按钮，这样会在手机桌面上生成一个快捷图标，以后点击这个图标便可直接进入命令行界面，图标的名称在“Shortcut Name”处键入。
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_3e23a0675e356d5.jpg)
+
+ 
+
+ 
+
+在命令行界面中，首先需要输入用户“guest”的密码，然后就可以像在电脑上一样操作NAS了，比如设定NAS在1分钟后关机：
+
+ 
+
+![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_00b18dd381bb4e1.jpg)
+
+ 
+
+ 
+
+cpufreqd
+
+ 
+
+cpufreqd是Linux下用来调节CPU频率的一个小工具，可以自己编辑调节策略，通过设定其中相关的参数，可以自动限定不同情境下的CPU上限频率，比如AC电源接通时、只接通电池时、CPU处于高温时等。
+
+ 
+
+通过以下指令安装cpufreqd：
+
+ 
+
+</code></pre>
+
+<p>apt-get install cpufreqd</p>
+
+<pre><code>
+
+
+ 
+
+相关的设定通过修改文件/etc/cpufreqd.conf来实现，用vim打开它进行修改。
+
+ 
+
+这个文件内容可分为3块，即[General] [Profile] [Rule]，里面包含的默认策略可满足一般应用需要，如果想自行修改，可参考下述文档：
+
+configuration file for cpufreqd(1)?manpages.ubuntu.com
+
+ 
+
+ 
+
+collectl
+
+ 
+
+collectl是Linux平台上一款十分强大的系统监控工具，它监控的对象不仅限于某种系统资源，而是广泛地囊括了诸如buddyinfo、cpu、disk、inodes、infiniband、lustre、memory、network、nfs、processes、quadrics、slabs、sockets、tcp等不同类型的系统资源信息。通过丰富的命令行指令与用户交互，collectl能够以丰富的格式显示监测到的数据。
+
+ 
+
+通过以下指令来安装collectl：
+
+ 
+
+</code></pre>
+
+<p>apt-get install collectl
+```</p>
+
+<p>安装完毕后，输入指令“collectl”即可显示实时的CPU、硬盘和网络信息：</p>
+
+<p><img src="http://img.mydigit.net/Mon_1804/157_14_e1ffd83345af770.jpg?38559" alt="Debian系统搭建家庭NAS全记录（打造全功能网络存储）" /></p>
+
+<p>以上信息以秒为单位追加（通过键入“Ctrl+C”停止），显示的数据可以以日志形式保存在磁盘上，collectl同时提供了各种命令来对这些数据进行查找及其他处理。</p>
+
+<p>collectl可以监测的对象称为子系统，包括：</p>
+
+<ul>
+<li>b - buddy info (内存片段)</li>
+<li>c - CPU</li>
+<li>d - Disk</li>
+<li>f - NFS V3 Data</li>
+<li>i - Inode and File System</li>
+<li>j - Interrupts</li>
+<li>l - Lustre</li>
+<li>m - Memory</li>
+<li>n - Networks</li>
+<li>s - Sockets</li>
+<li>t - TCP</li>
+<li>x - Interconnect</li>
+<li>y - Slabs (system object caches)</li>
+</ul>
+
+<p>此外，针对某个子系统，collectl可以进一步地以更详尽的信息予以显示，这称为细节子系统，包括：</p>
+
+<ul>
+<li>C - CPU</li>
+<li>D - Disk</li>
+<li>E - Environmental data (fan, power, temp),  via ipmitool</li>
+<li>F - NFS Data</li>
+<li>J - Interrupts</li>
+<li>L - Lustre OST detail OR client Filesystem detail</li>
+<li>M - Memory node data, which is also known as numa data</li>
+<li>N - Networks</li>
+<li>T - 65 TCP counters only available in plot format</li>
+<li>X - Interconnect</li>
+<li>Y - Slabs (system object caches)</li>
+<li>Z - Processes</li>
+</ul>
+
+<p>要让collectl显示特定子系统或细节子系统的信息，可以用“-s”并在其后跟上这个（细节）子系统的标识字母。例如，输入指令“collectl -sd”后可显示出硬盘数据传输情况：</p>
+
+<p><img src="http://img.mydigit.net/Mon_1804/157_14_54821fa79470c76.jpg?21344" alt="Debian系统搭建家庭NAS全记录（打造全功能网络存储）" /></p>
+
+<p>输入指令“collectl -sM”后可显示出内存使用的详细情况：</p>
+
+<p><img src="http://img.mydigit.net/Mon_1804/157_14_42eb06aa623811c.jpg?32908" alt="Debian系统搭建家庭NAS全记录（打造全功能网络存储）" /></p>
+
+<p>关于collectl更详细的细节可以参阅官网：</p>
+
+<p>collectl?collectl.sourceforge.net<img src="http://img.mydigit.net/Mon_1804/157_14_e4268c7cee586ac.jpg?6983" alt="Debian系统搭建家庭NAS全记录（打造全功能网络存储）" /></p>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2018/06/01/" data-tooltip="Rufus_Usb启动制作">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2018/07/21/" data-tooltip="Caddy&#43;WebSocket&#43;TLS&#43;Web">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/07/02/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/07/02/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/07/02/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. 版权所有
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2018/06/01/" data-tooltip="Rufus_Usb启动制作">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2018/07/21/" data-tooltip="Caddy&#43;WebSocket&#43;TLS&#43;Web">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/07/02/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/07/02/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/07/02/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F02%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F02%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F02%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fbd6395dcc216c78e791e9f7cee2ac8e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221203025/">
+                <h3 class="media-heading">Linux Mint NFS服务端与客户端配置</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">早先Sun Microsystems创建了网络文件系统以通过网络共享资源。NFS与SAMBA类似，在共享文件方面确实非常方便。而NFS大多数时</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221194849/">
+                <h3 class="media-heading">Linux Mint下oh MyZsh</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220194410/">
+                <h3 class="media-heading">Mint使用VSCode编辑MarkDown</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">为什么选择VS Code？ 在选择Visual Studio Code（以下简称Code）作为markdown主力编辑器之前，我在Mac电脑上尝试了简友们推荐</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/02/20/">
+                <h3 class="media-heading">Shutte恢复编辑选项卡</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutte</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220/">
+                <h3 class="media-heading">Linux Mint操作记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电脑使用。</p>
+
+<p>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/11/13/">
+                <h3 class="media-heading">CentOS7 安装部署MTProxy</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/10/27/">
+                <h3 class="media-heading">编译lean LEDE后transmission的使用总结</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">首先是编译过程中,需要选中 luci-app-transmission_git-17.080.69173-773734e-1_all.ipk luci-i18n-transmission-zh-cn_git-17.080.69173-773734e-1_all.ipk transmission-daemon-openssl_2.92+git-4_x86_64.ipk transmission-web_2.92+git-4_x86_64.ipk 如果编译中只选中了luci-app-transmission的话,transmission是不能运行的,可</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/25/">
+                <h3 class="media-heading">老旧笔记本单网口实机安装Lede(openwrt)_x64</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">写在前面 首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如: 安装使用Linux Mint 安装过黑群晖做NAS 安装使用过Op</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/21/">
+                <h3 class="media-heading">Caddy&#43;WebSocket&#43;TLS&#43;Web</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/02/">
+                <h3 class="media-heading">Debian系统搭建家庭NAS系统</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         62 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://3mile.github.io/images/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://3mile.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/3mile.github.io\/archives\/2018\/07\/02\/';
+          
+            this.page.identifier = '\/archives\/2018\/07\/02'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = '3mile';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

@@ -6,7 +6,7 @@
     <description>Recent content in Categories on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 01 Jun 2018 14:35:24 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Feb 2019 20:30:25 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title></title>
       <link>https://3mile.github.io/categories/</link>
-      <pubDate>Fri, 01 Jun 2018 14:35:24 +0800</pubDate>
+      <pubDate>Thu, 21 Feb 2019 20:30:25 +0800</pubDate>
       
       <guid>https://3mile.github.io/categories/</guid>
       <description></description>
@@ -39,6 +39,15 @@
     </item>
     
     <item>
+      <title>Mint</title>
+      <link>https://3mile.github.io/categories/mint/</link>
+      <pubDate>Thu, 21 Feb 2019 19:48:49 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/categories/mint/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Photo</title>
       <link>https://3mile.github.io/categories/photo/</link>
       <pubDate>Wed, 04 Apr 2018 14:23:56 +0800</pubDate>
@@ -50,7 +59,7 @@
     <item>
       <title>Vps</title>
       <link>https://3mile.github.io/categories/vps/</link>
-      <pubDate>Wed, 04 Apr 2018 13:50:17 +0800</pubDate>
+      <pubDate>Tue, 13 Nov 2018 13:37:41 +0800</pubDate>
       
       <guid>https://3mile.github.io/categories/vps/</guid>
       <description></description>
@@ -107,6 +116,15 @@
       <pubDate>Tue, 03 Apr 2018 10:13:14 +0800</pubDate>
       
       <guid>https://3mile.github.io/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>软路由</title>
+      <link>https://3mile.github.io/categories/%E8%BD%AF%E8%B7%AF%E7%94%B1/</link>
+      <pubDate>Sat, 27 Oct 2018 11:04:52 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/categories/%E8%BD%AF%E8%B7%AF%E7%94%B1/</guid>
       <description></description>
     </item>
     

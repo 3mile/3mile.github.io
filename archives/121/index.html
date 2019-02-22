@@ -1,238 +1,289 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
 <!DOCTYPE html>
 <html lang="zh-cn">
-<head>
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.3-BETA">
+	<meta name="google-site-verification" content="1MuLqoAUgX7XQvWx-S5i3Zm-WP7yyA0LOvApqTweSrk" />
+    <title>献给小白的GitHub入门魔法书「译」</title>
+    <meta name="author" content="3mile">
+    <meta name="keywords" content="GitHub">
 
-  <meta charset="utf-8" />
+    <link rel="icon" href="https://3mile.github.io/favicon.png">
+    
 
-  
-  <title>献给小白的GitHub入门魔法书「译」</title>
+    
+    <meta name="description" content="这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20">
+    <meta property="og:description" content="这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="献给小白的GitHub入门魔法书「译」">
+    <meta property="og:url" content="/archives/121">
+    <meta property="og:site_name" content="3mile博客">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="3mile博客">
+    <meta name="twitter:description" content="这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20">
+    
+      <meta name="twitter:creator" content="@3mile1">
+    
+    
 
-  
-  
+    
+    
 
+    
+      <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+    
 
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/6.jpg">
+    
+    
+      <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/6.jpg">
+    
+    
 
+    
 
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
 
-  
-  <meta name="author" content="3mile" />
-  <meta name="description" content="这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20" />
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
 
-  
-  
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@3mile1" />
-    <meta name="twitter:title" content="献给小白的GitHub入门魔法书「译」" />
-    <meta name="twitter:description" content="这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20" />
-    <meta name="twitter:image" content="https://3mile.github.io/img/avatar.jpg" />
-  
+    
+    
+  </head>
 
-  
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="献给小白的GitHub入门魔法书「译」" />
-  <meta property="og:description" content="这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20" />
-  <meta property="og:url" content="https://3mile.github.io/archives/121/" />
-  <meta property="og:image" content="https://3mile.github.io/img/avatar.jpg" />
-
-
-
-
-<meta name="generator" content="Hugo 0.40.2" />
-
-
-<link rel="canonical" href="https://3mile.github.io/archives/121/" />
-<link rel="alternative" href="https://3mile.github.io/index.xml" title="3mile博客" type="application/atom+xml" />
-
-
-<meta name="renderer" content="webkit" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="format-detection" content="telephone=no,email=no,adress=no" />
-<meta http-equiv="Cache-Control" content="no-transform" />
-
-
-<meta name="robots" content="index,follow" />
-<meta name="referrer" content="origin-when-cross-origin" />
-<meta name="google-site-verification" content="FMb4P3vZ2uji_L-ttr7e2a22spQhPVCofJ_d3Vwx220" />
-<meta name="msvalidate.01" content="22596E34341DD1D17D6022C44647E587" />
-<meta name="baidu-site-verification" content="LN2gf0A8Hs" />
-
-
-
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<meta name="apple-mobile-web-app-title" content="3mile博客" />
-<meta name="msapplication-tooltip" content="3mile博客" />
-<meta name='msapplication-navbutton-color' content="#5fbf5e" />
-<meta name="msapplication-TileColor" content="#5fbf5e" />
-<meta name="msapplication-TileImage" content="/img/tile-image-windows.png" />
-<link rel="icon" href="https://3mile.github.io/img/favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://3mile.github.io/img/favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://3mile.github.io/img/favicon-32x32.png" />
-<link rel="icon" sizes="192x192" href="https://3mile.github.io/img/touch-icon-android.png" />
-<link rel="apple-touch-icon" href="https://3mile.github.io/img/touch-icon-apple.png" />
-<link rel="mask-icon" href="https://3mile.github.io/img/safari-pinned-tab.svg" color="#5fbf5e" />
-
-
-
-<link rel="stylesheet" href="//cdn.bootcss.com/video.js/6.2.8/alt/video-js-cdn.min.css" />
-
-<link rel="stylesheet" href="https://3mile.github.io/css/bundle.css" />
-
-
-  
-  <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <script src="//cdn.bootcss.com/video.js/6.2.8/ie8/videojs-ie8.min.js"></script>
-  <![endif]-->
-
-<!--[if lte IE 11]>
-    <script src="//cdn.bootcss.com/classlist/1.1.20170427/classList.min.js"></script>
-  <![endif]-->
-
-
-<script src="//cdn.bootcss.com/object-fit-images/3.2.3/ofi.min.js"></script>
-
-
-<script src="//cdn.bootcss.com/smooth-scroll/12.1.4/js/smooth-scroll.polyfills.min.js"></script>
-
-
-</head>
   <body>
-    
-    <div class="suspension">
-      <a title="Go to top" class="to-top is-hide"><span class="icon icon-up"></span></a>
-      
-        
-      
-    </div>
-    
-    
-  <header class="site-header">
-  <img class="avatar" src="https://3mile.github.io/img/avatar.jpg" alt="Avatar">
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
   
-  <h2 class="title">3mile博客</h2>
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
   
-  <p class="subtitle">~ 学习,总是使人进步 ~</p>
-  <button class="menu-toggle" type="button">
-    <span class="icon icon-menu"></span>
-  </button>
-  <nav class="site-menu collapsed">
-    <h2 class="offscreen">Main Menu</h2>
-    <ul class="menu-list">
-      
-      
-      
-      
-        <li class="menu-item
-            
-            
-            
-              is-active
-            ">
-            <a href="https://3mile.github.io/">主页</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="https://3mile.github.io/categories/">分类</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="https://3mile.github.io/tags/">标签</a>
-          </li>
-      
-        <li class="menu-item
-            
-            
-            ">
-            <a href="about">关于</a>
-          </li>
-      
-    </ul>
-  </nav>
-  <nav class="social-menu collapsed">
-    <h2 class="offscreen">Social Networks</h2>
-    <ul class="social-list">
-
-      
-      <li class="social-item">
-        <a href="mailto:mile3@live.com" title="Email"><span class="icon icon-email"></span></a>
-      </li>
-
-      
-      <li class="social-item">
-        <a href="//github.com/3mile" title="GitHub"><span class="icon icon-github"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//twitter.com/3mile1" title="Twitter"><span class="icon icon-twitter"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//www.facebook.com/mile3033" title="Facebook"><span class="icon icon-facebook"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="//weibo.com/3179328351" title="Weibo"><span class="icon icon-weibo"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="https://3mile.github.io/img/qrcode.jpg" title="Wechat"><span class="icon icon-wechat"></span></a>
-      </li>
-
-      <li class="social-item">
-        <a href="//www.linkedin.com/in/" title="Linkedin"><span class="icon icon-linkedin"></span></a>
-      </li>
-
-      
-
-      
-
-      
-
-      <li class="social-item">
-        <a href="https://3mile.github.io/index.xml"><span class="icon icon-rss" title="RSS"></span></a>
-      </li>
-
-    </ul>
-  </nav>
 </header>
 
-  <section class="main post-detail">
-    <header class="post-header">
-      <h1 class="post-title">献给小白的GitHub入门魔法书「译」</h1>
-      <p class="post-meta">@3mile · Apr 23, 2018 · 17 min read</p>
-    </header>
-    <article class="post-content">
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link open-algolia-search" href="https://3mile.github.io/#search">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-search"></i>
+      
+      <span class="sidebar-button-desc">搜索</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="tencent://message/?uin=975714080" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-envelope"></i>
+      
+      <span class="sidebar-button-desc">QQ to Me</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--partial"
+       style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/cover/6.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      献给小白的GitHub入门魔法书「译」
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-04-23T13:26:40&#43;08:00">
+        
+  
+  
+  
+  
+    2018 四月 23
+  
+
+      </time>
+    
+    
+  
+  
+    <span>分类于</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/%e5%8d%9a%e5%ae%a2%e7%b3%bb%e7%bb%9f">博客系统</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+            <span class="post-header-cover-caption caption">A beautiful cover</span>
+          
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              
 
 <blockquote>
 <p>这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。</p>
@@ -394,11 +445,17 @@
 <p>这里再强调一下，如果你是 Mac 机，系统预装的 Git 版本可能有些陈旧。你可以在 Terminal 里输入 <code>git --version</code> 来检查 Git 的版本。写这篇博文时 Git 版本号已经更新到 2.9.3了，你可以直接在 Git官网 下载最新版本安装。</p>
 
 <p>安装完成后打开 Terminal，向 Git 介绍一下自己吧，输入以下命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git config --global user.name <span style="color:#e6db74">&#34;你的名字&#34;</span></code></pre></div>
+
+<pre><code class="language-Bash">git config --global user.name &quot;你的名字&quot;
+</code></pre>
+
 <p>引号内输入你自己的名字，可以是真名，网名等，作为你的 Git 用户名。</p>
 
 <p>然后，告诉 Git 你的 email。这里要确保和申请 GitHub 账户时用一样的 email：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git config --global user.email <span style="color:#e6db74">&#34;你的电子邮箱&#34;</span></code></pre></div>
+
+<pre><code class="language-Bash">git config --global user.email &quot;你的电子邮箱&quot;
+</code></pre>
+
 <p>大功告成。(但是如果你想设置 Git 让它不要每次都让你登录你的 GitHub 账号，你可以在这里找到更详尽的操作步骤。)</p>
 
 <p><span id="1.6"></span></p>
@@ -424,13 +481,19 @@
 <p>这部分涉及的命令行代码比较多，所以我经常在读其他教程贴关于这部分的内容时被搞得蒙圈。所以我们一步一步慢慢来。</p>
 
 <p>首先在 Terminal 输入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">mkdir ~/MyProject</code></pre></div>
+
+<pre><code class="language-Bash">mkdir ~/MyProject
+</code></pre>
+
 <p>mkdir 是 “make directory” (创建的文件目录) 的简写。她不是一个    Git 特有的命令，它是一条在我们能看到电脑图形界面之前就可以运行的导航指令。~/ 的意思是电脑里用户文件夹的根目录，比如我的用户文件夹叫3milewu，那么 ~/ 就指代的是3milewu文件目录。如果你还是不明白，你可以在文件浏览器的地址栏输入 ~/ 看看它在你的电脑里具体在哪里 (注意，是文件浏览器，不是网页浏览器。PC上的文件浏览器很简单，随便打开一个文件夹的界面就可以了)。如果我没记错的话，Mac 用户要在 Finder 菜单栏选择 Go to 然后 Go to folder，然后输入 ~/。其实你也可以在网页浏览器的地址栏里输入 ~/ 来查看目录具体在哪，目录下都有什么文件，只是在 Mac 上 Safari 浏览器似乎有些问题，你换成 Chrome 试试。</p>
 
 <p>另外，注意我创建的文件目录名字叫 MyProject，和前面在 GitHub 上创建的 Repo 的名称一致。你也要养成好习惯，两次使用相同的名称。</p>
 
 <p>现在终于可以用一个 Git 命令了，在命令行下一行键入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git init</code></pre></div>
+
+<pre><code class="language-Bash">git init
+</code></pre>
+
 <p>Git 命令全都是以 Git 关键字开头的，用以和其他命令区分。init 的意思是 <code>“initialize”</code> (初始化)，它告诉电脑把当前所在文件目录视为 Git 的本地 Repo。</p>
 
 <p>以上命令执行完后你的电脑就意识到该文件目录已经部署好 Git 了，你就可以下达其他 Git 相关的指令了。现在你在线上和线下都有用来存储项目文件的 Repo 了。下面宝宝就来学着给本地和 GitHub 上的 Repo 进行第一次 Commit。更多优质的 GitHub 学习资源在向你招手👏。</p>
@@ -442,26 +505,41 @@
 <p>如果你成功的搞定了上面的步骤，恭喜你👊，我看你定是骨骼惊奇🤔，将来必成一代棕狮🦁! 我们现在就往项目目录里塞点东西，然后弱弱地 Commit 一下😏。对了忘记说了，前面创建了 MyProject 目录，但是没有进入该目录，为保证在该目录下操作，再在命令行输入 cd ~/MyProject。cd 是进入的意思。现在确保你的命令行大概是这个样子：</p>
 
 <p>下一行输入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">touch Readme.txt</code></pre></div>
+
+<pre><code class="language-Bash">touch Readme.txt
+</code></pre>
+
 <p>这不是一个 Git 特有的命令，这是另一个标准导航指令。touch 其实是 “create” 即创建的意思，后面跟的是你要创建的东西的名字。如果运行完该指令后你用文件浏览器或者 Finder 浏览到 MyProject 目录下你会发现里面多了一个空的 Readme.txt 文件。如果你调皮又贪玩，你也可以创建 Readme.doc 或者 Kiwi.gif 等等。</p>
 
 <p>你能清晰地看见新增的 Readme.txt 文件， Git 可不一定。让我们测试一下。下一行输入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git status</code></pre></div>
+
+<pre><code class="language-Bash">git status
+</code></pre>
+
 <p>然后你大概会得到这样的回复：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">On branch master
+
+<pre><code class="language-Bash">On branch master
 
 Initial commit
 
 Untracked files:
-        <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git add &lt;file&gt;...&#34;</span> to include in what will be committed<span style="color:#f92672">)</span>
+        (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
 
-    Readme.txt</code></pre></div>
+    Readme.txt
+</code></pre>
+
 <p>神马情况?!
 首先，第一句是说，你现在处于主分支(master branch)，显然你在主分支，因为你从来没创建过其他分支，而且你是一个人在工作，也没有别人创建其他分支。
 其次，Readme.txt 文件被列为 “untracked file”，英语不好的童鞋蛋疼了，其实是未被追踪的文件的意思，也就是说 Git 忽略的文件。要让 Git 关注这个文件的变动，在命令行键入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git add Readme.txt</code></pre></div>
+
+<pre><code class="language-Bash">git add Readme.txt
+</code></pre>
+
 <p>好啦，现在 Git 知道要时刻关注这个文件是否变动了。是时候给整个工程项目来张美照了，或者说小小的 Commit 一下，在命令行键入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git commit -m <span style="color:#e6db74">&#34;Add Readme.txt&#34;</span></code></pre></div>
+
+<pre><code class="language-Bash">git commit -m &quot;Add Readme.txt&quot;
+</code></pre>
+
 <p>-m 意思是 message (消息)，什么消息呢，就是刚才项目文件变动的描述。注意描述是用现代时写的，不是过去时，因为你可能随时想回滚文件版本，所以养成好习惯，用现在时描述一个 Commit。</p>
 
 <p>刚才我们在本地做出了一些变动，是时候把我们的第一个 Commit 也同步到你的 GitHub 上了。</p>
@@ -481,15 +559,24 @@ Untracked files:
 <p>假设我们在 GitHub 上有一个叫 “MyProject” 的 Repo，位于 <strong><a href="http://github.com/用户名/项目名.git">http://github.com/用户名/项目名.git</a></strong>。当然啦，用户名 得换成你的 GitHub 用户名，项目名 得换成你给你第一个 GitHub Repo 起的名字。实际上，你可以登录你的 GitHub 主页，在项目子页面里找到该项目的网络地址。</p>
 
 <p>一切就绪后在命令行键入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git remote add origin http://github.com/用户名/项目名.git</code></pre></div>
+
+<pre><code class="language-Bash">git remote add origin http://github.com/用户名/项目名.git
+</code></pre>
+
 <p>翻译过来就是：git 远程 添加 源 <strong><a href="http://github.com/用户名/项目名.git。不用3mile解释，聪明如你应该会懂吧。">http://github.com/用户名/项目名.git。不用3mile解释，聪明如你应该会懂吧。</a></strong></p>
 
 <p>Git 现在知道这个线上 Repo 的存在了，那就是你要把本地做出的修改同步过去的地方。命令行键入以下命令确认一下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git remote -v</code></pre></div>
+
+<pre><code class="language-Bash">git remote -v
+</code></pre>
+
 <p>运行完命令后，控制台给你返回了一个列表，里面包含的是你的本地 Repo 所识别的所有远程源。如果你前面一直跟着我的教程做的，那么这里应该只有一个源。这个源被列举了两次，第一次意思是说你可以从这个源上 fetch (抓取) 信息，第二条意思是说你可以向这个源 push (推送) 信息。</p>
 
 <p>现在我们想做的就是上传或者说 push (推送) 本地文件的变动到 GitHub 的远程 Repo。那么简单了，在命令行键入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git push origin master</code></pre></div>
+
+<pre><code class="language-Bash">git push origin master
+</code></pre>
+
 <p>这句命令的意思把所有变动以及快照统统 push (推送) 到刚才设定的那个源的主分支。登录你的 GitHub，你会看到 GitHub 已经在记录你今天的 Commit 次数了。如果你进到项目目录下，你会发现多了一个和本地项目目录下一模一样 Readme.txt 文件。</p>
 
 <p><span id="2.2"></span></p>
@@ -509,40 +596,73 @@ Untracked files:
 <p>于是你上网找了一些图片资源，大刀阔斧地PS成了一系列滑稽又可笑的网站吉祥物的图片😂，你把这些图片保存在了本地一个叫alpaca的文件夹里。现在你得把它加入到项目文件目录里了。</p>
 
 <p>打开 Terminal，更改文件目录直到你进入到这个alpaca文件夹里面，因为你的图片都存在那里。比如这样：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd ~/alpaca</code></pre></div>
+
+<pre><code class="language-Bash">cd ~/alpaca
+</code></pre>
+
 <p>然后初始化 Git 以便能在该文件目录下使用 Git 命令。在命令行键入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git init</code></pre></div>
+
+<pre><code class="language-Bash">git init
+</code></pre>
+
 <p>现在这个文件夹已经是一个 Git Repo 了。检查一下你是否确实处于存储你的图片的那个文件夹，命令行键入：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git status</code></pre></div>
+
+<pre><code class="language-Bash">git status
+</code></pre>
+
 <p>为了模拟真实情景，3mile早前在alpaca文件夹里丢了三个文件：一群草泥马.jpeg，草泥马.jpeg，和 蓝色草泥马.jpeg，所以 Git 给我的回复是这样的：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">On branch master
+
+<pre><code class="language-Bash">On branch master
 
 Initial commit
 
 Untracked files:
-        <span style="color:#f92672">(</span>use <span style="color:#e6db74">&#34;git add &lt;file&gt;...&#34;</span> to include in what will be committed<span style="color:#f92672">)</span>
+        (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
 
         一群草泥马.jpeg
         草泥马.jpeg
-        蓝色草泥马.jpeg</code></pre></div>
+        蓝色草泥马.jpeg
+</code></pre>
+
 <p>发现了没，你P的图全在那里了(假设这三个文件是你的P图成果😂)。接下来用 add 命令告诉 Git 去关注它们，键入命令：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git add 草泥马.jpeg</code></pre></div>
+
+<pre><code class="language-Bash">git add 草泥马.jpeg
+</code></pre>
+
 <p>然后用 commit 命令给你的 Repo 照张”快照”并注解一下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git commit -m <span style="color:#e6db74">&#34;Add 草泥马.jpeg&#34;</span></code></pre></div>
+
+<pre><code class="language-Bash">git commit -m &quot;Add 草泥马.jpeg&quot;
+</code></pre>
+
 <p>现在你的控制台应该是类似这样子了👇：</p>
 
 <p>其实一个一个 add 太麻烦，你也可以用一个 * 通配符一次性把目录下所有文件添加到 Git 的关注范围内：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git add *</code></pre></div>
+
+<pre><code class="language-Bash">git add *
+</code></pre>
+
 <p>养成好习惯，每次 add 之后都要 commit 并注解：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git commit -m <span style="color:#e6db74">&#34;Add all files&#34;</span></code></pre></div>
+
+<pre><code class="language-Bash">git commit -m &quot;Add all files&quot;
+</code></pre>
+
 <p>太棒啦! 但是团队里的其他小伙伴在各自的 Repo 埋头苦干根本看不到你的杰作，因为主项目文件都托管在你们公司的 GitHub 账户 (用户名: gooseWebDesign) 上名叫 “alpaca”的 Repo 里。</p>
 
 <p>你还没有连接到这个 GitHub Repo，所以电脑连它是什么鬼都不知道，告诉你的本地 Repo 这个线上 Repo 的存在吧：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git remote add origin https://github.com/gooseWebDesign/alpaca.git</code></pre></div>
+
+<pre><code class="language-Bash">git remote add origin https://github.com/gooseWebDesign/alpaca.git
+</code></pre>
+
 <p>保险起见，再用以下命令检查一下：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git remote -v</code></pre></div>
+
+<pre><code class="language-Bash">git remote -v
+</code></pre>
+
 <p>最后，期待已久的时刻终于来临了。把你P出来的滑稽又可笑的网站吉祥物图片连同刚才做过的commit一起全部推送到公司的工程项目里吧：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git push</code></pre></div>
+
+<pre><code class="language-Bash">git push
+</code></pre>
+
 <p>嗒啦! 🎉🎊 有这些便捷的功能，Git 和 GitHub 显然不仅仅是程(zhòng)序(yīn)猿(zài)们(zhè)的屠龙宝刀。</p>
 
 <p><span id="2.3"></span></p>
@@ -606,63 +726,513 @@ Untracked files:
 
 <p>还有法国友人译成了法语版，感兴趣的可以读读 GitHub Pour les Nuls: Pas de Panique, Lancez-Vous!
 法语版第二部分 GitHub pour les Débutants: Consignez, Poussez et Foncez!</p>
-</article>
-    <footer class="post-footer">
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/vps/">vps</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/github/">github</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/blog/">blog</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/120/" data-tooltip="MarkDown页内跳转">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/127/" data-tooltip="Kip3000驱动安装说明">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
       
-      <ul class="post-tags">
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
         
-          <li><a href="https://3mile.github.io/tags/vps"><span class="tag">Vps</span></a></li>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/121/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
         
-          <li><a href="https://3mile.github.io/tags/github"><span class="tag">Github</span></a></li>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/121/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
         
-          <li><a href="https://3mile.github.io/tags/blog"><span class="tag">Blog</span></a></li>
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/121/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
         
-      </ul>
       
-      <p class="post-copyright">
-        
-      </p>
-    </footer>
-    
       
-    
-  </section>
-  <footer class="site-footer">
-  <p>© 2017-2018 3mile博客</p>
-  <p>Powered by <a href="https://gohugo.io/" target="_blank">Hugo</a> with theme <a href="https://github.com/laozhu/hugo-nuo" target="_blank">Nuo</a>.</p>
-  
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. 版权所有
+  </span>
 </footer>
 
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/120/" data-tooltip="MarkDown页内跳转">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/127/" data-tooltip="Kip3000驱动安装说明">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/121/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/121/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/121/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
 
 
-<script async src="//cdn.bootcss.com/video.js/6.2.8/alt/video.novtt.min.js"></script>
-<script async src="//cdn.bootcss.com/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true,
-      processEnvironments: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-      TeX: { equationNumbers: { autoNumber: "AMS" },
-      extensions: ["AMSmath.js", "AMSsymbols.js"] }
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F121%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F121%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F121%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?fbd6395dcc216c78e791e9f7cee2ac8e";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221203025/">
+                <h3 class="media-heading">Linux Mint NFS服务端与客户端配置</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">早先Sun Microsystems创建了网络文件系统以通过网络共享资源。NFS与SAMBA类似，在共享文件方面确实非常方便。而NFS大多数时</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0221194849/">
+                <h3 class="media-heading">Linux Mint下oh MyZsh</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220194410/">
+                <h3 class="media-heading">Mint使用VSCode编辑MarkDown</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">为什么选择VS Code？ 在选择Visual Studio Code（以下简称Code）作为markdown主力编辑器之前，我在Mac电脑上尝试了简友们推荐</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/02/20/">
+                <h3 class="media-heading">Shutte恢复编辑选项卡</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutte</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2019/0220/">
+                <h3 class="media-heading">Linux Mint操作记录</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Feb 2, 2019
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电脑使用。</p>
+
+<p>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/11/13/">
+                <h3 class="media-heading">CentOS7 安装部署MTProxy</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Nov 11, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/10/27/">
+                <h3 class="media-heading">编译lean LEDE后transmission的使用总结</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Oct 10, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">首先是编译过程中,需要选中 luci-app-transmission_git-17.080.69173-773734e-1_all.ipk luci-i18n-transmission-zh-cn_git-17.080.69173-773734e-1_all.ipk transmission-daemon-openssl_2.92+git-4_x86_64.ipk transmission-web_2.92+git-4_x86_64.ipk 如果编译中只选中了luci-app-transmission的话,transmission是不能运行的,可</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/25/">
+                <h3 class="media-heading">老旧笔记本单网口实机安装Lede(openwrt)_x64</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">写在前面 首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如: 安装使用Linux Mint 安装过黑群晖做NAS 安装使用过Op</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/21/">
+                <h3 class="media-heading">Caddy&#43;WebSocket&#43;TLS&#43;Web</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://3mile.github.io/archives/2018/07/02/">
+                <h3 class="media-heading">Debian系统搭建家庭NAS系统</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         62 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://3mile.github.io/images/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://3mile.github.io/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
     }
+    hljs.highlightBlock(block);
   });
-</script>
-<script type="text/x-mathjax-config">
-  // Fix <code> tags after MathJax finishes running. This is a
-  // hack to overcome a shortcoming of Markdown. Discussion at
-  // https://github.com/mojombo/jekyll/issues/199
-  MathJax.Hub.Queue(() => {
-    MathJax.Hub.getAllJax().map(v => v.SourceElement().parentNode.className += ' has-jax');
-  });
+});
 </script>
 
-<script src="https://3mile.github.io/js/bundle.js"></script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/3mile.github.io\/archives\/121\/';
+          
+            this.page.identifier = '\/archives\/121'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = '3mile';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
-
+    
   </body>
 </html>
+
