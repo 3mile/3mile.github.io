@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>油猴 on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/%E6%B2%B9%E7%8C%B4/</link>
+    <link>https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4/</link>
     <description>Recent content in 油猴 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 05 May 2018 10:44:13 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/%E6%B2%B9%E7%8C%B4/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>谷歌插件Tampermonkey</title>
-      <link>https://mile3.gitee.io/archives/134/</link>
+      <link>https://3mile.github.io/archives/134/</link>
       <pubDate>Sat, 05 May 2018 10:44:13 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/134/</guid>
+      <guid>https://3mile.github.io/archives/134/</guid>
       <description>不装扩展（Extensions）的 Chrome 只能发挥它 40% 的能力。 各类实用的 Chrome 扩展是不少人选择 Chrome 浏览器的重要原因，经过多年发展，Chrome 的扩展种类</description>
     </item>
     

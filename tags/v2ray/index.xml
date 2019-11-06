@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>V2ray on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/v2ray/</link>
+    <link>https://3mile.github.io/tags/v2ray/</link>
     <description>Recent content in V2ray on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 21 Jul 2018 12:58:23 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/v2ray/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/v2ray/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Caddy&#43;WebSocket&#43;TLS&#43;Web</title>
-      <link>https://mile3.gitee.io/archives/2018/07/21/</link>
+      <link>https://3mile.github.io/archives/2018/07/21/</link>
       <pubDate>Sat, 21 Jul 2018 12:58:23 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2018/07/21/</guid>
+      <guid>https://3mile.github.io/archives/2018/07/21/</guid>
       <description>介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</description>
     </item>
     

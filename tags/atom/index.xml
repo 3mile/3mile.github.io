@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Atom on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/atom/</link>
+    <link>https://3mile.github.io/tags/atom/</link>
     <description>Recent content in Atom on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sun, 06 May 2018 12:35:58 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/atom/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/atom/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>编辑器 Atom介绍</title>
-      <link>https://mile3.gitee.io/archives/139/</link>
+      <link>https://3mile.github.io/archives/139/</link>
       <pubDate>Sun, 06 May 2018 12:35:58 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/139/</guid>
+      <guid>https://3mile.github.io/archives/139/</guid>
       <description>我一直在 Windows 上寻找一款足够媲美 MWeb 和 Ulysses 的 Markdown 编辑器。可惜 Windows 上优秀的编辑器较少，于是我盯上了这款本为程序员设计的 Atom 编辑器。 我在对 Atom 有想法之前，使用的</description>
     </item>
     

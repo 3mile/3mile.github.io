@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/windows/</link>
+    <link>https://3mile.github.io/tags/windows/</link>
     <description>Recent content in Windows on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 07 May 2018 12:43:01 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>自用软件推荐</title>
-      <link>https://mile3.gitee.io/archives/141/</link>
+      <link>https://3mile.github.io/archives/141/</link>
       <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/141/</guid>
+      <guid>https://3mile.github.io/archives/141/</guid>
       <description>用了这么多年电脑,肯定有些高效率的软件收藏.下面推荐的软件可以说是用了很多年,并且以后会一直用下去的软件. 为什么会做这个东东呢,主要还是因为</description>
     </item>
     

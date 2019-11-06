@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on 3mile博客</title>
-    <link>https://mile3.gitee.io/categories/github/</link>
+    <link>https://3mile.github.io/categories/github/</link>
     <description>Recent content in Github on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 16 Aug 2019 14:12:07 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/categories/github/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/categories/github/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>同步更新Github上Fork的项目</title>
-      <link>https://mile3.gitee.io/archives/2019/0816141207/</link>
+      <link>https://3mile.github.io/archives/2019/0816141207/</link>
       <pubDate>Fri, 16 Aug 2019 14:12:07 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0816141207/</guid>
+      <guid>https://3mile.github.io/archives/2019/0816141207/</guid>
       <description>说白了就是反向发个pull request 我从github网站和用git命令两种方式说一下。 github网站上操作 打开自己的仓库，进入code下面。 点击n</description>
     </item>
     

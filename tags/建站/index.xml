@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>建站 on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/%E5%BB%BA%E7%AB%99/</link>
+    <link>https://3mile.github.io/tags/%E5%BB%BA%E7%AB%99/</link>
     <description>Recent content in 建站 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 16 Aug 2019 14:28:38 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/%E5%BB%BA%E7%AB%99/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Freenom免费域名免费续期方法</title>
-      <link>https://mile3.gitee.io/archives/2019/0816142838/</link>
+      <link>https://3mile.github.io/archives/2019/0816142838/</link>
       <pubDate>Fri, 16 Aug 2019 14:28:38 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0816142838/</guid>
+      <guid>https://3mile.github.io/archives/2019/0816142838/</guid>
       <description>之前有人询问freenom免费域名是不是只能免费一年，虽然我一再回答是：可以免费无限期续期下去，是在域名到期14天内完成。 但是心里没底，怕误</description>
     </item>
     
     <item>
       <title>Centos7下不见的命令</title>
-      <link>https://mile3.gitee.io/archives/2019/0530125409/</link>
+      <link>https://3mile.github.io/archives/2019/0530125409/</link>
       <pubDate>Thu, 30 May 2019 12:54:09 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0530125409/</guid>
+      <guid>https://3mile.github.io/archives/2019/0530125409/</guid>
       <description>&lt;p&gt;CentOS 是一个工业标准的 Linux 发行版，是红帽企业版 Linux 的衍生版本。你安装完后马上就可以使用，但是为了更好地使用你的系统，你需要进行一些升级、安装新的软件包、配置特定服务和应用程序等操作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>SSH无密码登录及putty设置</title>
-      <link>https://mile3.gitee.io/archives/106/</link>
+      <link>https://3mile.github.io/archives/106/</link>
       <pubDate>Wed, 04 Apr 2018 13:18:03 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/106/</guid>
+      <guid>https://3mile.github.io/archives/106/</guid>
       <description>[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机</description>
     </item>
     
     <item>
       <title>如何在CentOS 7上安装和配置Caddy</title>
-      <link>https://mile3.gitee.io/archives/118/</link>
+      <link>https://3mile.github.io/archives/118/</link>
       <pubDate>Wed, 04 Apr 2018 12:58:23 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/118/</guid>
+      <guid>https://3mile.github.io/archives/118/</guid>
       <description>介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部</description>
     </item>
     

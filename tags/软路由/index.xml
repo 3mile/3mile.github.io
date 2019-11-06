@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>软路由 on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</link>
+    <link>https://3mile.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</link>
     <description>Recent content in 软路由 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 03 Apr 2018 10:13:14 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hyper-V部署LEDE X64固件全教程</title>
-      <link>https://mile3.gitee.io/archives/105/</link>
+      <link>https://3mile.github.io/archives/105/</link>
       <pubDate>Tue, 03 Apr 2018 10:13:14 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/105/</guid>
+      <guid>https://3mile.github.io/archives/105/</guid>
       <description>前言： 本着分享个人心得造福诸位的精神，也想让有的坛友在摸索的路上少走一些弯路，我在这里写一下关于Hyper-V虚拟机部署LEDE的教程。 第一</description>
     </item>
     
     <item>
       <title>群晖玩软路由</title>
-      <link>https://mile3.gitee.io/archives/968/</link>
+      <link>https://3mile.github.io/archives/968/</link>
       <pubDate>Fri, 30 Mar 2018 05:24:38 +0000</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/968/</guid>
+      <guid>https://3mile.github.io/archives/968/</guid>
       <description>大家群晖玩软路由的基本都是用virtualbox，相对于VMM稳定性差十万八千里了，甚至在群晖上Docker都不如VMM稳定，自由，便捷 但是</description>
     </item>
     
     <item>
       <title>跑满带宽的爽快感，从软路由开始</title>
-      <link>https://mile3.gitee.io/archives/890/</link>
+      <link>https://3mile.github.io/archives/890/</link>
       <pubDate>Fri, 30 Mar 2018 05:11:52 +0000</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/890/</guid>
+      <guid>https://3mile.github.io/archives/890/</guid>
       <description>一、起因： 我们从一个基准测试开始看： 连接方式： 采用网线连接各个设备进行测试，尽量避免无线WIFI的信号干扰与衰减。 测试环境： 笔记本自带千兆网</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Highlight Code on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/highlight-code/</link>
+    <link>https://3mile.github.io/tags/highlight-code/</link>
     <description>Recent content in Highlight Code on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 01 May 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/highlight-code/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/highlight-code/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>highlighted code showcase</title>
-      <link>https://mile3.gitee.io/2018/05/highlighted-code-showcase/</link>
+      <link>https://3mile.github.io/2018/05/highlighted-code-showcase/</link>
       <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
       
-      <guid>https://mile3.gitee.io/2018/05/highlighted-code-showcase/</guid>
+      <guid>https://3mile.github.io/2018/05/highlighted-code-showcase/</guid>
       <description>&lt;p&gt;Tranquilpeak Hugo theme have its own theme to highlight source code. It&amp;rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.&lt;/p&gt;</description>
     </item>
     

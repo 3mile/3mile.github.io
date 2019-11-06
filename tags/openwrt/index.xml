@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openwrt on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/openwrt/</link>
+    <link>https://3mile.github.io/tags/openwrt/</link>
     <description>Recent content in Openwrt on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 06 Nov 2019 11:17:32 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/openwrt/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/openwrt/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>编译UDPXY新版本</title>
-      <link>https://mile3.gitee.io/archives/2019/1106111732/</link>
+      <link>https://3mile.github.io/archives/2019/1106111732/</link>
       <pubDate>Wed, 06 Nov 2019 11:17:32 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/1106111732/</guid>
+      <guid>https://3mile.github.io/archives/2019/1106111732/</guid>
       <description>udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt</description>
     </item>
     
     <item>
       <title>用OpenWRT单独编译ipk插件</title>
-      <link>https://mile3.gitee.io/archives/2019/0813123100/</link>
+      <link>https://3mile.github.io/archives/2019/0813123100/</link>
       <pubDate>Tue, 13 Aug 2019 12:31:00 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0813123100/</guid>
+      <guid>https://3mile.github.io/archives/2019/0813123100/</guid>
       <description>openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻</description>
     </item>
     
     <item>
       <title>UDPXY手册</title>
-      <link>https://mile3.gitee.io/archives/2019/0530132110/</link>
+      <link>https://3mile.github.io/archives/2019/0530132110/</link>
       <pubDate>Thu, 30 May 2019 13:21:10 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0530132110/</guid>
+      <guid>https://3mile.github.io/archives/2019/0530132110/</guid>
       <description>&lt;p&gt;udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。&lt;/p&gt;
 
 &lt;p&gt;udpxy在官方的软件源中，直接安装即可&lt;/p&gt;
@@ -44,10 +44,10 @@
     
     <item>
       <title>Lede编译备忘</title>
-      <link>https://mile3.gitee.io/archives/2019/0525110729/</link>
+      <link>https://3mile.github.io/archives/2019/0525110729/</link>
       <pubDate>Sat, 25 May 2019 11:07:29 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0525110729/</guid>
+      <guid>https://3mile.github.io/archives/2019/0525110729/</guid>
       <description>一. 首次编译 1. 首先安装依赖 2. 下载源码 3. 更新 4. 推荐的必要工具 5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网 6. 编译 二. 再次编译 三. 自</description>
     </item>
     

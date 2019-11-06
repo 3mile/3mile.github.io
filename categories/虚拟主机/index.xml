@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>虚拟主机 on 3mile博客</title>
-    <link>https://mile3.gitee.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</link>
+    <link>https://3mile.github.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</link>
     <description>Recent content in 虚拟主机 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Sat, 26 May 2018 10:44:27 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/categories/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Centos7上安装和配置Caddy</title>
-      <link>https://mile3.gitee.io/archives/2018/05/26/</link>
+      <link>https://3mile.github.io/archives/2018/05/26/</link>
       <pubDate>Sat, 26 May 2018 10:44:27 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2018/05/26/</guid>
+      <guid>https://3mile.github.io/archives/2018/05/26/</guid>
       <description>介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部</description>
     </item>
     

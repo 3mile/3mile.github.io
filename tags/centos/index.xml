@@ -2,84 +2,84 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Centos on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/centos/</link>
+    <link>https://3mile.github.io/tags/centos/</link>
     <description>Recent content in Centos on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 06 Nov 2019 11:05:11 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Centos7安装python3.8</title>
-      <link>https://mile3.gitee.io/archives/2019/1106110511/</link>
+      <link>https://3mile.github.io/archives/2019/1106110511/</link>
       <pubDate>Wed, 06 Nov 2019 11:05:11 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/1106110511/</guid>
+      <guid>https://3mile.github.io/archives/2019/1106110511/</guid>
       <description>准备安装Python3、下载Python3 一、安装依赖包，这个具体的作用我也不清楚，感觉好像是在安装的时候会要用到的工具。 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel</description>
     </item>
     
     <item>
       <title>个人网盘FileBrowser</title>
-      <link>https://mile3.gitee.io/archives/2019/0813113621/</link>
+      <link>https://3mile.github.io/archives/2019/0813113621/</link>
       <pubDate>Tue, 13 Aug 2019 11:36:21 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0813113621/</guid>
+      <guid>https://3mile.github.io/archives/2019/0813113621/</guid>
       <description>个人网盘 Filebrowser 服务器仅仅用于科学上网未免有些浪费了，是时候尝试一下自建个人网盘和图床了。 如何安装 官方给出了一键安装大法，进入服务器输入以下命令就</description>
     </item>
     
     <item>
       <title>Centos7下不见的命令</title>
-      <link>https://mile3.gitee.io/archives/2019/0530125409/</link>
+      <link>https://3mile.github.io/archives/2019/0530125409/</link>
       <pubDate>Thu, 30 May 2019 12:54:09 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0530125409/</guid>
+      <guid>https://3mile.github.io/archives/2019/0530125409/</guid>
       <description>&lt;p&gt;CentOS 是一个工业标准的 Linux 发行版，是红帽企业版 Linux 的衍生版本。你安装完后马上就可以使用，但是为了更好地使用你的系统，你需要进行一些升级、安装新的软件包、配置特定服务和应用程序等操作。&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Centos7中systemd Systemctl管理服务的命令</title>
-      <link>https://mile3.gitee.io/archives/2019/0323112058/</link>
+      <link>https://3mile.github.io/archives/2019/0323112058/</link>
       <pubDate>Sat, 23 Mar 2019 11:20:58 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0323112058/</guid>
+      <guid>https://3mile.github.io/archives/2019/0323112058/</guid>
       <description>背景: centos7 和 6的重大改变 对于系统管理员而言，系统的服务管理是一件很日常和很重要的工作，而7在6的基础上有了很大的改变，就连命令都完全不一样了。</description>
     </item>
     
     <item>
       <title>Caddy&#43;WebSocket&#43;TLS&#43;Web</title>
-      <link>https://mile3.gitee.io/archives/2018/07/21/</link>
+      <link>https://3mile.github.io/archives/2018/07/21/</link>
       <pubDate>Sat, 21 Jul 2018 12:58:23 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2018/07/21/</guid>
+      <guid>https://3mile.github.io/archives/2018/07/21/</guid>
       <description>介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。 vmess</description>
     </item>
     
     <item>
       <title>CentOS7 修改默认时区</title>
-      <link>https://mile3.gitee.io/archives/117/</link>
+      <link>https://3mile.github.io/archives/117/</link>
       <pubDate>Wed, 04 Apr 2018 13:50:17 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/117/</guid>
+      <guid>https://3mile.github.io/archives/117/</guid>
       <description>Linux](https://www.jiloc.com/tag/linux) 系统(我特指发行版, 没说内核) 下大部分软件的风格就是不会仔细去考虑向后 的兼容性, 比如你上个版本能用这种程序配置, 没准到了下一个版本, 该程序</description>
     </item>
     
     <item>
       <title>如何在CentOS 7上安装和配置Caddy</title>
-      <link>https://mile3.gitee.io/archives/118/</link>
+      <link>https://3mile.github.io/archives/118/</link>
       <pubDate>Wed, 04 Apr 2018 12:58:23 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/118/</guid>
+      <guid>https://3mile.github.io/archives/118/</guid>
       <description>介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部</description>
     </item>
     
     <item>
       <title>CentOS7：firewall防火墙使用</title>
-      <link>https://mile3.gitee.io/archives/102/</link>
+      <link>https://3mile.github.io/archives/102/</link>
       <pubDate>Fri, 30 Mar 2018 05:15:21 +0000</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/102/</guid>
+      <guid>https://3mile.github.io/archives/102/</guid>
       <description>一、Firewalld防火墙 红帽RHEL7系统已经用firewalld服务替代了iptables服务，新的防火墙管理命令firewall-c</description>
     </item>
     

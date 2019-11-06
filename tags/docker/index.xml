@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Docker on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/docker/</link>
+    <link>https://3mile.github.io/tags/docker/</link>
     <description>Recent content in Docker on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 05 Apr 2018 13:12:20 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>群晖中用docker安装pi-hole给家庭局域网的设备滤除广告</title>
-      <link>https://mile3.gitee.io/archives/112/</link>
+      <link>https://3mile.github.io/archives/112/</link>
       <pubDate>Thu, 05 Apr 2018 13:12:20 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/112/</guid>
+      <guid>https://3mile.github.io/archives/112/</guid>
       <description>Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，</description>
     </item>
     

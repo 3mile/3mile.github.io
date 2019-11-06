@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Potplayer on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/potplayer/</link>
+    <link>https://3mile.github.io/tags/potplayer/</link>
     <description>Recent content in Potplayer on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 07 May 2018 11:54:13 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/potplayer/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/potplayer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Potplayer禁止联网</title>
-      <link>https://mile3.gitee.io/archives/140/</link>
+      <link>https://3mile.github.io/archives/140/</link>
       <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/140/</guid>
+      <guid>https://3mile.github.io/archives/140/</guid>
       <description>potplayer是一款非常受欢迎的视频播放器，其具有非常强大的功能。不过，一些 win10系统 用户反馈，potplayer经常会弹出“自动更</description>
     </item>
     

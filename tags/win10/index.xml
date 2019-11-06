@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Win10 on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/win10/</link>
+    <link>https://3mile.github.io/tags/win10/</link>
     <description>Recent content in Win10 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 19 Mar 2019 15:31:56 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/win10/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/win10/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>解决win10_1809下看不到局域网</title>
-      <link>https://mile3.gitee.io/archives/2019/0319153156/</link>
+      <link>https://3mile.github.io/archives/2019/0319153156/</link>
       <pubDate>Tue, 19 Mar 2019 15:31:56 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0319153156/</guid>
+      <guid>https://3mile.github.io/archives/2019/0319153156/</guid>
       <description>1.按Windows+R组合键，打开运行。 2.输入services.msc，然后回车。 3.找到下面罗列的服务，在每个服务上右击，选择属性，并</description>
     </item>
     

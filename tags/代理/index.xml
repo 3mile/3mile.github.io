@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>代理 on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/%E4%BB%A3%E7%90%86/</link>
+    <link>https://3mile.github.io/tags/%E4%BB%A3%E7%90%86/</link>
     <description>Recent content in 代理 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Nov 2018 13:37:41 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/%E4%BB%A3%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/%E4%BB%A3%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CentOS7 安装部署MTProxy</title>
-      <link>https://mile3.gitee.io/archives/2018/11/13/</link>
+      <link>https://3mile.github.io/archives/2018/11/13/</link>
       <pubDate>Tue, 13 Nov 2018 13:37:41 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2018/11/13/</guid>
+      <guid>https://3mile.github.io/archives/2018/11/13/</guid>
       <description>MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软</description>
     </item>
     

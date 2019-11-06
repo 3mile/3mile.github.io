@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ubuntu on 3mile博客</title>
-    <link>https://mile3.gitee.io/categories/ubuntu/</link>
+    <link>https://3mile.github.io/categories/ubuntu/</link>
     <description>Recent content in Ubuntu on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 19 Mar 2019 14:09:30 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>如何在Ubuntu 18.04设置NFS挂载</title>
-      <link>https://mile3.gitee.io/archives/2018/03/19/</link>
+      <link>https://3mile.github.io/archives/2018/03/19/</link>
       <pubDate>Tue, 19 Mar 2019 14:09:30 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2018/03/19/</guid>
+      <guid>https://3mile.github.io/archives/2018/03/19/</guid>
       <description>如何在Ubuntu 18.04上设置NFS挂载 NFS或网络文件系统是一种分布式文件系统协议，允许您在服务器上安装远程目录。本教程将介绍如何安装</description>
     </item>
     

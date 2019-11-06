@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows软件 on 3mile博客</title>
-    <link>https://mile3.gitee.io/categories/windows%E8%BD%AF%E4%BB%B6/</link>
+    <link>https://3mile.github.io/categories/windows%E8%BD%AF%E4%BB%B6/</link>
     <description>Recent content in Windows软件 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 07 May 2018 12:43:01 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/categories/windows%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/categories/windows%E8%BD%AF%E4%BB%B6/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>自用软件推荐</title>
-      <link>https://mile3.gitee.io/archives/141/</link>
+      <link>https://3mile.github.io/archives/141/</link>
       <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/141/</guid>
+      <guid>https://3mile.github.io/archives/141/</guid>
       <description>用了这么多年电脑,肯定有些高效率的软件收藏.下面推荐的软件可以说是用了很多年,并且以后会一直用下去的软件. 为什么会做这个东东呢,主要还是因为</description>
     </item>
     
     <item>
       <title>Potplayer禁止联网</title>
-      <link>https://mile3.gitee.io/archives/140/</link>
+      <link>https://3mile.github.io/archives/140/</link>
       <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/140/</guid>
+      <guid>https://3mile.github.io/archives/140/</guid>
       <description>potplayer是一款非常受欢迎的视频播放器，其具有非常强大的功能。不过，一些 win10系统 用户反馈，potplayer经常会弹出“自动更</description>
     </item>
     
     <item>
       <title>编辑器 Atom介绍</title>
-      <link>https://mile3.gitee.io/archives/139/</link>
+      <link>https://3mile.github.io/archives/139/</link>
       <pubDate>Sun, 06 May 2018 12:35:58 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/139/</guid>
+      <guid>https://3mile.github.io/archives/139/</guid>
       <description>我一直在 Windows 上寻找一款足够媲美 MWeb 和 Ulysses 的 Markdown 编辑器。可惜 Windows 上优秀的编辑器较少，于是我盯上了这款本为程序员设计的 Atom 编辑器。 我在对 Atom 有想法之前，使用的</description>
     </item>
     
     <item>
       <title>启动器 Rolan2</title>
-      <link>https://mile3.gitee.io/archives/138/</link>
+      <link>https://3mile.github.io/archives/138/</link>
       <pubDate>Sun, 06 May 2018 04:08:54 +0000</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/138/</guid>
+      <guid>https://3mile.github.io/archives/138/</guid>
       <description>在 macOS 中，所有的软件都被放在 LaunchPad 中，只需一个手势就可以快速打开。虽然 Windows 10 中的「开始屏幕」也能做到类似的事情。但是由于 UWP 软件和传统 x86 软件的待遇完全</description>
     </item>
     
     <item>
       <title>网速监控悬浮窗软件</title>
-      <link>https://mile3.gitee.io/archives/2018/05/001/</link>
+      <link>https://3mile.github.io/archives/2018/05/001/</link>
       <pubDate>Wed, 02 May 2018 11:55:04 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2018/05/001/</guid>
+      <guid>https://3mile.github.io/archives/2018/05/001/</guid>
       <description>TrafficMonitor 是一款「用于显示当前网速、CPU 及内存利用率的桌面悬浮窗软件，并支持任务栏显示，支持更换皮肤。」，来自 小众 网友的强烈推荐。@Appinn 嗯</description>
     </item>
     
     <item>
       <title>Kip3000驱动安装说明</title>
-      <link>https://mile3.gitee.io/archives/127/</link>
+      <link>https://3mile.github.io/archives/127/</link>
       <pubDate>Tue, 24 Apr 2018 11:46:36 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/127/</guid>
+      <guid>https://3mile.github.io/archives/127/</guid>
       <description>KIP IPS 6.x Windows 驅動程式安裝說明 ( for Windows 2000/XP ) 開啟控制台，點選「印表機和傳真」選項。 點選「檔案」→「伺服器內容」。 點選「新增連接埠」。 點選「新增連接埠類</description>
     </item>
     
     <item>
       <title>华为悦盒获取IPTV播放地址免抓包方法</title>
-      <link>https://mile3.gitee.io/archives/111/</link>
+      <link>https://3mile.github.io/archives/111/</link>
       <pubDate>Thu, 05 Apr 2018 13:00:56 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/111/</guid>
+      <guid>https://3mile.github.io/archives/111/</guid>
       <description>如果你想在T1上看IPTV，恰巧运营商送你的电视盒子是华为悦盒，请继续往下看，不是请退出免得浪费时间。 小白发帖求不喷！ 1.盒子和电脑必须在同</description>
     </item>
     

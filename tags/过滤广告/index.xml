@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>过滤广告 on 3mile博客</title>
-    <link>https://mile3.gitee.io/tags/%E8%BF%87%E6%BB%A4%E5%B9%BF%E5%91%8A/</link>
+    <link>https://3mile.github.io/tags/%E8%BF%87%E6%BB%A4%E5%B9%BF%E5%91%8A/</link>
     <description>Recent content in 过滤广告 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Aug 2019 10:01:52 +0800</lastBuildDate>
     
-	<atom:link href="https://mile3.gitee.io/tags/%E8%BF%87%E6%BB%A4%E5%B9%BF%E5%91%8A/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://3mile.github.io/tags/%E8%BF%87%E6%BB%A4%E5%B9%BF%E5%91%8A/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>配置AdGuard Home&#43;V2Ray</title>
-      <link>https://mile3.gitee.io/archives/2019/0813100152/</link>
+      <link>https://3mile.github.io/archives/2019/0813100152/</link>
       <pubDate>Tue, 13 Aug 2019 10:01:52 +0800</pubDate>
       
-      <guid>https://mile3.gitee.io/archives/2019/0813100152/</guid>
+      <guid>https://3mile.github.io/archives/2019/0813100152/</guid>
       <description>AdGuard简介 AdGuard Home 是一款全网广告拦截与反跟踪软件。在您将其安装完毕后，它将保护您所有家用设备，同时您不再需要安装任何客户端软件。随着物联</description>
     </item>
     
