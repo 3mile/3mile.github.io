@@ -2,48 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>群晖 on 3mile博客</title>
-    <link>https://3mile.github.io/tags/%E7%BE%A4%E6%99%96/</link>
+    <link>https://mile3.gitee.io/tags/%E7%BE%A4%E6%99%96/</link>
     <description>Recent content in 群晖 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 05 Apr 2018 13:28:24 +0800</lastBuildDate>
     
-	<atom:link href="https://3mile.github.io/tags/%E7%BE%A4%E6%99%96/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mile3.gitee.io/tags/%E7%BE%A4%E6%99%96/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>当群晖遇上Office 多人协作效率为王</title>
-      <link>https://3mile.github.io/archives/113/</link>
+      <link>https://mile3.gitee.io/archives/113/</link>
       <pubDate>Thu, 05 Apr 2018 13:28:24 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/113/</guid>
+      <guid>https://mile3.gitee.io/archives/113/</guid>
       <description>作为PC端的王牌应用，微软Office一直是商用办公领域几乎每台电脑必装的软件，毫不夸张，Office就是现代社会必不可少的重要生产力工具。</description>
     </item>
     
     <item>
       <title>群晖中用docker安装pi-hole给家庭局域网的设备滤除广告</title>
-      <link>https://3mile.github.io/archives/112/</link>
+      <link>https://mile3.gitee.io/archives/112/</link>
       <pubDate>Thu, 05 Apr 2018 13:12:20 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/112/</guid>
+      <guid>https://mile3.gitee.io/archives/112/</guid>
       <description>Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，</description>
     </item>
     
     <item>
       <title>KeePass与群晖WebDav完美同步</title>
-      <link>https://3mile.github.io/archives/110/</link>
+      <link>https://mile3.gitee.io/archives/110/</link>
       <pubDate>Thu, 05 Apr 2018 12:47:27 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/110/</guid>
+      <guid>https://mile3.gitee.io/archives/110/</guid>
       <description>前言 第一次发贴，属菜鸟心得，老鸟跳过。从2000年开始接触网络，如今网龄已满16周年了，也管是资深网民，各种论坛帐号，各种邮箱帐号，淘宝、支</description>
     </item>
     
     <item>
       <title>群晖玩软路由</title>
-      <link>https://3mile.github.io/archives/968/</link>
+      <link>https://mile3.gitee.io/archives/968/</link>
       <pubDate>Fri, 30 Mar 2018 05:24:38 +0000</pubDate>
       
-      <guid>https://3mile.github.io/archives/968/</guid>
+      <guid>https://mile3.gitee.io/archives/968/</guid>
       <description>大家群晖玩软路由的基本都是用virtualbox，相对于VMM稳定性差十万八千里了，甚至在群晖上Docker都不如VMM稳定，自由，便捷 但是</description>
     </item>
     

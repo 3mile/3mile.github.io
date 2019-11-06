@@ -2,22 +2,62 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lede on 3mile博客</title>
-    <link>https://3mile.github.io/tags/lede/</link>
+    <link>https://mile3.gitee.io/tags/lede/</link>
     <description>Recent content in Lede on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 27 Oct 2018 11:04:52 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 13 Aug 2019 12:31:00 +0800</lastBuildDate>
     
-	<atom:link href="https://3mile.github.io/tags/lede/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mile3.gitee.io/tags/lede/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>用OpenWRT单独编译ipk插件</title>
+      <link>https://mile3.gitee.io/archives/2019/0813123100/</link>
+      <pubDate>Tue, 13 Aug 2019 12:31:00 +0800</pubDate>
+      
+      <guid>https://mile3.gitee.io/archives/2019/0813123100/</guid>
+      <description>openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻</description>
+    </item>
+    
+    <item>
+      <title>UDPXY手册</title>
+      <link>https://mile3.gitee.io/archives/2019/0530132110/</link>
+      <pubDate>Thu, 30 May 2019 13:21:10 +0800</pubDate>
+      
+      <guid>https://mile3.gitee.io/archives/2019/0530132110/</guid>
+      <description>&lt;p&gt;udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。&lt;/p&gt;
+
+&lt;p&gt;udpxy在官方的软件源中，直接安装即可&lt;/p&gt;
+
+&lt;p&gt;udpxy没有独立的配置文件，修改参数直接在启动脚本中完成&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Lede编译备忘</title>
+      <link>https://mile3.gitee.io/archives/2019/0525110729/</link>
+      <pubDate>Sat, 25 May 2019 11:07:29 +0800</pubDate>
+      
+      <guid>https://mile3.gitee.io/archives/2019/0525110729/</guid>
+      <description>一. 首次编译 1. 首先安装依赖 2. 下载源码 3. 更新 4. 推荐的必要工具 5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网 6. 编译 二. 再次编译 三. 自</description>
+    </item>
+    
+    <item>
       <title>编译lean LEDE后transmission的使用总结</title>
-      <link>https://3mile.github.io/archives/2018/10/27/</link>
+      <link>https://mile3.gitee.io/archives/2018/10/27/</link>
       <pubDate>Sat, 27 Oct 2018 11:04:52 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2018/10/27/</guid>
+      <guid>https://mile3.gitee.io/archives/2018/10/27/</guid>
       <description>首先是编译过程中,需要选中 luci-app-transmission_git-17.080.69173-773734e-1_all.ipk luci-i18n-transmission-zh-cn_git-17.080.69173-773734e-1_all.ipk transmission-daemon-openssl_2.92+git-4_x86_64.ipk transmission-web_2.92+git-4_x86_64.ipk 如果编译中只选中了luci-app-transmission的话,transmission是不能运行的,可</description>
+    </item>
+    
+    <item>
+      <title>老旧笔记本单网口实机安装Lede(openwrt)_x64</title>
+      <link>https://mile3.gitee.io/archives/2018/07/25/</link>
+      <pubDate>Wed, 25 Jul 2018 10:51:28 +0800</pubDate>
+      
+      <guid>https://mile3.gitee.io/archives/2018/07/25/</guid>
+      <description>写在前面 首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如: 安装使用Linux Mint 安装过黑群晖做NAS 安装使用过Op</description>
     </item>
     
   </channel>

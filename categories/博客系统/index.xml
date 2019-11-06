@@ -2,120 +2,129 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>博客系统 on 3mile博客</title>
-    <link>https://3mile.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/</link>
+    <link>https://mile3.gitee.io/categories/%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/</link>
     <description>Recent content in 博客系统 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 16 May 2018 12:26:38 +0800</lastBuildDate>
     
-	<atom:link href="https://3mile.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mile3.gitee.io/categories/%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>图床上传工具PicGo V1</title>
-      <link>https://3mile.github.io/archives/142/</link>
+      <link>https://mile3.gitee.io/archives/142/</link>
       <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/142/</guid>
+      <guid>https://mile3.gitee.io/archives/142/</guid>
       <description>经过一个多月的努力开发，基于electron的图床上传工具PicGo终于迎来了一个minor版本的更新。如果你对此感兴趣，不妨看看都更新了哪</description>
     </item>
     
     <item>
+      <title>highlighted code showcase</title>
+      <link>https://mile3.gitee.io/2018/05/highlighted-code-showcase/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://mile3.gitee.io/2018/05/highlighted-code-showcase/</guid>
+      <description>&lt;p&gt;Tranquilpeak Hugo theme have its own theme to highlight source code. It&amp;rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Hugo &#43; Github Pages搭建静态博客</title>
-      <link>https://3mile.github.io/archives/2018/04/001/</link>
+      <link>https://mile3.gitee.io/archives/2018/04/001/</link>
       <pubDate>Fri, 27 Apr 2018 13:13:44 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2018/04/001/</guid>
+      <guid>https://mile3.gitee.io/archives/2018/04/001/</guid>
       <description>由于最近再次安装hugo,就想纪录一下这个过程，有什么不对的地方请指出来。 一. 安装hugo hugo有两种安装方式，homebrew包管理工具</description>
     </item>
     
     <item>
       <title>在github部署hugo静态网站</title>
-      <link>https://3mile.github.io/archives/2018/04/</link>
+      <link>https://mile3.gitee.io/archives/2018/04/</link>
       <pubDate>Fri, 27 Apr 2018 09:32:59 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2018/04/</guid>
+      <guid>https://mile3.gitee.io/archives/2018/04/</guid>
       <description>原由 颱風天那都不能去，只好繼續 Coding 人生、看看 Pocket 未讀的文章。不過也因此發現好幾個不錯的東西 Supercharging the Atom Editor for Go Development · marcio.io，最近也開始用 Atom 也開</description>
     </item>
     
     <item>
       <title>第三方评论系统推荐</title>
-      <link>https://3mile.github.io/archives/128/</link>
+      <link>https://mile3.gitee.io/archives/128/</link>
       <pubDate>Wed, 25 Apr 2018 09:34:29 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/128/</guid>
+      <guid>https://mile3.gitee.io/archives/128/</guid>
       <description>写在前面 多说要下线了，国内博客圈哀鸿遍野。主流博主们还好，有原生评论系统可以用，只是社交分享的时候麻烦点。最近流行起来的静态博客的博主们就不</description>
     </item>
     
     <item>
       <title>献给小白的GitHub入门魔法书「译」</title>
-      <link>https://3mile.github.io/archives/121/</link>
+      <link>https://mile3.gitee.io/archives/121/</link>
       <pubDate>Mon, 23 Apr 2018 13:26:40 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/121/</guid>
+      <guid>https://mile3.gitee.io/archives/121/</guid>
       <description>这篇文章转载自 readwrite网 CODE专栏 LAUREN ORSINI 发表的一篇文章。 原文作者是分成两篇姊妹篇写的，我一边翻译一边整合成一篇了。文章有些老(20</description>
     </item>
     
     <item>
       <title>MarkDown页内跳转</title>
-      <link>https://3mile.github.io/archives/120/</link>
+      <link>https://mile3.gitee.io/archives/120/</link>
       <pubDate>Mon, 23 Apr 2018 13:20:06 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/120/</guid>
+      <guid>https://mile3.gitee.io/archives/120/</guid>
       <description>上一篇博文里跟大家一起啃了啃 Markdown 的语法，其实已经可以满足写博文的基本需求了。Markdown 的本意是想让博主们专注内容的撰写而不是排版，但是如</description>
     </item>
     
     <item>
       <title>Win10搭建Hexo博客</title>
-      <link>https://3mile.github.io/archives/130/</link>
+      <link>https://mile3.gitee.io/archives/130/</link>
       <pubDate>Sat, 21 Apr 2018 11:41:05 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/130/</guid>
+      <guid>https://mile3.gitee.io/archives/130/</guid>
       <description>发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不</description>
     </item>
     
     <item>
       <title>Hugo主题简介</title>
-      <link>https://3mile.github.io/archives/201/</link>
+      <link>https://mile3.gitee.io/archives/201/</link>
       <pubDate>Mon, 16 Apr 2018 10:37:52 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/201/</guid>
+      <guid>https://mile3.gitee.io/archives/201/</guid>
       <description>目前Hugo官方一共提供了135款主题（Themes），下面归类简介其中的25款。 挑选标准：3分代表性 + 6分个人喜好 + 1分随机 :p 常规博客类 Heather</description>
     </item>
     
     <item>
       <title>搭建WordPress博客网站</title>
-      <link>https://3mile.github.io/archives/104/</link>
+      <link>https://mile3.gitee.io/archives/104/</link>
       <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/104/</guid>
+      <guid>https://mile3.gitee.io/archives/104/</guid>
       <description>讲真，曾经我特别佩服使用服务器（比如VPS）搭建WordPress博客网站的站长们。 因为，我觉得仅仅在漆黑的屏幕上敲几行代码就能把一个网站玩</description>
     </item>
     
     <item>
       <title>Markdown 设置字体颜色</title>
-      <link>https://3mile.github.io/archives/107/</link>
+      <link>https://mile3.gitee.io/archives/107/</link>
       <pubDate>Wed, 04 Apr 2018 14:02:33 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/107/</guid>
+      <guid>https://mile3.gitee.io/archives/107/</guid>
       <description>Red paragraph text this is a test Summary: Typora is a very good markdown editor, and today I&amp;rsquo;ll show you how to use typora to set the color of the font, Example is as follow. Typora虽然是一款markdown编辑器，但是其实也可以设置字体颜</description>
     </item>
     
     <item>
       <title>Hugo主题pcaman介绍</title>
-      <link>https://3mile.github.io/archives/119/</link>
+      <link>https://mile3.gitee.io/archives/119/</link>
       <pubDate>Sun, 01 Apr 2018 05:45:46 +0000</pubDate>
       
-      <guid>https://3mile.github.io/archives/119/</guid>
+      <guid>https://mile3.gitee.io/archives/119/</guid>
       <description>Pacman Pacman 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：hugo-p</description>
     </item>
     
     <item>
       <title>Crayon Syntax Highlighter插件更改显示语言为中文</title>
-      <link>https://3mile.github.io/archives/986/</link>
+      <link>https://mile3.gitee.io/archives/986/</link>
       <pubDate>Sat, 31 Mar 2018 06:48:38 +0000</pubDate>
       
-      <guid>https://3mile.github.io/archives/986/</guid>
+      <guid>https://mile3.gitee.io/archives/986/</guid>
       <description>Crayon Syntax Highlighter Crayon Syntax Highlighter是一个强大的代码高亮插件，强大的地方主要是它拥有多种高亮主题和多种显示字体来展示代码让使用者有足够多的搭配选</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wordpress on 3mile博客</title>
-    <link>https://3mile.github.io/tags/wordpress/</link>
+    <link>https://mile3.gitee.io/tags/wordpress/</link>
     <description>Recent content in Wordpress on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 10 Apr 2018 09:16:52 +0800</lastBuildDate>
     
-	<atom:link href="https://3mile.github.io/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mile3.gitee.io/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>搭建WordPress博客网站</title>
-      <link>https://3mile.github.io/archives/104/</link>
+      <link>https://mile3.gitee.io/archives/104/</link>
       <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/104/</guid>
+      <guid>https://mile3.gitee.io/archives/104/</guid>
       <description>讲真，曾经我特别佩服使用服务器（比如VPS）搭建WordPress博客网站的站长们。 因为，我觉得仅仅在漆黑的屏幕上敲几行代码就能把一个网站玩</description>
     </item>
     

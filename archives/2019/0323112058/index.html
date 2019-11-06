@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="背景: centos7 和 6的重大改变 对于系统管理员而言，系统的服务管理是一件很日常和很重要的工作，而7在6的基础上有了很大的改变，就连命令都完全不一样了。">
+
+
+<meta property="og:description" content="背景: centos7 和 6的重大改变 对于系统管理员而言，系统的服务管理是一件很日常和很重要的工作，而7在6的基础上有了很大的改变，就连命令都完全不一样了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos7中systemd Systemctl管理服务的命令">
+<meta name="twitter:title" content="Centos7中systemd Systemctl管理服务的命令">
+<meta property="og:url" content="https://mile3.gitee.io/archives/2019/0323112058/">
+<meta property="twitter:url" content="https://mile3.gitee.io/archives/2019/0323112058/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="背景: centos7 和 6的重大改变 对于系统管理员而言，系统的服务管理是一件很日常和很重要的工作，而7在6的基础上有了很大的改变，就连命令都完全不一样了。">
+<meta name="twitter:description" content="背景: centos7 和 6的重大改变 对于系统管理员而言，系统的服务管理是一件很日常和很重要的工作，而7在6的基础上有了很大的改变，就连命令都完全不一样了。">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-03-23T11:20:58">
+  
+  
+    <meta property="article:modified_time" content="2019-03-23T11:20:58">
+  
+  
+  
+    
+      <meta property="article:section" content="建站">
+    
+  
+  
+    
+      <meta property="article:tag" content="centos">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgounix-shot-1518512-640x480.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgounix-shot-1518512-640x480.jpg">
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/cover/3.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/cover/3.jpg">
+
+
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/img/a.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/img/a.jpg">
+
+
+    <title>Centos7中systemd Systemctl管理服务的命令</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://mile3.gitee.io/archives/2019/0323112058/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://mile3.gitee.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mile3.gitee.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mile3.gitee.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mile3.gitee.io/#about">
+          <img class="sidebar-profile-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/3.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Centos7中systemd Systemctl管理服务的命令
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-03-23T11:20:58&#43;08:00">
+        
+  
+  
+  
+  
+    2019-03-23
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://mile3.gitee.io/categories/%e5%bb%ba%e7%ab%99">建站</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <p><strong>背景: centos7 和 6的重大改变</strong></p>
+
+<p>对于系统管理员而言，系统的服务管理是一件很日常和很重要的工作，而7在6的基础上有了很大的改变，就连命令都完全不一样了。所以要拥抱变化，学习7是如何进行服务的管理和控制的。</p>
+
+<p><strong>system和systemctl的初探</strong></p>
+
+<p>Systemctl是一个systemd工具，主要负责控制systemd系统和服务管理器。</p>
+
+<p>Systemd是一个系统管理守护进程、工具和库的集合，用于取代System V初始进程。Systemd的功能是用于集中管理和配置类UNIX系统。</p>
+
+<p>在Linux生态系统中，Systemd被部署到了大多数的标准Linux发行版中，只有为数不多的几个发行版尚未部署。Systemd通常是所有其它守护进程的父进程，但并非总是如此。</p>
+
+<p>【第一步】</p>
+
+<p><strong>查看systemd的版本</strong></p>
+
+<pre><code class="language-bash">\# systemctl --version
+
+systemd 219
+
++PAM +AUDIT +SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ -LZ4 -SECCOMP +BLKID +ELFUTILS +KMOD +IDN
+</code></pre>
+
+<p><strong>查看进程是否存在</strong></p>
+
+<pre><code class="language-bash">ps -ef | grep [s]ystemd
+</code></pre>
+
+<p>注意:systemd是作为父进程(pid=1)运行的</p>
+
+<p><strong>分析systemd的启动进程</strong></p>
+
+<pre><code class="language-bash">\# systemd-analyze
+
+Startup finished in 639ms (kernel) + 931ms (initrd) + 12.432s (userspace) = 14.003s
+</code></pre>
+
+<p><strong>分析各个进程启动发费的时间</strong></p>
+
+<pre><code class="language-bash">\#systemd-analyze blame
+</code></pre>
+
+<p><strong>分析启动时候的关键链</strong></p>
+
+<pre><code class="language-bash">systemd-analyze critical-chain
+</code></pre>
+
+<p><strong>重要：Systemctl接受服务（.service），挂载点（.mount），套接口（.socket）和设备（.device）作为单元。</strong></p>
+
+<p><strong>列出所有服务可用单元</strong></p>
+
+<pre><code class="language-bash">systemctl list-unit-files
+</code></pre>
+
+<p>(200多个)</p>
+
+<p><strong>列出所有运行中的单元</strong></p>
+
+<pre><code class="language-bash">systemctl list-units
+</code></pre>
+
+<p><strong>列出失败的单元？</strong></p>
+
+<pre><code class="language-bash">systemctl --failed
+</code></pre>
+
+<p><strong>列出某个单元是否启动</strong></p>
+
+<pre><code class="language-bash">\# systemctl is-enabled crond.service
+
+enabled
+</code></pre>
+
+<p>或者</p>
+
+<pre><code class="language-bash">\# systemctl is-enabled crond
+
+enabled
+</code></pre>
+
+<p><strong>检查某个单元或服务是否运行</strong></p>
+
+<pre><code class="language-bash">\# systemctl is-active crond 
+
+active
+</code></pre>
+
+<p>或者</p>
+
+<pre><code class="language-bash">\# systemctl status crond   
+</code></pre>
+
+<p>这个信息更详细</p>
+
+<p>############################# 控制服务  ############################</p>
+
+<p><strong>列出所有服务（包括启用的和禁用的）</strong></p>
+
+<pre><code class="language-bash">systemctl list-unit-files  --type=service
+</code></pre>
+
+<p>(120+)</p>
+
+<p>以httpd为例</p>
+
+<pre><code class="language-bash">yum install httpd
+</code></pre>
+
+<p>会生成以下文件</p>
+
+<pre><code class="language-bash">/usr/lib/systemd/system/httpd.service 
+</code></pre>
+
+<p><strong>Linux中如何启动、重启、停止、重载服务以及检查服务（如 httpd.service）状态</strong></p>
+
+<pre><code class="language-bash">[root@Centos7-node2 ~]# systemctl status httpd
+
+● httpd.service - The Apache HTTP Server
+
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
+
+   Active: inactive (dead)
+
+​     Docs: man:httpd(8)
+
+​           man:apachectl(8)
+
+[root@Centos7-node2 ~]# systemctl start httpd 
+
+[root@Centos7-node2 ~]# systemctl status httpd
+
+● httpd.service - The Apache HTTP Server
+
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
+
+   Active: active (running) since Sun 2016-10-23 00:48:43 CST; 3s ago
+
+​     Docs: man:httpd(8)
+
+​           man:apachectl(8)
+
+ Main PID: 26811 (httpd)
+
+   Status: &quot;Processing requests...&quot;
+
+   CGroup: /system.slice/httpd.service
+
+​           ├─26811 /usr/sbin/httpd -DFOREGROUND
+
+​           ├─26812 /usr/sbin/httpd -DFOREGROUND
+
+​           ├─26813 /usr/sbin/httpd -DFOREGROUND
+
+​           ├─26814 /usr/sbin/httpd -DFOREGROUND
+
+​           ├─26815 /usr/sbin/httpd -DFOREGROUND
+
+​           └─26816 /usr/sbin/httpd -DFOREGROUND
+
+
+
+Oct 23 00:48:17 Centos7-node2 systemd[1]: Starting The Apache HTTP Server...
+
+Oct 23 00:48:33 Centos7-node2 httpd[26811]: AH00558: httpd: Could not reliably determine the server's fully qua...ssage
+
+Oct 23 00:48:43 Centos7-node2 systemd[1]: Started The Apache HTTP Server.
+
+Hint: Some lines were ellipsized, use -l to show in full.
+
+[root@Centos7-node2 ~]# systemctl reload httpd
+
+[root@Centos7-node2 ~]# systemctl stop httpd  
+</code></pre>
+
+<p>注意:</p>
+
+<pre><code class="language-bash">Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
+</code></pre>
+
+<p>在loader中第一个disabled表示系统启动是否自启动，为非自动。 第二个表示工作状态</p>
+
+<pre><code class="language-bash">Active: active (running) since Sun 2016-10-23 00:48:43 CST; 3s ago
+</code></pre>
+
+<p>Active 绿色表示服务运行正常</p>
+
+<p><strong>如何激活服务并在启动时启用或禁用服务（即系统启动时自动启动服务）</strong></p>
+
+<pre><code class="language-bash">[root@Centos7-node2 ~]# systemctl enable httpd
+
+Created symlink from /etc/systemd/system/multi-user.target.wants/httpd.service to /usr/lib/systemd/system/httpd.service.
+</code></pre>
+
+<p>禁用</p>
+
+<pre><code class="language-bash">systemctl disabled httpd
+
+[root@Centos7-node2 ~]# systemctl disable httpd 
+
+Removed symlink /etc/systemd/system/multi-user.target.wants/httpd.service.
+</code></pre>
+
+<p><strong>使用systemctl命令杀死服务</strong></p>
+
+<pre><code class="language-bash">[root@Centos7-node2 ~]# systemctl kill httpd
+
+[root@Centos7-node2 ~]# systemctl status httpd
+
+● httpd.service - The Apache HTTP Server
+
+   Loaded: loaded (/usr/lib/systemd/system/httpd.service; disabled; vendor preset: disabled)
+
+   Active: failed (Result: exit-code) since Sun 2016-10-23 00:56:59 CST; 1s ago
+
+​     Docs: man:httpd(8)
+
+​           man:apachectl(8)
+
+  Process: 26901 ExecStop=/bin/kill -WINCH ${MAINPID} (code=exited, status=1/FAILURE)
+
+ Main PID: 26869 (code=exited, status=0/SUCCESS)
+
+   Status: &quot;Total requests: 0; Current requests/sec: 0; Current traffic:   0 B/sec&quot;
+
+
+
+Oct 23 00:51:38 Centos7-node2 systemd[1]: Starting The Apache HTTP Server...
+
+Oct 23 00:51:53 Centos7-node2 httpd[26869]: AH00557: httpd: apr_sockaddr_info_get() failed for Centos7-node2
+
+Oct 23 00:51:53 Centos7-node2 httpd[26869]: AH00558: httpd: Could not reliably determine the server's fully qua...ssage
+
+Oct 23 00:52:03 Centos7-node2 systemd[1]: Started The Apache HTTP Server.
+
+Oct 23 00:56:59 Centos7-node2 kill[26901]: kill: cannot find process &quot;&quot;
+
+Oct 23 00:56:59 Centos7-node2 systemd[1]: httpd.service: control process exited, code=exited status=1
+
+Oct 23 00:56:59 Centos7-node2 systemd[1]: Unit httpd.service entered failed state.
+
+Oct 23 00:56:59 Centos7-node2 systemd[1]: httpd.service failed.
+
+Hint: Some lines were ellipsized, use -l to show in full.
+</code></pre>
+
+<p>注意:Active: failed (Result: exit-code) since Sun 2016-10-23 00:56:59 CST; 1s ago</p>
+
+<p>这个的failed表示的是kill掉的？</p>
+
+<pre><code class="language-bash">\##########################  使用Systemctl控制并管理挂载点 #################3
+
+[root@Centos7-node2 ~]# systemctl list-unit-files --type=mount
+
+UNIT FILE                     STATE   
+
+dev-hugepages.mount           static  
+
+dev-mqueue.mount              static  
+
+proc-sys-fs-binfmt_misc.mount static  
+
+sys-fs-fuse-connections.mount static  
+
+sys-kernel-config.mount       static  
+
+sys-kernel-debug.mount        static  
+
+tmp.mount                     disabled
+
+</code></pre>
+
+<p><strong>挂载、卸载、重新挂载、重载系统挂载点并检查系统中挂载点状态</strong></p>
+
+<pre><code class="language-bash">systemctl start tmp.mount
+
+systemctl status tmp.mount
+
+systemctl reload tmp.mount
+</code></pre>
+
+<p><strong>在启动时激活、启用或禁用挂载点（系统启动时自动挂载）</strong></p>
+
+<pre><code class="language-bash">\# systemctl is-active tmp.mount
+
+\# systemctl enable tmp.mount
+
+\# systemctl disable tmp.mount
+</code></pre>
+
+<p>在Linux中屏蔽（让它不能启用）或可见挂载点</p>
+
+<pre><code class="language-bash">\# systemctl mask tmp.mount
+
+ln -s '/dev/null''/etc/systemd/system/tmp.mount'
+
+\# systemctl unmask tmp.mount
+
+rm '/etc/systemd/system/tmp.mount'
+</code></pre>
+
+<p>####################　　控制系统运行等级　　##################</p>
+
+<p><strong>启动系统救援模式</strong></p>
+
+<pre><code class="language-bash">\# systemctl rescue
+
+Broadcast message from root@tecmint on pts/0(Wed2015-04-2911:31:18 IST):
+
+The system is going down to rescue mode NOW!
+</code></pre>
+
+<p><strong>进入紧急模式</strong></p>
+
+<pre><code class="language-bash">\# systemctl emergency   
+
+Welcome to emergency mode!After logging in, type &quot;journalctl -xb&quot; to view
+
+system logs,&quot;systemctl reboot&quot; to reboot,&quot;systemctl default&quot; to try again
+
+to boot intodefault mode.
+</code></pre>
+
+<p><strong>列出当前使用的运行等级</strong></p>
+
+<p>注意:init 1也是可以使用的</p>
+
+<pre><code class="language-bash">\# systemctl get-default
+
+multi-user.target
+</code></pre>
+
+<p>注意:who -r 也是可以查看的</p>
+
+<p><strong>启动运行等级5，即图形模式</strong></p>
+
+<pre><code class="language-bash">\# systemctl isolate runlevel5.target
+</code></pre>
+
+<p>或</p>
+
+<pre><code class="language-bash">\# systemctl isolate graphical.target
+</code></pre>
+
+<p><strong>启动运行等级3，即多用户模式（命令行）</strong></p>
+
+<pre><code class="language-bash">\# systemctl isolate runlevel3.target
+</code></pre>
+
+<p>或</p>
+
+<pre><code class="language-bash">\# systemctl isolate multiuser.target
+</code></pre>
+
+<p><strong>设置多用户模式或图形模式为默认运行等级</strong></p>
+
+<pre><code class="language-bash">
+\# systemctl set-default runlevel3.target
+
+\# systemctl set-default runlevel5.target
+</code></pre>
+
+<p><strong>重启、停止、挂起、休眠系统或使系统进入混合睡眠</strong></p>
+
+<pre><code class="language-bash">\# systemctl reboot             
+
+\# systemctl halt
+
+\# systemctl suspend
+
+\# systemctl hibernate
+
+\# systemctl hybrid-sleep
+</code></pre>
+
+<p>对于不知运行等级为何物的人，说明如下。</p>
+
+<pre><code class="language-bash">Runlevel 0 : 关闭系统
+
+Runlevel 1 : 救援？维护模式
+
+Runlevel 3 : 多用户，无图形系统
+
+Runlevel 4 : 多用户，无图形系统
+
+Runlevel 5 : 多用户，图形化系统
+
+Runlevel 6 : 关闭并重启机器
+</code></pre>
+
+<p>*注意:在centos7 中仍然可以使用init 0 关机 init 6 启动。</p>
+
+            
+          </div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/centos/">centos</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2019/0323112058/" class="leancloud_visitors" data-flag-title="Centos7中systemd Systemctl管理服务的命令">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0319153156/" data-tooltip="解决win10_1809下看不到局域网">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0416091012/" data-tooltip="安装ubuntu之后要做的事">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/0323112058/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/0323112058/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/0323112058/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. All Rights Reserved
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0319153156/" data-tooltip="解决win10_1809下看不到局域网">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0416091012/" data-tooltip="安装ubuntu之后要做的事">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/0323112058/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/0323112058/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/0323112058/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0323112058%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0323112058%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0323112058%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mile3.gitee.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

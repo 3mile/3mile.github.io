@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。
+
+udpxy在官方的软件源中，直接安装即可
+
+udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
+
+
+<meta property="og:description" content="udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。
+
+udpxy在官方的软件源中，直接安装即可
+
+udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UDPXY手册">
+<meta name="twitter:title" content="UDPXY手册">
+<meta property="og:url" content="https://mile3.gitee.io/archives/2019/0530132110/">
+<meta property="twitter:url" content="https://mile3.gitee.io/archives/2019/0530132110/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。
+
+udpxy在官方的软件源中，直接安装即可
+
+udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
+<meta name="twitter:description" content="udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。
+
+udpxy在官方的软件源中，直接安装即可
+
+udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-05-30T13:21:10">
+  
+  
+    <meta property="article:modified_time" content="2019-05-30T13:21:10">
+  
+  
+  
+    
+      <meta property="article:section" content="软路由">
+    
+  
+  
+    
+      <meta property="article:tag" content="LEDE">
+    
+      <meta property="article:tag" content="openwrt">
+    
+      <meta property="article:tag" content="iptv">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813124102-2019-8-13.png">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813124102-2019-8-13.png">
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/cover/9.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/cover/9.jpg">
+
+
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/img/a.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/img/a.jpg">
+
+
+    <title>UDPXY手册</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://mile3.gitee.io/archives/2019/0530132110/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://mile3.gitee.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mile3.gitee.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mile3.gitee.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mile3.gitee.io/#about">
+          <img class="sidebar-profile-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/9.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      UDPXY手册
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-05-30T13:21:10&#43;08:00">
+        
+  
+  
+  
+  
+    2019-05-30
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://mile3.gitee.io/categories/%e8%bd%af%e8%b7%af%e7%94%b1">软路由</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <p>udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。</p>
+
+<p>udpxy在官方的软件源中，直接安装即可</p>
+
+<p>udpxy没有独立的配置文件，修改参数直接在启动脚本中完成</p>
+
+<ul>
+<li><a href="#%e6%a6%82%e8%a6%81"><strong>概要</strong></a></li>
+<li><a href="#%e6%8f%8f%e8%bf%b0"><strong>描述</strong></a></li>
+<li><a href="#%e9%80%89%e9%a1%b9"><strong>选项</strong></a></li>
+<li><a href="#%e7%8e%af%e5%a2%83"><strong>环境</strong></a></li>
+</ul>
+
+<p>udpxy手册页
+udpxy - UDP到HTTP多播流量中继守护程序。</p>
+
+<h2 id="概要"><strong>概要</strong></h2>
+
+<pre><code class="language-bash">udpxy [-vTS] [-a &lt;listenaddr&gt;] [-m &lt;mcast_ifc_addr&gt;] [-c &lt;clients&gt;] [-l &lt;logfile&gt;] [-B &lt;sizeK&gt;] [-R &lt;msgs&gt;] [-H &lt;sec&gt;] [-n &lt;nice_incr&gt;] [-M &lt;sec&gt;] -p &lt;port&gt;
+</code></pre>
+
+<h2 id="描述"><strong>描述</strong></h2>
+
+<p>udpxy是UDP到HTTP多播流量中继守护程序：它将UDP流量从给定的多播订阅转发到请求的HTTP客户端。</p>
+
+<p>udpxy监听（在专用地址/端口上）客户端发出的HTTP请求。客户请求的结构应为：</p>
+
+<pre><code class="language-bash">http：//{ address }：{ port }/{ cmd }/{ mgroup_address }[ SEP ]{ mgroup_port }
+</code></pre>
+
+<pre><code>[SEP]
+：|％|〜| + | - | ^
+
+{cmd}，在
+UDP | RTP
+</code></pre>
+
+<p>其中地址和端口与udpxy 的侦听地址/端口组合匹配，mgroup_address：mgroup_port标识要预订的多播组/通道。</p>
+
+<pre><code class="language-bash">UDP
+# udp命令将对已知类型的有效负载（例如MPEG-TS和MPEG-TS上的RTP）进行udpxy探测;
+
+RTP
+# rtp命令使udpxy假定RTP超过MPEG-TS有效载荷，从而跳过探测器。
+</code></pre>
+
+<p>udpxy将为每个新的中继请求启动一个单独的客户端进程（在活动客户端的指定限制内​​）。客户端进程将（从UDP套接字）接收的所有网络流量从指定的多播组中继/转发到请求的HTTP连接。</p>
+
+<p>udpxy还支持一些管理请求：</p>
+
+<p>状态</p>
+
+<pre><code>http：// address：port / status /发回带有守护程序状态和客户端统计信息的HTML页面。
+</code></pre>
+
+<p>重新开始</p>
+
+<pre><code>http：// address：port / restart /关闭所有活动连接并重启。
+</code></pre>
+
+<p>例子</p>
+
+<pre><code>http://192.168.0.12:5056/udp/224.0.2.26:24012
+
+http://192.168.0.12:5056/rtp/224.0.2.26:24012
+
+http://192.168.0.15:5056/rtp/224.0.2.26^24055
+
+http://192.168.0.15:5056/status/
+</code></pre>
+
+<h2 id="选项"><strong>选项</strong></h2>
+
+<p>udpxy接受以下选项：</p>
+
+<pre><code class="language-bash">-v
+# 启用详细输出[default = disabled ]。
+
+-S
+# 启用客户端统计信息[default = disabled ]。
+
+-T
+# 不要作为守护进程运行[default = daemon if root ]。
+
+-a &lt;listenaddr&gt;
+# 要侦听的IPv4地址/接口[default = 0.0.0.0 ]。
+
+-m &lt;mcast_ifc_addr&gt;
+# （组播）源的IPv4地址/接口[默认= 0.0.0.0 ]。
+
+-c &lt;clients&gt;
+# 要接受的最大客户端数[default = 3，max = 5000 ]。
+
+-l &lt;logfile&gt;
+# 将输出记录到文件[default = stderr ]。
+
+-B &lt;sizeK&gt;
+# 入站（多播）数据的缓冲区大小（65536,32Kb，1Mb）[默认= 2048字节 ]。
+
+-R &lt;msgs&gt;
+# 要缓冲的最大消息数（-1 = 全部）[default = 1 ]。
+
+-H &lt;sec&gt;
+# 在缓冲区中保存数据的最长时间（以秒为单位）（- 1 = 无限制）[默认值= 1 ]。
+
+-n &lt;nice_incr&gt;
+# 好的值增量[default = 0 ]。
+
+-M &lt;sec&gt;
+# 每M秒更新一次多播订阅（如果为0则跳过）[default = 0 ]。
+
+-p &lt;port&gt;
+# 端口。
+</code></pre>
+
+<p>有效载荷类型和处理
+udpxy 通过中继数据包中的MPEG-TS有效载荷识别MPEG-TS和RTP ; 如果udpxy遇到RTP有效载荷，它会自动将其“转换”为MPEG-TS（通过剥离RTP头），以便不识别RTP的媒体播放器仍然可以播放该流。</p>
+
+<p>到目前为止，没有为其他有效负载类型执行转换。</p>
+
+<p>录制Mpeg流量
+udpxy包括将捕获的流量记录为原始MPEG-TS流到文件中的功能。此功能通过udpxrec启用：与udpxy链接在一起的捆绑应用程序（作为一个可执行文件）。</p>
+
+<p>udpxrec通过符号链接（名为udpxrec）调用udpxy可执行文件（即不重命名 udpxy可执行文件）。</p>
+
+<p>udpxrec创建封装MPEG-TS段的MPEG文件; 某些媒体播放器不会播放此类文件; 为了使它们可播放，必须将流转码为MPEG-PS; vlc&rsquo;知道&rsquo;如何进行这样的转码，这是一个命令行示例：</p>
+
+<pre><code>vlc input-ts.mpg --sout =“#std {access = file，mux = ps，dst = out-ps.mpg}”
+</code></pre>
+
+<p>由此产生的MPEG-PS文件可以由大多数媒体播放器播放。</p>
+
+<h2 id="环境"><strong>环境</strong></h2>
+
+<p>udpxy利用以下环境变量来补充其命令行选项; 变量被考虑用于大多数人不需要经常更改的选项（或者从命令行使用简单不方便）。</p>
+
+<p>注意：如果存在与功能环境变量相交的命令行开关，则交换机始终具有更高的优先级。</p>
+
+<pre><code class="language-bash">UDPXY_RCV_TMOUT
+# 入站数据流（多播）的超时（秒），默认= 5 ;
+
+UDPXY_DHOLD_TMOUT
+# 在发送/刷新到客户端之前保持缓冲数据的超时（秒），默认值= 1 ;
+
+UDPXY_SREAD_TMOUT
+# 从监听socked（处理HTTP请求）读取超时（秒），默认= 1 ;
+
+UDPXY_SWRITE_TMOUT
+# 写入侦听socked（处理HTTP请求）的超时（秒），默认值= 1 ;
+
+UDPXY_SSEL_TMOUT
+# 在服务器循环中选择（2）的超时（秒）（如果使用pselect（2）则未使用），默认值= 30 ;
+
+UDPXY_LQ_BACKLOG
+# 侦听器套接字的backlog大小，默认值= 16 ;
+
+UDPXY_SRV_RLWMARK
+# 接收（m-cast）套接字上的低watermaek，默认= 0（未设置）;
+
+UDPXY_SSOCKBUF_NOSYNC
+# 不同步入站（UDP）套接字的缓冲区大小（由-B设置的值），默认= 1（同步）;
+
+UDPXY_DSOCKBUF_NOSYNC
+# 不同步出站（TCP）套接字的缓冲区大小（由-B设置的值），默认= 1（同步）;
+
+UDPXY_TCP_NODELAY
+# 在新接受的套接字上禁用Nagle算法（更快的频道切换），默认= 1 ;
+
+UDPXY_HTTP200_FTR_FILE
+# 将给定文本文件的内容追加到HTTP 200响应中，default = none ;
+
+UDPXY_HTTP200_FTR_LN
+# 将文本（行）附加到HTTP 200响应，默认= 无 ;
+
+UDPXY_ALLOW_PAUSES
+# 如果在写入（2）上被阻塞，则继续读取数据直到缓冲区（-B &lt;sizeK&gt;）已满，默认= 禁用 ;
+
+UDPXY_PAUSE_MSEC
+# 在写入时阻塞时仅允许N毫秒读取数据（2）。
+
+UDPXY_CONTENT_TYPE
+# 在HTTP响应中指定自定义Content-Type。
+
+</code></pre>
+            
+          </div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/lede/">LEDE</a>
+
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/openwrt/">openwrt</a>
+
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/iptv/">iptv</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2019/0530132110/" class="leancloud_visitors" data-flag-title="UDPXY手册">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0530125409/" data-tooltip="Centos7下不见的命令">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0813100152/" data-tooltip="配置AdGuard Home&#43;V2Ray">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/0530132110/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/0530132110/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/0530132110/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. All Rights Reserved
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0530125409/" data-tooltip="Centos7下不见的命令">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0813100152/" data-tooltip="配置AdGuard Home&#43;V2Ray">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/0530132110/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/0530132110/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/0530132110/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0530132110%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0530132110%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0530132110%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mile3.gitee.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

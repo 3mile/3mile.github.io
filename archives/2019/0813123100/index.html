@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻">
+
+
+<meta property="og:description" content="openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用OpenWRT单独编译ipk插件">
+<meta name="twitter:title" content="用OpenWRT单独编译ipk插件">
+<meta property="og:url" content="https://mile3.gitee.io/archives/2019/0813123100/">
+<meta property="twitter:url" content="https://mile3.gitee.io/archives/2019/0813123100/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻">
+<meta name="twitter:description" content="openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-08-13T12:31:00">
+  
+  
+    <meta property="article:modified_time" content="2019-08-13T12:31:00">
+  
+  
+  
+    
+      <meta property="article:section" content="软路由">
+    
+  
+  
+    
+      <meta property="article:tag" content="LEDE">
+    
+      <meta property="article:tag" content="openwrt">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813123726-2019-8-13.png">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813123726-2019-8-13.png">
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813123726-2019-8-13.png">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813123726-2019-8-13.png">
+
+
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/img/a.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/img/a.jpg">
+
+
+    <title>用OpenWRT单独编译ipk插件</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://mile3.gitee.io/archives/2019/0813123100/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://mile3.gitee.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mile3.gitee.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mile3.gitee.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mile3.gitee.io/#about">
+          <img class="sidebar-profile-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813123726-2019-8-13.png')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      用OpenWRT单独编译ipk插件
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-08-13T12:31:00&#43;08:00">
+        
+  
+  
+  
+  
+    2019-08-13
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://mile3.gitee.io/categories/%e8%bd%af%e8%b7%af%e7%94%b1">软路由</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            
+
+<p>openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻烦，偶尔发现了有人说可以单独编译package下的程序，就像这样：
+make package/xxxxx/compile V=99 </p>
+
+<p>xxxxx就是你需要单独编译的程序。编译完成后去bin/ramips/packages里面找到对应的ipk，上传到板子，opkg install就可以了。</p>
+
+<h4 id="一-插件源码下载">一、插件源码下载</h4>
+
+<p>1.锐捷</p>
+
+<pre><code>git clone https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
+git clone https://github.com/BoringCat/luci-app-mentohust.git
+</code></pre>
+
+<p>2.Rosy主题</p>
+
+<pre><code>git clone https://github.com/rosywrt/luci-theme-rosy.git
+</code></pre>
+
+<h4 id="二-下载存放路径">二、下载存放路径</h4>
+
+<pre><code>/home/cheng/openwrt/lede/package
+</code></pre>
+
+<h4 id="三-配置">三、配置</h4>
+
+<pre><code>make menuconfig
+</code></pre>
+
+<h4 id="选中-但不编译进固件">选中，但不编译进固件</h4>
+
+<p>1.锐捷</p>
+
+<pre><code>-&gt; Network
+-&gt; Ruijie
+&lt;M&gt; mentohust………………………………….. A Ruijie Client Daemon
+-&gt; LuCI
+</code></pre>
+
+<p>-&gt; 3. Applications</p>
+
+<pre><code>&lt;M&gt; luci-app-mentohust…………………. MentoHUST 802.1X Client for LuCI
+</code></pre>
+
+<p>2.Rosy主题</p>
+
+<pre><code>-&gt; LuCI
+</code></pre>
+
+<p>-&gt; 4. Themes</p>
+
+<pre><code>&lt;M&gt; luci-theme-rosy……………………………………….. Rosy Theme
+</code></pre>
+
+<h4 id="四-编译">四、编译</h4>
+
+<pre><code>make package/MentoHUST-OpenWrt-ipk/compile V=99
+make package/luci-app-mentohust/compile V=99
+make package/luci-theme-rosy/luci-theme-rosy/compile V=99
+</code></pre>
+
+<h4 id="五-ipk生成路径">五、ipk生成路径</h4>
+
+<p>路径：</p>
+
+<pre><code>bin/packages/mipsel_24kc/base
+</code></pre>
+
+<p>文件名</p>
+
+<pre><code>mentohust_0.3.1-1_mipsel_24kc.ipk
+luci-app-mentohust_1.1.-0_all.ipk
+luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
+</code></pre>
+
+<h4 id="六-上传ipk至路由器">六、上传ipk至路由器</h4>
+
+<p>清除原有密钥</p>
+
+<pre><code>ssh-keygen -f “/home/cheng/.ssh/known_hosts” -R 192.168.10.1
+</code></pre>
+
+<p>拷贝至路由器</p>
+
+<pre><code>scp mentohust_0.3.1-1_mipsel_24kc.ipk root@192.168.10.1:/tmp
+scp luci-app-mentohust_1.1.-0_all.ipk root@192.168.10.1:/tmp
+scp luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk root@192.168.10.1:/tmp
+</code></pre>
+
+<h4 id="七-安装">七、安装</h4>
+
+<p>ssh进入路由器</p>
+
+<pre><code>cd /tmp
+opkg install mentohust_0.3.1-1_mipsel_24kc.ipk
+opkg install luci-app-mentohust_1.1.-0_all.ipk
+opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
+</code></pre>
+
+            
+          </div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/lede/">LEDE</a>
+
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/openwrt/">openwrt</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2019/0813123100/" class="leancloud_visitors" data-flag-title="用OpenWRT单独编译ipk插件">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0813113621/" data-tooltip="个人网盘FileBrowser">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0816141207/" data-tooltip="同步更新Github上Fork的项目">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/0813123100/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/0813123100/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/0813123100/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. All Rights Reserved
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0813113621/" data-tooltip="个人网盘FileBrowser">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0816141207/" data-tooltip="同步更新Github上Fork的项目">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/0813123100/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/0813123100/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/0813123100/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0813123100%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0813123100%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0813123100%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mile3.gitee.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Typora on 3mile博客</title>
-    <link>https://3mile.github.io/tags/typora/</link>
+    <link>https://mile3.gitee.io/tags/typora/</link>
     <description>Recent content in Typora on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 04 Apr 2018 14:02:33 +0800</lastBuildDate>
     
-	<atom:link href="https://3mile.github.io/tags/typora/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mile3.gitee.io/tags/typora/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Markdown 设置字体颜色</title>
-      <link>https://3mile.github.io/archives/107/</link>
+      <link>https://mile3.gitee.io/archives/107/</link>
       <pubDate>Wed, 04 Apr 2018 14:02:33 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/107/</guid>
+      <guid>https://mile3.gitee.io/archives/107/</guid>
       <description>Red paragraph text this is a test Summary: Typora is a very good markdown editor, and today I&amp;rsquo;ll show you how to use typora to set the color of the font, Example is as follow. Typora虽然是一款markdown编辑器，但是其实也可以设置字体颜</description>
     </item>
     

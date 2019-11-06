@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>静态博客 on 3mile博客</title>
-    <link>https://3mile.github.io/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
+    <link>https://mile3.gitee.io/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
     <description>Recent content in 静态博客 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Fri, 27 Apr 2018 13:13:44 +0800</lastBuildDate>
     
-	<atom:link href="https://3mile.github.io/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mile3.gitee.io/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hugo &#43; Github Pages搭建静态博客</title>
-      <link>https://3mile.github.io/archives/2018/04/001/</link>
+      <link>https://mile3.gitee.io/archives/2018/04/001/</link>
       <pubDate>Fri, 27 Apr 2018 13:13:44 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2018/04/001/</guid>
+      <guid>https://mile3.gitee.io/archives/2018/04/001/</guid>
       <description>由于最近再次安装hugo,就想纪录一下这个过程，有什么不对的地方请指出来。 一. 安装hugo hugo有两种安装方式，homebrew包管理工具</description>
     </item>
     

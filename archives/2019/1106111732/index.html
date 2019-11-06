@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="openwrt">
+<meta name="description" content="udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt">
+
+
+<meta property="og:description" content="udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编译UDPXY新版本">
+<meta name="twitter:title" content="编译UDPXY新版本">
+<meta property="og:url" content="https://mile3.gitee.io/archives/2019/1106111732/">
+<meta property="twitter:url" content="https://mile3.gitee.io/archives/2019/1106111732/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt">
+<meta name="twitter:description" content="udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-11-06T11:17:32">
+  
+  
+    <meta property="article:modified_time" content="2019-11-06T11:17:32">
+  
+  
+  
+    
+      <meta property="article:section" content="">
+    
+  
+  
+    
+      <meta property="article:tag" content="openwrt">
+    
+      <meta property="article:tag" content="udpxy">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106112604-2019-11-6.png">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106112604-2019-11-6.png">
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/cover/7.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/cover/7.jpg">
+
+
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/img/a.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/img/a.jpg">
+
+
+    <title>编译UDPXY新版本</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://mile3.gitee.io/archives/2019/1106111732/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://mile3.gitee.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mile3.gitee.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mile3.gitee.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mile3.gitee.io/#about">
+          <img class="sidebar-profile-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/7.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      编译UDPXY新版本
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-06T11:17:32&#43;08:00">
+        
+  
+  
+  
+  
+    2019-11-06
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://mile3.gitee.io/categories/"></a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            
+
+<p>udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt当中安装udpxy那么版本会比较老，最新版本的udpxy已经更新到1.0-23.12，其中有不少的特性更新和加强，所以手动编译udpxy相比udp2raw会比较简单，因为官方版本的Openwrt package list已经提供了官方的Makefile，直接修改其中对应的github repo的版本号和commit id即可实现最新版本的udpxy编译。</p>
+
+<h2 id="编译过程">编译过程</h2>
+
+<p><strong>1、编译环境准备</strong></p>
+
+<p>ubuntu 18.04 lts</p>
+
+<p><strong>2、udpxy源码准备</strong></p>
+
+<p>udpxy本身就在Openwrt的官方package list中，所以定位到编译环境当中的opx64/package/，任意名称创建一个文件夹，这里以openwrt-udpxy为例，然后下载官方package list当中的udpxy的Makefile相关文件：</p>
+
+<blockquote>
+<p><a href="https://github.com/openwrt/packages/tree/master/net/udpxy">https://github.com/openwrt/packages/tree/master/net/udpxy</a></p>
+</blockquote>
+
+<p>一个文件Makefile，一个files文件夹，全部放置于openwrt-udpxy文件夹当中即可。</p>
+
+<p>然后修改Makefile当中对应的git repo信息，udpxy的github源在‘<a href="https://github.com/pcherenkov/udpxy.git’">https://github.com/pcherenkov/udpxy.git’</a></p>
+
+<p>我们打开后可以发现最后的commit是1.0-24.0,&lsquo;21d9189789da46d66c30f6b30129d849a13e94f9&rsquo;</p>
+
+<blockquote>
+<p><strong>PKG_SOURCE_VERSION行</strong>
+PKG_SOURCE_VERSION:=21d9189789da46d66c30f6b30129d849a13e94f9</p>
+
+<p><strong>PKG_VERSION行</strong>
+PKG_VERSION:=2019-08-023-$(PKG_SOURCE_VERSION)</p>
+</blockquote>
+
+<p>其中PKG_SOURCE_VERSION行是对应git repo的commit id，使用最新的id即代表使用最新的源代码版本，同时修改PKG_VERSION为对应的版本号，以便识别。</p>
+
+<p><strong>3、开始编译</strong>
+定位到Openwrt的根目录，本例当中为opx64，开始编译</p>
+
+<pre><code>make package/openwrt-udpxy/compile V=s
+</code></pre>
+
+<p>不出意外编译完成，到目录opx64/bin/packages/x86_64/base/找到对应的udpxy的ipk到实际的Openwrt当中安装即可
+如果出现错误，同样参考<a href="http://65536.io/2019/04/469.html">《udp2raw解决运营商封锁大量UDP流量问题》</a>当中相关错误的部分即可。</p>
+
+<h2 id="配置解析">配置解析</h2>
+
+<p>直接在使用环境当中输入udpxy即可看到官方帮助，摘录如下</p>
+
+<pre><code>udpxy 1.0-23.12 (prod) standard [Linux 4.14.105 x86_64]
+usage: udpxy [-vTS] [-a listenaddr] -p port [-m mcast_ifc_addr] [-c clients] [-l logfile] [-B sizeK] [-n nice_incr]
+    -v : enable verbose output [default = disabled]
+    -S : enable client statistics [default = disabled]
+    -T : do NOT run as a daemon [default = daemon if root]
+    -a : (IPv4) address/interface to listen on [default = 0.0.0.0]
+    -p : port to listen on
+    -m : (IPv4) address/interface of (multicast) source [default = 0.0.0.0]
+    -c : max clients to serve [default = 3, max = 5000]
+    -l : log output to file [default = stderr]
+    -B : buffer size (65536, 32Kb, 1Mb) for inbound (multicast) data [default = 2048 bytes]
+    -R : maximum messages to store in buffer (-1 = all) [default = 1]
+    -H : maximum time (sec) to hold data in buffer (-1 = unlimited) [default = 1]
+    -n : nice value increment [default = 0]
+    -M : periodically renew multicast subscription (skip if 0 sec) [default = 0 sec]
+Examples:
+  udpxy -p 4022 
+    listen for HTTP requests on port 4022, all network interfaces
+  udpxy -a lan0 -p 4022 -m lan1
+    listen for HTTP requests on interface lan0, port 4022;
+    subscribe to multicast groups on interface lan1
+</code></pre>
+
+<p>作者实际使用情况下，是如下的参数</p>
+
+<pre><code>/usr/bin/udpxy -T -S -a 192.168.1.1 -p 4022 -m pppoe-iptv -c 5 -l /var/log/udpxy -B 2097152 -R 10 -M 300
+</code></pre>
+
+<blockquote>
+<p>-T -S参数即字面意思，实际正常使用的时候都需要
+-a 192.168.1.1 -p 4022：即udpxy监听地址和端口
+-m pppoe-iptv：即接受的数据端口，实际上是iptv拨号的端口，&gt;作者的环境是在Openwrt当中做iptv的拨号
+-c：即允许多少个客户端连接到udpxy
+-l：即log日志地址，方便debug
+-B：即缓冲区大小，设置最大2097152
+-R：即向组播组请求10个消息，并储存起来，在iptv当中即代表一次缓冲10s的数据
+-M：每5分钟重新加入一次组播组，以免网络有些问题的时候丢失组播连接。</p>
+</blockquote>
+
+<p>对应openwrt当中的配置文件如下，/etc/config/udpxy</p>
+
+<pre><code>config udpxy
+        option respawn '0'
+        option verbose '0'
+        option status '1'
+        option bind '192.168.1.1'
+        option port '4022'
+        option source 'pppoe-iptv'
+        option max_clients '5'
+        option log_file '/var/log/udpxy'
+        option buffer_size '2097152'
+        option buffer_messages '10'
+        option mcsub_renew '300'
+        option disabled '0'
+</code></pre>
+
+            
+          </div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/openwrt/">openwrt</a>
+
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/udpxy/">udpxy</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2019/1106111732/" class="leancloud_visitors" data-flag-title="编译UDPXY新版本">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/1106110511/" data-tooltip="Centos7安装python3.8">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/1106111732/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/1106111732/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/1106111732/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. All Rights Reserved
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/1106110511/" data-tooltip="Centos7安装python3.8">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/1106111732/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/1106111732/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/1106111732/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F1106111732%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F1106111732%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F1106111732%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mile3.gitee.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

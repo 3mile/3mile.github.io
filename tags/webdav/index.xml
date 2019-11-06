@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Webdav on 3mile博客</title>
-    <link>https://3mile.github.io/tags/webdav/</link>
+    <link>https://mile3.gitee.io/tags/webdav/</link>
     <description>Recent content in Webdav on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 05 Apr 2018 12:47:27 +0800</lastBuildDate>
     
-	<atom:link href="https://3mile.github.io/tags/webdav/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mile3.gitee.io/tags/webdav/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>KeePass与群晖WebDav完美同步</title>
-      <link>https://3mile.github.io/archives/110/</link>
+      <link>https://mile3.gitee.io/archives/110/</link>
       <pubDate>Thu, 05 Apr 2018 12:47:27 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/110/</guid>
+      <guid>https://mile3.gitee.io/archives/110/</guid>
       <description>前言 第一次发贴，属菜鸟心得，老鸟跳过。从2000年开始接触网络，如今网龄已满16周年了，也管是资深网民，各种论坛帐号，各种邮箱帐号，淘宝、支</description>
     </item>
     

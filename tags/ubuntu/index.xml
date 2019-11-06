@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on 3mile博客</title>
+    <link>https://mile3.gitee.io/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 16 Apr 2019 09:10:12 +0800</lastBuildDate>
+    
+	<atom:link href="https://mile3.gitee.io/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安装ubuntu之后要做的事</title>
+      <link>https://mile3.gitee.io/archives/2019/0416091012/</link>
+      <pubDate>Tue, 16 Apr 2019 09:10:12 +0800</pubDate>
+      
+      <guid>https://mile3.gitee.io/archives/2019/0416091012/</guid>
+      <description>Ubuntu18.04 安装后应该做的事 1.关掉sudo的密码 visudo了解一下 sudo visudo 之后会自动调用默认编辑器打开sudo配置文件，找到 %sudo ALL=(ALL:ALL) ALL 这行，然后改成 %sudo ALL=(ALL:ALL) NOPASSWD:ALL</description>
+    </item>
+    
+    <item>
+      <title>如何在Ubuntu 18.04设置NFS挂载</title>
+      <link>https://mile3.gitee.io/archives/2018/03/19/</link>
+      <pubDate>Tue, 19 Mar 2019 14:09:30 +0800</pubDate>
+      
+      <guid>https://mile3.gitee.io/archives/2018/03/19/</guid>
+      <description>如何在Ubuntu 18.04上设置NFS挂载 NFS或网络文件系统是一种分布式文件系统协议，允许您在服务器上安装远程目录。本教程将介绍如何安装</description>
+    </item>
+    
+    <item>
+      <title>Linux Mint操作记录</title>
+      <link>https://mile3.gitee.io/archives/2019/0220/</link>
+      <pubDate>Wed, 20 Feb 2019 14:01:49 +0800</pubDate>
+      
+      <guid>https://mile3.gitee.io/archives/2019/0220/</guid>
+      <description>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电</description>
+    </item>
+    
+  </channel>
+</rss>

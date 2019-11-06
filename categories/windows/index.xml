@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on 3mile博客</title>
-    <link>https://3mile.github.io/categories/windows/</link>
+    <link>https://mile3.gitee.io/categories/windows/</link>
     <description>Recent content in Windows on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 02 May 2018 11:55:04 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 19 Mar 2019 15:31:56 +0800</lastBuildDate>
     
-	<atom:link href="https://3mile.github.io/categories/windows/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mile3.gitee.io/categories/windows/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>网速监控悬浮窗软件</title>
-      <link>https://3mile.github.io/2018/05/02/%E7%BD%91%E9%80%9F%E7%9B%91%E6%8E%A7%E6%82%AC%E6%B5%AE%E7%AA%97%E8%BD%AF%E4%BB%B6/</link>
-      <pubDate>Wed, 02 May 2018 11:55:04 +0800</pubDate>
+      <title>解决win10_1809下看不到局域网</title>
+      <link>https://mile3.gitee.io/archives/2019/0319153156/</link>
+      <pubDate>Tue, 19 Mar 2019 15:31:56 +0800</pubDate>
       
-      <guid>https://3mile.github.io/2018/05/02/%E7%BD%91%E9%80%9F%E7%9B%91%E6%8E%A7%E6%82%AC%E6%B5%AE%E7%AA%97%E8%BD%AF%E4%BB%B6/</guid>
-      <description>TrafficMonitor 是一款「用于显示当前网速、CPU 及内存利用率的桌面悬浮窗软件，并支持任务栏显示，支持更换皮肤。」，来自 小众 网友的强烈推荐。@Appinn 嗯</description>
+      <guid>https://mile3.gitee.io/archives/2019/0319153156/</guid>
+      <description>1.按Windows+R组合键，打开运行。 2.输入services.msc，然后回车。 3.找到下面罗列的服务，在每个服务上右击，选择属性，并</description>
     </item>
     
   </channel>

@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="个人网盘 Filebrowser 服务器仅仅用于科学上网未免有些浪费了，是时候尝试一下自建个人网盘和图床了。 如何安装 官方给出了一键安装大法，进入服务器输入以下命令就">
+
+
+<meta property="og:description" content="个人网盘 Filebrowser 服务器仅仅用于科学上网未免有些浪费了，是时候尝试一下自建个人网盘和图床了。 如何安装 官方给出了一键安装大法，进入服务器输入以下命令就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人网盘FileBrowser">
+<meta name="twitter:title" content="个人网盘FileBrowser">
+<meta property="og:url" content="https://mile3.gitee.io/archives/2019/0813113621/">
+<meta property="twitter:url" content="https://mile3.gitee.io/archives/2019/0813113621/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="个人网盘 Filebrowser 服务器仅仅用于科学上网未免有些浪费了，是时候尝试一下自建个人网盘和图床了。 如何安装 官方给出了一键安装大法，进入服务器输入以下命令就">
+<meta name="twitter:description" content="个人网盘 Filebrowser 服务器仅仅用于科学上网未免有些浪费了，是时候尝试一下自建个人网盘和图床了。 如何安装 官方给出了一键安装大法，进入服务器输入以下命令就">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-08-13T11:36:21">
+  
+  
+    <meta property="article:modified_time" content="2019-08-13T11:36:21">
+  
+  
+  
+    
+      <meta property="article:section" content="建站">
+    
+  
+  
+    
+      <meta property="article:tag" content="centos">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/httpsmile3-1253674458.cos.ap-chengdu.myqcloud.comassetspicgohttpsmile3-1253674458.cos.ap-chengdu.myqcloud.comassetspicgounix-shot-1518512-640x480-2019-8-13-2019-8-13.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/httpsmile3-1253674458.cos.ap-chengdu.myqcloud.comassetspicgohttpsmile3-1253674458.cos.ap-chengdu.myqcloud.comassetspicgounix-shot-1518512-640x480-2019-8-13-2019-8-13.jpg">
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/cover/6.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/cover/6.jpg">
+
+
+
+
+  <meta property="og:image" content="https://mile3.gitee.io/img/a.jpg">
+  <meta property="twitter:image" content="https://mile3.gitee.io/img/a.jpg">
+
+
+    <title>个人网盘FileBrowser</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://mile3.gitee.io/archives/2019/0813113621/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://mile3.gitee.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://mile3.gitee.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://mile3.gitee.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://mile3.gitee.io/#about">
+          <img class="sidebar-profile-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://mile3.gitee.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/6.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      个人网盘FileBrowser
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-08-13T11:36:21&#43;08:00">
+        
+  
+  
+  
+  
+    2019-08-13
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://mile3.gitee.io/categories/%e5%bb%ba%e7%ab%99">建站</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            
+
+<h1 id="个人网盘-filebrowser">个人网盘 Filebrowser</h1>
+
+<p>服务器仅仅用于科学上网未免有些浪费了，是时候尝试一下自建个人网盘和图床了。</p>
+
+<h2 id="如何安装">如何安装</h2>
+
+<p><a href="https://filebrowser.xyz/installation">官方</a>给出了一键安装大法，进入服务器输入以下命令就可以了。</p>
+
+<pre><code>curl -fsSL https://filebrowser.xyz/get.sh | bash
+</code></pre>
+
+<h2 id="首次配置">首次配置</h2>
+
+<p>当安装好之后，你并不能立即使用它，需要修改一些配置(以下内容参考[<a href="https://www.mivm.cn/filebrowser/">米V米</a>]的教程)。</p>
+
+<ul>
+<li>创建配置数据库(初始化数据库)：<code>filebrowser -d /etc/filebrowser.db config init</code></li>
+<li>设置监听地址：<code>filebrowser -d /etc/filebrowser.db config set --address 0.0.0.0</code></li>
+<li>设置监听端口：<code>filebrowser -d /etc/filebrowser.db config set --port 8088</code></li>
+<li>设置语言环境(中文)：<code>filebrowser -d /etc/filebrowser.db config set --locale zh-cn</code></li>
+<li>设置日志位置：<code>filebrowser -d /etc/filebrowser.db config set --log /var/log/filebrowser.log</code></li>
+<li>添加一个用户：<code>filebrowser -d /etc/filebrowser.db users add root password --perm.admin</code>，其中的root和password分别是用户名和密码，根据自己的需求更改。</li>
+</ul>
+
+<blockquote>
+<p>所有配置filebrowser.db的操作都要在filebrowser关闭的时候操作，由于filebrowser工作的时候会独占数据库。</p>
+
+<p>否则，会出现 &lsquo;Time Out&rsquo;错误</p>
+</blockquote>
+
+<p>有关更多配置的选项，可以参考官方文档：<a href="https://docs.filebrowser.xyz/">https://docs.filebrowser.xyz/</a>
+配置修改好以后，就可以启动FileBrowser了，使用-d参数指定配置数据库路径。示例：<code>filebrowser -d /etc/filebrowser.db</code>
+启动成功就可以使用浏览器访问FileBrowser了，在浏览器输入 <code>服务器IP:端口</code>，示例：<code>http://192.168.1.1:8088</code></p>
+
+<p>然后会看到 FileBrowser 的登陆界面：
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813114005-2019-8-13.png" alt="20190813114005-2019-8-13.png" />
+用刚刚创建的用户登陆，最后就可以放心使用啦~
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813114024-2019-8-13.png" alt="20190813114024-2019-8-13.png" /></p>
+
+<h2 id="后续配置">后续配置</h2>
+
+<p>完成以上过程之后已经可以正常访问个人网盘了，但是假如服务器重启之后就必须重新输入<code>filebrowser -d /etc/filebrowser.db</code>才能运行，为了省去这一步，我们需要进行设置服务器开机自动启动FileBrowser。
+这里我们使用的是systemd 大法：
+首先下载 FileBrowser 的 <code>service</code>文件：</p>
+
+<pre><code>curl https://cdn.mivm.cn/www.mivm.cn/archives/filebrowser/filebrowser.service -o /lib/systemd/system/filebrowser.service
+</code></pre>
+
+<p>或者自己输入</p>
+
+<pre><code class="language-bash">nano /lib/systemd/system/filebrowser.service
+</code></pre>
+
+<p>内容如下:</p>
+
+<pre><code class="language-ini">[Unit]
+Description=File Browser
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/filebrowser -d /etc/filebrowser.db
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>如果你的运行命令不是<code>/usr/local/bin/filebrowser -d /etc/filebrowser.db</code>，需要对 service 文件进行修改，将文件的 ExecStart 改为你的运行命令，更改完成后需要输入<code>systemctl daemon-reload</code>。</p>
+
+<p>下面祭出常用的命令：</p>
+
+<ul>
+<li>运行：<code>systemctl start filebrowser.service</code></li>
+<li>重启：<code>systemctl restart filebrowser.service</code></li>
+<li>停止运行：<code>systemctl stop filebrowser.service</code></li>
+<li>开机启动：<code>systemctl enable filebrowser.service</code></li>
+<li>取消开机启动：<code>systemctl disable filebrowser.service</code></li>
+<li>查看运行状态：<code>systemctl status filebrowser.service</code></li>
+</ul>
+
+<p>使用Caddy反向代理</p>
+
+<blockquote>
+<p>​ 通常情况下我们已经建立好了站点，所以现在我们只能建立二级页面来管理了。</p>
+</blockquote>
+
+<p>​   所以我们要先停止filebrowser的运行</p>
+
+<pre><code class="language-bash"># 停止filebrowser运行
+systemctl stop filebrowser.service
+# 修改filebrowser.db的baseurl
+filebrowser -d /etc/filebrowser.db config set --baseurl /manager
+# 重新运行filebrowser
+systemctl start filebrowser.service
+</code></pre>
+
+<p>然后修改<code>/etc/caddy/Caddyfile</code>成下面的样子</p>
+
+<pre><code class="language-json">example {
+    root /var/www/file
+    tls xxx@xxxx.cn
+    gzip
+    browse #相当于最简单的文件服务器，公开文件全部都可以在这里分享
+    root var/file/public    #站点根路径
+    
+    #访问$site/logs时要求账户密码简单认证
+    basicauth /logs username password
+    
+    # 反向代理 aria2 rpc 服务端口，以实现 https 下连接 aria2 服务
+    proxy /jsonrpc localhost:6800
+    
+    # 为 ariaNG 面板设置简易认证
+    basicauth /aria2 username password
+    
+    #反向代理fileborwser
+    proxy /admin 127.0.0.1:8088
+}
+</code></pre>
+
+<p>现在，你就拥有了几个功能了</p>
+
+<ul>
+<li>极简单文件服务器</li>
+<li>反向代理的Aria2Ng面板</li>
+<li>fileborwser服务器</li>
+</ul>
+
+<p>这里有个<a href="https://youtu.be/sE31MBvOjxk">视频教程</a>，需要科学上网查看。
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="//www.youtube.com/embed/sE31MBvOjxk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
+
+            
+          </div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://mile3.gitee.io/tags/centos/">centos</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2019/0813113621/" class="leancloud_visitors" data-flag-title="个人网盘FileBrowser">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0813100152/" data-tooltip="配置AdGuard Home&#43;V2Ray">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0813123100/" data-tooltip="用OpenWRT单独编译ipk插件">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/0813113621/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/0813113621/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/0813113621/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. All Rights Reserved
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0813100152/" data-tooltip="配置AdGuard Home&#43;V2Ray">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://mile3.gitee.io/archives/2019/0813123100/" data-tooltip="用OpenWRT单独编译ipk插件">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://mile3.gitee.io/archives/2019/0813113621/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://mile3.gitee.io/archives/2019/0813113621/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://mile3.gitee.io/archives/2019/0813113621/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0813113621%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0813113621%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmile3.gitee.io%2Farchives%2F2019%2F0813113621%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://mile3.gitee.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://mile3.gitee.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>
