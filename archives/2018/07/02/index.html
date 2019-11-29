@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的">
@@ -307,6 +307,7 @@ if (!doNotTrack) {
 <li><a href="#机箱">机箱</a></li>
 <li><a href="#电源">电源</a></li>
 <li><a href="#1-安装工具软件">1、安装工具软件</a></li>
+<li><a href="#samba服务配置"><strong>Samba服务配置</strong></a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -795,138 +796,65 @@ iface ens33 inet staticaddress 192.168.x.x （固定IP地址）netmask 255.255.2
 
  
 
-```mkdir /mnt/library_amkdir /mnt/library_bmount /dev/sdb1 /mnt/library_amount /dev/sdb2 /mnt/library_b```
-
- 
-
-但总不能每次启动系统后都手动挂载一次，所以需要设定为自动挂载，方法是修改文件`/etc/fstab`，用vim打开这个文件，按下图加入相应的语句：
-
- 
-
-![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e27c485594e07ab.jpg)
-
- 
-
- 
-
-其中用来标识硬盘分区的方法有两种，一是像图中这样用UUID表示，这个UUID就是之前提到的格式完毕后显示出的那长串数字字母组合（也可通过指令“blkid /dev/sdb1”来显示sdb1的UUID，sdb2的依此类推），它相当于硬盘分区的“身份证”，可以作为这个分区的唯一标识；另一种是直接用设备名“/dev/sdb1”来表示，不推荐。
-
- 
-
-至此NAS存储硬盘的配置完成。
-
- 
-
- 
-
- 
-
-### **Samba服务配置**
-
- 
-
- 
-
- 
-
-Samba服务是NAS最基本的功能之一，它可以实现文件的共享，配置好之后就可以用Windows来访问NAS上的文件了。
-
- 
-
-Samba的配置涉及的概念比较多，过程也较为复杂，为了捋清思路，先交代下有关文件权限的规定。
-
- 
-
-在Linux中，把能够操作文件（夹）的对象划分成了3类，分别为所有者、所属组及其他人，每一类对象又分别规定了是否可以进行以下3种操作：读（r）、写（w）、执行（x）。例如，在我的NAS上输入“ls -l /etc/samba”后，会显示如下信息：
-
-![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_45d11fc746ff89a.jpg)
-
- 
-
-拿第3行信息（图中的第5行）来说，第1列给出了3类操作对象的读写权限（最前面的字母“d”表示这是个文件夹），第3列的“root”是这个文件夹的所有者，第4列的“root”是这个文件夹的所属组。把这些信息结合到一起我们可以得知，对tls这个文件夹来说，所有者root拥有完全的权限，所属组root可读可执行但不可写，其他人也是可读可执行但不可写。
-
- 
-
-然后再来说说Samba的权限。Samba服务的访问是基于用户的，就是说需要用户登录后才能对共享目录进行相关的访问。同Linux相仿，它也为每个共享目录指定了用户，并对每一个用户分别赋予了读写权限，权限不足的话是不能对目录进行相应的访问的。
-
- 
-
-现在我们看到，算上Linux系统自带的以及Samba所拥有的，访问共享目录需要涉及两套权限系统。一个用户，只有同时满足了这两套权限，才能对某个目录进行访问。例如，Samba中设定了用户U可以对目录D进行读写操作，但Linux系统中的设定是用户U只能对目录D进行读操作，那么用户U在网络中通过Samba共享访问目录D时，只能进行读操作，写操作是被拒绝的。
-
- 
-
-明确了以上的这一系列权限关系，自然就有了Samba服务配置的大体思路。
-
- 
-
-/mnt/library_a下挂载的是整个分区，上面有Debian系统专用的目录，因而不适合整个拿来作为共享目录之用，而是需要新建一个子文件夹作为共享根目录。之前安装系统时建立的用户“guest”是用来作为一般的登录用的，本着泾渭分明的原则，用于访问Samba服务的用户应当另行建立。在初期，至少需要建立一个拥有最高权限的管理员用户以及一个来宾用户才能满足基本的访问需求。考虑到用户不止一个，可以新建一个专门用来访问NAS的用户组，把这些用户都添加到这个组内。在权限的设定上，为了体现逻辑清晰以及避免设定混乱，姑且把共享根目录的权限设置为777，来访用户的读写权限则完全通过Samba来设定；若是出于更高的安全性的考虑，则把共享根目录的权限设置为755，所有者为NAS管理员用户，所属组为NAS用户组，组内成员的具体读写权限通过Samba再设定一次。这里采用后者的方案，具体的操作如下。
-
- 
-
-（1）
-
- 
-
-新建NAS用户组“nasusers”：
-
- 
-
-`groupadd nasusers`
-
- 
-
-新建用户`“nasadmin”（管理员）以及“nasguest”（来宾）`，设定他们的密码，并将他们都加入到nasusers组中：
-
- 
-
 </code></pre>
 
-<p>useradd -g nasusers -s /usr/sbin/nologin -M nasadminpasswd nasadminuseradd -g nasusers -s /usr/sbin/nologin -M nasguestpasswd nasguest</p>
+<p>mkdir /mnt/library_amkdir /mnt/library_bmount /dev/sdb1 /mnt/library_amount /dev/sdb2 /mnt/library_b```</p>
 
-<pre><code>
+<p>但总不能每次启动系统后都手动挂载一次，所以需要设定为自动挂载，方法是修改文件<code>/etc/fstab</code>，用vim打开这个文件，按下图加入相应的语句：</p>
 
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e27c485594e07ab.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
 
- 
+<p>其中用来标识硬盘分区的方法有两种，一是像图中这样用UUID表示，这个UUID就是之前提到的格式完毕后显示出的那长串数字字母组合（也可通过指令“blkid /dev/sdb1”来显示sdb1的UUID，sdb2的依此类推），它相当于硬盘分区的“身份证”，可以作为这个分区的唯一标识；另一种是直接用设备名“/dev/sdb1”来表示，不推荐。</p>
 
-![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e736e025ec96e01.jpg)
+<p>至此NAS存储硬盘的配置完成。</p>
 
- 
+<h3 id="samba服务配置"><strong>Samba服务配置</strong></h3>
 
- 
+<p>Samba服务是NAS最基本的功能之一，它可以实现文件的共享，配置好之后就可以用Windows来访问NAS上的文件了。</p>
 
-（2）
+<p>Samba的配置涉及的概念比较多，过程也较为复杂，为了捋清思路，先交代下有关文件权限的规定。</p>
 
- 
+<p>在Linux中，把能够操作文件（夹）的对象划分成了3类，分别为所有者、所属组及其他人，每一类对象又分别规定了是否可以进行以下3种操作：读（r）、写（w）、执行（x）。例如，在我的NAS上输入“ls -l /etc/samba”后，会显示如下信息：</p>
 
-在两个挂载的目录下分别建立用于共享的根目录，不妨都命名为“nasshare”（如果没有用“umask”修改过权限掩码，那么建立后它们的权限应该就是755），然后设定它们的所有者为nasadmin，所属组为nasusers：
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_45d11fc746ff89a.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
 
- 
+<p>拿第3行信息（图中的第5行）来说，第1列给出了3类操作对象的读写权限（最前面的字母“d”表示这是个文件夹），第3列的“root”是这个文件夹的所有者，第4列的“root”是这个文件夹的所属组。把这些信息结合到一起我们可以得知，对tls这个文件夹来说，所有者root拥有完全的权限，所属组root可读可执行但不可写，其他人也是可读可执行但不可写。</p>
 
+<p>然后再来说说Samba的权限。Samba服务的访问是基于用户的，就是说需要用户登录后才能对共享目录进行相关的访问。同Linux相仿，它也为每个共享目录指定了用户，并对每一个用户分别赋予了读写权限，权限不足的话是不能对目录进行相应的访问的。</p>
+
+<p>现在我们看到，算上Linux系统自带的以及Samba所拥有的，访问共享目录需要涉及两套权限系统。一个用户，只有同时满足了这两套权限，才能对某个目录进行访问。例如，Samba中设定了用户U可以对目录D进行读写操作，但Linux系统中的设定是用户U只能对目录D进行读操作，那么用户U在网络中通过Samba共享访问目录D时，只能进行读操作，写操作是被拒绝的。</p>
+
+<p>明确了以上的这一系列权限关系，自然就有了Samba服务配置的大体思路。</p>
+
+<p>/mnt/library_a下挂载的是整个分区，上面有Debian系统专用的目录，因而不适合整个拿来作为共享目录之用，而是需要新建一个子文件夹作为共享根目录。之前安装系统时建立的用户“guest”是用来作为一般的登录用的，本着泾渭分明的原则，用于访问Samba服务的用户应当另行建立。在初期，至少需要建立一个拥有最高权限的管理员用户以及一个来宾用户才能满足基本的访问需求。考虑到用户不止一个，可以新建一个专门用来访问NAS的用户组，把这些用户都添加到这个组内。在权限的设定上，为了体现逻辑清晰以及避免设定混乱，姑且把共享根目录的权限设置为777，来访用户的读写权限则完全通过Samba来设定；若是出于更高的安全性的考虑，则把共享根目录的权限设置为755，所有者为NAS管理员用户，所属组为NAS用户组，组内成员的具体读写权限通过Samba再设定一次。这里采用后者的方案，具体的操作如下。</p>
+
+<p>（1）</p>
+
+<p>新建NAS用户组“nasusers”：</p>
+
+<p><code>groupadd nasusers</code></p>
+
+<p>新建用户<code>“nasadmin”（管理员）以及“nasguest”（来宾）</code>，设定他们的密码，并将他们都加入到nasusers组中：</p>
+
+<pre><code>useradd -g nasusers -s /usr/sbin/nologin -M nasadminpasswd nasadminuseradd -g nasusers -s /usr/sbin/nologin -M nasguestpasswd nasguest
 </code></pre>
 
-<p>mkdir /mnt/library_a/nassharechown -R nasadmin:nasusers /mnt/library_a/nassharemkdir /mnt/library_b/nassharechown -R nasadmin:nasusers /mnt/library_b/nasshare</p>
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_e736e025ec96e01.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
 
-<pre><code>
+<p>（2）</p>
 
+<p>在两个挂载的目录下分别建立用于共享的根目录，不妨都命名为“nasshare”（如果没有用“umask”修改过权限掩码，那么建立后它们的权限应该就是755），然后设定它们的所有者为nasadmin，所属组为nasusers：</p>
 
- 
+<pre><code>mkdir /mnt/library_a/nassharechown -R nasadmin:nasusers /mnt/library_a/nassharemkdir /mnt/library_b/nassharechown -R nasadmin:nasusers /mnt/library_b/nasshare
+</code></pre>
 
-![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_3a0f24f8eb037db.jpg)
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_3a0f24f8eb037db.jpg" alt="Debian系统搭建家庭NAS全记录(打造全功能网络存储)" /></p>
 
- 
+<p>（3）</p>
 
- 
+<p>将用户nasadmin和nasguest都添加到Samba中并设置登录密码（这个密码是远程访问共享目录时登录用的，由Samba管理和使用，不是Debian系统的用户密码，不要搞混淆了）：</p>
 
-（3）
-
- 
-
-将用户nasadmin和nasguest都添加到Samba中并设置登录密码（这个密码是远程访问共享目录时登录用的，由Samba管理和使用，不是Debian系统的用户密码，不要搞混淆了）：
-
- 
-
-```smbpasswd -a nasadminsmbpasswd -a nasaguest```
-
+<pre><code class="language-smbpasswd">
  
 
 ![Debian系统搭建家庭NAS全记录(打造全功能网络存储)](https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/157_14_bc20a885873251c.jpg)
@@ -1640,7 +1568,7 @@ collectl是Linux平台上一款十分强大的系统监控工具，它监控的�
       </article>
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. All Rights Reserved
+    &copy; 2019 3mile. 版权所有
   </span>
 </footer>
 

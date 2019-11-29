@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="LAMP服务器是Linux Web托管的基础。如果您想建立一个LAMP堆栈来托管您的网站，本指南将为您提供有关如何在RHEL 8 / CentOS 8 Linux">
+
+
+<meta property="og:description" content="LAMP服务器是Linux Web托管的基础。如果您想建立一个LAMP堆栈来托管您的网站，本指南将为您提供有关如何在RHEL 8 / CentOS 8 Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Centos8 安装LAMP">
+<meta name="twitter:title" content="Centos8 安装LAMP">
+<meta property="og:url" content="https://3mile.github.io/archives/2019/1107122457/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2019/1107122457/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="LAMP服务器是Linux Web托管的基础。如果您想建立一个LAMP堆栈来托管您的网站，本指南将为您提供有关如何在RHEL 8 / CentOS 8 Linux">
+<meta name="twitter:description" content="LAMP服务器是Linux Web托管的基础。如果您想建立一个LAMP堆栈来托管您的网站，本指南将为您提供有关如何在RHEL 8 / CentOS 8 Linux">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-11-07T12:24:57">
+  
+  
+    <meta property="article:modified_time" content="2019-11-07T12:24:57">
+  
+  
+  
+    
+      <meta property="article:section" content="">
+    
+  
+  
+    
+      <meta property="article:tag" content="">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107122551-2019-11-7.png">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107122551-2019-11-7.png">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/6.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/6.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>Centos8 安装LAMP</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2019/1107122457/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/6.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Centos8 安装LAMP
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-07T12:24:57&#43;08:00">
+        
+  
+  
+  
+  
+    2019-11-07
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <p>LAMP服务器是Linux Web托管的基础。如果您想建立一个LAMP堆栈来托管您的网站，本指南将为您提供有关如何在RHEL 8 / CentOS 8 Linux服务器上开始使用LAMP的必要信息。</p>
+
+<p>在本教程中，您将学习：
++ 如何在RHEL 8 / CentOS 8上安装所有LAMP必备软件包。
++ 如何保护MariaDB数据库。
++ 如何启动httpd和MariaDB服务。
++ 如何打开HTTP和HTTPS防火墙端口。
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107122551-2019-11-7.png" alt="20191107122551-2019-11-7.png" />
+1. 首先安装依赖
+    以下命令将安装执行LAMP安装所需的依赖：
+    <code>
+    dnf install php-mysqlnd php-fpm mariadb-server httpd
+</code>
+2. 在防火墙上打开HTTP及HTTPS端口80,443 ：
+    <code>
+    firewall-cmd --permanent --zone=public --add-service=http 
+    firewall-cmd --permanent --zone=public --add-service=https
+    firewall-cmd --reload
+</code></p>
+
+<ol>
+<li><p>启动Apache Web服务器和MariaDB服务：</p>
+
+<pre><code>systemctl start mariadb
+systemctl start httpd
+</code></pre>
+
+<p>允许服务自启动</p>
+
+<pre><code>systemctl enable mariadb
+systemctl enable httpd
+</code></pre></li>
+
+<li><p>保护您的MariaDB安装并设置root密码：</p>
+
+<pre><code>mysql_secure_installation
+</code></pre></li>
+
+<li><p>确认LAMP服务器安装。在/var/www/html/目录中创建一个info.php，包含以下内容：</p>
+
+<pre><code>&lt;?php phpinfo(); ?&gt;
+</code></pre></li>
+
+<li><p>更改权限：</p>
+
+<pre><code>chown -R apache:apache /var/www/html/*
+chcon -t httpd_sys_rw_content_t /var/www/html/ -R
+</code></pre></li>
+
+<li><p>浏览器打开<a href="http://localhost/info.phpURL，然后配置LAMP安装">http://localhost/info.phpURL，然后配置LAMP安装</a></p></li>
+
+<li><p>安装其他PHP模块。</p>
+
+<pre><code>dnf search php-
+
+php-gd.x86_64 : A module for PHP applications for using the gd graphics library
+php-fpm.x86_64 : PHP FastCGI Process Manager
+php-pdo.x86_64 : A database access abstraction module for PHP applications
+php-gmp.x86_64 : A module for PHP applications for using the GNU MP library
+php-dbg.x86_64 : The interactive PHP debugger
+php-pdo.x86_64 : A database access abstraction module for PHP applications
+php-xml.x86_64 : A module for PHP applications which use XML
+php-fpm.x86_64 : PHP FastCGI Process Manager
+php-cli.x86_64 : Command-line interface for PHP
+php-dba.x86_64 : A database abstraction layer module for PHP applications
+php-soap.x86_64 : A module for PHP applications that use the SOAP protocol
+php-snmp.x86_64 : A module for PHP applications that query SNMP-managed devices
+php-ldap.x86_64 : A module for PHP applications that use LDAP
+php-pear.noarch : PHP Extension and Application Repository framework
+php-intl.x86_64 : Internationalization extension for PHP applications
+php-json.x86_64 : JavaScript Object Notation extension for PHP
+php-odbc.x86_64 : A module for PHP applications that use ODBC databases
+php-devel.x86_64 : Files needed for building PHP extensions
+php-pgsql.x86_64 : A PostgreSQL database module for PHP
+php-common.x86_64 : Common files for PHP
+php-common.x86_64 : Common files for PHP
+php-recode.x86_64 : A module for PHP applications for using the recode library
+php-bcmath.x86_64 : A module for PHP applications for using the bcmath library
+php-xmlrpc.x86_64 : A module for PHP applications which use the XML-RPC protocol
+php-mysqlnd.x86_64 : A module for PHP applications that use MySQL databases
+php-enchant.x86_64 : Enchant spelling extension for PHP applications
+php-process.x86_64 : Modules for PHP script using system process interfaces
+php-mysqlnd.x86_64 : A module for PHP applications that use MySQL databases
+php-opcache.x86_64 : The Zend OPcache
+php-mbstring.x86_64 : A module for PHP applications which need multi-byte string handling
+php-pecl-zip.x86_64 : A ZIP archive management extension
+php-embedded.x86_64 : PHP library for embedding in applications
+php-pecl-apcu.x86_64 : APC User Cache
+php-pecl-apcu-devel.x86_64 : APCu developer files (header)
+</code></pre></li>
+
+<li><p>安装软件包后，请重新加载httpd服务：</p>
+
+<pre><code>systemctl reload httpd
+</code></pre></li>
+
+<li><p>安装完成</p></li>
+</ol>
+
+            
+          </div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2019/1107122457/" class="leancloud_visitors" data-flag-title="Centos8 安装LAMP">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/1107115421/" data-tooltip="Centos8 安装备忘">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/1107125651/" data-tooltip="Centos8 DNF命令指南">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1107122457/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1107122457/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1107122457/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. 版权所有
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/1107115421/" data-tooltip="Centos8 安装备忘">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/1107125651/" data-tooltip="Centos8 DNF命令指南">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1107122457/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1107122457/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1107122457/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107122457%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107122457%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107122457%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

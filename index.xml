@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>3mile博客</title>
@@ -6,10 +6,109 @@
     <description>Recent content on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 Nov 2019 11:17:32 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Nov 2019 11:47:41 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>在Ubuntu 18.04上安装 Kitematic 使用 Docker</title>
+      <link>https://3mile.github.io/archives/2019/1125114741/</link>
+      <pubDate>Mon, 25 Nov 2019 11:47:41 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1125114741/</guid>
+      <description>如果你管理容器，你很可能一直在寻找一个可靠的客户端工具来帮助管理任务。 一种比较流行的 GUI 工具是 Kitematic。 使用 Kitematic，您可</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu开机挂载硬盘</title>
+      <link>https://3mile.github.io/archives/2019/1125113300/</link>
+      <pubDate>Mon, 25 Nov 2019 11:33:00 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1125113300/</guid>
+      <description>linux 将对外设的操作统一视为对文件的操作，对外设操作之前都需要进行挂载，即将外设以文件的形式“挂载”或者说“加载”到相应的目录位置。 执行以下操作</description>
+    </item>
+    
+    <item>
+      <title>ZSH 下 home 键 end 键小键盘区无效解决办法</title>
+      <link>https://3mile.github.io/archives/2019/1125112855/</link>
+      <pubDate>Mon, 25 Nov 2019 11:28:55 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1125112855/</guid>
+      <description>文件~/.zshrc尾部增加以下内容 # Home bindkey &#39;\e[1~&#39; beginning-of-line # End bindkey &#39;\e[4~&#39; end-of-line # Keypad # 0 . Enter bindkey -s &amp;quot;^[Op&amp;quot; &amp;quot;0&amp;quot; bindkey -s &amp;quot;^[Ol&amp;quot; &amp;quot;.&amp;quot; bindkey -s &amp;quot;^[OM&amp;quot; &amp;quot;^M&amp;quot; # 1 2 3 bindkey -s &amp;quot;^[Oq&amp;quot; &amp;quot;1&amp;quot; bindkey -s &amp;quot;^[Or&amp;quot; &amp;quot;2&amp;quot; bindkey -s &amp;quot;^[Os&amp;quot; &amp;quot;3&amp;quot; # 4 5 6 bindkey -s &amp;quot;^[Ot&amp;quot; &amp;quot;4&amp;quot;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu18常用快捷键</title>
+      <link>https://3mile.github.io/archives/2019/1125101558/</link>
+      <pubDate>Mon, 25 Nov 2019 10:15:58 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1125101558/</guid>
+      <description>了解快捷键能够提升您的生产力。这里有一些实用的 Ubuntu 快捷键助您像专业人士一样使用 Ubuntu。 您可以用键盘和鼠标组合来使用操作系统。 注意：本文中</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu18下rsa远程ssh的注意事项</title>
+      <link>https://3mile.github.io/archives/2019/1124203508/</link>
+      <pubDate>Sun, 24 Nov 2019 20:35:08 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1124203508/</guid>
+      <description>首先在~/.ssh 下建立 config 文件 mkdir ~/.ssh vi ~/.ssh/config 内容如下： Host xxx.com HostName 远程主机名字 User 用户名 Port 12345 IdentityFile ~/.ssh/xxx_rsa 复制远程主机上的id_rsa到~/.ssh下，名字同上 如果</description>
+    </item>
+    
+    <item>
+      <title>优化ubuntu18开机速度</title>
+      <link>https://3mile.github.io/archives/2019/1124202640/</link>
+      <pubDate>Sun, 24 Nov 2019 20:26:40 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1124202640/</guid>
+      <description>检查谁在搞鬼 sudo systemd-analyze blame 上面我已经干掉了一些 mask 干掉 （要恢复使用 unmask） disable (要恢复使用 enable ) sudo systemctl mask plymouth-quit-wait.service sudo systemctl disable NetworkManager-wait-online.service</description>
+    </item>
+    
+    <item>
+      <title>GSConnect连接Android手机同步通知</title>
+      <link>https://3mile.github.io/archives/2019/1124201311/</link>
+      <pubDate>Sun, 24 Nov 2019 20:13:11 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1124201311/</guid>
+      <description>如果您有将 Android 手机无线连接到电脑里的 Ubuntu 系统需求，那就使用 GSConnect，本文将介绍 GSConnect 的用途并在 Ubuntu 18.04 系统及更高的 Ubuntu 版本上安装 GSConnec</description>
+    </item>
+    
+    <item>
+      <title>同步 Vs Code 设置</title>
+      <link>https://3mile.github.io/archives/2019/1124194902/</link>
+      <pubDate>Sun, 24 Nov 2019 19:49:02 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1124194902/</guid>
+      <description>简介 Visual Studio Code(以下简称 vsCode)现在已经渐渐成为前端开发的主力工具，谁让它这么轻便，功能又这么丰富呢。用 vscode Coding 的小伙伴们也一定会装很多</description>
+    </item>
+    
+    <item>
+      <title>Centos8 DNF命令指南</title>
+      <link>https://3mile.github.io/archives/2019/1107125651/</link>
+      <pubDate>Thu, 07 Nov 2019 12:56:51 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1107125651/</guid>
+      <description>DNF新一代的RPM软件包管理器。他首先出现在 Fedora 18 这个发行版中。而最近，他取代了YUM，正式成为 Fedora 22 的包管理器。 DNF包管理器克服了YUM包</description>
+    </item>
+    
+    <item>
+      <title>Centos8 安装LAMP</title>
+      <link>https://3mile.github.io/archives/2019/1107122457/</link>
+      <pubDate>Thu, 07 Nov 2019 12:24:57 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1107122457/</guid>
+      <description>LAMP服务器是Linux Web托管的基础。如果您想建立一个LAMP堆栈来托管您的网站，本指南将为您提供有关如何在RHEL 8 / CentOS 8 Linux</description>
+    </item>
+    
+    <item>
+      <title>Centos8 安装备忘</title>
+      <link>https://3mile.github.io/archives/2019/1107115421/</link>
+      <pubDate>Thu, 07 Nov 2019 11:54:21 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1107115421/</guid>
+      <description>Centos8 安装并启用SSHD 安装sshd dnf install openssh-server 执行sshd服务 systemctl start sshd 检查sshd服务状态 systemctl status sshd sshd.service - OpenSSH server daemon Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled) Active: active (running) since Thu 2019-11-07 10:35:16 CST; 1h 22min ago Docs: man:sshd(8) man:sshd_config(5) Main</description>
+    </item>
     
     <item>
       <title>编译UDPXY新版本</title>
@@ -201,7 +300,7 @@
       <pubDate>Wed, 20 Feb 2019 14:01:49 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/2019/0220/</guid>
-      <description>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电</description>
+      <description>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</description>
     </item>
     
     <item>
@@ -678,7 +777,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://3mile.github.io/404/</guid>
-      <description>Error 404: Page Not Found Oopsie! It seems that the page that you&amp;rsquo;re trying to access doesn&amp;rsquo;t exist. :worried: If you&amp;rsquo;re sure that it exists, chances are it might have been moved to a new link! You may search for it on the home page.</description>
+      <description>Error 404: Page Not Found----Oopsie! It seems that the page that you&#39;re trying to access doesn&#39;t exist. :worried:If you&#39;re sure that it exists, chances are it might have been moved to a new link! You may search for it on the home page.</description>
     </item>
     
   </channel>

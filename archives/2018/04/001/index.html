@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="由于最近再次安装hugo,就想纪录一下这个过程，有什么不对的地方请指出来。 一. 安装hugo hugo有两种安装方式，homebrew包管理工具">
@@ -353,31 +353,31 @@ if (!doNotTrack) {
 <h3 id="二-创建site-生成静态页面">二. 创建Site，生成静态页面</h3>
 
 <ul>
-<li>创建站点</li>
-</ul>
+<li><p>创建站点</p>
 
-<pre><code>    hugo new site MyBlog
-</code></pre>
+<pre><code>hugo new site MyBlog
+</code></pre></li>
+</ul>
 
 <p>然后hugo会自动在MyBlog目录下生成这样一个目录结构：</p>
 
 <pre><code>    |-archetypes   //包括内容类型，在创建新内容时自动生成内容的配置
     |-config.toml  // 网站的配置文件，这是一个TOML文件
-    |-content      // content目录里放你写的markdown文章
-    |-data         //
-    |-layouts      // 网站的模板文件
-    |-static       // 放一些图片、css、js等资源
-    |-themes       // 网站的主题，这里spf13上面有很多theme
+    |-content	   // content目录里放你写的markdown文章
+    |-data		   //
+    |-layouts	   // 网站的模板文件
+    |-static	   // 放一些图片、css、js等资源
+    |-themes	   // 网站的主题，这里spf13上面有很多theme
 </code></pre>
 
 <p>关于config.toml配置文件，下面会详细说明<a href="https://tracydeng.github.io/2016/07/hugo/#fn:1">1</a></p>
 
 <ul>
-<li>创建md文档 ( <em>需先进到MyBlog目录下</em> )</li>
-</ul>
+<li><p>创建md文档 ( <em>需先进到MyBlog目录下</em> )</p>
 
-<pre><code>   hugo new about.md
-</code></pre>
+<pre><code>hugo new about.md
+</code></pre></li>
+</ul>
 
 <p>执行完后，会在content目录自动生成一个MarkDown格式的about.md文件，内容如下：</p>
 
@@ -417,11 +417,11 @@ if (!doNotTrack) {
 </code></pre>
 
 <ul>
-<li>本地调试</li>
-</ul>
+<li><p>本地调试</p>
 
-<pre><code>   hugo server --theme=hyde --buildDrafts --watch
-</code></pre>
+<pre><code>hugo server --theme=hyde --buildDrafts --watch
+</code></pre></li>
+</ul>
 
 <p>参数说明：</p>
 
@@ -471,29 +471,29 @@ $ git push -u origin master
 
 &lt;div id=&quot;discourse-comments&quot;&gt;&lt;/div&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
-    var discourseUrl = ,
+  	var discourseUrl = ,
     discourseEmbedUrl = ;
-    (function() {
-        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
-        d.src = discourseUrl + 'javascripts/embed.js';
-        (document.getElementsByTagName('head')[0] ||        document.getElementsByTagName('body')[0]).appendChild(d);
-    })();
+  	(function() {
+  	 	var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+  	    d.src = discourseUrl + 'javascripts/embed.js';
+    	(document.getElementsByTagName('head')[0] || 		document.getElementsByTagName('body')[0]).appendChild(d);
+	})();
 &lt;/script&gt;
 
 
 &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
-     var disqusUsername = ;
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = '//' + disqusUsername + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-     })();
+ 	 var disqusUsername = ;
+ 	(function() { // DON'T EDIT BELOW THIS LINE
+  		var d = document, s = d.createElement('script');
+  		s.src = '//' + disqusUsername + '.disqus.com/embed.js';
+  		s.setAttribute('data-timestamp', +new Date());
+  		(d.head || d.body).appendChild(s);
+ 	 })();
 &lt;/script&gt;
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a   href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a 	href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
 
-    
+	
 </code></pre>
 
 <p>上面代码可以看到是支持到了muut，discourse，disqus的评论，除了这些比较出名的第三方评论服务还有多说，这里以disqus为例来说下添加评论模块：</p>
@@ -512,22 +512,20 @@ $ git push -u origin master
 <p>disqusUsername便是取的站点下配置文件中的参数disqus，于是在config.toml文件中params下面添加disqus就好。</p>
 
 <pre><code class="language-toml"> [params]
-    disqus = &quot;3mile&quot;
+   	disqus = &quot;3mile&quot;
 </code></pre>
 
 <h3 id="五-我做的一些改动">五. 我做的一些改动</h3>
 
 <ul>
-<li>修改config.toml<br /></li>
-</ul>
+<li><p>修改config.toml</p>
 
-<pre><code class="language-toml">   title : 修改为Coder Steven
+<pre><code class="language-toml">title : 修改为Coder Steven
      
-   description : &quot;3mile&quot;
-</code></pre>
+description : &quot;3mile&quot;
+</code></pre></li>
 
-<ul>
-<li>修改.md  文档</li>
+<li><p>修改.md  文档</p></li>
 </ul>
 
 <p>添加menu菜单</p>
@@ -669,7 +667,7 @@ $ git push -u origin master
       </article>
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. All Rights Reserved
+    &copy; 2019 3mile. 版权所有
   </span>
 </footer>
 

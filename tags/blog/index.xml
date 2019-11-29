@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog on 3mile博客</title>
+    <title>blog on 3mile博客</title>
     <link>https://3mile.github.io/tags/blog/</link>
-    <description>Recent content in Blog on 3mile博客</description>
+    <description>Recent content in blog on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 23 Apr 2018 13:26:40 +0800</lastBuildDate>

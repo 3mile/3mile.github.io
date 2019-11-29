@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ubuntu on 3mile博客</title>
+    <title>ubuntu on 3mile博客</title>
     <link>https://3mile.github.io/tags/ubuntu/</link>
-    <description>Recent content in Ubuntu on 3mile博客</description>
+    <description>Recent content in ubuntu on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 16 Apr 2019 09:10:12 +0800</lastBuildDate>
@@ -35,7 +35,7 @@
       <pubDate>Wed, 20 Feb 2019 14:01:49 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/2019/0220/</guid>
-      <description>Linux Mint 是一款基于 Ubuntu 与 Debian 开发的 Linux 操作系统发行版，被很多爱好者誉为“最好的桌面应用系统”，就像是 Linux 世界中的 macOS，非常适合个人日常办公或开发电</description>
+      <description>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</description>
     </item>
     
   </channel>

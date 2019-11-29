@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket &#43; TLS &#43; nginx/caddy”是最后留下来用的，抗封锁最好。 vmess">
@@ -412,10 +412,10 @@ xxx.xxx #(你的域名)
     root /var/www/site #(页面路径)
     gzip
     tls xxx@xxx.com #申请证书的邮箱地址
-    proxy /2018 localhost:12345 { #其中/2018是路径,和v2ray服务端相同,后面的端口号也与v2ray相同
-    websocket
-    header_upstream -Origin
-    }
+	proxy /2018 localhost:12345 { #其中/2018是路径,和v2ray服务端相同,后面的端口号也与v2ray相同
+	websocket
+	header_upstream -Origin
+	}
 }
 EOF
 </code></pre>
@@ -801,7 +801,7 @@ sudo firewall-cmd --reload
       </article>
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. All Rights Reserved
+    &copy; 2019 3mile. 版权所有
   </span>
 </footer>
 

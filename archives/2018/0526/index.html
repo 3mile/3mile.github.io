@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="原因 一. 首先,为什么要用这么复杂的标题? 为什么标题会这么复杂呢？原因很简单。我自己被搞昏了，为了体现我的眩晕程度，所以用了这个复杂的名字。 另">
@@ -613,7 +613,7 @@ git push origin master
 
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/dmat1MUT0fc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/dmat1MUT0fc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 
@@ -636,42 +636,50 @@ sudo systemctl disable caddy.service
 
 <li><p>然后修改/etc/caddy/Caddyfile文件</p></li>
 
-<li><p>```yaml</p></li>
+<li><pre><code class="language-yaml">
+blog.3mile.top {
+
+3mile.top {
+
+</code></pre></li>
 </ol>
 
-<p>blog.3mile.top {</p>
-
-<p>3mile.top {</p>
-
-<pre><code>#tls mile3@gmail.com
+<p>#tls mile3@gmail.com
 git github.com/mile3033/hugo . {
     repo github.com/mile3033/hugo
     path /var/www/hugo-blog
     hook /webhooks some-keys
-    hook_type github
+    hook_type github</p>
 
-    then hugo --destination=/var/www/blog.3mile.top
-    interval 600
-    }
-   root /var/www/blog.3mile.top
-
-    then hugo --destination=/var/www/3mile.top
-    interval 600
-    }
-   root /var/www/3mile.top
-
+<pre><code>then hugo --destination=/var/www/blog.3mile.top
+interval 600
 }
 </code></pre>
 
+<p>root /var/www/blog.3mile.top</p>
+
+<pre><code>then hugo --destination=/var/www/3mile.top
+interval 600
+}
+</code></pre>
+
+<p>root /var/www/3mile.top</p>
+
+<p>}</p>
+
+<pre><code>
+   
+
+7. 因为是使用Caddy账号,没有权限.所以要重新给他权限,否则Caddy会报错
+
+8. ```
+   sudo chown -R caddy:caddy /var/www
+   sudo chown -R caddy:root /etc/ssl/caddy
+   sudo chmod 0770 /etc/ssl/caddy
+   sudo chown -R root:caddy /etc/caddy
+</code></pre>
+
 <ol>
-<li><p>因为是使用Caddy账号,没有权限.所以要重新给他权限,否则Caddy会报错</p></li>
-
-<li><pre><code>sudo chown -R caddy:caddy /var/www
-sudo chown -R caddy:root /etc/ssl/caddy
-sudo chmod 0770 /etc/ssl/caddy
-sudo chown -R root:caddy /etc/caddy
-</code></pre></li>
-
 <li><p>这时先不打开Caddy服务,或都是先不要运行Caddy</p></li>
 
 <li><p>在本地计算机设置Hugo页面,主题,反正一句话,你的Hugo要正常工作.我这里只是为了方便网站整体迁移,所以Hugo是完整的,所以只需要把相关文件复制过来就可以了</p></li>
@@ -810,7 +818,7 @@ sudo systemctl enable caddy.service
       </article>
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. All Rights Reserved
+    &copy; 2019 3mile. 版权所有
   </span>
 </footer>
 

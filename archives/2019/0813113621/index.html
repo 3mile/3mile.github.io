@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="个人网盘 Filebrowser 服务器仅仅用于科学上网未免有些浪费了，是时候尝试一下自建个人网盘和图床了。 如何安装 官方给出了一键安装大法，进入服务器输入以下命令就">
@@ -392,23 +392,23 @@ systemctl start filebrowser.service
 <p>然后修改<code>/etc/caddy/Caddyfile</code>成下面的样子</p>
 
 <pre><code class="language-json">example {
-    root /var/www/file
-    tls xxx@xxxx.cn
-    gzip
-    browse #相当于最简单的文件服务器，公开文件全部都可以在这里分享
-    root var/file/public    #站点根路径
+	root /var/www/file
+	tls xxx@xxxx.cn
+	gzip
+	browse #相当于最简单的文件服务器，公开文件全部都可以在这里分享
+	root var/file/public    #站点根路径
     
     #访问$site/logs时要求账户密码简单认证
-    basicauth /logs username password
-    
+	basicauth /logs username password
+	
     # 反向代理 aria2 rpc 服务端口，以实现 https 下连接 aria2 服务
-    proxy /jsonrpc localhost:6800
-    
+	proxy /jsonrpc localhost:6800
+	
     # 为 ariaNG 面板设置简易认证
-    basicauth /aria2 username password
-    
+	basicauth /aria2 username password
+	
     #反向代理fileborwser
-    proxy /admin 127.0.0.1:8088
+	proxy /admin 127.0.0.1:8088
 }
 </code></pre>
 
@@ -423,7 +423,7 @@ systemctl start filebrowser.service
 <p>这里有个<a href="https://youtu.be/sE31MBvOjxk">视频教程</a>，需要科学上网查看。
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="//www.youtube.com/embed/sE31MBvOjxk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube.com/embed/sE31MBvOjxk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
 </div>
 </p>
 
@@ -534,7 +534,7 @@ systemctl start filebrowser.service
       </article>
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. All Rights Reserved
+    &copy; 2019 3mile. 版权所有
   </span>
 </footer>
 

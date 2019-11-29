@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Openwrt on 3mile博客</title>
+    <title>openwrt on 3mile博客</title>
     <link>https://3mile.github.io/tags/openwrt/</link>
-    <description>Recent content in Openwrt on 3mile博客</description>
+    <description>Recent content in openwrt on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 06 Nov 2019 11:17:32 +0800</lastBuildDate>

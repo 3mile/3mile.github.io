@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Keepass on 3mile博客</title>
+    <title>KeePass on 3mile博客</title>
     <link>https://3mile.github.io/tags/keepass/</link>
-    <description>Recent content in Keepass on 3mile博客</description>
+    <description>Recent content in KeePass on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Thu, 05 Apr 2018 12:47:27 +0800</lastBuildDate>

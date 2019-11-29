@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="如果你管理容器，你很可能一直在寻找一个可靠的客户端工具来帮助管理任务。 一种比较流行的 GUI 工具是 Kitematic。 使用 Kitematic，您可">
+
+
+<meta property="og:description" content="如果你管理容器，你很可能一直在寻找一个可靠的客户端工具来帮助管理任务。 一种比较流行的 GUI 工具是 Kitematic。 使用 Kitematic，您可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Ubuntu 18.04上安装 Kitematic 使用 Docker">
+<meta name="twitter:title" content="在Ubuntu 18.04上安装 Kitematic 使用 Docker">
+<meta property="og:url" content="https://3mile.github.io/archives/2019/1125114741/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2019/1125114741/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="如果你管理容器，你很可能一直在寻找一个可靠的客户端工具来帮助管理任务。 一种比较流行的 GUI 工具是 Kitematic。 使用 Kitematic，您可">
+<meta name="twitter:description" content="如果你管理容器，你很可能一直在寻找一个可靠的客户端工具来帮助管理任务。 一种比较流行的 GUI 工具是 Kitematic。 使用 Kitematic，您可">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2019-11-25T11:47:41">
+  
+  
+    <meta property="article:modified_time" content="2019-11-25T11:47:41">
+  
+  
+  
+    
+      <meta property="article:section" content="">
+    
+  
+  
+    
+      <meta property="article:tag" content="">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191125121043-2019-11-25.png">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191125121043-2019-11-25.png">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/8.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/8.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>在Ubuntu 18.04上安装 Kitematic 使用 Docker</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2019/1125114741/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/8.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      在Ubuntu 18.04上安装 Kitematic 使用 Docker
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2019-11-25T11:47:41&#43;08:00">
+        
+  
+  
+  
+  
+    2019-11-25
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <p>如果你管理容器，你很可能一直在寻找一个可靠的客户端工具来帮助管理任务。 一种比较流行的 GUI 工具是 Kitematic。 使用 Kitematic，您可以：</p>
+
+<ul>
+<li>从 Docker Hub 搜索并 pull 镜像</li>
+<li>创建并运行容器</li>
+<li>在 GUI 或 CLI 之间无缝切换</li>
+<li>映射端口</li>
+<li>可视化更改环境变量</li>
+<li>配置卷</li>
+<li>简化日志</li>
+<li>更多</li>
+</ul>
+
+<p>在以前很长一段时间内，<a href="https://kitematic.com/">Kitematic</a>仅适用于 macOS。但是，现在已经添加了对<a href="https://www.linuxidc.com/topicnews.aspx?tid=2">Ubuntu</a> Linux 的支持。我将向您展示如何在 Ubuntu 18.04 上安装 Kitematic（该安装使用适用于任何 Ubuntu 衍生产品）。
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191125120915-2019-11-25.png" alt="20191125120915-2019-11-25.png" /></p>
+
+<p><strong>一个警告</strong></p>
+
+<p>我通常会坚持到最后，但是对于某些用户来说，这个特别的警告可能会成为一个障碍。Kitematic 无法连接到运行 Docker 的远程机器。换句话说，您必须在部署容器的计算机上安装 Kitematic。当然，这与大多数 Linux 服务器管理员的想法有点相反，因为它倾向于在没有 GUI 的情况下运行服务器。但是如果你想使用 Kitematic，你需要使用 GUI。</p>
+
+<p>请 Kitematic 开发人员注意&hellip;&hellip;可以连接到远程服务器！</p>
+
+<p><strong>你需要什么</strong></p>
+
+<p>要安装 Kitematic，您需要一个具有 sudo 权限的用户运行 Ubuntu 18.04 实例。您还需要<a href="https://hub.docker.com/">DockerHub</a>上的帐户。</p>
+
+<p><strong>安装</strong></p>
+
+<p>Kitematic 的安装实际上非常简单。首先要做的是下载包含.deb 安装程序的 zip 文件。确保从 Kitematic <a href="https://github.com/docker/kitematic/releases">Github 下载页面</a>下载最新文件。</p>
+
+<p>下载后解压缩文件，双击进入新创建的文件夹，右键单击文件管理器中的空白处，然后选择“在终端中打开”。终端打开时，发出命令：</p>
+
+<p>sudo dpkg -i Kitematic-0.17.7_amd64.deb</p>
+
+<p>上面的命令会出错。 没关系，因为我们可以解决这个问题。 要解决问题，请发出以下命令：</p>
+
+<p>sudo apt-get install -f</p>
+
+<p>这将获取所有遗漏的依赖项并完成安装。（如下图）
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191125120941-2019-11-25.png" alt="20191125120941-2019-11-25.png" /></p>
+
+<p><strong>运行 Kitematic</strong></p>
+
+<p>要打开 Kitematic，您必须确保正确配置 Docker。 这意味着必须将运行 Kitematic 的用户添加到 docker 组。 如果您还没有这样做，请打开终端窗口并发出命令：</p>
+
+<p>sudo usermod -aG docker USER</p>
+
+<p>其中 USER 是有问题的用户名。</p>
+
+<p>完成后，退出桌面并重新登录。然后，您应该能够从 GNOME Dash 打开 Docker。应用程序打开后，使用您的 DockerHub 凭据登录（图 1）。
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191125121008-2019-11-25.png" alt="20191125121008-2019-11-25.png" /></p>
+
+<p>图 1：Kitematic 登录界面。</p>
+
+<p>该应用可能需要一些时间来加载所有镜像。如果是这样（图 2），您就可以开始使用最好的 Docker 客户端 GUI 了。</p>
+
+<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191125121030-2019-11-25.png" alt="20191125121030-2019-11-25.png" /></p>
+
+<p>图 2：Kitematic 主窗口。</p>
+
+<p>找到要部署的容器，然后单击关联的 CREATE 按钮。下载镜像后，它将自动部署。单击 Settings 选项卡，您可以在其中配置容器以满足您的需求（图 3）。请记住，如果更改配置，请确保重新启动容器。
+<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191125121043-2019-11-25.png" alt="20191125121043-2019-11-25.png" /></p>
+
+<p>图 3：ghost 容器部署的配置选项。</p>
+
+<p>恭喜，您现在拥有一个出色的 Docker GUI，可以使您的容器管理更容易一些。即使 Kitematic 只能使用本机上的容器，但是在 Linux 服务器上安装 GUI 还是值得的。</p>
+
+            
+          </div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2019/1125114741/" class="leancloud_visitors" data-flag-title="在Ubuntu 18.04上安装 Kitematic 使用 Docker">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/1125113300/" data-tooltip="Ubuntu开机挂载硬盘">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1125114741/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1125114741/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1125114741/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2019 3mile. 版权所有
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/1125113300/" data-tooltip="Ubuntu开机挂载硬盘">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1125114741/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1125114741/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1125114741/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1125114741%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1125114741%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1125114741%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

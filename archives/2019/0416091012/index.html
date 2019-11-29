@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="Ubuntu18.04 安装后应该做的事 1.关掉sudo的密码 visudo了解一下 sudo visudo 之后会自动调用默认编辑器打开sudo配置文件，找到 %sudo ALL=(ALL:ALL) ALL 这行，然后改成 %sudo ALL=(ALL:ALL) NOPASSWD:ALL">
@@ -331,10 +331,10 @@ sudo apt upgrade
 
 <p>首先安装Fcitx框架及谷歌拼音</p>
 
-<pre><code class="language-bash">sudo apt install fcitx  #安装fcitx
-sudo apt install im-config  #安装输入法配置
-sudo apt-get install fcitx-wubi fcitx-wbpy  #安装五笔及五笔拼音
-im-config   #运行输入法配置
+<pre><code class="language-bash">sudo apt install fcitx	#安装fcitx
+sudo apt install im-config	#安装输入法配置
+sudo apt-get install fcitx-wubi fcitx-wbpy	#安装五笔及五笔拼音
+im-config	#运行输入法配置
 </code></pre>
 
 <h2 id="4-使用tweaks对gnome进行美化">4.使用Tweaks对gnome进行美化</h2>
@@ -504,7 +504,7 @@ sudo apt-get install ffmpeg
       </article>
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. All Rights Reserved
+    &copy; 2019 3mile. 版权所有
   </span>
 </footer>
 

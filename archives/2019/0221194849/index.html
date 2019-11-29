@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="Oh My Zsh 是一款社区驱动的命令行工具，是基于 Zsh 命令行的一个扩展工具集，提供了丰富的扩展功能，如：主题配置，插件机制，内置的便捷操作等，可以给我们">
@@ -402,41 +402,33 @@ bash ./install.sh
 <p>这是一款可以在终端界面显示 awesome 图标的工具。</p>
 
 <ol>
-<li>获取该项目</li>
-</ol>
+<li><p>获取该项目</p>
 
 <pre><code class="language-bash">git clone https://github.com/gabrielelana/awesome-terminal-fonts
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>进入该项目，将 <code>build/</code> 目录里的所有文件拷贝到 <code>~/.fonts/</code> 目录（没有就创建一个）下</li>
-</ol>
+<li><p>进入该项目，将 <code>build/</code> 目录里的所有文件拷贝到 <code>~/.fonts/</code> 目录（没有就创建一个）下</p>
 
 <pre><code class="language-bash">cp -R build/* ～/.fonts/
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>执行以下命令让 freetype2 知道这些字体</li>
-</ol>
+<li><p>执行以下命令让 freetype2 知道这些字体</p>
 
 <pre><code class="language-bash">fc-cache -fv ~/.fonts
-</code></pre>
+</code></pre></li>
 
-<ol>
 <li><p>自定义 <code>config/10-symbols.conf</code> 配置文件里的字体，改成自己喜欢的。当然不改就是默认的。</p></li>
 
-<li><p>拷贝 <code>config/10-symbols.conf</code> 配置文件到 <code>~/.config/fontconfig/conf.d</code> 目录（没有就创建一个）下</p></li>
-</ol>
+<li><p>拷贝 <code>config/10-symbols.conf</code> 配置文件到 <code>~/.config/fontconfig/conf.d</code> 目录（没有就创建一个）下</p>
 
 <pre><code class="language-bash">cp config/10-symbols.conf ~/.config/fontconfig/conf.d
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>source 所有 <code>.fonts</code> 目录下的字体到你的 shell 启动脚本</li>
-</ol>
+<li><p>source 所有 <code>.fonts</code> 目录下的字体到你的 shell 启动脚本</p>
 
 <pre><code class="language-bash">source ~/.fonts/*.sh
-</code></pre>
+</code></pre></li>
+</ol>
 
 <p>至此安装完成，再重启一下终端，效果是不是跟上面一样了。</p>
 
@@ -792,7 +784,7 @@ xdg-open fileOrDir
       </article>
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. All Rights Reserved
+    &copy; 2019 3mile. 版权所有
   </span>
 </footer>
 

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mint on 3mile博客</title>
+    <title>mint on 3mile博客</title>
     <link>https://3mile.github.io/tags/mint/</link>
-    <description>Recent content in Mint on 3mile博客</description>
+    <description>Recent content in mint on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 20 Feb 2019 19:44:10 +0800</lastBuildDate>

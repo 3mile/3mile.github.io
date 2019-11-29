@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lede on 3mile博客</title>
+    <title>LEDE on 3mile博客</title>
     <link>https://3mile.github.io/tags/lede/</link>
-    <description>Recent content in Lede on 3mile博客</description>
+    <description>Recent content in LEDE on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Aug 2019 12:31:00 +0800</lastBuildDate>

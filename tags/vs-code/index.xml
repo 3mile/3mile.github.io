@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vs Code on 3mile博客</title>
+    <link>https://3mile.github.io/tags/vs-code/</link>
+    <description>Recent content in Vs Code on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 24 Nov 2019 19:49:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/vs-code/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>同步 Vs Code 设置</title>
+      <link>https://3mile.github.io/archives/2019/1124194902/</link>
+      <pubDate>Sun, 24 Nov 2019 19:49:02 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/1124194902/</guid>
+      <description>简介 Visual Studio Code(以下简称 vsCode)现在已经渐渐成为前端开发的主力工具，谁让它这么轻便，功能又这么丰富呢。用 vscode Coding 的小伙伴们也一定会装很多</description>
+    </item>
+    
+  </channel>
+</rss>

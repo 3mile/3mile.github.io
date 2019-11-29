@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 3mile博客</title>
@@ -6,229 +6,22 @@
     <description>Recent content in Tags on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 03 Sep 2019 10:04:06 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 Nov 2019 11:47:41 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title></title>
-      <link>https://3mile.github.io/tags/</link>
-      <pubDate>Tue, 03 Sep 2019 10:04:06 +0800</pubDate>
+      <title>Vs Code</title>
+      <link>https://3mile.github.io/tags/vs-code/</link>
+      <pubDate>Sun, 24 Nov 2019 19:49:02 +0800</pubDate>
       
-      <guid>https://3mile.github.io/tags/</guid>
+      <guid>https://3mile.github.io/tags/vs-code/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Atom</title>
-      <link>https://3mile.github.io/tags/atom/</link>
-      <pubDate>Sun, 06 May 2018 12:35:58 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/atom/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Blog</title>
-      <link>https://3mile.github.io/tags/blog/</link>
-      <pubDate>Mon, 23 Apr 2018 13:26:40 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/blog/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Caddy</title>
-      <link>https://3mile.github.io/tags/caddy/</link>
-      <pubDate>Sat, 26 May 2018 11:51:03 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/caddy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Centos</title>
-      <link>https://3mile.github.io/tags/centos/</link>
-      <pubDate>Wed, 06 Nov 2019 11:05:11 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/centos/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Centos7</title>
-      <link>https://3mile.github.io/tags/centos7/</link>
-      <pubDate>Sat, 26 May 2018 10:44:27 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/centos7/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Chrome</title>
-      <link>https://3mile.github.io/tags/chrome/</link>
-      <pubDate>Sat, 05 May 2018 11:50:25 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/chrome/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Comments</title>
-      <link>https://3mile.github.io/tags/comments/</link>
-      <pubDate>Wed, 25 Apr 2018 09:34:29 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/comments/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Docker</title>
-      <link>https://3mile.github.io/tags/docker/</link>
-      <pubDate>Thu, 05 Apr 2018 13:12:20 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Github</title>
-      <link>https://3mile.github.io/tags/github/</link>
-      <pubDate>Fri, 16 Aug 2019 14:12:07 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Github Theme</title>
-      <link>https://3mile.github.io/tags/github-theme/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/tags/github-theme/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hexo</title>
-      <link>https://3mile.github.io/tags/hexo/</link>
-      <pubDate>Sat, 21 Apr 2018 11:41:05 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/hexo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Highlight Code</title>
-      <link>https://3mile.github.io/tags/highlight-code/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/tags/highlight-code/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Hugo</title>
-      <link>https://3mile.github.io/tags/hugo/</link>
-      <pubDate>Sat, 26 May 2018 11:51:03 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Iptv</title>
-      <link>https://3mile.github.io/tags/iptv/</link>
-      <pubDate>Thu, 30 May 2019 13:21:10 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/iptv/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Keepass</title>
-      <link>https://3mile.github.io/tags/keepass/</link>
-      <pubDate>Thu, 05 Apr 2018 12:47:27 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/keepass/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Kip3000</title>
-      <link>https://3mile.github.io/tags/kip3000/</link>
-      <pubDate>Tue, 24 Apr 2018 11:46:36 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/kip3000/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Lede</title>
-      <link>https://3mile.github.io/tags/lede/</link>
-      <pubDate>Tue, 13 Aug 2019 12:31:00 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/lede/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://3mile.github.io/tags/linux/</link>
-      <pubDate>Tue, 19 Mar 2019 14:09:30 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux Mint</title>
-      <link>https://3mile.github.io/tags/linux-mint/</link>
-      <pubDate>Wed, 20 Feb 2019 19:44:10 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/linux-mint/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Markdown</title>
-      <link>https://3mile.github.io/tags/markdown/</link>
-      <pubDate>Mon, 23 Apr 2018 13:20:06 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/markdown/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Mint</title>
-      <link>https://3mile.github.io/tags/mint/</link>
-      <pubDate>Wed, 20 Feb 2019 19:44:10 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/mint/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Nfs</title>
-      <link>https://3mile.github.io/tags/nfs/</link>
-      <pubDate>Tue, 19 Mar 2019 14:09:30 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/nfs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Office</title>
-      <link>https://3mile.github.io/tags/office/</link>
-      <pubDate>Thu, 05 Apr 2018 13:28:24 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/office/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Openwrt</title>
+      <title>openwrt</title>
       <link>https://3mile.github.io/tags/openwrt/</link>
       <pubDate>Wed, 06 Nov 2019 11:17:32 +0800</pubDate>
       
@@ -237,88 +30,7 @@
     </item>
     
     <item>
-      <title>Photo</title>
-      <link>https://3mile.github.io/tags/photo/</link>
-      <pubDate>Sat, 31 Mar 2018 07:00:07 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/tags/photo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Picgo</title>
-      <link>https://3mile.github.io/tags/picgo/</link>
-      <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/picgo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Potplayer</title>
-      <link>https://3mile.github.io/tags/potplayer/</link>
-      <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/potplayer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://3mile.github.io/tags/python/</link>
-      <pubDate>Wed, 06 Nov 2019 11:05:11 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Rolan</title>
-      <link>https://3mile.github.io/tags/rolan/</link>
-      <pubDate>Sun, 06 May 2018 04:08:54 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/tags/rolan/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tag Plugins</title>
-      <link>https://3mile.github.io/tags/tag-plugins/</link>
-      <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/tag-plugins/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Test</title>
-      <link>https://3mile.github.io/tags/test/</link>
-      <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/test/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Typora</title>
-      <link>https://3mile.github.io/tags/typora/</link>
-      <pubDate>Wed, 04 Apr 2018 14:02:33 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/typora/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Ubuntu</title>
-      <link>https://3mile.github.io/tags/ubuntu/</link>
-      <pubDate>Tue, 16 Apr 2019 09:10:12 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/ubuntu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Udpxy</title>
+      <title>udpxy</title>
       <link>https://3mile.github.io/tags/udpxy/</link>
       <pubDate>Wed, 06 Nov 2019 11:17:32 +0800</pubDate>
       
@@ -327,155 +39,20 @@
     </item>
     
     <item>
-      <title>V2ray</title>
-      <link>https://3mile.github.io/tags/v2ray/</link>
-      <pubDate>Sat, 21 Jul 2018 12:58:23 +0800</pubDate>
+      <title>CentOS</title>
+      <link>https://3mile.github.io/tags/centos/</link>
+      <pubDate>Wed, 06 Nov 2019 11:05:11 +0800</pubDate>
       
-      <guid>https://3mile.github.io/tags/v2ray/</guid>
+      <guid>https://3mile.github.io/tags/centos/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Vps</title>
-      <link>https://3mile.github.io/tags/vps/</link>
-      <pubDate>Tue, 13 Nov 2018 13:37:41 +0800</pubDate>
+      <title>python</title>
+      <link>https://3mile.github.io/tags/python/</link>
+      <pubDate>Wed, 06 Nov 2019 11:05:11 +0800</pubDate>
       
-      <guid>https://3mile.github.io/tags/vps/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Vultr</title>
-      <link>https://3mile.github.io/tags/vultr/</link>
-      <pubDate>Sat, 26 May 2018 10:44:27 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/vultr/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Webdav</title>
-      <link>https://3mile.github.io/tags/webdav/</link>
-      <pubDate>Thu, 05 Apr 2018 12:47:27 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/webdav/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Webhook</title>
-      <link>https://3mile.github.io/tags/webhook/</link>
-      <pubDate>Sat, 26 May 2018 11:51:03 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/webhook/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Win10</title>
-      <link>https://3mile.github.io/tags/win10/</link>
-      <pubDate>Tue, 19 Mar 2019 15:31:56 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/win10/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://3mile.github.io/tags/windows/</link>
-      <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/windows/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Windows软件</title>
-      <link>https://3mile.github.io/tags/windows%E8%BD%AF%E4%BB%B6/</link>
-      <pubDate>Wed, 02 May 2018 11:55:04 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/windows%E8%BD%AF%E4%BB%B6/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Wordpress</title>
-      <link>https://3mile.github.io/tags/wordpress/</link>
-      <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/wordpress/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Zsh</title>
-      <link>https://3mile.github.io/tags/zsh/</link>
-      <pubDate>Thu, 21 Feb 2019 19:48:49 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/zsh/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>主题</title>
-      <link>https://3mile.github.io/tags/%E4%B8%BB%E9%A2%98/</link>
-      <pubDate>Mon, 16 Apr 2018 10:37:52 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E4%B8%BB%E9%A2%98/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>代理</title>
-      <link>https://3mile.github.io/tags/%E4%BB%A3%E7%90%86/</link>
-      <pubDate>Tue, 13 Nov 2018 13:37:41 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E4%BB%A3%E7%90%86/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>协作</title>
-      <link>https://3mile.github.io/tags/%E5%8D%8F%E4%BD%9C/</link>
-      <pubDate>Thu, 05 Apr 2018 13:28:24 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E5%8D%8F%E4%BD%9C/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>博客</title>
-      <link>https://3mile.github.io/tags/%E5%8D%9A%E5%AE%A2/</link>
-      <pubDate>Fri, 27 Apr 2018 13:13:44 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E5%8D%9A%E5%AE%A2/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>去广告</title>
-      <link>https://3mile.github.io/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A/</link>
-      <pubDate>Thu, 05 Apr 2018 13:12:20 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>启动器</title>
-      <link>https://3mile.github.io/tags/%E5%90%AF%E5%8A%A8%E5%99%A8/</link>
-      <pubDate>Sun, 06 May 2018 04:08:54 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E5%90%AF%E5%8A%A8%E5%99%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>图床</title>
-      <link>https://3mile.github.io/tags/%E5%9B%BE%E5%BA%8A/</link>
-      <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E5%9B%BE%E5%BA%8A/</guid>
+      <guid>https://3mile.github.io/tags/python/</guid>
       <description></description>
     </item>
     
@@ -498,92 +75,20 @@
     </item>
     
     <item>
-      <title>抓包</title>
-      <link>https://3mile.github.io/tags/%E6%8A%93%E5%8C%85/</link>
-      <pubDate>Thu, 05 Apr 2018 13:00:56 +0800</pubDate>
+      <title>github</title>
+      <link>https://3mile.github.io/tags/github/</link>
+      <pubDate>Fri, 16 Aug 2019 14:12:07 +0800</pubDate>
       
-      <guid>https://3mile.github.io/tags/%E6%8A%93%E5%8C%85/</guid>
+      <guid>https://3mile.github.io/tags/github/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>播放器</title>
-      <link>https://3mile.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8/</link>
-      <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
+      <title>LEDE</title>
+      <link>https://3mile.github.io/tags/lede/</link>
+      <pubDate>Tue, 13 Aug 2019 12:31:00 +0800</pubDate>
       
-      <guid>https://3mile.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>显示网速</title>
-      <link>https://3mile.github.io/tags/%E6%98%BE%E7%A4%BA%E7%BD%91%E9%80%9F/</link>
-      <pubDate>Wed, 02 May 2018 11:55:04 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E6%98%BE%E7%A4%BA%E7%BD%91%E9%80%9F/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>油猴</title>
-      <link>https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4/</link>
-      <pubDate>Sat, 05 May 2018 10:44:13 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>电影公司logo</title>
-      <link>https://3mile.github.io/tags/%E7%94%B5%E5%BD%B1%E5%85%AC%E5%8F%B8logo/</link>
-      <pubDate>Tue, 22 May 2018 09:21:17 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E7%94%B5%E5%BD%B1%E5%85%AC%E5%8F%B8logo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>电视盒</title>
-      <link>https://3mile.github.io/tags/%E7%94%B5%E8%A7%86%E7%9B%92/</link>
-      <pubDate>Thu, 05 Apr 2018 13:00:56 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E7%94%B5%E8%A7%86%E7%9B%92/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>群晖</title>
-      <link>https://3mile.github.io/tags/%E7%BE%A4%E6%99%96/</link>
-      <pubDate>Thu, 05 Apr 2018 13:28:24 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E7%BE%A4%E6%99%96/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>虚拟主机</title>
-      <link>https://3mile.github.io/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</link>
-      <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>软件推荐</title>
-      <link>https://3mile.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</link>
-      <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>软路由</title>
-      <link>https://3mile.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</link>
-      <pubDate>Tue, 03 Apr 2018 10:13:14 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</guid>
+      <guid>https://3mile.github.io/tags/lede/</guid>
       <description></description>
     </item>
     
@@ -597,11 +102,506 @@
     </item>
     
     <item>
+      <title>iptv</title>
+      <link>https://3mile.github.io/tags/iptv/</link>
+      <pubDate>Thu, 30 May 2019 13:21:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/iptv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ubuntu</title>
+      <link>https://3mile.github.io/tags/ubuntu/</link>
+      <pubDate>Tue, 16 Apr 2019 09:10:12 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>win10</title>
+      <link>https://3mile.github.io/tags/win10/</link>
+      <pubDate>Tue, 19 Mar 2019 15:31:56 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/win10/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://3mile.github.io/tags/linux/</link>
+      <pubDate>Tue, 19 Mar 2019 14:09:30 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NFS</title>
+      <link>https://3mile.github.io/tags/nfs/</link>
+      <pubDate>Tue, 19 Mar 2019 14:09:30 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/nfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zsh</title>
+      <link>https://3mile.github.io/tags/zsh/</link>
+      <pubDate>Thu, 21 Feb 2019 19:48:49 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/zsh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux mint</title>
+      <link>https://3mile.github.io/tags/linux-mint/</link>
+      <pubDate>Wed, 20 Feb 2019 19:44:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/linux-mint/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mint</title>
+      <link>https://3mile.github.io/tags/mint/</link>
+      <pubDate>Wed, 20 Feb 2019 19:44:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/mint/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vps</title>
+      <link>https://3mile.github.io/tags/vps/</link>
+      <pubDate>Tue, 13 Nov 2018 13:37:41 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/vps/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>代理</title>
+      <link>https://3mile.github.io/tags/%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Tue, 13 Nov 2018 13:37:41 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E4%BB%A3%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>V2ray</title>
+      <link>https://3mile.github.io/tags/v2ray/</link>
+      <pubDate>Sat, 21 Jul 2018 12:58:23 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/v2ray/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>caddy</title>
+      <link>https://3mile.github.io/tags/caddy/</link>
+      <pubDate>Sat, 26 May 2018 11:51:03 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/caddy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://3mile.github.io/tags/hugo/</link>
+      <pubDate>Sat, 26 May 2018 11:51:03 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>webhook</title>
+      <link>https://3mile.github.io/tags/webhook/</link>
+      <pubDate>Sat, 26 May 2018 11:51:03 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/webhook/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos7</title>
+      <link>https://3mile.github.io/tags/centos7/</link>
+      <pubDate>Sat, 26 May 2018 10:44:27 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/centos7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vultr</title>
+      <link>https://3mile.github.io/tags/vultr/</link>
+      <pubDate>Sat, 26 May 2018 10:44:27 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/vultr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>电影公司LOGO</title>
+      <link>https://3mile.github.io/tags/%E7%94%B5%E5%BD%B1%E5%85%AC%E5%8F%B8logo/</link>
+      <pubDate>Tue, 22 May 2018 09:21:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E7%94%B5%E5%BD%B1%E5%85%AC%E5%8F%B8logo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>picgo</title>
+      <link>https://3mile.github.io/tags/picgo/</link>
+      <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/picgo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>图床</title>
+      <link>https://3mile.github.io/tags/%E5%9B%BE%E5%BA%8A/</link>
+      <pubDate>Wed, 16 May 2018 12:26:38 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%9B%BE%E5%BA%8A/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>https://3mile.github.io/tags/windows/</link>
+      <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>软件推荐</title>
+      <link>https://3mile.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</link>
+      <pubDate>Mon, 07 May 2018 12:43:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%8E%A8%E8%8D%90/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>potplayer</title>
+      <link>https://3mile.github.io/tags/potplayer/</link>
+      <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/potplayer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>播放器</title>
+      <link>https://3mile.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8/</link>
+      <pubDate>Mon, 07 May 2018 11:54:13 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E6%92%AD%E6%94%BE%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Atom</title>
+      <link>https://3mile.github.io/tags/atom/</link>
+      <pubDate>Sun, 06 May 2018 12:35:58 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/atom/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rolan</title>
+      <link>https://3mile.github.io/tags/rolan/</link>
+      <pubDate>Sun, 06 May 2018 04:08:54 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/rolan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>启动器</title>
+      <link>https://3mile.github.io/tags/%E5%90%AF%E5%8A%A8%E5%99%A8/</link>
+      <pubDate>Sun, 06 May 2018 04:08:54 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%90%AF%E5%8A%A8%E5%99%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>chrome</title>
+      <link>https://3mile.github.io/tags/chrome/</link>
+      <pubDate>Sat, 05 May 2018 11:50:25 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>油猴</title>
+      <link>https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4/</link>
+      <pubDate>Sat, 05 May 2018 10:44:13 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E6%B2%B9%E7%8C%B4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows软件</title>
+      <link>https://3mile.github.io/tags/windows%E8%BD%AF%E4%BB%B6/</link>
+      <pubDate>Wed, 02 May 2018 11:55:04 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/windows%E8%BD%AF%E4%BB%B6/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>显示网速</title>
+      <link>https://3mile.github.io/tags/%E6%98%BE%E7%A4%BA%E7%BD%91%E9%80%9F/</link>
+      <pubDate>Wed, 02 May 2018 11:55:04 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E6%98%BE%E7%A4%BA%E7%BD%91%E9%80%9F/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tag plugins</title>
+      <link>https://3mile.github.io/tags/tag-plugins/</link>
+      <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/tag-plugins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>test</title>
+      <link>https://3mile.github.io/tags/test/</link>
+      <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github theme</title>
+      <link>https://3mile.github.io/tags/github-theme/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/github-theme/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>highlight code</title>
+      <link>https://3mile.github.io/tags/highlight-code/</link>
+      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/highlight-code/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>博客</title>
+      <link>https://3mile.github.io/tags/%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 27 Apr 2018 13:13:44 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>静态博客</title>
       <link>https://3mile.github.io/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</link>
       <pubDate>Fri, 27 Apr 2018 13:13:44 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>comments</title>
+      <link>https://3mile.github.io/tags/comments/</link>
+      <pubDate>Wed, 25 Apr 2018 09:34:29 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/comments/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>kip3000</title>
+      <link>https://3mile.github.io/tags/kip3000/</link>
+      <pubDate>Tue, 24 Apr 2018 11:46:36 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/kip3000/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog</title>
+      <link>https://3mile.github.io/tags/blog/</link>
+      <pubDate>Mon, 23 Apr 2018 13:26:40 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Markdown</title>
+      <link>https://3mile.github.io/tags/markdown/</link>
+      <pubDate>Mon, 23 Apr 2018 13:20:06 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hexo</title>
+      <link>https://3mile.github.io/tags/hexo/</link>
+      <pubDate>Sat, 21 Apr 2018 11:41:05 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>主题</title>
+      <link>https://3mile.github.io/tags/%E4%B8%BB%E9%A2%98/</link>
+      <pubDate>Mon, 16 Apr 2018 10:37:52 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E4%B8%BB%E9%A2%98/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wordpress</title>
+      <link>https://3mile.github.io/tags/wordpress/</link>
+      <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/wordpress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>虚拟主机</title>
+      <link>https://3mile.github.io/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</link>
+      <pubDate>Tue, 10 Apr 2018 09:16:52 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E8%99%9A%E6%8B%9F%E4%B8%BB%E6%9C%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OFFICE</title>
+      <link>https://3mile.github.io/tags/office/</link>
+      <pubDate>Thu, 05 Apr 2018 13:28:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/office/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>协作</title>
+      <link>https://3mile.github.io/tags/%E5%8D%8F%E4%BD%9C/</link>
+      <pubDate>Thu, 05 Apr 2018 13:28:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%8D%8F%E4%BD%9C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>群晖</title>
+      <link>https://3mile.github.io/tags/%E7%BE%A4%E6%99%96/</link>
+      <pubDate>Thu, 05 Apr 2018 13:28:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E7%BE%A4%E6%99%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://3mile.github.io/tags/docker/</link>
+      <pubDate>Thu, 05 Apr 2018 13:12:20 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>去广告</title>
+      <link>https://3mile.github.io/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A/</link>
+      <pubDate>Thu, 05 Apr 2018 13:12:20 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%8E%BB%E5%B9%BF%E5%91%8A/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>抓包</title>
+      <link>https://3mile.github.io/tags/%E6%8A%93%E5%8C%85/</link>
+      <pubDate>Thu, 05 Apr 2018 13:00:56 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E6%8A%93%E5%8C%85/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>电视盒</title>
+      <link>https://3mile.github.io/tags/%E7%94%B5%E8%A7%86%E7%9B%92/</link>
+      <pubDate>Thu, 05 Apr 2018 13:00:56 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E7%94%B5%E8%A7%86%E7%9B%92/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KeePass</title>
+      <link>https://3mile.github.io/tags/keepass/</link>
+      <pubDate>Thu, 05 Apr 2018 12:47:27 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/keepass/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Webdav</title>
+      <link>https://3mile.github.io/tags/webdav/</link>
+      <pubDate>Thu, 05 Apr 2018 12:47:27 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/webdav/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Typora</title>
+      <link>https://3mile.github.io/tags/typora/</link>
+      <pubDate>Wed, 04 Apr 2018 14:02:33 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/typora/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>软路由</title>
+      <link>https://3mile.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</link>
+      <pubDate>Tue, 03 Apr 2018 10:13:14 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E8%BD%AF%E8%B7%AF%E7%94%B1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>photo</title>
+      <link>https://3mile.github.io/tags/photo/</link>
+      <pubDate>Sat, 31 Mar 2018 07:00:07 +0000</pubDate>
+      
+      <guid>https://3mile.github.io/tags/photo/</guid>
       <description></description>
     </item>
     

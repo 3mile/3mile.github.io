@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.54.0 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="一. 首次编译 1. 首先安装依赖 2. 下载源码 3. 更新 4. 推荐的必要工具 5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网 6. 编译 二. 再次编译 三. 自">
@@ -522,23 +522,22 @@ etc/config/samba
 <li>设置服务器节点</li>
 <li>不走代理的WAN IP vps地址</li>
 <li>不走代理的局域网IP 各个盒子IP,群晖IP</li>
-<li>GFW列表</li>
-</ol>
 
-<pre><code class="language-ini">   lala.im
-   github.com
-   manjaro.org
-   pornbay.org
-   empornium.ph
-   github.io
-   toutyrater.github.io
-   services.googleapis.cn
-   googleapis.cn
-   i.pstorage.space
-</code></pre>
+<li><p>GFW列表</p>
 
-<ol>
-<li>#### 广告屏蔽大师 Plus+</li>
+<pre><code class="language-ini">lala.im
+github.com
+manjaro.org
+pornbay.org
+empornium.ph
+github.io
+toutyrater.github.io
+services.googleapis.cn
+googleapis.cn
+i.pstorage.space
+</code></pre></li>
+
+<li><h4 id="广告屏蔽大师-plus">广告屏蔽大师 Plus+</h4></li>
 </ol>
 
 <p>运行模式：<code>列表模式</code></p>
@@ -592,47 +591,39 @@ bash install-tr-control-cn.sh
 <p>​</p>
 
 <ol>
-<li>先把软件源改成</li>
-</ol>
+<li><p>先把软件源改成</p>
 
 <pre><code class="language-ini">src/gz openwrt_core http://downloads.openwrt.org/snapshots/targets/x86/64/packages
 src/gz openwrt_base http://downloads.openwrt.org/snapshots/packages/x86_64/base
 src/gz openwrt_luci http://downloads.openwrt.org/snapshots/packages/x86_64/luci
 src/gz openwrt_packages http://downloads.openwrt.org/snapshots/packages/x86_64/packages
 src/gz openwrt_routing http://downloads.openwrt.org/snapshots/packages/x86_64/routing
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>然后更新源</li>
-</ol>
+<li><p>然后更新源</p>
 
 <pre><code class="language-bash">opkg update
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>安装libustream-mbedtls</li>
-</ol>
+<li><p>安装libustream-mbedtls</p>
 
 <pre><code class="language-bash">opkg install libustream-mbedtls
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>安装完成后把源改回教育网的https源</li>
-</ol>
+<li><p>安装完成后把源改回教育网的https源</p>
 
 <pre><code class="language-ini">src/gz openwrt_core https://openwrt.proxy.ustclug.org/snapshots/targets/x86/64/packages
 src/gz openwrt_base https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/base
 src/gz openwrt_luci https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/luci
 src/gz openwrt_packages https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/packages
 src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/routing
-</code></pre>
+</code></pre></li>
 
-<ol>
-<li>然后更新</li>
-</ol>
+<li><p>然后更新</p>
 
 <pre><code class="language-bash">opkg update
-</code></pre>
+</code></pre></li>
+</ol>
 
 <h3 id="最后设置dhcp">最后设置dhcp</h3>
 
@@ -749,7 +740,7 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_
       </article>
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. All Rights Reserved
+    &copy; 2019 3mile. 版权所有
   </span>
 </footer>
 
