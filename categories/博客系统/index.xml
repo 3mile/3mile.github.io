@@ -6,10 +6,28 @@
     <description>Recent content in 博客系统 on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 16 May 2018 12:26:38 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Sep 2019 10:04:06 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/categories/%E5%8D%9A%E5%AE%A2%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tranquilpeak主题修复高亮代码_增加valing评论</title>
+      <link>https://3mile.github.io/archives/2019/0903100406/</link>
+      <pubDate>Tue, 03 Sep 2019 10:04:06 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/0903100406/</guid>
+      <description>修复highlight框横向滚动 修改文件themes/tranquilpeak_0.47beta/src/scss/themes/_hljs</description>
+    </item>
+    
+    <item>
+      <title>Tranquilpeak主题修改编译</title>
+      <link>https://3mile.github.io/archives/2019/0826154529/</link>
+      <pubDate>Mon, 26 Aug 2019 15:45:29 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/0826154529/</guid>
+      <description>首先进入theme目录,克隆tranquilpeak主题 cd themes git clone https://github.com/kakawait/hugo-tranquilpeak-theme.git tranquilpeak_0.47beta&amp;quot; cd tranquilpeak_0.47beta 然后修改src/scss/themes/_hljs-custom.s</description>
+    </item>
     
     <item>
       <title>图床上传工具PicGo V1</title>
@@ -18,15 +36,6 @@
       
       <guid>https://3mile.github.io/archives/142/</guid>
       <description>经过一个多月的努力开发，基于electron的图床上传工具PicGo终于迎来了一个minor版本的更新。如果你对此感兴趣，不妨看看都更新了哪</description>
-    </item>
-    
-    <item>
-      <title>highlighted code showcase</title>
-      <link>https://3mile.github.io/2018/05/highlighted-code-showcase/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/2018/05/highlighted-code-showcase/</guid>
-      <description>&lt;p&gt;Tranquilpeak Hugo theme have its own theme to highlight source code. It&amp;rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -89,7 +98,7 @@
       <pubDate>Mon, 16 Apr 2018 10:37:52 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/201/</guid>
-      <description>目前Hugo官方一共提供了135款主题（Themes），下面归类简介其中的25款。 挑选标准：3分代表性 + 6分个人喜好 + 1分随机 :p 常规博客类 Heather</description>
+      <description>目前Hugo官方一共提供了 135款主题（Themes），下面归类简介其中的25款。 挑选标准：3分代表性 + 6分个人喜好 + 1分随机 :p 常规博客类 Heather</description>
     </item>
     
     <item>
@@ -107,7 +116,7 @@
       <pubDate>Wed, 04 Apr 2018 14:02:33 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/107/</guid>
-      <description>Red paragraph text this is a test Summary: Typora is a very good markdown editor, and today I&amp;rsquo;ll show you how to use typora to set the color of the font, Example is as follow. Typora虽然是一款markdown编辑器，但是其实也可以设置字体颜</description>
+      <description>Summary: Typora is a very good markdown editor, and today I&amp;rsquo;ll show you how to use typora to set the color of the font, Example is as follow. Typora虽然是一款markdown编辑器，但是其实也可以设置字体颜色，因为typ</description>
     </item>
     
     <item>
@@ -116,7 +125,7 @@
       <pubDate>Sun, 01 Apr 2018 05:45:46 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/119/</guid>
-      <description>Pacman Pacman 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：hugo-p</description>
+      <description>Pacman Pacman 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题： hugo-pacman-theme 演示地址：</description>
     </item>
     
     <item>
@@ -125,7 +134,7 @@
       <pubDate>Sat, 31 Mar 2018 06:48:38 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/986/</guid>
-      <description>Crayon Syntax Highlighter Crayon Syntax Highlighter是一个强大的代码高亮插件，强大的地方主要是它拥有多种高亮主题和多种显示字体来展示代码让使用者有足够多的搭配选</description>
+      <description>&amp;lt;h2&amp;gt; &amp;lt;/h2&amp;gt; &amp;lt;h2&amp;gt; 实例效果： &amp;lt;/h2&amp;gt; &amp;lt;div id=&amp;quot;crayon-5abf2cf9c084f024894327&amp;quot; class=&amp;quot;crayon-syntax crayon-theme-ado crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped&amp;quot; data-settings=&amp;quot; minimize scroll-mouseover wrap&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;crayon-plain-wrap&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;crayon-main&amp;quot;&amp;gt; &amp;lt;pre class=&amp;quot;lang:default decode:true &amp;quot;&amp;gt;CMemPoolMgr::CMemPoolMgr(unsigned int poolsize /* = DEFAULT_POOLSIZE */, unsigned int poolunitsize /* = DEFAULT_POOLUNITSIZE */, unsigned int blockunitsize /* = DEFAULT_BLOCKUNITSIZE */) { m_nPoolSize = poolsize; m_nPoolUnitSize = poolunitsize; m_nBlockUnitSize = blockunitsize; m_nTotalMemPool = 0; m_nUsingMemPool = 0; m_TimeTick = GetTickCount();</description>
     </item>
     
   </channel>

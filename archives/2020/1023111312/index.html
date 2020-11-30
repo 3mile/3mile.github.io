@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="手动修改端口成功了，需要改端口的可以照这样来操作。编辑/etc/init.d/kms文件，将 $DAEMON -p $PID_FILE这段改成$DAEMON -P">
+
+
+<meta property="og:description" content="手动修改端口成功了，需要改端口的可以照这样来操作。编辑/etc/init.d/kms文件，将 $DAEMON -p $PID_FILE这段改成$DAEMON -P">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kms修改端口号">
+<meta name="twitter:title" content="Kms修改端口号">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/1023111312/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/1023111312/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="手动修改端口成功了，需要改端口的可以照这样来操作。编辑/etc/init.d/kms文件，将 $DAEMON -p $PID_FILE这段改成$DAEMON -P">
+<meta name="twitter:description" content="手动修改端口成功了，需要改端口的可以照这样来操作。编辑/etc/init.d/kms文件，将 $DAEMON -p $PID_FILE这段改成$DAEMON -P">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-10-23T11:13:12">
+  
+  
+    <meta property="article:modified_time" content="2020-10-23T11:13:12">
+  
+  
+  
+    
+      <meta property="article:section" content="">
+    
+  
+  
+    
+      <meta property="article:tag" content="">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgounix-shot-1518512-640x480.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgounix-shot-1518512-640x480.jpg">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/3.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/3.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>Kms修改端口号</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/1023111312/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/3.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Kms修改端口号
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-10-23T11:13:12&#43;08:00">
+        
+  
+  
+  
+  
+    2020-10-23
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">Kms修改端口号</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#如何使用-kms-服务">如何使用 KMS 服务</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>手动修改端口成功了，需要改端口的可以照这样来操作。编辑<code>/etc/init.d/kms</code>文件，将</p>
+<p><code>$DAEMON -p $PID_FILE</code>这段改成<code>$DAEMON -P(端口号) -p $PID_FILE</code>，如<code>$DAEMON -P30000 -p $PID_FILE</code>,即端口号改成30000。然后重启KMS服务，搞定。</p>
+<p><strong>使用命令：</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">启动：/etc/init.d/kms start
+停止：/etc/init.d/kms stop
+重启：/etc/init.d/kms restart
+状态：/etc/init.d/kms status
+</code></pre></div><p><strong>卸载方法：</strong>
+使用 root 用户登录，运行以下命令：</p>
+<pre><code class="language-bsh" data-lang="bsh">./kms.sh uninstall
+</code></pre><h3 id="如何使用-kms-服务">如何使用 KMS 服务</h3>
+<p>KMS 服务，用于在线激活 VOL 版本的 Windows 和 Office。
+激活的前提是你的系统是批量授权版本，即 VL 版，一般企业版都是 VL 版。而 VL 版本的镜像一般内置 GVLK key，用于 KMS 激活。
+下面列表里面含有的产品的 VL 版本或者能使用 key 进入 KMS 通道的产品，都支持使用 KMS 激活。</p>
+<p>Office 2019 &amp; Office 2016：https://docs.microsoft.com/en-us/DeployOffice/vlactivation/gvlks
+Office 2013：https://technet.microsoft.com/zh-cn/library/dn385360.aspx
+Office 2010：https://technet.microsoft.com/zh-cn/library/ee624355(v=office.14).aspx
+Windows：https://docs.microsoft.com/zh-cn/windows-server/get-started/kmsclientkeys</p>
+<p>使用管理员权限运行 cmd 查看系统版本，命令如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wmic os get caption
+</code></pre></div><p>使用管理员权限运行 cmd 安装从上面列表得到的 key，命令如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">slmgr /ipk xxxxx-xxxxx-xxxxx-xxxxx-xxxxx
+</code></pre></div><p>使用管理员权限运行 cmd 将 KMS 服务器地址设置为你自己的 IP 或 域名，后面最好再加上端口号（:1688），命令如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">slmgr /skms Your IP or Domain:1688
+</code></pre></div><p>**注意：**本脚本所做的工作就是此步骤。当你的 KMS 服务出于启动状态，那么此处就可以设置为你自己的 KMS 服务器地址。
+使用管理员权限运行 cmd 手动激活系统，命令如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">slmgr /ato
+</code></pre></div><p>关于 Office 的激活，要求必须是 VOL 版本，否则无法激活。
+找到你的 Office 安装目录，32 位默认一般为 C:\Program Files (x86)\Microsoft Office\Office16
+64 位默认一般为 C:\Program Files\Microsoft Office\Office16
+Office16 是 Office 2016，Office15 就是 Office 2013，Office14 就是 Office 2010。
+打开以上所说的目录，应该有个 OSPP.VBS 文件。
+使用管理员权限运行 cmd 进入 Office 目录，命令如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd <span style="color:#e6db74">&#34;C:\Program Files (x86)\Microsoft Office\Office16&#34;</span>
+</code></pre></div><p>使用管理员权限运行 cmd 注册 KMS 服务器地址：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cscript ospp.vbs /sethst:Your IP or Domain <span style="color:#75715e">#激活地址</span>
+cscript ospp.vbs /setprt:1688 <span style="color:#75715e">#激活端口</span>
+</code></pre></div><p>使用管理员权限运行 cmd 手动激活 Office，命令如下：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cscript ospp.vbs /act
+</code></pre></div><p><strong>注意：</strong> KMS 方式激活，其有效期只有 180 天。
+每隔一段时间系统会自动向 KMS 服务器请求续期，请确保你自己的 KMS 服务正常运行。</p>
+
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/1023111312/>Kms修改端口号</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-10-23<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/1023111312/ target="_blank" >https://3mile.github.io/archives/2020/1023111312/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/1023111312/" class="leancloud_visitors" data-flag-title="Kms修改端口号">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1023103910/" data-tooltip="OpenWrt下打印机">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1117093913/" data-tooltip="Ssh使用跳板机访问远程服务器">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1023103910/" data-tooltip="OpenWrt下打印机">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1117093913/" data-tooltip="Ssh使用跳板机访问远程服务器">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

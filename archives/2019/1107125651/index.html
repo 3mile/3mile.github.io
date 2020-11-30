@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="DNF新一代的RPM软件包管理器。他首先出现在 Fedora 18 这个发行版中。而最近，他取代了YUM，正式成为 Fedora 22 的包管理器。 DNF包管理器克服了YUM包">
@@ -31,12 +31,12 @@
   
   
     
-      <meta property="article:section" content="">
+      <meta property="article:section" content="Linux">
     
   
   
     
-      <meta property="article:tag" content="">
+      <meta property="article:tag" content="Centos8">
     
   
 
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -271,7 +271,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -292,287 +292,335 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p>DNF新一代的RPM软件包管理器。他首先出现在 Fedora 18 这个发行版中。而最近，他取代了YUM，正式成为 Fedora 22 的包管理器。</p>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#-安装-dnf-包管理器">– 安装 DNF 包管理器</a></li>
+        <li><a href="#总结">总结</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>DNF新一代的RPM软件包管理器。他首先出现在 Fedora 18 这个发行版中。而最近，他取代了YUM，正式成为 Fedora 22 的包管理器。</p>
 <p>DNF包管理器克服了YUM包管理器的一些瓶颈，提升了包括用户体验，内存占用，依赖分析，运行速度等多方面的内容。</p>
-
 <p>DNF使用 RPM, libsolv 和 hawkey 库进行包管理操作。尽管它没有预装在 CentOS 和 RHEL 7 中，但你可以在使用 YUM 的同时使用 DNF 。</p>
+<p>你可以在这里获得关于 DNF 的更多知识：
 
-<p>你可以在这里获得关于 DNF 的更多知识：<a href="http://www.tecmint.com/dnf-next-generation-package-management-utility-for-linux/">《 DNF 代替 YUM ，你所不知道的缘由》</a></p>
-
+<a href="http://www.tecmint.com/dnf-next-generation-package-management-utility-for-linux/"  target="_blank">《 DNF 代替 YUM ，你所不知道的缘由》</a></p>
 <p>DNF 的最新稳定发行版版本号是 1.0，发行日期是2015年5月11日。 这一版本的额 DNF 包管理器（包括在他之前的所有版本） 都大部分采用 Python 编写，发行许可为GPL v2.</p>
-
-<h3 id="安装-dnf-包管理器">– 安装 DNF 包管理器</h3>
-
+<h3 id="-安装-dnf-包管理器">– 安装 DNF 包管理器</h3>
 <p>DNF 并未默认安装在 RHEL 或 CentOS 7系统中，但是 Fedora 22 已经默认使用 DNF .</p>
-
 <p><strong>1.为了安装 DNF ，您必须先安装并启用 epel-release 依赖。</strong></p>
-
 <p>在系统中执行以下命令：</p>
-
 <pre><code>yum install epel-release
-</code></pre>
-
-<p>或者</p>
-
+</code></pre><p>或者</p>
 <pre><code>yum install epel-release -y
-</code></pre>
-
-<p>其实这里并没有强制使用”-y”的理由，相反的，在不使用”-y”的情况下，用户可以在安装过程中查看到底有哪些东西被安装进了系统。但对于没有这个需求的用户，您可以在 YUM 中使用”-y”参数来自动安装所有东西。</p>
-
+</code></pre><p>其实这里并没有强制使用”-y”的理由，相反的，在不使用”-y”的情况下，用户可以在安装过程中查看到底有哪些东西被安装进了系统。但对于没有这个需求的用户，您可以在 YUM 中使用”-y”参数来自动安装所有东西。</p>
 <p><strong>2.使用 epel-release 依赖中的 YUM 命令来安装 DNF 包。</strong>、</p>
-
 <p>在系统中执行以下命令：</p>
-
 <pre><code>    yum install dnf
-</code></pre>
-
-<p>然后， DNF 包管理器就被成功的安装到你的系统中了。接下来，是时候开始我们的教程了！在这个教程中，您将会学到27个用于 DNF 包管理器的命令。使用这些命令，你可以方便有效的管理您系统中的 RPM 软件包。现在，让我们开始学习 DNF 包管理器的27条常用命令吧！</p>
-
+</code></pre><p>然后， DNF 包管理器就被成功的安装到你的系统中了。接下来，是时候开始我们的教程了！在这个教程中，您将会学到27个用于 DNF 包管理器的命令。使用这些命令，你可以方便有效的管理您系统中的 RPM 软件包。现在，让我们开始学习 DNF 包管理器的27条常用命令吧！</p>
 <p><strong>– 查看 DNF 包管理器版本</strong></p>
-
 <p>用处：该命令用于查看安装在您系统中的 DNF 包管理器的版本</p>
-
 <p>命令：<code>dnf –version</code>
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130321-2019-11-7.png" alt="20191107130321-2019-11-7.png" /></p>
 
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130321-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130321-2019-11-7.png" alt="20191107130321-2019-11-7.png" /></a>
+</span>
+
+</span></p>
 <p><strong>– 查看系统中可用的 DNF 软件库</strong></p>
-
 <p>用处：该命令用于显示系统中可用的 DNF 软件库</p>
-
 <p>命令：<code>dnf repolist</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130406-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130406-2019-11-7.png" alt="20191107130406-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130406-2019-11-7.png" alt="20191107130406-2019-11-7.png" />
+</span>
 <strong>– 查看系统中可用和不可用的所有的 DNF 软件库</strong></p>
-
 <p>用处：该命令用于显示系统中可用和不可用的所有的 DNF 软件库</p>
-
 <p>命令：<code>dnf repolist all</code>
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130429-2019-11-7.png" alt="20191107130429-2019-11-7.png" /></p>
 
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130429-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130429-2019-11-7.png" alt="20191107130429-2019-11-7.png" /></a>
+</span>
+
+</span></p>
 <p><strong>– 列出所有 RPM 包</strong></p>
-
 <p>用处：该命令用于列出用户系统上的所有来自软件库的可用软件包和所有已经安装在系统上的软件包</p>
-
 <p>命令： <code>dnf list</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130508-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130508-2019-11-7.png" alt="20191107130508-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130508-2019-11-7.png" alt="20191107130508-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 列出所有安装了的 RPM 包</strong></p>
-
 <p>用处：该命令用于列出所有安装了的 RPM 包</p>
-
 <p>命令：<code>dnf list installed</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130529-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130529-2019-11-7.png" alt="20191107130529-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130529-2019-11-7.png" alt="20191107130529-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 列出所有可供安装的 RPM 包</strong></p>
-
 <p>用处：该命令用于列出来自所有可用软件库的可供安装的软件包</p>
-
 <p>命令：<code>dnf list available</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130550-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130550-2019-11-7.png" alt="20191107130550-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130550-2019-11-7.png" alt="20191107130550-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 搜索软件库中的 RPM 包</strong></p>
-
 <p>用处：当你不知道你想要安装的软件的准确名称时，你可以用该命令来搜索软件包。你需要在”search”参数后面键入软件的部分名称来搜索。（在本例中我们使用”nano”）</p>
-
 <p>命令：<code>dnf search nano</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130611-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130611-2019-11-7.png" alt="20191107130611-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130611-2019-11-7.png" alt="20191107130611-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 查找某一文件的提供者</strong></p>
-
 <p>用处：当你想要查看是哪个软件包提供了系统中的某一文件时，你可以使用这条命令。（在本例中，我们将查找”/bin/bash”这个文件的提供者）</p>
+<p>命令：<code> dnf provides /bin/bash</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130630-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130630-2019-11-7.png" alt="20191107130630-2019-11-7.png" /></a>
+</span>
 
-<p>命令：<code>dnf provides /bin/bash</code></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130630-2019-11-7.png" alt="20191107130630-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 查看软件包详情</strong></p>
-
 <p>用处：当你想在安装某一个软件包之前查看它的详细信息时，这条命令可以帮到你。（在本例中，我们将查看”nano”这一软件包的详细信息）</p>
-
 <p>命令：<code>dnf info nano</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130651-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130651-2019-11-7.png" alt="20191107130651-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130651-2019-11-7.png" alt="20191107130651-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 安装软件包</strong></p>
-
 <p>用处：使用该命令，系统将会自动安装对应的软件及其所需的所有依赖（在本例中，我们将用该命令安装nano软件）</p>
-
 <p>命令：<code>dnf install nano</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130710-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130710-2019-11-7.png" alt="20191107130710-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130710-2019-11-7.png" alt="20191107130710-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 升级软件包</strong></p>
-
 <p>用处：该命令用于升级制定软件包（在本例中，我们将用命令升级”systemd”这一软件包）</p>
-
 <p>命令：<code>dnf update systemd</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130733-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130733-2019-11-7.png" alt="20191107130733-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130733-2019-11-7.png" alt="20191107130733-2019-11-7.png" />
+</span>
 <strong>– 检查系统软件包的更新</strong></p>
-
 <p>用处：该命令用于检查系统中所有软件包的更新</p>
-
 <p>命令：<code>dnf check-update</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130759-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130759-2019-11-7.png" alt="20191107130759-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130759-2019-11-7.png" alt="20191107130759-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 升级所有系统软件包</strong></p>
-
 <p>用处：该命令用于升级系统中所有有可用升级的软件包</p>
-
 <p>命令：<code>dnf update</code> 或 <code>dnf upgrade</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130831-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130831-2019-11-7.png" alt="20191107130831-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130831-2019-11-7.png" alt="20191107130831-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 删除软件包</strong></p>
-
 <p>用处：删除系统中指定的软件包（在本例中我们将使用命令删除”nano”这一软件包）</p>
-
 <p>命令：<code>dnf remove nano</code> 或 <code>dnf erase nano</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130859-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130859-2019-11-7.png" alt="20191107130859-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130859-2019-11-7.png" alt="20191107130859-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 删除无用孤立的软件包</strong></p>
-
 <p>用处：当没有软件再依赖它们时，某一些用于解决特定软件依赖的软件包将会变得没有存在的意义，该命令就是用来自动移除这些没用的孤立软件包。</p>
-
 <p>命令：<code>dnf autoremove</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130919-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130919-2019-11-7.png" alt="20191107130919-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130919-2019-11-7.png" alt="20191107130919-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 删除缓存的无用软件包</strong></p>
-
 <p>用处：在使用 DNF 的过程中，会因为各种原因在系统中残留各种过时的文件和未完成的编译工程。我们可以使用该命令来删除这些没用的垃圾文件。</p>
-
 <p>命令：<code>dnf clean all</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130937-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130937-2019-11-7.png" alt="20191107130937-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130937-2019-11-7.png" alt="20191107130937-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 获取有关某条命令的使用帮助</strong></p>
-
 <p>用处：该命令用于获取有关某条命令的使用帮助（包括可用于该命令的参数和该命令的用途说明）（本例中我们将使用命令获取有关命令”clean”的使用帮助）</p>
-
 <p>命令：<code>dnf help clean</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130959-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130959-2019-11-7.png" alt="20191107130959-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107130959-2019-11-7.png" alt="20191107130959-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 查看所有的 DNF 命令及其用途</strong></p>
-
 <p>用处：该命令用于列出所有的 DNF 命令及其用途</p>
-
 <p>命令：<code>dnf help</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131016-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131016-2019-11-7.png" alt="20191107131016-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131016-2019-11-7.png" alt="20191107131016-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 查看 DNF 命令的执行历史</strong></p>
-
 <p>用处：您可以使用该命令来查看您系统上 DNF 命令的执行历史。通过这个手段您可以知道在自您使用 DNF 开始有什么软件被安装和卸载。</p>
-
 <p>命令：<code>dnf history</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131036-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131036-2019-11-7.png" alt="20191107131036-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131036-2019-11-7.png" alt="20191107131036-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 查看所有的软件包组</strong></p>
-
 <p>用处：该命令用于列出所有的软件包组</p>
-
 <p>命令：<code>dnf grouplist</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131054-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131054-2019-11-7.png" alt="20191107131054-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131054-2019-11-7.png" alt="20191107131054-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 安装一个软件包组</strong></p>
-
 <p>用处：该命令用于安装一个软件包组（本例中，我们将用命令安装”Educational Software”这个软件包组）</p>
-
 <p>命令：<code>dnf groupinstall ‘Educational Software’</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131112-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131112-2019-11-7.png" alt="20191107131112-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131112-2019-11-7.png" alt="20191107131112-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 升级一个软件包组中的软件包</strong></p>
-
 <p>用处：该命令用于升级一个软件包组中的软件包（本例中，我们将用命令升级”Educational Software”这个软件包组中的软件）</p>
-
 <p>命令：<code>dnf groupupdate ‘Educational Software’</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131134-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131134-2019-11-7.png" alt="20191107131134-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131134-2019-11-7.png" alt="20191107131134-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 删除一个软件包组</strong></p>
-
 <p>用处：该命令用于删除一个软件包组（本例中，我们将用命令删除”Educational Software”这个软件包组）</p>
-
 <p>命令：<code>dnf groupremove ‘Educational Software’</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131149-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131149-2019-11-7.png" alt="20191107131149-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131149-2019-11-7.png" alt="20191107131149-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 从特定的软件包库安装特定的软件</strong></p>
-
 <p>用处：该命令用于从特定的软件包库安装特定的软件（本例中我们将使用命令从软件包库 epel 中安装 phpmyadmin 软件包）</p>
-
 <p>命令：<code>dnf –enablerepo=epel install phpmyadmin</code></p>
-
 <p><strong>– 更新软件包到最新的稳定发行版</strong></p>
-
 <p>用处：该命令可以通过所有可用的软件源将已经安装的所有软件包更新到最新的稳定发行版</p>
-
 <p>命令：<code>dnf distro-sync</code></p>
-
 <p><strong>– 重新安装特定软件包</strong></p>
-
 <p>用处：该命令用于重新安装特定软件包（本例中，我们将使用命令重新安装”nano”这个软件包）</p>
-
 <p>命令：<code>dnf reinstall nano</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131236-2019-11-7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131236-2019-11-7.png" alt="20191107131236-2019-11-7.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191107131236-2019-11-7.png" alt="20191107131236-2019-11-7.png" /></p>
-
+</span></p>
 <p><strong>– 回滚某个特定软件的版本</strong></p>
-
 <p>用处：该命令用于降低特定软件包的版本（如果可能的话）（本例中，我们将使用命令降低”acpid”这个软件包的版本）</p>
-
 <p>命令：<code>dnf downgrade acpid</code></p>
-
 <p>样例输出：</p>
-
 <pre><code>Using metadata from Wed May 20 12:44:59 2015
 
 No match for available package: acpid-2.0.19-5.el7.x86_64
 
 Error: Nothing to do.
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>原作者注：在执行这条命令的时候， DNF 并没有按照我期望的那样降级指定的软件（“acpid”）。该问题已经上报。</p>
 </blockquote>
-
 <h3 id="总结">总结</h3>
-
 <p>DNF 包管理器作为 YUM 包管理器的升级替代品，它能自动完成更多的操作。但在我看来，正因如此，所以 DNF 包管理器不会太受那些经验老道的 Linux 系统管理者的欢迎。举例如下：</p>
-
 <ol>
 <li>在 DNF 中没有 –skip-broken 命令，并且没有替代命令供选择。</li>
 <li>在 DNF 中没有判断哪个包提供了指定依赖的 resolvedep 命令。</li>
 <li>在 DNF 中没有用来列出某个软件依赖包的 deplist 命令。</li>
 <li>当你在 DNF 中排除了某个软件库，那么该操作将会影响到你之后所有的操作，不像在 YUM 下那样，你的排除操作只会咋升级和安装软件时才起作用。</li>
 </ol>
-
 <p>我相信几乎所有的 Linux 用户都会很高兴看到 Linux 生态圈不断地发展壮大。先是 systemd 代替了源于 System V 的 init ，而如今， DNF 包管理器已经在 Fedora 22 上替代了 YUM 包管理器，并且很快它也将登陆 RHEL 和 CentOS 。</p>
-
 <p>此时此刻的你将作何感想？难道这整一个 Linux 生态圈已经变得不重视它的用户们，并且往与用户期望完全相反的方向发展了么？现在，没有任何问题的 System V 和 YUM 被迫淡出历史舞台，这让我不禁想起 IT 从业者的一句老话“为何要修复没有损坏的东西？（Why fix, If not broken?）”。</p>
-
 <p>现在，这篇文章结束了。我们真诚的期盼您能在下面的评论区留下您的宝贵意见和想法。如果你觉得这篇文章不错的话，那就点个赞吧~</p>
+<p>原文链接：http://www.tecmint.com/dnf-commands-for-fedora-rpm-package-management/</p>
+<p>Linux Story 翻译链接：
 
-<p>原文链接：<a href="http://www.tecmint.com/dnf-commands-for-fedora-rpm-package-management/">http://www.tecmint.com/dnf-commands-for-fedora-rpm-package-management/</a></p>
-
-<p>Linux Story 翻译链接：<a href="http://www.linuxstory.org/dnf-commands-for-fedora-rpm-package-management"> http://www.linuxstory.org/dnf-commands-for-fedora-rpm-package-management</a></p>
+<a href="http://www.linuxstory.org/dnf-commands-for-fedora-rpm-package-management"  target="_blank"> http://www.linuxstory.org/dnf-commands-for-fedora-rpm-package-management</a></p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/1107125651/>Centos8 DNF命令指南</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-11-07<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/1107125651/ target="_blank" >https://3mile.github.io/archives/2019/1107125651/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -582,7 +630,7 @@ Error: Nothing to do.
           <div class="post-footer-tags">
             <span class="text-color-light text-small">标签</span><br />
             
-  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/centos8/">Centos8</a>
 
           </div>
           
@@ -595,7 +643,7 @@ Error: Nothing to do.
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -623,7 +671,7 @@ Error: Nothing to do.
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/1124194902/" data-tooltip="同步 Vs Code 设置">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0302143135/" data-tooltip="CentOS7通过Yum库安装的Nginx使其支持TLS1">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -639,24 +687,6 @@ Error: Nothing to do.
             <i class="fa fa-share-alt"></i>
           </a>
         </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1107125651/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1107125651/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1107125651/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
         
       
       
@@ -676,9 +706,11 @@ Error: Nothing to do.
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -699,7 +731,7 @@ Error: Nothing to do.
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2019/1124194902/" data-tooltip="同步 Vs Code 设置">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0302143135/" data-tooltip="CentOS7通过Yum库安装的Nginx使其支持TLS1">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -715,24 +747,6 @@ Error: Nothing to do.
             <i class="fa fa-share-alt"></i>
           </a>
         </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1107125651/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1107125651/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1107125651/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
         
       
       
@@ -752,24 +766,6 @@ Error: Nothing to do.
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107125651%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107125651%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107125651%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -785,7 +781,7 @@ Error: Nothing to do.
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -813,18 +809,28 @@ Error: Nothing to do.
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>终端 on 3mile博客</title>
+    <link>https://3mile.github.io/tags/%E7%BB%88%E7%AB%AF/</link>
+    <description>Recent content in 终端 on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 10 Apr 2020 09:54:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/%E7%BB%88%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>利用pv命令监视数据的处理进度</title>
+      <link>https://3mile.github.io/archives/2020/0410095448/</link>
+      <pubDate>Fri, 10 Apr 2020 09:54:48 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0410095448/</guid>
+      <description>&lt;p&gt;在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ssh传输文件</title>
+      <link>https://3mile.github.io/archives/2020/0408094222/</link>
+      <pubDate>Wed, 08 Apr 2020 09:42:22 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0408094222/</guid>
+      <description>今天需要上传文件到服务器，但是文件数量巨大且文件容量极小。如果用传统的SCP速度极慢，所以准备用scp传输.gz压缩文件到服务器，然后在服务</description>
+    </item>
+    
+    <item>
+      <title>Linux 命令增强工具</title>
+      <link>https://3mile.github.io/archives/2020/0408005420/</link>
+      <pubDate>Wed, 08 Apr 2020 00:54:20 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0408005420/</guid>
+      <description>一些命令行工具的增强版 最近在 HN 有一篇《 Cli improved》比较火，讲的是一些命令行工具的增强版，我觉得比较好，替换掉了我之前用的一些工具，在</description>
+    </item>
+    
+    <item>
+      <title>OpenWrt 下 ssh 密钥登录</title>
+      <link>https://3mile.github.io/archives/2020/0312120820/</link>
+      <pubDate>Thu, 12 Mar 2020 12:08:20 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0312120820/</guid>
+      <description>首先需要注意的是，不用于其他版本的 linux,OpenWrt 所使用的 SSH server 是 Dropbear，它可以支持 RSA Keys，但是验证路径位于/etc/dropbear/aut</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="重装系统，又折腾了一遍WSL环境，记录一下: WSL (Win­dows Sub­sys­tem for Linux) 通过 /mnt 目录下的 c、d、e 等目录可分别访问本地的 C、">
+
+
+<meta property="og:description" content="重装系统，又折腾了一遍WSL环境，记录一下: WSL (Win­dows Sub­sys­tem for Linux) 通过 /mnt 目录下的 c、d、e 等目录可分别访问本地的 C、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WSL权限管理">
+<meta name="twitter:title" content="WSL权限管理">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/0419114624/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/0419114624/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="重装系统，又折腾了一遍WSL环境，记录一下: WSL (Win­dows Sub­sys­tem for Linux) 通过 /mnt 目录下的 c、d、e 等目录可分别访问本地的 C、">
+<meta name="twitter:description" content="重装系统，又折腾了一遍WSL环境，记录一下: WSL (Win­dows Sub­sys­tem for Linux) 通过 /mnt 目录下的 c、d、e 等目录可分别访问本地的 C、">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-04-19T11:46:24">
+  
+  
+    <meta property="article:modified_time" content="2020-04-20T12:05:32">
+  
+  
+  
+    
+      <meta property="article:section" content="Terminal">
+    
+      <meta property="article:section" content="终端">
+    
+  
+  
+    
+      <meta property="article:tag" content="Wsl">
+    
+      <meta property="article:tag" content="Terminal">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/bash.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/bash.jpg">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/1.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/1.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>WSL权限管理</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/0419114624/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/1.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      WSL权限管理
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-19T11:46:24&#43;08:00">
+        
+  
+  
+  
+  
+    2020-04-19
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/terminal">Terminal</a>, 
+    
+      <a class="category-link" href="https://3mile.github.io/categories/%e7%bb%88%e7%ab%af">终端</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">WSL权限管理</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#分析问题">分析问题</a>
+      <ul>
+        <li><a href="#volfs">VolFs</a></li>
+        <li><a href="#drvfs">DrvFs</a></li>
+      </ul>
+    </li>
+    <li><a href="#解决方案">解决方案</a>
+      <ul>
+        <li><a href="#参考">参考:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>重装系统，又折腾了一遍WSL环境，记录一下:</p>
+<p>WSL (Win­dows Sub­sys­tem for Linux) 通过 /mnt 目录下的 c、d、e 等目录可分别访问本地的 C、D、E 等盘，虽然可以直接访问 Win­dows 下的文件内容，但输入 ls -al 查看文件你会发现文件权限全都是 777。这会导致一些问题出现，比如 Git会保留这些文件的执行权限，如果你之前在 Win­dows 下使用过 Git Bash ，那么在 WSL 中使用 <code>git status</code>查看本地仓库的文件状态时你会发现它们全部被标记成了 modified。</p>
+<h2 id="分析问题">分析问题</h2>
+<p>首先要了解 WSL 中的两种文件系统：</p>
+<h3 id="volfs">VolFs</h3>
+<p>着力于在 Win­dows 文件系统上提供完整的 Linux 文件系统特性，通过各种手段实现了对 In­odes、Di­rec­tory en­tries、File ob­jects、File de­scrip­tors、Spe­cial file types 的支持。比如为了支持 Win­dows 上没有的 In­odes，VolFs 会把文件权限等信息保存在文件的 NTFS Ex­tended At­trib­utes 中。</p>
+<p>WSL 中的 / 使用的就是 VolFs 文件系统。</p>
+<h3 id="drvfs">DrvFs</h3>
+<p>着力于提供与 Win­dows 文件系统的互操作性。与 VolFs 不同，为了提供最大的互操作性，DrvFs 不会在文件的 NTFS Ex­tended At­trib­utes 中储存附加信息，而是从 Win­dows 的文件权限（Ac­cess Con­trol Lists，就是你右键文件 &gt; 属性 &gt; 安全选项卡中的那些权限配置）推断出该文件对应的的 Linux 文件权限。</p>
+<p>所有 Win­dows 盘符挂载至 WSL 下的 /mnt 时都是使用的 DrvFs 文件系统。</p>
+<p>简单来说就是 WSL 对 / 目录下的文件拥有完整的控制权，而 /mnt 目录中的文件无法被 WSL 完全控制（可修改数据，无法真实的修改权限）。WSL 对 /mnt 目录中权限的修改不会直接记录到文件本身，而在 Win­dows 下对文件权限的修改直接可作用到 WSL 。关于权限在
+
+<a href="https://p3terx.com/go/aHR0cHM6Ly9kZXZibG9ncy5taWNyb3NvZnQuY29tL2NvbW1hbmRsaW5lL2NobW9kLWNob3duLXdzbC1pbXByb3ZlbWVudHMv"  target="_blank">微软开发者博客中</a>有更详细的说明。</p>
+<h2 id="解决方案">解决方案</h2>
+<div class="alert warning ">
+  <p>这只是让文件在 WSL 中的权限看起来正常（目录 755，文件 644），实际并不会作用到 Win­dows 文件系统下的文件本身。</p>
+</div>
+<hr>
+<p>在 /etc/wsl.conf 中添加以下配置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">automount</span>]
+<span style="color:#a6e22e">enabled</span> = <span style="color:#66d9ef">true</span>
+<span style="color:#a6e22e">root</span> = <span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">mnt</span><span style="color:#960050;background-color:#1e0010">/</span>
+<span style="color:#a6e22e">options</span> = <span style="color:#e6db74">&#34;metadata,umask=22,fmask=111&#34;</span>
+<span style="color:#a6e22e">mountFsTab</span> = <span style="color:#66d9ef">true</span>
+</code></pre></div><p>上面的方法对所有盘符都有效，如果你想在 WSL 中调用 Win­dows 下的应用程序（比如 explorer.exe . 调用资源管理器打开当前路径）<span class="highlight-text green"> 就需要对 C 盘进行单独设置，否则会提示没有权限。 </span> 首先确认 wsl.conf 中的 mountFsTab 没有被设置为 false，然后编辑 /etc/fstab，添加如下内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">C:\ <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>c drvfs rw,noatime,uid<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,gid<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,metadata,umask<span style="color:#f92672">=</span><span style="color:#ae81ff">22</span>,fmask<span style="color:#f92672">=</span><span style="color:#ae81ff">11</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><p>此时执行<code>mkdir</code>等命令的时候，会发现新建的目录权限依然是 777。</p>
+<p>目前民间解决方案是在.profile、.bashrc、.zshrc 或者其他 shell 配置文件中添加如下命令，重新设置 umask</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">[<span style="color:#a6e22e">filesystem</span>]
+<span style="color:#a6e22e">umask</span> = <span style="color:#ae81ff">022</span>
+</code></pre></div><p>全部设置完成之后，重启Windows系统或者重启wsl</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bat" data-lang="bat">net stop LxssManager
+net start LxssManager
+</code></pre></div><h3 id="参考">参考:</h3>
+<blockquote>
+<p><a href="https://segmentfault.com/a/1190000016677670">https://segmentfault.com/a/1190000016677670</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://p3terx.com/archives/problems-and-solutions-encountered-in-wsl-use-2.html">https://p3terx.com/archives/problems-and-solutions-encountered-in-wsl-use-2.html</a></p>
+</blockquote>
+
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0419114624/>WSL权限管理</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-04-19<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0419114624/ target="_blank" >https://3mile.github.io/archives/2020/0419114624/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/wsl/">Wsl</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/terminal/">Terminal</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/0419114624/" class="leancloud_visitors" data-flag-title="WSL权限管理">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0415212217/" data-tooltip="Winscp普通用户上传文件权限解决方案">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0518090855/" data-tooltip="LNMP环境下手动安装Filerun">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0415212217/" data-tooltip="Winscp普通用户上传文件权限解决方案">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0518090855/" data-tooltip="LNMP环境下手动安装Filerun">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

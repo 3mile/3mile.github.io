@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>U盘 on 3mile博客</title>
+    <link>https://3mile.github.io/tags/u%E7%9B%98/</link>
+    <description>Recent content in U盘 on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Jun 2018 14:35:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/u%E7%9B%98/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rufus_Usb启动制作</title>
+      <link>https://3mile.github.io/archives/2018/06/01/</link>
+      <pubDate>Fri, 01 Jun 2018 14:35:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/06/01/</guid>
+      <description>Rufus Rufus 轻松创建USB启动盘 Rufus 是一个可以帮助格式化和创建可引导USB闪存盘的工具，比如 USB 随身碟，记忆棒等等。 在如下场景中会非常有用： 你需要把一些</description>
+    </item>
+    
+  </channel>
+</rss>

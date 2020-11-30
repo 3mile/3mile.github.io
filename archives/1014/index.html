@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="介绍 Hugo是一款静态站点生成器，具有闪电般的渲染速度和出色的易用性。由于其面向内容的所有功能，您始终可以专注于创建内容而不是构建环境： 通过">
@@ -81,7 +81,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -136,7 +136,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -288,28 +288,51 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h3 id="介绍">介绍</h3>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#介绍">介绍</a></li>
+        <li><a href="#先决条件">先决条件</a></li>
+        <li><a href="#第1步安装hugo程序">第1步：安装Hugo程序</a></li>
+        <li><a href="#第2步建立您的网站">第2步：建立您的网站</a></li>
+        <li><a href="#第3步从hugo存储库安装主题">第3步：从Hugo存储库安装主题</a></li>
+        <li><a href="#第4步进行一些基本的配置更改">第4步：进行一些基本的配置更改</a></li>
+        <li><a href="#第5步撰写您的内容">第5步：撰写您的内容</a></li>
+        <li><a href="#第6步使用hugo服务器调整您的内容">第6步：使用Hugo服务器调整您的内容</a></li>
+        <li><a href="#第7步发布您的网站">第7步：发布您的网站</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h3 id="介绍">介绍</h3>
 <p>Hugo是一款静态站点生成器，具有闪电般的渲染速度和出色的易用性。由于其面向内容的所有功能，您始终可以专注于创建内容而不是构建环境：</p>
-
 <ul>
 <li>通过Hugo，您可以在几分钟内建立一个运行在任何地方的静态站点，而不需要繁琐的依赖关系或数据库。</li>
 <li>您可以用最便捷的书写风格Markdown撰写您的内容，并即时查看您在网络上所做的更改。</li>
 <li>此外，您可以充分利用Hugo富裕的主题存储库和快速发展的社区。</li>
 </ul>
-
 <p>在本教程中，我将向您展示如何安装和使用Hugo在基于CentOS的Vultr LEMP服务器实例上构建静态博客站点。</p>
-
 <h3 id="先决条件">先决条件</h3>
+<p>使用sudo权限以非root用户身份登录到您的实例。了解如何在
 
-<p>使用sudo权限以非root用户身份登录到您的实例。了解如何在<a href="https://www.vultr.com/docs/hot-backups-with-percona-xtrabackup-on-the-one-click-wordpress-app">本文中</a>创建这样的用户。</p>
-
-<h3 id="第1步-安装hugo程序">第1步：安装Hugo程序</h3>
-
+<a href="https://www.vultr.com/docs/hot-backups-with-percona-xtrabackup-on-the-one-click-wordpress-app"  target="_blank">本文中</a>创建这样的用户。</p>
+<h3 id="第1步安装hugo程序">第1步：安装Hugo程序</h3>
 <p>Hugo可以安装在几乎所有的主流平台上。对于CentOS，您只需要将最新的程序文件下载到<code>.tar.gz</code>档案中，并将其解压缩到一个方便的位置。在撰写本文时，最新版本是0.15。</p>
-
 <pre><code>sudo yum update -y
 sudo yum install git -y
 cd ~
@@ -317,82 +340,55 @@ wget https://github.com/spf13/hugo/releases/download/v0.15/hugo_0.15_linux_amd64
 tar -zxvf hugo_0.15_linux_amd64.tar.gz
 sudo mv hugo_0.15_linux_amd64/hugo_0.15_linux_amd64 /usr/local/bin/hugo
 </code></pre>
-
 <p>使用以下命令测试您的安装：</p>
-
 <pre><code> hugo version
 </code></pre>
-
-<h3 id="第2步-建立您的网站">第2步：建立您的网站</h3>
-
+<h3 id="第2步建立您的网站">第2步：建立您的网站</h3>
 <p>使用Hugo，您可以从服务器上的任何文件夹内建立您的网站。在这里，我<code>mysite/</code>在我的主目录下的目录中建立了一个站点。</p>
-
 <pre><code>cd ~
 hugo new site ~/mysite
 </code></pre>
-
 <p>运行以下命令以查看该站点的体系结构：</p>
-
 <pre><code>cd mysite
 ls -lF
 </code></pre>
-
 <p>如您所见，该网站的当前体系结构类似于：</p>
-
 <blockquote>
 <p>原型/</p>
-
 <p>config.toml</p>
-
 <p>内容/</p>
-
 <p>数据/</p>
-
 <p>布局/</p>
-
 <p>静态的/</p>
 </blockquote>
-
 <p>另有两个即将创建的目录，<code>themes/</code>并且<code>public/</code>Hugo站点的整个架构都是紧凑而全面的。</p>
-
 <p>作为初学者，知道你的内容应该存储在目录中<code>content/</code>。</p>
-
-<h3 id="第3步-从hugo存储库安装主题">第3步：从Hugo存储库安装主题</h3>
-
+<h3 id="第3步从hugo存储库安装主题">第3步：从Hugo存储库安装主题</h3>
 <p>要从Hugo存储库安装所有主题，请运行以下命令。这些将创建一个名称<code>themes/</code>在您的网站目录中的目录，并从雨果主题回购下载所有主题。</p>
-
 <pre><code>cd ~/mysite/
 git clone --depth 1 --recursive https://github.com/spf13/hugoThemes.git themes
 </code></pre>
+<p>如果您只想安装一个主题，请访问
 
-<p>如果您只想安装一个主题，请访问<a href="http://themes.gohugo.io/">Hugo主题回购</a>以确定您最喜欢的主题。复制其URL并将其粘贴到<code>git clone</code>下面的命令中。</p>
-
+<a href="http://themes.gohugo.io/"  target="_blank">Hugo主题回购</a>以确定您最喜欢的主题。复制其URL并将其粘贴到<code>git clone</code>下面的命令中。</p>
 <pre><code>cd ~/mysite/
 mkdir themes
 cd themes
 git clone https://github.com/jaden/twentyfourteen
 </code></pre>
-
-<h3 id="第4步-进行一些基本的配置更改">第4步：进行一些基本的配置更改</h3>
-
+<h3 id="第4步进行一些基本的配置更改">第4步：进行一些基本的配置更改</h3>
 <p><code>config.toml</code>在您的站点目录中命名的文件包含您的Hugo站点的全局配置。使用文本编辑器编辑文件以进行一些基本的配置更改，如下所示。请记住根据您的具体情况更换这些值。</p>
-
 <pre><code>baseurl = &quot;http://[YourSiteIP]/&quot;
 languageCode = &quot;en-us&quot;
 title = &quot;Your Site Name&quot;
 theme = &quot;twentyfourteen&quot;
 </code></pre>
-
-<h3 id="第5步-撰写您的内容">第5步：撰写您的内容</h3>
-
+<h3 id="第5步撰写您的内容">第5步：撰写您的内容</h3>
 <p>在您的站点目录中，输入以下命令以在目录中创建内容页面<code>~/mysite/content/post/</code>。</p>
-
 <pre><code>cd ~/mysite/
 hugo new post/about.md
 </code></pre>
-
 <p>在文本编辑器中打开该文件，该文件的格式应类似于以下内容。</p>
-
 <pre><code>+++
 date = &quot;2015-12-25T03:21:23Z&quot;
 draft = true
@@ -400,74 +396,60 @@ title = &quot;about&quot;
 
 +++
 </code></pre>
-
 <p>在两行<code>+++</code>谎言之间关于你的内容页面的元信息。在这里，您可以删除该行<code>draft = true</code>并根据需要修改标题行。</p>
-
 <p>在第二<code>+++</code>行下面，添加您想要在网页上显示的内容。请记住用Markdown语言编写您的内容。</p>
-
 <pre><code>## This is an H2 headline
 
 Text goes here.
 </code></pre>
-
 <p>完成此编辑后，请保持文本编辑器处于打开状态供以后使用。</p>
-
-<h3 id="第6步-使用hugo服务器调整您的内容">第6步：使用Hugo服务器调整您的内容</h3>
-
+<h3 id="第6步使用hugo服务器调整您的内容">第6步：使用Hugo服务器调整您的内容</h3>
 <p>您可以使用Hugo的内置Web服务器来部署您的网站，只要在文本编辑器中修改您的内容，即可立即在网页上显示您的更改。</p>
-
 <p>打开另一个终端，配置<code>iptables</code>规则以允许您通过Hugo服务器的默认端口1313访问您的站点：</p>
-
 <pre><code>sudo iptables -I INPUT -p tcp --dport 1313 -j ACCEPT
 </code></pre>
-
 <p>启动Hugo服务器：</p>
-
 <pre><code>hugo server --bind=&quot;[YourServerIP]&quot;
 </code></pre>
-
 <p>通过浏览器访问您的网站：</p>
-
 <pre><code>http://[YourServerIP]:1313
 </code></pre>
-
 <p>现在，您可以尝试编辑上一个终端中页面文件的内容或添加/删除页面文件。您会发现<code>content/</code>目录中的任何修改都会同时反映在您的浏览器屏幕上。对于一个忙碌的博主而言，这是一个很棒的功能，因为您总能立即看到您的修改以获得更好的创作体验。</p>
-
 <p>完成编辑后，按<code>Ctrl+C</code>停止Hugo服务器。</p>
-
-<h3 id="第7步-发布您的网站">第7步：发布您的网站</h3>
-
+<h3 id="第7步发布您的网站">第7步：发布您的网站</h3>
 <p>现在是时候在网上发布您的网站了。运行以下命令，Hugo将生成适合在<code>public/</code>目录中发布的所有静态内容。</p>
-
 <pre><code>cd ~/mysite
 hugo
 </code></pre>
-
 <p><strong>注意</strong>：在运行上述命令时，Hugo不会删除先前生成的旧文件。为了避免意外的结果，您可以<code>public/</code>在运行<code>hugo</code>命令之前始终删除目录，或者指定新的输出目标，如以下命令中所示。</p>
-
 <pre><code>hugo --destination=public2
 </code></pre>
-
 <p>由于Nginx Web服务器已经在服务器上运行，所以您只需将<code>~/mysite/public/</code>目录或其他自定义目标目录的内容复制到您的Web目录中即可<code>/usr/share/nginx/html/</code>。</p>
-
 <p>删除原始文件：</p>
-
 <pre><code>cd /usr/share/nginx/html/
 sudo rm -rf background.jpg index.php logo.png
 </code></pre>
-
 <p>将您的静态站点文件复制到Web目录中：</p>
-
 <pre><code>cd ~/mysite/public
 sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
 </code></pre>
-
 <p>而已。现在，您可以通过浏览器访问您的超级快速静态网站：<code>http://[YourServerIP]</code>。</p>
+<p>要查看更多详细信息，请使用该命令<code>hugo help</code>或访问
 
-<p>要查看更多详细信息，请使用该命令<code>hugo help</code>或访问<a href="http://gohugo.io/">Hugo官方网站</a>。</p>
+<a href="http://gohugo.io/"  target="_blank">Hugo官方网站</a>。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/1014/>如何用Hugo创建一个博客</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-01<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/1014/ target="_blank" >https://3mile.github.io/archives/1014/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -480,7 +462,7 @@ sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -525,24 +507,6 @@ sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/1014/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/1014/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/1014/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -561,9 +525,11 @@ sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -601,24 +567,6 @@ sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/1014/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/1014/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/1014/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -637,24 +585,6 @@ sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F1014%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F1014%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F1014%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -670,7 +600,7 @@ sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -698,18 +628,28 @@ sudo cp -R ~/mysite/public/. /usr/share/nginx/html/
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

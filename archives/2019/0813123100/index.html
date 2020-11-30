@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="软路由">
+      <meta property="article:section" content="Openwrt">
     
   
   
@@ -87,7 +87,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -142,7 +142,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -273,7 +273,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/%e8%bd%af%e8%b7%af%e7%94%b1">软路由</a>
+      <a class="category-link" href="https://3mile.github.io/categories/openwrt">Openwrt</a>
     
   
 
@@ -294,108 +294,102 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p>openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻烦，偶尔发现了有人说可以单独编译package下的程序，就像这样：
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#一插件源码下载">一、插件源码下载</a></li>
+            <li><a href="#二下载存放路径">二、下载存放路径</a></li>
+            <li><a href="#三配置">三、配置</a></li>
+            <li><a href="#选中但不编译进固件">选中，但不编译进固件</a></li>
+            <li><a href="#四编译">四、编译</a></li>
+            <li><a href="#五ipk生成路径">五、ipk生成路径</a></li>
+            <li><a href="#六上传ipk至路由器">六、上传ipk至路由器</a></li>
+            <li><a href="#七安装">七、安装</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>openwrt编译和开发过程中经常要添加自己的程序进去，一般都是放在package路径下，但是编译调试的时候每次都要make整个固件，特别麻烦，偶尔发现了有人说可以单独编译package下的程序，就像这样：
 make package/xxxxx/compile V=99 </p>
-
 <p>xxxxx就是你需要单独编译的程序。编译完成后去bin/ramips/packages里面找到对应的ipk，上传到板子，opkg install就可以了。</p>
-
-<h4 id="一-插件源码下载">一、插件源码下载</h4>
-
+<h4 id="一插件源码下载">一、插件源码下载</h4>
 <p>1.锐捷</p>
-
 <pre><code>git clone https://github.com/KyleRicardo/MentoHUST-OpenWrt-ipk
 git clone https://github.com/BoringCat/luci-app-mentohust.git
-</code></pre>
-
-<p>2.Rosy主题</p>
-
+</code></pre><p>2.Rosy主题</p>
 <pre><code>git clone https://github.com/rosywrt/luci-theme-rosy.git
-</code></pre>
-
-<h4 id="二-下载存放路径">二、下载存放路径</h4>
-
+</code></pre><h4 id="二下载存放路径">二、下载存放路径</h4>
 <pre><code>/home/cheng/openwrt/lede/package
-</code></pre>
-
-<h4 id="三-配置">三、配置</h4>
-
+</code></pre><h4 id="三配置">三、配置</h4>
 <pre><code>make menuconfig
-</code></pre>
-
-<h4 id="选中-但不编译进固件">选中，但不编译进固件</h4>
-
+</code></pre><h4 id="选中但不编译进固件">选中，但不编译进固件</h4>
 <p>1.锐捷</p>
-
 <pre><code>-&gt; Network
 -&gt; Ruijie
 &lt;M&gt; mentohust………………………………….. A Ruijie Client Daemon
 -&gt; LuCI
-</code></pre>
-
-<p>-&gt; 3. Applications</p>
-
+</code></pre><p>-&gt; 3. Applications</p>
 <pre><code>&lt;M&gt; luci-app-mentohust…………………. MentoHUST 802.1X Client for LuCI
-</code></pre>
-
-<p>2.Rosy主题</p>
-
+</code></pre><p>2.Rosy主题</p>
 <pre><code>-&gt; LuCI
-</code></pre>
-
-<p>-&gt; 4. Themes</p>
-
+</code></pre><p>-&gt; 4. Themes</p>
 <pre><code>&lt;M&gt; luci-theme-rosy……………………………………….. Rosy Theme
-</code></pre>
-
-<h4 id="四-编译">四、编译</h4>
-
+</code></pre><h4 id="四编译">四、编译</h4>
 <pre><code>make package/MentoHUST-OpenWrt-ipk/compile V=99
 make package/luci-app-mentohust/compile V=99
 make package/luci-theme-rosy/luci-theme-rosy/compile V=99
-</code></pre>
-
-<h4 id="五-ipk生成路径">五、ipk生成路径</h4>
-
+</code></pre><h4 id="五ipk生成路径">五、ipk生成路径</h4>
 <p>路径：</p>
-
 <pre><code>bin/packages/mipsel_24kc/base
-</code></pre>
-
-<p>文件名</p>
-
+</code></pre><p>文件名</p>
 <pre><code>mentohust_0.3.1-1_mipsel_24kc.ipk
 luci-app-mentohust_1.1.-0_all.ipk
 luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
-</code></pre>
-
-<h4 id="六-上传ipk至路由器">六、上传ipk至路由器</h4>
-
+</code></pre><h4 id="六上传ipk至路由器">六、上传ipk至路由器</h4>
 <p>清除原有密钥</p>
-
 <pre><code>ssh-keygen -f “/home/cheng/.ssh/known_hosts” -R 192.168.10.1
-</code></pre>
-
-<p>拷贝至路由器</p>
-
+</code></pre><p>拷贝至路由器</p>
 <pre><code>scp mentohust_0.3.1-1_mipsel_24kc.ipk root@192.168.10.1:/tmp
 scp luci-app-mentohust_1.1.-0_all.ipk root@192.168.10.1:/tmp
 scp luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk root@192.168.10.1:/tmp
-</code></pre>
-
-<h4 id="七-安装">七、安装</h4>
-
+</code></pre><h4 id="七安装">七、安装</h4>
 <p>ssh进入路由器</p>
-
 <pre><code>cd /tmp
 opkg install mentohust_0.3.1-1_mipsel_24kc.ipk
 opkg install luci-app-mentohust_1.1.-0_all.ipk
 opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
 </code></pre>
-
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0813123100/>用OpenWRT单独编译ipk插件</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-08-13<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0813123100/ target="_blank" >https://3mile.github.io/archives/2019/0813123100/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -420,7 +414,7 @@ opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -465,24 +459,6 @@ opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0813123100/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0813123100/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0813123100/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -501,9 +477,11 @@ opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -541,24 +519,6 @@ opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0813123100/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0813123100/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0813123100/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -577,24 +537,6 @@ opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0813123100%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0813123100%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0813123100%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -610,7 +552,7 @@ opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -638,18 +580,28 @@ opkg install luci-theme-rosy_git-19.069.38477-5ed9705-1_all.ipk
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="讲真，曾经我特别佩服使用服务器（比如VPS）搭建WordPress博客网站的站长们。 因为，我觉得仅仅在漆黑的屏幕上敲几行代码就能把一个网站玩">
@@ -89,7 +89,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -144,7 +144,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -296,208 +296,302 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p>讲真，曾经我特别佩服使用服务器（比如VPS）搭建WordPress博客网站的站长们。</p>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#wordpress">WordPress</a></li>
+    <li><a href="#选择虚拟主机还是vps">选择虚拟主机还是VPS</a>
+      <ul>
+        <li><a href="#什么是虚拟主机">什么是虚拟主机</a></li>
+        <li><a href="#什么是vps">什么是VPS</a></li>
+      </ul>
+    </li>
+    <li><a href="#3注册域名">3注册域名</a></li>
+    <li><a href="#4如何选购便宜的vps">4如何选购便宜的VPS</a>
+      <ul>
+        <li><a href="#41搬瓦工vps和vultr哪个好">4.1搬瓦工VPS和Vultr哪个好</a></li>
+        <li><a href="#42如何购买搬瓦工vps">#4.2如何购买搬瓦工VPS</a></li>
+        <li><a href="#43如何购买vultr-vps">#4.3如何购买Vultr-VPS</a></li>
+      </ul>
+    </li>
+    <li><a href="#5ssh连接vps">#5SSH连接VPS</a></li>
+    <li><a href="#6搭建lamp环境">#6搭建LAMP环境</a></li>
+    <li><a href="#7添加域名--虚拟主机">7添加域名 / 虚拟主机</a></li>
+    <li><a href="#8安装wordpress程序">#8安装WordPress程序</a></li>
+    <li><a href="#9vps配置优化">#9VPS配置优化</a>
+      <ul>
+        <li><a href="#91优化phpini配置">#9.1优化php.ini配置</a></li>
+        <li><a href="#92添加swap交换分区">#9.2添加Swap交换分区</a></li>
+        <li><a href="#93开启keep-alive功能--优化httpd配置">#9.3开启Keep-Alive功能 + 优化Httpd配置</a></li>
+      </ul>
+    </li>
+    <li><a href="#10删除mysql-bin0000日志文件">#10删除mysql-bin.0000*日志文件</a></li>
+    <li><a href="#11linux-vps安全配置--防护措施">#11Linux-VPS安全配置 / 防护措施</a>
+      <ul>
+        <li><a href="#111修改ssh端口强烈推荐">#11.1修改SSH端口（强烈推荐）</a></li>
+        <li><a href="#112阻止ssh暴力破解可选">#11.2阻止SSH暴力破解（可选）</a></li>
+        <li><a href="#113防御ddos攻击">#11.3防御DDOS攻击</a></li>
+      </ul>
+    </li>
+    <li><a href="#12mysql数据库优化">#12MySQL数据库优化</a></li>
+    <li><a href="#13创建vps快照">#13创建VPS快照</a></li>
+    <li><a href="#14wordpress博客的备份和迁移">#14WordPress博客的备份和迁移</a>
+      <ul>
+        <li><a href="#141-文件备份">#14.1 文件备份</a></li>
+        <li><a href="#142-数据库备份">#14.2 数据库备份</a></li>
+        <li><a href="#143-wordpress迁移--搬家">#14.3 WordPress迁移 / 搬家</a></li>
+        <li><a href="#144-wordpress搬家脚本">#14.4 WordPress搬家脚本</a></li>
+        <li><a href="#145-备份小技巧">#14.5 备份小技巧</a></li>
+      </ul>
+    </li>
+    <li><a href="#15写在最后">#15写在最后</a></li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>讲真，曾经我特别佩服使用服务器（比如VPS）搭建WordPress博客网站的站长们。</p>
 <p>因为，我觉得仅仅在漆黑的屏幕上敲几行代码就能把一个网站玩的风生水起很了不得，感觉有点黑客大神的气派。而那时我才刚刚开始研究独立博客和虚拟主机，还是个只知道使用简单办公软件的上班族。</p>
-
 <p>后来，慢慢的发现许多事情原本都很简单，是自己想复杂了。</p>
-
 <p>比如在VPS上搭建WordPress博客，其实根本就不需要你精通什么编程，懂什么系统，你只要掌握一些常用到命令就能DIY。因为在互联网时代，很多东西都是现成的，你只要会搜索，会整合，会学习使用就万事不难了。</p>
-
 <p>当然，如果你是个什么都懂的IT男，想必更是极好的。</p>
-
 <p>言归正传，这篇文章主要记录了我放弃虚拟主机后，如何一步步在VPS上安装CentOS6系统和LAMP环境进而搭建WordPress博客的。</p>
-
 <p>因为打算当做教程来写，所以会尽量写的详细一点。以下是文章目录，不想听博主唠叨的话可自行略过前面的介绍部分。</p>
-
 <p>文章目录</p>
-
 <ul>
-<li><a href="#1">1 WordPress</a></li>
-<li><a href="#2">2 选择虚拟主机还是VPS</a>
+<li>
 
-<ul>
-<li><a href="#2.1">2.1  虚拟主机</a></li>
-<li><a href="#2.2">2.2  什么是VPS</a></li>
-</ul></li>
-<li><a href="#3">3 + 注册域名</a></li>
-<li><a href="#4">4 + 如何选购便宜的VPS</a>
+<a href="#1"  >1 WordPress</a></li>
+<li>
 
+<a href="#2"  >2 选择虚拟主机还是VPS</a>
 <ul>
-<li><a href="#4.1">4.1 + 搬瓦工VPS和Vultr哪个好</a></li>
-<li><a href="#4.2">4.2 + 如何购买搬瓦工VPS</a></li>
-<li><a href="#4.3">4.3 + 如何购买Vultr-VPS</a></li>
-</ul></li>
-<li><a href="#5">5 + SSH连接VPS</a></li>
-<li><a href="#6">6 + 搭建LAMP环境</a></li>
-<li><a href="#7">7 + 添加域名 / 虚拟主机</a></li>
-<li><a href="#8">8 + 安装WordPress程序</a></li>
-<li><a href="#9">9 + VPS配置优化</a>
+<li>
 
-<ul>
-<li><a href="#9.1">9.1 + 优化php.ini配置</a></li>
-<li><a href="#9.2">9.2 + 添加swap交换分区</a></li>
-<li><a href="#9.3">9.3 + 开启Keep-Alive功能 + 优化Httpd配置</a></li>
-</ul></li>
-<li><a href="#10">10 + 删除mysql-bin.0000*日志文件</a></li>
-<li><a href="#9">11 + Linux-VPS安全配置 / 防护措施</a>
+<a href="#2.1"  >2.1  虚拟主机</a></li>
+<li>
 
-<ul>
-<li><a href="#11.1">11.1 + 修改SSH端口</a></li>
-<li><a href="#11.2">11.2 + 阻止SSH暴力破解</a></li>
-<li><a href="#11.3">11.3 + 防御DDOS攻击</a></li>
-</ul></li>
-<li><a href="#12">12 + MySQL数据库优化</a></li>
-<li><a href="#13">13 + 创建VPS快照</a></li>
-<li><a href="#14">14 + WordPress博客的备份和迁移</a>
-
-<ul>
-<li><a href="#14.1">14.1 + 文件备份</a></li>
-<li><a href="#14.2">14.2 + 数据库备份</a></li>
-<li><a href="#14.3">14.3 + WordPress迁移 / 搬家</a></li>
-<li><a href="#14.4">14.4 + WordPress搬家脚本</a></li>
-<li><a href="#14.5">14.5 + 备份小技巧</a></li>
-</ul></li>
-<li><a href="#15">15 + 写在最后</a></li>
+<a href="#2.2"  >2.2  什么是VPS</a></li>
 </ul>
+</li>
+<li>
 
-<p><span id="1"></span></p>
+<a href="#3"  >3 + 注册域名</a></li>
+<li>
 
+<a href="#4"  >4 + 如何选购便宜的VPS</a>
+<ul>
+<li>
+
+<a href="#4.1"  >4.1 + 搬瓦工VPS和Vultr哪个好</a></li>
+<li>
+
+<a href="#4.2"  >4.2 + 如何购买搬瓦工VPS</a></li>
+<li>
+
+<a href="#4.3"  >4.3 + 如何购买Vultr-VPS</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#5"  >5 + SSH连接VPS</a></li>
+<li>
+
+<a href="#6"  >6 + 搭建LAMP环境</a></li>
+<li>
+
+<a href="#7"  >7 + 添加域名 / 虚拟主机</a></li>
+<li>
+
+<a href="#8"  >8 + 安装WordPress程序</a></li>
+<li>
+
+<a href="#9"  >9 + VPS配置优化</a>
+<ul>
+<li>
+
+<a href="#9.1"  >9.1 + 优化php.ini配置</a></li>
+<li>
+
+<a href="#9.2"  >9.2 + 添加swap交换分区</a></li>
+<li>
+
+<a href="#9.3"  >9.3 + 开启Keep-Alive功能 + 优化Httpd配置</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#10"  >10 + 删除mysql-bin.0000*日志文件</a></li>
+<li>
+
+<a href="#9"  >11 + Linux-VPS安全配置 / 防护措施</a>
+<ul>
+<li>
+
+<a href="#11.1"  >11.1 + 修改SSH端口</a></li>
+<li>
+
+<a href="#11.2"  >11.2 + 阻止SSH暴力破解</a></li>
+<li>
+
+<a href="#11.3"  >11.3 + 防御DDOS攻击</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#12"  >12 + MySQL数据库优化</a></li>
+<li>
+
+<a href="#13"  >13 + 创建VPS快照</a></li>
+<li>
+
+<a href="#14"  >14 + WordPress博客的备份和迁移</a>
+<ul>
+<li>
+
+<a href="#14.1"  >14.1 + 文件备份</a></li>
+<li>
+
+<a href="#14.2"  >14.2 + 数据库备份</a></li>
+<li>
+
+<a href="#14.3"  >14.3 + WordPress迁移 / 搬家</a></li>
+<li>
+
+<a href="#14.4"  >14.4 + WordPress搬家脚本</a></li>
+<li>
+
+<a href="#14.5"  >14.5 + 备份小技巧</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#15"  >15 + 写在最后</a></li>
+</ul>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="wordpress">WordPress</h2>
+<p>
 
-<p><a href="https://wordpress.org/">WordPress</a>是一种使用PHP语言和MySQL数据库开发的个人博客系统，其稳定可靠，易于使用，且是免费开源的。而最让我看重的，是它支持一大波优秀的插件和模板，比如SEO优化、静态缓存和数据备份等。</p>
-
+<a href="https://wordpress.org/"  target="_blank">WordPress</a>是一种使用PHP语言和MySQL数据库开发的个人博客系统，其稳定可靠，易于使用，且是免费开源的。而最让我看重的，是它支持一大波优秀的插件和模板，比如SEO优化、静态缓存和数据备份等。</p>
 <p>具体可参看百度文库相关介绍：<a href="http://baike.baidu.com/item/WordPress">http://baike.baidu.com/item/WordPress</a></p>
-
-<p><span id="2"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="选择虚拟主机还是vps">选择虚拟主机还是VPS</h2>
-
 <p>在回答这个问题之前，让我们先来弄清楚虚拟主机和VPS的区别。</p>
-
-<p><span id="2.1"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="什么是虚拟主机">什么是虚拟主机</h3>
+<p>
 
-<p><a href="https://www.seoimo.com/wp-content/uploads/2016/11/vps-vs-shared-hosting.jpg"><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vps-vs-shared-hosting.jpg" alt="VPS和虚拟主机区别对比" /></a></p>
+<a href="https://www.seoimo.com/wp-content/uploads/2016/11/vps-vs-shared-hosting.jpg"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vps-vs-shared-hosting.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vps-vs-shared-hosting.jpg" alt="VPS和虚拟主机区别对比" /></a>
+</span>
 
+</span></a></p>
 <p>虚拟主机（Virtual Hosting）又叫共享主机（Shared Hosting），是使用特殊的软硬件技术，把一台真实的主机分割成多个的逻辑存储单元，每个单元都没有物理实体，但是每一个物理单元都能像真实的物理主机一样在网络上工作，具有共享IP地址(或独立IP地址)以及必要的互联网功能。</p>
-
 <p>通俗一点讲，就是一个出租屋里分了好多床位，租客们共用水、电、卫生间等生活设施。</p>
-
 <ul>
 <li>优点：便宜、便捷，自带被褥，拎包即住</li>
 <li>缺点：居住性能差</li>
 </ul>
-
-<p><span id="2.2"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="什么是vps">什么是VPS</h3>
+<p>
 
-<p><a href="http://baike.baidu.com/item/VPS">VPS（Virtual Private Server）</a>即虚拟专用服务器，就是利用虚拟化技术（如KVM、Xen、OpenVZ等）把一台真实的服务器分割成若干虚拟的服务器，具有独立的操作系统及开关机等功能，能自行搭建和配置特定的服务。</p>
-
+<a href="http://baike.baidu.com/item/VPS"  target="_blank">VPS（Virtual Private Server）</a>即虚拟专用服务器，就是利用虚拟化技术（如KVM、Xen、OpenVZ等）把一台真实的服务器分割成若干虚拟的服务器，具有独立的操作系统及开关机等功能，能自行搭建和配置特定的服务。</p>
 <p>通俗的说，就如同买了小区里的一套房子，空间及设施都是自己的，想怎么装就怎么装。</p>
-
 <ul>
 <li>优点：爱咋用咋用，居住性能好</li>
 <li>缺点：价格价高，需要懂点技术</li>
 </ul>
-
 <p>由上可以看出，究竟是选用虚拟主机还是VPS建站主要看你的使用目的和性能要求。</p>
-
 <p>一般来说，如果你对服务器配置和维护并不太懂，且个人博客的访问量不大（比如日均1000PV以下），虚拟主机（带独立IP最好）是首选，价格通常年付二三百RMB的样子。</p>
-
 <p>但是，如果你和博主一样喜欢折腾，喜欢追求更高性能，同时也想学习一点Linux相关知识，那么可以考虑使用VPS。</p>
-
 <p>实际上有些性能很不错的国外VPS也很便宜，一般月付5美元甚至更少即可。这样算下来，其实并不比虚拟主机贵到哪去。</p>
-
 <p>博主选用的是美国Vultr公司的最便宜的一款VPS，日本东京的机房，感觉速度要比美国西海岸洛杉矶机房好一些。</p>
-
 <p>博客现已搬迁至<strong>搬瓦工年付$19.99这款小内存VPS</strong>，具体购买及安装过程详见下文。</p>
-
-<p><span id="3"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="3注册域名">3注册域名</h2>
-
 <p>考虑到性价比（免费隐私保护）和支付便利（支持支付宝），博主目前在用以下两个域名注册商，在这也推荐给大家。</p>
-
 <ul>
-<li>NameSilo：<a href="https://www.seoimo.com/go/namesilo/">https://www.namesilo.com/</a></li>
-<li>阿里云（万网）：<a href="https://www.seoimo.com/go/aliyun-domain/">https://wanwang.aliyun.com/domain/</a></li>
+<li>NameSilo：
+
+<a href="https://www.seoimo.com/go/namesilo/"  target="_blank">https://www.namesilo.com/</a></li>
+<li>阿里云（万网）：
+
+<a href="https://www.seoimo.com/go/aliyun-domain/"  target="_blank">https://wanwang.aliyun.com/domain/</a></li>
 </ul>
-
 <p>2018年2月1日起，阿里云域名涨价了，.COM 续费 ￥69 每年！（感觉是时候转出去了）</p>
-
 <p>反观NameSilo，价格一直比较稳定，甚至不定期赠送优惠，注册和转移时还能再省点。</p>
-
 <blockquote>
 <p>【优惠活动】2018年12月31日前，使用NameSilo优惠码 <strong>the1usd</strong> 可减免一美元，首年只需 $7.99！</p>
 </blockquote>
-
-<p><span id="4"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="4如何选购便宜的vps">4如何选购便宜的VPS</h2>
-
 <p>坦白说，虽然网上有不少推荐和介绍，比如知乎回答和一些评测博客，但如何选择一款便宜好用且性能不错的VPS还着实让我头疼了一阵。</p>
-
 <p>为什么呢？</p>
-
 <p>网上有些推荐的文章仅仅只是为了推荐而推荐，拿来主义，人云亦云，缺乏实际的使用体验。这就可能导致推荐者对VPS整体的稳定性缺乏深入的评测，而稳定可靠恰恰是一个网站长期发展的重要保障。</p>
-
 <p>尽管128MB甚至更低内存的VPS也可以搭建WordPress建站，但博主并不推荐这样做。因为我们的目的是要做一个省时省力又能长期稳定运行的网站，而不是炫耀VPS优化技术。</p>
-
-<p>于是，在兼顾价格（5美元以下）、速度（ping值200左右）以及稳定性（在线率99.95以上）三个前提下，最终筛选出三个便宜的国外VPS：<strong>Vultr、BandwagonHost（搬瓦工）</strong>和<strong>DigitalOcean（DO）</strong>。</p>
-
+<p>于是，在兼顾价格（5美元以下）、速度（ping值200左右）以及稳定性（在线率99.95以上）三个前提下，最终筛选出三个便宜的国外VPS：<strong>Vultr、BandwagonHost（搬瓦工）<strong>和</strong>DigitalOcean（DO）</strong>。</p>
 <p>但是这三个到底哪个最适合自己呢？感觉还是一头雾水。</p>
-
 <p>纸上得来终觉浅，绝知此事要躬行。于是，就三个VPS全部试用了一遍，并通过我能用得到的各种测试，最终选定了Vultr-VPS（日本机房）。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="41搬瓦工vps和vultr哪个好">4.1搬瓦工VPS和Vultr哪个好</h3>
+<p>
 
-<p><span id="4.1"></span></p>
+<a href="http://www.seoimo.com/go/vultr-basic/"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="WordPress%e5%bb%ba%e7%ab%99.https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vultr-banner-w300.png"><img class="img" src="WordPress%e5%bb%ba%e7%ab%99.https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vultr-banner-w300.png" alt="Vultr-VPS月付2.5美元" /></a>
+</span>
 
-<h3 id="4-1搬瓦工vps和vultr哪个好">4.1搬瓦工VPS和Vultr哪个好</h3>
-
-<p><a href="http://www.seoimo.com/go/vultr-basic/"><img src="WordPress建站.https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vultr-banner-w300.png" alt="Vultr-VPS月付2.5美元" /></a></p>
-
+</span></a></p>
 <p>首先，Vultr和DigitalOcean（DO）几乎一样，最便宜的一款VPS月付都是5美元。但是Vultr给的内存是768MB，DO的则只有512MB。</p>
-
 <p>尽管DO在SSD空间上比较大方，给了20GB，而Vultr的则是15GB。但是，博主可以很负责任的告诉你，一般的网站存储+备份+环境一共5-10GB的空间就足够了。显然，内存比空间更实用！</p>
-
 <blockquote>
-<p>【温馨提示】Vultr现已更改套餐，价格、流量及空间大小均有所调整，可直达官网<a href="http://www.seoimo.com/go/vultr-basic/">查看详情</a>。</p>
+<p>【温馨提示】Vultr现已更改套餐，价格、流量及空间大小均有所调整，可直达官网
+
+<a href="http://www.seoimo.com/go/vultr-basic/"  target="_blank">查看详情</a>。</p>
 </blockquote>
-
 <p>其次，Vultr快照（Snapshot）是免费的，且不同VPS甚至不同机房之间可以无缝迁移。</p>
-
 <p>比如，刚开始我把网站放在美国西海岸的洛杉矶机房，后来发现日本东京机房的速度更快。于是，我只需要把洛杉矶的VPS快照备份，然后在新开的东京VPS上一键恢复就把数据搬过去了，不用再重装系统和优化配置了。</p>
-
 <p>第三，Vultr是KVM虚化技术，私以为比BandwagonHost（搬瓦工）的OpenVZ好一些。</p>
-
 <p>但是，搬瓦工年付19.99刀的VPS也的确不错，无论CPU性能还是硬盘I/O读写速度（可达900MB/s，见下图）目前都比Vultr（平均450MB/s）要好一些。若优化得当，搭建三两个流量不大的WordPress博客应该不是问题。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-io-256mb-ovz.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-io-256mb-ovz.png" alt="搬瓦工OVZ-256MB套餐I/O读写速度测试" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-io-256mb-ovz.png" alt="搬瓦工OVZ-256MB套餐I/O读写速度测试" /></p>
-
+</span></p>
 <p>再来看下经过优化加速之后，本页面（多图长文）的全国打开速度：（可点击放大）</p>
+<p>
 
-<p><a href="https://www.seoimo.com/wp-content/uploads/2016/11/speed-test-17ce-w1180.png"><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/speed-test-17ce-w1180.png" alt="seoimo全国各地页面打开速度" /></a></p>
+<a href="https://www.seoimo.com/wp-content/uploads/2016/11/speed-test-17ce-w1180.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/speed-test-17ce-w1180.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/speed-test-17ce-w1180.png" alt="seoimo全国各地页面打开速度" /></a>
+</span>
 
+</span></a></p>
 <p><strong>那么，搬瓦工VPS和Vultr到底哪个好呢？</strong></p>
-
-<p>搬瓦工采用的是OpenVZ虚拟化技术，博主担心日后可能会严重超售，影响VPS性能。<del>再加上目前Vultr搞活动，新注册就送20美元（需信用卡或PayPal验证并建议充值10美元），足够免费折腾四个月，等于花$10使用6个月，算算比虚拟主机都便宜！</del>所以，博主最终还是选择了Vultr。</p>
-
+<p>搬瓦工采用的是OpenVZ虚拟化技术，博主担心日后可能会严重超售，影响VPS性能。~~再加上目前Vultr搞活动，新注册就送20美元（需信用卡或PayPal验证并建议充值10美元），足够免费折腾四个月，等于花$10使用6个月，算算比虚拟主机都便宜！~~所以，博主最终还是选择了Vultr。</p>
 <p>利好消息：Vultr最近下调了价格，<strong>最低套餐（512MB/500GB）只需2.5美元/月</strong>！</p>
-
 <p>遗憾的是月付2.5美元这款平时只有纽约和迈阿密机房有货，但这俩机房靠近美国东海岸，离国内实在有点太远了，略坑。建站的话博主还是推荐Vultr的洛杉矶、西雅图和硅谷这三个美西机房，距离国内比较近，带宽也足。</p>
-
 <p>但是，如果抢不到2.5刀那款的话，这几个美西机房要月付5刀了。当然，5刀的配置会更好一些，看个人需要了。</p>
-
 <p>另外，降价之后赠送20美元的优惠活动也随之取消了。</p>
-
 <p>如果你对网站的访问速度不像博主这么挑剔的话，月付$2.5的美东机房还是可以接受的。</p>
-
 <p>VULTR-VPS的优点（博主喜欢的）</p>
-
 <ul>
 <li>稳定：真的很稳，官方承诺VPS在线率100%</li>
 <li>便宜：最低$2.5/月（支持按小时计费）</li>
@@ -505,57 +599,63 @@ if (!doNotTrack) {
 <li>备份方便：后台一键 SnapShot 备份整机，省心放心（无需关机，比搬瓦工更贴心）</li>
 <li>速度较好：东京和洛杉矶机房速度相对不错，但需要月付5美元</li>
 </ul>
-
 <p>VULTR-VPS的不足（博主不满的）</p>
-
 <ul>
 <li>月付2.5美元仅限纽约和迈阿密机房，距大陆较远</li>
 <li>主机I/O读写稍低，300MB-500MB/s（搬瓦工500-1000MB/s）</li>
 <li>实在想不出还有啥不满意的</li>
 </ul>
+<p><del>Vultr赠送20美元活动</del>直达链接：
 
-<p><del>Vultr赠送20美元活动</del>直达链接：<a href="http://www.seoimo.com/go/vultr-basic/">https://www.vultr.com/20-dollars/</a></p>
-
+<a href="http://www.seoimo.com/go/vultr-basic/"  target="_blank">https://www.vultr.com/20-dollars/</a></p>
 <p><em>（由于众所周知的原因，目前东京、洛杉矶和纽约等机房IP被Q严重，可能需要多刷几次才能开出一个可用的IP。怕麻烦的话，建议首选硅谷或伦敦机房。）</em></p>
+<p>
 
-<p><a href="http://www.seoimo.com/go/bandwagon-ovz-512mb/"><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-host-256mb.png" alt="搬瓦工VPS年付19.99美元" /></a></p>
+<a href="http://www.seoimo.com/go/bandwagon-ovz-512mb/"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-host-256mb.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-host-256mb.png" alt="搬瓦工VPS年付19.99美元" /></a>
+</span>
 
+</span></a></p>
 <p>实际上，便宜的VPS不超售是不可能的。因为VPS商家是做生意赚钱的，而不是来搞慈善。</p>
+<p>但是，从过去几个月的使用情况来看，搬瓦工这款
 
-<p>但是，从过去几个月的使用情况来看，搬瓦工这款<a href="http://www.seoimo.com/go/bandwagon-ovz-512mb/">年付19.99美元<del>（256MB/500GB）</del>（512MB/500GB）</a><del>小内存</del>VPS速度和稳定性确实很不错。</p>
-
+<a href="http://www.seoimo.com/go/bandwagon-ovz-512mb/"  target="_blank">年付19.99美元~~（256MB/500GB）~~（512MB/500GB）</a><del>小内存</del>VPS速度和稳定性确实很不错。</p>
 <p>在过去的几个月里，除了博主备份系统和更换机房时 reboot 几下，还从未宕过机。经过适当的优化（见下文）后，博客页面也基本可以达到秒开。</p>
-
 <p>再加上Vultr赠送的小钱钱也早已经用完，所以本博客（即SEOIMO.COM）目前已从Vultr迁移至搬瓦工的洛杉矶机房。</p>
-
 <p><strong>搬瓦工VPS和Vultr到底哪个更适合，博主的建议是：</strong></p>
-
 <p>如果你只有三两个流量不大的网站，比如每天5000PV以内，搬瓦工256MB/500GB这款小鸡还是完全能够胜任的。</p>
+<p>因为，博主经过测试（
 
-<p>因为，博主经过测试（<a href="https://loadimpact.com/">LoadImpact</a>），模拟5分钟内100个访客持续访问本页也没有搞垮这个小鸡。非但没搞垮，这款小内存VPS表现还很不错。</p>
-
+<a href="https://loadimpact.com/"  target="_blank">LoadImpact</a>），模拟5分钟内100个访客持续访问本页也没有搞垮这个小鸡。非但没搞垮，这款小内存VPS表现还很不错。</p>
 <p>不相信博主？有图有真相，直接上图（看不清可点击放大）：</p>
+<p>
 
-<p><a href="https://www.seoimo.com/wp-content/uploads/2016/11/bandwagonhost-loadimpact.png"><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-loadimpact.png" alt="搬瓦工VPS模拟100个同时在线" /></a></p>
+<a href="https://www.seoimo.com/wp-content/uploads/2016/11/bandwagonhost-loadimpact.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-loadimpact.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-loadimpact.png" alt="搬瓦工VPS模拟100个同时在线" /></a>
+</span>
 
-<p>从上图可以看出，在5分钟内，模拟100个访客持续访问本页，打开时间基本维持在0.8-1.2秒之间。倘若从早10点至晚22点算起（<a href="http://tongji.baidu.com/data/hour">百度上网时间分布统计</a>），按12个小时持续访问的话，每天有大约15000PV的访问量！</p>
+</span></a></p>
+<p>从上图可以看出，在5分钟内，模拟100个访客持续访问本页，打开时间基本维持在0.8-1.2秒之间。倘若从早10点至晚22点算起（
 
+<a href="http://tongji.baidu.com/data/hour"  target="_blank">百度上网时间分布统计</a>），按12个小时持续访问的话，每天有大约15000PV的访问量！</p>
 <p>是否可以这样理解：即使像本页面这样有这么多的图片和文字，每天大约15000PV的流量，经过适当的优化，在搬瓦工这款256MB的小内存VPS上也基本是秒开的。</p>
-
 <p>是不是有点吓到了？</p>
-
 <p>再来看一下100访客在线时VPS的系统平均负载：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-phpinfo-100vu.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-phpinfo-100vu.png" alt="搬瓦工VPS的系统负载" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-phpinfo-100vu.png" alt="搬瓦工VPS的系统负载" /></p>
-
+</span></p>
 <p>内存耗尽是意料之中的事情，毕竟只有256MB。但出乎博主意料的是：系统平均负载并不高，甚至还不到0.2！这么高的流量，博主原以为起码也要超过1的，即CPU刚好跑满。现在非但没有跑满，竟还有足够多的剩余。不得不说，搬瓦工的技术还真是可以！</p>
-
 <p>由此可见，小内存VPS不一定就不能搭建大流量WordPress博客，关键要优化得当。</p>
-
 <p>当然了，如果网站真有每天超过10000PV的流量，博主还是建议提升下VPS配置，比如升级到搬瓦工1024MB/1024GB这个套餐。因为每天10000PV的流量即便挂Adsense广告每天也该有10美元的收入了，就不要再扣VPS月租这点小钱了。</p>
-
 <p>搬瓦工VPS的优点（博主喜欢的）</p>
-
 <ul>
 <li>便宜：最低$19.99/年（使用优惠码更省）</li>
 <li>稳定：承诺99.5%在线率保证，经博主过去一年多对本站的检测来看，除了博主认为重启之外，在线率实际几乎100%</li>
@@ -563,29 +663,23 @@ if (!doNotTrack) {
 <li>IP可换：可多机房间相互转移，实现随意更换IP地址（博主大爱）</li>
 <li>备份方便：后台一键 SnapShot 备份整机，省心放心</li>
 </ul>
-
 <p>搬瓦工VPS的不足（博主不满的）</p>
-
 <ul>
 <li>进行 SnapShot 时强制关闭VPS，持续5分钟左右（不如Vultr周到）</li>
 <li>系统过于精简，建站时某些必备软件可能需要自己手动安装</li>
 <li>香港机房VPS太贵，真心贵</li>
 </ul>
-
 <p>建议首选KVM架构，最低$19.99/年，可安装BBR加速，看视频方便。</p>
+<p>KVM-512MB/500GB直达链接：
 
-<p>KVM-512MB/500GB直达链接：<a href="http://www.seoimo.com/go/bandwagon-kvm-512mb/">https://bandwagonhost.com/kvm-512mb/</a></p>
-
+<a href="http://www.seoimo.com/go/bandwagon-kvm-512mb/"  target="_blank">https://bandwagonhost.com/kvm-512mb/</a></p>
 <p>限时供货，使用优惠码 <strong>BWH1ZBPVK</strong> 可省6%（目前最高）；</p>
-
 <p>推荐<strong>洛杉矶CN2</strong>直连线路（后台切换）；请务必确保注册信息真实有效，且与登录IP地址相符。否则，大概率会被视为欺诈（Fraud）而上黑名单。</p>
-
 <p>一般来说，512MB内存足够个人建站使用了。但若是年付 $19.99 这款紧俏套餐已经脱销，或者你需要更高配置的，年付 $49.99 这款也足够好：20GB空间，1024MB内存，多机房可自由切换。</p>
-
 <p>至于其余的高价套餐，博主以为仅对搭建wordpress博客来说，性价比并不高。因此，也就没必要去花冤枉钱（土豪请随意）。</p>
+<p>KVM-1024MB/1024GB直达链接：
 
-<p>KVM-1024MB/1024GB直达链接：<a href="http://www.seoimo.com/go/bandwagon-kvm-1024mb/">https://bandwagonhost.com/kvm-1024mb/</a></p>
-
+<a href="http://www.seoimo.com/go/bandwagon-kvm-1024mb/"  target="_blank">https://bandwagonhost.com/kvm-1024mb/</a></p>
 <table>
 <thead>
 <tr>
@@ -593,664 +687,547 @@ if (!doNotTrack) {
 <th></th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>稳定：</td>
 <td></td>
 </tr>
-
 <tr>
 <td>速度：</td>
 <td></td>
 </tr>
-
 <tr>
 <td>操作：</td>
 <td></td>
 </tr>
-
 <tr>
 <td>优惠：</td>
 <td></td>
 </tr>
 </tbody>
 </table>
-
 <blockquote>
 <p>【温馨提示】DigitalOcean只支持信用卡和PayPal付款，而搬瓦工和Vultr则可使用支付宝（Alipay）。</p>
 </blockquote>
-
-<p><span id="4.2"></span></p>
-
-<h3 id="4-2如何购买搬瓦工vps">#4.2如何购买搬瓦工VPS</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="42如何购买搬瓦工vps">#4.2如何购买搬瓦工VPS</h3>
 <p>默认折叠，请单击展开 / 折叠 ..</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-256mb-vps.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-256mb-vps.png" alt="搬瓦工256MB小内存vps" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-256mb-vps.png" alt="搬瓦工256MB小内存vps" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/la-qnet-mcom.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/la-qnet-mcom.png" alt="洛杉矶QNET和MCOM机房选择" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/la-qnet-mcom.png" alt="洛杉矶QNET和MCOM机房选择" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-promo-code.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-promo-code.png" alt="搬瓦工优惠码" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-promo-code.png" alt="搬瓦工优惠码" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-alipay.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-alipay.png" alt="搬瓦工支付宝付款" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-alipay.png" alt="搬瓦工支付宝付款" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-my-services.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-my-services.png" alt="BandwagonHost后台管理 - My Services" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagon-my-services.png" alt="BandwagonHost后台管理 - My Services" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/kiwivm-control-panel.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/kiwivm-control-panel.png" alt="搬瓦工KiwiVM Control Panel" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/kiwivm-control-panel.png" alt="搬瓦工KiwiVM Control Panel" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vps-information.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vps-information.png" alt="搬瓦工VPS主机信息" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vps-information.png" alt="搬瓦工VPS主机信息" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/install-new-os.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/install-new-os.png" alt="重装系统" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/install-new-os.png" alt="重装系统" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-snapshots.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-snapshots.png" alt="系统备份（Snapshots）" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/bandwagonhost-snapshots.png" alt="系统备份（Snapshots）" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/migrate-to-another-dc.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/migrate-to-another-dc.png" alt="更换机房（Migrate to another DC）" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/migrate-to-another-dc.png" alt="更换机房（Migrate to another DC）" /></p>
-
-<p><span id="4.3"></span></p>
-
-<h3 id="4-3如何购买vultr-vps">#4.3如何购买Vultr-VPS</h3>
-
+</span></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="43如何购买vultr-vps">#4.3如何购买Vultr-VPS</h3>
 <p>默认折叠，请单击展开 / 折叠 ..</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/deploy-new-vps.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/deploy-new-vps.png" alt="Vultr开通新的VPS" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/deploy-new-vps.png" alt="Vultr开通新的VPS" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ri-ben-ji-fang.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ri-ben-ji-fang.png" alt="日本东京机房" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ri-ben-ji-fang.png" alt="日本东京机房" /></p>
-
+</span></p>
 <p>~~~~</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/centos6-i386.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/centos6-i386.png" alt="32位CentOS6系统" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/centos6-i386.png" alt="32位CentOS6系统" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/deploy-now.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/deploy-now.png" alt="立即开通VPS" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/deploy-now.png" alt="立即开通VPS" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/domain-a-record.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/domain-a-record.png" alt="域名添加A记录" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/domain-a-record.png" alt="域名添加A记录" /></p>
-
+</span></p>
 <p>接下来，正式进入本文的最重要环节：<strong>通过SSH连接VPS搭建LAMP环境，进而安装WordPress博客</strong>。</p>
-
-<p><span id="5"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="5ssh连接vps">#5SSH连接VPS</h2>
-
 <p>SSH（Secure Shell）即安全外壳协议，是目前较可靠、专为远程登录会话和其他网络服务提供安全性的协议。我们需要一种SSH工具来连接VPS，个人推荐PuTTY，最好使用英文原版。</p>
-
 <p>下载地址：<a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html">http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html</a></p>
-
 <p>下载后免安装，直接打开。填入刚才开通的VPS地址，默认端口22。然后点击Open打开，弹出的新窗口点击左边 “Yes” 。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/open-putty.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/open-putty.png" alt="打开PuTTY连接VPS" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/open-putty.png" alt="打开PuTTY连接VPS" /></p>
-
+</span></p>
 <p>回到我们刚才打开的Vultr-VPS管理页面，左边有登陆名root和密码，复制密码。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://3mile.github.io/https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vultr-vps-overview.png"><img class="img" src="https://3mile.github.io/https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vultr-vps-overview.png" alt="vultr-VPS管理后台" /></a>
+</span>
 
-<p><img src="https://3mile.github.io/https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/vultr-vps-overview.png" alt="vultr-VPS管理后台" /></p>
-
+</span></p>
 <p>在PuTTY界面输入root后回车，单击右键即可输入密码。</p>
-
 <blockquote>
 <p>【温馨提示】PuTTY中输入密码是不显示的，单击右键即为粘贴。</p>
 </blockquote>
-
 <p>登陆成功后，首先需要修改root密码，因为初始密码太复杂不好记，也不一定安全。</p>
-
 <p><code># passwd</code></p>
-
 <p>回车后设置新密码，再回车重新输入。然后界面显示如下，说明密码修改成功。</p>
-
 <p><em>（密码长度建议20字符以上，字母大小写 + 数字 + 特殊字符）</em></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/change-vps-passwd.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/change-vps-passwd.png" alt="修改VPS登录密码" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/change-vps-passwd.png" alt="修改VPS登录密码" /></p>
-
+</span></p>
 <p>之后，最好再升级一下系统，以保证获得最新的软件和内核。</p>
-
 <p><code># yum -y update</code></p>
-
 <p>回车，等待升级完成。</p>
-
 <p>此外，为防止SSH登录一段时间后自动断开，可更改如下设置以保持SSH长时间在线。</p>
-
 <p><code># vi /etc/ssh/sshd_config</code></p>
-
 <p>将如下两行代码前的 # 去掉，然后做相应修改：（若无此两行代码请在末尾自行添加）</p>
-
 <p>#PermitUserEnvironment no
 #Compression delayed
 <strong>ClientAliveInterval 60</strong>
 <strong>ClientAliveCountMax 3</strong>
 #ShowPatchLevel no
 #UseDNS yes</p>
-
 <p>保存，重启SSH即可生效：</p>
-
 <p><code># service sshd restart</code></p>
-
 <p><strong>开启BBR加速</strong></p>
-
 <p>BBR是Google提出的一个开源的TCP拥塞控制算法，应用于Linux4.9+内核上，对提升网速效果显著。</p>
-
 <p>因此，对于KVM架构的VPS，博主倾向于在正式部署生产环境之前，首先开启BBR。</p>
-
 <p>但这并不意味着你一定要这么做。倘若你的VPS线路已经很不错，完全可以跳过这一步。</p>
-
 <p>切换到 root 目录：</p>
-
 <p><code># cd ~</code></p>
-
 <p>下载安装脚本：</p>
-
 <p><code># wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh</code></p>
-
 <p>如提示 wget: command not found ，可执行命令 # yum install wget 进行安装。</p>
-
 <p>安装BBR：</p>
-
 <p><code># chmod +x bbr.sh &amp;&amp; ./bbr.sh</code></p>
-
 <p>按要求输入 y 后，自动重启VPS。</p>
-
 <p>重新登入后，查看结果：</p>
-
 <p><code># sysctl net.ipv4.tcp_available_congestion_control</code></p>
-
 <p>出现形如以下字样时，说明BBR开启成功。</p>
-
 <p>net.ipv4.tcp_available_congestion_control = <strong>bbr</strong> cubic reno</p>
-
-<p><span id="6"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="6搭建lamp环境">#6搭建LAMP环境</h2>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lamp-linux-apache-mysql-php-w720.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lamp-linux-apache-mysql-php-w720.png" alt="什么是LAMP" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lamp-linux-apache-mysql-php-w720.png" alt="什么是LAMP" /></p>
-
+</span></p>
 <p>LAMP指的是Linux（操作系统）、Apache（HTTP服务器），MySQL（数据库软件） 和PHP（有时也是指Perl或Python）的第一个字母，主要用来建立web应用平台。</p>
-
 <p>博主使用的是LNMP一键安装包，具体可参看这里：<a href="https://lnmp.org/install.html">https://lnmp.org/install.html</a></p>
-
 <blockquote>
 <p>【温馨提示】为提高效率，可直接复制代码，然后在PuTTY窗口单击右键进行粘贴。</p>
 </blockquote>
-
 <p>首先，创建screen会话：</p>
-
 <p><code># screen -S lamp</code></p>
-
 <p>如提示 screen: command not found ，可执行命令 # yum install screen 进行安装。</p>
-
 <p>如果安装过程中出现异常中断，重新登入VPS后，输入 # screen -r lamp 恢复安装界面。</p>
-
 <p>由于LNMP1.4版本可一键设置SSL，所以推荐优先安装1.4版本：</p>
-
 <p>LNMP1.4-FULLLNMP1.3-FULL</p>
-
 <p><code># wget -c http://soft.vpser.net/lnmp/lnmp1.4-full.tar.gz &amp;&amp; tar -zxf lnmp1.4-full.tar.gz &amp;&amp; cd lnmp1.4-full &amp;&amp; ./install.sh **lamp**</code></p>
+<p>当然，如果你之前已经安装的是LNMP1.3，也可以
 
-<p>当然，如果你之前已经安装的是LNMP1.3，也可以<a href="https://www.seoimo.com/lamp-ssl/#lnmp1.3-to-lnmp1.4">一键升级到1.4版本</a>。</p>
-
+<a href="https://www.seoimo.com/lamp-ssl/#lnmp1.3-to-lnmp1.4"  target="_blank">一键升级到1.4版本</a>。</p>
 <p>以下安装过程不再赘述，选项一般默认即可，主要设置详见下图（LNMP1.3示意）。</p>
-
 <p>这里设置的数据库ROOT密码<strong>务必记牢</strong>，下面添加域名时会用到！！</p>
+<p>LNMP安装成功之后，如果数据库密码忘记了，可参看这里
 
-<p>LNMP安装成功之后，如果数据库密码忘记了，可参看这里<a href="http://www.vpser.net/manage/linux-reset-mysql-root-password.html">进行重置</a>。</p>
+<a href="http://www.vpser.net/manage/linux-reset-mysql-root-password.html"  target="_blank">进行重置</a>。</p>
+<p>*（建议安装*<em>PHP5.6**版本；安装SSL证书时如出现问题，可以参考博主安装Let’s-Encrypt免费的SSL证书时遇到的几个大坑）</em></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-mysql.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-mysql.png" alt="设置root用户数据库密码" /></a>
+</span>
 
-<p>*（建议安装**PHP5.6*<em>版本；安装SSL证书时如出现问题，可以参考博主安装Let’s-Encrypt免费的SSL证书时遇到的几个大坑）</em></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-php.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-php.png" alt="安装php5.4" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-mysql.png" alt="设置root用户数据库密码" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-apache.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-apache.png" alt="安装apache2.2" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-php.png" alt="安装php5.4" /></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-lamp-apache.png" alt="安装apache2.2" /></p>
-
+</span></p>
 <p>当出现上图中的绿字 &ldquo;Press any key to install&hellip;or Press Ctrl+c to cancel&rdquo; 后，按回车键确认开始安装。</p>
-
 <p>安装大约持续半个小时左右。安装成功后的界面如下图所示：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/install-lamp-completed.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/install-lamp-completed.png" alt="安装lamp成功" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/install-lamp-completed.png" alt="安装lamp成功" /></p>
-
+</span></p>
 <p>至此，LAMP环境已经在VPS上搭建完成。<strong>输入VPS的IP访问</strong>，会出现以下界面：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lnmp-in-vps.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lnmp-in-vps.png" alt="LNMP在VPS中安装成功" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lnmp-in-vps.png" alt="LNMP在VPS中安装成功" /></p>
-
+</span></p>
 <p>在安装WordPress之前，建议<strong>安装PHP缓存加速类扩展</strong>，对降低VPS压力和提高WordPress速度大有裨益。</p>
-
 <p>推荐安装两个：OPcache和Memcached。</p>
-
 <p>首先，需要进入LNMP解压目录 lnmp1.4-full （lnmp1.3则改为lnmp1.3-full）：</p>
-
 <p><code># cd /root/lnmp1.4-full</code></p>
-
 <p>回车，接下来安装Opcache：</p>
-
 <p><code># **.**/addons.sh install opcache</code></p>
-
 <p>回车，再回车。</p>
-
 <p>当出现 “Opcache installed successfully, enjoy it!” 字样时，即表示安装成功。</p>
-
 <p>接着安装Memcached：</p>
-
 <p><code># **.**/addons.sh install memcached</code></p>
-
 <p>回车，选择2，回车，再回车。</p>
-
 <p>当出现 “Memcached installed successfully, enjoy it!” 字样时，即表示安装成功。</p>
-
 <p>此时，可以删除之前下载的lnmp1.4安装包，以节省空间。</p>
-
 <p><code># rm -rf /root/lnmp1.4-full.tar.gz</code></p>
-
 <p>回车即可。</p>
-
 <p>接下来就可以添加域名安装WordPress了。</p>
-
 <p>添加域名</p>
-
-<h2 id="7添加域名-虚拟主机">7添加域名 / 虚拟主机</h2>
-
+<h2 id="7添加域名--虚拟主机">7添加域名 / 虚拟主机</h2>
 <p>请提前做好域名解析，例如：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/domain-a-record-1522662595033.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/domain-a-record-1522662595033.png" alt="域名添加A记录" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/domain-a-record-1522662595033.png" alt="域名添加A记录" /></p>
-
+</span></p>
 <p>添加域名：</p>
-
 <p><code># lnmp vhost add</code></p>
-
 <p>回车，提示输入域名：</p>
-
 <p><code># seoimo.com</code></p>
-
 <p>回车，提示是否添加多个域名：</p>
-
 <p><code># y</code></p>
-
 <p>回车，博主习惯绑定带 www 的域名：</p>
-
 <p><code># www.seoimo.com</code></p>
-
 <p>回车，显示网站目录。默认 /home/wwwroot/seoimo.com 即可。</p>
-
 <blockquote>
 <p>若是绑定二级域名，必须<strong>输入完整的目录路径</strong>。例如：</p>
-
 <p>将 tools.seoimo.com 绑定到网站根目录下的 tools 文件夹，则应输入：</p>
-
 <p>/home/wwwroot/seoimo.com/tools</p>
 </blockquote>
-
 <p>回车。博主习惯不需要日志记录，但建议你开启（y）：</p>
-
 <p><code># n</code></p>
-
 <p>会车后，输入站长邮箱。</p>
-
 <p>继续回车，提示数据库名和数据库用户名是否保持一致。</p>
-
 <p><code># y</code></p>
+<p>回车，输入 root 用户的数据库密码（不会显示，在
 
-<p>回车，输入 root 用户的数据库密码（不会显示，在<a href="http://www.seoimo.com/wordpress-vps/#setup-lamp">#6搭建LAMP环境</a>中设置好的）。</p>
-
+<a href="http://www.seoimo.com/wordpress-vps/#setup-lamp"  target="_blank">#6搭建LAMP环境</a>中设置好的）。</p>
 <p>回车，输入数据库名，自行设置。例如：</p>
-
 <p><code># sjk_seoimo</code></p>
-
 <p>回车，设置数据库密码。例如：</p>
-
 <p><code># sjkmmseoimo</code></p>
-
 <p>回车，再回车。</p>
-
 <p>当出现下图所示画面时候，说明添加域名已经成功。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lnmp-vhost-add.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lnmp-vhost-add.png" alt="添加域名/虚拟主机" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/lnmp-vhost-add.png" alt="添加域名/虚拟主机" /></p>
-
+</span></p>
 <p><strong>关于FTP功能</strong></p>
-
 <p>LNMP1.3默认是不安装FTP服务的。</p>
-
 <p>需要上下传文件时，设置FTP软件（如FlashFXP）连接类型为 “<strong>SFTP over SSH</strong>”即可。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/sftp-over-ssh.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/sftp-over-ssh.png" alt="FlashFXP通过SSH方式连接VPS" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/sftp-over-ssh.png" alt="FlashFXP通过SSH方式连接VPS" /></p>
-
+</span></p>
 <p>但是，特定情况下仍需要开启FTP服务的话，可进行如下操作：</p>
-
 <p><code># cd /root/lnmp1.3-full</code></p>
-
 <p><code># ./pureftpd.sh</code></p>
-
 <p>安装成功后，添加FTP用户：</p>
-
 <p><code># lnmp ftp add</code></p>
-
 <p>设置好FTP用户名、密码以及访问目录的<strong>绝对路径</strong>（以 “<strong>/</strong>” 开头）！！</p>
-
 <p><strong>特别提示：</strong></p>
-
 <p>使用FTP软件连接VPS后，若无法进行上传和下载，并提示 “553 Can’t open that file: Permission denied” 时，可能需要更改下权限：</p>
-
 <p><code># chown www:www -R /目录路径/</code></p>
-
-<p><span id="8"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="8安装wordpress程序">#8安装WordPress程序</h2>
-
 <p>以下的步骤想必应该很熟悉，和带Cpanel或DirectAdmin面板安装WordPress过程比较类似。只不过，在面板上操作是可视化的，比较直观。而在这里是通过命令执行的，非可视。只要输入命令时细心点，一般是不会出问题的。</p>
-
 <p>首先，进入添加的域名目录：</p>
-
 <p><code># cd /home/wwwroot/seoimo.com</code></p>
+<p>回车。然后浏览器中打开
 
-<p>回车。然后浏览器中打开<a href="https://cn.wordpress.org/">WordPress中文站点</a>，下载最新的程序压缩包：</p>
-
+<a href="https://cn.wordpress.org/"  target="_blank">WordPress中文站点</a>，下载最新的程序压缩包：</p>
 <p><code># wget https://cn.wordpress.org/wordpress-4.9.4-zh_CN.tar.gz</code></p>
-
 <p>回车。等待下载完之后，解压压缩包：</p>
-
 <p><code># tar -zxvf wordpress-4.9.4-zh_CN.tar.gz</code></p>
-
 <p>回车。</p>
-
-<p>接下来，将解压出来的wordpress文件夹内全部文件移动到当前的域名目录下（别忘了后面的<strong>.</strong>）。</p>
-
+<p>接下来，将解压出来的wordpress文件夹内全部文件移动到当前的域名目录下（别忘了后面的**.**）。</p>
 <p><code># mv wordpress/* **.**</code></p>
-
 <p>回车。然后，可以选择删掉空文件夹wordpress及源程序（可选）。</p>
-
 <p><code># rm -rf wordpress</code></p>
-
 <p><code># rm -rf wordpress-4.9.4-zh_CN.tar.gz</code></p>
-
 <p>回车，搞定。</p>
-
 <p>为避免因权限的问题导致安装出错，<strong>比如wp-config.php无法创建、需要提供FTP用户密码以及主题和插件不能更新等</strong>，建议赋予网站根目录文件的可写权限。</p>
-
 <p><code># chmod -R 755 /home/wwwroot# chown -R www /home/wwwroot</code></p>
-
 <blockquote>
 <p>【温馨提示】以后每添加一个域名，都要对应地执行一次以上两步操作。</p>
 </blockquote>
-
 <p>另外，LNMP安装包默认禁用了 scandir 函数，这会导致WordPress后台看不到安装的主题，以及当前主题总显示 “有新的翻译可用” 的提醒。所以，需要开启此函数。</p>
-
 <p><code># vi /usr/local/php/etc/php.ini</code></p>
-
 <p>回车，然后查找 scandir 函数。</p>
-
 <p><code>?scandir 或者 /scandir</code></p>
-
 <p>回车，然后按delete键删除，接下来需要保存并退出vi命令。</p>
-
 <p><code># **:**wq</code></p>
-
 <p>回车。然后重启一下LNMP：</p>
-
 <p><code># lnmp restart</code></p>
-
 <p>好了，打开博客网址进行最后的安装吧！（注意要提前设置好域名解析）</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-wordpress-blog.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-wordpress-blog.png" alt="搭建WordPress博客" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-wordpress-blog.png" alt="搭建WordPress博客" /></p>
-
+</span></p>
 <p>至此，在VPS上通过搭建LAMP环境安装WordPress博客已经大功告成了。</p>
-
 <p>接下来，我们来对VPS进行必要的配置优化，以便进一步提高主机性能。</p>
-
-<p><span id="9"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="9vps配置优化">#9VPS配置优化</h2>
-
 <p>关于VPS服务器方面的配置优化绝对是个技术活，如果深入研究的话会比较复杂。博主非技术大牛，在这里仅介绍一下常用的三点：<strong>优化php.ini配置、添加swap交换分区</strong>和<strong>开启Keep-Alive功能 + 优化Httpd配置</strong>。</p>
-
-<p><span id="9.1"></span></p>
-
-<h3 id="9-1优化php-ini配置">#9.1优化php.ini配置</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="91优化phpini配置">#9.1优化php.ini配置</h3>
 <p>用vi命令修改 php.ini 文件。</p>
-
 <p><code># vi /usr/local/php/etc/php.ini</code></p>
-
 <p>单击 i 键进入 insert 模式，按 “上下左右” 四个方向键找到并修改以下两项：</p>
-
 <p>max_execution_time = 300
 memory_limit = 64M</p>
-
 <p>前者表示允许脚本最大执行时间300秒，后者表示允许单个脚本允许使用的最大内存64M（通常1G内存以下设置64M或128M即可）。</p>
-
 <p>单击 Esc 键退出 insert 模式，输入以下命令保存退出。注意英文状态下输入！</p>
-
 <p><code># :wq</code></p>
-
 <p>回车。然后重启一下LNMP：</p>
-
 <p><code># lnmp restart</code></p>
-
 <p>回车。</p>
-
-<p><span id="9.2"></span></p>
-
-<h3 id="9-2添加swap交换分区">#9.2添加Swap交换分区</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="92添加swap交换分区">#9.2添加Swap交换分区</h3>
 <blockquote>
-<p>①此方法只适用于虚拟化技术为KVM和Xen的VPS，OpenVZ不支持添加Swap交换分区，也就说说搬瓦工VPS（<a href="http://www.seoimo.com/go/bandwagon-kvm-512mb/">KVM-512MB套餐</a>除外）不能用此方法增加Swap空间；</p>
+<p>①此方法只适用于虚拟化技术为KVM和Xen的VPS，OpenVZ不支持添加Swap交换分区，也就说说搬瓦工VPS（
 
+<a href="http://www.seoimo.com/go/bandwagon-kvm-512mb/"  target="_blank">KVM-512MB套餐</a>除外）不能用此方法增加Swap空间；</p>
 <p>②若搬瓦工VPS管理后台Swap状态长期显示红色，则表明VPS内存已满，该考虑升级VPS了。</p>
 </blockquote>
+<p>关于Swap分区的具体含义在此不再赘述，详细可以参考百度百科：
 
-<p>关于Swap分区的具体含义在此不再赘述，详细可以参考百度百科：<a href="https://baike.baidu.com/item/Swap%E5%88%86%E5%8C%BA">Swap分区</a></p>
-
+<a href="https://baike.baidu.com/item/Swap%E5%88%86%E5%8C%BA"  target="_blank">Swap分区</a></p>
 <p>简单来说，当VPS的物理内存不够用时，系统会占用一部分Swap分区作为临时内存，目的是防止因物理内存耗尽而可能出现的错误。</p>
-
 <p>因此，对小内存VPS来说，设置一定大小的Swap交换分区显然很有意义。</p>
-
 <p>但是，由于硬盘的 I/O 读写速度远不能和内存的读写速度相提并论（可能相差几十倍），使用Swap交换分区时，系统可能会变得特别缓慢、卡顿，甚至程序会出现错误。</p>
-
 <p>因此，要尽量避免使用Swap分区，不得不使用时也不宜设置过大（大了也没用还占用空间），也就是说：<strong>我们不能指望用Swap来代替物理内存使用</strong>。甚至于，当你的VPS物理内存很充足时，完全可以禁用Swap以提高VPS的响应速度。</p>
-
 <p>当物理内存（实际使用内存）长期处于耗尽状态时，正确的做法就是该升级套餐了。</p>
-
 <p><strong>添加Swap交换分区</strong></p>
-
 <p>使用root用户登陆PuTTY，先看看是否已经添加了Swap:</p>
-
 <p><code># free -m</code></p>
-
 <p>若显示为 Swap = 0 的话，表明没有添加。否则，说明系统已自带Swap交换分区。</p>
-
 <p>进入var文件目录：</p>
-
 <p><code># cd /var/</code></p>
-
 <p>获取256MB的文件块（一般设置为内存的0.5倍即可）：</p>
-
 <p><code># dd if=/dev/zero of=swapfile bs=1M count=256</code></p>
-
 <p>创建Swap文件：</p>
-
 <p><code># /sbin/mkswap swapfile</code></p>
-
 <p>激活Swap文件：</p>
-
 <p><code># /sbin/swapon swapfile</code></p>
-
 <p>为了安全，建议修改一下权限：</p>
-
 <p><code># chmod 0600 /var/swapfile</code></p>
-
 <p>将swapfile添加到fstab文件中，开机自动启动：</p>
-
 <p><code># echo &quot;/var/swapfile swap swap defaults 0 0&quot; &gt;&gt; /etc/fstab</code></p>
-
 <p>搞定了。此时查看内存信息:</p>
-
 <p><code># free -m</code></p>
-
 <p>出现 “Swap: 256” 字样表示设置成功。</p>
-
 <p><strong>修改 swappiness 默认值</strong></p>
-
 <p>上面说了，我们要尽量避免使用Swap分区。所以，这里我们需要额外做些修改，使系统尽可能的优先使用物理内存。</p>
-
 <p>首先查看下 swappiness 的默认值：</p>
-
 <p><code># cat /proc/sys/vm/swappiness</code></p>
-
 <p>通常，返回值是60（默认值）。</p>
-
 <p>实际上，swappiness = 0 表示最大限度使用物理内存，然后才使用swap分区；swappiness ＝ 100 表示系统积极的使用swap分区，然后才使用物理内存。</p>
-
 <p>显然，这里我们需要降低 swappiness 的默认值。</p>
-
 <p><code># vi /etc/sysctl.conf</code></p>
-
 <p>在里面添加 vm.swappiness = 10 字段，然后退出保存。</p>
-
 <p>或者：</p>
-
 <p><code># echo &quot;vm.swappiness = 10&quot; &gt;&gt; /etc/sysctl.conf</code></p>
-
 <p>然后 # reboot 一下VPS即可。</p>
-
 <p><strong>重置Swap交换分区</strong></p>
-
 <p>若系统已设置Swap，但是需要对其做出更改的话，可以将其删除。</p>
-
 <p>首先查看Swap位置：</p>
-
 <p><code># swapon -s</code></p>
-
 <p>比如显示为 /var/swap，则停止并删除swap：</p>
-
 <p><code># /sbin/swapoff /var/swap# rm -rf /var/swap</code></p>
-
 <p>然后，将其删除开机启动：</p>
-
 <p><code># vi /etc/fstab</code></p>
-
 <p>将 /var/swap swap swap defaults 0 0 该行删除，然后保存退出。</p>
-
-<p><span id="9.3"></span></p>
-
-<h3 id="9-3开启keep-alive功能-优化httpd配置">#9.3开启Keep-Alive功能 + 优化Httpd配置</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="93开启keep-alive功能--优化httpd配置">#9.3开启Keep-Alive功能 + 优化Httpd配置</h3>
 <p>开启Keep-Alive功能可使客户端到服务器端的连接持续有效，当出现对服务器的后继请求时，Keep-Alive功能避免了建立或者重新建立连接。可见，对访问静态网页时，开启Keep-Alive是很有用的。</p>
-
 <p>因为在进行WordPress管理方面上的优化时，需要安装静态缓存插件，所以，开启Keep-Alive功能十分必要。</p>
-
 <p><code># vi /usr/local/apache/conf/extra/httpd-default.conf</code></p>
-
 <p>依次修改以下四条：</p>
-
 <p>Timeout 30
 KeepAlive On
 MaxKeepAliveRequests 100
 KeepAliveTimeout 5</p>
-
 <p>退出，保存：</p>
-
 <p><code># :wq</code></p>
-
 <p>接下来优化 Httpd 配置（ prefork 模式下），以降低Apache内存占用。此步骤对小内存VPS（如搬瓦工256MB方案）尤为重要。</p>
-
 <p><code># vi /usr/local/apache/conf/extra/httpd-mpm.conf</code></p>
-
 <p>依次修改如下：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/apache-httpd-prefork.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/apache-httpd-prefork.png" alt="优化Apache中Httpd &amp;amp; 配置prefork" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/apache-httpd-prefork.png" alt="优化Apache中Httpd &amp; 配置prefork" /></p>
-
+</span></p>
 <p>退出，保存：</p>
-
 <p><code># :wq</code></p>
-
 <p>然后，重启httpd服务：</p>
-
 <p><code># service httpd restart</code></p>
-
-<p><span id="10"></span></p>
-
-<h2 id="10删除mysql-bin-0000-日志文件">#10删除mysql-bin.0000*日志文件</h2>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="10删除mysql-bin0000日志文件">#10删除mysql-bin.0000*日志文件</h2>
 <p>博主所用的LNMP一键安装包默认开启了日志记录，这样就会在 /usr/local/mysql/var/目录下面生成大量 mysql-bin.0000* 类似的文件，大小甚至达到几个G！</p>
-
 <p>所以，我们需要做下调整，禁止保留日志记录以防止占用太多空间。</p>
-
 <p>于是，编辑 /etc/my.cnf 文件：</p>
-
 <p><code># vi /etc/my.cnf</code></p>
-
 <p>找到以下两行代码，在前面添加 #，彻底禁用MySQL日志：</p>
-
 <p>max_connect_errors = 100
 open_files_limit = 65535
 #log-bin=mysql-bin
 #binlog_format=mixed
 server-id = 1
 expire_logs_days = 10</p>
-
 <p>保存退出，重启一下MySQL：</p>
-
 <p><code># /etc/init.d/mysql restart</code></p>
-
-<p><span id="11"></span></p>
-
-<h2 id="11linux-vps安全配置-防护措施">#11Linux-VPS安全配置 / 防护措施</h2>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="11linux-vps安全配置--防护措施">#11Linux-VPS安全配置 / 防护措施</h2>
 <p>博主以为，VPS的安全防护绝对是运行网站的重中之重。防护措施做不好，轻者给后期运行带来无穷无尽的烦恼，重者造成网站瘫痪甚至数据清空，那就真的欲哭无泪了。</p>
-
 <p>好在Linux本身已经足够安全稳定，只要你不泄露关键的登录信息（比如SSH端口和ROOT密码等），通常不会产生重大事故。但即便如此，我们还是应该未雨绸缪，提前做好VPS的安全防护措施。</p>
-
 <p>那么，VPS安全配置究竟该如何做呢？</p>
-
 <p>在这里，博主结合自己建站经验，介绍一下Linux-VPS安防措施里最有效的三个方面：<strong>修改SSH端口</strong>、<strong>阻止SSH暴力破解</strong>和<strong>防御DDOS攻击</strong>。</p>
-
-<p><span id="11.1"></span></p>
-
-<h3 id="11-1修改ssh端口-强烈推荐">#11.1修改SSH端口（强烈推荐）</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="111修改ssh端口强烈推荐">#11.1修改SSH端口（强烈推荐）</h3>
 <p>首先，编辑配置文件：</p>
-
 <p><code># vi /etc/ssh/sshd_config</code></p>
-
 <p>找到 <code>#Port 22</code> 这行（默认端口22），把前面的 <strong>#</strong> 去掉，然后再添加一个新的端口（不超过65535），比如 Port 56789：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/change-ssh-port.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/change-ssh-port.png" alt="更改ssh端口" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/change-ssh-port.png" alt="更改ssh端口" /></p>
-
+</span></p>
 <p>保存，重启SSH即可：</p>
-
 <p><code># service sshd restart</code></p>
-
 <p>接下来，在防火墙 /etc/sysconfig/iptables 里开启此端口：</p>
-
 <p><code># iptables -A INPUT -p tcp -m tcp --dport **56789** -j ACCEPT</code></p>
-
 <p>保存并重启防火墙：</p>
-
 <p><code># service iptables save# service iptables restart</code></p>
-
 <p>或者，也可以编辑 /etc/sysconfig/iptables 文件，复制端口 22 的规则，粘贴在其下另起一行。</p>
-
 <p>按 :wq 保存退出后，重启防火墙。</p>
-
 <p>查看防火墙状态，看看端口是否开启成功：</p>
-
 <p><code># service iptables status</code></p>
-
 <p>现在，使用新的端口连接SSH。</p>
-
 <p>若成功登录，则再次编辑 /etc/ssh/sshd_config，将里面的 <code>Port 22</code> 前加 <strong>#</strong> 保存后，重启SSH即可。</p>
-
 <p><strong>温馨提示：</strong></p>
-
 <p>CentOS7.X中默认的防火墙 firewalld 而非CentOS6.X中的 iptables 。如果你也像博主一样感觉用着很不爽，需要换回 iptables 的，可以参考如下设置。</p>
-
 <p>1、关闭firewall并禁止开启启动：</p>
-
 <p><code># service firewalld stop# systemctl disable firewalld.service</code></p>
-
 <p>2、安装iptables：</p>
-
 <p><code># yum install iptables-services</code></p>
-
 <p>3、修改iptables配置：</p>
-
 <p><code># vi /etc/sysconfig/iptables</code></p>
-
 <p>粘贴如下内容（可按需要自行增删）：</p>
-
 <p>*filter
 :INPUT ACCEPT [0:0]
 :FORWARD ACCEPT [0:0]
@@ -1267,491 +1244,313 @@ expire_logs_days = 10</p>
 -A INPUT -j REJECT &ndash;reject-with icmp-host-prohibited
 -A FORWARD -j REJECT &ndash;reject-with icmp-host-prohibited
 COMMIT</p>
-
 <p>按 :wq 保存退出后，重启iptables，并设置为开机启动：</p>
-
 <p><code># service iptables restart# systemctl enable iptables.service</code></p>
-
 <blockquote>
 <p>【温馨提示】搬瓦工VPS生成的SSH端口是随机的（非默认端口22），因此，可无需再次修改。</p>
 </blockquote>
-
-<p><span id="11.2"></span></p>
-
-<h3 id="11-2阻止ssh暴力破解-可选">#11.2阻止SSH暴力破解（可选）</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="112阻止ssh暴力破解可选">#11.2阻止SSH暴力破解（可选）</h3>
 <p>更改默认的22端口后，已经可以阻止绝大多数的SSH非法请求了。</p>
+<p>但是，如果遇到程序自动扫描SSH端口并进行暴力破解，那么仅仅修改端口的话，可能还是不够的。因此，我们需要安装
 
-<p>但是，如果遇到程序自动扫描SSH端口并进行暴力破解，那么仅仅修改端口的话，可能还是不够的。因此，我们需要安装<a href="http://denyhosts.sourceforge.net/">DenyHosts</a>进行自动拦截。</p>
-
+<a href="http://denyhosts.sourceforge.net/"  target="_blank">DenyHosts</a>进行自动拦截。</p>
 <p><em>（温馨提示：设置高强度密码+更改默认SSH端口后，视实际需要，本步骤可以省略。）</em></p>
-
 <p>首先，下载 DenyHosts 并解压到 root 目录：</p>
-
 <p><code># cd ~</code></p>
-
 <p><code># wget http://soft.vpser.net/security/denyhosts/DenyHosts-2.6.tar.gz</code></p>
-
 <p><code># tar -zxvf DenyHosts-2.6.tar.gz</code></p>
-
 <p><code># cd DenyHosts-2.6</code></p>
-
 <p>接下来，进行安装和配置：</p>
-
 <p><code># python setup.py install</code></p>
-
 <p><code># cd /usr/share/denyhosts/</code></p>
-
 <p><code># cp denyhosts.cfg-dist denyhosts.cfg</code></p>
-
 <p><code># cp daemon-control-dist daemon-control</code></p>
-
 <p>然后，设置开机启动：</p>
-
 <p><code># chown root daemon-control</code></p>
-
 <p><code># chmod 700 daemon-control</code></p>
-
 <p><code># ./daemon-control start</code></p>
-
 <p><code># echo &quot;/usr/share/denyhosts/daemon-control start&quot; &gt;&gt; /etc/rc.local</code></p>
-
 <p>至此，DenyHosts就算安装完成了。通常，DenyHosts默认的阻拦配置就可以。当然，你也可以自行设置：</p>
-
 <p><code># vi /usr/share/denyhosts/denyhosts.cfg</code></p>
-
 <p>自行设置如下几个主要的参数：</p>
-
 <p>PURGE_DENY = 5d
 DENY_THRESHOLD_INVALID = 5
 DENY_THRESHOLD_VALID = 5
 DENY_THRESHOLD_ROOT = 5
 HOSTNAME_LOOKUP = NO</p>
-
 <p>最后，重启一下DenyHosts即可：</p>
-
 <p><code># /usr/share/denyhosts/daemon-control restart</code></p>
+<p>倘若自己的IP（
 
-<p>倘若自己的IP（<a href="http://www.ip.cn/">如何查看</a>）被误封，可在 /etc/hosts.deny 中删除对应的IP后重启DenyHosts即可。</p>
-
+<a href="http://www.ip.cn/"  target="_blank">如何查看</a>）被误封，可在 /etc/hosts.deny 中删除对应的IP后重启DenyHosts即可。</p>
 <p><strong>卸载DenyHosts</strong></p>
-
 <p>卸载DenyHosts比较麻烦，官方貌似没有提供具体卸载方法。</p>
-
 <p>不过，我们可以通过 <strong>停用 + 禁止开机启动</strong> 来将其关闭。</p>
-
 <p>停用DenyHosts：</p>
-
 <p><code># /usr/share/denyhosts/daemon-control stop</code></p>
-
 <p>禁止开机启动，编辑 /etc/rc.local ：</p>
-
 <p><code># vi /etc/rc.local</code></p>
-
 <p>将 /usr/share/denyhosts/daemon-control start 这行删除，保存退出。</p>
-
 <p>如此，就实现了停用DenyHosts的目的。</p>
-
-<p><span id="11.3"></span></p>
-
-<h3 id="11-3防御ddos攻击">#11.3防御DDOS攻击</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="113防御ddos攻击">#11.3防御DDOS攻击</h3>
 <p>这里主要用到一款优秀的免费软件DDoS Deflate：<a href="http://deflate.medialayer.com/">http://deflate.medialayer.com/</a></p>
-
 <p>首先，下载DDoS Deflate并安装：</p>
-
 <p><code># cd ~</code></p>
-
 <p><code># wget http://www.inetbase.com/scripts/ddos/install.sh</code></p>
-
 <p><code># chmod 0700 install.sh</code></p>
-
 <p><code># ./install.sh</code></p>
-
 <p>按 Q 键退出，然后编辑配置文件：</p>
-
 <p><code># vi /usr/local/ddos/ddos.conf</code></p>
-
 <p>推荐做如下更改，其余默认即可：</p>
-
 <p>NO_OF_CONNECTIONS = 100
 APF_BAN = 0
 BAN_PERIOD = 36000</p>
-
 <p>保存后退出。</p>
-
-<p><span id="12"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="12mysql数据库优化">#12MySQL数据库优化</h2>
-
 <p>众所周知，LAMP是比较依赖数据库的。尤其是搭建的WordPress博客没进行HTML静态缓存的情况下，对数据库的依赖更加严重。</p>
-
 <p>在我看来，对MySQL数据库的优化是特别重要也是特别困难的一项工作。不仅仅是因为MySQL设置里参数众多，让人看着头疼迷糊，更是因为这些参数没有一个固定的最优组合。参数设置的激进，浪费VPS资源，设置的保守，又可能限制程序的正常运行。</p>
-
 <p>那么，究竟该怎么设置才合理呢？</p>
-
 <p>根据博主的经验，对MySQL众多参数中最重要的以下几点进行合理的优化后，基本可以保证中小流量（比如＜5000IP/天）博客的正常访问。</p>
-
 <p>为确保安全，首先备份一下 /etc/my.cnf ：</p>
-
 <p><code># cp /etc/my.cnf /etc/my.cnf.old</code></p>
-
 <p>接下来，修改 /etc/my.cnf 中的以下参数：</p>
-
 <p><code># vi /etc/my.cnf</code></p>
-
 <p>key_buffer_size = 15M
 query_cache_size = 15M
 max_connections = 100</p>
-
 <p>修改后，保存退出。重启一下MySQL数据库即可：</p>
-
 <p><code># /etc/init.d/mysql restart</code></p>
-
 <p><strong>特别提示：★★★★★</strong></p>
-
 <p>随着博客流量的日益增长，这些设置可能不再适合，需要不断调整，以达到最合理的方案。</p>
-
 <p>那么，如何调整呢？</p>
-
 <p>在这里，博主根据自己的实际经验，提供以下方法。同时，也建议你定期监测调整。</p>
-
 <p><strong>一、连接MySQL数据库：</strong></p>
-
 <p><code># mysql -uroot -p</code></p>
-
 <p>回车，输入数据库密码（root用户）。</p>
-
 <p>出现提示符 mysql&gt; 后，即表示成功进入MySQL数据库中。</p>
-
 <p><strong>二、查看服务器响应的最大连接数（Max_used_connections）：</strong></p>
-
 <p><code>mysql&gt; show global status like 'Max_used_connections';</code></p>
-
 <p>返回值中，Max_used_connections 表示服务器过去发生的最大连接数。</p>
-
 <p>博主建议：</p>
-
 <p>max_connections / Max_used_connections = 1.5</p>
-
 <p>比值可以大一些，但太小的话可能出现 1040 错误：“MySQL: ERROR 1040: Too many connections”</p>
-
 <p><strong>三、查看key_buffer_size使用情况：</strong></p>
-
 <p><code>mysql&gt; show global status like 'key_read%';</code></p>
-
 <p>得到返回值（单位：Byte），索引未命中缓存的概率：</p>
-
 <p>key_cache_miss_rate ＝ Key_reads / Key_read_requests * 100%</p>
-
 <p>博主建议：</p>
-
 <p><em>key_cache_miss_rate ＜ 0.1%</em> 即可，表示1000个索引读取请求才有一个直接读硬盘；</p>
-
-<p>如果比值过小（比如*＜ 0.01%*），则表示 key_buffer_size 分配的过多，可适当减少。</p>
-
+<p>如果比值过小（比如<em>＜ 0.01%</em>），则表示 key_buffer_size 分配的过多，可适当减少。</p>
 <p><strong>四、查询缓存（query cache）利用率：</strong></p>
-
 <p><code>mysql&gt; show global status like 'qcache%';</code></p>
-
 <p>返回值中，Qcache_free_memory 表示缓存中的空闲内存（单位：Byte）</p>
-
 <p>则查询缓存利用率：</p>
-
 <p>x = (query_cache_size - Qcache_free_memory) / query_cache_size * 100%</p>
-
 <p>博主建议：</p>
-
 <p>查询缓存利用率 <em>＞80%</em> 时，可适当提高 query_cache_size 数值；</p>
-
 <p>查询缓存利用率 <em>＜20%</em> 时，可适当降低 query_cache_size 数值。</p>
-
 <p><strong>五、退出MySQL数据库：</strong></p>
-
 <p><code>mysql&gt; exit</code></p>
-
-<p><span id="13"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="13创建vps快照">#13创建VPS快照</h2>
-
 <p>为了数据安全，一定要养成定期备份的好习惯。否则一旦有个闪失，可真的要一夜回到解放前了。</p>
-
 <p>所幸，Vultr提供免费的VPS快照备份，可以通过一键恢复（restoring），无缝迁移系统到别的机子或者机房。实在是太方便了。</p>
-
 <p>操作也很简单：打开VPS管理页面，点击 “Snapshots” ，方框内填入标签即可。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-vps-snapshot-label.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-vps-snapshot-label.png" alt="创建VPS快照" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/setup-vps-snapshot-label.png" alt="创建VPS快照" /></p>
-
+</span></p>
 <p>值得一提的是，Vultr的 Snapshots 恢复的时候有个小坑：备份恢复只能向等于或大于备份空间的机子进行操作。</p>
-
 <p>也就是说，你在月付$5机子上可以一键恢复月付$2.5的机子上的备份。反之则不行，因为小空间没法恢复大空间。</p>
-
 <p>所以，博主备份时的标签一般都注明套餐类型和日期，以便于管理。</p>
-
 <p>如上图中：512MB-SEOIMO-2017-10-01</p>
-
 <blockquote>
-<p>【温馨提示】搬瓦工VPS快照备份请参看：<a href="http://www.seoimo.com/wordpress-vps/#how-buy-bandwagon-vps">#4.2 + 如何购买搬瓦工VPS</a></p>
+<p>【温馨提示】搬瓦工VPS快照备份请参看：
+
+<a href="http://www.seoimo.com/wordpress-vps/#how-buy-bandwagon-vps"  target="_blank">#4.2 + 如何购买搬瓦工VPS</a></p>
 </blockquote>
-
-<p><span id="14"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="14wordpress博客的备份和迁移">#14WordPress博客的备份和迁移</h2>
-
 <p>网站备份的重要性就不需要博主多说了。在Linux系统下，对WordPress进行备份其实并不难。主要涉及两部分：文件备份和数据库备份</p>
-
-<p><span id="14.1"></span></p>
-
-<h3 id="14-1-文件备份">#14.1 文件备份</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="141-文件备份">#14.1 文件备份</h3>
 <p><em>温馨提示：以下命令中涉及的数据库和域名，请根据你VPS上具体设置，自行修改。</em></p>
-
 <p>为了方便管理，我们先建立一个文件夹专门存放备份数据，比如 /home/backup/ ：</p>
-
 <p><code># mkdir /home/backup</code></p>
-
 <p>以本站所在文件夹 seoimo.com 为例，压缩整站并移动到 /home/backup/ 文件夹下（为方便管理，博主添加了备份日期）：</p>
-
 <p><code># cd /home/wwwroot# tar -zcf seoimo.com-20171001.tar.gz seoimo.com# mv seoimo.com-20171001.tar.gz /home/backup/</code></p>
-
 <p>好了，整站已经打包备份完成。接下来，开始备份数据库。</p>
-
-<p><span id="14.2"></span></p>
-
-<h3 id="14-2-数据库备份">#14.2 数据库备份</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="142-数据库备份">#14.2 数据库备份</h3>
 <p>首先，打开 /home/backup/ 文件夹，我们需要将数据库备份在这里：</p>
-
 <p><code># cd /home/backup# lnmp database list</code></p>
+<p>输入 root 数据库密码（在
 
-<p>输入 root 数据库密码（在<a href="http://www.seoimo.com/wordpress-vps/#setup-lamp">#6 + 搭建LAMP环境</a>设置的），即可查看当前数据库列表。</p>
-
+<a href="http://www.seoimo.com/wordpress-vps/#setup-lamp"  target="_blank">#6 + 搭建LAMP环境</a>设置的），即可查看当前数据库列表。</p>
 <p>选择需要备份网站的对应数据库，以选定 sjk_seoimo 为例：</p>
-
 <p><code>mysqldump -uroot -p sjk_seoimo &gt; sjk_seoimo-20171001.sql</code></p>
-
 <p>再次输入数据库密码，即可完成数据库备份。</p>
-
 <p>可键入命令 # ls 查看当前目录下已经存在了备份好的文件。</p>
-
 <p>此时，可以用通过 FTP 下载到本地保存，也可上传到别的 VPS 上备份保存。</p>
-
-<p><span id="14.3"></span></p>
-
-<h3 id="14-3-wordpress迁移-搬家">#14.3 WordPress迁移 / 搬家</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="143-wordpress迁移--搬家">#14.3 WordPress迁移 / 搬家</h3>
 <p>某些情况下，我们可能需要进行网站迁移，从一个VPS搬家到另一个VPS上。如果是没有开通 SSH 功能的虚拟主机，搬家起来可能会比较麻烦，来来回回的下载和上传。但是，在VPS上操作则相对简单的多。</p>
-
 <p>假设新VPS的IP为 8.8.8.8，SSH端口为 22，则打开备份目录，选择需要的文件备份和数据库备份上传：</p>
-
 <p><code># cd /home/backup# ls# scp -P 22 seoimo.com-20171001.tar.gz root@8.8.8.8:/home/backup# scp -P 22 sjk_seoimo-20171001.sql root@8.8.8.8:/home/backup</code></p>
-
 <p>回车后，按要求输入新的VPS登陆密码。</p>
-
 <p>接下来，<strong>SSH登入新的VPS</strong>。然后解压或替换网站域名目录：</p>
-
 <p><code># cp /home/backup/seoimo.com-20171001.tar.gz /home/wwwroot# cd /home/wwwroot# tar -zxf seoimo.com-20171001.tar.gz# rm -rf seoimo.com-20171001.tar.gz</code></p>
-
 <p>搬家后解压的文件可能存在权限的问题，建议赋予网站根目录文件的可写权限。</p>
-
 <p><code># chmod -R 755 /home/wwwroot/seoimo.com# chown -R www /home/wwwroot/seoimo.com</code></p>
-
 <p>之后，导入数据库，仍以 sjk_seoimo 为例：</p>
-
 <p><code># cd /home/backup# ls# mysql -uroot -p sjk_seoimo &lt; sjk_seoimo-20171001.sql</code></p>
-
 <p>倘若虚拟主机转虚拟主机，或者虚拟主机转VPS，数据库密码和某些插件文件路径可能不同，这就需要额外去查找更改了。</p>
-
 <p>但如果都是在VPS上通过LNMP搭建WordPress，通常则无需再做额外操作。</p>
-
 <p>注意：如果网站开启了 <code>HTTPS</code> 访问，且是安装的 <code>Let's Encrypt</code> 提供的免费SSL证书，那么除了上面的操作之外，还需要使用命令 <code># lnmp ssl add</code> 再重新添加SSL证书。</p>
-
 <blockquote>
-<p>【温馨提示】数据库的导出用的符号是 &ldquo;&gt;&ldquo;，导入用的是 &ldquo;&lt;&ldquo;；注意方向，千万别搞错了。</p>
+<p>【温馨提示】数据库的导出用的符号是 &ldquo;&gt;&rdquo;，导入用的是 &ldquo;&lt;&rdquo;；注意方向，千万别搞错了。</p>
 </blockquote>
-
-<p><span id="14.4"></span></p>
-
-<h3 id="14-4-wordpress搬家脚本">#14.4 WordPress搬家脚本</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="144-wordpress搬家脚本">#14.4 WordPress搬家脚本</h3>
 <p><em>使用此脚本前请务必提前做好备份（SnapShot），万一搬家出错，还有得恢复！！</em></p>
-
 <p>如果你像博主一样，厌倦了每次搬家都要一遍一遍的执行压缩、传输、解压以及添加网站等操作，尤其是当VPS上有多个域名时。那么，这里有个高（偷）效（懒）的方法。</p>
-
 <p>博主写了一个自动迁移WordPress的Shell脚本（WP-Migration），在你新的VPS执行就可以。但前提是你的新旧两个VPS系统最好一致，比如同为CentOS6.x或者CentOS7.x。否则，可能出现未知的问题（博主猜测）。</p>
-
 <p>优点：不需要用lnmp命令提前添加好域名和数据库，全部从旧的VPS上直接复制。</p>
-
 <p>博主水平有限，Linux勉强算是入门。故而把源码贴在下面，也希望有路过的大神能提点意见和建议。</p>
-
 <p>脚本源码：</p>
-
 <p># 记录程序起始时间
 echo &ldquo;[Starting time: <code>date +'%Y-%m-%d %H:%M:%S'</code>]&rdquo;
 time_start=$(date +%s)</p>
-
 <p># 停止lnmp
 lnmp stop</p>
-
 <p># 输入旧的VPS地址和端口
-read -p &ldquo;Please enter your Old VPS IP (e.g. 58.58.58.58): &ldquo; old_vps_ip
-read -p &ldquo;Please enter your Old VPS SSH Port (e.g. 58585): &ldquo; old_ssh_port</p>
-
+read -p &ldquo;Please enter your Old VPS IP (e.g. 58.58.58.58): &quot; old_vps_ip
+read -p &ldquo;Please enter your Old VPS SSH Port (e.g. 58585): &quot; old_ssh_port</p>
 <p># 迁移旧的VPS上添加的[所有]网站/域名（形如：xxx.com）
 echo -e &ldquo;\033[32;49;1m[#1 Copy the WWWROOT files from your Old VPS now.]\033[39;49;0m&rdquo;
 scp -P $old_ssh_port -rC root@$old_vps_ip:/home/wwwroot/*.com /home/wwwroot/</p>
-
 <p># 更改网站权限
 chmod -R 755 /home/wwwroot
 chown -R www /home/wwwroot</p>
-
 <p># 迁移旧的VPS上添加的[所有]网站的数据库（先备份本机数据库）
 echo -e &ldquo;\033[32;49;1m[#2 Copy the DATABASE files from your Old VPS now.]\033[39;49;0m&rdquo;
 cp -r /usr/local/mysql/var /usr/local/mysql/var.old
 scp -P $old_ssh_port -rC root@$old_vps_ip:/usr/local/mysql/var/ /usr/local/mysql/</p>
-
 <p># 更改数据库权限
 chown -R mysql:mysql /usr/local/mysql/var</p>
-
 <p># 迁移旧的VPS上Apache中绑定的[所有]域名设置（先备份本机域名设置）
 echo -e &ldquo;\033[32;49;1m[#3 Copy the HTTPD files from your Old VPS now.]\033[39;49;0m&rdquo;
 cp -r /usr/local/apache/conf /usr/local/apache/conf.old
 scp -P $old_ssh_port -rC root@$old_vps_ip:/usr/local/apache/conf/ /usr/local/apache/</p>
-
 <p># 旧的VPS上网站是否启用了Let&rsquo;s Encrypt免费的SSL证书
 echo -e &ldquo;\033[32;49;1m[#4 Copy the Let&rsquo;s Encrypt files from your Old VPS now.]\033[39;49;0m&rdquo;
-read -p &ldquo;Did you set up the Let&rsquo;s Encrypt SSL in your Old VPS before? (yes or no): &ldquo; letsencrypt
+read -p &ldquo;Did you set up the Let&rsquo;s Encrypt SSL in your Old VPS before? (yes or no): &quot; letsencrypt
 if [ &ldquo;$letsencrypt&rdquo; = &ldquo;yes&rdquo; ] || [ &ldquo;$letsencrypt&rdquo; = &ldquo;y&rdquo; ]; then
 scp -P $old_ssh_port -rC root@$old_vps_ip:/etc/letsencrypt /etc/
 else
 echo &ldquo;[Skipping.]&rdquo;
 fi</p>
-
 <p># 重启lnmp
 lnmp start</p>
-
 <p># 计算程序耗时并输出
 echo &ldquo;[End time: <code>date +'%Y-%m-%d %H:%M:%S'</code>]&rdquo;
 time_end=$(date +%s)
 echo -e &ldquo;\033[32;49;1m[Successfully done! Command takes $((time_end-time_start)) seconds.]\033[39;49;0m&rdquo;</p>
-
 <p># 退出
 exit 0</p>
-
 <p><strong>使用方法：</strong></p>
-
 <p>在你<strong>新的VPS上</strong>依次执行以下命令：</p>
-
 <p><code># cd ~ &amp;&amp; wget https://www.seoimo.com/wp-content/shells/wp-migration.sh# chmod +x wp-migration.sh &amp;&amp; ./wp-migration.sh</code></p>
-
 <p>脚本执行期间需要输入3-4次旧VPS的SSH访问密码，建议提前写好。用时直接复制粘贴，免得出错。</p>
-
 <p>脚本执行完成，显示如下字样，说明WordPress迁移成功。否则，本脚本可能在你的系统上无法正常使用，建议按前面的常规方法搬家。</p>
-
 <p>Starting LAMP&hellip;
 start apache&hellip; done
 Starting MySQL SUCCESS!
 [Successfully done! Command takes 105 seconds.]</p>
-
 <p>关于SSL证书的说明</p>
-
 <p>如果在旧的VPS上已经安装了免费的 <code>Let's Encrypt</code> 证书，但新的VPS上从未安装过（包括为其他域名），那么搬家之后，建议在新的VPS上按照如下命令添加证书，以便安装相关依赖。</p>
-
 <p><code># lnmp ssl add</code></p>
-
 <p>但是，倘若旧的VPS上已经为网站添加了证书，且新的VPS上也成功安装过 <code>Let's Encrypt</code> 证书（包括为其他域名），即系统上已经安装了相关依赖。</p>
-
 <p>那么，搬家之后，证书通常不会出现问题，但自动续期时可能会显示如下错误：</p>
-
 <p>expected /etc/letsencrypt/live/seoimo.com/cert.pem to be a symlink
 Renewal configuration file /etc/letsencrypt/renewal/seoimo.com.conf is broken. Skipping.</p>
-
 <p>这是因为在复制过程中，相关软链接（类似于快捷方式）会出现问题。因此，需要重建一下 <code>cert</code> 相关软链接：</p>
-
 <p><code># cd ~ &amp;&amp; wget https://www.seoimo.com/wp-content/shells/cert-symlink.sh# chmod +x cert-symlink.sh &amp;&amp; ./cert-symlink.sh</code></p>
-
 <p>显示提示后，输入已安装 <code>Let's Encrypt</code> 证书的域名即可。</p>
-
 <p>脚本执行完成后，再试着手动更新下证书，看看是否可以正常续期：</p>
-
 <p><code># /bin/certbot renew --**renew-by-default** --disable-hook-validation --renew-hook &quot;/etc/init.d/httpd restart&quot;</code></p>
-
 <p>如仍提示续期失败，你可能需要手动重新安装证书：<code># lnmp ssl add</code></p>
-
 <p><em>附上 cert-symlink.sh 脚本源码如下：</em></p>
-
 <p># 记录程序起始时间
 echo &ldquo;[Starting time: <code>date +'%Y-%m-%d %H:%M:%S'</code>]&rdquo;
 time_start=$(date +%s)</p>
-
 <p># 输入重建Symlink链接的网站/域名（形如：xxx.com）
-read -p &ldquo;Please enter your SSL domain (e.g. xxx.com): &ldquo; cert_domain</p>
-
+read -p &ldquo;Please enter your SSL domain (e.g. xxx.com): &quot; cert_domain</p>
 <p># 重建Symlink链接
 rm -rf /etc/letsencrypt/live/$cert_domain/*.pem
 ln -s /etc/letsencrypt/archive/$cert_domain/fullchain1.pem /etc/letsencrypt/live/$cert_domain/fullchain.pem
 ln -s /etc/letsencrypt/archive/$cert_domain/cert1.pem /etc/letsencrypt/live/$cert_domain/cert.pem
 ln -s /etc/letsencrypt/archive/$cert_domain/chain1.pem /etc/letsencrypt/live/$cert_domain/chain.pem
 ln -s /etc/letsencrypt/archive/$cert_domain/privkey1.pem /etc/letsencrypt/live/$cert_domain/privkey.pem</p>
-
 <p># 计算程序耗时并输出
 echo &ldquo;[End time: <code>date +'%Y-%m-%d %H:%M:%S'</code>]&rdquo;
 time_end=$(date +%s)
 echo -e &ldquo;\033[32;49;1m[Successfully done! Command takes $((time_end-time_start)) seconds.]\033[39;49;0m&rdquo;</p>
-
 <p># 退出
 exit 0</p>
-
-<p><span id="14.5"></span></p>
-
-<h3 id="14-5-备份小技巧">#14.5 备份小技巧</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="145-备份小技巧">#14.5 备份小技巧</h3>
 <p>上文提到过，备份后的文件可以通过 FTP 软件下载到本地保存，也可以通过 SCP 命令上传到其他VPS上备份。</p>
-
 <p>那么，哪个方法更好呢？</p>
-
 <p>看个人喜好了。不过博主倾向于后者，即 scp 到其他VPS上备份保存。因为一旦你的网站出现问题，重新开VPS和从本地上传的话，一般只有几十到几百KB/s的上传速度，比较慢。而VPS之间的 scp 传速则快得多，通常几十MB/s的速度，简直天壤之别。</p>
-
 <p>那是不是意味着需要额外单独买个VPS作为备份？</p>
-
 <p>条件允许当然更好。但是，也不一定需要。因为Vultr自带免费的 &ldquo;Snapshots&rdquo; 功能。</p>
-
 <p>虽然搬瓦工（和Vultr）很不错，但鸡蛋都放在一个篮子里总是不够安全的。博主的做法是：</p>
+<p>在Vultr上另开一个机子（比如
 
-<p>在Vultr上另开一个机子（比如<a href="http://www.seoimo.com/go/vultr-basic/">最便宜的月付$2.5</a>），然后按本文教程搭建好本站一毛一样的站点。然后 &ldquo;Snapshots&rdquo;，之后把新开的VPS销毁。这样一来，即使不再新开VPS，后台依然保留备份的 &ldquo;Snapshots&rdquo; 。</p>
-
+<a href="http://www.seoimo.com/go/vultr-basic/"  target="_blank">最便宜的月付$2.5</a>），然后按本文教程搭建好本站一毛一样的站点。然后 &ldquo;Snapshots&rdquo;，之后把新开的VPS销毁。这样一来，即使不再新开VPS，后台依然保留备份的 &ldquo;Snapshots&rdquo; 。</p>
 <p>博主需要做的就是定期花几毛钱重开VPS（每月1-2次），恢复（Restoring），然后把备份上传过来，再重新 &ldquo;Snapshots&rdquo; 后销毁。</p>
-
 <p>这样，一旦由于某些原因本站甚至搬瓦工出了问题，博客也可以在Vultr上很快恢复访问。</p>
-
 <p>Snapshots-Restoring的具体步骤：</p>
-
 <p>登录Vultr → 左侧Servers → 选中VPS → 上面Snapshot → 右下Restore-Snapshot</p>
+<p>
 
-<p><a href="https://www.seoimo.com/wp-content/uploads/2016/11/restore-snapshot-how-w1150.png"><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/restore-snapshot-how-w640.png" alt="恢复VPS快照" /></a></p>
+<a href="https://www.seoimo.com/wp-content/uploads/2016/11/restore-snapshot-how-w1150.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/restore-snapshot-how-w640.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/restore-snapshot-how-w640.png" alt="恢复VPS快照" /></a>
+</span>
 
-<p><span id="15"></span></p>
-
+</span></a></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h2 id="15写在最后">#15写在最后</h2>
-
 <p>到这里，关于在月付2.5美元（甚至更少）的便宜VPS上搭建LAMP环境，进而安装WordPress建站并进行主要的优化配置已全部完成。是不是突然觉得豁然开朗？</p>
-
 <p>当然，在搭建完博客后，你也可以开启 <code>HTTPS</code> 访问。这不仅仅是为了跟风装13，其对关键词排名也确有一定的帮助。</p>
-
 <p>博客安装免费SSL证书：<a href="https://www.seoimo.com/lamp-ssl/">https://www.seoimo.com/lamp-ssl/</a></p>
-
 <p>其实，把网站安装成功只是万里长征开始的第一步，后面还要涉及WordPress内部的优化和加速、博客的内容建设、运营管理、安全防护等等，这在以后的文章中会继续和大家分享。</p>
-
 <p>博主以为，一个优秀的博客，就像小树苗一样，需要博主长期精心的培育和维护，才能最终长成参天大树。</p>
-
 <p>不过，千万要记得：一定要养成定期备份的好习惯！</p>
-
 <p>在安装过程中，如遇到问题或对本文有好的想法或建议，请在下面留言评论。</p>
-
 <p>倘若本文对你有所帮助，欢迎分享传播。举手之劳，也许就能够帮助更多想尝试VPS建站的朋友们少走一些弯路。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/104/>搭建WordPress博客网站</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-10<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/104/ target="_blank" >https://3mile.github.io/archives/104/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -1778,7 +1577,7 @@ exit 0</p>
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -1823,24 +1622,6 @@ exit 0</p>
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/104/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/104/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/104/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -1859,9 +1640,11 @@ exit 0</p>
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -1899,24 +1682,6 @@ exit 0</p>
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/104/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/104/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/104/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -1935,24 +1700,6 @@ exit 0</p>
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F104%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F104%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F104%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -1968,7 +1715,7 @@ exit 0</p>
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -1996,18 +1743,28 @@ exit 0</p>
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

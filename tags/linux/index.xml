@@ -6,10 +6,61 @@
     <description>Recent content in Linux on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 19 Mar 2019 14:09:30 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2020 21:22:17 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Winscp普通用户上传文件权限解决方案</title>
+      <link>https://3mile.github.io/archives/2020/0415212217/</link>
+      <pubDate>Wed, 15 Apr 2020 21:22:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0415212217/</guid>
+      <description>&lt;p&gt;为了保服务器的安全，我们禁止了服务器的ROOT用户，然后创建一个自己知道的用户名和密码。这样相对只使用ROOT用户安全一些，但是在设置普通用户之后，当然也禁止掉ROOT用户登入，我们再去用普通用户登入WINSCP文件管理的时候会出现权限问题，无法上传文件。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何列出和删除UFW防火墙规则</title>
+      <link>https://3mile.github.io/archives/2020/0415131301/</link>
+      <pubDate>Wed, 15 Apr 2020 13:13:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0415131301/</guid>
+      <description>&lt;p&gt;UFW代表“不复杂的防火墙”，是用于管理iptables（netfilter）防火墙规则的用户友好前端。它是
+
+&lt;a href=&#34;https://www.myfreax.com/how-to-setup-a-firewall-with-ufw-on-ubuntu-18-04/&#34;  target=&#34;_blank&#34;&gt; Ubuntu &lt;/a&gt;的默认防火墙配置工具，也可用于其他流行的Linux发行版，例如
+
+&lt;a href=&#34;https://www.myfreax.com/how-to-setup-a-firewall-with-ufw-on-debian-9/&#34;  target=&#34;_blank&#34;&gt; Debian &lt;/a&gt;和Arch Linux。&lt;/p&gt;
+&lt;p&gt;在本教程中，我们将介绍如何列出和删除UFW防火墙规则。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu安装Mariadb</title>
+      <link>https://3mile.github.io/archives/2020/0415105803/</link>
+      <pubDate>Wed, 15 Apr 2020 10:58:03 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0415105803/</guid>
+      <description>首先卸载apt安装的Mariadb 第一步 sudo apt-get remove mysql-* 如果shell使用的是zsh,会出现如下错误 zsh: no matches found: mysql-* 具体原因： 因为zsh缺省情况下始终自己</description>
+    </item>
+    
+    <item>
+      <title>Rsync增量备份_备忘</title>
+      <link>https://3mile.github.io/archives/2020/0411091537/</link>
+      <pubDate>Sat, 11 Apr 2020 09:15:37 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0411091537/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;rsync 全名 Remote Sync，是类 unix 系统下的数据镜像备份工具。可以方便的实现本地，远程备份，rsync 提供了丰富的选项来控制其行为。rsync 优于其他工具的重要一点就是支持增量备份。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>利用pv命令监视数据的处理进度</title>
+      <link>https://3mile.github.io/archives/2020/0410095448/</link>
+      <pubDate>Fri, 10 Apr 2020 09:54:48 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0410095448/</guid>
+      <description>&lt;p&gt;在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>如何在Ubuntu 18.04设置NFS挂载</title>
@@ -53,7 +104,7 @@
       <pubDate>Wed, 04 Apr 2018 13:18:03 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/106/</guid>
-      <description>[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机</description>
+      <description>一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机生</description>
     </item>
     
     <item>

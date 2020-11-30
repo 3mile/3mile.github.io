@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="一. 首次编译 1. 首先安装依赖 2. 下载源码 3. 更新 4. 推荐的必要工具 5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网 6. 编译 二. 再次编译 三. 自">
@@ -87,7 +87,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -142,7 +142,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -294,345 +294,409 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<ul>
-<li><a href="#%e4%b8%80-%e9%a6%96%e6%ac%a1%e7%bc%96%e8%af%91">一. 首次编译</a>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一-首次编译">一. 首次编译</a>
+      <ul>
+        <li><a href="#1-首先安装依赖">1. 首先安装依赖</a></li>
+        <li><a href="#2-下载源码">2. 下载源码</a></li>
+        <li><a href="#3-更新">3. 更新</a></li>
+        <li><a href="#4-推荐的必要工具">4. 推荐的必要工具</a></li>
+        <li><a href="#5-预先下载dl库可以避免下载造成的编译失败全局科学上网">5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网</a></li>
+        <li><a href="#6-编译">6. 编译</a></li>
+      </ul>
+    </li>
+    <li><a href="#二-再次编译">二. 再次编译</a></li>
+    <li><a href="#三-自定义lede-固件">三. 自定义Lede 固件</a>
+      <ul>
+        <li><a href="#修改zzz-default-settings文件">修改zzz-default-settings文件</a>
+          <ul>
+            <li><a href="#修改hostname">修改hostname</a></li>
+            <li><a href="#解封不可描述">解封不可描述</a></li>
+            <li><a href="#设置-wan">设置 Wan</a></li>
+            <li><a href="#修改lan">修改Lan</a></li>
+          </ul>
+        </li>
+        <li><a href="#固化-etcconfig">固化 <code>/etc/config</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#安装完后要做的事">安装完后要做的事</a>
+      <ul>
+        <li><a href="#系统管理权修改密码">系统=&gt;管理权=&gt;修改密码</a></li>
+        <li><a href="#网络接口wan-改pppoe">网络=&gt;接口=&gt;wan 改pppoe</a></li>
+        <li><a href="#增加iptv">增加iptv</a></li>
+        <li><a href="#修改lan-1">修改lan</a></li>
+        <li><a href="#dhcp设置">dhcp设置</a></li>
+        <li><a href="#防火墙">防火墙</a></li>
+        <li><a href="#服务">服务</a>
+          <ul>
+            <li><a href="#shadowsocksr-plus">ShadowSocksR Plus+:</a></li>
+            <li><a href="#广告屏蔽大师-plus">广告屏蔽大师 Plus+</a></li>
+            <li><a href="#动态dns">动态DNS</a>
+              <ul>
+                <li><a href="#设置f3322org">设置f3322.org</a></li>
+                <li><a href="#阿里ddns">阿里DDNS</a></li>
+              </ul>
+            </li>
+            <li><a href="#udpxy">UDPXY</a></li>
+            <li><a href="#网络存储">网络存储</a>
+              <ul>
+                <li><a href="#网络共享">网络共享:</a></li>
+                <li><a href="#transmission">Transmission</a></li>
+              </ul>
+            </li>
+            <li><a href="#修改软件源">修改软件源</a></li>
+          </ul>
+        </li>
+        <li><a href="#最后设置dhcp">最后设置dhcp</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
-<ul>
-<li><a href="#1-%e9%a6%96%e5%85%88%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96">1. 首先安装依赖</a></li>
-<li><a href="#2-%e4%b8%8b%e8%bd%bd%e6%ba%90%e7%a0%81">2. 下载源码</a></li>
-<li><a href="#3-%e6%9b%b4%e6%96%b0">3. 更新</a></li>
-<li><a href="#4-%e6%8e%a8%e8%8d%90%e7%9a%84%e5%bf%85%e8%a6%81%e5%b7%a5%e5%85%b7">4. 推荐的必要工具</a></li>
-<li><a href="#5-%e9%a2%84%e5%85%88%e4%b8%8b%e8%bd%bddl%e5%ba%93%e5%8f%af%e4%bb%a5%e9%81%bf%e5%85%8d%e4%b8%8b%e8%bd%bd%e9%80%a0%e6%88%90%e7%9a%84%e7%bc%96%e8%af%91%e5%a4%b1%e8%b4%a5%e5%85%a8%e5%b1%80%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91">5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网</a></li>
-<li><a href="#6-%e7%bc%96%e8%af%91">6. 编译</a></li>
-</ul></li>
-<li><a href="#%e4%ba%8c-%e5%86%8d%e6%ac%a1%e7%bc%96%e8%af%91">二. 再次编译</a></li>
-<li><a href="#%e4%b8%89-%e8%87%aa%e5%ae%9a%e4%b9%89lede-%e5%9b%ba%e4%bb%b6">三. 自定义Lede 固件</a>
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <ul>
+<li>
 
+<a href="#%e4%b8%80-%e9%a6%96%e6%ac%a1%e7%bc%96%e8%af%91"  >一. 首次编译</a>
 <ul>
-<li><a href="#%e4%bf%ae%e6%94%b9zzz-default-settings%e6%96%87%e4%bb%b6">修改zzz-default-settings文件</a></li>
-<li><a href="#%e4%bf%ae%e6%94%b9hostname">修改hostname</a></li>
-<li><a href="#%e8%a7%a3%e5%b0%81%e4%b8%8d%e5%8f%af%e6%8f%8f%e8%bf%b0">解封不可描述</a></li>
-<li><a href="#%e8%ae%be%e7%bd%ae-wan">设置 Wan</a></li>
-<li><a href="#%e4%bf%ae%e6%94%b9lan">修改Lan</a></li>
-<li><a href="#%e5%9b%ba%e5%8c%96-etcconfig">固化 <code>/etc/config</code></a></li>
-</ul></li>
-<li><a href="#%e5%ae%89%e8%a3%85%e5%ae%8c%e5%90%8e%e8%a6%81%e5%81%9a%e7%9a%84%e4%ba%8b">安装完后要做的事</a>
+<li>
 
-<ul>
-<li><a href="#%e7%b3%bb%e7%bb%9f%e7%ae%a1%e7%90%86%e6%9d%83%e4%bf%ae%e6%94%b9%e5%af%86%e7%a0%81">系统=&gt;管理权=&gt;修改密码</a></li>
-<li><a href="#%e7%bd%91%e7%bb%9c%e6%8e%a5%e5%8f%a3wan-%e6%94%b9pppoe">网络=&gt;接口=&gt;wan 改pppoe</a></li>
-<li><a href="#%e5%a2%9e%e5%8a%a0iptv">增加iptv</a></li>
-<li><a href="#%e4%bf%ae%e6%94%b9lan">修改lan</a></li>
-<li><a href="#dhcp%e8%ae%be%e7%bd%ae">dhcp设置</a></li>
-<li><a href="#%e9%98%b2%e7%81%ab%e5%a2%99">防火墙</a></li>
-<li><a href="#%e6%9c%8d%e5%8a%a1">服务</a></li>
-<li><a href="#shadowsocksr-plus">ShadowSocksR Plus+:</a></li>
-<li><a href="#%e5%8a%a8%e6%80%81dns">动态DNS</a>
+<a href="#1-%e9%a6%96%e5%85%88%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96"  >1. 首先安装依赖</a></li>
+<li>
 
-<ul>
-<li><a href="#%e8%ae%be%e7%bd%aef3322org">设置f3322.org</a></li>
-<li><a href="#%e9%98%bf%e9%87%8cddns">阿里DDNS</a></li>
-</ul></li>
-<li><a href="#udpxy">UDPXY</a></li>
-<li><a href="#%e7%bd%91%e7%bb%9c%e5%ad%98%e5%82%a8">网络存储</a>
+<a href="#2-%e4%b8%8b%e8%bd%bd%e6%ba%90%e7%a0%81"  >2. 下载源码</a></li>
+<li>
 
-<ul>
-<li><a href="#%e7%bd%91%e7%bb%9c%e5%85%b1%e4%ba%ab">网络共享:</a></li>
-<li><a href="#transmission">Transmission</a></li>
-</ul></li>
-<li><a href="#%e4%bf%ae%e6%94%b9%e8%bd%af%e4%bb%b6%e6%ba%90">修改软件源</a></li>
-<li><a href="#%e6%9c%80%e5%90%8e%e8%ae%be%e7%bd%aedhcp">最后设置dhcp</a></li>
-</ul></li>
+<a href="#3-%e6%9b%b4%e6%96%b0"  >3. 更新</a></li>
+<li>
+
+<a href="#4-%e6%8e%a8%e8%8d%90%e7%9a%84%e5%bf%85%e8%a6%81%e5%b7%a5%e5%85%b7"  >4. 推荐的必要工具</a></li>
+<li>
+
+<a href="#5-%e9%a2%84%e5%85%88%e4%b8%8b%e8%bd%bddl%e5%ba%93%e5%8f%af%e4%bb%a5%e9%81%bf%e5%85%8d%e4%b8%8b%e8%bd%bd%e9%80%a0%e6%88%90%e7%9a%84%e7%bc%96%e8%af%91%e5%a4%b1%e8%b4%a5%e5%85%a8%e5%b1%80%e7%a7%91%e5%ad%a6%e4%b8%8a%e7%bd%91"  >5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网</a></li>
+<li>
+
+<a href="#6-%e7%bc%96%e8%af%91"  >6. 编译</a></li>
 </ul>
+</li>
+<li>
 
+<a href="#%e4%ba%8c-%e5%86%8d%e6%ac%a1%e7%bc%96%e8%af%91"  >二. 再次编译</a></li>
+<li>
+
+<a href="#%e4%b8%89-%e8%87%aa%e5%ae%9a%e4%b9%89lede-%e5%9b%ba%e4%bb%b6"  >三. 自定义Lede 固件</a>
+<ul>
+<li>
+
+<a href="#%e4%bf%ae%e6%94%b9zzz-default-settings%e6%96%87%e4%bb%b6"  >修改zzz-default-settings文件</a>
+<ul>
+<li>
+
+<a href="#%e4%bf%ae%e6%94%b9hostname"  >修改hostname</a></li>
+<li>
+
+<a href="#%e8%a7%a3%e5%b0%81%e4%b8%8d%e5%8f%af%e6%8f%8f%e8%bf%b0"  >解封不可描述</a></li>
+<li>
+
+<a href="#%e8%ae%be%e7%bd%ae-wan"  >设置 Wan</a></li>
+<li>
+
+<a href="#%e4%bf%ae%e6%94%b9lan"  >修改Lan</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#%e5%9b%ba%e5%8c%96-etcconfig"  >固化 <code>/etc/config</code></a></li>
+</ul>
+</li>
+<li>
+
+<a href="#%e5%ae%89%e8%a3%85%e5%ae%8c%e5%90%8e%e8%a6%81%e5%81%9a%e7%9a%84%e4%ba%8b"  >安装完后要做的事</a>
+<ul>
+<li>
+
+<a href="#%e7%b3%bb%e7%bb%9f%e7%ae%a1%e7%90%86%e6%9d%83%e4%bf%ae%e6%94%b9%e5%af%86%e7%a0%81"  >系统=&gt;管理权=&gt;修改密码</a></li>
+<li>
+
+<a href="#%e7%bd%91%e7%bb%9c%e6%8e%a5%e5%8f%a3wan-%e6%94%b9pppoe"  >网络=&gt;接口=&gt;wan 改pppoe</a></li>
+<li>
+
+<a href="#%e5%a2%9e%e5%8a%a0iptv"  >增加iptv</a></li>
+<li>
+
+<a href="#%e4%bf%ae%e6%94%b9lan"  >修改lan</a></li>
+<li>
+
+<a href="#dhcp%e8%ae%be%e7%bd%ae"  >dhcp设置</a></li>
+<li>
+
+<a href="#%e9%98%b2%e7%81%ab%e5%a2%99"  >防火墙</a></li>
+<li>
+
+<a href="#%e6%9c%8d%e5%8a%a1"  >服务</a>
+<ul>
+<li>
+
+<a href="#shadowsocksr-plus"  >ShadowSocksR Plus+:</a></li>
+<li>
+
+<a href="#%e5%8a%a8%e6%80%81dns"  >动态DNS</a>
+<ul>
+<li>
+
+<a href="#%e8%ae%be%e7%bd%aef3322org"  >设置f3322.org</a></li>
+<li>
+
+<a href="#%e9%98%bf%e9%87%8cddns"  >阿里DDNS</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#udpxy"  >UDPXY</a></li>
+<li>
+
+<a href="#%e7%bd%91%e7%bb%9c%e5%ad%98%e5%82%a8"  >网络存储</a>
+<ul>
+<li>
+
+<a href="#%e7%bd%91%e7%bb%9c%e5%85%b1%e4%ba%ab"  >网络共享:</a></li>
+<li>
+
+<a href="#transmission"  >Transmission</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#%e4%bf%ae%e6%94%b9%e8%bd%af%e4%bb%b6%e6%ba%90"  >修改软件源</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#%e6%9c%80%e5%90%8e%e8%ae%be%e7%bd%aedhcp"  >最后设置dhcp</a></li>
+</ul>
+</li>
+</ul>
 <blockquote>
 <p>我自己使用的是ubuntu 18.04编译，也可以用mint linux 19.01编译。反正都是相同的内核。
 不要用 root 用户 git 和编译！！！</p>
 </blockquote>
-
 <h2 id="一-首次编译">一. 首次编译</h2>
-
 <h3 id="1-首先安装依赖">1. 首先安装依赖</h3>
-
-<pre><code class="language-bash">命令行输入 sudo apt-get update ，然后输入
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">命令行输入 sudo apt-get update ，然后输入
 sudo apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint
-</code></pre>
-
-<h3 id="2-下载源码">2. 下载源码</h3>
-
-<pre><code>   git clone https://github.com/coolsnowwolf/lede
-</code></pre>
-
-<h3 id="3-更新">3. 更新</h3>
-
-<pre><code class="language-bash">   ./scripts/feeds update -a 
-   ./scripts/feeds install -a
-   make menuconfig 
-</code></pre>
-
-<h3 id="4-推荐的必要工具">4. 推荐的必要工具</h3>
-
-<pre><code class="language-bash">   ipv6help
-   mwan3
-   usbutils和pciutils
-   unzip
-   mii-tool
-</code></pre>
-
-<h3 id="5-预先下载dl库-可以避免下载造成的编译失败-全局科学上网">5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网</h3>
-
-<pre><code>   make download V=s
-</code></pre>
-
-<h3 id="6-编译">6. 编译</h3>
-
-<pre><code>   make -j5 V=s （#n=线程数+1，例如4线程的I5填-j5，开始编译）
-</code></pre>
-
-<h2 id="二-再次编译">二. 再次编译</h2>
-
-<pre><code class="language-bash">cd lede                                                          #进入LEDE目录
-git pull                                                         #同步更新大雕源码
-./scripts/feeds update -a &amp;&amp; ./scripts/feeds install -a          #更新FEEDS
+</code></pre></div><h3 id="2-下载源码">2. 下载源码</h3>
+<pre><code>git clone https://github.com/coolsnowwolf/lede
+</code></pre><h3 id="3-更新">3. 更新</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./scripts/feeds update -a 
+./scripts/feeds install -a
+make menuconfig 
+</code></pre></div><h3 id="4-推荐的必要工具">4. 推荐的必要工具</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ipv6help
+mwan3
+usbutils和pciutils
+unzip
+mii-tool
+</code></pre></div><h3 id="5-预先下载dl库可以避免下载造成的编译失败全局科学上网">5. 预先下载dl库，可以避免下载造成的编译失败。全局科学上网</h3>
+<pre><code>make download V=s
+</code></pre><h3 id="6-编译">6. 编译</h3>
+<pre><code>make -j5 V=s （#n=线程数+1，例如4线程的I5填-j5，开始编译）
+</code></pre><h2 id="二-再次编译">二. 再次编译</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd lede                                                          <span style="color:#75715e">#进入LEDE目录</span>
+git pull                                                         <span style="color:#75715e">#同步更新大雕源码</span>
+./scripts/feeds update -a <span style="color:#f92672">&amp;&amp;</span> ./scripts/feeds install -a          <span style="color:#75715e">#更新FEEDS</span>
 make clean
-rm -rf ./tmp &amp;&amp; rm -rf .config                                   #清除编译配置和缓存
-make menuconfig                                                  #进入编译配置菜单
-make download V=s 
-make -j2 V=s                                                     #n=线程数+1，例如4线程的I5填-j5，开始编译
-</code></pre>
-
-<h2 id="三-自定义lede-固件">三. 自定义Lede 固件</h2>
-
+rm -rf ./tmp <span style="color:#f92672">&amp;&amp;</span> rm -rf .config                                   <span style="color:#75715e">#清除编译配置和缓存</span>
+make menuconfig                                                  <span style="color:#75715e">#进入编译配置菜单</span>
+make download V<span style="color:#f92672">=</span>s 
+make -j2 V<span style="color:#f92672">=</span>s                                                     <span style="color:#75715e">#n=线程数+1，例如4线程的I5填-j5，开始编译</span>
+</code></pre></div><h2 id="三-自定义lede-固件">三. 自定义Lede 固件</h2>
 <h3 id="修改zzz-default-settings文件">修改zzz-default-settings文件</h3>
-
 <p>修改主机名和ssr-plus彩蛋，/lede/package/lean/default-settings/files/zzz-default-settings</p>
-
 <h4 id="修改hostname">修改hostname</h4>
-
 <p>在zzz文件中uci set</p>
-
 <p>system.@system[0].timezone=CST-8后增加</p>
-
-<pre><code class="language-bash">uci set system.@system[0].hostname=Openwrt-x86
-</code></pre>
-
-<p>Openwrt-x86可以改为你想要的名字</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uci set system.@system<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span>.hostname<span style="color:#f92672">=</span>Openwrt-x86
+</code></pre></div><p>Openwrt-x86可以改为你想要的名字</p>
 <h4 id="解封不可描述">解封不可描述</h4>
-
 <p>解封ssr彩蛋，在该文件exit 0 上方适当的位置加上下列命令，安装后可以直接看到ssr-plus</p>
-
-<pre><code class="language-bash">echo 0xDEADBEEF &gt; /etc/config/google_fu_mode
-</code></pre>
-
-<h4 id="设置-wan">设置 Wan</h4>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo 0xDEADBEEF &gt; /etc/config/google_fu_mode
+</code></pre></div><h4 id="设置-wan">设置 Wan</h4>
 <p>如果仅是自用固件，可以在该文件exit 0 上方适当的位置加上加入下列命令，设置Wan网口，添加路由器pppoe拨号账户密码，装好即可上网</p>
-
-<pre><code class="language-bash">uci set network.wan.proto='pppoe'
-uci set network.wan.username='宽带账号'
-uci set network.wan.password='宽带密码'
-uci set network.wan.ifname='eth3'   //我的wan接口是eth3，你要根据自己的路由器情况改
-uci set network.wan6.ifname='eth3'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uci set network.wan.proto<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pppoe&#39;</span>
+uci set network.wan.username<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;宽带账号&#39;</span>
+uci set network.wan.password<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;宽带密码&#39;</span>
+uci set network.wan.ifname<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;eth3&#39;</span>   //我的wan接口是eth3，你要根据自己的路由器情况改
+uci set network.wan6.ifname<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;eth3&#39;</span>
 uci commit network   
-</code></pre>
-
-<h4 id="修改lan">修改Lan</h4>
-
+</code></pre></div><h4 id="修改lan">修改Lan</h4>
 <p>想要修改管理ip地址和lan口配置，可以在该文件exit 0 上方适当的位置加上加上下列命令</p>
-
-<pre><code class="language-bash">uci set network.lan.ipaddr='192.168.0.8'    //改成你想要默认的管理ip
-uci set network.lan.proto='static'          //wan口静态IP方式
-uci set network.lan.type='bridge'           //设置桥接
-uci set network.lan.ifname='eth0 eth1 eth2 eth4 eth5' //根据自己的路由器情况改Lan口 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">uci set network.lan.ipaddr<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;192.168.0.8&#39;</span>    //改成你想要默认的管理ip
+uci set network.lan.proto<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;static&#39;</span>          //wan口静态IP方式
+uci set network.lan.type<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bridge&#39;</span>           //设置桥接
+uci set network.lan.ifname<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;eth0 eth1 eth2 eth4 eth5&#39;</span> //根据自己的路由器情况改Lan口 
 uci commit network
-</code></pre>
-
-<h3 id="固化-etc-config">固化 <code>/etc/config</code></h3>
-
+</code></pre></div><h3 id="固化-etcconfig">固化 <code>/etc/config</code></h3>
 <p>（编译保存你的配置）files大法：实际就是把现在的配置以文件的形式固化到新固件里。这样做的好处就是升级不需要保留配置，或者恢复出厂设置，缺省值就是你自己设置好的配置
 固化某配置教程例子：
 1.提取路由固件下的<code>\etc\config\network</code>
 2.在编译机LEDE根目录下创建files目录
 3.拷贝到 <code>\files\etc\config\network</code>
 这样编译完，network就是你自己配置好的network，注意提取的文件路径和权限要一致</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">\etc\config                                      各个LUCI配置</span>
+<span style="color:#a6e22e">\etc\gfwlist                                     gfwlist目录</span>
+<span style="color:#a6e22e">\etc\shadow                                      登录密码</span>
+<span style="color:#a6e22e">\etc\firewall.user                               自定义防火墙规则</span>
+<span style="color:#a6e22e">\usr\share\adbyby                                adbyby里的相关规则和设置</span>
+<span style="color:#a6e22e">\usr\lib\lua\luci\view\admin_status\index.htm    主页样式文件，温度显示等等</span>
 
-<pre><code class="language-ini">\etc\config                                      各个LUCI配置
-\etc\gfwlist                                     gfwlist目录
-\etc\shadow                                      登录密码
-\etc\firewall.user                               自定义防火墙规则
-\usr\share\adbyby                                adbyby里的相关规则和设置
-\usr\lib\lua\luci\view\admin_status\index.htm    主页样式文件，温度显示等等
-
-</code></pre>
-
-<blockquote>
+</code></pre></div><blockquote>
 <p>X86架构固件的index，默认被大雕files强奸了，自己到源码里替换/lede/package/lean/autocore/files/index.htm
 如果无效请make clean或者删除/lede/build_dir/target架构/autocore-1（编译其他失败同理）</p>
 </blockquote>
-
 <p>其中，常用的自定义文件包括以下：</p>
-
-<pre><code class="language-bash">etc/config/system #里面有主机名，时区，ntp时间服务器设置
-etc/config/network #网络设置
-etc/config/dhcp    #如果对dhcp有分配ip
-etc/config/ddns    #ddns设置
-etc/config/aliddns #aliddns设置
-etc/config/adbyby  #广告过滤大师设置 ，如果有自定义广告过滤大师可以复制过去
-etc/config/firewall #防火墙
-etc/config/gfw.ilst #自定义gfw列表
-etc/config/transmission #transmission
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">etc/config/system <span style="color:#75715e">#里面有主机名，时区，ntp时间服务器设置</span>
+etc/config/network <span style="color:#75715e">#网络设置</span>
+etc/config/dhcp    <span style="color:#75715e">#如果对dhcp有分配ip</span>
+etc/config/ddns    <span style="color:#75715e">#ddns设置</span>
+etc/config/aliddns <span style="color:#75715e">#aliddns设置</span>
+etc/config/adbyby  <span style="color:#75715e">#广告过滤大师设置 ，如果有自定义广告过滤大师可以复制过去</span>
+etc/config/firewall <span style="color:#75715e">#防火墙</span>
+etc/config/gfw.ilst <span style="color:#75715e">#自定义gfw列表</span>
+etc/config/transmission <span style="color:#75715e">#transmission</span>
 etc/config/udpxy
 etc/config/samba
-</code></pre>
-
-<blockquote>
+</code></pre></div><blockquote>
 <p>如果有etc/config/samba,那么必须要有/etc/samba/smbpasswd 否则没有权限</p>
 </blockquote>
-
 <h2 id="安装完后要做的事">安装完后要做的事</h2>
-
-<h3 id="系统-管理权-修改密码">系统=&gt;管理权=&gt;修改密码</h3>
-
-<h3 id="网络-接口-wan-改pppoe">网络=&gt;接口=&gt;wan 改pppoe</h3>
-
-<p>高级=&gt;取消&rdquo;使用内置的 IPv6 管理&rdquo;  &ldquo;Obtain IPv6-Address&rdquo; 禁用  &ldquo;使用网关跃点&rdquo; 40</p>
-
+<h3 id="系统管理权修改密码">系统=&gt;管理权=&gt;修改密码</h3>
+<h3 id="网络接口wan-改pppoe">网络=&gt;接口=&gt;wan 改pppoe</h3>
+<p>高级=&gt;取消&quot;使用内置的 IPv6 管理&rdquo;  &ldquo;Obtain IPv6-Address&rdquo; 禁用  &ldquo;使用网关跃点&rdquo; 40</p>
 <h3 id="增加iptv">增加iptv</h3>
-
-<p>高级:  &ldquo;使用网关跃点 60  &ldquo;请求 DHCP 时发送的客户端 ID&rdquo; 00xxxxxxxxxxxxxxxxxxxx &ldquo;请求 DHCP 时发送的 Vendor Class 选项&rdquo; SCITV  &ldquo;重设 MAC 地址&rdquo; 54:93:59:xx:xx:xx  防火墙:  新增&rdquo;iptv&rdquo; <code>防火墙</code></p>
-
+<p>高级:  &ldquo;使用网关跃点 60  &ldquo;请求 DHCP 时发送的客户端 ID&rdquo; 00xxxxxxxxxxxxxxxxxxxx &ldquo;请求 DHCP 时发送的 Vendor Class 选项&rdquo; SCITV  &ldquo;重设 MAC 地址&rdquo; 54:93:59:xx:xx:xx  防火墙:  新增&quot;iptv&rdquo; <code>防火墙</code></p>
 <h3 id="修改lan-1">修改lan</h3>
-
-<p>基本设置: &ldquo;IPv6 分配长度 &rdquo; <code>禁用</code> 高级设置: &ldquo;使用内置的 IPv6 管理&rdquo; <code>禁用</code> dhcp服务器:全部关闭</p>
-
+<p>基本设置: &ldquo;IPv6 分配长度 &quot; <code>禁用</code> 高级设置: &ldquo;使用内置的 IPv6 管理&rdquo; <code>禁用</code> dhcp服务器:全部关闭</p>
 <h3 id="dhcp设置">dhcp设置</h3>
-
 <h3 id="防火墙">防火墙</h3>
-
 <p>端口映射:群晖各端口 <code>80,443,5000,5001</code></p>
-
 <h3 id="服务">服务</h3>
-
 <h4 id="shadowsocksr-plus">ShadowSocksR Plus+:</h4>
-
 <ol>
 <li>设置服务器节点</li>
 <li>不走代理的WAN IP vps地址</li>
 <li>不走代理的局域网IP 各个盒子IP,群晖IP</li>
-
-<li><p>GFW列表</p>
-
-<pre><code class="language-ini">lala.im
-github.com
-manjaro.org
-pornbay.org
-empornium.ph
-github.io
-toutyrater.github.io
-services.googleapis.cn
-googleapis.cn
-i.pstorage.space
-</code></pre></li>
-
-<li><h4 id="广告屏蔽大师-plus">广告屏蔽大师 Plus+</h4></li>
+<li>GFW列表</li>
 </ol>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini">   <span style="color:#a6e22e">lala.im</span>
+   <span style="color:#a6e22e">github.com</span>
+   <span style="color:#a6e22e">manjaro.org</span>
+   <span style="color:#a6e22e">pornbay.org</span>
+   <span style="color:#a6e22e">empornium.ph</span>
+   <span style="color:#a6e22e">github.io</span>
+   <span style="color:#a6e22e">toutyrater.github.io</span>
+   <span style="color:#a6e22e">services.googleapis.cn</span>
+   <span style="color:#a6e22e">googleapis.cn</span>
+   <span style="color:#a6e22e">i.pstorage.space</span>
+</code></pre></div><ol>
+<li>
+<h4 id="广告屏蔽大师-plus">广告屏蔽大师 Plus+</h4>
 <p>运行模式：<code>列表模式</code></p>
-
-<pre><code>客户端过滤模式设置：加入各个盒子
-高级设置：手动强制更新（ssh运行 `/usr/share/adbyby/adblock.sh &gt;   /tmp/adupdate.log 2&gt;&amp;1`）
-</code></pre>
-
-<h4 id="动态dns">动态DNS</h4>
-
-<h5 id="设置f3322-org">设置f3322.org</h5>
-
-<h5 id="阿里ddns">阿里DDNS</h5>
-
-<h4 id="udpxy">UDPXY</h4>
-
-<p>设置&rdquo;Source IP/Interface&rdquo; <code>eth2</code></p>
-
-<h4 id="网络存储">网络存储</h4>
-
-<h5 id="网络共享">网络共享:</h5>
-
-<ol>
-<li>允许用户<code>root,0755,0777</code></li>
-<li>编辑模板: <code>#invalid users = root</code></li>
-
-<li><p>ssh设定密码 <code>smbpasswd -a root</code></p></li>
-
-<li><p>重启openwrt</p></li>
+<p>客户端过滤模式设置：加入各个盒子
+高级设置：手动强制更新（ssh运行 <code>/usr/share/adbyby/adblock.sh &gt; 	/tmp/adupdate.log 2&gt;&amp;1</code>）</p>
+</li>
 </ol>
-
+<h4 id="动态dns">动态DNS</h4>
+<h5 id="设置f3322org">设置f3322.org</h5>
+<h5 id="阿里ddns">阿里DDNS</h5>
+<h4 id="udpxy">UDPXY</h4>
+<p>设置&quot;Source IP/Interface&rdquo; <code>eth2</code></p>
+<h4 id="网络存储">网络存储</h4>
+<h5 id="网络共享">网络共享:</h5>
+<ol>
+<li>
+<p>允许用户<code>root,0755,0777</code></p>
+</li>
+<li>
+<p>编辑模板: <code>#invalid users = root</code></p>
+</li>
+<li>
+<p>ssh设定密码 <code>smbpasswd -a root</code></p>
+</li>
+<li>
+<p>重启openwrt</p>
+</li>
+</ol>
 <h5 id="transmission">Transmission</h5>
-
 <p>配置文件的目录 <code>/mnt/sda3/transmission/.config</code> 下载目录 <code>/mnt/sda3/transmission/done</code> 启用 DHT 禁用 防火墙51413映射 ssh</p>
-
-<pre><code class="language-bash">  
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  
 wget https://github.com/ronggang/transmission-web-control/raw/master/release/install-tr-control-cn.sh
 bash install-tr-control-cn.sh
 选择 6
 输入/usr/share/transmission
 然后选择1安装
 
-</code></pre>
-
-<h4 id="修改软件源">修改软件源</h4>
-
+</code></pre></div><h4 id="修改软件源">修改软件源</h4>
 <blockquote>
 <p>教育网镜像源貌似改成https了,wget需要安装<code>libustream-mbedtls</code>来支持tls</p>
 </blockquote>
-
 <p>​</p>
-
 <ol>
-<li><p>先把软件源改成</p>
-
-<pre><code class="language-ini">src/gz openwrt_core http://downloads.openwrt.org/snapshots/targets/x86/64/packages
-src/gz openwrt_base http://downloads.openwrt.org/snapshots/packages/x86_64/base
-src/gz openwrt_luci http://downloads.openwrt.org/snapshots/packages/x86_64/luci
-src/gz openwrt_packages http://downloads.openwrt.org/snapshots/packages/x86_64/packages
-src/gz openwrt_routing http://downloads.openwrt.org/snapshots/packages/x86_64/routing
-</code></pre></li>
-
-<li><p>然后更新源</p>
-
-<pre><code class="language-bash">opkg update
-</code></pre></li>
-
-<li><p>安装libustream-mbedtls</p>
-
-<pre><code class="language-bash">opkg install libustream-mbedtls
-</code></pre></li>
-
-<li><p>安装完成后把源改回教育网的https源</p>
-
-<pre><code class="language-ini">src/gz openwrt_core https://openwrt.proxy.ustclug.org/snapshots/targets/x86/64/packages
-src/gz openwrt_base https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/base
-src/gz openwrt_luci https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/luci
-src/gz openwrt_packages https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/packages
-src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/routing
-</code></pre></li>
-
-<li><p>然后更新</p>
-
-<pre><code class="language-bash">opkg update
-</code></pre></li>
+<li>先把软件源改成</li>
 </ol>
-
-<h3 id="最后设置dhcp">最后设置dhcp</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">src/gz openwrt_core http://downloads.openwrt.org/snapshots/targets/x86/64/packages</span>
+<span style="color:#a6e22e">src/gz openwrt_base http://downloads.openwrt.org/snapshots/packages/x86_64/base</span>
+<span style="color:#a6e22e">src/gz openwrt_luci http://downloads.openwrt.org/snapshots/packages/x86_64/luci</span>
+<span style="color:#a6e22e">src/gz openwrt_packages http://downloads.openwrt.org/snapshots/packages/x86_64/packages</span>
+<span style="color:#a6e22e">src/gz openwrt_routing http://downloads.openwrt.org/snapshots/packages/x86_64/routing</span>
+</code></pre></div><ol>
+<li>然后更新源</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">opkg update
+</code></pre></div><ol>
+<li>安装libustream-mbedtls</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">opkg install libustream-mbedtls
+</code></pre></div><ol>
+<li>安装完成后把源改回教育网的https源</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">src/gz openwrt_core https://openwrt.proxy.ustclug.org/snapshots/targets/x86/64/packages</span>
+<span style="color:#a6e22e">src/gz openwrt_base https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/base</span>
+<span style="color:#a6e22e">src/gz openwrt_luci https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/luci</span>
+<span style="color:#a6e22e">src/gz openwrt_packages https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/packages</span>
+<span style="color:#a6e22e">src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_64/routing</span>
+</code></pre></div><ol>
+<li>然后更新</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">opkg update
+</code></pre></div><h3 id="最后设置dhcp">最后设置dhcp</h3>
 <p>把etc/config/dhcp复制过来或者</p>
-
 <p>设置dhcp里‘静态地址分配’，方便管理各主机</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0525110729/>Lede编译备忘</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-05-25<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0525110729/ target="_blank" >https://3mile.github.io/archives/2019/0525110729/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -657,7 +721,7 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -702,24 +766,6 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0525110729/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0525110729/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0525110729/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -738,9 +784,11 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -778,24 +826,6 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0525110729/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0525110729/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0525110729/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -814,24 +844,6 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0525110729%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0525110729%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0525110729%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -847,7 +859,7 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -875,18 +887,28 @@ src/gz openwrt_routing https://openwrt.proxy.ustclug.org/snapshots/packages/x86_
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

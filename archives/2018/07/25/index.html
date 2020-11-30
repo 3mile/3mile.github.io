@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="写在前面 首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如: 安装使用Linux Mint 安装过黑群晖做NAS 安装使用过Op">
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -292,12 +292,28 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p><strong>写在前面</strong></p>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#软路由的目的">软路由的目的</a></li>
+    <li><a href="#软路由安装">软路由安装</a></li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p><strong>写在前面</strong></p>
 <p>首先,老旧富士通LH532笔记本早已经不用了，在上面测试学习了很多知识，比如:</p>
-
 <ol>
 <li>安装使用Linux Mint</li>
 <li>安装过黑群晖做NAS</li>
@@ -305,94 +321,135 @@ if (!doNotTrack) {
 <li>安装Windows server Hyper-v 2016</li>
 <li>安装Windows Storage Server 2008 R2</li>
 </ol>
-
 <p>但是都不甚满意,因为笔记本的SATA口有限,最多只能挂两个硬盘,后来又在转转上淘到J1900小主板一个，于是LH532又闲置了。本着闲着就应该折腾的精神，思前想后，还是应该让老本本发挥余热。所以嘛，就有了这篇教程。</p>
-
 <h2 id="软路由的目的">软路由的目的</h2>
-
 <p>已经有了硬路由的情况下，为什么要做软路由？</p>
-
 <ol>
 <li><strong>性能</strong></li>
 </ol>
-
-<p>​   当前路由搭载处理器(CPU)架构主要有三种：MIPS、ARM和Intel（x86）.</p>
-
-<p>​   既然有了Intel&reg; Core&trade; i3-3110M CPU @ 2.40GHz 为什么还要用什么高通,博通，MTK，螃蟹呢</p>
-
+<p>​	当前路由搭载处理器(CPU)架构主要有三种：MIPS、ARM和Intel（x86）.</p>
+<p>​	既然有了Intel(R) Core(TM) i3-3110M CPU @ 2.40GHz 为什么还要用什么高通,博通，MTK，螃蟹呢</p>
 <p>2.<strong>实用</strong></p>
-
-<p>​   我这里的网络情况比较复杂,在使用过程中,必须满足几点硬性需求</p>
-
+<p>​	我这里的网络情况比较复杂,在使用过程中,必须满足几点硬性需求</p>
 <ul>
-<li><p>1.正常上网,这个不用说了,随便一个路由器都可以使用</p></li>
-
-<li><p>2.带机量,家里现在有3台台式电脑,3台笔记本,一台NAS,三台网络盒子（小米盒子，海美迪盒子），5台手机，另有其它设备若干</p></li>
-
-<li><p>3.科学上网，这个很重要。不但需要能翻出去，并且速度越快越好。硬路由50M顶天了，而我用软路由可以跑满200M</p></li>
-
-<li><p>4.过滤广告。不管是用ADbyby还是用koolproxy都是吃CPU的主。</p></li>
-
-<li><p>5.KMS,微软激活服务器</p></li>
-
-<li><p>6.DDNS，为了NAS</p></li>
-
-<li><p>7.远程下载,比如BT,PT</p></li>
-
-<li><p>8.Qos 智能限流</p></li>
-
-<li><p>9.IPTV融合 ,为了网络盒子</p></li>
-
-<li><p>10.最最重要的是节能</p></li>
+<li>
+<p>1.正常上网,这个不用说了,随便一个路由器都可以使用</p>
+</li>
+<li>
+<p>2.带机量,家里现在有3台台式电脑,3台笔记本,一台NAS,三台网络盒子（小米盒子，海美迪盒子），5台手机，另有其它设备若干</p>
+</li>
+<li>
+<p>3.科学上网，这个很重要。不但需要能翻出去，并且速度越快越好。硬路由50M顶天了，而我用软路由可以跑满200M</p>
+</li>
+<li>
+<p>4.过滤广告。不管是用ADbyby还是用koolproxy都是吃CPU的主。</p>
+</li>
+<li>
+<p>5.KMS,微软激活服务器</p>
+</li>
+<li>
+<p>6.DDNS，为了NAS</p>
+</li>
+<li>
+<p>7.远程下载,比如BT,PT</p>
+</li>
+<li>
+<p>8.Qos 智能限流</p>
+</li>
+<li>
+<p>9.IPTV融合 ,为了网络盒子</p>
+</li>
+<li>
+<p>10.最最重要的是节能</p>
+</li>
 </ul>
-
-<ol>
+<ol start="3">
 <li><strong>解决方法</strong>
-
 <ul>
 <li>光猫到K2P(PADAVAN)，其中PADAVAN做为IPTV的UDPXY服务器，只负责拨号和UDPXY。</li>
 <li>LH532刷LEDE X64,做为旁路网关，负责其它功能</li>
-</ul></li>
+</ul>
+</li>
 </ol>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/%e5%ae%b6%e5%ba%ad%e6%8b%93%e6%8b%94%e5%9b%be.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/%e5%ae%b6%e5%ba%ad%e6%8b%93%e6%8b%94%e5%9b%be.png" alt="家庭拓拔图" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/家庭拓拔图.png" alt="家庭拓拔图" /></p>
-
+</span></p>
 <h2 id="软路由安装">软路由安装</h2>
-
 <ol>
-<li>下载LEDE <a href="http://firmware.koolshare.cn/LEDE_X64_fw867/">LEDE KOOLSHARE下载地址</a></li>
-<li>用Rufus_usb制作LEDE 启动U盘,参考上一篇博文<a href="https://3mile.top/archives/2018/06/01/"> Rufus教程</a></li>
+<li>下载LEDE 
+
+<a href="http://firmware.koolshare.cn/LEDE_X64_fw867/"  target="_blank">LEDE KOOLSHARE下载地址</a></li>
+<li>用Rufus_usb制作LEDE 启动U盘,参考上一篇博文
+
+<a href="https://3mile.top/archives/2018/06/01/"  target="_blank"> Rufus教程</a></li>
 <li>设置LEDE</li>
 </ol>
-
 <p><strong>首先设置LAN口IP地址和主路由同一网段</strong></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/LAN%e5%8f%a3.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/LAN%e5%8f%a3.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/LAN口.jpg" alt="" /></p>
-
+</span></p>
 <p>然后设置LAN口物理设置</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/LAN%e5%8f%a3%e7%89%a9%e7%90%86%e8%ae%be%e7%bd%ae.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/LAN%e5%8f%a3%e7%89%a9%e7%90%86%e8%ae%be%e7%bd%ae.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/LAN口物理设置.jpg" alt="" /></p>
-
+</span></p>
 <p>然后设置WAN口</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/WAN.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/WAN.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/WAN.jpg" alt="" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/WAN%e5%8f%a3%e7%89%a9%e7%90%86.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/WAN%e5%8f%a3%e7%89%a9%e7%90%86.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/WAN口物理.jpg" alt="" /></p>
-
+</span></p>
 <p>这时候到K2P主路由设置里面指定DHCP</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/padavan_dhcp.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/padavan_dhcp.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/padavan_dhcp.jpg" alt="" /></p>
+</span></p>
+<p>![](<a href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/K2P">https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/K2P</a> LAN口IPTV设置.jpg)</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/QQ%e6%88%aa%e5%9b%be20180725123748.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/QQ%e6%88%aa%e5%9b%be20180725123748.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/K2P LAN口IPTV设置.jpg" alt="" /></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/QQ截图20180725123748.jpg" alt="" /></p>
-
+</span></p>
 <p>因为前面光猫IPTV口接的是K2P的LAN1口，所以这里选择IPTV STB为LAN1</p>
-
 <p>然后在LAN设置的IPTV里关闭“组播到内网”，这样设置的原因是,虽然有IGMP SNOOPING,但是依然会出现网络风暴,起码我这里是这样.所以我们只用开启UDPXY做为IGMP转UDP，来实现IPTV的融合。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/07/25/>老旧笔记本单网口实机安装Lede(openwrt)_x64</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-07-25<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/07/25/ target="_blank" >https://3mile.github.io/archives/2018/07/25/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -415,7 +472,7 @@ if (!doNotTrack) {
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -460,24 +517,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/07/25/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/07/25/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/07/25/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -496,9 +535,11 @@ if (!doNotTrack) {
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -536,24 +577,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/07/25/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/07/25/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/07/25/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -572,24 +595,6 @@ if (!doNotTrack) {
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F25%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F25%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F25%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -605,7 +610,7 @@ if (!doNotTrack) {
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -633,18 +638,28 @@ if (!doNotTrack) {
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

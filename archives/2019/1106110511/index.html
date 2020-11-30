@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="Centos">
 <meta name="description" content="准备安装Python3、下载Python3 一、安装依赖包，这个具体的作用我也不清楚，感觉好像是在安装的时候会要用到的工具。 yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="">
+      <meta property="article:section" content="Linux">
     
   
   
@@ -87,7 +87,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -142,7 +142,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -273,7 +273,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -294,67 +294,106 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h2 id="准备安装python3-下载python3">准备安装Python3、下载Python3</h2>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#准备安装python3下载python3">准备安装Python3、下载Python3</a>
+      <ul>
+        <li><a href="#一安装依赖包这个具体的作用我也不清楚感觉好像是在安装的时候会要用到的工具">一、安装依赖包，这个具体的作用我也不清楚，感觉好像是在安装的时候会要用到的工具。</a></li>
+        <li><a href="#二再执行安装一个工具不安装会导致pip安装失败这也是我遇到的最大的一个坑">二、再执行安装一个工具，不安装会导致pip安装失败，这也是我遇到的最大的一个坑！</a></li>
+        <li><a href="#三下载python37的包有两种方法一种是从官网下载然后上传到centos上另一种可以通过centos的wget命令直接下载两者都可以">三、下载python3.7的包，有两种方法，一种是从官网下载，然后上传到CentOS上，另一种可以通过CentOS的wget命令直接下载。两者都可以。</a>
+          <ul>
+            <li><a href="#官方下载">官方下载</a></li>
+            <li><a href="#wget命令">wget命令</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#安装python370">安装Python3.7.0</a></li>
+    <li><a href="#配置环境变量python和pip的">配置环境变量（python和pip的）</a></li>
+    <li><a href="#验证python3是否安装完成">验证Python3是否安装完成</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1验证python如果显示的版本号是380就代表安装成功了centos会自带一个python27">1、验证python，如果显示的版本号是3.8.0，就代表安装成功了（CentOS会自带一个python2.7）</a></li>
+            <li><a href="#2验证pip看看pip的版本号是不是1001以及最后括号里是不是37">2、验证pip，看看pip的版本号是不是10.0.1，以及最后括号里是不是3.7</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#配置yum">配置yum</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#编辑文件usrlibexecurlgrabber-ext-down">编辑文件<code>/usr/libexec/urlgrabber-ext-down</code></a></li>
+            <li><a href="#编辑文件-usrbinyum">编辑文件<code> /usr/bin/yum</code></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#安装python模组">安装Python模组</a></li>
+  </ul>
+</nav>
 
-<h3 id="一-安装依赖包-这个具体的作用我也不清楚-感觉好像是在安装的时候会要用到的工具">一、安装依赖包，这个具体的作用我也不清楚，感觉好像是在安装的时候会要用到的工具。</h3>
-
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h2 id="准备安装python3下载python3">准备安装Python3、下载Python3</h2>
+<h3 id="一安装依赖包这个具体的作用我也不清楚感觉好像是在安装的时候会要用到的工具">一、安装依赖包，这个具体的作用我也不清楚，感觉好像是在安装的时候会要用到的工具。</h3>
 <pre><code>yum install zlib-devel bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gcc make mysql-devel gcc-devel python-devel -y
-</code></pre>
-
-<h3 id="二-再执行安装一个工具-不安装会导致pip安装失败-这也是我遇到的最大的一个坑">二、再执行安装一个工具，不安装会导致pip安装失败，这也是我遇到的最大的一个坑！</h3>
-
+</code></pre><h3 id="二再执行安装一个工具不安装会导致pip安装失败这也是我遇到的最大的一个坑">二、再执行安装一个工具，不安装会导致pip安装失败，这也是我遇到的最大的一个坑！</h3>
 <pre><code>yum install libffi-devel wget -y
-</code></pre>
-
-<h3 id="三-下载python3-7的包-有两种方法-一种是从官网下载-然后上传到centos上-另一种可以通过centos的wget命令直接下载-两者都可以">三、下载python3.7的包，有两种方法，一种是从官网下载，然后上传到CentOS上，另一种可以通过CentOS的wget命令直接下载。两者都可以。</h3>
-
+</code></pre><h3 id="三下载python37的包有两种方法一种是从官网下载然后上传到centos上另一种可以通过centos的wget命令直接下载两者都可以">三、下载python3.7的包，有两种方法，一种是从官网下载，然后上传到CentOS上，另一种可以通过CentOS的wget命令直接下载。两者都可以。</h3>
 <h4 id="官方下载">官方下载</h4>
-
 <pre><code>    打开python的官方网站：https://www.python.org/  --&gt;Downloads--&gt;Source code--&gt;Latest Python 3 Release - Python 3.7.0--&gt;拉到最下面，选择Gzipped source tarball，下载到本地，然后上传到服务器即可
-</code></pre>
-
-<h4 id="wget命令">wget命令</h4>
-
+</code></pre><h4 id="wget命令">wget命令</h4>
 <pre><code>wget -c https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
-</code></pre>
-
-<h2 id="安装python3-7-0">安装Python3.7.0</h2>
-
+</code></pre><h2 id="安装python370">安装Python3.7.0</h2>
 <p>依次执行下列代码即可</p>
-
 <pre><code>tar -zxvf Python-3.8.0.tgz
 cd Python-3.8.0
 ./configure ; make &amp;&amp; make install
-</code></pre>
-
-<p>如果出现了“ModuleNotFound：No module named ‘_ctypes’”报错，那就是你漏了第二步！！！</p>
-
-<h2 id="配置环境变量-python和pip的">配置环境变量（python和pip的）</h2>
-
+</code></pre><p>如果出现了“ModuleNotFound：No module named ‘_ctypes’”报错，那就是你漏了第二步！！！</p>
+<h2 id="配置环境变量python和pip的">配置环境变量（python和pip的）</h2>
 <pre><code>mv /usr/bin/python /usr/bin/python.bak
 ln -s /usr/local/bin/python3 /usr/bin/python
 mv /usr/bin/pip /usr/bin/pip.bak
 ln -s /usr/local/bin/pip3 /usr/bin/pip
-</code></pre>
+</code></pre><h2 id="验证python3是否安装完成">验证Python3是否安装完成</h2>
+<h4 id="1验证python如果显示的版本号是380就代表安装成功了centos会自带一个python27">1、验证python，如果显示的版本号是3.8.0，就代表安装成功了（CentOS会自带一个python2.7）</h4>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111106-2019-11-6.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111106-2019-11-6.png" alt="20191106111106-2019-11-6.png" /></a>
+</span>
 
-<h2 id="验证python3是否安装完成">验证Python3是否安装完成</h2>
+</span></p>
+<h4 id="2验证pip看看pip的版本号是不是1001以及最后括号里是不是37">2、验证pip，看看pip的版本号是不是10.0.1，以及最后括号里是不是3.7</h4>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111123-2019-11-6.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111123-2019-11-6.png" alt="20191106111123-2019-11-6.png" /></a>
+</span>
 
-<h4 id="1-验证python-如果显示的版本号是3-8-0-就代表安装成功了-centos会自带一个python2-7">1、验证python，如果显示的版本号是3.8.0，就代表安装成功了（CentOS会自带一个python2.7）</h4>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111106-2019-11-6.png" alt="20191106111106-2019-11-6.png" /></p>
-
-<h4 id="2-验证pip-看看pip的版本号是不是10-0-1-以及最后括号里是不是3-7">2、验证pip，看看pip的版本号是不是10.0.1，以及最后括号里是不是3.7</h4>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111123-2019-11-6.png" alt="20191106111123-2019-11-6.png" /></p>
-
+</span></p>
 <h2 id="配置yum">配置yum</h2>
-
 <p>但是！！这时候，你输入一下yum，你会发现你的yum用不了了！为什么，刚刚还好使呢？</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111139-2019-11-6.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111139-2019-11-6.png" alt="20191106111139-2019-11-6.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111139-2019-11-6.png" alt="20191106111139-2019-11-6.png" /></p>
-
+</span></p>
 <blockquote>
 <p>[root@localhost ~]# yum update
 File “/usr/bin/yum”, line 30
@@ -362,42 +401,40 @@ except KeyboardInterrupt, e:
 ^
 SyntaxError: invalid syntax</p>
 </blockquote>
-
 <p>主要是因为yum是依赖python2.7的，你把python改成了3.7了，自然不好使了。但是不用担心，python2.7还在你的电脑里。只要修改一下yum里的相关依赖即可。</p>
-
-<h4 id="编辑文件-usr-libexec-urlgrabber-ext-down">编辑文件<code>/usr/libexec/urlgrabber-ext-down</code></h4>
-
+<h4 id="编辑文件usrlibexecurlgrabber-ext-down">编辑文件<code>/usr/libexec/urlgrabber-ext-down</code></h4>
 <pre><code>vi /usr/libexec/urlgrabber-ext-down
-</code></pre>
+</code></pre><p>打开以后，找到一个/usr/bin/python的，后面加上2.7就可以了！也就是<code> /usr/bin/python2.7</code></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111158-2019-11-6.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111158-2019-11-6.png" alt="20191106111158-2019-11-6.png" /></a>
+</span>
 
-<p>打开以后，找到一个/usr/bin/python的，后面加上2.7就可以了！也就是<code>/usr/bin/python2.7</code></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20191106111158-2019-11-6.png" alt="20191106111158-2019-11-6.png" /></p>
-
-<h4 id="编辑文件-usr-bin-yum">编辑文件<code>/usr/bin/yum</code></h4>
-
+</span></p>
+<h4 id="编辑文件-usrbinyum">编辑文件<code> /usr/bin/yum</code></h4>
 <pre><code>vi /usr/bin/yum
-</code></pre>
-
-<p>做法和上面的一样，也是改成python2.7就可以了！</p>
-
+</code></pre><p>做法和上面的一样，也是改成python2.7就可以了！</p>
 <p>然后，你的python开发环境就配置成功了！！！</p>
-
 <h2 id="安装python模组">安装Python模组</h2>
-
 <p>安装lxml，依赖有libxml2-devel，libxslt-devel</p>
-
 <pre><code>sudo yum install libxml2-devel libxslt-devel -y
 sudo pip3 install lxml
-</code></pre>
-
-<p>安装requests</p>
-
+</code></pre><p>安装requests</p>
 <pre><code>sudo pip3 install requests
 </code></pre>
-
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/1106110511/>Centos7安装python3.8</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-11-06<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/1106110511/ target="_blank" >https://3mile.github.io/archives/2019/1106110511/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -422,7 +459,7 @@ sudo pip3 install lxml
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -467,24 +504,6 @@ sudo pip3 install lxml
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1106110511/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1106110511/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1106110511/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -503,9 +522,11 @@ sudo pip3 install lxml
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -543,24 +564,6 @@ sudo pip3 install lxml
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1106110511/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1106110511/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1106110511/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -579,24 +582,6 @@ sudo pip3 install lxml
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1106110511%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1106110511%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1106110511%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -612,7 +597,7 @@ sudo pip3 install lxml
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -640,18 +625,28 @@ sudo pip3 install lxml
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

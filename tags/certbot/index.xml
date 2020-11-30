@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>certbot on 3mile博客</title>
+    <link>https://3mile.github.io/tags/certbot/</link>
+    <description>Recent content in certbot on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 06 Apr 2020 18:14:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/certbot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Certbot指南</title>
+      <link>https://3mile.github.io/archives/2020/0406181407/</link>
+      <pubDate>Mon, 06 Apr 2020 18:14:07 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0406181407/</guid>
+      <description>&lt;p&gt;本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

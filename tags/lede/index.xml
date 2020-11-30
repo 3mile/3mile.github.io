@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LEDE on 3mile博客</title>
+    <title>lede on 3mile博客</title>
     <link>https://3mile.github.io/tags/lede/</link>
-    <description>Recent content in LEDE on 3mile博客</description>
+    <description>Recent content in lede on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Tue, 13 Aug 2019 12:31:00 +0800</lastBuildDate>
@@ -27,9 +27,7 @@
       
       <guid>https://3mile.github.io/archives/2019/0530132110/</guid>
       <description>&lt;p&gt;udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。&lt;/p&gt;
-
 &lt;p&gt;udpxy在官方的软件源中，直接安装即可&lt;/p&gt;
-
 &lt;p&gt;udpxy没有独立的配置文件，修改参数直接在启动脚本中完成&lt;/p&gt;</description>
     </item>
     

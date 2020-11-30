@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，">
@@ -89,7 +89,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -144,7 +144,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -296,130 +296,165 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p>Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，可以实现路由器下的所有设备都达到去除广告的作用。同时，Pi-hole中还有dnsmasq，还可以实现dns功能</p>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#本帖隐藏的内容">本帖隐藏的内容</a></li>
+            <li><a href="#本帖隐藏的内容-1">本帖隐藏的内容</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>Pi-hole采用域名过滤的方式滤除广告，通过在群晖docker中安装pi-hole,同时在路由器中将dns server设为群晖的ip地址，可以实现路由器下的所有设备都达到去除广告的作用。同时，Pi-hole中还有dnsmasq，还可以实现dns功能</p>
 <p>1、在DSM Docker中下载pi-hole镜像,diginc/pi-hole镜像</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/194545bmy5rv6niyy8tg2j.png.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/194545bmy5rv6niyy8tg2j.png.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/194545bmy5rv6niyy8tg2j.png.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>2、启动镜像</p>
-
 <p>A、端口设置：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/195221wxegun3g643qqtqg.png.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/195221wxegun3g643qqtqg.png.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/195221wxegun3g643qqtqg.png.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>其中蓝框中的端口要一致;红框的端口如果群晖http已经占用了80端口，可以改成其它端口</p>
-
 <p>注意：</p>
-
 <p>群晖中不要安装dns server套件，也不要启用dhcp服务器</p>
-
 <p>，否则会造成53端口冲突</p>
-
 <p>B、卷设置：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/200014qwb4rrb28k8mb8v6.png.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/200014qwb4rrb28k8mb8v6.png.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/200014qwb4rrb28k8mb8v6.png.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>红框中的文件夹是在群晖中已经建立好的文件夹，按图中所示映射文件夹，方式为读写（去掉只读的框）</p>
-
 <p>C、环境变量设置：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/200924v140o2t0twg43t14.png.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/200924v140o2t0twg43t14.png.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/200924v140o2t0twg43t14.png.thumb.jpg" alt="" /></p>
-
+</span></p>
 <h4 id="本帖隐藏的内容">本帖隐藏的内容</h4>
-
 <p>「ServerIP」填写群晖内网ip地址，如群晖在内网的地址是192.168.1.10，则填</p>
-
 <p>192.168.1.10</p>
-
 <p>「TZ」填写时区，便于pi-hole在半夜更新广告清单</p>
-
 <p>「WEBPASSWORD」为pi-hole网页管理页面密码</p>
-
 <p>「DNS1」、「DNS2」填写网络运营商的dns服务器地址如</p>
-
 <p>D、设定完后，启动pi-hole后，稍等一会，再打开</p>
-
-<pre><code class="language-shell">http://ServerIP:Port /admin
-</code></pre>
-
-<p>就可以看到pi-hole管理页面（如果看不到，再等一会，多刷新几下），其中serverip为群晖的</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">http://ServerIP:Port /admin
+</code></pre></div><p>就可以看到pi-hole管理页面（如果看不到，再等一会，多刷新几下），其中serverip为群晖的</p>
 <p>内网ip地址，如192.168.1.10，port为端口设置中的地址，此例中为36778，界面如下：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/202639u1mjmy25vyj1552y.png.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/202639u1mjmy25vyj1552y.png.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/202639u1mjmy25vyj1552y.png.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>登录后，可以看到更详细的信息，并可以在settings设定dns服务器，可以选择google,opendns等dns服务器</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/203920rrok9c5k9rqnqcv5.png.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/203920rrok9c5k9rqnqcv5.png.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/203920rrok9c5k9rqnqcv5.png.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>E、在路由器中将dns中的第一个dns地址设为群晖的内网地址,详见后面的PC端和路由器设置说明，如</p>
-
 <p>192.168.1.10</p>
-
 <p>通过这些设置后，路由器下的设备都用群晖的pi-hole过滤广告了。</p>
-
 <p>利用pi-hole的dnsmasq还能实现</p>
-
-<pre><code class="language-HTML">&lt;http://www.nasyun.com/thread-39869-1-1.html&gt;
-</code></pre>
-
-<p>中的自动识别内网和外网连接的功能：</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-HTML" data-lang="HTML">&lt;<span style="color:#f92672">http:</span><span style="color:#960050;background-color:#1e0010">//</span><span style="color:#a6e22e">www</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">nasyun</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">com</span><span style="color:#960050;background-color:#1e0010">/</span><span style="color:#a6e22e">thread-39869-1-1</span><span style="color:#960050;background-color:#1e0010">.</span><span style="color:#a6e22e">html</span>&gt;
+</code></pre></div><p>中的自动识别内网和外网连接的功能：</p>
 <h4 id="本帖隐藏的内容-1">本帖隐藏的内容</h4>
-
 <p>1、PC中</p>
-
 <p>新建02-lan.conf的文件，文件中写入红字所示的一句</p>
-
 <pre><code>addn-hosts=/etc/pihole/lan.list
-</code></pre>
+</code></pre><p>利用群晖的file station 上传至/docker/pihole/dnsmasq.d/目录</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/204604mj8iiljrj1bdikci.png.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/204604mj8iiljrj1bdikci.png.thumb.jpg" alt /></a>
+</span>
 
-<p>利用群晖的file station 上传至/docker/pihole/dnsmasq.d/目录</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/204604mj8iiljrj1bdikci.png.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>利用群晖的file station 上传至/docker/pihole/config/目录</p>
-
 <p>3、登入</p>
-
 <pre><code>http://192.168.1.10:36778
-</code></pre>
-
-<p>/admin，其中的192.168.1.10换成你自己的群晖内网地址。利用设定的密码进入管理界面后，在</p>
-
+</code></pre><p>/admin，其中的192.168.1.10换成你自己的群晖内网地址。利用设定的密码进入管理界面后，在</p>
 <p>settings页面，点击restart dnsmasq，等待10分钟后，你要解析的域名就可正常解析了，你可能ping nas.123.com试试，看解析是否成功。</p>
-
 <p>补充pc端和路由端的配置：</p>
-
 <p>1、Pc机的dns应设置为自动获取，ip也设为自动获取，同时，路由器上的dns服务器设置成群晖的ip地址。另外，查看pi-hole的管理页面dashboard上的queries blocks上显示的数字，就是过滤的域名数量。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/164110zqu7zbob15j1wowj.jpg.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/164110zqu7zbob15j1wowj.jpg.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/164110zqu7zbob15j1wowj.jpg.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>2、路由器界面的dns设置（水星路由器原版固件为例，</p>
-
 <p>注：建议略过这步，在下面的dhcp中设置dns，有些路由只能在此设定dns服务器，不能在dhcp中设定dns，可进行此步</p>
-
 <p>）：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/164149zb0d9y4qushs89s4.jpg.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/164149zb0d9y4qushs89s4.jpg.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/164149zb0d9y4qushs89s4.jpg.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>红框中填写你的群晖ip地址，这样所有的局域网中的设备都可以通过pi-hole dns进行广告过滤了。</p>
-
 <p>3、路由器的dhcp设置（如果上面的第2步做过了</p>
-
 <p>此步骤可省略。注：也可以只进行下面的dhcp设置，上面的第2步不操作，这样的话，局域网中通过设置固定ip的网络设备可以不走pi-hole dns，不进行广告过滤，而通过dhcp获得ip的网络设备则走pi-hole dns进行广告过滤</p>
-
 <p>）：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/220757x1cm1jc04lknatcn.png.thumb.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/220757x1cm1jc04lknatcn.png.thumb.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/220757x1cm1jc04lknatcn.png.thumb.jpg" alt="" /></p>
-
+</span></p>
 <p>红框中填写群晖ip地址，缺省域名填写：lan，在dhcp中填写缺省域名和dns服务器是为了实现免配置局域网全自动kms激活，具体方法可在网站自行搜索</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/112/>群晖中用docker安装pi-hole给家庭局域网的设备滤除广告</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-05<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/112/ target="_blank" >https://3mile.github.io/archives/112/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -446,7 +481,7 @@ if (!doNotTrack) {
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -491,24 +526,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/112/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/112/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/112/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -527,9 +544,11 @@ if (!doNotTrack) {
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -567,24 +586,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/112/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/112/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/112/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -603,24 +604,6 @@ if (!doNotTrack) {
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F112%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F112%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F112%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -636,7 +619,7 @@ if (!doNotTrack) {
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -664,18 +647,28 @@ if (!doNotTrack) {
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

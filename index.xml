@@ -6,81 +6,274 @@
     <description>Recent content on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 25 Nov 2019 11:47:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 16 May 2018 12:26:38 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>在Ubuntu 18.04上安装 Kitematic 使用 Docker</title>
-      <link>https://3mile.github.io/archives/2019/1125114741/</link>
-      <pubDate>Mon, 25 Nov 2019 11:47:41 +0800</pubDate>
+      <title>Docker安装filerun的注意事项</title>
+      <link>https://3mile.github.io/archives/2020/1127124547/</link>
+      <pubDate>Fri, 27 Nov 2020 12:45:47 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2019/1125114741/</guid>
-      <description>如果你管理容器，你很可能一直在寻找一个可靠的客户端工具来帮助管理任务。 一种比较流行的 GUI 工具是 Kitematic。 使用 Kitematic，您可</description>
+      <guid>https://3mile.github.io/archives/2020/1127124547/</guid>
+      <description>使用 Docker 进行文件运行安装 本指南假定您已安装并安装在具有至少 1GB RAM 内存的服务器上。Docker docker-compose 创建名为文本的文件，并将其粘贴到以下内容中：doc</description>
     </item>
     
     <item>
-      <title>Ubuntu开机挂载硬盘</title>
-      <link>https://3mile.github.io/archives/2019/1125113300/</link>
-      <pubDate>Mon, 25 Nov 2019 11:33:00 +0800</pubDate>
+      <title>Certbot移除不需要的域名证书</title>
+      <link>https://3mile.github.io/archives/2020/1127123706/</link>
+      <pubDate>Fri, 27 Nov 2020 12:37:06 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2019/1125113300/</guid>
-      <description>linux 将对外设的操作统一视为对文件的操作，对外设操作之前都需要进行挂载，即将外设以文件的形式“挂载”或者说“加载”到相应的目录位置。 执行以下操作</description>
+      <guid>https://3mile.github.io/archives/2020/1127123706/</guid>
+      <description>在学习Linux的过程中，难免不犯错误。在Certbot申请证书的过程中，的确有时会犯中二病。 1.首先确认你的证书不再需要，如果有必要，请执</description>
     </item>
     
     <item>
-      <title>ZSH 下 home 键 end 键小键盘区无效解决办法</title>
-      <link>https://3mile.github.io/archives/2019/1125112855/</link>
-      <pubDate>Mon, 25 Nov 2019 11:28:55 +0800</pubDate>
+      <title>如何在Ubuntu 18上安装Docker Compose</title>
+      <link>https://3mile.github.io/archives/2020/1127122430/</link>
+      <pubDate>Fri, 27 Nov 2020 12:24:30 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2019/1125112855/</guid>
-      <description>文件~/.zshrc尾部增加以下内容 # Home bindkey &#39;\e[1~&#39; beginning-of-line # End bindkey &#39;\e[4~&#39; end-of-line # Keypad # 0 . Enter bindkey -s &amp;quot;^[Op&amp;quot; &amp;quot;0&amp;quot; bindkey -s &amp;quot;^[Ol&amp;quot; &amp;quot;.&amp;quot; bindkey -s &amp;quot;^[OM&amp;quot; &amp;quot;^M&amp;quot; # 1 2 3 bindkey -s &amp;quot;^[Oq&amp;quot; &amp;quot;1&amp;quot; bindkey -s &amp;quot;^[Or&amp;quot; &amp;quot;2&amp;quot; bindkey -s &amp;quot;^[Os&amp;quot; &amp;quot;3&amp;quot; # 4 5 6 bindkey -s &amp;quot;^[Ot&amp;quot; &amp;quot;4&amp;quot;</description>
+      <guid>https://3mile.github.io/archives/2020/1127122430/</guid>
+      <description>介绍 Docker是一个很好的工具，用于在软件容器中自动部署Linux应用程序，但要充分利用其潜力，应用程序的每个组件都应该在自己的单独容器中</description>
     </item>
     
     <item>
-      <title>Ubuntu18常用快捷键</title>
-      <link>https://3mile.github.io/archives/2019/1125101558/</link>
-      <pubDate>Mon, 25 Nov 2019 10:15:58 +0800</pubDate>
+      <title>使用endlessh来保护你的ssh服务</title>
+      <link>https://3mile.github.io/archives/2020/1117094714/</link>
+      <pubDate>Tue, 17 Nov 2020 09:47:14 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2019/1125101558/</guid>
-      <description>了解快捷键能够提升您的生产力。这里有一些实用的 Ubuntu 快捷键助您像专业人士一样使用 Ubuntu。 您可以用键盘和鼠标组合来使用操作系统。 注意：本文中</description>
+      <guid>https://3mile.github.io/archives/2020/1117094714/</guid>
+      <description>endlessh是一个小巧的ssh沼泽程序(tarpit:一种用来延时入站连接的服务程序)，它通过不断地发送随机生成的协议版本信息来达到让尝</description>
     </item>
     
     <item>
-      <title>Ubuntu18下rsa远程ssh的注意事项</title>
-      <link>https://3mile.github.io/archives/2019/1124203508/</link>
-      <pubDate>Sun, 24 Nov 2019 20:35:08 +0800</pubDate>
+      <title>Ssh使用跳板机访问远程服务器</title>
+      <link>https://3mile.github.io/archives/2020/1117093913/</link>
+      <pubDate>Tue, 17 Nov 2020 09:39:13 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2019/1124203508/</guid>
-      <description>首先在~/.ssh 下建立 config 文件 mkdir ~/.ssh vi ~/.ssh/config 内容如下： Host xxx.com HostName 远程主机名字 User 用户名 Port 12345 IdentityFile ~/.ssh/xxx_rsa 复制远程主机上的id_rsa到~/.ssh下，名字同上 如果</description>
+      <guid>https://3mile.github.io/archives/2020/1117093913/</guid>
+      <description>很多服务器没有外网地址只能通过内网访问。 这个时候就需要我们先登录跳板机，然后在跳板机上登录内网机器（本机 ssh - 跳板机 - 内网机器）。 因为跳板机是</description>
     </item>
     
     <item>
-      <title>优化ubuntu18开机速度</title>
-      <link>https://3mile.github.io/archives/2019/1124202640/</link>
-      <pubDate>Sun, 24 Nov 2019 20:26:40 +0800</pubDate>
+      <title>Kms修改端口号</title>
+      <link>https://3mile.github.io/archives/2020/1023111312/</link>
+      <pubDate>Fri, 23 Oct 2020 11:13:12 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2019/1124202640/</guid>
-      <description>检查谁在搞鬼 sudo systemd-analyze blame 上面我已经干掉了一些 mask 干掉 （要恢复使用 unmask） disable (要恢复使用 enable ) sudo systemctl mask plymouth-quit-wait.service sudo systemctl disable NetworkManager-wait-online.service</description>
+      <guid>https://3mile.github.io/archives/2020/1023111312/</guid>
+      <description>手动修改端口成功了，需要改端口的可以照这样来操作。编辑/etc/init.d/kms文件，将 $DAEMON -p $PID_FILE这段改成$DAEMON -P</description>
     </item>
     
     <item>
-      <title>GSConnect连接Android手机同步通知</title>
-      <link>https://3mile.github.io/archives/2019/1124201311/</link>
-      <pubDate>Sun, 24 Nov 2019 20:13:11 +0800</pubDate>
+      <title>OpenWrt下打印机</title>
+      <link>https://3mile.github.io/archives/2020/1023103910/</link>
+      <pubDate>Fri, 23 Oct 2020 10:39:10 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2019/1124201311/</guid>
-      <description>如果您有将 Android 手机无线连接到电脑里的 Ubuntu 系统需求，那就使用 GSConnect，本文将介绍 GSConnect 的用途并在 Ubuntu 18.04 系统及更高的 Ubuntu 版本上安装 GSConnec</description>
+      <guid>https://3mile.github.io/archives/2020/1023103910/</guid>
+      <description>装好kmod-usb-printer，p910nd和相应的luci 如果是HP打印机，还需要安装hplip-common、hplip-sane</description>
     </item>
     
     <item>
-      <title>同步 Vs Code 设置</title>
-      <link>https://3mile.github.io/archives/2019/1124194902/</link>
-      <pubDate>Sun, 24 Nov 2019 19:49:02 +0800</pubDate>
+      <title>天翼云盘自动签到(python)</title>
+      <link>https://3mile.github.io/archives/2020/1023103622/</link>
+      <pubDate>Fri, 23 Oct 2020 10:36:22 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2019/1124194902/</guid>
-      <description>简介 Visual Studio Code(以下简称 vsCode)现在已经渐渐成为前端开发的主力工具，谁让它这么轻便，功能又这么丰富呢。用 vscode Coding 的小伙伴们也一定会装很多</description>
+      <guid>https://3mile.github.io/archives/2020/1023103622/</guid>
+      <description>&lt;span class=&#34;highlight-text danger&#34;&gt;
+
+在`index.py`的第`24、25`行贴上账号和密码
+
+可选：在第36行贴上酷推密钥序列串。（申请酷推密钥序列参考第35行）
+
+&lt;/span&gt;</description>
+    </item>
+    
+    <item>
+      <title>OpenWrt终端获取IPV6</title>
+      <link>https://3mile.github.io/archives/2020/1023103209/</link>
+      <pubDate>Fri, 23 Oct 2020 10:32:09 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/1023103209/</guid>
+      <description>ubus call network.interface.wan_6 status | grep -A 3 &#39;&amp;quot;ipv6-prefix&amp;quot;:&#39; | grep address | awk &#39;{print $2}&#39; | grep -oE &#39;[0-f]{0,4}\:[0-f]{0,4}\:[0-f]{0,4}\:[0-f]{0,4}&#39; ip -o addr show dev pppoe-wan scope global dynamic ip -o addr show dev br-lan scope global dynamic|awk &#39;{print $4}&#39;|awk -F &#39;/&#39; &#39;{print $1}&#39; 获得路由器br-lan口的ipv6,即路由器管理ip</description>
+    </item>
+    
+    <item>
+      <title>解决aria2下载速度慢</title>
+      <link>https://3mile.github.io/archives/2020/1023101950/</link>
+      <pubDate>Fri, 23 Oct 2020 10:19:50 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/1023101950/</guid>
+      <description>这个，经过反复研究，发现可能有两个问题 一个是BT监听端口没有打开，这样需要打开配置，看看你的监听端口是哪个： listen-port=60001 这个配置就是BT监听端口，另外</description>
+    </item>
+    
+    <item>
+      <title>LNMP环境下手动安装Filerun</title>
+      <link>https://3mile.github.io/archives/2020/0518090855/</link>
+      <pubDate>Mon, 18 May 2020 09:08:55 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0518090855/</guid>
+      <description>Filerun 是一款 php 编写的文件管理和文件共享程序，其风格与 Google Drive 非常相似，官方有演示站， 点此查看。 Filerun 分为常规版和企业版两个版本，常规版为免费版本，最多允</description>
+    </item>
+    
+    <item>
+      <title>WSL权限管理</title>
+      <link>https://3mile.github.io/archives/2020/0419114624/</link>
+      <pubDate>Sun, 19 Apr 2020 11:46:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0419114624/</guid>
+      <description>重装系统，又折腾了一遍WSL环境，记录一下: WSL (Win­dows Sub­sys­tem for Linux) 通过 /mnt 目录下的 c、d、e 等目录可分别访问本地的 C、</description>
+    </item>
+    
+    <item>
+      <title>Winscp普通用户上传文件权限解决方案</title>
+      <link>https://3mile.github.io/archives/2020/0415212217/</link>
+      <pubDate>Wed, 15 Apr 2020 21:22:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0415212217/</guid>
+      <description>&lt;p&gt;为了保服务器的安全，我们禁止了服务器的ROOT用户，然后创建一个自己知道的用户名和密码。这样相对只使用ROOT用户安全一些，但是在设置普通用户之后，当然也禁止掉ROOT用户登入，我们再去用普通用户登入WINSCP文件管理的时候会出现权限问题，无法上传文件。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>如何列出和删除UFW防火墙规则</title>
+      <link>https://3mile.github.io/archives/2020/0415131301/</link>
+      <pubDate>Wed, 15 Apr 2020 13:13:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0415131301/</guid>
+      <description>&lt;p&gt;UFW代表“不复杂的防火墙”，是用于管理iptables（netfilter）防火墙规则的用户友好前端。它是
+
+&lt;a href=&#34;https://www.myfreax.com/how-to-setup-a-firewall-with-ufw-on-ubuntu-18-04/&#34;  target=&#34;_blank&#34;&gt; Ubuntu &lt;/a&gt;的默认防火墙配置工具，也可用于其他流行的Linux发行版，例如
+
+&lt;a href=&#34;https://www.myfreax.com/how-to-setup-a-firewall-with-ufw-on-debian-9/&#34;  target=&#34;_blank&#34;&gt; Debian &lt;/a&gt;和Arch Linux。&lt;/p&gt;
+&lt;p&gt;在本教程中，我们将介绍如何列出和删除UFW防火墙规则。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu安装 Phpmyadmin</title>
+      <link>https://3mile.github.io/archives/2020/0415124611/</link>
+      <pubDate>Wed, 15 Apr 2020 12:46:11 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0415124611/</guid>
+      <description>在Ubuntu 18.04上安装PhpMyAdmin 安装PhpMyAdmin以便从浏览器的舒适管理MySQL / MariaDB数据库。 $ sudo apt install phpmyadmin</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu安装Mariadb</title>
+      <link>https://3mile.github.io/archives/2020/0415105803/</link>
+      <pubDate>Wed, 15 Apr 2020 10:58:03 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0415105803/</guid>
+      <description>首先卸载apt安装的Mariadb 第一步 sudo apt-get remove mysql-* 如果shell使用的是zsh,会出现如下错误 zsh: no matches found: mysql-* 具体原因： 因为zsh缺省情况下始终自己</description>
+    </item>
+    
+    <item>
+      <title>Rsync增量备份_备忘</title>
+      <link>https://3mile.github.io/archives/2020/0411091537/</link>
+      <pubDate>Sat, 11 Apr 2020 09:15:37 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0411091537/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;rsync 全名 Remote Sync，是类 unix 系统下的数据镜像备份工具。可以方便的实现本地，远程备份，rsync 提供了丰富的选项来控制其行为。rsync 优于其他工具的重要一点就是支持增量备份。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>利用pv命令监视数据的处理进度</title>
+      <link>https://3mile.github.io/archives/2020/0410095448/</link>
+      <pubDate>Fri, 10 Apr 2020 09:54:48 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0410095448/</guid>
+      <description>&lt;p&gt;在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Centos7 编译zsh 5.7</title>
+      <link>https://3mile.github.io/archives/2020/0409123755/</link>
+      <pubDate>Thu, 09 Apr 2020 12:37:55 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0409123755/</guid>
+      <description>&lt;p&gt;Oh-my-zsh 安装Powerlevel10k主题出错，发现Centos7 yum 安装的zsh是5.02版的。
+并且yum update无法升级到更高的版本，看来只能编译安装了。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ssh传输文件</title>
+      <link>https://3mile.github.io/archives/2020/0408094222/</link>
+      <pubDate>Wed, 08 Apr 2020 09:42:22 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0408094222/</guid>
+      <description>今天需要上传文件到服务器，但是文件数量巨大且文件容量极小。如果用传统的SCP速度极慢，所以准备用scp传输.gz压缩文件到服务器，然后在服务</description>
+    </item>
+    
+    <item>
+      <title>Linux 命令增强工具</title>
+      <link>https://3mile.github.io/archives/2020/0408005420/</link>
+      <pubDate>Wed, 08 Apr 2020 00:54:20 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0408005420/</guid>
+      <description>一些命令行工具的增强版 最近在 HN 有一篇《 Cli improved》比较火，讲的是一些命令行工具的增强版，我觉得比较好，替换掉了我之前用的一些工具，在</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 上安装微软TrueType字体</title>
+      <link>https://3mile.github.io/archives/2020/0406182133/</link>
+      <pubDate>Mon, 06 Apr 2020 18:21:33 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0406182133/</guid>
+      <description>如果你在 Linux 上用 LibreOffice 打开一些微软文档，你会发现字体看起来有一点不同。你也将注意到有些常用字体找不到，如 Times New Roman、Arial 等等。 不用担心。</description>
+    </item>
+    
+    <item>
+      <title>Certbot指南</title>
+      <link>https://3mile.github.io/archives/2020/0406181407/</link>
+      <pubDate>Mon, 06 Apr 2020 18:14:07 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0406181407/</guid>
+      <description>&lt;p&gt;本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>自定义Windows Terminal</title>
+      <link>https://3mile.github.io/archives/2020/0404123406/</link>
+      <pubDate>Sat, 04 Apr 2020 12:34:06 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0404123406/</guid>
+      <description>新晋 Windows 终端模拟器： Windows Terminal，自发布以来就备受开发者的喜爱，并与 WSL 一起，让不少先前非 Linux 不用的开发者朋友们向 Windows 倾斜。Windows Terminal 不</description>
+    </item>
+    
+    <item>
+      <title>CentOS如何升级openssl到最新版本</title>
+      <link>https://3mile.github.io/archives/2020/0404112101/</link>
+      <pubDate>Sat, 04 Apr 2020 11:21:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0404112101/</guid>
+      <description>&lt;p&gt;CentOS 7.x 的 OpenSSL 软件版本实在是低，2017 年了还在用人家 2013 年的版本，而且 1.0.1 版本对 ALPN 不支持，已经没法跟上大环境的节奏了&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Transmission出现403的解决办法</title>
+      <link>https://3mile.github.io/archives/2020/0312182618/</link>
+      <pubDate>Thu, 12 Mar 2020 18:26:18 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0312182618/</guid>
+      <description>&lt;p&gt;自从编译 openwrt 时加入 Qbittorent 后，transmission 就出现了 403 错误。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>OpenWrt 下 ssh 密钥登录</title>
+      <link>https://3mile.github.io/archives/2020/0312120820/</link>
+      <pubDate>Thu, 12 Mar 2020 12:08:20 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0312120820/</guid>
+      <description>首先需要注意的是，不用于其他版本的 linux,OpenWrt 所使用的 SSH server 是 Dropbear，它可以支持 RSA Keys，但是验证路径位于/etc/dropbear/aut</description>
+    </item>
+    
+    <item>
+      <title>CentOS7通过Yum库安装的Nginx使其支持TLS1</title>
+      <link>https://3mile.github.io/archives/2020/0302143135/</link>
+      <pubDate>Mon, 02 Mar 2020 14:31:35 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0302143135/</guid>
+      <description>如果TLSv1.3如期发布，OpenSSL 1.1.1 将于2018年4月17日面向公众发布。对于服务器来说，我还是喜欢CentOS，支持周期很长，折腾</description>
     </item>
     
     <item>
@@ -198,9 +391,7 @@
       
       <guid>https://3mile.github.io/archives/2019/0530132110/</guid>
       <description>&lt;p&gt;udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。&lt;/p&gt;
-
 &lt;p&gt;udpxy在官方的软件源中，直接安装即可&lt;/p&gt;
-
 &lt;p&gt;udpxy没有独立的配置文件，修改参数直接在启动脚本中完成&lt;/p&gt;</description>
     </item>
     
@@ -291,7 +482,7 @@
       <pubDate>Wed, 20 Feb 2019 18:16:13 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/2019/02/20/</guid>
-      <description>在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutte</description>
+      <description>在 Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutter中的编辑</description>
     </item>
     
     <item>
@@ -480,16 +671,9 @@
       <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/2018/04/002/</guid>
-      <description>&lt;p&gt;这篇文章是用来展示如何显示标签插件。有关更多信息，请参阅&lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags&#34;&gt;文档&lt;/a&gt;。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>highlighted code showcase</title>
-      <link>https://3mile.github.io/2018/05/highlighted-code-showcase/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/2018/05/highlighted-code-showcase/</guid>
-      <description>&lt;p&gt;Tranquilpeak Hugo theme have its own theme to highlight source code. It&amp;rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.&lt;/p&gt;</description>
+      <description>&lt;p&gt;这篇文章是用来展示如何显示标签插件。有关更多信息，请参阅
+
+&lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags&#34;  target=&#34;_blank&#34;&gt;文档&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -561,7 +745,7 @@
       <pubDate>Mon, 16 Apr 2018 10:37:52 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/201/</guid>
-      <description>目前Hugo官方一共提供了135款主题（Themes），下面归类简介其中的25款。 挑选标准：3分代表性 + 6分个人喜好 + 1分随机 :p 常规博客类 Heather</description>
+      <description>目前Hugo官方一共提供了 135款主题（Themes），下面归类简介其中的25款。 挑选标准：3分代表性 + 6分个人喜好 + 1分随机 :p 常规博客类 Heather</description>
     </item>
     
     <item>
@@ -615,7 +799,7 @@
       <pubDate>Wed, 04 Apr 2018 14:02:33 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/107/</guid>
-      <description>Red paragraph text this is a test Summary: Typora is a very good markdown editor, and today I&amp;rsquo;ll show you how to use typora to set the color of the font, Example is as follow. Typora虽然是一款markdown编辑器，但是其实也可以设置字体颜</description>
+      <description>Summary: Typora is a very good markdown editor, and today I&amp;rsquo;ll show you how to use typora to set the color of the font, Example is as follow. Typora虽然是一款markdown编辑器，但是其实也可以设置字体颜色，因为typ</description>
     </item>
     
     <item>
@@ -633,7 +817,7 @@
       <pubDate>Wed, 04 Apr 2018 13:18:03 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/106/</guid>
-      <description>[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机</description>
+      <description>一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机生</description>
     </item>
     
     <item>
@@ -669,7 +853,7 @@
       <pubDate>Mon, 02 Apr 2018 05:19:40 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/103/</guid>
-      <description>内容 在 Linux中使用 路由追踪 测试VPS回程路由（回程路由比去程更影响SS速度） 文章中，我说过如果你的服务器是做代理的，那么最影响速度的就是</description>
+      <description>内容在 Linux中使用 路由追踪 测试VPS回程路由（回程路由比去程更影响SS速度） 文章中，我说过如果你的服务器是做代理的，那么最影响速度的就是</description>
     </item>
     
     <item>
@@ -678,7 +862,7 @@
       <pubDate>Sun, 01 Apr 2018 05:45:46 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/119/</guid>
-      <description>Pacman Pacman 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题：hugo-p</description>
+      <description>Pacman Pacman 是一个不错的 Hexo 主题，一直有冲动把这个主题转成 Hugo 的，再加上 Hugo 交流群里有朋友也提到了这个主题，于是利用周末的时间制作了这个主题： hugo-pacman-theme 演示地址：</description>
     </item>
     
     <item>
@@ -705,7 +889,7 @@
       <pubDate>Sat, 31 Mar 2018 07:00:07 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/934/</guid>
-      <description>显然，这是一只梅花鹿</description>
+      <description></description>
     </item>
     
     <item>
@@ -714,7 +898,7 @@
       <pubDate>Sat, 31 Mar 2018 06:48:38 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/986/</guid>
-      <description>Crayon Syntax Highlighter Crayon Syntax Highlighter是一个强大的代码高亮插件，强大的地方主要是它拥有多种高亮主题和多种显示字体来展示代码让使用者有足够多的搭配选</description>
+      <description>&amp;lt;h2&amp;gt; &amp;lt;/h2&amp;gt; &amp;lt;h2&amp;gt; 实例效果： &amp;lt;/h2&amp;gt; &amp;lt;div id=&amp;quot;crayon-5abf2cf9c084f024894327&amp;quot; class=&amp;quot;crayon-syntax crayon-theme-ado crayon-font-monaco crayon-os-pc print-yes notranslate crayon-wrapped&amp;quot; data-settings=&amp;quot; minimize scroll-mouseover wrap&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;crayon-plain-wrap&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;crayon-main&amp;quot;&amp;gt; &amp;lt;pre class=&amp;quot;lang:default decode:true &amp;quot;&amp;gt;CMemPoolMgr::CMemPoolMgr(unsigned int poolsize /* = DEFAULT_POOLSIZE */, unsigned int poolunitsize /* = DEFAULT_POOLUNITSIZE */, unsigned int blockunitsize /* = DEFAULT_BLOCKUNITSIZE */) { m_nPoolSize = poolsize; m_nPoolUnitSize = poolunitsize; m_nBlockUnitSize = blockunitsize; m_nTotalMemPool = 0; m_nUsingMemPool = 0; m_TimeTick = GetTickCount();</description>
     </item>
     
     <item>
@@ -723,7 +907,7 @@
       <pubDate>Fri, 30 Mar 2018 05:24:38 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/968/</guid>
-      <description>大家群晖玩软路由的基本都是用virtualbox，相对于VMM稳定性差十万八千里了，甚至在群晖上Docker都不如VMM稳定，自由，便捷 但是</description>
+      <description>现在已经稳定运行快一年了！秒杀一切软路由 （R8500设置AP模式后不再区分LAN与WAN，全都相当于交换机模式的LAN口，只需要NAS两个口</description>
     </item>
     
     <item>
@@ -750,7 +934,7 @@
       <pubDate>Fri, 30 Mar 2018 05:11:52 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/890/</guid>
-      <description>一、起因： 我们从一个基准测试开始看： 连接方式： 采用网线连接各个设备进行测试，尽量避免无线WIFI的信号干扰与衰减。 测试环境： 笔记本自带千兆网</description>
+      <description>设备不行怎么办？——换！于是某天一不小心收到两个小盒子，还有一条小小的8G 金士顿DDR3L1600 1.3v低电压笔记本内存条 在旁边观望 开箱！</description>
     </item>
     
     <item>
@@ -769,15 +953,6 @@
       
       <guid>https://3mile.github.io/about/</guid>
       <description>非常开心我突然萌生了微梦想这个想法. 一直以来, 我都对人们的梦想特别敏感, 特别喜欢看到有自己喜欢的东西然后每天快乐地积极地去追求的人. 但是持续</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://3mile.github.io/404/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/404/</guid>
-      <description>Error 404: Page Not Found----Oopsie! It seems that the page that you&#39;re trying to access doesn&#39;t exist. :worried:If you&#39;re sure that it exists, chances are it might have been moved to a new link! You may search for it on the home page.</description>
     </item>
     
   </channel>

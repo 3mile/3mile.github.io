@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>终端 on 3mile博客</title>
+    <link>https://3mile.github.io/categories/%E7%BB%88%E7%AB%AF/</link>
+    <description>Recent content in 终端 on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 Apr 2020 11:46:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/categories/%E7%BB%88%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WSL权限管理</title>
+      <link>https://3mile.github.io/archives/2020/0419114624/</link>
+      <pubDate>Sun, 19 Apr 2020 11:46:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0419114624/</guid>
+      <description>重装系统，又折腾了一遍WSL环境，记录一下: WSL (Win­dows Sub­sys­tem for Linux) 通过 /mnt 目录下的 c、d、e 等目录可分别访问本地的 C、</description>
+    </item>
+    
+    <item>
+      <title>Centos7 编译zsh 5.7</title>
+      <link>https://3mile.github.io/archives/2020/0409123755/</link>
+      <pubDate>Thu, 09 Apr 2020 12:37:55 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0409123755/</guid>
+      <description>&lt;p&gt;Oh-my-zsh 安装Powerlevel10k主题出错，发现Centos7 yum 安装的zsh是5.02版的。
+并且yum update无法升级到更高的版本，看来只能编译安装了。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

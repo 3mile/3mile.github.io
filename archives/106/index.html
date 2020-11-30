@@ -5,21 +5,21 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
-<meta name="description" content="[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机">
+<meta name="description" content="一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机生">
 
 
-<meta property="og:description" content="[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机">
+<meta property="og:description" content="一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机生">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SSH无密码登录及putty设置">
 <meta name="twitter:title" content="SSH无密码登录及putty设置">
 <meta property="og:url" content="https://3mile.github.io/archives/106/">
 <meta property="twitter:url" content="https://3mile.github.io/archives/106/">
 <meta property="og:site_name" content="3mile博客">
-<meta property="og:description" content="[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机">
-<meta name="twitter:description" content="[]() 一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机">
+<meta property="og:description" content="一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机生">
+<meta name="twitter:description" content="一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机生">
 <meta property="og:locale" content="zh-cn">
 
   
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="vps">
+      <meta property="article:section" content="Linux">
     
   
   
@@ -89,7 +89,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -144,7 +144,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -275,7 +275,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/vps">vps</a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -296,30 +296,50 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
-            <p>[<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/linux.jpg" alt="Linux" />]()</p>
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
 
+            
+            
+            <nav id="TableOfContents"></nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>
+
+<a href=""  >
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/linux.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/linux.jpg" alt="Linux" /></a>
+</span>
+
+</span></a></p>
 <p>　　一般Linux的VPS比Windows的便宜，所以手上的几个VPS清一色Linux发行版CentOS系统。拿到root权限的账号，系统随机生成的密码比较复杂，一般我们为了方便记忆都会改成自己能记得住的，然而这是不安全的。但凡用到密码的地方都只是看似安全。所以，在开通了Linux系统的VPS后，我们有必要对SSH登录做一些基本的安全设置。
 　　这其中利用公钥和私钥就能实现SSH无密码登录。按照如下步骤操作：
 <strong>1、生成公钥和私钥</strong>
 　　Linux系统中绝大部分的发行版都是用OpenSSH，所以生成公钥私钥的时候最好用ssh-keygen命令，如果用putty自带的PUTTYGEN.EXE生成会不兼容OpenSSH，从而会导致登录时出现server refused our key错误。</p>
-
 <p>　　用root登录后运行命令如下。</p>
-
-<pre><code class="language-Bash">ssh-keygen -t rsa
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ssh-keygen -t rsa
 Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa):    ##直接回车默认路径
-Created directory '/root/.ssh'.
-Enter passphrase (empty for no passphrase):                 ##输入密码短语（留空则直接回车）
-Enter same passphrase again:                                ##重复密码短语
+Enter file in which to save the key <span style="color:#f92672">(</span>/root/.ssh/id_rsa<span style="color:#f92672">)</span>:    <span style="color:#75715e">##直接回车默认路径</span>
+Created directory <span style="color:#e6db74">&#39;/root/.ssh&#39;</span>.
+Enter passphrase <span style="color:#f92672">(</span>empty <span style="color:#66d9ef">for</span> no passphrase<span style="color:#f92672">)</span>:                 <span style="color:#75715e">##输入密码短语（留空则直接回车）</span>
+Enter same passphrase again:                                <span style="color:#75715e">##重复密码短语</span>
 Your identification has been saved in /root/.ssh/id_rsa.
 Your public key has been saved in /root/.ssh/id_rsa.pub.
 The key fingerprint is:
 04:e1:93:92:95:ba:55:21:58:05:7d:57:58:92:32:d3 root@vpn
-The key's randomart image is:
-+--[ RSA 2048]----+
-|     oB*o. ..=o  |
-|    .+.+o = E.   |
-|    o.+... =     |
+The key<span style="color:#960050;background-color:#1e0010">&#39;</span>s randomart image is:
++--<span style="color:#f92672">[</span> RSA 2048<span style="color:#f92672">]</span>----+
+|     oB*o. ..<span style="color:#f92672">=</span>o  |
+|    .+.+o <span style="color:#f92672">=</span> E.   |
+|    o.+... <span style="color:#f92672">=</span>     |
 |    ...o         |
 |     o  S        |
 |    .            |
@@ -327,67 +347,64 @@ The key's randomart image is:
 |                 |
 |                 |
 +-----------------+
-</code></pre>
-
-<p>在/root/.ssh/目录下生成了2个文件，id_rsa为私钥，id_rsa.pub为公钥。私钥自己下载到本地电脑妥善保存，公钥则可以任意公开。</p>
-
+</code></pre></div><p>在/root/.ssh/目录下生成了2个文件，id_rsa为私钥，id_rsa.pub为公钥。私钥自己下载到本地电脑妥善保存，公钥则可以任意公开。</p>
 <p><strong>2、导入公钥</strong>
 运行命令如下。</p>
-
-<pre><code class="language-Bash">cat /root/.ssh/id_rsa.pub &gt;&gt;  /root/.ssh/authorized_keys
-</code></pre>
-
-<p><strong>3、更改SSH配置文件</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cat /root/.ssh/id_rsa.pub &gt;&gt;  /root/.ssh/authorized_keys
+</code></pre></div><p><strong>3、更改SSH配置文件</strong>
 修改SSH的配置文件/etc/ssh/sshd_config，找到下面3行：</p>
-
-<pre><code class="language-Bash">#RSAAuthentication yes
-#PubkeyAuthentication yes
-#AuthorizedKeysFile	.ssh/authorized_keys
-</code></pre>
-
-<p>将前面的#去掉后保存。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#75715e">#RSAAuthentication yes</span>
+<span style="color:#75715e">#PubkeyAuthentication yes</span>
+<span style="color:#75715e">#AuthorizedKeysFile	.ssh/authorized_keys</span>
+</code></pre></div><p>将前面的#去掉后保存。
 重启SSH服务，运行命令：
 service sshd restart</p>
-
 <p><strong>4、制作用于putty的私钥</strong>
 将VPS上的/root/.ssh/id_rsa下载到本地，利用PUTTYGEN.EXE转换为putty用的ppk文件。
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/keygen_1.png" alt="keygen1" /></p>
 
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/keygen_1.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/keygen_1.png" alt="keygen1" /></a>
+</span>
+
+</span></p>
 <p>点击File，Load private key，导入/root/.ssh/id_rsa文件。成功后的图片如下所示：
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/keygen_2.png" alt="keygen2" /></p>
 
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/keygen_2.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/keygen_2.png" alt="keygen2" /></a>
+</span>
+
+</span></p>
 <p>点击Save private key按钮，生成一个后缀为ppk的文件，比如起名为teddysun.ppk，这个文件就是已经制作好的用于putty无密码登录的私钥了，妥善保存。</p>
-
 <p><strong>5、配置putty</strong>
 最简便的一个方法是创建一个桌面快捷方式，双击即可无密码登录到VPS。
 找到putty.exe文件，然后右键创建桌面快捷方式，再到桌面上编辑这个快捷方式，在目标一栏中，修改参数如下。</p>
-
-<pre><code class="language-Bash">&quot;C:\Program Files\PUTTY\PUTTY.EXE&quot; -i &quot;D:\key\teddysun.ppk&quot; root@xxx.xxx.xxx.xxx
-</code></pre>
-
-<p>修改为存放私钥的完整路径，将xxx.xxx.xxx.xxx替换为你的VPS的IP地址即可。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#e6db74">&#34;C:\Program Files\PUTTY\PUTTY.EXE&#34;</span> -i <span style="color:#e6db74">&#34;D:\key\teddysun.ppk&#34;</span> root@xxx.xxx.xxx.xxx
+</code></pre></div><p>修改为存放私钥的完整路径，将xxx.xxx.xxx.xxx替换为你的VPS的IP地址即可。</p>
 <p>现在，你可以双击建好的putty快捷方式，看看是否已经可以无密码登录了。</p>
-
 <p><strong>6、关闭SSH密码登陆</strong>
 在上述第5步验证OK后，出于安全需要就可以关闭SSH的密码登录。
 修改SSH的配置文件/etc/ssh/sshd_config，找到下面1行：</p>
-
-<pre><code class="language-Bash">PasswordAuthentication yes
-</code></pre>
-
-<p>修改为：</p>
-
-<pre><code class="language-Bash">PasswordAuthentication no
-</code></pre>
-
-<p>重启SSH服务，运行命令：
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">PasswordAuthentication yes
+</code></pre></div><p>修改为：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">PasswordAuthentication no
+</code></pre></div><p>重启SSH服务，运行命令：
 service sshd restart</p>
-
 <p>搞定，收工。至此，就只能用私钥登录到VPS了，安全性大大增强了。最后，顺便说一句，别跟我说私钥弄丢了怎么办（我都说了要妥善保存的了）。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/106/>SSH无密码登录及putty设置</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-04<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/106/ target="_blank" >https://3mile.github.io/archives/106/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -414,7 +431,7 @@ service sshd restart</p>
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -459,24 +476,6 @@ service sshd restart</p>
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/106/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/106/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/106/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -495,9 +494,11 @@ service sshd restart</p>
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -535,24 +536,6 @@ service sshd restart</p>
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/106/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/106/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/106/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -571,24 +554,6 @@ service sshd restart</p>
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F106%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F106%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F106%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -604,7 +569,7 @@ service sshd restart</p>
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -632,18 +597,28 @@ service sshd restart</p>
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="关于 uBlock Origin 有人曾经做过对比：uBlock Origin对比ABP有性能上的优势，其最为突然的性能优势就是其占用极低的内存和 CPU。有分析说adp">
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -292,54 +292,75 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents"></nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
             <p>关于 uBlock Origin
- 有人曾经做过对比：uBlock Origin对比ABP有性能上的优势，其最为突然的性能优势就是其占用极低的内存和 CPU。有分析说adp主要靠的是屏蔽，而ublock Origin主要靠的是阻断，ABP的工作需要在所有网页插入屏蔽脚本和css，而uBlock Origin直接阻止需要屏蔽的内容进入当前网页。一般的拦截请求的规则大家都差不多，关键的是元素隐藏规则，uBlock 把它叫做修饰规则 cosmetic filters，ABP 不管是什么网页都会插入 14000 多条元素隐藏规则，所以占用内存很大，uBlock 插入的很少，因为他是在网页开始加载以后才判断需要用到哪些元素隐藏规则。所以才在性能上面要更加优越。</p>
+有人曾经做过对比：uBlock Origin对比ABP有性能上的优势，其最为突然的性能优势就是其占用极低的内存和 CPU。有分析说adp主要靠的是屏蔽，而ublock Origin主要靠的是阻断，ABP的工作需要在所有网页插入屏蔽脚本和css，而uBlock Origin直接阻止需要屏蔽的内容进入当前网页。一般的拦截请求的规则大家都差不多，关键的是元素隐藏规则，uBlock 把它叫做修饰规则 cosmetic filters，ABP 不管是什么网页都会插入 14000 多条元素隐藏规则，所以占用内存很大，uBlock 插入的很少，因为他是在网页开始加载以后才判断需要用到哪些元素隐藏规则。所以才在性能上面要更加优越。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/auto-orient"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/auto-orient" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/auto-orient" alt="img" /></p>
-
+</span></p>
 <p>uBlock Origin性能优势</p>
-
 <p><a href="http://chromecj.com/productivity/2017-06/770.html">http://chromecj.com/productivity/2017-06/770.html</a></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/auto-orient1.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/auto-orient1.jpg" alt="巨大的电源按钮" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/auto-orient1.jpg" alt="巨大的电源按钮" /></p>
-
+</span></p>
 <p>(3)元素吸管图标：点击滴管图标可以进入元素选择器模式，在这里你可以交互地从页面选择元素并创建过滤规则来永久移除该元素。屏蔽元素按钮(用过ABP的都知道)
- (4)列表图标：网络请求日志(个人理解:网络请求记录监控中心)：可以按照网络资源查看/屏蔽的控制系统 。网络请求日志与开发工具的网络 不同之处在于，不单单可以查看网络资源，还可以屏蔽不想要的脚本等等之流 。你可以在浏览器里实时查看网络通信情况。提示：点击图标的同时按住 Shift 键可以切换选择是在新窗口还是新标签页中打开记录台。uBO 会在你未按 Shift 键打开记录台时记住你的选择。</p>
-
+(4)列表图标：网络请求日志(个人理解:网络请求记录监控中心)：可以按照网络资源查看/屏蔽的控制系统 。网络请求日志与开发工具的网络 不同之处在于，不单单可以查看网络资源，还可以屏蔽不想要的脚本等等之流 。你可以在浏览器里实时查看网络通信情况。提示：点击图标的同时按住 Shift 键可以切换选择是在新窗口还是新标签页中打开记录台。uBO 会在你未按 Shift 键打开记录台时记住你的选择。</p>
 <p>(5）禁止网页弹窗按钮，开启后，该网页永久无法弹窗 。默认情况下弹出窗口是允许显示的，除非有相应的过滤规则屏蔽。但如果开启该选项，不管规则如何，当前站点的所有弹出窗口都会被屏蔽：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/164.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/164.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/164.png" alt="img" /></p>
-
+</span></p>
 <p>ublock origin禁止弹窗</p>
-
 <p>基于 Chromium 的浏览器请注意：</p>
-
 <p>uBlock Origin</p>
-
 <p>(7)禁止修饰生效按钮，开启，隐藏元素规则失效 。该特性生效时，图标旁边的数字表示被 uBO 修饰规则隐藏的元素数量。如果网页有被隐藏的元素，那么一旦你禁用修饰规则，这些元素就会立即显示，一旦启用立即隐藏。</p>
+<p>(8)禁止第三方字体：三种颜色：红(block)、灰(noop)、绿(allow) 出于安全和隐私方面考虑，许多人希望默认能屏蔽所有网页字体。你只需在控制面板的 &ldquo;自定义规则 &quot; 版块直接添加下面这条规则：no-remote-fonts: * true
+这样 uBlock 就会默认屏蔽任何地方的网页字体，而你又可以根据不同的站点点击这个开关来允许使用网页字体。
+基于 Chromium 的浏览器请注意：Chromium 的 webRequest API 无法准确报出 font 类的请求，所以字体会被归为 other 类型。uBlock 是根据一条 URL 路径的&quot;扩展名&quot;来判断一条请求是否属于字体资源，但一条 URL 的请求类型可以千变万化，所以对于基于 Chromium 的浏览器，uBlock 也许得在请求产生以后才能屏蔽字体，也就是从远端服务器接收到响应标头以后，毕竟从响应标头可以确认资源属于哪种类型。
+uBlock Origin如何添加白名单
+许多用户的反馈希望增加能将网站加为白名单的功能，也就是在特定的网站禁用 uBlock。其实这项功能已经有了，就是那个巨大的电源按钮。点击这个按钮你可以将当前网站加入白名单，在你下次访问该网站时仍会记住你的选择。如下图所示：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/311.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/311.png" alt="img" /></a>
+</span>
 
-<p>(8)禁止第三方字体：三种颜色：红(block)、灰(noop)、绿(allow) 出于安全和隐私方面考虑，许多人希望默认能屏蔽所有网页字体。你只需在控制面板的 &ldquo;自定义规则 &rdquo; 版块直接添加下面这条规则：no-remote-fonts: * true
- 这样 uBlock 就会默认屏蔽任何地方的网页字体，而你又可以根据不同的站点点击这个开关来允许使用网页字体。
- 基于 Chromium 的浏览器请注意：Chromium 的 webRequest API 无法准确报出 font 类的请求，所以字体会被归为 other 类型。uBlock 是根据一条 URL 路径的&rdquo;扩展名&rdquo;来判断一条请求是否属于字体资源，但一条 URL 的请求类型可以千变万化，所以对于基于 Chromium 的浏览器，uBlock 也许得在请求产生以后才能屏蔽字体，也就是从远端服务器接收到响应标头以后，毕竟从响应标头可以确认资源属于哪种类型。
- uBlock Origin如何添加白名单
- 许多用户的反馈希望增加能将网站加为白名单的功能，也就是在特定的网站禁用 uBlock。其实这项功能已经有了，就是那个巨大的电源按钮。点击这个按钮你可以将当前网站加入白名单，在你下次访问该网站时仍会记住你的选择。如下图所示：</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/311.png" alt="img" /></p>
-
+</span></p>
 <p>ublock origin白名单</p>
-
 <p>常见的uBlock Origin规则推荐
- 初始默认加载和执行下列过滤规则列表：</p>
-
+初始默认加载和执行下列过滤规则列表：</p>
 <ul>
 <li>EasyList</li>
 <li>Peter Lowe’s Ad server list</li>
 <li>EasyPrivacy</li>
 <li>Malware domains</li>
 </ul>
-
 <p>这里还有更多的规则列表供你选择：</p>
-
 <ul>
 <li>Fanboy’s Enhanced Tracking List</li>
 <li>Dan Pollock’s hosts file</li>
@@ -348,13 +369,22 @@ if (!doNotTrack) {
 <li>Spam404</li>
 <li>等等</li>
 </ul>
-
 <p>当然，启用越多的过滤规则就会产生越高的内存占用。 然而，即使再添加 Fanboy 额外的两个规则列表，如 hpHosts’s Ad 和 tracking servers，uBlock₀ 的内存占用依然比其他常见的过滤工具要低的多。
- uBlock Origin小结
- ABP的过滤规则建立或许比较直观方便，但对于不想详细研究直接用其他人维护的列表且对性能要求较高的人来说，uBlock Origin也许更适合（说的就是我~~）。</p>
+uBlock Origin小结
+ABP的过滤规则建立或许比较直观方便，但对于不想详细研究直接用其他人维护的列表且对性能要求较高的人来说，uBlock Origin也许更适合（说的就是我~~）。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/136/>谷歌插件Ublock Origin</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-05-05<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/136/ target="_blank" >https://3mile.github.io/archives/136/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -377,7 +407,7 @@ if (!doNotTrack) {
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -422,24 +452,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/136/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/136/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/136/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -458,9 +470,11 @@ if (!doNotTrack) {
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -498,24 +512,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/136/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/136/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/136/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -534,24 +530,6 @@ if (!doNotTrack) {
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F136%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F136%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F136%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -567,7 +545,7 @@ if (!doNotTrack) {
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -595,18 +573,28 @@ if (!doNotTrack) {
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

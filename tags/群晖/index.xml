@@ -44,7 +44,7 @@
       <pubDate>Fri, 30 Mar 2018 05:24:38 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/968/</guid>
-      <description>大家群晖玩软路由的基本都是用virtualbox，相对于VMM稳定性差十万八千里了，甚至在群晖上Docker都不如VMM稳定，自由，便捷 但是</description>
+      <description>现在已经稳定运行快一年了！秒杀一切软路由 （R8500设置AP模式后不再区分LAN与WAN，全都相当于交换机模式的LAN口，只需要NAS两个口</description>
     </item>
     
   </channel>

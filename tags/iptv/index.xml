@@ -18,9 +18,7 @@
       
       <guid>https://3mile.github.io/archives/2019/0530132110/</guid>
       <description>&lt;p&gt;udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。&lt;/p&gt;
-
 &lt;p&gt;udpxy在官方的软件源中，直接安装即可&lt;/p&gt;
-
 &lt;p&gt;udpxy没有独立的配置文件，修改参数直接在启动脚本中完成&lt;/p&gt;</description>
     </item>
     

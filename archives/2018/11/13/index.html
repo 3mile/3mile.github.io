@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="vps">
+      <meta property="article:section" content="Linux">
     
   
   
@@ -87,7 +87,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -142,7 +142,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -273,7 +273,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/vps">vps</a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -294,78 +294,82 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p>MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软件。废话不多说，贴出github地址</p>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#安装">安装</a>
+      <ul>
+        <li><a href="#安装依赖">安装依赖</a></li>
+        <li><a href="#克隆源码编译安装">克隆源码编译安装</a></li>
+        <li><a href="#生成配置文件">生成配置文件</a></li>
+        <li><a href="#创建systemd-service">创建Systemd service</a></li>
+      </ul>
+    </li>
+    <li><a href="#代理注册">代理注册</a></li>
+  </ul>
+</nav>
 
-<p><a href="https://github.com/TelegramMessenger/MTProxy">传送门</a></p>
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>MTProxy是Telegram（以下简称TG）官方开源的一个TG代理工具，用户可以用来自建代理方便自己使用TG，C语言写一个很轻便的代理软件。废话不多说，贴出github地址</p>
+<p>
 
+<a href="https://github.com/TelegramMessenger/MTProxy"  target="_blank">传送门</a></p>
 <h2 id="安装">安装</h2>
-
 <p>github页面已经有详细的安装教程，这里简单说一下。</p>
-
 <ol>
-<li>### 安装依赖</li>
+<li>
+<h3 id="安装依赖">安装依赖</h3>
+</li>
 </ol>
-
 <p>CentOS/RHEL:</p>
-
-<pre><code class="language-shell">yum install openssl-devel zlib-devel
-yum groupinstall &quot;Development Tools&quot;
-</code></pre>
-
-<ol>
-<li><h3 id="克隆源码编译安装">克隆源码编译安装</h3>
-
-<pre><code class="language-shell">git clone https://github.com/TelegramMessenger/MTProxy
-cd MTProxy
-make &amp;&amp; cd objs/bin
-</code></pre></li>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">yum install openssl-devel zlib-devel
+yum groupinstall <span style="color:#e6db74">&#34;Development Tools&#34;</span>
+</code></pre></div><ol>
+<li>
+<h3 id="克隆源码编译安装">克隆源码编译安装</h3>
+</li>
 </ol>
-
-<p>编译完会在 <code>objs/bid*</code>目录生成可执行文件<code>mtproto-proxy</code>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git clone https://github.com/TelegramMessenger/MTProxy
+cd MTProxy
+make <span style="color:#f92672">&amp;&amp;</span> cd objs/bin
+</code></pre></div><p>编译完会在 <code>objs/bid*</code>目录生成可执行文件<code>mtproto-proxy</code>
 把这个可执行文件转移到你喜欢的目录</p>
-
 <pre><code>mv mtproto-proxy /usr/bin
 cd /usr/bin
-</code></pre>
-
-<ol>
-<li>### 生成配置文件</li>
+</code></pre><ol>
+<li>
+<h3 id="生成配置文件">生成配置文件</h3>
+</li>
 </ol>
-
 <p>获取secret，用于连接TG服务器的</p>
-
 <pre><code>curl -s https://core.telegram.org/getProxySecret -o proxy-secret
-</code></pre>
-
-<p>获取<code>proxy-multi.conf</code>，TG官方的host，里面存放的是TG官方服务器的地址和端口，你需要代理访问的地址都在这里面，官方建议经常更新一下这个文件</p>
-
+</code></pre><p>获取<code>proxy-multi.conf</code>，TG官方的host，里面存放的是TG官方服务器的地址和端口，你需要代理访问的地址都在这里面，官方建议经常更新一下这个文件</p>
 <pre><code>curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf
-</code></pre>
-
-<p>生成一个密钥，这个密钥是要给客户端用的</p>
-
+</code></pre><p>生成一个密钥，这个密钥是要给客户端用的</p>
 <pre><code>head -c 16 /dev/urandom | xxd -ps
-</code></pre>
-
-<p>以上命令会生成一个32位的字符串，copy下来，后面要用到。</p>
-
+</code></pre><p>以上命令会生成一个32位的字符串，copy下来，后面要用到。</p>
 <blockquote>
 <p>完成之后，<code>/usr/bin</code>文件夹下面会有三个文件<code>mtproto-proxy</code>，<code>proxy-multi.conf</code>和<code>proxy-secret</code>。配置文件获取完毕</p>
 </blockquote>
-
 <ol>
-<li>### 创建Systemd service</li>
+<li>
+<h3 id="创建systemd-service">创建Systemd service</h3>
+</li>
 </ol>
-
 <p>创建一个system service可以很方便的管理你的mtproxy的启动、重启和查看状态等。</p>
-
 <pre><code>vi /etc/systemd/system/MTProxy.service
-</code></pre>
-
-<p>编辑<code>MTProxy.service</code></p>
-
+</code></pre><p>编辑<code>MTProxy.service</code></p>
 <pre><code>[Unit]
 Description=MTProxy
 After=network.target
@@ -378,55 +382,48 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>其中<code>secret</code>是在第3步里面生成的客户端密钥，替换为你自己生成的字符串。
 <code>8888</code>是内部查看服务状态的端口
 <code>8080</code>是客户端连接用的端口，这里你可以自定义为你想开放的接口</p>
 </blockquote>
-
 <p>千万别忘记还有防火墙要设置</p>
-
 <pre><code>firewall-cmd --zone=public --add-port=8080/tcp --permanent
 firewall-cmd --reload
 firewall-cmd --list-prot
-</code></pre>
-
-<p>保存<code>MTProxy.service</code>之后重载一下systemctl，并启动该服务</p>
-
+</code></pre><p>保存<code>MTProxy.service</code>之后重载一下systemctl，并启动该服务</p>
 <pre><code>systemctl daemon-reload
 systemctl restart MTProxy.service
 //查看一下服务状态
 systemctl status MTProxy.service
-</code></pre>
-
-<p>不出意外的话你会在控制台输出看到最后两行大概是长这样的</p>
-
+</code></pre><p>不出意外的话你会在控制台输出看到最后两行大概是长这样的</p>
 <pre><code>config_filename = 'proxy-multi.conf'
 creating 1 workers
 Started as [*.*.*.*:*:*:*]//这里是ip:端口:端口
 configuration file proxy-multi.conf re-read successfully (797 bytes parsed), new configuration a main loop
 Started as [*.*.*.*:*:*:*]//这里是ip:端口:端口
 configuration file proxy-multi.conf re-read successfully (797 bytes parsed), new configuration a main loop
-</code></pre>
-
-<p>说明服务器已经正常跑起来了。你的MTProxy已经可以使用了。</p>
-
+</code></pre><p>说明服务器已经正常跑起来了。你的MTProxy已经可以使用了。</p>
 <blockquote>
 <p><code>阿里云</code>的部分用户这里可能有一个注意事项，阿里云有的机器MTProxy获取不到外网IP的，绑定的是内部局域网IP，这样会导致即使你的服务没有任何问题的跑起来了，但是填到客户端里面客户端无法连接上代理。如何检测你的机器是不是能获取到外网地址，<code>ifconfig</code>一下，能看到你服务器的外网ip就可以，看不到的话就说明获取不到外网地址。如果看不到你的外网地址的话，在第四步的<code>MTProxy.service</code>文件里面使用<code>--nat-info</code>指定一下你的内网地址和外网地址。</p>
 </blockquote>
-
 <pre><code>WorkingDirectory=/usr/bin
 ExecStart=/usr/bin/mtproto-proxy -u nobody -p 8888 -H 8080 -S &lt;secret&gt; --nat-info &lt;内网地址&gt;:&lt;外网地址&gt; --aes-pwd proxy-secret proxy-multi.conf -M 1
-</code></pre>
-
-<h2 id="代理注册">代理注册</h2>
-
+</code></pre><h2 id="代理注册">代理注册</h2>
 <p>如果你想分享你的代理给亲朋友好友使用的话，你可以到TG里面注册你的代理，TG会生成分享连接</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/11/13/>CentOS7 安装部署MTProxy</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-11-13<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/11/13/ target="_blank" >https://3mile.github.io/archives/2018/11/13/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -451,7 +448,7 @@ ExecStart=/usr/bin/mtproto-proxy -u nobody -p 8888 -H 8080 -S &lt;secret&gt; --n
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -496,24 +493,6 @@ ExecStart=/usr/bin/mtproto-proxy -u nobody -p 8888 -H 8080 -S &lt;secret&gt; --n
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/11/13/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/11/13/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/11/13/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -532,9 +511,11 @@ ExecStart=/usr/bin/mtproto-proxy -u nobody -p 8888 -H 8080 -S &lt;secret&gt; --n
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -572,24 +553,6 @@ ExecStart=/usr/bin/mtproto-proxy -u nobody -p 8888 -H 8080 -S &lt;secret&gt; --n
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/11/13/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/11/13/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/11/13/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -608,24 +571,6 @@ ExecStart=/usr/bin/mtproto-proxy -u nobody -p 8888 -H 8080 -S &lt;secret&gt; --n
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F11%2F13%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F11%2F13%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F11%2F13%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -641,7 +586,7 @@ ExecStart=/usr/bin/mtproto-proxy -u nobody -p 8888 -H 8080 -S &lt;secret&gt; --n
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -669,18 +614,28 @@ ExecStart=/usr/bin/mtproto-proxy -u nobody -p 8888 -H 8080 -S &lt;secret&gt; --n
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

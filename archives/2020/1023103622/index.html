@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="
+
+在`index.py`的第`24、25`行贴上账号和密码
+
+可选：在第36行贴上酷推密钥序列串。（申请酷推密钥序列参考第35行）
+
+">
+
+
+<meta property="og:description" content="
+
+在`index.py`的第`24、25`行贴上账号和密码
+
+可选：在第36行贴上酷推密钥序列串。（申请酷推密钥序列参考第35行）
+
+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="天翼云盘自动签到(python)">
+<meta name="twitter:title" content="天翼云盘自动签到(python)">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/1023103622/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/1023103622/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="
+
+在`index.py`的第`24、25`行贴上账号和密码
+
+可选：在第36行贴上酷推密钥序列串。（申请酷推密钥序列参考第35行）
+
+">
+<meta name="twitter:description" content="
+
+在`index.py`的第`24、25`行贴上账号和密码
+
+可选：在第36行贴上酷推密钥序列串。（申请酷推密钥序列参考第35行）
+
+">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-10-23T10:36:22">
+  
+  
+    <meta property="article:modified_time" content="2020-10-23T10:36:22">
+  
+  
+  
+    
+      <meta property="article:section" content="">
+    
+  
+  
+    
+      <meta property="article:tag" content="">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/e0f82885392ca506dfcb15d35efdacdb.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/e0f82885392ca506dfcb15d35efdacdb.jpg">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/9.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/9.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>天翼云盘自动签到(python)</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/1023103622/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/9.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      天翼云盘自动签到(python)
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-10-23T10:36:22&#43;08:00">
+        
+  
+  
+  
+  
+    2020-10-23
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">天翼云盘自动签到(python)</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents"></nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <span class="highlight-text danger">
+
+在`index.py`的第`24、25`行贴上账号和密码
+
+可选：在第36行贴上酷推密钥序列串。（申请酷推密钥序列参考第35行）
+
+</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">[url=https://www.52pojie.cn/thread-1231190-1-1.html]https://www.52pojie.cn/thread-1231190-1-1.html[/url]
+</span><span style="color:#e6db74"> 
+</span><span style="color:#e6db74">感谢作者开源天翼云签到部分源码：
+</span><span style="color:#e6db74">https://github.com/t00t00-crypto/cloud189-action/blob/master/checkin.py 及 [login_function.py](https://github.com/Dawnnnnnn/Cloud189/blob/master/functions/login_function.py) 
+</span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+<span style="color:#f92672">import</span> time
+<span style="color:#f92672">import</span> re
+<span style="color:#75715e"># import json</span>
+<span style="color:#f92672">import</span> base64
+<span style="color:#f92672">import</span> hashlib
+<span style="color:#75715e"># from urllib import parse</span>
+ 
+<span style="color:#f92672">import</span> rsa
+<span style="color:#f92672">import</span> requests
+ 
+BI_RM <span style="color:#f92672">=</span> list(<span style="color:#e6db74">&#34;0123456789abcdefghijklmnopqrstuvwxyz&#34;</span>)
+ 
+B64MAP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&#34;</span>
+ 
+s <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>Session()
+ 
+<span style="color:#75715e"># 在下面两行的引号内贴上账号（仅支持手机号）和密码</span>
+username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+ 
+_ <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span><span style="color:#e6db74">if(username == &#34;&#34; or password == &#34;&#34;):
+</span><span style="color:#e6db74">    username = input(&#34;账号：&#34;)
+</span><span style="color:#e6db74">    password = input(&#34;密码：&#34;)
+</span><span style="color:#e6db74"># &#34;&#34;&#34;</span>
+ 
+<span style="color:#66d9ef">assert</span> username <span style="color:#f92672">and</span> password, <span style="color:#e6db74">&#34;在第23、24行填入有效账号和密码&#34;</span>
+ 
+<span style="color:#75715e"># https://cp.xuthus.cc/ 申请key 并设置测试好酷推</span>
+xuthuskey <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+<span style="color:#75715e"># xuthuskey = &#34;27a...........................7b&#34;</span>
+ 
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> xuthuskey:
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;第36行的xuthuskey 为空，签到结果将不会通过酷推发到你的qq&#34;</span>)
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">int2char</span>(a):
+    <span style="color:#66d9ef">return</span> BI_RM[a]
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">b64tohex</span>(a):
+    d <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    e <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(a)):
+        <span style="color:#66d9ef">if</span> list(a)[i] <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;=&#34;</span>:
+            v <span style="color:#f92672">=</span> B64MAP<span style="color:#f92672">.</span>index(list(a)[i])
+            <span style="color:#66d9ef">if</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> e:
+                e <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+                d <span style="color:#f92672">+=</span> int2char(v <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">2</span>)
+                c <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">&amp;</span> v
+            <span style="color:#66d9ef">elif</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> e:
+                e <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+                d <span style="color:#f92672">+=</span> int2char(c <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span> v <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">4</span>)
+                c <span style="color:#f92672">=</span> <span style="color:#ae81ff">15</span> <span style="color:#f92672">&amp;</span> v
+            <span style="color:#66d9ef">elif</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> e:
+                e <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+                d <span style="color:#f92672">+=</span> int2char(c)
+                d <span style="color:#f92672">+=</span> int2char(v <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">2</span>)
+                c <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">&amp;</span> v
+            <span style="color:#66d9ef">else</span>:
+                e <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+                d <span style="color:#f92672">+=</span> int2char(c <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">|</span> v <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">4</span>)
+                d <span style="color:#f92672">+=</span> int2char(<span style="color:#ae81ff">15</span> <span style="color:#f92672">&amp;</span> v)
+    <span style="color:#66d9ef">if</span> e <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+        d <span style="color:#f92672">+=</span> int2char(c <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">2</span>)
+    <span style="color:#66d9ef">return</span> d
+ 
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rsa_encode</span>(j_rsakey, string):
+    rsa_key <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#34;-----BEGIN PUBLIC KEY-----</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">{j_rsakey}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">-----END PUBLIC KEY-----&#34;</span>
+    pubkey <span style="color:#f92672">=</span> rsa<span style="color:#f92672">.</span>PublicKey<span style="color:#f92672">.</span>load_pkcs1_openssl_pem(rsa_key<span style="color:#f92672">.</span>encode())
+    result <span style="color:#f92672">=</span> b64tohex((base64<span style="color:#f92672">.</span>b64encode(rsa<span style="color:#f92672">.</span>encrypt(f<span style="color:#e6db74">&#39;{string}&#39;</span><span style="color:#f92672">.</span>encode(), pubkey)))<span style="color:#f92672">.</span>decode())
+    <span style="color:#66d9ef">return</span> result
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calculate_md5_sign</span>(params):
+    <span style="color:#66d9ef">return</span> hashlib<span style="color:#f92672">.</span>md5(<span style="color:#e6db74">&#39;&amp;&#39;</span><span style="color:#f92672">.</span>join(sorted(params<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;&amp;&#39;</span>)))<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))<span style="color:#f92672">.</span>hexdigest()
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>(username, password):
+    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://cloud.189.cn/udb/udb_login.jsp?pageId=1&amp;redirectURL=/main.action&#34;</span>
+    r <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>get(url)
+    captchaToken <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;captchaToken&#39; value=&#39;(.+?)&#39;&#34;</span>, r<span style="color:#f92672">.</span>text)[<span style="color:#ae81ff">0</span>]
+    lt <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;lt = &#34;(.+?)&#34;&#39;</span>, r<span style="color:#f92672">.</span>text)[<span style="color:#ae81ff">0</span>]
+    returnUrl <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;returnUrl = &#39;(.+?)&#39;&#34;</span>, r<span style="color:#f92672">.</span>text)[<span style="color:#ae81ff">0</span>]
+    paramId <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;paramId = &#34;(.+?)&#34;&#39;</span>, r<span style="color:#f92672">.</span>text)[<span style="color:#ae81ff">0</span>]
+    j_rsakey <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;j_rsaKey&#34; value=&#34;(\S+)&#34;&#39;</span>, r<span style="color:#f92672">.</span>text, re<span style="color:#f92672">.</span>M)[<span style="color:#ae81ff">0</span>]
+    s<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>update({<span style="color:#e6db74">&#34;lt&#34;</span>: lt})
+ 
+    username <span style="color:#f92672">=</span> rsa_encode(j_rsakey, username)
+    password <span style="color:#f92672">=</span> rsa_encode(j_rsakey, password)
+    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://open.e.189.cn/api/logbox/oauth2/loginSubmit.do&#34;</span>
+    headers <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#39;User-Agent&#39;</span>: <span style="color:#e6db74">&#39;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:74.0) Gecko/20100101 Firefox/76.0&#39;</span>,
+        <span style="color:#e6db74">&#39;Referer&#39;</span>: <span style="color:#e6db74">&#39;https://open.e.189.cn/&#39;</span>,
+    }
+    data <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#34;appKey&#34;</span>: <span style="color:#e6db74">&#34;cloud&#34;</span>,
+        <span style="color:#e6db74">&#34;accountType&#34;</span>: <span style="color:#e6db74">&#39;01&#39;</span>,
+        <span style="color:#e6db74">&#34;userName&#34;</span>: f<span style="color:#e6db74">&#34;{{RSA}}{username}&#34;</span>,
+        <span style="color:#e6db74">&#34;password&#34;</span>: f<span style="color:#e6db74">&#34;{{RSA}}{password}&#34;</span>,
+        <span style="color:#e6db74">&#34;validateCode&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+        <span style="color:#e6db74">&#34;captchaToken&#34;</span>: captchaToken,
+        <span style="color:#e6db74">&#34;returnUrl&#34;</span>: returnUrl,
+        <span style="color:#e6db74">&#34;mailSuffix&#34;</span>: <span style="color:#e6db74">&#34;@189.cn&#34;</span>,
+        <span style="color:#e6db74">&#34;paramId&#34;</span>: paramId
+    }
+    r <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>post(url, data<span style="color:#f92672">=</span>data, headers<span style="color:#f92672">=</span>headers, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>)
+    <span style="color:#66d9ef">if</span>(r<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;result&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>):
+        <span style="color:#66d9ef">print</span>(r<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;msg&#39;</span>])
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span>(r<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;msg&#39;</span>])
+    redirect_url <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;toUrl&#39;</span>]
+    r <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>get(redirect_url)
+    <span style="color:#66d9ef">return</span> s
+ 
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+    login(username, password)
+    rand <span style="color:#f92672">=</span> str(round(time<span style="color:#f92672">.</span>time() <span style="color:#f92672">*</span> <span style="color:#ae81ff">1000</span>))
+    surl <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#39;https://api.cloud.189.cn/mkt/userSign.action?rand={rand}&amp;clientType=TELEANDROID&amp;version=8.6.3&amp;model=SM-G930K&#39;</span>
+    url <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#39;https://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN&amp;activityId=ACT_SIGNIN&#39;</span>
+    url2 <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#39;https://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN_PHOTOS&amp;activityId=ACT_SIGNIN&#39;</span>
+    headers <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#39;User-Agent&#39;</span>: <span style="color:#e6db74">&#39;Mozilla/5.0 (Linux; Android 5.1.1; SM-G930K Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.136 Mobile Safari/537.36 Ecloud/8.6.3 Android/22 clientId/355325117317828 clientModel/SM-G930K imsi/460071114317824 clientChannelId/qq proVersion/1.0.6&#39;</span>,
+        <span style="color:#e6db74">&#34;Referer&#34;</span>: <span style="color:#e6db74">&#34;https://m.cloud.189.cn/zhuanti/2016/sign/index.jsp?albumBackupOpened=1&#34;</span>,
+        <span style="color:#e6db74">&#34;Host&#34;</span>: <span style="color:#e6db74">&#34;m.cloud.189.cn&#34;</span>,
+        <span style="color:#e6db74">&#34;Accept-Encoding&#34;</span>: <span style="color:#e6db74">&#34;gzip, deflate&#34;</span>,
+    }
+    response <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>get(surl, headers<span style="color:#f92672">=</span>headers)
+    netdiskBonus <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;netdiskBonus&#39;</span>]
+    <span style="color:#66d9ef">if</span>(response<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;isSign&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;false&#34;</span>):
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;未签到，签到获得{netdiskBonus}M空间&#34;</span>)
+        res1 <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#34;未签到，签到获得{netdiskBonus}M空间&#34;</span>
+    <span style="color:#66d9ef">else</span>:
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;已经签到过了，签到获得{netdiskBonus}M空间&#34;</span>)
+        res1 <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#34;已经签到过了，签到获得{netdiskBonus}M空间&#34;</span>
+ 
+    headers <span style="color:#f92672">=</span> {
+        <span style="color:#e6db74">&#39;User-Agent&#39;</span>: <span style="color:#e6db74">&#39;Mozilla/5.0 (Linux; Android 5.1.1; SM-G930K Build/NRD90M; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/74.0.3729.136 Mobile Safari/537.36 Ecloud/8.6.3 Android/22 clientId/355325117317828 clientModel/SM-G930K imsi/460071114317824 clientChannelId/qq proVersion/1.0.6&#39;</span>,
+        <span style="color:#e6db74">&#34;Referer&#34;</span>: <span style="color:#e6db74">&#34;https://m.cloud.189.cn/zhuanti/2016/sign/index.jsp?albumBackupOpened=1&#34;</span>,
+        <span style="color:#e6db74">&#34;Host&#34;</span>: <span style="color:#e6db74">&#34;m.cloud.189.cn&#34;</span>,
+        <span style="color:#e6db74">&#34;Accept-Encoding&#34;</span>: <span style="color:#e6db74">&#34;gzip, deflate&#34;</span>,
+    }
+    response <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>get(url, headers<span style="color:#f92672">=</span>headers)
+    <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#34;errorCode&#34;</span> <span style="color:#f92672">in</span> response<span style="color:#f92672">.</span>text):
+        <span style="color:#66d9ef">print</span>(response<span style="color:#f92672">.</span>text)
+        res2 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">else</span>:
+        description <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;description&#39;</span>]
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;抽奖获得{description}&#34;</span>)
+        res2 <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#34;抽奖获得{description}&#34;</span>
+    response <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>get(url2, headers<span style="color:#f92672">=</span>headers)
+    <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#34;errorCode&#34;</span> <span style="color:#f92672">in</span> response<span style="color:#f92672">.</span>text):
+        <span style="color:#66d9ef">print</span>(response<span style="color:#f92672">.</span>text)
+        res3 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">else</span>:
+        description <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>json()[<span style="color:#e6db74">&#39;description&#39;</span>]
+        <span style="color:#66d9ef">print</span>(f<span style="color:#e6db74">&#34;抽奖获得{description}&#34;</span>)
+        res3 <span style="color:#f92672">=</span> f<span style="color:#e6db74">&#34;抽奖获得{description}&#34;</span>
+ 
+    <span style="color:#66d9ef">if</span> xuthuskey<span style="color:#f92672">.</span>strip():
+        _ <span style="color:#f92672">=</span> xuthuskey<span style="color:#f92672">.</span>strip()
+        requests<span style="color:#f92672">.</span>get(f<span style="color:#e6db74">&#34;https://push.xuthus.cc/send/{_}?c=func compute: {res1}, {res2}, {res3}&#34;</span>)
+ 
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lambda_handler</span>(event, context):  <span style="color:#75715e"># aws default</span>
+    main()
+ 
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main_handler</span>(event, context):  <span style="color:#75715e"># tencent default</span>
+    main()
+ 
+ 
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">handler</span>(event, context):  <span style="color:#75715e"># aliyun default</span>
+    main()
+ 
+ 
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    main()
+</code></pre></div>
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/1023103622/>天翼云盘自动签到(python)</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-10-23<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/1023103622/ target="_blank" >https://3mile.github.io/archives/2020/1023103622/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/1023103622/" class="leancloud_visitors" data-flag-title="天翼云盘自动签到(python)">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1023103209/" data-tooltip="OpenWrt终端获取IPV6">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1023103910/" data-tooltip="OpenWrt下打印机">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1023103209/" data-tooltip="OpenWrt终端获取IPV6">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1023103910/" data-tooltip="OpenWrt下打印机">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

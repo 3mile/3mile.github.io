@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>transmission on 3mile博客</title>
+    <link>https://3mile.github.io/tags/transmission/</link>
+    <description>Recent content in transmission on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 12 Mar 2020 18:26:18 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/transmission/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Transmission出现403的解决办法</title>
+      <link>https://3mile.github.io/archives/2020/0312182618/</link>
+      <pubDate>Thu, 12 Mar 2020 18:26:18 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0312182618/</guid>
+      <description>&lt;p&gt;自从编译 openwrt 时加入 Qbittorent 后，transmission 就出现了 403 错误。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="Ubuntu18.04 安装后应该做的事 1.关掉sudo的密码 visudo了解一下 sudo visudo 之后会自动调用默认编辑器打开sudo配置文件，找到 %sudo ALL=(ALL:ALL) ALL 这行，然后改成 %sudo ALL=(ALL:ALL) NOPASSWD:ALL">
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -292,113 +292,106 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p>Ubuntu18.04 安装后应该做的事</p>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1关掉sudo的密码">1.关掉sudo的密码</a></li>
+    <li><a href="#2更新源">2.更新源</a></li>
+    <li><a href="#3安装五笔输入法">3.安装五笔输入法</a></li>
+    <li><a href="#4使用tweaks对gnome进行美化">4.使用Tweaks对gnome进行美化</a></li>
+    <li><a href="#5截图软件-shutter">5.截图软件 Shutter</a></li>
+    <li><a href="#6视频和音频">6.视频和音频</a></li>
+    <li><a href="#7统一win10和ubuntu1804双系统的时间">7.统一Win10和Ubuntu18.04双系统的时间</a></li>
+    <li><a href="#8支持exfat">8.支持exfat</a></li>
+  </ul>
+</nav>
 
-<h2 id="1-关掉sudo的密码">1.关掉sudo的密码</h2>
-
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>Ubuntu18.04 安装后应该做的事</p>
+<h2 id="1关掉sudo的密码">1.关掉sudo的密码</h2>
 <p>visudo了解一下</p>
-
-<pre><code class="language-bash">sudo visudo 
-</code></pre>
-
-<p>之后会自动调用默认编辑器打开sudo配置文件，找到</p>
-
-<pre><code class="language-ini">%sudo   ALL=(ALL:ALL) ALL
-</code></pre>
-
-<p>这行，然后改成</p>
-
-<pre><code class="language-ini">%sudo   ALL=(ALL:ALL) NOPASSWD:ALL
-</code></pre>
-
-<p>这样所有sudo组内的用户使用sudo时就不需要密码了。</p>
-
-<h2 id="2-更新源">2.更新源</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo visudo 
+</code></pre></div><p>之后会自动调用默认编辑器打开sudo配置文件，找到</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">%sudo   ALL</span><span style="color:#f92672">=</span><span style="color:#e6db74">(ALL:ALL) ALL</span>
+</code></pre></div><p>这行，然后改成</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">%sudo   ALL</span><span style="color:#f92672">=</span><span style="color:#e6db74">(ALL:ALL) NOPASSWD:ALL</span>
+</code></pre></div><p>这样所有sudo组内的用户使用sudo时就不需要密码了。</p>
+<h2 id="2更新源">2.更新源</h2>
 <p>找到Software &amp; Updates，将源更新为阿里云的源</p>
-
 <p>在Other Software里将Canonical Partners勾上。</p>
-
 <p>然后自己手动更新一下：</p>
-
-<pre><code class="language-bash">sudo apt update
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt update
 sudo apt upgrade
-</code></pre>
-
-<h2 id="3-安装五笔输入法">3.安装五笔输入法</h2>
-
+</code></pre></div><h2 id="3安装五笔输入法">3.安装五笔输入法</h2>
 <p>首先安装Fcitx框架及谷歌拼音</p>
-
-<pre><code class="language-bash">sudo apt install fcitx	#安装fcitx
-sudo apt install im-config	#安装输入法配置
-sudo apt-get install fcitx-wubi fcitx-wbpy	#安装五笔及五笔拼音
-im-config	#运行输入法配置
-</code></pre>
-
-<h2 id="4-使用tweaks对gnome进行美化">4.使用Tweaks对gnome进行美化</h2>
-
-<pre><code class="language-bash">sudo apt-get install gnome-tweak-tool   #安装tweak
-sudo apt-get install gnome-shell-extensions -y  #安装shell扩展
-sudo apt install chrome-gnome-shell     #为了能在浏览器内安装gnome插件，火狐和谷歌都能用
-sudo apt-get install gtk2-engines-pixbuf    #防止GTK2错误
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install fcitx	<span style="color:#75715e">#安装fcitx</span>
+sudo apt install im-config	<span style="color:#75715e">#安装输入法配置</span>
+sudo apt-get install fcitx-wubi fcitx-wbpy	<span style="color:#75715e">#安装五笔及五笔拼音</span>
+im-config	<span style="color:#75715e">#运行输入法配置</span>
+</code></pre></div><h2 id="4使用tweaks对gnome进行美化">4.使用Tweaks对gnome进行美化</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install gnome-tweak-tool   <span style="color:#75715e">#安装tweak</span>
+sudo apt-get install gnome-shell-extensions -y  <span style="color:#75715e">#安装shell扩展</span>
+sudo apt install chrome-gnome-shell     <span style="color:#75715e">#为了能在浏览器内安装gnome插件，火狐和谷歌都能用</span>
+sudo apt-get install gtk2-engines-pixbuf    <span style="color:#75715e">#防止GTK2错误</span>
 sudo apt install libxml2-utils
-</code></pre>
+</code></pre></div><p>接下来安装主题和图标，主要从
 
-<p>接下来安装主题和图标，主要从<a href="https://www.gnome-look.org/browse/ord/top/">gnome-look</a>这里下载</p>
-
+<a href="https://www.gnome-look.org/browse/ord/top/"  target="_blank">gnome-look</a>这里下载</p>
 <blockquote>
-<p>重启！重启！重启！重要的事情说三遍！
+<p>重启！重启！重启！重要的事情说三遍！ 
 然后就可以在Tweak-tools里看见这些主题了。</p>
 </blockquote>
+<h2 id="5截图软件-shutter">5.截图软件 Shutter</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install shutter    <span style="color:#75715e">#安装shutter</span>
+</code></pre></div><p>在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutter中的编辑功能。 
 
-<h2 id="5-截图软件-shutter">5.截图软件 Shutter</h2>
 
-<pre><code class="language-bash">sudo apt-get install shutter    #安装shutter
-</code></pre>
+<a href="https://launchpad.net/ubuntu/&#43;archive/primary/&#43;files/libgoocanvas-common_1.0.0-1_all.deb"  target="_blank">libgoocanvas-common</a>、
 
-<p>在Ubuntu 18.04中安装了我最喜欢的截图工具Shutter后，我发现编辑按钮变编程灰色。这个快速提示将向您展示如何重新启用Shutter中的编辑功能。
-<a href="https://launchpad.net/ubuntu/+archive/primary/+files/libgoocanvas-common_1.0.0-1_all.deb">libgoocanvas-common</a>、<a href="https://launchpad.net/ubuntu/+archive/primary/+files/libgoocanvas3_1.0.0-1_amd64.deb">libgoocanvas3</a>、<a href="https://launchpad.net/ubuntu/+archive/primary/+files/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb">libgoo-canvas-perl</a></p>
+<a href="https://launchpad.net/ubuntu/&#43;archive/primary/&#43;files/libgoocanvas3_1.0.0-1_amd64.deb"  target="_blank">libgoocanvas3</a>、
 
-<h2 id="6-视频和音频">6.视频和音频</h2>
-
+<a href="https://launchpad.net/ubuntu/&#43;archive/primary/&#43;files/libgoo-canvas-perl_0.06-2ubuntu3_amd64.deb"  target="_blank">libgoo-canvas-perl</a></p>
+<h2 id="6视频和音频">6.视频和音频</h2>
 <p>安装解码器：</p>
-
-<pre><code class="language-bash">sudo apt-get install ubuntu-restricted-extras 
-</code></pre>
-
-<p>安装VLC视频播放器</p>
-
-<pre><code class="language-bash">bash sudo apt-get install vlc browser-plugin-vlc
-</code></pre>
-
-<p>另一款比较好的播放器SMPlayer也不错</p>
-
-<pre><code class="language-bash">sudo apt-add-repository ppa:rvm/smplayer
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install ubuntu-restricted-extras 
+</code></pre></div><p>安装VLC视频播放器</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bash sudo apt-get install vlc browser-plugin-vlc
+</code></pre></div><p>另一款比较好的播放器SMPlayer也不错</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-add-repository ppa:rvm/smplayer
 sudo apt-get update
 sudo apt-get install smplayer smplayer-skins smplayer-themes 
-</code></pre>
-
-<p>安装FFmpeg</p>
-
-<pre><code class="language-bash">sudo add-apt-repository ppa:djcj/hybrid
+</code></pre></div><p>安装FFmpeg</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo add-apt-repository ppa:djcj/hybrid
 sudo apt-get update
 sudo apt-get install ffmpeg 
-</code></pre>
-
-<h2 id="7-统一win10和ubuntu18-04双系统的时间">7.统一Win10和Ubuntu18.04双系统的时间</h2>
-
-<pre><code class="language-bash">timedatectl set-local-rtc 1 --adjust-system-clock
-</code></pre>
-
-<h2 id="8-支持exfat">8.支持exfat</h2>
-
-<pre><code class="language-bash">sudo apt-get install exfat-fuse exfat-utils
-</code></pre>
-
+</code></pre></div><h2 id="7统一win10和ubuntu1804双系统的时间">7.统一Win10和Ubuntu18.04双系统的时间</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">timedatectl set-local-rtc <span style="color:#ae81ff">1</span> --adjust-system-clock
+</code></pre></div><h2 id="8支持exfat">8.支持exfat</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt-get install exfat-fuse exfat-utils
+</code></pre></div>
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0416091012/>安装ubuntu之后要做的事</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-04-16<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0416091012/ target="_blank" >https://3mile.github.io/archives/2019/0416091012/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -421,7 +414,7 @@ sudo apt-get install ffmpeg
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -466,24 +459,6 @@ sudo apt-get install ffmpeg
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0416091012/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0416091012/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0416091012/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -502,9 +477,11 @@ sudo apt-get install ffmpeg
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -542,24 +519,6 @@ sudo apt-get install ffmpeg
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0416091012/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0416091012/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0416091012/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -578,24 +537,6 @@ sudo apt-get install ffmpeg
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0416091012%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0416091012%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0416091012%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -611,7 +552,7 @@ sudo apt-get install ffmpeg
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -639,18 +580,28 @@ sudo apt-get install ffmpeg
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

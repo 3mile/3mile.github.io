@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="今天需要上传文件到服务器，但是文件数量巨大且文件容量极小。如果用传统的SCP速度极慢，所以准备用scp传输.gz压缩文件到服务器，然后在服务">
+
+
+<meta property="og:description" content="今天需要上传文件到服务器，但是文件数量巨大且文件容量极小。如果用传统的SCP速度极慢，所以准备用scp传输.gz压缩文件到服务器，然后在服务">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ssh传输文件">
+<meta name="twitter:title" content="Ssh传输文件">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/0408094222/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/0408094222/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="今天需要上传文件到服务器，但是文件数量巨大且文件容量极小。如果用传统的SCP速度极慢，所以准备用scp传输.gz压缩文件到服务器，然后在服务">
+<meta name="twitter:description" content="今天需要上传文件到服务器，但是文件数量巨大且文件容量极小。如果用传统的SCP速度极慢，所以准备用scp传输.gz压缩文件到服务器，然后在服务">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-04-08T09:42:22">
+  
+  
+    <meta property="article:modified_time" content="2020-04-08T09:42:22">
+  
+  
+  
+    
+      <meta property="article:section" content="Linux">
+    
+  
+  
+    
+      <meta property="article:tag" content="命令">
+    
+      <meta property="article:tag" content="终端">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/pexels-photo-207580.jpeg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/pexels-photo-207580.jpeg">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/7.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/7.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>Ssh传输文件</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/0408094222/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/7.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Ssh传输文件
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-08T09:42:22&#43;08:00">
+        
+  
+  
+  
+  
+    2020-04-08
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents"></nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>今天需要上传文件到服务器，但是文件数量巨大且文件容量极小。如果用传统的SCP速度极慢，所以准备用scp传输.gz压缩文件到服务器，然后在服务器上解压。</p>
+<p>但是！scp 命令是基于 ssh 协议的，既然可以用 ssh ，还要什么 scp 呢！</p>
+<p>我们可以直接用 ssh 就可以传输文件，学会了之后，发现它比 scp 还好用，scp 的 path 写起来比较蛋疼。</p>
+<p>首先很多人忽略的一个事实是，ssh 可以直接输入命令对远程主机执行，比如 <code>ssh root@myserver.com &quot;cat access.log&quot;</code> ，就可以直接 cat 出远程文件的 log 内容。ssh 会将远程命令的 stdout 和本地的 stdout 连接起来。可以用这样的命令来看实时的日志：<code> ssh root@myserver.com &quot;tail -f access.log&quot;</code>。这样就可以在本地执行一条命令就可以了，方便脚本化或记录到 本地 history。</p>
+<p>既然 ssh 可以将 stdout 连接起来，那么自然也可以将 stdin 连接起来！比如用这个命令将 ssh key 拷贝到服务器上去。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat ~/.ssh/id_rsa.pub <span style="color:#ae81ff">\|</span> ssh root@myserver.com <span style="color:#e6db74">&#34;cat - &gt;&gt; .ssh/authorized_keys&#34;</span>
+</code></pre></div><p>将一个文件传输到服务器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat myfile <span style="color:#ae81ff">\|</span> ssh root@myserver.com <span style="color:#e6db74">&#34;cat - &gt; /tmp/myfile&#34;</span>
+</code></pre></div><p>上面这个命令的原理就是，将文件内容输入到 stdout 中，用管道和 ssh 连接起来，然后这个 stdout 就成了远程命令的 stdin。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/ssh-tune.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/ssh-tune.png" alt="img" /></a>
+</span>
+
+</span></p>
+<p>要拷贝整个文件夹呢？没有问题：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar c . <span style="color:#ae81ff">\|</span> ssh root@myserver.com <span style="color:#e6db74">&#34;tar xv&#34;</span>
+</code></pre></div><p>如果是像日志这种压缩性能很高的文件，可以考虑压缩之后再传输，远程那边从 stdin 解压缩。而且直接将输入和输出通过管道连接起来，压缩中间生成的文件丝毫不会占用空间呢！</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar cz . <span style="color:#ae81ff">\|</span> ssh sit.takachiho <span style="color:#e6db74">&#34;tar xzv&#34;</span>
+</code></pre></div><p>如果要指定远程的目标文件夹，可以使用 tar 的 C 参数来指定，比如远程解压缩到 <code>/tmp</code> 下面：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar cz . <span style="color:#ae81ff">\|</span> ssh sit.takachiho <span style="color:#e6db74">&#34;tar xzvC /tmp&#34;</span>
+</code></pre></div><p>要注意像图片、视频这种二进制文件，本身就是经过压缩之后的了，如果再使用 tar z 来压缩一遍的话，不会节省多少传输体积，反而会白白耗费 CPU。</p>
+<p>实用技巧：如果每天备份 MySQL 到另一台机器，但是不占用本机空间？Crontab 的脚本这么写：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mysqldump --single-transaction -u backuper mydb <span style="color:#ae81ff">\|</span> ssh root@backup.myserver.com <span style="color:#e6db74">&#34;cat - &gt; /var/mysql_back.sql&#34;</span>
+</code></pre></div><p>假如一台机器A在一个网络环境，另一个机器B在另一个网络环境，他们之间不互通。但是你的电脑（或堡垒机）能同时用 ssh 登陆两台机器，那么怎么把 Server A 的文件拷贝到 Server B？</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/server-stat.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/server-stat.png" alt="img" /></a>
+</span>
+
+</span></p>
+<p>用两个 ssh！</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh root@serverA <span style="color:#e6db74">&#34;cat file&#34;</span> <span style="color:#ae81ff">\|</span> ssh root@serverB <span style="color:#e6db74">&#34;cat - &gt; /tmp/file&#34;</span>
+</code></pre></div><p>理解 ssh 能连接 stdin 和 stdout 了，就有无限的可能了！而且你可以将脚本都放在本地，不用还得本地放一些，远程的机器放一些通过 ssh 来执行。</p>
+<p>哦对了，ssh 是一个加密的协议，所以在传输的过程中会看到 CPU 使用上涨，因为这是在加密和（远程服务器）解密。用的时候需要考虑到这个。scp 命令是基于 ssh 的，所以会有一样的问题。</p>
+<p>nc 基于 tcp 明文传输的，如果不需要加密，传输内容比较多，可以考虑用这个。</p>
+<p>在 Server 端执行 nc 监听端口，将输入到 nc 的内容输出到一个文件中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nc -l -p <span style="color:#ae81ff">1234</span> -q <span style="color:#ae81ff">1</span> &gt; something.zip &lt; /dev/null
+</code></pre></div><p>然后在 Client 端将要发送的文件输入到服务器的这个端口中：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat something.zip <span style="color:#ae81ff">\|</span> netcat server.ip.here 1234
+</code></pre></div>
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0408094222/>Ssh传输文件</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-04-08<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0408094222/ target="_blank" >https://3mile.github.io/archives/2020/0408094222/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/%E5%91%BD%E4%BB%A4/">命令</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/%E7%BB%88%E7%AB%AF/">终端</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/0408094222/" class="leancloud_visitors" data-flag-title="Ssh传输文件">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0408005420/" data-tooltip="Linux 命令增强工具">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0409123755/" data-tooltip="Centos7 编译zsh 5.7">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0408005420/" data-tooltip="Linux 命令增强工具">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0409123755/" data-tooltip="Centos7 编译zsh 5.7">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

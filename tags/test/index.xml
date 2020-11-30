@@ -17,16 +17,9 @@
       <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
       
       <guid>https://3mile.github.io/archives/2018/04/002/</guid>
-      <description>&lt;p&gt;这篇文章是用来展示如何显示标签插件。有关更多信息，请参阅&lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags&#34;&gt;文档&lt;/a&gt;。&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>highlighted code showcase</title>
-      <link>https://3mile.github.io/2018/05/highlighted-code-showcase/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/2018/05/highlighted-code-showcase/</guid>
-      <description>&lt;p&gt;Tranquilpeak Hugo theme have its own theme to highlight source code. It&amp;rsquo;s based on GitHub theme: simple and elegant. Check out how it sublimate source codes.&lt;/p&gt;</description>
+      <description>&lt;p&gt;这篇文章是用来展示如何显示标签插件。有关更多信息，请参阅
+
+&lt;a href=&#34;https://github.com/kakawait/hugo-tranquilpeak-theme/blob/master/docs/user.md#tags&#34;  target=&#34;_blank&#34;&gt;文档&lt;/a&gt;。&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssh on 3mile博客</title>
+    <link>https://3mile.github.io/tags/ssh/</link>
+    <description>Recent content in ssh on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 15 Apr 2020 21:22:17 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Winscp普通用户上传文件权限解决方案</title>
+      <link>https://3mile.github.io/archives/2020/0415212217/</link>
+      <pubDate>Wed, 15 Apr 2020 21:22:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0415212217/</guid>
+      <description>&lt;p&gt;为了保服务器的安全，我们禁止了服务器的ROOT用户，然后创建一个自己知道的用户名和密码。这样相对只使用ROOT用户安全一些，但是在设置普通用户之后，当然也禁止掉ROOT用户登入，我们再去用普通用户登入WINSCP文件管理的时候会出现权限问题，无法上传文件。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="Centos8 安装并启用SSHD 安装sshd dnf install openssh-server 执行sshd服务 systemctl start sshd 检查sshd服务状态 systemctl status sshd sshd.service - OpenSSH server daemon Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled) Active: active (running) since Thu 2019-11-07 10:35:16 CST; 1h 22min ago Docs: man:sshd(8) man:sshd_config(5) Main">
@@ -31,12 +31,12 @@
   
   
     
-      <meta property="article:section" content="">
+      <meta property="article:section" content="Linux">
     
   
   
     
-      <meta property="article:tag" content="">
+      <meta property="article:tag" content="Centos8">
     
   
 
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -271,7 +271,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -292,27 +292,45 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h3 id="centos8-安装并启用sshd">Centos8 安装并启用SSHD</h3>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#centos8-安装并启用sshd">Centos8 安装并启用SSHD</a></li>
+        <li><a href="#centos8-安装telegram">Centos8 安装telegram</a></li>
+        <li><a href="#centos8-安装virtualbox">Centos8 安装VirtualBox</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h3 id="centos8-安装并启用sshd">Centos8 安装并启用SSHD</h3>
 <ol>
-<li><p>安装sshd</p>
-
+<li>
+<p>安装sshd</p>
 <pre><code>dnf install openssh-server
 </code></pre></li>
-
-<li><p>执行sshd服务</p>
-
+<li>
+<p>执行sshd服务</p>
 <pre><code>systemctl start sshd
 </code></pre></li>
-
-<li><p>检查sshd服务状态</p>
-
+<li>
+<p>检查sshd服务状态</p>
 <pre><code>systemctl status sshd
-</code></pre>
-
-<pre><code>sshd.service - OpenSSH server daemon
+</code></pre><pre><code>sshd.service - OpenSSH server daemon
 Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; vendor preset: enabled)
 Active: active (running) since Thu 2019-11-07 10:35:16 CST; 1h 22min ago
  Docs: man:sshd(8)
@@ -323,71 +341,67 @@ Tasks: 1 (limit: 23144)
 CGroup: /system.slice/sshd.service
        └─977 /usr/sbin/sshd -D -oCiphers=aes256-gcm@openssh.com,chacha20-poly1305@openssh.com,aes256&gt;
 </code></pre></li>
-
-<li><p>允许sshd服务自启动</p>
-
+<li>
+<p>允许sshd服务自启动</p>
 <pre><code>systemctl enable sshd
 </code></pre></li>
-
-<li><p>设置防火墙</p>
-
+<li>
+<p>设置防火墙</p>
 <pre><code>firewall-cmd --zone=public --permanent --add-service=ssh
 </code></pre></li>
 </ol>
-
 <h3 id="centos8-安装telegram">Centos8 安装telegram</h3>
-
 <ol>
-<li><p>启用getpagespeed 扩展存储库</p>
-
+<li>
+<p>启用getpagespeed 扩展存储库</p>
 <pre><code>dnf install -y https://extras.getpagespeed.com/release-el8-latest.rpm
 </code></pre></li>
-
-<li><p>安装telegram</p>
-
+<li>
+<p>安装telegram</p>
 <pre><code>dnf install -y telegram-desktop
 </code></pre></li>
-
-<li><p>从桌面菜单或在终端上输入以下命令，启动Telegram Messenger。请注意，首次启动Telegram 可能需要一些时间：</p>
-
+<li>
+<p>从桌面菜单或在终端上输入以下命令，启动Telegram Messenger。请注意，首次启动Telegram 可能需要一些时间：</p>
 <pre><code>telegram
 </code></pre></li>
 </ol>
-
 <h3 id="centos8-安装virtualbox">Centos8 安装VirtualBox</h3>
-
 <ol>
-<li><p>添加VirtualBox存储库：</p>
-
+<li>
+<p>添加VirtualBox存储库：</p>
 <pre><code>dnf config-manager --add-repo=https://download.virtualbox.org/virtualbox/rpm/el/virtualbox.repo
 </code></pre></li>
-
-<li><p>导入VirtualBox签名密钥：</p>
-
+<li>
+<p>导入VirtualBox签名密钥：</p>
 <pre><code>rpm --import https://www.virtualbox.org/download/oracle_vbox.asc
 </code></pre></li>
-
-<li><p>使用dnf命令安装软件包 VirtualBox 。
+<li>
+<p>使用dnf命令安装软件包 VirtualBox 。
 首先，检查可用的Virtualbox版本：</p>
-
 <pre><code>dnf search virtualbox
 
 VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
-</code></pre>
-
-<p>选择版本并执行安装：</p>
-
+</code></pre><p>选择版本并执行安装：</p>
 <pre><code>dnf install VirtualBox-6.0
 </code></pre></li>
-
-<li><p>启动VirtualBox</p>
-
+<li>
+<p>启动VirtualBox</p>
 <pre><code>virtualbox
 </code></pre></li>
 </ol>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/1107115421/>Centos8 安装备忘</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-11-07<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/1107115421/ target="_blank" >https://3mile.github.io/archives/2019/1107115421/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -397,7 +411,7 @@ VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
           <div class="post-footer-tags">
             <span class="text-color-light text-small">标签</span><br />
             
-  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/centos8/">Centos8</a>
 
           </div>
           
@@ -410,7 +424,7 @@ VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -455,24 +469,6 @@ VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1107115421/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1107115421/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1107115421/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -491,9 +487,11 @@ VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -531,24 +529,6 @@ VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1107115421/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1107115421/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1107115421/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -567,24 +547,6 @@ VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107115421%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107115421%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1107115421%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -600,7 +562,7 @@ VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -628,18 +590,28 @@ VirtualBox-6.0.x86_64 : Oracle VM VirtualBox
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

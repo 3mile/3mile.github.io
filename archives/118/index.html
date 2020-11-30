@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="vps">
+      <meta property="article:section" content="Linux">
     
   
   
@@ -89,7 +89,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -144,7 +144,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -275,7 +275,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/vps">vps</a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -296,188 +296,176 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h4 id="介绍">介绍</h4>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#介绍">介绍</a></li>
+            <li><a href="#先决条件">先决条件</a></li>
+            <li><a href="#第一步安装球童的最新稳定版本">第一步：安装球童的最新稳定版本</a></li>
+            <li><a href="#第2步配置球童">第2步：配置球童</a></li>
+            <li><a href="#第3步修改防火墙规则">第3步：修改防火墙规则</a></li>
+            <li><a href="#第4步为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h4 id="介绍">介绍</h4>
 <p>Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部署支持HTTPS的站点。</p>
-
 <h4 id="先决条件">先决条件</h4>
-
 <ul>
 <li>新鲜的Vultr CentOS 7 x64服务器实例。我们将<code>203.0.113.1</code>以此为例。</li>
-<li>一个<a href="https://www.vultr.com/docs/how-to-use-sudo-on-debian-centos-and-freebsd">sudo用户</a>。</li>
-<li><a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8">使用EPEL YUM回购</a>服务器实例已<a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8">更新至最新的稳定状态</a>。</li>
-<li>一个域<code>example.com</code>已被配置为指向<code>203.0.113.1</code>服务器实例。在另一个<a href="https://www.vultr.com/docs/introduction-to-vultr-dns">Vultr教程中</a>查看细节。</li>
+<li>一个
+
+<a href="https://www.vultr.com/docs/how-to-use-sudo-on-debian-centos-and-freebsd"  target="_blank">sudo用户</a>。</li>
+<li>
+
+<a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8"  target="_blank">使用EPEL YUM回购</a>服务器实例已
+
+<a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8"  target="_blank">更新至最新的稳定状态</a>。</li>
+<li>一个域<code>example.com</code>已被配置为指向<code>203.0.113.1</code>服务器实例。在另一个
+
+<a href="https://www.vultr.com/docs/introduction-to-vultr-dns"  target="_blank">Vultr教程中</a>查看细节。</li>
 </ul>
-
-<h4 id="第一步-安装球童的最新稳定版本">第一步：安装球童的最新稳定版本</h4>
-
+<h4 id="第一步安装球童的最新稳定版本">第一步：安装球童的最新稳定版本</h4>
 <p>在Linux，Mac或BSD操作系统上，使用以下命令安装Caddy最新稳定的系统特定版本：</p>
-
-<pre><code class="language-Bash">curl https://getcaddy.com | bash
-</code></pre>
-
-<p>出现提示时，输入您的sudo密码以完成安装。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">curl https://getcaddy.com | bash
+</code></pre></div><p>出现提示时，输入您的sudo密码以完成安装。</p>
 <p>Caddy二进制文件将被安装到该<code>/usr/local/bin</code>目录。使用以下命令确认：</p>
-
-<pre><code class="language-Bash">which caddy
-</code></pre>
-
-<p>输出应该是：</p>
-
-<pre><code class="language-Bash">/usr/local/bin/caddy
-</code></pre>
-
-<p>为了安全起见，<strong>切勿</strong>以root身份运行Caddy二进制文件。为了让Caddy能够以非root用户的身份绑定到特权端口（例如80,443），您需要<code>setcap</code>按如下所示运行该命令：</p>
-
-<pre><code class="language-Bash">sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
-</code></pre>
-
-<h4 id="第2步-配置球童">第2步：配置球童</h4>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">which caddy
+</code></pre></div><p>输出应该是：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">/usr/local/bin/caddy
+</code></pre></div><p>为了安全起见，<strong>切勿</strong>以root身份运行Caddy二进制文件。为了让Caddy能够以非root用户的身份绑定到特权端口（例如80,443），您需要<code>setcap</code>按如下所示运行该命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo setcap <span style="color:#e6db74">&#39;cap_net_bind_service=+ep&#39;</span> /usr/local/bin/caddy
+</code></pre></div><h4 id="第2步配置球童">第2步：配置球童</h4>
 <p>创建一个专门的系统用户：<code>caddy</code> 和一组同名的Caddy：</p>
-
-<pre><code class="language-Bash">sudo useradd -r -d /var/www -M -s /sbin/nologin caddy
-</code></pre>
-
-<p><strong>注意</strong>：*此处创建*<em>的用户caddy只能用于管理Caddy服务，不能用于登录。</em></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo useradd -r -d /var/www -M -s /sbin/nologin caddy
+</code></pre></div><p><strong>注意</strong>：<em>此处创建**的用户caddy只能用于管理Caddy服务，不能用于登录。</em></p>
 <p><code>/var/www</code>为Caddy Web服务器创建主目录，并<code>/var/www/example.com</code>为您的站点创建主目录：</p>
-
-<pre><code class="language-Bash">sudo mkdir -p /var/www/example.com
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo mkdir -p /var/www/example.com
 sudo chown -R caddy:caddy /var/www
-</code></pre>
-
-<p>创建一个目录来存储SSL证书：</p>
-
-<pre><code class="language-Bash">sudo mkdir /etc/ssl/caddy
+</code></pre></div><p>创建一个目录来存储SSL证书：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo mkdir /etc/ssl/caddy
 sudo chown -R caddy:root /etc/ssl/caddy
-sudo chmod 0770 /etc/ssl/caddy
-</code></pre>
-
-<p>创建专用目录来存储Caddy配置文件<code>Caddyfile</code>：</p>
-
-<pre><code class="language-Bash">sudo mkdir /etc/caddy
+sudo chmod <span style="color:#ae81ff">0770</span> /etc/ssl/caddy
+</code></pre></div><p>创建专用目录来存储Caddy配置文件<code>Caddyfile</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo mkdir /etc/caddy
 sudo chown -R root:caddy /etc/caddy
-</code></pre>
-
-<p>创建名为的Caddy配置文件<code>Caddyfile</code>：</p>
-
-<pre><code class="language-Bash">sudo touch /etc/caddy/Caddyfile
+</code></pre></div><p>创建名为的Caddy配置文件<code>Caddyfile</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo touch /etc/caddy/Caddyfile
 sudo chown caddy:caddy /etc/caddy/Caddyfile
-sudo chmod 444 /etc/caddy/Caddyfile
-cat &lt;&lt;EOF | sudo tee -a /etc/caddy/Caddyfile
-example.com {
-    root /var/www/example.com
-    gzip
-    tls admin@example.com
-}
-EOF
-</code></pre>
-
-<p><strong>注意</strong>：*上面创建*<em>的Caddyfile文件只是运行静态网站的基本配置。您可以在这里了解更多关于如何编写Caddyfile的信息。</em></p>
-
+sudo chmod <span style="color:#ae81ff">444</span> /etc/caddy/Caddyfile
+cat <span style="color:#e6db74">&lt;&lt;EOF | sudo tee -a /etc/caddy/Caddyfile
+</span><span style="color:#e6db74">example.com {
+</span><span style="color:#e6db74">    root /var/www/example.com
+</span><span style="color:#e6db74">    gzip
+</span><span style="color:#e6db74">    tls admin@example.com
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">EOF</span>
+</code></pre></div><p><strong>注意</strong>：<em>上面创建**的Caddyfile文件只是运行静态网站的基本配置。您可以在这里了解更多关于如何编写Caddyfile的信息。</em></p>
 <p>为了方便Caddy的操作，您可以<code>systemd</code>为Caddy 设置一个单元文件，然后用它<code>systemd</code>来管理Caddy。</p>
-
 <p>使用<code>vi</code>编辑器创建Caddy <code>systemd</code>单元文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo vi /etc/systemd/system/caddy.service
+</code></pre></div><p>填充文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#f92672">[</span>Unit<span style="color:#f92672">]</span>
+Description<span style="color:#f92672">=</span>Caddy HTTP/2 web server
+Documentation<span style="color:#f92672">=</span>https://caddyserver.com/docs
+After<span style="color:#f92672">=</span>network-online.target
+Wants<span style="color:#f92672">=</span>network-online.target systemd-networkd-wait-online.service
 
-<pre><code class="language-Bash">sudo vi /etc/systemd/system/caddy.service
-</code></pre>
-
-<p>填充文件：</p>
-
-<pre><code class="language-Bash">[Unit]
-Description=Caddy HTTP/2 web server
-Documentation=https://caddyserver.com/docs
-After=network-online.target
-Wants=network-online.target systemd-networkd-wait-online.service
-
-[Service]
-Restart=on-abnormal
+<span style="color:#f92672">[</span>Service<span style="color:#f92672">]</span>
+Restart<span style="color:#f92672">=</span>on-abnormal
 
 ; User and group the process will run as.
-User=caddy
-Group=caddy
+User<span style="color:#f92672">=</span>caddy
+Group<span style="color:#f92672">=</span>caddy
 
 ; Letsencrypt-issued certificates will be written to this directory.
-Environment=CADDYPATH=/etc/ssl/caddy
+Environment<span style="color:#f92672">=</span>CADDYPATH<span style="color:#f92672">=</span>/etc/ssl/caddy
 
-; Always set &quot;-root&quot; to something safe in case it gets forgotten in the Caddyfile.
-ExecStart=/usr/local/bin/caddy -log stdout -agree=true -conf=/etc/caddy/Caddyfile -root=/var/tmp
-ExecReload=/bin/kill -USR1 $MAINPID
+; Always set <span style="color:#e6db74">&#34;-root&#34;</span> to something safe in <span style="color:#66d9ef">case</span> it gets forgotten in the Caddyfile.
+ExecStart<span style="color:#f92672">=</span>/usr/local/bin/caddy -log stdout -agree<span style="color:#f92672">=</span>true -conf<span style="color:#f92672">=</span>/etc/caddy/Caddyfile -root<span style="color:#f92672">=</span>/var/tmp
+ExecReload<span style="color:#f92672">=</span>/bin/kill -USR1 $MAINPID
 
 ; Use graceful shutdown with a reasonable timeout
-KillMode=mixed
-KillSignal=SIGQUIT
-TimeoutStopSec=5s
+KillMode<span style="color:#f92672">=</span>mixed
+KillSignal<span style="color:#f92672">=</span>SIGQUIT
+TimeoutStopSec<span style="color:#f92672">=</span>5s
 
-; Limit the number of file descriptors; see `man systemd.exec` for more limit settings.
-LimitNOFILE=1048576
+; Limit the number of file descriptors; see <span style="color:#e6db74">`</span>man systemd.exec<span style="color:#e6db74">`</span> <span style="color:#66d9ef">for</span> more limit settings.
+LimitNOFILE<span style="color:#f92672">=</span>1048576
 ; Unmodified caddy is not expected to use more than that.
-LimitNPROC=512
+LimitNPROC<span style="color:#f92672">=</span>512
 
 ; Use private /tmp and /var/tmp, which are discarded after caddy stops.
-PrivateTmp=true
+PrivateTmp<span style="color:#f92672">=</span>true
 ; Use a minimal /dev
-PrivateDevices=true
+PrivateDevices<span style="color:#f92672">=</span>true
 ; Hide /home, /root, and /run/user. Nobody will steal your SSH-keys.
-ProtectHome=true
+ProtectHome<span style="color:#f92672">=</span>true
 ; Make /usr, /boot, /etc and possibly some more folders read-only.
-ProtectSystem=full
+ProtectSystem<span style="color:#f92672">=</span>full
 ; … except /etc/ssl/caddy, because we want Letsencrypt-certificates there.
 ;   This merely retains r/w access rights, it does not add any new. Must still be writable on the host!
-ReadWriteDirectories=/etc/ssl/caddy
+ReadWriteDirectories<span style="color:#f92672">=</span>/etc/ssl/caddy
 
 ; The following additional security directives only work with systemd v229 or later.
-; They further retrict privileges that can be gained by caddy. Uncomment if you like.
+; They further retrict privileges that can be gained by caddy. Uncomment <span style="color:#66d9ef">if</span> you like.
 ; Note that you may have to add capabilities required by any plugins in use.
-;CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-;AmbientCapabilities=CAP_NET_BIND_SERVICE
-;NoNewPrivileges=true
+;CapabilityBoundingSet<span style="color:#f92672">=</span>CAP_NET_BIND_SERVICE
+;AmbientCapabilities<span style="color:#f92672">=</span>CAP_NET_BIND_SERVICE
+;NoNewPrivileges<span style="color:#f92672">=</span>true
 
-[Install]
-WantedBy=multi-user.target
-</code></pre>
-
-<p>保存并退出：</p>
-
-<pre><code class="language-Bash">:wq!
-</code></pre>
-
-<p>启动Caddy服务并使其在系统引导时自动启动：</p>
-
-<pre><code class="language-Bash">sudo systemctl daemon-reload
+<span style="color:#f92672">[</span>Install<span style="color:#f92672">]</span>
+WantedBy<span style="color:#f92672">=</span>multi-user.target
+</code></pre></div><p>保存并退出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">:wq!
+</code></pre></div><p>启动Caddy服务并使其在系统引导时自动启动：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo systemctl daemon-reload
 sudo systemctl start caddy.service
 sudo systemctl enable caddy.service
-</code></pre>
-
-<h4 id="第3步-修改防火墙规则">第3步：修改防火墙规则</h4>
-
+</code></pre></div><h4 id="第3步修改防火墙规则">第3步：修改防火墙规则</h4>
 <p>为了允许访问者访问您的球童网站，您需要打开端口80和443：</p>
-
-<pre><code class="language-Bash">sudo firewall-cmd --permanent --zone=public --add-service=http 
-sudo firewall-cmd --permanent --zone=public --add-service=https
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-service<span style="color:#f92672">=</span>http 
+sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-service<span style="color:#f92672">=</span>https
 sudo firewall-cmd --reload
-</code></pre>
-
-<h4 id="第4步-为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</h4>
-
+</code></pre></div><h4 id="第4步为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</h4>
 <p>使用以下命令<code>index.html</code>在您的Caddy网站主目录中创建一个名为的文件：</p>
-
-<pre><code class="language-Bash">echo '&lt;h1&gt;Hello World!&lt;/h1&gt;' | sudo tee /var/www/example.com/index.html
-</code></pre>
-
-<p>重新启动Caddy服务以加载新内容：</p>
-
-<pre><code class="language-Bash">sudo systemctl restart caddy.service
-</code></pre>
-
-<p>最后，将您的网页浏览器指向<code>http://example.com</code>或<code>https://example.com</code>。您应该看到<code>Hello World!</code>预期的消息。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">echo <span style="color:#e6db74">&#39;&lt;h1&gt;Hello World!&lt;/h1&gt;&#39;</span> | sudo tee /var/www/example.com/index.html
+</code></pre></div><p>重新启动Caddy服务以加载新内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo systemctl restart caddy.service
+</code></pre></div><p>最后，将您的网页浏览器指向<code>http://example.com</code>或<code>https://example.com</code>。您应该看到<code>Hello World!</code>预期的消息。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/118/>如何在CentOS 7上安装和配置Caddy</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-04<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/118/ target="_blank" >https://3mile.github.io/archives/118/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -504,7 +492,7 @@ sudo firewall-cmd --reload
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -549,24 +537,6 @@ sudo firewall-cmd --reload
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/118/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/118/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/118/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -585,9 +555,11 @@ sudo firewall-cmd --reload
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -625,24 +597,6 @@ sudo firewall-cmd --reload
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/118/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/118/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/118/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -661,24 +615,6 @@ sudo firewall-cmd --reload
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F118%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F118%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F118%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -694,7 +630,7 @@ sudo firewall-cmd --reload
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -722,18 +658,28 @@ sudo firewall-cmd --reload
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="写在前面 多说要下线了，国内博客圈哀鸿遍野。主流博主们还好，有原生评论系统可以用，只是社交分享的时候麻烦点。最近流行起来的静态博客的博主们就不">
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -292,265 +292,325 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h2 id="写在前面">写在前面</h2>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#写在前面">写在前面</a></li>
+    <li><a href="#disqus">Disqus</a></li>
+    <li><a href="#hypercomments">HyperComments</a></li>
+    <li><a href="#来必力">来必力</a></li>
+    <li><a href="#intensedebate">IntenseDebate</a></li>
+    <li><a href="#畅言">畅言</a></li>
+    <li><a href="#网易云跟帖已停止服务">网易云跟帖（已停止服务）</a></li>
+    <li><a href="#友言">友言</a></li>
+    <li><a href="#remarkbox">Remarkbox</a></li>
+    <li><a href="#vuukle">Vuukle</a></li>
+    <li><a href="#muut">Muut</a></li>
+    <li><a href="#vicomi">Vicomi</a></li>
+    <li><a href="#civil-comments">Civil Comments</a></li>
+    <li><a href="#widget-pack-rating--comment-system">Widget Pack Rating &amp; Comment System</a></li>
+    <li><a href="#facebook-comments">Facebook comments</a></li>
+    <li><a href="#livefyre已停止服务">Livefyre（已停止服务）</a></li>
+    <li><a href="#google-comments非官方">Google+ Comments（非官方）</a></li>
+    <li><a href="#hashover">HashOver</a></li>
+    <li><a href="#isso">Isso</a></li>
+    <li><a href="#staticman">Staticman</a></li>
+    <li><a href="#gitment">Gitment</a></li>
+    <li><a href="#gitalk">Gitalk</a></li>
+    <li><a href="#blog-comments2">Blog Comments2</a></li>
+    <li><a href="#valine">Valine</a></li>
+    <li><a href="#self-host-comments-in-jekyll">Self-host comments in Jekyll</a></li>
+    <li><a href="#后记">后记</a></li>
+    <li><a href="#参考网站">参考网站</a></li>
+  </ul>
+</nav>
 
-<p><strong>多说</strong>要下线了，国内博客圈哀鸿遍野。主流博主们还好，有原生评论系统可以用，只是社交分享的时候麻烦点。最近流行起来的静态博客的博主们就不太好了，除了一部分技术帝能够“自己动手，丰衣足食”，其他吃瓜博主要么积极地到处求攻略，要么懒得折腾干脆关了评论。Bitcron
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h2 id="写在前面">写在前面</h2>
+<p><strong>多说</strong>要下线了，国内博客圈哀鸿遍野。主流博主们还好，有原生评论系统可以用，只是社交分享的时候麻烦点。最近流行起来的静态博客的博主们就不太好了，除了一部分技术帝能够“自己动手，丰衣足食”，其他吃瓜博主要么积极地到处求攻略，要么懒得折腾干脆关了评论。Bitcron 
 不算静态博客，也有自己的评论系统，但处女座的我嫌评论的保存方式不太整洁，所以换博初始就打定了主意使用第三方评论。根据多年的经验和体验，我选择了算是全球最大的评论系统——Disqus。但是突然某一天我被残忍告知这货已经被中国局域网长城挡住了，当时内心是极度奔溃的。本来作为一个洋应用就没什么本地化可言，现在这种局面就更指望不上适应性的提升了，心里拔凉拔凉的。好在现在能建博客的大多也都有科学上网的实力，我也不似以前那么在意和网友的互动了。有当然好，没有也无所谓了。（悄悄说，博客是写给自己的，连评论系统都是给自己用的。有空翻翻以前的文章留个言，看看进步什么的，以前就一直在日记本上这么做。）</p>
-
 <p>虽然我不打算换掉 Disqus，但还是本着为人民服务的精神找了一些可以替代多说的第三方评论系统，不止静态博客，理论上来说也适用于所有独立博客系统。以下注释仅代表我个人的想法，详细信息请参照官方网站说明，根据个人需求进行选择安装使用。</p>
-
 <h2 id="disqus">Disqus</h2>
-
 <pre><code>https://disqus.com
-</code></pre>
+</code></pre><p>作为业界的龙头老大，相信大家都已经很熟悉了。根据 Datanyze 的统计，Disqus 在全球范围内拥有继 Facebook comments 之后排名第二的占有率，大约37%
 
-<p>作为业界的龙头老大，相信大家都已经很熟悉了。根据 Datanyze 的统计，Disqus 在全球范围内拥有继 Facebook comments 之后排名第二的占有率，大约37%<a href="https://blog.shuiba.co/comment-systems-recommendation#fn1">1</a>。如果不是因为一些不可言说的原因，它的占有率可能还会更大。当然 Facebook comments 也是“受害者”之一，所以单就中国地区而言，Disqus 的占有率是最大的，超过半数<a href="https://blog.shuiba.co/comment-systems-recommendation#fn2">2</a>。以上这些数据都来源于国外的统计，如果算上国内的评论系统，我想多说应该是当之无愧的霸主了。</p>
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn1"  target="_blank">1</a>。如果不是因为一些不可言说的原因，它的占有率可能还会更大。当然 Facebook comments 也是“受害者”之一，所以单就中国地区而言，Disqus 的占有率是最大的，超过半数
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-02.jpg" alt="全球评论系统占有率" />数据来源 Datanyze / 制图 水八口</p>
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn2"  target="_blank">2</a>。以上这些数据都来源于国外的统计，如果算上国内的评论系统，我想多说应该是当之无愧的霸主了。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-02.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-02.jpg" alt="全球评论系统占有率" /></a>
+</span>
 
+</span>数据来源 Datanyze / 制图 水八口</p>
 <p>Disqus 的好处不必多言，本身就是专业做评论系统的，功能齐全，支持 ssl，响应化设计，界面美观。我还特别喜欢它的一项多说没有的功能是，可以在文章 url 改变后迁徙评论到新文章下。比如前段时间我把间隔年日记从每日一篇改为每周一篇，统合之后便把每日一篇的评论都集中到新写的每周一篇里了。当然它也是有缺点的，我认为的最主要的缺点有两个。一是无法导出/导入自家评论。后台的导出设置只是为了备份，导出的文件没法重新导入。二是没法自定义样式。</p>
-
 <p><del>不过，最大的“缺点”应该算是国内无法使用了吧。身为资深博主，科学上网当然不在话下，但是并不能要求每个读者都有这项技能。所以这也成为了是否使用 Disqus 的最大障碍。前面说了那么多，如果用不了，都成了废话。</del></p>
-
 <p><strong>2017年7月10日更新</strong>：我找到了两种可以科学使用 Disqus 的方法，但都不能登录 Disqus，只能使用访客留言通道。也就说你的评论并不会出现在你 Disqus 的 timeline 里。同时访客留言的网址也没法写入 Disqus 后台，但在代理状态下可以显示。综上所述，对于墙内的博主来说，代理就像 WP 的原生评论一样；而对于墙外的博主来说，原生的 Disqus 看不到访客网址，影响回访效率。即便如此，能够使用已经非常难得。</p>
-
 <ol>
-<li>使用 Typlog 提供的 Disqus 代理服务，服务器费用 $10/年，操作简单<a href="https://blog.shuiba.co/comment-systems-recommendation#fn3">3</a>。无评论回复邮件提醒<a href="https://blog.shuiba.co/comment-systems-recommendation#fn4">4</a>。</li>
-<li>使用 fooleap 的研究成果，免费，需要支持 PHP cURL 的虚拟主机和一颗不怕折腾的心。有评论回复邮件提醒<a href="https://blog.shuiba.co/comment-systems-recommendation#fn5">5</a>。</li>
+<li>使用 Typlog 提供的 Disqus 代理服务，服务器费用 $10/年，操作简单
+
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn3"  target="_blank">3</a>。无评论回复邮件提醒
+
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn4"  target="_blank">4</a>。</li>
+<li>使用 fooleap 的研究成果，免费，需要支持 PHP cURL 的虚拟主机和一颗不怕折腾的心。有评论回复邮件提醒
+
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn5"  target="_blank">5</a>。</li>
 </ol>
-
 <h2 id="hypercomments">HyperComments</h2>
-
 <pre><code>https://www.hypercomments.com
-</code></pre>
+</code></pre><p>来自俄罗斯的评论系统，使用谷歌账号注册。免费用户支持一个网站和一个管理员，对于个人博客来说足够用了。功能暂且不说，光看这清爽的界面，作为一只颜狗，我是服气的。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-02.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-02.jpg" alt="HyperComments" /></a>
+</span>
 
-<p>来自俄罗斯的评论系统，使用谷歌账号注册。免费用户支持一个网站和一个管理员，对于个人博客来说足够用了。功能暂且不说，光看这清爽的界面，作为一只颜狗，我是服气的。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-02.jpg" alt="HyperComments" />HyperComments 颜值在线</p>
-
-<p>除了耀眼的颜值，它的功能和 Disqus 大同小异，有些高阶功能需要收费。另外身在俄罗斯的小伙伴可以以短信形式收到评论回复，听着就很高大上。最后说说大家最关心的问题，现阶段国内可以使用<del>，但是，必须使用谷歌账号才能登陆留言，所以有点悬</del>。谢谢小F的更正：免费版后台可以设置支持游客评论。</p>
-
+</span>HyperComments 颜值在线</p>
+<p>除了耀眼的颜值，它的功能和 Disqus 大同小异，有些高阶功能需要收费。另外身在俄罗斯的小伙伴可以以短信形式收到评论回复，听着就很高大上。最后说说大家最关心的问题，现阶段国内可以使用~~，但是，必须使用谷歌账号才能登陆留言，所以有点悬~~。谢谢小F的更正：免费版后台可以设置支持游客评论。</p>
 <h2 id="来必力">来必力</h2>
-
 <pre><code>https://livere.com
-</code></pre>
+</code></pre><p>来自韩国，使用邮箱注册。不得不承认颜值也很高，准确地说应该是萌。中国地区的本地化做得很不错，甚至可以用微信登陆留言，简直热泪盈眶。就这点来看，是多说最好的替代品。同时支持的登陆方式还有：新浪微博、QQ、百度、人人、豆瓣。顺带提一下在韩文和英文模式下的登陆方式：来必力、Kakao talk、Naver、Facebook、Twitter、Instagram、Line、GitHub、Tistory、Google+、Linkedin。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-03.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-03.jpg" alt="来必力" /></a>
+</span>
 
-<p>来自韩国，使用邮箱注册。不得不承认颜值也很高，准确地说应该是萌。中国地区的本地化做得很不错，甚至可以用微信登陆留言，简直热泪盈眶。就这点来看，是多说最好的替代品。同时支持的登陆方式还有：新浪微博、QQ、百度、人人、豆瓣。顺带提一下在韩文和英文模式下的登陆方式：来必力、Kakao talk、Naver、Facebook、Twitter、Instagram、Line、GitHub、Tistory、Google+、Linkedin。</p>
+</span>来必力支持国内多家社交平台登陆</p>
+<p>国内可以使用。修改评论框样式是收费项目。修改评论只有一次机会。理论上来说注册一个来必力账号，绑定各个社交网站以后，之后用社交网站登陆留言也会同步到同一个账号里
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-03.jpg" alt="来必力" />来必力支持国内多家社交平台登陆</p>
-
-<p>国内可以使用。修改评论框样式是收费项目。修改评论只有一次机会。理论上来说注册一个来必力账号，绑定各个社交网站以后，之后用社交网站登陆留言也会同步到同一个账号里<a href="https://blog.shuiba.co/comment-systems-recommendation#fn6">6</a>。可以设置评论分享到社交网站。点击头像会像 Disqus 一样显示侧边栏，可以看以往评论。</p>
-
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn6"  target="_blank">6</a>。可以设置评论分享到社交网站。点击头像会像 Disqus 一样显示侧边栏，可以看以往评论。</p>
 <h2 id="intensedebate">IntenseDebate</h2>
-
 <pre><code>https://www.intensedebate.com
-</code></pre>
+</code></pre><p>是 WordPress 所在的 Automattic 旗下的产品。优点是支持游客评论。国内可以用，但听说加载略慢。曾经是 Disqus 强有力的对手。既然和 WordPress 同一东家，想必反垃圾邮件的功能应该做得不错。如果有 WordPress 账户就不需要额外注册，但很多用 WP 的都可以使用原生评论，这真是个奇妙的悖论。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-04.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-04.jpg" alt="IntenseDebate" /></a>
+</span>
 
-<p>是 WordPress 所在的 Automattic 旗下的产品。优点是支持游客评论。国内可以用，但听说加载略慢。曾经是 Disqus 强有力的对手。既然和 WordPress 同一东家，想必反垃圾邮件的功能应该做得不错。如果有 WordPress 账户就不需要额外注册，但很多用 WP 的都可以使用原生评论，这真是个奇妙的悖论。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-04.jpg" alt="IntenseDebate" />IntenseDebate 可以以游客身份留言（上图中未开启此项功能）</p>
-
+</span>IntenseDebate 可以以游客身份留言（上图中未开启此项功能）</p>
 <h2 id="畅言">畅言</h2>
-
 <pre><code>http://changyan.kuaizhan.com
-</code></pre>
+</code></pre><p>搜狐旗下，大牌加持，安装需要备案号。界面还算清爽，不满意的话可以自定义样式。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-05.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-05.jpg" alt="畅言" /></a>
+</span>
 
-<p>搜狐旗下，大牌加持，安装需要备案号。界面还算清爽，不满意的话可以自定义样式。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-05.jpg" alt="畅言" />畅言可以自定义 CSS</p>
-
-<h2 id="网易云跟帖-已停止服务">网易云跟帖（已停止服务）</h2>
-
+</span>畅言可以自定义 CSS</p>
+<h2 id="网易云跟帖已停止服务">网易云跟帖（已停止服务）</h2>
 <pre><code>https://gentie.163.com
-</code></pre>
+</code></pre><p>感谢
 
-<p>感谢<a href="http://blog.fueis.com/">小F</a>的提醒：此产品将于2017年8月1日停止服务<a href="https://blog.shuiba.co/comment-systems-recommendation#fn7">7</a>。网易旗下，大牌加持，支持网易账号、新浪微博和 QQ 登陆。界面有点尴尬，因为会把地址写出来，比如北京市网友，有种当年各大门户网站下的留言既视感。对于小清新的个人博客来说可能是个不能接受的大坑。</p>
+<a href="http://blog.fueis.com/"  target="_blank">小F</a>的提醒：此产品将于2017年8月1日停止服务
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-06.jpg" alt="网易云跟帖" />网易云跟帖有着网易一贯的“风味”</p>
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn7"  target="_blank">7</a>。网易旗下，大牌加持，支持网易账号、新浪微博和 QQ 登陆。界面有点尴尬，因为会把地址写出来，比如北京市网友，有种当年各大门户网站下的留言既视感。对于小清新的个人博客来说可能是个不能接受的大坑。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-06.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-06.jpg" alt="网易云跟帖" /></a>
+</span>
 
+</span>网易云跟帖有着网易一贯的“风味”</p>
 <h2 id="友言">友言</h2>
-
 <pre><code>http://www.uyan.cc
-</code></pre>
+</code></pre><p>可能是最像多说的评论系统。有评论统计、最新评论插件可以使用。
 
-<p>可能是最像多说的评论系统。有评论统计、最新评论插件可以使用。<a href="https://blog.shuiba.co/jiathis-share-button">JiaThis（加网）</a>旗下产品。它家有加网的分享按钮（Share this），友荐的猜你喜欢（Related posts），加上友言的评论系统，博客三件套齐活儿了。支持 QQ、新浪微博、人人、开心网账号登陆。界面很像 Disqus。</p>
+<a href="https://blog.shuiba.co/jiathis-share-button"  target="_blank">JiaThis（加网）</a>旗下产品。它家有加网的分享按钮（Share this），友荐的猜你喜欢（Related posts），加上友言的评论系统，博客三件套齐活儿了。支持 QQ、新浪微博、人人、开心网账号登陆。界面很像 Disqus。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-07.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-07.jpg" alt="友言" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-07.jpg" alt="友言" />友言的家族成员还有加网和友荐</p>
-
+</span>友言的家族成员还有加网和友荐</p>
 <h2 id="remarkbox">Remarkbox</h2>
-
 <pre><code>https://www.remarkbox.com
-</code></pre>
+</code></pre><p>一位外国友人的个人项目，主打就是“Disqus 的替代品”。因为从 WP 搬到静态博客，寻找第三方评论系统时不喜欢评论里有广告，所以就自己写了一个。好像还是 beta 版，还在增加功能。在测试评论里看到了代码高亮，果然是极客的世界。界面简洁。由于是个人项目，故对未来的发展持观望态度。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-08.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-08.jpg" alt="Remarkbox" /></a>
+</span>
 
-<p>一位外国友人的个人项目，主打就是“Disqus 的替代品”。因为从 WP 搬到静态博客，寻找第三方评论系统时不喜欢评论里有广告，所以就自己写了一个。好像还是 beta 版，还在增加功能。在测试评论里看到了代码高亮，果然是极客的世界。界面简洁。由于是个人项目，故对未来的发展持观望态度。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-08.jpg" alt="Remarkbox" />Remarkbox 的未来会如何？</p>
-
+</span>Remarkbox 的未来会如何？</p>
 <h2 id="vuukle">Vuukle</h2>
-
 <pre><code>http://vuukle.com
-</code></pre>
+</code></pre><p>来自印度。后台感觉跟 WordPress 比较像，还能看当前在线人数。我注册了一个账号试安装了一下没成功。（所以给我留下了不靠谱的感觉。也可能是我技术不够。）界面设计不错，支持 Google+ 和 Facebook 账号登陆，也可以以游客身份留言。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-09.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-09.jpg" alt="Vuukle" /></a>
+</span>
 
-<p>来自印度。后台感觉跟 WordPress 比较像，还能看当前在线人数。我注册了一个账号试安装了一下没成功。（所以给我留下了不靠谱的感觉。也可能是我技术不够。）界面设计不错，支持 Google+ 和 Facebook 账号登陆，也可以以游客身份留言。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-09.jpg" alt="Vuukle" />Vuukle 支持游客评论</p>
-
+</span>Vuukle 支持游客评论</p>
 <h2 id="muut">Muut</h2>
-
 <pre><code>https://muut.com
-</code></pre>
+</code></pre><p>免费计划竟然包含了无限流量、多语言、无广告和样式修改？！我想要欢呼！更惊喜的是评论可以用 Markdown，还能 ctrl+enter 发布。支持 Facebook、Twitter、Google+、Yahoo、Windows Live、Linkedin、GitHub、Reddit、Yandex、Disqus 账号登陆。注册可以用邮箱。
 
-<p>免费计划竟然包含了无限流量、多语言、无广告和样式修改？！我想要欢呼！更惊喜的是评论可以用 Markdown，还能 ctrl+enter 发布。支持 Facebook、Twitter、Google+、Yahoo、Windows Live、Linkedin、GitHub、Reddit、Yandex、Disqus 账号登陆。注册可以用邮箱。<a href="https://muut.com/demos/">Demo 页面</a>有很多格式，NY Times 样式的侧边栏评论令人惊艳。私聊功能需要付费。输入评论时可以实时预览。</p>
+<a href="https://muut.com/demos/"  target="_blank">Demo 页面</a>有很多格式，NY Times 样式的侧边栏评论令人惊艳。私聊功能需要付费。输入评论时可以实时预览。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-10.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-10.jpg" alt="Muut" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-10.jpg" alt="Muut" />Muut 令人惊艳</p>
-
+</span>Muut 令人惊艳</p>
 <h2 id="vicomi">Vicomi</h2>
-
 <pre><code>http://www.vicomi.com
-</code></pre>
+</code></pre><p>免费用户支持一个域名。特点是可以选择心情表情。也因此界面有些凌乱。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-11.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-11.jpg" alt="Vicomi" /></a>
+</span>
 
-<p>免费用户支持一个域名。特点是可以选择心情表情。也因此界面有些凌乱。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-11.jpg" alt="Vicomi" />Vicomi 是评论界的表情帝</p>
-
+</span>Vicomi 是评论界的表情帝</p>
 <h2 id="civil-comments">Civil Comments</h2>
-
 <pre><code>https://www.getcivil.com/comments
-</code></pre>
+</code></pre><p>邮箱注册，社交网站支持 Facebook 和 Twitter。界面友好干净，无功无过。Civil 旗下还有 Civil Live 和 Civil Reviews。专注 UGC (User Generated Content) 的样子。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-12.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-12.jpg" alt="Civil Comments" /></a>
+</span>
 
-<p>邮箱注册，社交网站支持 Facebook 和 Twitter。界面友好干净，无功无过。Civil 旗下还有 Civil Live 和 Civil Reviews。专注 UGC (User Generated Content) 的样子。</p>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-12.jpg" alt="Civil Comments" /><a href="https://www.gitbook.com/@civil">Civil Comments 使用手册（英文）</a></p>
-
-<h2 id="widget-pack-rating-comment-system">Widget Pack Rating &amp; Comment System</h2>
-
+<a href="https://www.gitbook.com/@civil"  target="_blank">Civil Comments 使用手册（英文）</a></p>
+<h2 id="widget-pack-rating--comment-system">Widget Pack Rating &amp; Comment System</h2>
 <pre><code>https://widgetpack.com/comment-system
-</code></pre>
+</code></pre><p>跟 Civil Comments 类似，除了评论系统，还有 Reviews、Rating 和 Google Reviews。免费用户支持一个域名和一位管理员。使用邮箱注册。留言可以使用以下社交网站登陆：Facebook、Twitter、Google+、Linkedin、Instagram、SoundCloud、Tumblr、ВКонтакте (VK)、OK、Мой Мир、Yahoo、LiveJournal、Яндекс。从这些网站中我看出来了，这也是一家来自俄罗斯的产品。评论框内嵌星级评分，据官方称，评分会显示在谷歌的搜索结果中。支持 ssl。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-13.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-13.jpg" alt="Widget Pack" /></a>
+</span>
 
-<p>跟 Civil Comments 类似，除了评论系统，还有 Reviews、Rating 和 Google Reviews。免费用户支持一个域名和一位管理员。使用邮箱注册。留言可以使用以下社交网站登陆：Facebook、Twitter、Google+、Linkedin、Instagram、SoundCloud、Tumblr、ВКонтакте (VK)、OK、Мой Мир、Yahoo、LiveJournal、Яндекс。从这些网站中我看出来了，这也是一家来自俄罗斯的产品。评论框内嵌星级评分，据官方称，评分会显示在谷歌的搜索结果中。支持 ssl。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/comments/170411-13.jpg" alt="Widget Pack" />Widget Pack Rating &amp; Comment System</p>
-
+</span>Widget Pack Rating &amp; Comment System</p>
 <h2 id="facebook-comments">Facebook comments</h2>
-
 <pre><code>https://developers.facebook.com/docs/plugins/comments
-</code></pre>
+</code></pre><p>如果你的朋友都在使用 Facebook，这绝对是不二选择。就好比新浪微博出了个评论系统，亲戚朋友都能方便登陆留言，评论可以点赞，还能分享到微博让更多人看到，一气呵成。当年多说能够保持绝对地位的占有率，也是靠了支持国内各个社交平台登陆的力量。</p>
+<h2 id="livefyre已停止服务">Livefyre（已停止服务）</h2>
+<p>被 Adobe 收购以后就不再是独立的评论系统了。它成为 Adobe Experience Manager 的一部分，简单说来就像是简书的评论部分一样
 
-<p>如果你的朋友都在使用 Facebook，这绝对是不二选择。就好比新浪微博出了个评论系统，亲戚朋友都能方便登陆留言，评论可以点赞，还能分享到微博让更多人看到，一气呵成。当年多说能够保持绝对地位的占有率，也是靠了支持国内各个社交平台登陆的力量。</p>
-
-<h2 id="livefyre-已停止服务">Livefyre（已停止服务）</h2>
-
-<p>被 Adobe 收购以后就不再是独立的评论系统了。它成为 Adobe Experience Manager 的一部分，简单说来就像是简书的评论部分一样<a href="https://blog.shuiba.co/comment-systems-recommendation#fn8">8</a>。因为在 Datanyze 的图表上看见它排名第四，也在谷歌后找到官方的安装网站，顺利取得代码，于是我原以为它还能使用。但在测试时看到了以下信息，于是我彻底死心了。竟然也是最近的事。</p>
-
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn8"  target="_blank">8</a>。因为在 Datanyze 的图表上看见它排名第四，也在谷歌后找到官方的安装网站，顺利取得代码，于是我原以为它还能使用。但在测试时看到了以下信息，于是我彻底死心了。竟然也是最近的事。</p>
 <blockquote>
-<p>Notice: Livefyre Community Comments will become read-only starting March 9, 2017 and no longer available as of April 6, 2017. To export your comments, please visit, www.livefyre.com/installation/site/export/. For more information, please see <a href="https://docs.adobe.com/docs/en/aem/livefyre-announcements.html">https://docs.adobe.com/docs/en/aem/livefyre-announcements.html</a>.</p>
+<p>Notice: Livefyre Community Comments will become read-only starting March 9, 2017 and no longer available as of April 6, 2017. To export your comments, please visit, <a href="http://www.livefyre.com/installation/site/export/">www.livefyre.com/installation/site/export/</a>. For more information, please see <a href="https://docs.adobe.com/docs/en/aem/livefyre-announcements.html">https://docs.adobe.com/docs/en/aem/livefyre-announcements.html</a>.</p>
 </blockquote>
+<p>面对曾经的用户，Adobe 给出了两个备用选择：Disqus 和
 
-<p>面对曾经的用户，Adobe 给出了两个备用选择：Disqus 和<a href="https://wordpress.org/plugins/gplus-comments/">一个 WordPress 插件</a>。这个插件可以在 Google+、Facebook comment、Disqus 和 WordPress 原生评论中切换，对于想兼顾国内外朋友的博主来说应该是个不错的选择。</p>
+<a href="https://wordpress.org/plugins/gplus-comments/"  target="_blank">一个 WordPress 插件</a>。这个插件可以在 Google+、Facebook comment、Disqus 和 WordPress 原生评论中切换，对于想兼顾国内外朋友的博主来说应该是个不错的选择。</p>
+<h2 id="google-comments非官方">Google+ Comments（非官方）</h2>
+<p>高手在民间
 
-<h2 id="google-comments-非官方">Google+ Comments（非官方）</h2>
-
-<p>高手在民间<a href="https://blog.shuiba.co/comment-systems-recommendation#fn9">9</a>。</p>
-
+<a href="https://blog.shuiba.co/comment-systems-recommendation#fn9"  target="_blank">9</a>。</p>
 <h2 id="hashover">HashOver</h2>
-
 <pre><code>http://tildehash.com/?page=hashover
-</code></pre>
-
-<p>技术小白表示看不太懂，大家可以去官网围观一下。</p>
-
+</code></pre><p>技术小白表示看不太懂，大家可以去官网围观一下。</p>
 <h2 id="isso">Isso</h2>
-
 <pre><code>https://posativ.org/isso
-</code></pre>
-
-<p>也是技术向的，我等小白就不妄加评论了。</p>
-
+</code></pre><p>也是技术向的，我等小白就不妄加评论了。</p>
 <h2 id="staticman">Staticman</h2>
-
 <pre><code>https://staticman.net
-</code></pre>
-
-<p>顾名思义，静态评论，逼格太高了。最适合托管在 GitHub Pages 上的 Jekyll 博客。对于没有 Git 经验的我，安装手册看起来太难了。</p>
-
+</code></pre><p>顾名思义，静态评论，逼格太高了。最适合托管在 GitHub Pages 上的 Jekyll 博客。对于没有 Git 经验的我，安装手册看起来太难了。</p>
 <h2 id="gitment">Gitment</h2>
-
 <pre><code>https://github.com/imsun/gitment
-</code></pre>
+</code></pre><p>感谢
 
-<p>感谢<a href="http://blog.fooleap.org/">Fooleap</a>的分享，官网给出的说明是：</p>
-
+<a href="http://blog.fooleap.org/"  target="_blank">Fooleap</a>的分享，官网给出的说明是：</p>
 <blockquote>
 <p>Gitment 是作者实现的一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。</p>
 </blockquote>
-
 <p>目测非常适合 GitHub 重度用户，并且博客受众也是 GitHub 用户的人。</p>
-
 <h2 id="gitalk">Gitalk</h2>
-
 <pre><code>https://gitalk.github.io
-</code></pre>
+</code></pre><p>感谢
 
-<p>感谢<a href="http://blog.iljw.me/">Liu Joey</a>的分享，官方 GitHub 页面上对此的介绍是：</p>
-
+<a href="http://blog.iljw.me/"  target="_blank">Liu Joey</a>的分享，官方 GitHub 页面上对此的介绍是：</p>
 <blockquote>
 <p>Gitalk 是一个基于 Github Issue 和 Preact 开发的评论插件。</p>
 </blockquote>
-
 <h2 id="blog-comments2">Blog Comments2</h2>
-
 <pre><code>https://github.com/revir/nodebb-plugin-blog-comments2
-</code></pre>
-
-<p>从 NodeBB 官方博客的评论插件上修改而来，支持静态博客。</p>
-
+</code></pre><p>从 NodeBB 官方博客的评论插件上修改而来，支持静态博客。</p>
 <h2 id="valine">Valine</h2>
-
 <pre><code>https://github.com/xCss/Valine
-</code></pre>
+</code></pre><p>感谢
 
-<p>感谢<a href="http://immmmm.com/">林小沐</a>的分享，<a href="https://ioliu.cn/2017/add-valine-comments-to-your-blog/">官方中文教程</a>声称这是「一款基于Leancloud的极简风评论系统」。另有<a href="https://panjunwen.com/diy-a-comment-system/">进化版</a>可供选择。</p>
+<a href="http://immmmm.com/"  target="_blank">林小沐</a>的分享，
 
+<a href="https://ioliu.cn/2017/add-valine-comments-to-your-blog/"  target="_blank">官方中文教程</a>声称这是「一款基于Leancloud的极简风评论系统」。另有
+
+<a href="https://panjunwen.com/diy-a-comment-system/"  target="_blank">进化版</a>可供选择。</p>
 <h2 id="self-host-comments-in-jekyll">Self-host comments in Jekyll</h2>
-
 <pre><code>https://flinhong.com/2017/03/25/self-host-comments-in-jekyll-using-firebase-database
-</code></pre>
+</code></pre><p>感谢
 
-<p>感谢<a href="https://flinhong.com/">flinhong</a>分享的造轮子方法，按照大神的原话是：</p>
-
+<a href="https://flinhong.com/"  target="_blank">flinhong</a>分享的造轮子方法，按照大神的原话是：</p>
 <blockquote>
 <p>感兴趣的同学也来自己动手做一个，很适合静态博客。唯一的缺点就是用的 Google 的服务，需要那啥，大家懂的。</p>
 </blockquote>
-
 <h2 id="后记">后记</h2>
-
 <p>这篇文章写了整整一天半，信息量之大是我最初没有想到的。因为找到的很多都是收费的，所以看过的评论系统可能有现在总结出来的两倍，工程量非常浩大，好在我坚持下来了。好久没有如此专注过一件事，写完的时候心里美滋滋的。</p>
-
 <p>在查找 Disqus 替代品的时候发现很多国外的评论系统也消失了不少，看来当初选择了 Disqus 真是押对了宝。对于第三方评论系统来说，盈利模式非常重要。免费的评论系统一般都在说 UGC，也就是用户产生内容。如果你的网站有很多读者，一起讨论可以创造出更多的价值。简单说起来就是大家一起赚钱，或者类似粉丝经济。所以我找到了很多只面对企业客户的评论系统就一点也不意外了，毕竟普通的个人身上很难产生赢利点。而幸存下来的免费评论系统，比如 Disqus，最终也没能逃脱在评论里插入广告的魔咒，因此得罪了不少用户，即使广告费有分成。另外很多社交网络都有自己的评论系统，反正都得注册，评论也不需要门槛。这对第三方评论系统的生存也是一个冲击。</p>
-
 <p>在搜集资料的过程中，我还发现了一个特别的现象，就是很多收费的评论系统都有免费的 WordPress 插件。所以好好珍惜手中的 WordPress 吧。</p>
-
 <p>最后，还是得安利一下我的“大房东”——Bitcron。论专注写作、简洁、本地化、先进技术，多年在博客圈打拼的我觉得它都是第一名。一站式解决所有问题，比当年惊艳我们的 FarBox 走得更远了。现在它不仅仅是一个博客，甚至可以变身成任何你想要的东西，这是它的野心，也给了我们信心。当然，评论框很美是有加分的。</p>
-
 <p>如果你有什么更好的推荐欢迎留言告诉我，我会补充在这篇文章里。</p>
-
 <h2 id="参考网站">参考网站</h2>
-
 <ol>
-<li><a href="https://blog.ps/archives/4234.html">再见，那些年我们一起用过的多说 - 博客物语(Blog.PS)</a></li>
-<li><a href="https://www.quora.com/Are-there-any-free-alternatives-to-Disqus">Are there any free alternatives to Disqus? - Quora</a></li>
-<li><a href="https://discuss.gohugo.io/t/disqus-alternatives">Disqus Alternatives - tips &amp; tricks - Hugo Discussion</a></li>
-<li><a href="https://discuss.gohugo.io/t/alternative-to-disqus-needed-more-than-ever">Alternative to Disqus Needed More Than Ever - support - Hugo Discussion</a></li>
-<li><a href="https://orro.ro/p/79.html">Hashover-PHP开源评论系统 - Orro.ro</a></li>
-<li><a href="http://alternativeto.net/software/disqus/">Disqus Alternatives and Similar Software - AlternativeTo.net</a></li>
-<li><a href="https://mademistakes.com/articles/improving-jekyll-static-comments/">Improving Static Comments with Jekyll &amp; Staticman | Made Mistakes</a></li>
-<li><a href="https://www.zhihu.com/question/57426274">如何评价“多说”即将关闭？有什么替代方案？ - 知乎</a></li>
+<li>
+
+<a href="https://blog.ps/archives/4234.html"  target="_blank">再见，那些年我们一起用过的多说 - 博客物语(Blog.PS)</a></li>
+<li>
+
+<a href="https://www.quora.com/Are-there-any-free-alternatives-to-Disqus"  target="_blank">Are there any free alternatives to Disqus? - Quora</a></li>
+<li>
+
+<a href="https://discuss.gohugo.io/t/disqus-alternatives"  target="_blank">Disqus Alternatives - tips &amp; tricks - Hugo Discussion</a></li>
+<li>
+
+<a href="https://discuss.gohugo.io/t/alternative-to-disqus-needed-more-than-ever"  target="_blank">Alternative to Disqus Needed More Than Ever - support - Hugo Discussion</a></li>
+<li>
+
+<a href="https://orro.ro/p/79.html"  target="_blank">Hashover-PHP开源评论系统 - Orro.ro</a></li>
+<li>
+
+<a href="http://alternativeto.net/software/disqus/"  target="_blank">Disqus Alternatives and Similar Software - AlternativeTo.net</a></li>
+<li>
+
+<a href="https://mademistakes.com/articles/improving-jekyll-static-comments/"  target="_blank">Improving Static Comments with Jekyll &amp; Staticman | Made Mistakes</a></li>
+<li>
+
+<a href="https://www.zhihu.com/question/57426274"  target="_blank">如何评价“多说”即将关闭？有什么替代方案？ - 知乎</a></li>
 </ol>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/128/>第三方评论系统推荐</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-25<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/128/ target="_blank" >https://3mile.github.io/archives/128/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -573,7 +633,7 @@ if (!doNotTrack) {
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -618,24 +678,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/128/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/128/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/128/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -654,9 +696,11 @@ if (!doNotTrack) {
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -694,24 +738,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/128/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/128/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/128/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -730,24 +756,6 @@ if (!doNotTrack) {
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F128%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F128%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F128%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -763,7 +771,7 @@ if (!doNotTrack) {
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -791,18 +799,28 @@ if (!doNotTrack) {
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

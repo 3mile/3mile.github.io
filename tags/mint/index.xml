@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mint on 3mile博客</title>
+    <title>Mint on 3mile博客</title>
     <link>https://3mile.github.io/tags/mint/</link>
-    <description>Recent content in mint on 3mile博客</description>
+    <description>Recent content in Mint on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 20 Feb 2019 19:44:10 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 21 Feb 2019 20:30:25 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/mint/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Linux Mint NFS服务端与客户端配置</title>
+      <link>https://3mile.github.io/archives/2019/0221203025/</link>
+      <pubDate>Thu, 21 Feb 2019 20:30:25 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/0221203025/</guid>
+      <description>早先Sun Microsystems创建了网络文件系统以通过网络共享资源。NFS与SAMBA类似，在共享文件方面确实非常方便。而NFS大多数时</description>
+    </item>
     
     <item>
       <title>Mint使用VSCode编辑MarkDown</title>
@@ -18,6 +27,15 @@
       
       <guid>https://3mile.github.io/archives/2019/0220194410/</guid>
       <description>为什么选择VS Code？ 在选择Visual Studio Code（以下简称Code）作为markdown主力编辑器之前，我在Mac电脑上尝试了简友们推荐</description>
+    </item>
+    
+    <item>
+      <title>Linux Mint操作记录</title>
+      <link>https://3mile.github.io/archives/2019/0220/</link>
+      <pubDate>Wed, 20 Feb 2019 14:01:49 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2019/0220/</guid>
+      <description>Linux Mint 的目标是为个人和企业客户提供免费/高效/优雅且真正「易于上手」的开源桌面操作系统，它继承了 Ubuntu 众多优点，集成大量可让用户「开箱即用」的软件包，加上良好的人机交互体验，使其自 2006 年发行以来人气持续狂飙，目前已稳居 Distrowatch 发行版排行榜的第一名，势头相当凶猛……</description>
     </item>
     
   </channel>

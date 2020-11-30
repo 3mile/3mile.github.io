@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Fonts on 3mile博客</title>
+    <link>https://3mile.github.io/tags/fonts/</link>
+    <description>Recent content in Fonts on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 06 Apr 2020 18:21:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/fonts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ubuntu 上安装微软TrueType字体</title>
+      <link>https://3mile.github.io/archives/2020/0406182133/</link>
+      <pubDate>Mon, 06 Apr 2020 18:21:33 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0406182133/</guid>
+      <description>如果你在 Linux 上用 LibreOffice 打开一些微软文档，你会发现字体看起来有一点不同。你也将注意到有些常用字体找不到，如 Times New Roman、Arial 等等。 不用担心。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,18 +6,23 @@
     <description>Recent content in Ubuntu on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 19 Mar 2019 14:09:30 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 15 Apr 2020 13:13:01 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/categories/ubuntu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>如何在Ubuntu 18.04设置NFS挂载</title>
-      <link>https://3mile.github.io/archives/2018/03/19/</link>
-      <pubDate>Tue, 19 Mar 2019 14:09:30 +0800</pubDate>
+      <title>如何列出和删除UFW防火墙规则</title>
+      <link>https://3mile.github.io/archives/2020/0415131301/</link>
+      <pubDate>Wed, 15 Apr 2020 13:13:01 +0800</pubDate>
       
-      <guid>https://3mile.github.io/archives/2018/03/19/</guid>
-      <description>如何在Ubuntu 18.04上设置NFS挂载 NFS或网络文件系统是一种分布式文件系统协议，允许您在服务器上安装远程目录。本教程将介绍如何安装</description>
+      <guid>https://3mile.github.io/archives/2020/0415131301/</guid>
+      <description>&lt;p&gt;UFW代表“不复杂的防火墙”，是用于管理iptables（netfilter）防火墙规则的用户友好前端。它是
+
+&lt;a href=&#34;https://www.myfreax.com/how-to-setup-a-firewall-with-ufw-on-ubuntu-18-04/&#34;  target=&#34;_blank&#34;&gt; Ubuntu &lt;/a&gt;的默认防火墙配置工具，也可用于其他流行的Linux发行版，例如
+
+&lt;a href=&#34;https://www.myfreax.com/how-to-setup-a-firewall-with-ufw-on-debian-9/&#34;  target=&#34;_blank&#34;&gt; Debian &lt;/a&gt;和Arch Linux。&lt;/p&gt;
+&lt;p&gt;在本教程中，我们将介绍如何列出和删除UFW防火墙规则。&lt;/p&gt;</description>
     </item>
     
   </channel>

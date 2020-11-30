@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功">
+
+
+<meta property="og:description" content="在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用pv命令监视数据的处理进度">
+<meta name="twitter:title" content="利用pv命令监视数据的处理进度">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/0410095448/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/0410095448/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功">
+<meta name="twitter:description" content="在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-04-10T09:54:48">
+  
+  
+    <meta property="article:modified_time" content="2020-04-10T09:54:48">
+  
+  
+  
+    
+      <meta property="article:section" content="Linux">
+    
+  
+  
+    
+      <meta property="article:tag" content="Linux">
+    
+      <meta property="article:tag" content="终端">
+    
+      <meta property="article:tag" content="Bash">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/pv.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/pv.jpg">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/2.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/2.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>利用pv命令监视数据的处理进度</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/0410095448/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/2.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      利用pv命令监视数据的处理进度
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-10T09:54:48&#43;08:00">
+        
+  
+  
+  
+  
+    2020-04-10
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-描述">1. 描述</a></li>
+    <li><a href="#2-示例">2. 示例</a>
+      <ul>
+        <li><a href="#21-监视打开拷贝文件进度">2.1 监视打开/拷贝文件进度</a></li>
+        <li><a href="#22-监视压缩文件进度">2.2 监视压缩文件进度</a></li>
+        <li><a href="#23-监视数据内容搜索进度">2.3 监视数据内容搜索进度</a></li>
+        <li><a href="#24-监视tar的备份进度">2.4 监视tar的备份进度</a></li>
+        <li><a href="#25-配置dialog显示进度条">2.5 配置dialog显示进度条</a></li>
+        <li><a href="#26-显示多个pv进度条">2.6 显示多个pv进度条</a></li>
+        <li><a href="#27-大量数据网络传输">2.7 大量数据网络传输</a></li>
+        <li><a href="#28-读写镜像文件">2.8 读写镜像文件</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-参考">3. 参考</a></li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功</p>
+<p>能, 此时就需要称为&rsquo;pv'或者Pipe Viewer的工具监控通过管道的数据的进度信息, 已消耗的时间, 进度条显示的完成百分比, 当前管道的吞吐量, 已传输的数据量,  预计完成的时间等.</p>
+<blockquote>
+<p>引申阅读: 
+
+<a href="https://link.jianshu.com?t=http://www.baidu.com"  target="_blank">利用nc命令快速完成目录数据传输</a><br>
+引申阅读: 
+
+<a href="https://link.jianshu.com?t=http://www.sohu.com"  target="_blank">利用tar命令进行压缩</a></p>
+</blockquote>
+<hr>
+<h2 id="1-描述">1. 描述</h2>
+<blockquote>
+<p>来源: CentOS Linux release 7.2.1511 (Core) User Manuals PV(1)</p>
+</blockquote>
+<p>语法：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">pv</span> <span style="color:#f92672">[</span><span style="color:#f92672">OPTION</span><span style="color:#f92672">]</span> <span style="color:#f92672">[</span><span style="color:#f92672">FILE</span><span style="color:#f92672">]</span>  
+<span style="color:#f92672">pv</span> <span style="color:#f92672">[</span><span style="color:#f92672">-h</span><span style="color:#f92672">|</span><span style="color:#f92672">-V</span><span style="color:#f92672">]</span>  
+</code></pre></div><p>Pipe Viewer用于监视通过管道的数据进度信息. pv使用户能够看到数据通过管道的进度, 并提供例如耗时,完成比例,吞吐量,传输量和ETA等这些信息. 为了实现上述功能需要将该命令插入到两个进程之间的管道中, 并佐以合适的选项. 它的标准输入经由它到达其标准输出, 同时进度信息会显示在标准错误上. pv依次拷贝FILE中的数据到其标准输出( - 表示标准输入), 如果FILE未提供仅仅拷贝标准输入. 该命令行的行为与cat类似.</p>
+<ul>
+<li>注意:如果输入数据量无法计算, 并且输出是一个块设备, 那么块设备的大小会用来作为输出总量,  即使指定了-S &ndash;stop-at-size选项, pv也会停在该位置.</li>
+</ul>
+<h2 id="2-示例">2. 示例</h2>
+<p>不带任何选项时, 默认自带-p &ndash;progress(带进度条的完成比例), -t &ndash;timer(已消耗时间), -e &ndash;eta(预估剩余时间), -r &ndash;rate(已传输总量), -b &ndash;bytes(数据量总量)</p>
+<h3 id="21-监视打开拷贝文件进度">2.1 监视打开/拷贝文件进度</h3>
+<p>利用pv打开一个文件, 标准输出可以重定向到一个新文件或者/dev/null. -L 选项表示限速, 控制通过pv的数据流速, 便于查看进度信息. 默认显示进度信息包括: 传输的数据量, 已消耗时间, 数据传输速率, 进度条和完成比率, 预估剩余时间.</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/pv.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/pv.jpg" alt="pv" /></a>
+</span>
+
+</span></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-csharp" data-lang="csharp"><span style="color:#a6e22e">[root]</span>pv -L <span style="color:#ae81ff">10</span>k cups-<span style="color:#ae81ff">2.1</span>.<span style="color:#ae81ff">4</span>-source.tar.gz <span style="color:#ae81ff">1</span>&gt;/dev/<span style="color:#66d9ef">null</span>
+<span style="color:#ae81ff">30</span>kiB <span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">03</span> [<span style="color:#ae81ff">10.1</span>kiB/s] [===============&gt;                      ] <span style="color:#ae81ff">44</span>% ETA <span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">03</span>
+<span style="color:#a6e22e">[root]</span>pv -L <span style="color:#ae81ff">10</span>k cups-<span style="color:#ae81ff">2.1</span>.<span style="color:#ae81ff">4</span>-source.tar.gz <span style="color:#ae81ff">1</span>&gt;cups-<span style="color:#ae81ff">2.1</span>.<span style="color:#ae81ff">4</span>-source.tar.gz.bak
+<span style="color:#ae81ff">30</span>kiB <span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">03</span> [<span style="color:#ae81ff">10.1</span>kiB/s] [===============&gt;                      ] <span style="color:#ae81ff">44</span>% ETA <span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">00</span>:<span style="color:#ae81ff">03</span>
+</code></pre></div><h3 id="22-监视压缩文件进度">2.2 监视压缩文件进度</h3>
+<p>利用pv打开一个数据通道, 并将pv的标准输出作为zip的标准输入.
+&lsquo;-&rsquo; 表示zip命令压缩当前标准输入的数据.
+为了清除zip程序的标准错误输出, 将其中定向到Null设备, 此时输出信息就只剩下pv的标准错误输出信息.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -L 10k cups-2.1.4-source.tar.gz | zip 1&gt;/dev/null
+  adding: -  10kiB 0:00:01 <span style="color:#f92672">[</span>9.23kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[====</span>&gt;                                 <span style="color:#f92672">]</span> 14% 
+  67.6kiB 0:00:06 <span style="color:#f92672">[</span>9.98kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[====================================</span>&gt;<span style="color:#f92672">]</span> 100%            
+  <span style="color:#f92672">(</span>deflated 0%<span style="color:#f92672">)</span>
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -L 10k cups-2.1.4-source.tar.gz | <span style="color:#f92672">(</span>zip 1&gt;cups.zip 2&gt;/dev/null<span style="color:#f92672">)</span>             
+  30kiB 0:00:03 <span style="color:#f92672">[</span>10.1kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[===============</span>&gt;                      <span style="color:#f92672">]</span> 44% ETA 0:00:03
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -L 10k cups-2.1.4-source.tar.gz | <span style="color:#f92672">(</span>zip 1&gt;/dev/null 2&gt;/dev/null<span style="color:#f92672">)</span>
+  67.6kiB 0:00:06 <span style="color:#f92672">[</span>9.98kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[====================================</span>&gt;<span style="color:#f92672">]</span> 100%  
+</code></pre></div><p>gzip直接压缩文件和通过pv显示进度信息的执行过程比较</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>gzip -c pvtest.dat &gt; pvtest.dat.gz
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>du -sb pvtest.dat.gz 
+  <span style="color:#ae81ff">5781</span>    pvtest.dat.gz
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -L 10k pvtest.dat | gzip &gt; pvtest.dat.gz    
+  14.8kiB 0:00:01 <span style="color:#f92672">[</span>10.3kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[===============================</span>&gt;<span style="color:#f92672">]</span> 100%            
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>du -sb pvtest.dat.gz 
+  <span style="color:#ae81ff">5770</span>    pvtest.dat.gz 
+</code></pre></div><h3 id="23-监视数据内容搜索进度">2.3 监视数据内容搜索进度</h3>
+<p>利用wc命令计算文件的行数/词数/字节数, wc没有进度信息的功能, 通过pv来监视数据传输量就可以很容易得到当前文件的完成比例.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -L 5k pvtest.dat | wc
+14.8kiB 0:00:02 <span style="color:#f92672">[</span>4.97kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[====================================</span>&gt;<span style="color:#f92672">]</span> 100%            
+    <span style="color:#ae81ff">381</span>    <span style="color:#ae81ff">2095</span>   15169
+</code></pre></div><p>利用grep命令搜索文件内容, -n命令以整数显示数据量的完成比例, -i设置进度更新间隔时间(可以是小数), 可以很容易看出完成的比例.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -n -i 0.5 -L 5k pvtest.dat | grep seconds
+16
+  use, <span style="color:#66d9ef">then</span> each output line is prefixed with the elapsed time so far, as a decimal number of seconds.
+33
+  Wait SEC seconds between updates.  The default is to update every second.  Note that this can be a decimal such as 0.1.
+50
+67
+84
+100
+</code></pre></div><p>利用grep命令搜索文件内容, -N 标记经由pv的管道流名称.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -N GrepRate -i 0.1 -L 5k pvtest.dat | grep seconds
+  use, <span style="color:#66d9ef">then</span> each output line is prefixed with the elapsed time so far, as a decimal number of seconds.
+  Wait SEC seconds between updates.  The default is to update every second.  Note that this can be a decimal such as 0.1.
+GrepRate: 11.5kiB 0:00:02 <span style="color:#f92672">[</span>5.53kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[===================</span>&gt;       <span style="color:#f92672">]</span> 77% ETA 0:00:00
+</code></pre></div><h3 id="24-监视tar的备份进度">2.4 监视tar的备份进度</h3>
+<p>tar命令中的第一个&rsquo;-&lsquo;写备份文件到标准输出, 备份文件通过管道作为pv的标准输入, 经由pv后作为标准输出写入文件down.tgz.
+pv显示选项中的部分长短选项-t &ndash;timer, -r &ndash;rate, -b &ndash;bytes.
+由于数据总量无法后去, 完成比例的进度条显示就无法明确显示, 同时-e &ndash;eta亦-p &ndash;propress也是无法显示.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>tar -czf - ./down/ | <span style="color:#f92672">(</span>pv -L 10k -p --timer --rate --bytes &gt; down.tgz<span style="color:#f92672">)</span>
+68.1kiB 0:00:06 <span style="color:#f92672">[</span>9.91kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>       &lt;<span style="color:#f92672">=</span>&gt;                                            <span style="color:#f92672">]</span>
+</code></pre></div><p>对tar文件不启用压缩, 而是通过后续的gzip命令来压缩数据, 为了获取总数据量, -s 参数配合du命令.
+从最后的结果来看, 最后的结果显示略有差别, gzip压缩后的文件比原始文件稍大. 造成这种差别gzip再次压缩gz文件时文件头造成的.
+经过测试发现在文件较大时, 其结果更令人满意. 文件较小时测试结果很令人费解, 显示相差巨大.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>tar -cf - cups-2.1.4-source.tar.gz | pv -L 10k -s <span style="color:#66d9ef">$(</span>du -sb cups-2.1.4-source.tar.gz | awk <span style="color:#e6db74">&#39;{print $1}&#39;</span><span style="color:#66d9ef">)</span> | gzip &gt; ../out.tgz
+  70kiB 0:00:06 <span style="color:#f92672">[</span>10.1kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[=====================================]</span> 103%  
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>tar -cf - audit.gz | pv -L 1m -s <span style="color:#66d9ef">$(</span>du -sb audit.gz | awk <span style="color:#e6db74">&#39;{print $1}&#39;</span><span style="color:#66d9ef">)</span> | gzip &gt; out.tgz
+1.55MiB 0:00:01 <span style="color:#f92672">[</span>1.03MiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[====================================</span>&gt;<span style="color:#f92672">]</span> 100% 
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>tar -cf - backup.tgz | pv -L 10k -s <span style="color:#66d9ef">$(</span>du -sb backup.tgz | awk <span style="color:#e6db74">&#39;{print $1}&#39;</span><span style="color:#66d9ef">)</span> | gzip &gt; out.tgz                                                                                            
+  10kiB 0:00:00 <span style="color:#f92672">[</span>11.1kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[====================================</span>&gt;<span style="color:#f92672">]</span> 22755%
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>tar -cf - audit.zip | pv -L 1m -s <span style="color:#66d9ef">$(</span>du -sb audit.zip | awk <span style="color:#e6db74">&#39;{print $1}&#39;</span><span style="color:#66d9ef">)</span> | gzip &gt; out.tgz            
+1.25MiB 0:00:01 <span style="color:#f92672">[</span>1.02MiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[====================================</span>&gt;<span style="color:#f92672">]</span> 100%
+</code></pre></div><h3 id="25-配置dialog显示进度条">2.5 配置dialog显示进度条</h3>
+<p>通过-s参数指定数据总量, 进度条的显示应该就会先正确. dialog只接受标准输入的数字, 所以pv要使用-n参数输出数字比例, 同时pv的标准错误要重定向到标准输出中, dialog才能从标准输入接收到数据. gauge是进度条类型, 后续参数是描述信息, 进度条高度终端比率和长度终端比例.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -czf - ./down/ | <span style="color:#f92672">(</span>pv -L 10k -s <span style="color:#ae81ff">69705</span> -n &gt; down.tgz<span style="color:#f92672">)</span> 2&gt;&amp;<span style="color:#ae81ff">1</span> | dialog --gauge <span style="color:#e6db74">&#34;Progress&#34;</span> <span style="color:#ae81ff">10</span> 70
+</code></pre></div><h3 id="26-显示多个pv进度条">2.6 显示多个pv进度条</h3>
+<p>将gzip的源文件和目标文件都通过pv, 显示源读取和gzip输出目标的进度信息.
+多个进度条时-c 参数必不可少, 防止进度条在更新时交叉覆盖, 虽然最后的效果和输出相同但是中间过程可能看不清楚.
+GzipDest管道数据流由于无法获取数据总量, 所以进度的显示会出现偏差, 还有部分显示内容无法计算.
+在压缩过程中可以通过对rate进行计算, 就可以了解到大概的压缩比例 9.95/1.94.</p>
+<blockquote>
+<p>-c 使用游标定位转义序列替换仅仅只使用回车, 与-N 联合使用时, 对处于单一长数据管道的多个pv很有效.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -L 10k -cN GzipSour pv.man pvtest.dat | gzip | pv -cN GzipDest &gt; pv.pvtest.gz
+ GzipDest:    <span style="color:#ae81ff">0</span> B 0:00:02 <span style="color:#f92672">[</span>   <span style="color:#ae81ff">0</span> B/s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;<span style="color:#f92672">=</span>&gt;                                          <span style="color:#f92672">]</span>
+ GzipSour:   20kiB 0:00:02 <span style="color:#f92672">[</span>10.1kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[=================</span>&gt;         <span style="color:#f92672">]</span> 67% ETA 0:00:00
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -L 10k -cN GzipSour pv.man pvtest.dat | gzip | pv -cN GzipDest &gt; pv.pvtest.gz
+ GzipDest: 5.79kiB 0:00:02 <span style="color:#f92672">[</span>1.94kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>&lt;<span style="color:#f92672">=</span>&gt;                                        <span style="color:#f92672">]</span>
+ GzipSour: 29.6kiB 0:00:02 <span style="color:#f92672">[</span>9.95kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[=========================</span>&gt;<span style="color:#f92672">]</span> 100%   
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv -L 10k -N GzipSour pv.man pvtest.dat | gzip | pv -N GzipDest &gt; pv.pvtest.gz  
+GzipSour:   20kiB 0:00:02 <span style="color:#f92672">[</span>10.1kiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[===================</span>&gt;       <span style="color:#f92672">]</span> 67% ETA 0:00:00  
+</code></pre></div><h3 id="27-大量数据网络传输">2.7 大量数据网络传输</h3>
+<p>假设有机器A, 地址128.160.171.181; 机器B, 地址128.160.64.115
+首先要在机器B上面制造数据, 数据都处于同一个目录内, 利用tar和pv拷贝/usr/lib中的所有文件到upload目录, 可以通过这种方式看到进度信息.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>cd /tmp
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>mkdir upload
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>cd upload
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>tar -C /usr/lib -cf - . | pv | tar -xf -
+ 299MB 0:00:01 <span style="color:#f92672">[</span> 266MB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>      &lt;<span style="color:#f92672">=</span>&gt;             <span style="color:#f92672">]</span>
+</code></pre></div><p>在机器B上面发布nc命令并启动侦听端口6666, 然后会发现nc开始挂起, 等待连接.
+在机器A开始发布命令时, 机器B也可以显示进度条, 显示数据的传输.</p>
+<p>如果在机器A上面要看到进度条的完成比例, 可以使用du -sb upload计算数据总量.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>tar -cf - upload | pv | nc -l -p 6666
+1.27GB 0:00:11 <span style="color:#f92672">[</span> 110MB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>    &lt;<span style="color:#f92672">=</span>&gt;                    <span style="color:#f92672">]</span>
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>tar -cf - upload | pv -s <span style="color:#66d9ef">$(</span>du -sb upload | awk <span style="color:#e6db74">&#39;{print $1}&#39;</span><span style="color:#66d9ef">)</span> | nc -l -p <span style="color:#ae81ff">6666</span>  
+1.27GiB 0:00:25 <span style="color:#f92672">[</span>51.3MiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[====================================</span>&gt;<span style="color:#f92672">]</span> 101%
+</code></pre></div><p>在机器A上面通过nc命令访问机器B和指定端口并通过tar解压缩文件, 可以看到此时数据开始传输并显示进度条.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>nc 128.160.171.181 <span style="color:#ae81ff">6666</span> | pv | tar -xf -
+1.27GB 0:00:11 <span style="color:#f92672">[</span> 110MB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>    &lt;<span style="color:#f92672">=</span>&gt;                    <span style="color:#f92672">]</span>
+</code></pre></div><h3 id="28-读写镜像文件">2.8 读写镜像文件</h3>
+<p>系统读/dev/zero设备, 并输出到标准输出的速率
+系统读/dev/zero设备, 并输出到Null设备的速率</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>  pv /dev/zero
+169MiB 0:00:06 <span style="color:#f92672">[</span>28.5MiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>      &lt;<span style="color:#f92672">=</span>&gt;                                             <span style="color:#f92672">]</span>
+<span style="color:#f92672">[</span>root<span style="color:#f92672">]</span>pv /dev/zero &gt; /dev/null
+15GiB 0:00:08 <span style="color:#f92672">[</span>6.58GiB/s<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>       &lt;<span style="color:#f92672">=</span>&gt;                                             <span style="color:#f92672">]</span>
+</code></pre></div><p>制作一个磁盘的镜像, -E 忽略读错误, -EE 忽略并报告读错误
+从磁盘镜像中恢复
+清空磁盘</p>
+<blockquote>
+<p>注意:如果输入数据量无法计算, 并且输出是一个块设备, 那么块设备的大小会用来作为输出总量,  即使指定了-S &ndash;stop-at-size选项, pv也会停在该位置.</p>
+</blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pv -EE /dev/sda &gt; disk-image.img
+pv disk-image.img &gt; /dev/sda
+pv &lt; /dev/zero &gt; /dev/sda
+</code></pre></div><h2 id="3-参考">3. 参考</h2>
+<ul>
+<li>
+
+<a href="https://link.jianshu.com?t=http://www.tecmint.com/monitor-copy-backup-tar-progress-in-linux-using-pv-command/"  target="_blank">How to Monitor Progress of (Copy/Backup/Compress) Data using &lsquo;pv&rsquo; Command</a></li>
+<li>
+
+<a href="https://link.jianshu.com?t=http://www.catonmat.net/blog/unix-utilities-pipe-viewer/"  target="_blank">A Unix Utility You Should Know About: Pipe Viewer</a></li>
+<li>
+
+<a href="https://link.jianshu.com?t=http://www.cyberciti.biz/open-source/command-line-hacks/pv-command-examples/"  target="_blank">Linux / Unix pv Command: Monitor Progress of Data Sent Via a Pipe</a></li>
+</ul>
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0410095448/>利用pv命令监视数据的处理进度</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-04-10<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0410095448/ target="_blank" >https://3mile.github.io/archives/2020/0410095448/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/linux/">Linux</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/%E7%BB%88%E7%AB%AF/">终端</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/bash/">Bash</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/0410095448/" class="leancloud_visitors" data-flag-title="利用pv命令监视数据的处理进度">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0409123755/" data-tooltip="Centos7 编译zsh 5.7">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0411091537/" data-tooltip="Rsync增量备份_备忘">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0409123755/" data-tooltip="Centos7 编译zsh 5.7">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0411091537/" data-tooltip="Rsync增量备份_备忘">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

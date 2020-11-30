@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="
+rsync 全名 Remote Sync，是类 unix 系统下的数据镜像备份工具。可以方便的实现本地，远程备份，rsync 提供了丰富的选项来控制其行为。rsync 优于其他工具的重要一点就是支持增量备份。">
+
+
+<meta property="og:description" content="
+rsync 全名 Remote Sync，是类 unix 系统下的数据镜像备份工具。可以方便的实现本地，远程备份，rsync 提供了丰富的选项来控制其行为。rsync 优于其他工具的重要一点就是支持增量备份。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rsync增量备份_备忘">
+<meta name="twitter:title" content="Rsync增量备份_备忘">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/0411091537/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/0411091537/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="
+rsync 全名 Remote Sync，是类 unix 系统下的数据镜像备份工具。可以方便的实现本地，远程备份，rsync 提供了丰富的选项来控制其行为。rsync 优于其他工具的重要一点就是支持增量备份。">
+<meta name="twitter:description" content="
+rsync 全名 Remote Sync，是类 unix 系统下的数据镜像备份工具。可以方便的实现本地，远程备份，rsync 提供了丰富的选项来控制其行为。rsync 优于其他工具的重要一点就是支持增量备份。">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-04-11T09:15:37">
+  
+  
+    <meta property="article:modified_time" content="2020-04-11T09:15:37">
+  
+  
+  
+    
+      <meta property="article:section" content="Linux">
+    
+  
+  
+    
+      <meta property="article:tag" content="Linux">
+    
+      <meta property="article:tag" content="命令">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgounix-shot-1518512-640x480.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgounix-shot-1518512-640x480.jpg">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/3.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/3.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>Rsync增量备份_备忘</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/0411091537/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/3.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Rsync增量备份_备忘
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-11T09:15:37&#43;08:00">
+        
+  
+  
+  
+  
+    2020-04-11
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#rsync-的使用">rsync 的使用</a></li>
+    <li><a href="#example">Example</a>
+      <ul>
+        <li><a href="#拷贝本地文件">拷贝本地文件</a></li>
+        <li><a href="#远程-shell-拷贝到远程">远程 shell 拷贝到远程</a></li>
+        <li><a href="#远程-shell-拷贝到本地">远程 shell 拷贝到本地</a></li>
+        <li><a href="#远程-rsync-服务器拷贝到本地">远程 rsync 服务器拷贝到本地</a></li>
+        <li><a href="#拷贝本地文件到远程">拷贝本地文件到远程</a></li>
+        <li><a href="#文件列表">文件列表</a></li>
+        <li><a href="#rsync-使用更改端口">rsync 使用更改端口</a></li>
+        <li><a href="#显示备份进度">显示备份进度</a></li>
+        <li><a href="#限制备份文件最大值">限制备份文件最大值</a></li>
+        <li><a href="#备份结束后自动删除本地文件">备份结束后自动删除本地文件</a></li>
+        <li><a href="#设置备份带宽">设置备份带宽</a></li>
+        <li><a href="#排除文件"><strong>排除文件</strong></a>
+          <ul>
+            <li><a href="#排除特定文件">排除特定文件</a></li>
+            <li><a href="#排除特定目录">排除特定目录</a></li>
+            <li><a href="#排除多个文件或目录">排除多个文件或目录</a></li>
+            <li><a href="#根据模式排除多个文件或目录">根据模式排除多个文件或目录</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <!-- raw HTML omitted -->
+<p>rsync 全名 Remote Sync，是类 unix 系统下的数据镜像备份工具。可以方便的实现本地，远程备份，rsync 提供了丰富的选项来控制其行为。rsync 优于其他工具的重要一点就是支持增量备份。</p>
+<p>rsync 是一个功能非常强大的工具，其命令也有很多功能选项，它的特性如下：</p>
+<ul>
+<li>可以保持文件原来的权限、时间、所有者、组信息、软硬链接等等</li>
+<li>可以从远程或者本地镜像保存整个目录树和文件系统</li>
+<li>无须特殊权限 super-user 即可安装使用</li>
+<li>快速：要比 scp (Secure Copy) 要快；第一次同步时 rsync 会复制全部内容，但在下一次只传输修改过的文件。rsync 在传输数据的过程中可以实行压缩及解压缩操作，可以使用更少的带宽</li>
+<li>安全：可以使用 scp、ssh 等方式来传输文件，当然也可以通过直接的 socket 连接</li>
+<li>支持匿名传输，以方便进行网站镜像</li>
+</ul>
+<p>rysnc 的官方网站：http://rsync.samba.org/，可以从上面得到最新的版本。</p>
+<h2 id="rsync-的使用">rsync 的使用</h2>
+<p>Rsync 的命令格式可以为以下六种：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 本地模式</span>
+rsync <span style="color:#f92672">[</span>OPTION...<span style="color:#f92672">]</span> SRC DEST
+<span style="color:#75715e"># 远程 Push</span>
+rsync <span style="color:#f92672">[</span>OPTION...<span style="color:#f92672">]</span> SRC <span style="color:#f92672">[</span>USER@<span style="color:#f92672">]</span>HOST:DEST
+<span style="color:#75715e"># 远程 Pull</span>
+rsync <span style="color:#f92672">[</span>OPTION...<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>USER@<span style="color:#f92672">]</span>HOST:SRC DEST
+<span style="color:#75715e"># 通过 Rsync daemon Pull</span>
+rsync <span style="color:#f92672">[</span>OPTION...<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>USER@<span style="color:#f92672">]</span>HOST::SRC DEST
+rsync <span style="color:#f92672">[</span>OPTION...<span style="color:#f92672">]</span> rsync://<span style="color:#f92672">[</span>USER@<span style="color:#f92672">]</span>HOST<span style="color:#f92672">[</span>:PORT<span style="color:#f92672">]</span>/SRC... <span style="color:#f92672">[</span>DEST<span style="color:#f92672">]</span>
+<span style="color:#75715e"># 通过 Rsync daemon Push</span>
+rsync <span style="color:#f92672">[</span>OPTION...<span style="color:#f92672">]</span> SRC <span style="color:#f92672">[</span>USER@<span style="color:#f92672">]</span>HOST::DEST
+rsync <span style="color:#f92672">[</span>OPTION...<span style="color:#f92672">]</span> SRC... rsync://<span style="color:#f92672">[</span>USER@<span style="color:#f92672">]</span>HOST<span style="color:#f92672">[</span>:PORT<span style="color:#f92672">]</span>/DEST
+</code></pre></div><p>上述命令中，SRC 表示源地址，而 DEST 表示目标地址，这二者可以是本地目录，也可以是远程服务器地址。当只有 SRC 地址没有 DEST 时会列出所有的文件列表，而不会执行拷贝。</p>
+<p>rsync 有两种方式来连接远程服务器</p>
+<ul>
+<li>使用 remote shell 程序，比如 ssh 或者 rsh</li>
+<li>或者直接通过 TCP 来连接 daemon</li>
+</ul>
+<p>这两种方式的直接区别体现在路径中的冒号 (:) ，当只有一个冒号时使用 remote shell，当有两个冒号时使用 daemon 连接。</p>
+<p>rsync 有六种不同的工作模式：</p>
+<ol>
+<li>拷贝本地文件；当 SRC 和 DEST 路径信息都不包含有单个冒号”:”分隔符时就启动这种工作模式。</li>
+<li>使用一个远程 shell 程序（如 rsh、ssh）来实现将本地机器的内容拷贝到远程机器。当 DEST 路径地址包含单个冒号”:”分隔符时启动该模式。</li>
+<li>使用一个远程 shell 程序（如 rsh、ssh）来实现将远程机器的内容拷贝到本地机器。当 SRC 地址路径包含单个冒号”:”分隔符时启动该模式。</li>
+<li>从远程 rsync 服务器中拷贝文件到本地机。当 SRC 路径信息包含”::”分隔符时启动该模式。</li>
+<li>从本地机器拷贝文件到远程 rsync 服务器中。当 DEST 路径信息包含”::”分隔符时启动该模式。</li>
+<li>列远程机的文件列表。这类似于 rsync 传输，不过只要在命令中省略掉本地机信息即可。</li>
+</ol>
+<p>这 6 种方式看似复杂，其实只要记住一些常用参数，然后记住一些常用方法就能够将 <code>rsync</code> 利用起来。</p>
+<p>可以 <code>man rsync</code> 参考 rsync 文档，了解详细的使用方法，下面解析一些参数的使用</p>
+<p>常用的几个参数</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-v  verbose 详细输出
+-a 	归档模式，递归方式传输文件，并保持连接，权限，用户和组，时间信息
+-z  压缩文件传输
+-h  human-readable, 输出友好
+-u  跳过已经存在的文件，备份更新
+</code></pre></div><p>rsync 参数的具体解释如下：</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></span><span style="display:block;width:100%;background-color:#3c3d38"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-v, --verbose 详细模式输出
+-q, --quiet 精简输出模式
+-c, --checksum 打开校验开关，强制对文件传输进行校验
+-a, --archive 归档模式，表示以递归方式传输文件，并保持所有文件属性，等于 -rlptgoD
+-r, --recursive 对子目录以递归模式处理
+-R, --relative 使用相对路径信息
+-b, --backup 创建备份，也就是对于目的已经存在有同样的文件名时，将老的文件重新命名为~filename。可以使用 --suffix 选项来指定不同的备份文件前缀。
+<span style="display:block;width:100%;background-color:#3c3d38">--backup-dir 将备份文件（如~filename<span style="color:#f92672">)</span> 存放在在目录下。
+</span>-suffix<span style="color:#f92672">=</span>SUFFIX 定义备份文件前缀
+-u, --update 仅仅进行更新，也就是跳过所有已经存在于 DST，并且文件时间晚于要备份的文件。（不覆盖更新的文件）
+-l, --links 保留软链结
+-L, --copy-links 想对待常规文件一样处理软链结
+--copy-unsafe-links 仅仅拷贝指向 SRC 路径目录树以外的链结
+--safe-links 忽略指向 SRC 路径目录树以外的链结
+<span style="display:block;width:100%;background-color:#3c3d38">-H, --hard-links 保留硬链结
+</span><span style="display:block;width:100%;background-color:#3c3d38">-p, --perms 保持文件权限
+</span><span style="display:block;width:100%;background-color:#3c3d38">-o, --owner 保持文件属主信息
+</span>-g, --group 保持文件属组信息
+-D, --devices 保持设备文件信息
+-t, --times 保持文件时间信息
+-S, --sparse 对稀疏文件进行特殊处理以节省 DST 的空间
+-n, --dry-run 现实哪些文件将被传输
+-W, --whole-file 拷贝文件，不进行增量检测
+-x, --one-file-system 不要跨越文件系统边界
+-B, --block-size<span style="color:#f92672">=</span>SIZE 检验算法使用的块尺寸，默认是 <span style="color:#ae81ff">700</span> 字节
+-e, --rsh<span style="color:#f92672">=</span>COMMAND 指定使用 rsh、ssh 方式进行数据同步
+--rsync-path<span style="color:#f92672">=</span>PATH 指定远程服务器上的 rsync 命令所在路径信息
+-C, --cvs-exclude 使用和 CVS 一样的方法自动忽略文件，用来排除那些不希望传输的文件
+--existing 仅仅更新那些已经存在于 DST 的文件，而不备份那些新创建的文件
+--delete 删除那些 DST 中 SRC 没有的文件
+--delete-excluded 同样删除接收端那些被该选项指定排除的文件
+--delete-after 传输结束以后再删除
+--ignore-errors 及时出现 IO 错误也进行删除
+--max-delete<span style="color:#f92672">=</span>NUM 最多删除 NUM 个文件
+--partial 保留那些因故没有完全传输的文件，以是加快随后的再次传输
+--force 强制删除目录，即使不为空
+--numeric-ids 不将数字的用户和组 ID 匹配为用户名和组名
+--timeout<span style="color:#f92672">=</span>TIME IP 超时时间，单位为秒
+-I, --ignore-times 不跳过那些有同样的时间和长度的文件
+--size-only 当决定是否要备份文件时，仅仅察看文件大小而不考虑文件时间
+--modify-window<span style="color:#f92672">=</span>NUM 决定文件是否时间相同时使用的时间戳窗口，默认为 0
+-T --temp-dir<span style="color:#f92672">=</span>DIR 在 DIR 中创建临时文件
+--compare-dest<span style="color:#f92672">=</span>DIR 同样比较 DIR 中的文件来决定是否需要备份
+-P 等同于 --partial
+--progress 显示备份过程
+-z, --compress 对备份的文件在传输时进行压缩处理
+--exclude<span style="color:#f92672">=</span>PATTERN 指定排除不需要传输的文件模式
+--include<span style="color:#f92672">=</span>PATTERN 指定不排除而需要传输的文件模式
+--exclude-from<span style="color:#f92672">=</span>FILE 排除 FILE 中指定模式的文件
+--include-from<span style="color:#f92672">=</span>FILE 不排除 FILE 指定模式匹配的文件
+--version 打印版本信息
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="example">Example</h2>
+<p>下面举例说明 rsync 的六种不同工作模式：</p>
+<h3 id="拷贝本地文件">拷贝本地文件</h3>
+<p>当 SRC 和 DES 路径信息都不包含有单个冒号 “:” 分隔符时就启动这种工作模式。</p>
+<p>同步文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -ahvz backup.tar.gz  /backups/  <span style="color:#75715e"># DESC 不存在时自动创建</span>
+</code></pre></div><p>将备份文件同步到 <code>/backups/</code> 目录下。</p>
+<p>同步目录</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -avzh /home/src /backups/files/
+</code></pre></div><p>将 <code>/home/src</code> 目录下的文件同步发送到 <code>/backups/files</code> 目录下。记住如果目标地址没有 <code>src</code> 目录，rsync 会自动创建该文件夹。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -avz /home/src/ /backups/files/
+</code></pre></div><p>SRC 路径末尾的 <code>/</code> 表示不自动创建 DEST 文件夹，在 <code>man rsync</code> 中的解释就是末尾的 <code>/</code> 表示”拷贝当前目录下的文件” ，而不是”拷贝当前的目录”.</p>
+<h3 id="远程-shell-拷贝到远程">远程 shell 拷贝到远程</h3>
+<p>使用一个远程 shell 程序（如 rsh、ssh) 来实现将本地机器的内容拷贝到远程机器。当 DES 路径地址包含单个冒号”:”分隔符时启动该模式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -avz /local/path/  user@remoteip:/path/to/files/
+</code></pre></div><p>将本地 <code>/local/path/</code> 中的文件同步备份到远程 <code>/path/to/files/</code> 目录。</p>
+<h3 id="远程-shell-拷贝到本地">远程 shell 拷贝到本地</h3>
+<p>使用一个远程 shell 程序（如 rsh、ssh) 来实现将远程机器的内容拷贝到本地机器。当 SRC 地址路径包含单个冒号”:”分隔符时启动该模式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -avz user@remoteip:/home/user/src  ./src
+</code></pre></div><h3 id="远程-rsync-服务器拷贝到本地">远程 rsync 服务器拷贝到本地</h3>
+<p>从远程 rsync 服务器中拷贝文件到本地机。当 SRC 路径信息包含”::”分隔符时启动该模式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -av user@remoteip::www  /databack
+</code></pre></div><h3 id="拷贝本地文件到远程">拷贝本地文件到远程</h3>
+<p>从本地机器拷贝文件到远程 rsync 服务器中。当 DES 路径信息包含”::”分隔符时启动该模式。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -av /databack user@remoteip::www
+</code></pre></div><h3 id="文件列表">文件列表</h3>
+<p>列远程机的文件列表。这类似于 rsync 传输，不过只要在命令中省略掉本地机信息即可。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -v rsync://remoteip /www
+</code></pre></div><h3 id="rsync-使用更改端口">rsync 使用更改端口</h3>
+<p>经常遇见的一种情况就是 ssh 更改了默认 22 端口，这个时候使用 <code>-e</code> 参数即可。</p>
+<p>rsync 有两种常用的认证方式，一种为 rsync-daemon 方式，另外一种则是 ssh。</p>
+<p>ssh 一般为首选，但当远端服务器的 ssh 默认端口被修改后，rsync 时找不到一个合适的方法来输入对方 ssh 服务端口号。</p>
+<p>比如现在向机器 remoteip 传送文件，但此时 remoteip 的 ssh 端口已经不是默认的 22 端口。</p>
+<p>键入命令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync /local/path user@remoteip:/path/to/files/ <span style="color:#75715e"># 出现错误</span>
+</code></pre></div><p>rsync 中的命令 参数 <code>-e, --rsh=COMMAND</code> 指定使用 rsh、ssh 方式进行数据同步。</p>
+<p>参数的作用是可以使用户自由选择想要使用的 shell 程序来连接远端服务器，当然也可以设置成使用默认的 ssh 来连接，但是这样我们就可以加入 ssh 的参数了。</p>
+<p>现在命令可以这样写了：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -avz -e <span style="color:#e6db74">&#34;ssh -p </span>$port<span style="color:#e6db74">&#34;</span> /local/path/ user@remoteip:/path/to/files/
+</code></pre></div><h3 id="显示备份进度">显示备份进度</h3>
+<p>可以使用 <code>--progress</code> 选项来显示进度</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -avzhe ssh --progress /home/files/ root@remoteip:/path/to/files/
+</code></pre></div><h3 id="限制备份文件最大值">限制备份文件最大值</h3>
+<p>设置 Max size 备份文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -avzhe ssh --max-size<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;2000k&#39;</span> /var/lib/rpm/ root@remoteip:/root/tmprpm
+</code></pre></div><h3 id="备份结束后自动删除本地文件">备份结束后自动删除本地文件</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync --remove-source-files -zvh backup.tar /tmp/backups/
+</code></pre></div><h3 id="设置备份带宽">设置备份带宽</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync --bwlimit<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span> -avzhe ssh /var/lib/rpm/ root@remoteip:/root/tmprpm/
+</code></pre></div><h3 id="排除文件"><strong>排除文件</strong></h3>
+<p>排除文件或目录时，需要使用它们到源目录的相对路径。</p>
+<p>有两个选项可以指定要排除的文件和目录：</p>
+<ul>
+<li>从<strong>命令行</strong>，使用<code>--exclude</code>选项。</li>
+<li>从<strong>文件</strong>，使用<code>--exclude-from</code>选项。</li>
+</ul>
+<h4 id="排除特定文件">排除特定文件</h4>
+<p>要排除特定文件，请将文件的相对路径传递给<code>--exclude</code>选项。</p>
+<p>在以下示例中，不会传输文件<code>src_directory/file.txt</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -a --exclude <span style="color:#e6db74">&#39;file.txt&#39;</span> src_directory/ dst_directory/
+</code></pre></div><h4 id="排除特定目录">排除特定目录</h4>
+<p>排除特定目录与排除文件相同，只需将目录的相对路径传递给<code>--exclude</code>选项，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -a --exclude <span style="color:#e6db74">&#39;dir1&#39;</span> src_directory/ dst_directory/
+</code></pre></div><p>如果要排除目录内容，但不排除目录本身，请使用<code>dir1/*</code>而不是<code>dir1</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -a --exclude <span style="color:#e6db74">&#39;dir1/*&#39;</span> src_directory/ dst_directory/
+</code></pre></div><h4 id="排除多个文件或目录">排除多个文件或目录</h4>
+<p>要排除多个文件或目录，只需指定多个<code>--exclude</code>选项：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -a --exclude <span style="color:#e6db74">&#39;file1.txt&#39;</span> --exclude <span style="color:#e6db74">&#39;dir1/*&#39;</span> --exclude <span style="color:#e6db74">&#39;dir2&#39;</span> src_directory/ dst_directory/
+</code></pre></div><p>如果您想使用单个<code>--exclude</code>选项，则可以用大括号<code>{}</code>列出要排除的文件和目录，用逗号分隔，如下所示：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -a --exclude<span style="color:#f92672">={</span><span style="color:#e6db74">&#39;file1.txt&#39;</span>,<span style="color:#e6db74">&#39;dir1/*&#39;</span>,<span style="color:#e6db74">&#39;dir2&#39;</span><span style="color:#f92672">}</span> src_directory/ dst_directory/
+</code></pre></div><p>如果要排除的文件和/或目录数量很大，则可以使用多个<code>--exclude</code>选项来指定要排除在文件中的文件和目录，然后将文件传递给<code>--exclude-from</code> ]选项。</p>
+<p>下面的命令与上面的命令完全相同：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -a --exclude-from<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;exclude-file.txt&#39;</span> src_directory/ dst_directory/
+</code></pre></div><p>exclude-file.txt</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">file1.txt
+dir1/*
+dir2
+</code></pre></div><p>Copy</p>
+<h4 id="根据模式排除多个文件或目录">根据模式排除多个文件或目录</h4>
+<p>借助rsync，您还可以根据与文件或目录名称匹配的模式排除文件和目录。</p>
+<p>例如，要排除所有<code>.jpg</code>个文件，您可以运行：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -a --exclude <span style="color:#e6db74">&#39;*.jpg*&#39;</span> src_directory/ dst_directory/
+</code></pre></div><p>排除那些与特定模式匹配的文件和目录之外的所有其他文件和目录并不困难。假设您要排除所有其他文件和目录，但以<code>.jpg</code>结尾的文件除外。</p>
+<p>一种选择是使用以下命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rsync -a -m --include<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;*.jpg&#39;</span> --include<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;*/&#39;</span> --exclude<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;*&#39;</span> src_directory/ dst_directory/
+</code></pre></div><p>使用多个包含/排除选项时，将应用第一个匹配规则。</p>
+<ul>
+<li><code>--include='*.jpg'</code>-首先，我们包括所有<code>.jpg</code>文件。</li>
+<li><code>--include='*/'</code> -然后，我们将所有目录都包含在<code>src_directory</code>目录中。没有这个rsync，只会在顶层目录中复制<code>*.jpg</code>个文件。</li>
+<li><code>-m</code> -删除空目录。</li>
+</ul>
+<p>另一个选择是将
+
+<a href="https://www.myfreax.com/how-to-find-files-in-linux-using-the-command-line/"  target="_blank">查找命令</a>的输出传递给rsync：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">find src_directory/ -name <span style="color:#e6db74">&#34;*.jpg&#34;</span> -printf %P<span style="color:#ae81ff">\\</span>0<span style="color:#ae81ff">\\</span>n | rsync -a --files-from<span style="color:#f92672">=</span>- src_directory/ dst_directory/
+</code></pre></div><div class="alert info ">
+  <p><ul>
+<li><code>-printf %P\\0\\n</code>-从文件路径中删除<code>src_directory/</code>。</li>
+<li><code>--files-from=-</code> -表示仅包含来自标准输入的文件（从find命令传递的文件）。</li>
+</ul></p>
+</div>
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0411091537/>Rsync增量备份_备忘</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-04-11<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0411091537/ target="_blank" >https://3mile.github.io/archives/2020/0411091537/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/linux/">Linux</a>
+
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/%E5%91%BD%E4%BB%A4/">命令</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/0411091537/" class="leancloud_visitors" data-flag-title="Rsync增量备份_备忘">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0410095448/" data-tooltip="利用pv命令监视数据的处理进度">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0415105803/" data-tooltip="Ubuntu安装Mariadb">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0410095448/" data-tooltip="利用pv命令监视数据的处理进度">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0415105803/" data-tooltip="Ubuntu安装Mariadb">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

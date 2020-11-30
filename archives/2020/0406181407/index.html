@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书">
+
+
+<meta property="og:description" content="本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Certbot指南">
+<meta name="twitter:title" content="Certbot指南">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/0406181407/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/0406181407/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书">
+<meta name="twitter:description" content="本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-04-06T18:14:07">
+  
+  
+    <meta property="article:modified_time" content="2020-04-06T18:14:07">
+  
+  
+  
+    
+      <meta property="article:section" content="Linux">
+    
+  
+  
+    
+      <meta property="article:tag" content="certbot">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgounix-shot-1518512-640x480.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgounix-shot-1518512-640x480.jpg">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/3.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/3.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>Certbot指南</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/0406181407/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/3.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Certbot指南
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-06T18:14:07&#43;08:00">
+        
+  
+  
+  
+  
+    2020-04-06
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents"></nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>本文介绍如何通过 Certbot 安装 Https Letsencrypt 证书</p>
+<blockquote>
+<p>certbot官网：
+
+<a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx"  target="_blank">https://certbot.eff.org/lets-encrypt/centosrhel7-nginx</a></p>
+</blockquote>
+<p><strong>一、安装步骤</strong></p>
+<p>**1）安装certbot，执行 **</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo yum install certbot python2-certbot-nginx
+</code></pre></div><p>**2）检查是否安装成功，执行 **</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">certbot --help
+</code></pre></div><pre><code>\[root@iz2zeb4argxs74khdclp2dz ~\]#  
+Traceback (most recent call last):
+  File &quot;/usr/bin/certbot&quot;, line 9, in &amp;lt;module&amp;gt; load\_entry\_point('certbot==0.38.0', 'console_scripts', 'certbot')()
+  File &quot;/usr/lib/python2.7/site-packages/pkg\_resources/\_\_init__.py&quot;, line 561, in load\_entry\_point return get\_distribution(dist).load\_entry_point(group, name)
+  File &quot;/usr/lib/python2.7/site-packages/pkg\_resources/\_\_init__.py&quot;, line 2649, in load\_entry\_point return ep.load()
+  File &quot;/usr/lib/python2.7/site-packages/pkg\_resources/\_\_init__.py&quot;, line 2303, in load return self.resolve()
+  File &quot;/usr/lib/python2.7/site-packages/pkg\_resources/\_\_init__.py&quot;, line 2309, in resolve
+    module = \_\_import\_\_(self.module_name, fromlist=\['\_\_name\_\_'\], level=0)
+  File &quot;/usr/lib/python2.7/site-packages/certbot/main.py&quot;, line 17, in &amp;lt;module&amp;gt;
+    from certbot import account
+  File &quot;/usr/lib/python2.7/site-packages/certbot/account.py&quot;, line 17, in &amp;lt;module&amp;gt;
+    from acme import messages
+  File &quot;/usr/lib/python2.7/site-packages/acme/messages.py&quot;, line 11, in &amp;lt;module&amp;gt;
+    from acme import challenges
+  File &quot;/usr/lib/python2.7/site-packages/acme/challenges.py&quot;, line 12, in &amp;lt;module&amp;gt; import requests
+  File &quot;/usr/lib/python2.7/site-packages/requests/\_\_init\_\_.py&quot;, line 58, in &amp;lt;module&amp;gt;
+    from . import utils
+  File &quot;/usr/lib/python2.7/site-packages/requests/utils.py&quot;, line 32, in &amp;lt;module&amp;gt;
+    from .exceptions import InvalidURL
+  File &quot;/usr/lib/python2.7/site-packages/requests/exceptions.py&quot;, line 10, in &amp;lt;module&amp;gt;
+    from .packages.urllib3.exceptions import HTTPError as BaseHTTPError
+  File &quot;/usr/lib/python2.7/site-packages/requests/packages/\_\_init\_\_.py&quot;, line 95, in load_module
+    raise ImportError(&quot;No module named '%s'&quot; % (name,))
+**ImportError: No module named** **'requests.packages.urllib3'**
+</code></pre><p><strong>3）解决上面没有requests.packages.urllib3的问题，执行</strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pip install --upgrade --force-reinstall <span style="color:#e6db74">&#39;requests==2.6.0&#39;</span> urllib3
+</code></pre></div><p><strong>4）安装证书，执行</strong></p>
+<p>如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo certbot --nginx
+</code></pre></div><pre><code>Saving debug log to /var/log/letsencrypt/letsencrypt.log
+The nginx plugin is not working; there may be problems with your existing configuration.
+The error was: NoInstallationError(&quot;Could not find a usable 'nginx' binary. Ensure nginx exists, the binary is executable, and your PATH is set correctly.&quot;,)
+</code></pre><p>上面提示信息显示没有找到nginx，那么</p>
+<p>需要将nginx放到环境变量中，设置nginx软连接</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
+ln -s /usr/local/nginx/conf/ /etc/nginx
+</code></pre></div><p>再次执行就OK了</p>
+<pre><code>sudo certbot --nginx #安装证书
+</code></pre><p>**5）然后再一步一步的根据提示进行配置 **</p>
+<p>如：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>root@iz2zeb4argxs74khdclp2dz sbin<span style="color:#f92672">]</span><span style="color:#75715e"># sudo certbot --nginx</span>
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Plugins selected: Authenticator nginx, Installer nginx
+Enter email address <span style="color:#f92672">(</span>used <span style="color:#66d9ef">for</span> urgent renewal and security notices<span style="color:#f92672">)</span> <span style="color:#f92672">(</span>Enter <span style="color:#e6db74">&#39;c&#39;</span> to
+cancel<span style="color:#f92672">)</span>: 756623607@qq.com   // 1）设置邮箱，用于安全提示
+Starting new HTTPS connection <span style="color:#f92672">(</span>1<span style="color:#f92672">)</span>: acme-v02.api.letsencrypt.org
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Please read the Terms of Service at
+https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf. You must
+agree in order to register with the ACME server at
+https://acme-v02.api.letsencrypt.org/directory
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<span style="color:#f92672">(</span>A<span style="color:#f92672">)</span>gree/<span style="color:#f92672">(</span>C<span style="color:#f92672">)</span>ancel: a    // 2）同意协议
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Would you be willing to share your email address with the Electronic Frontier
+Foundation, a founding partner of the Let<span style="color:#e6db74">&#39;s Encrypt project and the non-profit
+</span><span style="color:#e6db74">organization that develops Certbot? We&#39;</span>d like to send you email about our work
+encrypting the web, EFF news, campaigns, and ways to support digital freedom.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+<span style="color:#f92672">(</span>Y<span style="color:#f92672">)</span>es/<span style="color:#f92672">(</span>N<span style="color:#f92672">)</span>o: n    // 3）不共享你的邮箱
+
+Which names would you like to activate HTTPS <span style="color:#66d9ef">for</span>?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: admin.talkilla.jiushiyaokuaile.cn
+2: consultant.talkilla.jiushiyaokuaile.cn
+3: student.talkilla.jiushiyaokuaile.cn
+4: teacher.talkilla.jiushiyaokuaile.cn
+5: wechat.talkilla.jiushiyaokuaile.cn
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to <span style="color:#66d9ef">select</span> all options shown <span style="color:#f92672">(</span>Enter <span style="color:#e6db74">&#39;c&#39;</span> to cancel<span style="color:#f92672">)</span>: <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">5</span>  
+// 4）选择需要激活https的域名
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge <span style="color:#66d9ef">for</span> admin.talkilla.jiushiyaokuaile.cn
+http-01 challenge <span style="color:#66d9ef">for</span> consultant.talkilla.jiushiyaokuaile.cn
+http-01 challenge <span style="color:#66d9ef">for</span> student.talkilla.jiushiyaokuaile.cn
+http-01 challenge <span style="color:#66d9ef">for</span> teacher.talkilla.jiushiyaokuaile.cn
+http-01 challenge <span style="color:#66d9ef">for</span> wechat.talkilla.jiushiyaokuaile.cn
+Waiting <span style="color:#66d9ef">for</span> verification...
+Cleaning up challenges
+Deploying Certificate to VirtualHost /usr/local/nginx/conf/conf.d/admin-talkilla.conf
+Deploying Certificate to VirtualHost /usr/local/nginx/conf/conf.d/consultant-talkilla.conf
+Deploying Certificate to VirtualHost /usr/local/nginx/conf/conf.d/student-talkilla.conf
+Deploying Certificate to VirtualHost /usr/local/nginx/conf/conf.d/teacher-talkilla.conf
+Deploying Certificate to VirtualHost /usr/local/nginx/conf/conf.d/wechat-talkilla.conf
+
+Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: No redirect - Make no further changes to the webserver configuration.
+2: Redirect - Make all requests redirect to secure HTTPS access. Choose this <span style="color:#66d9ef">for</span>
+new sites, or <span style="color:#66d9ef">if</span> you<span style="color:#e6db74">&#39;re confident your site works on HTTPS. You can undo this
+</span><span style="color:#e6db74">change by editing your web server&#39;</span>s configuration.
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate number <span style="color:#f92672">[</span>1-2<span style="color:#f92672">]</span> <span style="color:#66d9ef">then</span> <span style="color:#f92672">[</span>enter<span style="color:#f92672">]</span> <span style="color:#f92672">(</span>press <span style="color:#e6db74">&#39;c&#39;</span> to cancel<span style="color:#f92672">)</span>: 
+<span style="color:#ae81ff">2</span>  // 5）设置是否将http自动重定向到https，1否2是
+Redirecting all traffic on port <span style="color:#ae81ff">80</span> to ssl in /usr/local/nginx/conf/conf.d/admin-talkilla-http.conf
+Redirecting all traffic on port <span style="color:#ae81ff">80</span> to ssl in /usr/local/nginx/conf/conf.d/consultant-talkilla.conf
+Redirecting all traffic on port <span style="color:#ae81ff">80</span> to ssl in /usr/local/nginx/conf/conf.d/student-talkilla.conf
+Redirecting all traffic on port <span style="color:#ae81ff">80</span> to ssl in /usr/local/nginx/conf/conf.d/teacher-talkilla.conf
+Redirecting all traffic on port <span style="color:#ae81ff">80</span> to ssl in /usr/local/nginx/conf/conf.d/wechat-talkilla.conf
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Congratulations! You have successfully enabled
+https://admin.talkilla.jiushiyaokuaile.cn,
+https://consultant.talkilla.jiushiyaokuaile.cn,
+https://student.talkilla.jiushiyaokuaile.cn,
+https://teacher.talkilla.jiushiyaokuaile.cn, and
+https://wechat.talkilla.jiushiyaokuaile.cn
+
+You should test your configuration at:
+https://www.ssllabs.com/ssltest/analyze.html?d<span style="color:#f92672">=</span>admin.talkilla.jiushiyaokuaile.cn
+https://www.ssllabs.com/ssltest/analyze.html?d<span style="color:#f92672">=</span>consultant.talkilla.jiushiyaokuaile.cn
+https://www.ssllabs.com/ssltest/analyze.html?d<span style="color:#f92672">=</span>student.talkilla.jiushiyaokuaile.cn
+https://www.ssllabs.com/ssltest/analyze.html?d<span style="color:#f92672">=</span>teacher.talkilla.jiushiyaokuaile.cn
+https://www.ssllabs.com/ssltest/analyze.html?d<span style="color:#f92672">=</span>wechat.talkilla.jiushiyaokuaile.cn
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+IMPORTANT NOTES:
+ - Congratulations! Your certificate and chain have been saved at:
+   /etc/letsencrypt/live/admin.talkilla.jiushiyaokuaile.cn/fullchain.pem
+   Your key file has been saved at:
+   /etc/letsencrypt/live/admin.talkilla.jiushiyaokuaile.cn/privkey.pem
+   Your cert will expire on 2020-01-06. To obtain a new or tweaked
+   version of this certificate in the future, simply run certbot again
+   with the <span style="color:#e6db74">&#34;certonly&#34;</span> option. To non-interactively renew *all* of
+   your certificates, run <span style="color:#e6db74">&#34;certbot renew&#34;</span>
+ - Your account credentials have been saved in your Certbot
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Certbot so
+   making regular backups of this folder is ideal.
+ - If you like Certbot, please consider supporting our work by:
+
+   Donating to ISRG / Let<span style="color:#960050;background-color:#1e0010">&#39;</span>s Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+</code></pre></div><p><strong>6） 配置自动更新证书</strong></p>
+<p>在证书到期之后更新证书，我们可以通过 certbot renew 命令来更新证书</p>
+<p>借助 Crontab 来编写一个定时任务，定期强制更新一个这个证书，然后重启 Nginx： </p>
+<p>Crontab 通过 crontab -e 命令编辑，通过 crontab -l 查看。</p>
+<p>这样就完成了 SSL 安全证书更新了。 </p>
+<p>使用crontab -e 命令：</p>
+<pre><code class="language-conf" data-lang="conf">0 0 1 \* * certbot renew 
+5 0 1 \* \* service nginx restart
+</code></pre><p>注意：</p>
+<p>若执行certbot renew时，出现： &lsquo;ascii&rsquo; codec can&rsquo;t decode byte 0xe8 in position 2: ordinal not in range(128) 错误，参考如下：</p>
+<p>
+
+<a href="https://www.cnblogs.com/756623607-zhang/p/12203705.html"  target="_blank">解决方案</a></p>
+<p><strong>7）当需要安装新的证书</strong></p>
+<p>执行：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo certbot run --nginx
+</code></pre></div>
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0406181407/>Certbot指南</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-04-06<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0406181407/ target="_blank" >https://3mile.github.io/archives/2020/0406181407/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/certbot/">certbot</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/0406181407/" class="leancloud_visitors" data-flag-title="Certbot指南">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0404123406/" data-tooltip="自定义Windows Terminal">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0406182133/" data-tooltip="Ubuntu 上安装微软TrueType字体">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0404123406/" data-tooltip="自定义Windows Terminal">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0406182133/" data-tooltip="Ubuntu 上安装微软TrueType字体">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

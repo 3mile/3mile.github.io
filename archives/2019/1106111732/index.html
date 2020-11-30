@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="openwrt">
 <meta name="description" content="udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="">
+      <meta property="article:section" content="Openwrt">
     
   
   
@@ -87,7 +87,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -142,7 +142,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -273,7 +273,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+      <a class="category-link" href="https://3mile.github.io/categories/openwrt">Openwrt</a>
     
   
 
@@ -294,53 +294,54 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p>udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt当中安装udpxy那么版本会比较老，最新版本的udpxy已经更新到1.0-23.12，其中有不少的特性更新和加强，所以手动编译udpxy相比udp2raw会比较简单，因为官方版本的Openwrt package list已经提供了官方的Makefile，直接修改其中对应的github repo的版本号和commit id即可实现最新版本的udpxy编译。</p>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编译过程">编译过程</a></li>
+    <li><a href="#配置解析">配置解析</a></li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>udpxy本身就在Openwrt的官方package list当中，只是其版本才是2016年1.0-23.10版本，如果你直接在openwrt当中安装udpxy那么版本会比较老，最新版本的udpxy已经更新到1.0-23.12，其中有不少的特性更新和加强，所以手动编译udpxy相比udp2raw会比较简单，因为官方版本的Openwrt package list已经提供了官方的Makefile，直接修改其中对应的github repo的版本号和commit id即可实现最新版本的udpxy编译。</p>
 <h2 id="编译过程">编译过程</h2>
-
 <p><strong>1、编译环境准备</strong></p>
-
 <p>ubuntu 18.04 lts</p>
-
 <p><strong>2、udpxy源码准备</strong></p>
-
 <p>udpxy本身就在Openwrt的官方package list中，所以定位到编译环境当中的opx64/package/，任意名称创建一个文件夹，这里以openwrt-udpxy为例，然后下载官方package list当中的udpxy的Makefile相关文件：</p>
-
 <blockquote>
 <p><a href="https://github.com/openwrt/packages/tree/master/net/udpxy">https://github.com/openwrt/packages/tree/master/net/udpxy</a></p>
 </blockquote>
-
 <p>一个文件Makefile，一个files文件夹，全部放置于openwrt-udpxy文件夹当中即可。</p>
-
-<p>然后修改Makefile当中对应的git repo信息，udpxy的github源在‘<a href="https://github.com/pcherenkov/udpxy.git’">https://github.com/pcherenkov/udpxy.git’</a></p>
-
+<p>然后修改Makefile当中对应的git repo信息，udpxy的github源在‘https://github.com/pcherenkov/udpxy.git’</p>
 <p>我们打开后可以发现最后的commit是1.0-24.0,&lsquo;21d9189789da46d66c30f6b30129d849a13e94f9&rsquo;</p>
-
 <blockquote>
 <p><strong>PKG_SOURCE_VERSION行</strong>
 PKG_SOURCE_VERSION:=21d9189789da46d66c30f6b30129d849a13e94f9</p>
-
 <p><strong>PKG_VERSION行</strong>
 PKG_VERSION:=2019-08-023-$(PKG_SOURCE_VERSION)</p>
 </blockquote>
-
 <p>其中PKG_SOURCE_VERSION行是对应git repo的commit id，使用最新的id即代表使用最新的源代码版本，同时修改PKG_VERSION为对应的版本号，以便识别。</p>
-
 <p><strong>3、开始编译</strong>
 定位到Openwrt的根目录，本例当中为opx64，开始编译</p>
-
 <pre><code>make package/openwrt-udpxy/compile V=s
-</code></pre>
+</code></pre><p>不出意外编译完成，到目录opx64/bin/packages/x86_64/base/找到对应的udpxy的ipk到实际的Openwrt当中安装即可
+如果出现错误，同样参考
 
-<p>不出意外编译完成，到目录opx64/bin/packages/x86_64/base/找到对应的udpxy的ipk到实际的Openwrt当中安装即可
-如果出现错误，同样参考<a href="http://65536.io/2019/04/469.html">《udp2raw解决运营商封锁大量UDP流量问题》</a>当中相关错误的部分即可。</p>
-
+<a href="http://65536.io/2019/04/469.html"  target="_blank">《udp2raw解决运营商封锁大量UDP流量问题》</a>当中相关错误的部分即可。</p>
 <h2 id="配置解析">配置解析</h2>
-
 <p>直接在使用环境当中输入udpxy即可看到官方帮助，摘录如下</p>
-
 <pre><code>udpxy 1.0-23.12 (prod) standard [Linux 4.14.105 x86_64]
 usage: udpxy [-vTS] [-a listenaddr] -p port [-m mcast_ifc_addr] [-c clients] [-l logfile] [-B sizeK] [-n nice_incr]
     -v : enable verbose output [default = disabled]
@@ -362,14 +363,9 @@ Examples:
   udpxy -a lan0 -p 4022 -m lan1
     listen for HTTP requests on interface lan0, port 4022;
     subscribe to multicast groups on interface lan1
-</code></pre>
-
-<p>作者实际使用情况下，是如下的参数</p>
-
+</code></pre><p>作者实际使用情况下，是如下的参数</p>
 <pre><code>/usr/bin/udpxy -T -S -a 192.168.1.1 -p 4022 -m pppoe-iptv -c 5 -l /var/log/udpxy -B 2097152 -R 10 -M 300
-</code></pre>
-
-<blockquote>
+</code></pre><blockquote>
 <p>-T -S参数即字面意思，实际正常使用的时候都需要
 -a 192.168.1.1 -p 4022：即udpxy监听地址和端口
 -m pppoe-iptv：即接受的数据端口，实际上是iptv拨号的端口，&gt;作者的环境是在Openwrt当中做iptv的拨号
@@ -379,9 +375,7 @@ Examples:
 -R：即向组播组请求10个消息，并储存起来，在iptv当中即代表一次缓冲10s的数据
 -M：每5分钟重新加入一次组播组，以免网络有些问题的时候丢失组播连接。</p>
 </blockquote>
-
 <p>对应openwrt当中的配置文件如下，/etc/config/udpxy</p>
-
 <pre><code>config udpxy
         option respawn '0'
         option verbose '0'
@@ -396,9 +390,18 @@ Examples:
         option mcsub_renew '300'
         option disabled '0'
 </code></pre>
-
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/1106111732/>编译UDPXY新版本</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-11-06<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/1106111732/ target="_blank" >https://3mile.github.io/archives/2019/1106111732/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -423,7 +426,7 @@ Examples:
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -468,24 +471,6 @@ Examples:
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1106111732/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1106111732/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1106111732/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -504,9 +489,11 @@ Examples:
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -544,24 +531,6 @@ Examples:
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/1106111732/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/1106111732/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/1106111732/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -580,24 +549,6 @@ Examples:
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1106111732%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1106111732%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F1106111732%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -613,7 +564,7 @@ Examples:
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -641,18 +592,28 @@ Examples:
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

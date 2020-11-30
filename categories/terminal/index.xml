@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Terminal on 3mile博客</title>
+    <link>https://3mile.github.io/categories/terminal/</link>
+    <description>Recent content in Terminal on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 Apr 2020 11:46:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/categories/terminal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WSL权限管理</title>
+      <link>https://3mile.github.io/archives/2020/0419114624/</link>
+      <pubDate>Sun, 19 Apr 2020 11:46:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0419114624/</guid>
+      <description>重装系统，又折腾了一遍WSL环境，记录一下: WSL (Win­dows Sub­sys­tem for Linux) 通过 /mnt 目录下的 c、d、e 等目录可分别访问本地的 C、</description>
+    </item>
+    
+    <item>
+      <title>自定义Windows Terminal</title>
+      <link>https://3mile.github.io/archives/2020/0404123406/</link>
+      <pubDate>Sat, 04 Apr 2020 12:34:06 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0404123406/</guid>
+      <description>新晋 Windows 终端模拟器： Windows Terminal，自发布以来就备受开发者的喜爱，并与 WSL 一起，让不少先前非 Linux 不用的开发者朋友们向 Windows 倾斜。Windows Terminal 不</description>
+    </item>
+    
+  </channel>
+</rss>

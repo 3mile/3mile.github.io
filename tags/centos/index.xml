@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>CentOS on 3mile博客</title>
+    <title>centos on 3mile博客</title>
     <link>https://3mile.github.io/tags/centos/</link>
-    <description>Recent content in CentOS on 3mile博客</description>
+    <description>Recent content in centos on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 06 Nov 2019 11:05:11 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 04 Apr 2020 11:21:01 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/centos/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>CentOS如何升级openssl到最新版本</title>
+      <link>https://3mile.github.io/archives/2020/0404112101/</link>
+      <pubDate>Sat, 04 Apr 2020 11:21:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0404112101/</guid>
+      <description>&lt;p&gt;CentOS 7.x 的 OpenSSL 软件版本实在是低，2017 年了还在用人家 2013 年的版本，而且 1.0.1 版本对 ALPN 不支持，已经没法跟上大环境的节奏了&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Centos7安装python3.8</title>

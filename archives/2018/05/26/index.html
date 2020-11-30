@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="介绍 Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="虚拟主机">
+      <meta property="article:section" content="Linux">
     
   
   
@@ -89,7 +89,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -144,7 +144,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -275,7 +275,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/%e8%99%9a%e6%8b%9f%e4%b8%bb%e6%9c%ba">虚拟主机</a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -296,75 +296,80 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h4 id="介绍">介绍</h4>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#介绍">介绍</a></li>
+            <li><a href="#先决条件">先决条件</a></li>
+            <li><a href="#第一步安装caddy的最新稳定版本">第一步：安装Caddy的最新稳定版本</a></li>
+            <li><a href="#第2步配置caddy">第2步：配置Caddy</a></li>
+            <li><a href="#第3步修改防火墙规则">第3步：修改防火墙规则</a></li>
+            <li><a href="#第4步为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h4 id="介绍">介绍</h4>
 <p>Caddy是一个新兴的Web服务器程序，它支持HTTP / 2和自动HTTPS。考虑到易用性和安全性，Caddy可用于通过单个配置文件快速部署支持HTTPS的站点。</p>
-
 <h4 id="先决条件">先决条件</h4>
-
 <ul>
 <li>新鲜的Vultr CentOS 7 x64服务器实例。我们将<code>203.0.113.1</code>以此为例。</li>
-<li>一个<a href="https://www.vultr.com/docs/how-to-use-sudo-on-debian-centos-and-freebsd">sudo用户</a>。</li>
-<li><a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8">使用EPEL YUM回购</a>服务器实例已<a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8">更新到最新的稳定状态</a>。</li>
-<li>一个域<code>example.com</code>已被配置为指向<code>203.0.113.1</code>服务器实例。在另一个<a href="https://www.vultr.com/docs/introduction-to-vultr-dns">Vultr教程中</a>查看细节。</li>
+<li>一个
+
+<a href="https://www.vultr.com/docs/how-to-use-sudo-on-debian-centos-and-freebsd"  target="_blank">sudo用户</a>。</li>
+<li>
+
+<a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8"  target="_blank">使用EPEL YUM回购</a>服务器实例已
+
+<a href="https://www.vultr.com/docs/how-to-update-centos-7-ubuntu-16-04-and-debian-8"  target="_blank">更新到最新的稳定状态</a>。</li>
+<li>一个域<code>example.com</code>已被配置为指向<code>203.0.113.1</code>服务器实例。在另一个
+
+<a href="https://www.vultr.com/docs/introduction-to-vultr-dns"  target="_blank">Vultr教程中</a>查看细节。</li>
 </ul>
-
-<h4 id="第一步-安装caddy的最新稳定版本">第一步：安装Caddy的最新稳定版本</h4>
-
+<h4 id="第一步安装caddy的最新稳定版本">第一步：安装Caddy的最新稳定版本</h4>
 <p>在Linux，Mac或BSD操作系统上，使用以下命令安装Caddy最新稳定的系统特定版本：</p>
-
 <pre><code>curl https://getcaddy.com | bash
-</code></pre>
-
-<p>出现提示时，输入您的sudo密码以完成安装。</p>
-
+</code></pre><p>出现提示时，输入您的sudo密码以完成安装。</p>
 <p>Caddy二进制文件将被安装到该<code>/usr/local/bin</code>目录。使用以下命令确认：</p>
-
 <pre><code>which caddy
-</code></pre>
-
-<p>输出应该是：</p>
-
+</code></pre><p>输出应该是：</p>
 <pre><code>/usr/local/bin/caddy
-</code></pre>
-
-<p>为了安全起见，<strong>切勿</strong>以root身份运行Caddy二进制文件。为了让Caddy能够以非root用户身份绑定到特权端口（例如80,443），您需要<code>setcap</code>按如下所示运行命令：</p>
-
+</code></pre><p>为了安全起见，<strong>切勿</strong>以root身份运行Caddy二进制文件。为了让Caddy能够以非root用户身份绑定到特权端口（例如80,443），您需要<code>setcap</code>按如下所示运行命令：</p>
 <pre><code>sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
-</code></pre>
-
-<h4 id="第2步-配置caddy">第2步：配置Caddy</h4>
-
+</code></pre><h4 id="第2步配置caddy">第2步：配置Caddy</h4>
 <p>创建一个专门的系统用户：<code>caddy</code> 和一组同名的Caddy：</p>
-
 <pre><code>sudo useradd -r -d /var/www -M -s /sbin/nologin caddy
-</code></pre>
-
-<p><strong>注意</strong>：*此处创建*<em>的用户caddy只能用于管理Caddy服务，不能用于登录。</em></p>
-
+</code></pre><p><strong>注意</strong>：<em>此处创建**的用户caddy只能用于管理Caddy服务，不能用于登录。</em></p>
 <p><code>/var/www</code>为Caddy Web服务器创建主目录，并<code>/var/www/example.com</code>为您的网站创建主目录：</p>
-
 <pre><code>sudo mkdir -p /var/www/example.com
 sudo chown -R caddy:caddy /var/www
-</code></pre>
-
-<p>创建一个目录来存储SSL证书：</p>
-
+</code></pre><p>创建一个目录来存储SSL证书：</p>
 <pre><code>sudo mkdir /etc/ssl/caddy
 sudo chown -R caddy:root /etc/ssl/caddy
 sudo chmod 0770 /etc/ssl/caddy
-</code></pre>
-
-<p>创建专用目录来存储Caddy配置文件<code>Caddyfile</code>：</p>
-
+</code></pre><p>创建专用目录来存储Caddy配置文件<code>Caddyfile</code>：</p>
 <pre><code>sudo mkdir /etc/caddy
 sudo chown -R root:caddy /etc/caddy
-</code></pre>
-
-<p>创建名为的Caddy配置文件<code>Caddyfile</code>：</p>
-
+</code></pre><p>创建名为的Caddy配置文件<code>Caddyfile</code>：</p>
 <pre><code>sudo touch /etc/caddy/Caddyfile
 sudo chown caddy:caddy /etc/caddy/Caddyfile
 sudo chmod 444 /etc/caddy/Caddyfile
@@ -375,19 +380,11 @@ example.com {
     tls admin@example.com
 }
 EOF
-</code></pre>
-
-<p><strong>注意</strong>：*上面创建*<em>的Caddyfile文件只是运行静态网站的基本配置。您可以在这里了解更多关于如何编写Caddyfile的信息。</em></p>
-
+</code></pre><p><strong>注意</strong>：<em>上面创建**的Caddyfile文件只是运行静态网站的基本配置。您可以在这里了解更多关于如何编写Caddyfile的信息。</em></p>
 <p>为了方便Caddy的操作，您可以<code>systemd</code>为Caddy 设置一个单元文件，然后用它<code>systemd</code>来管理Caddy。</p>
-
 <p>使用<code>vi</code>编辑器创建Caddy <code>systemd</code>单元文件：</p>
-
 <pre><code>sudo vi /etc/systemd/system/caddy.service
-</code></pre>
-
-<p>填充文件：</p>
-
+</code></pre><p>填充文件：</p>
 <pre><code>[Unit]
 Description=Caddy HTTP/2 web server
 Documentation=https://caddyserver.com/docs
@@ -439,45 +436,36 @@ ReadWriteDirectories=/etc/ssl/caddy
 
 [Install]
 WantedBy=multi-user.target
-</code></pre>
-
-<p>保存并退出：</p>
-
+</code></pre><p>保存并退出：</p>
 <pre><code>:wq!
-</code></pre>
-
-<p>启动Caddy服务并使其在系统引导时自动启动：</p>
-
+</code></pre><p>启动Caddy服务并使其在系统引导时自动启动：</p>
 <pre><code>sudo systemctl daemon-reload
 sudo systemctl start caddy.service
 sudo systemctl enable caddy.service
-</code></pre>
-
-<h4 id="第3步-修改防火墙规则">第3步：修改防火墙规则</h4>
-
+</code></pre><h4 id="第3步修改防火墙规则">第3步：修改防火墙规则</h4>
 <p>为了允许访问者访问您的Caddy网站，您需要打开端口80和443：</p>
-
 <pre><code>sudo firewall-cmd --permanent --zone=public --add-service=http 
 sudo firewall-cmd --permanent --zone=public --add-service=https
 sudo firewall-cmd --reload
-</code></pre>
-
-<h4 id="第4步-为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</h4>
-
+</code></pre><h4 id="第4步为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</h4>
 <p>使用以下命令<code>index.html</code>在您的Caddy网站主目录中创建一个名为的文件：</p>
-
 <pre><code>echo '&lt;h1&gt;Hello World!&lt;/h1&gt;' | sudo tee /var/www/example.com/index.html
-</code></pre>
-
-<p>重新启动Caddy服务以加载新内容：</p>
-
+</code></pre><p>重新启动Caddy服务以加载新内容：</p>
 <pre><code>sudo systemctl restart caddy.service
-</code></pre>
-
-<p>最后，将您的网页浏览器指向<code>http://example.com</code>或<code>https://example.com</code>。您应该看到<code>Hello World!</code>预期的消息。</p>
+</code></pre><p>最后，将您的网页浏览器指向<code>http://example.com</code>或<code>https://example.com</code>。您应该看到<code>Hello World!</code>预期的消息。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/05/26/>Centos7上安装和配置Caddy</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-05-26<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/05/26/ target="_blank" >https://3mile.github.io/archives/2018/05/26/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -504,7 +492,7 @@ sudo firewall-cmd --reload
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -549,24 +537,6 @@ sudo firewall-cmd --reload
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/05/26/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/05/26/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/05/26/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -585,9 +555,11 @@ sudo firewall-cmd --reload
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -625,24 +597,6 @@ sudo firewall-cmd --reload
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/05/26/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/05/26/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/05/26/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -661,24 +615,6 @@ sudo firewall-cmd --reload
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F05%2F26%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F05%2F26%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F05%2F26%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -694,7 +630,7 @@ sudo firewall-cmd --reload
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -722,18 +658,28 @@ sudo firewall-cmd --reload
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

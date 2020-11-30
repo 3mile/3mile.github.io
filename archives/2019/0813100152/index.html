@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="AdGuard简介 AdGuard Home 是一款全网广告拦截与反跟踪软件。在您将其安装完毕后，它将保护您所有家用设备，同时您不再需要安装任何客户端软件。随着物联">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="建站">
+      <meta property="article:section" content="Linux">
     
   
   
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -271,7 +271,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/%e5%bb%ba%e7%ab%99">建站</a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -292,213 +292,225 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h1 id="table-of-contents">目录</h1><nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#adguard简介">AdGuard简介</a></li>
-<li><a href="#安装adguard">安装Adguard：</a></li>
-<li><a href="#设置adguard">设置AdGuard</a>
-<ul>
-<li><a href="#adguardhome基本设置">AdGuardHome基本设置</a></li>
-<li><a href="#设置上游dns">设置上游DNS</a></li>
-<li><a href="#过滤器">过滤器</a></li>
-<li><a href="#额外设置">额外设置</a></li>
-</ul></li>
-<li><a href="#设置v2ray">设置V2Ray</a>
-<ul>
-<li><a href="#编辑配置文件">编辑配置文件：</a></li>
-<li><a href="#重启v2ray-完成配置">重启V2Ray，完成配置：</a></li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#adguard简介">AdGuard简介</a></li>
+        <li><a href="#安装adguard">安装Adguard：</a></li>
+        <li><a href="#设置adguard">设置AdGuard</a>
+          <ul>
+            <li><a href="#adguardhome基本设置">AdGuardHome基本设置</a></li>
+            <li><a href="#设置上游dns">设置上游DNS</a></li>
+            <li><a href="#过滤器">过滤器</a></li>
+            <li><a href="#额外设置">额外设置</a></li>
+          </ul>
+        </li>
+        <li><a href="#设置v2ray">设置V2Ray</a>
+          <ul>
+            <li><a href="#编辑配置文件">编辑配置文件：</a></li>
+            <li><a href="#重启v2ray完成配置">重启V2Ray，完成配置：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <!-- raw HTML omitted -->
 <h3 id="adguard简介">AdGuard简介</h3>
-
 <div class="alert info info ">
   <p>AdGuard Home 是一款全网广告拦截与反跟踪软件。在您将其安装完毕后，它将保护您所有家用设备，同时您不再需要安装任何客户端软件。随着物联网与连接设备的兴起，掌控您自己的整个网络环境变得越来越重要。</p>
 </div>
-
 <p>简单点说AdGuard Home就是一个公共DNS服务，如Google的公共DNS8.8.8.8，和DNSmasq一样AdGuard Home是开源的，可以自行搭建安装后在客户端配置使用。xiaoz之前分享过一个自己写的项目PHPDNS ，PHPDNS在DNSmasq的基础上开发了WEB界面，功能比较简单，不过该项目不在维护，这里推荐功能更加强大的AdGuard Home</p>
-
 <p>AdGuard Home使用Golang开发，编译好了各大平台的二进制文件，因此安装非常简单，这里以CentOS 7为例，其它系统可参考官方帮助文档。</p>
-
-<p>AdGuard Home主要功能
-* 拦截随处可见的广告
-* 注重隐私保护
-* 家庭保护模式
-* 自定义过滤</p>
-
+<p>AdGuard Home主要功能</p>
+<ul>
+<li>拦截随处可见的广告</li>
+<li>注重隐私保护</li>
+<li>家庭保护模式</li>
+<li>自定义过滤</li>
+</ul>
 <blockquote>
 <p>CentOS 7 X64安装
-AdGuard Home二进制文件位于<a href="https://github.com/AdguardTeam/AdGuardHome/releases">https://github.com/AdguardTeam/AdGuardHome/releases</a> 可根据自己的平台下载最新版本。CentOS 7安装方法如下：</p>
+AdGuard Home二进制文件位于https://github.com/AdguardTeam/AdGuardHome/releases 可根据自己的平台下载最新版本。CentOS 7安装方法如下：</p>
 </blockquote>
-
 <h3 id="安装adguard">安装Adguard：</h3>
-
-<pre><code class="language-bash">cd /opt
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cd /opt
 wget https://github.com/AdguardTeam/AdGuardHome/releases/download/v0.97.1/AdGuardHome_linux_amd64.tar.gz
 tar -xzvf AdGuardHome_linux_amd64.tar.gz
 rm -rf AdGuardHome_linux_amd64.tar.gz
 
-#放行3000端口（AdGuardHome初始化需要使用）
-#firewalld放行3000端口
-firewall-cmd --zone=public --add-port=3000/tcp --permanent
+<span style="color:#75715e">#放行3000端口（AdGuardHome初始化需要使用）</span>
+<span style="color:#75715e">#firewalld放行3000端口</span>
+firewall-cmd --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>3000/tcp --permanent
 firewall-cmd --reload
-#检查firewall开放端口
+<span style="color:#75715e">#检查firewall开放端口</span>
 firewall-cmd --list-port
 
 cd AdGuardHome
 ./AdGuardHome -s install
-</code></pre>
+</code></pre></div><p>运行AdGuardHome后，会提示打开http://IP：3000端口进行初始化，如下截图。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103006-2019-8-13.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103006-2019-8-13.png" alt="20190813103006-2019-8-13.png" /></a>
+</span>
 
-<p>运行AdGuardHome后，会提示打开<a href="http://IP：3000端口进行初始化，如下截图。">http://IP：3000端口进行初始化，如下截图。</a></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103006-2019-8-13.png" alt="20190813103006-2019-8-13.png" /></p>
-
+</span></p>
 <h3 id="设置adguard">设置AdGuard</h3>
+<p>浏览器打开http://IP：3000,根据提示无脑的下一步即可。首次初始化会要求设置账号、密码（请牢记），下次登录需要使用。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103103-2019-8-13.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103103-2019-8-13.png" alt="20190813103103-2019-8-13.png" /></a>
+</span>
 
-<p>浏览器打开<a href="http://IP：3000,根据提示无脑的下一步即可。首次初始化会要求设置账号、密码（请牢记），下次登录需要使用。">http://IP：3000,根据提示无脑的下一步即可。首次初始化会要求设置账号、密码（请牢记），下次登录需要使用。</a></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103103-2019-8-13.png" alt="20190813103103-2019-8-13.png" /></p>
-
+</span></p>
 <h4 id="adguardhome基本设置">AdGuardHome基本设置</h4>
-
 <p>设置中文
 进入AdGuardHome后台 - 网页右下方 - 可设置为繁体中文，感觉是机器翻译的，不太准确，将就用。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103213-2019-8-13.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103213-2019-8-13.png" alt="20190813103213-2019-8-13.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103213-2019-8-13.png" alt="20190813103213-2019-8-13.png" /></p>
-
+</span></p>
 <h4 id="设置上游dns">设置上游DNS</h4>
-
 <p>AdGuard Home默认使用Cloudflare DNS作为上游服务器，如果您服务器在国内可能请求上游DNS延迟比较高，在后台 - 设定 - 可以设置为国内的DNS，如腾讯的119.29.29.29，但坏处是不支持DNS over TLS</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103228-2019-8-13.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103228-2019-8-13.png" alt="20190813103228-2019-8-13.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103228-2019-8-13.png" alt="20190813103228-2019-8-13.png" /></p>
-
+</span></p>
 <h4 id="过滤器">过滤器</h4>
-
 <p>在后台 - 过滤器，可以看到AdGuardHome内置了部分广告过滤规则，但在中国有点水土不服，如果要想更完美的实现广告屏蔽还需要自己添加规则。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103243-2019-8-13.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103243-2019-8-13.png" alt="20190813103243-2019-8-13.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813103243-2019-8-13.png" alt="20190813103243-2019-8-13.png" /></p>
-
+</span></p>
 <p>以下是过滤规则的一些说明，更多规则可以在AdGuardHome后台查看或参考官方帮助文档。</p>
-
 <div class="alert info info ">
   <p><ol>
 <li>||example.org^ - 封锁example.org域及其他子域</li>
 <li>@@||example.org^ - 解除封锁example.org域及其他子域</li>
 <li>127.0.0.1 example.org - 将example.org host指向到127.0.0.1（不包含其他子域）</li>
 <li>! - 注释符号</li>
-<li>&rdquo;# - 也是一个注释符号&rdquo;</li>
+<li>&ldquo;# - 也是一个注释符号&rdquo;</li>
 <li>/REGEX/ - 正则表达式模式</li>
 </ol></p>
 </div>
-
 <h4 id="额外设置">额外设置</h4>
-
 <p>为了方便管理，可以继续输入命令./AdGuardHome -s install安装为服务，然后就可以使用下面的命令来进行管理了。</p>
-
-<pre><code class="language-bash">#启动
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#启动</span>
 systemctl start AdGuardHome
-#开机自启
+<span style="color:#75715e">#开机自启</span>
 systemctl enable AdGuardHome
-#重启
+<span style="color:#75715e">#重启</span>
 systemctl restart AdGuardHome
-#停止
+<span style="color:#75715e">#停止</span>
 systemctl stop AdGuardHome
-</code></pre>
-
-<h3 id="设置v2ray">设置V2Ray</h3>
-
+</code></pre></div><h3 id="设置v2ray">设置V2Ray</h3>
 <p>清空默认的配置文件/生成一个UUID：</p>
-
-<pre><code class="language-bash">echo &quot;&quot; &gt; /etc/v2ray/config.json
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;&#34;</span> &gt; /etc/v2ray/config.json
 cat /proc/sys/kernel/random/uuid
-</code></pre>
-
-<h4 id="编辑配置文件">编辑配置文件：</h4>
-
-<pre><code class="language-bash">nano /etc/v2ray/config.json
-</code></pre>
-
-<p>下面这是一个KCP服务端的配置示例：</p>
-
-<pre><code class="language-json">{
-  &quot;dns&quot;: {
-    &quot;servers&quot;: [
-      &quot;你的服务器公网IP&quot;
+</code></pre></div><h4 id="编辑配置文件">编辑配置文件：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nano /etc/v2ray/config.json
+</code></pre></div><p>下面这是一个KCP服务端的配置示例：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;dns&#34;</span>: {
+    <span style="color:#f92672">&#34;servers&#34;</span>: [
+      <span style="color:#e6db74">&#34;你的服务器公网IP&#34;</span>
     ]
   },
-  &quot;inbound&quot;: {
-    &quot;port&quot;: 10087,
-    &quot;protocol&quot;: &quot;vmess&quot;,
-    &quot;settings&quot;: {
-      &quot;clients&quot;: [
+  <span style="color:#f92672">&#34;inbound&#34;</span>: {
+    <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">10087</span>,
+    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;vmess&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;</span>: {
+      <span style="color:#f92672">&#34;clients&#34;</span>: [
         {
-          &quot;id&quot;: &quot;你的UUID&quot;,
-          &quot;alterId&quot;: 64
+          <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;你的UUID&#34;</span>,
+          <span style="color:#f92672">&#34;alterId&#34;</span>: <span style="color:#ae81ff">64</span>
         }
       ]
     },
-    &quot;streamSettings&quot;:{
-      &quot;network&quot;:&quot;kcp&quot;,
-      &quot;kcpSettings&quot;: {
-        &quot;mtu&quot;: 1350,
-        &quot;tti&quot;: 20,
-        &quot;uplinkCapacity&quot;: 30,
-        &quot;downlinkCapacity&quot;: 100,
-        &quot;congestion&quot;: false,
-        &quot;readBufferSize&quot;: 1,
-        &quot;writeBufferSize&quot;: 1,
-        &quot;header&quot;: {
-          &quot;type&quot;: &quot;none&quot;
+    <span style="color:#f92672">&#34;streamSettings&#34;</span>:{
+      <span style="color:#f92672">&#34;network&#34;</span>:<span style="color:#e6db74">&#34;kcp&#34;</span>,
+      <span style="color:#f92672">&#34;kcpSettings&#34;</span>: {
+        <span style="color:#f92672">&#34;mtu&#34;</span>: <span style="color:#ae81ff">1350</span>,
+        <span style="color:#f92672">&#34;tti&#34;</span>: <span style="color:#ae81ff">20</span>,
+        <span style="color:#f92672">&#34;uplinkCapacity&#34;</span>: <span style="color:#ae81ff">30</span>,
+        <span style="color:#f92672">&#34;downlinkCapacity&#34;</span>: <span style="color:#ae81ff">100</span>,
+        <span style="color:#f92672">&#34;congestion&#34;</span>: <span style="color:#66d9ef">false</span>,
+        <span style="color:#f92672">&#34;readBufferSize&#34;</span>: <span style="color:#ae81ff">1</span>,
+        <span style="color:#f92672">&#34;writeBufferSize&#34;</span>: <span style="color:#ae81ff">1</span>,
+        <span style="color:#f92672">&#34;header&#34;</span>: {
+          <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;none&#34;</span>
         }
       }
     }
   },
-  &quot;outbound&quot;: {
-    &quot;protocol&quot;: &quot;freedom&quot;,
-    &quot;settings&quot;: {
-      &quot;domainStrategy&quot;: &quot;UseIP&quot;
+  <span style="color:#f92672">&#34;outbound&#34;</span>: {
+    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;freedom&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;</span>: {
+      <span style="color:#f92672">&#34;domainStrategy&#34;</span>: <span style="color:#e6db74">&#34;UseIP&#34;</span>
     }
   }
 }
-</code></pre>
-
-<blockquote>
+</code></pre></div><blockquote>
 <p>实际上无论是KCP还是WebSocket，还是其他等等配置，套路都是一样的，只需要先添加一个DNS配置：</p>
 </blockquote>
-
-<pre><code class="language-json">  &quot;dns&quot;: {
-    &quot;servers&quot;: [
-      &quot;你的服务器公网IP&quot;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">  <span style="color:#e6db74">&#34;dns&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> {
+    <span style="color:#f92672">&#34;servers&#34;</span>: [
+      <span style="color:#e6db74">&#34;你的服务器公网IP&#34;</span>
     ]
-  },
-</code></pre>
-
-<blockquote>
+  }<span style="color:#960050;background-color:#1e0010">,</span>
+</code></pre></div><blockquote>
 <p>然后在outbound下面的settings内加一条：</p>
 </blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;domainStrategy&#34;</span><span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;UseIP&#34;</span>
+</code></pre></div><h4 id="重启v2ray完成配置">重启V2Ray，完成配置：</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl restart v2ray
+</code></pre></div><p>去访问一些网站，然后回到AdGuard的WEB页面，有DNS查询记录就说明OK了：
 
-<pre><code class="language-json">&quot;domainStrategy&quot;: &quot;UseIP&quot;
-</code></pre>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813101329-2019-8-13.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813101329-2019-8-13.png" alt="20190813101329-2019-8-13.png" /></a>
+</span>
 
-<h4 id="重启v2ray-完成配置">重启V2Ray，完成配置：</h4>
-
-<pre><code class="language-bash">systemctl restart v2ray
-</code></pre>
-
-<p>去访问一些网站，然后回到AdGuard的WEB页面，有DNS查询记录就说明OK了：
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190813101329-2019-8-13.png" alt="20190813101329-2019-8-13.png" /></p>
+</span></p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0813100152/>配置AdGuard Home&#43;V2Ray</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-08-13<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0813100152/ target="_blank" >https://3mile.github.io/archives/2019/0813100152/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -521,7 +533,7 @@ cat /proc/sys/kernel/random/uuid
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -566,29 +578,11 @@ cat /proc/sys/kernel/random/uuid
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0813100152/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0813100152/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0813100152/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+          <a class="post-action-btn btn btn--default" href="#">
         
           <i class="fa fa-list"></i>
         </a>
@@ -602,9 +596,11 @@ cat /proc/sys/kernel/random/uuid
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -642,29 +638,11 @@ cat /proc/sys/kernel/random/uuid
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0813100152/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0813100152/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0813100152/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
         
-          <a class="post-action-btn btn btn--default" href="#table-of-contents">
+          <a class="post-action-btn btn btn--default" href="#">
         
           <i class="fa fa-list"></i>
         </a>
@@ -677,24 +655,6 @@ cat /proc/sys/kernel/random/uuid
     <div id="share-options-bar" class="share-options-bar" data-behavior="5">
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0813100152%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0813100152%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0813100152%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
     
   </ul>
 </div>
@@ -711,7 +671,7 @@ cat /proc/sys/kernel/random/uuid
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -739,18 +699,28 @@ cat /proc/sys/kernel/random/uuid
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

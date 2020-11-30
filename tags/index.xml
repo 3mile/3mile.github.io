@@ -6,26 +6,197 @@
     <description>Recent content in Tags on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 25 Nov 2019 11:47:41 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 Apr 2020 11:46:24 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Vs Code</title>
-      <link>https://3mile.github.io/tags/vs-code/</link>
-      <pubDate>Sun, 24 Nov 2019 19:49:02 +0800</pubDate>
+      <title>Terminal</title>
+      <link>https://3mile.github.io/tags/terminal/</link>
+      <pubDate>Sun, 19 Apr 2020 11:46:24 +0800</pubDate>
       
-      <guid>https://3mile.github.io/tags/vs-code/</guid>
+      <guid>https://3mile.github.io/tags/terminal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wsl</title>
+      <link>https://3mile.github.io/tags/wsl/</link>
+      <pubDate>Sun, 19 Apr 2020 11:46:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/wsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://3mile.github.io/tags/linux/</link>
+      <pubDate>Wed, 15 Apr 2020 21:22:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ssh</title>
+      <link>https://3mile.github.io/tags/ssh/</link>
+      <pubDate>Wed, 15 Apr 2020 21:22:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/ssh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Winscp</title>
+      <link>https://3mile.github.io/tags/winscp/</link>
+      <pubDate>Wed, 15 Apr 2020 21:22:17 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/winscp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://3mile.github.io/tags/ubuntu/</link>
+      <pubDate>Wed, 15 Apr 2020 13:13:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://3mile.github.io/tags/php/</link>
+      <pubDate>Wed, 15 Apr 2020 12:46:11 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>phpmyadmin</title>
+      <link>https://3mile.github.io/tags/phpmyadmin/</link>
+      <pubDate>Wed, 15 Apr 2020 12:46:11 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/phpmyadmin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mariadb</title>
+      <link>https://3mile.github.io/tags/mariadb/</link>
+      <pubDate>Wed, 15 Apr 2020 10:58:03 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>命令</title>
+      <link>https://3mile.github.io/tags/%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sat, 11 Apr 2020 09:15:37 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E5%91%BD%E4%BB%A4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>https://3mile.github.io/tags/bash/</link>
+      <pubDate>Fri, 10 Apr 2020 09:54:48 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>终端</title>
+      <link>https://3mile.github.io/tags/%E7%BB%88%E7%AB%AF/</link>
+      <pubDate>Fri, 10 Apr 2020 09:54:48 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/%E7%BB%88%E7%AB%AF/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zsh</title>
+      <link>https://3mile.github.io/tags/zsh/</link>
+      <pubDate>Thu, 09 Apr 2020 12:37:55 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/zsh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Fonts</title>
+      <link>https://3mile.github.io/tags/fonts/</link>
+      <pubDate>Mon, 06 Apr 2020 18:21:33 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/fonts/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>certbot</title>
+      <link>https://3mile.github.io/tags/certbot/</link>
+      <pubDate>Mon, 06 Apr 2020 18:14:07 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/certbot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos</title>
+      <link>https://3mile.github.io/tags/centos/</link>
+      <pubDate>Sat, 04 Apr 2020 11:21:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/centos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openssl</title>
+      <link>https://3mile.github.io/tags/openssl/</link>
+      <pubDate>Sat, 04 Apr 2020 11:21:01 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/openssl/</guid>
       <description></description>
     </item>
     
     <item>
       <title>openwrt</title>
       <link>https://3mile.github.io/tags/openwrt/</link>
-      <pubDate>Wed, 06 Nov 2019 11:17:32 +0800</pubDate>
+      <pubDate>Thu, 12 Mar 2020 18:26:18 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/openwrt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>transmission</title>
+      <link>https://3mile.github.io/tags/transmission/</link>
+      <pubDate>Thu, 12 Mar 2020 18:26:18 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/transmission/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nginx</title>
+      <link>https://3mile.github.io/tags/nginx/</link>
+      <pubDate>Mon, 02 Mar 2020 14:31:35 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Centos8</title>
+      <link>https://3mile.github.io/tags/centos8/</link>
+      <pubDate>Thu, 07 Nov 2019 12:56:51 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/centos8/</guid>
       <description></description>
     </item>
     
@@ -35,15 +206,6 @@
       <pubDate>Wed, 06 Nov 2019 11:17:32 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/udpxy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>CentOS</title>
-      <link>https://3mile.github.io/tags/centos/</link>
-      <pubDate>Wed, 06 Nov 2019 11:05:11 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/centos/</guid>
       <description></description>
     </item>
     
@@ -84,7 +246,7 @@
     </item>
     
     <item>
-      <title>LEDE</title>
+      <title>lede</title>
       <link>https://3mile.github.io/tags/lede/</link>
       <pubDate>Tue, 13 Aug 2019 12:31:00 +0800</pubDate>
       
@@ -111,29 +273,11 @@
     </item>
     
     <item>
-      <title>ubuntu</title>
-      <link>https://3mile.github.io/tags/ubuntu/</link>
-      <pubDate>Tue, 16 Apr 2019 09:10:12 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/ubuntu/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>win10</title>
       <link>https://3mile.github.io/tags/win10/</link>
       <pubDate>Tue, 19 Mar 2019 15:31:56 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/win10/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Linux</title>
-      <link>https://3mile.github.io/tags/linux/</link>
-      <pubDate>Tue, 19 Mar 2019 14:09:30 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/linux/</guid>
       <description></description>
     </item>
     
@@ -147,11 +291,11 @@
     </item>
     
     <item>
-      <title>zsh</title>
-      <link>https://3mile.github.io/tags/zsh/</link>
-      <pubDate>Thu, 21 Feb 2019 19:48:49 +0800</pubDate>
+      <title>Mint</title>
+      <link>https://3mile.github.io/tags/mint/</link>
+      <pubDate>Thu, 21 Feb 2019 20:30:25 +0800</pubDate>
       
-      <guid>https://3mile.github.io/tags/zsh/</guid>
+      <guid>https://3mile.github.io/tags/mint/</guid>
       <description></description>
     </item>
     
@@ -161,15 +305,6 @@
       <pubDate>Wed, 20 Feb 2019 19:44:10 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/linux-mint/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mint</title>
-      <link>https://3mile.github.io/tags/mint/</link>
-      <pubDate>Wed, 20 Feb 2019 19:44:10 +0800</pubDate>
-      
-      <guid>https://3mile.github.io/tags/mint/</guid>
       <description></description>
     </item>
     
@@ -197,6 +332,24 @@
       <pubDate>Sat, 21 Jul 2018 12:58:23 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/v2ray/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debian</title>
+      <link>https://3mile.github.io/tags/debian/</link>
+      <pubDate>Mon, 02 Jul 2018 10:51:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>U盘</title>
+      <link>https://3mile.github.io/tags/u%E7%9B%98/</link>
+      <pubDate>Fri, 01 Jun 2018 14:35:24 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/tags/u%E7%9B%98/</guid>
       <description></description>
     </item>
     
@@ -386,24 +539,6 @@
       <pubDate>Tue, 01 May 2018 13:11:10 +0800</pubDate>
       
       <guid>https://3mile.github.io/tags/test/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>github theme</title>
-      <link>https://3mile.github.io/tags/github-theme/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/tags/github-theme/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>highlight code</title>
-      <link>https://3mile.github.io/tags/highlight-code/</link>
-      <pubDate>Tue, 01 May 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://3mile.github.io/tags/highlight-code/</guid>
       <description></description>
     </item>
     

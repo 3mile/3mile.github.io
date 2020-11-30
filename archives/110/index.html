@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="前言 第一次发贴，属菜鸟心得，老鸟跳过。从2000年开始接触网络，如今网龄已满16周年了，也管是资深网民，各种论坛帐号，各种邮箱帐号，淘宝、支">
@@ -89,7 +89,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -144,7 +144,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -296,92 +296,221 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h2 id="前言">前言</h2>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#步骤如下">步骤如下：</a></li>
+    <li><a href="#总结">总结</a></li>
+    <li><a href="#heading"></a></li>
+  </ul>
+</nav>
 
-<p>第一次发贴，属菜鸟心得，老鸟跳过。从2000年开始接触网络，如今网龄已满16周年了，也管是资深网民，各种论坛帐号，各种邮箱帐号，淘宝、支付宝、各种密码，零零总总不下几百个，然后又是各种泄露门，基本上不重要的论坛之类都采用同帐号，同密码，虽然感觉自己不是什么大户，也没有什么隐私，但一想到帐号被人登陆，也够自己恶心的，寻思着找个密码管理软件。看了网上各种评测，最好选定了Keepass，全平台开源密码管理软件。选择Keepass主要是因为先期1Password的贵（据说现在免费了，未试），最主要是<a href="https://www.smzdm.com/fenlei/anzhouji/">安卓手机</a>端的支持一般，lastpass密码存储在他人<a href="https://www.smzdm.com/fenlei/fuwuqi/">服务器</a>上（强迫症始然），跨平台收费（据说现在也免费了，未试）。</p>
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h2 id="前言">前言</h2>
+<p>第一次发贴，属菜鸟心得，老鸟跳过。从2000年开始接触网络，如今网龄已满16周年了，也管是资深网民，各种论坛帐号，各种邮箱帐号，淘宝、支付宝、各种密码，零零总总不下几百个，然后又是各种泄露门，基本上不重要的论坛之类都采用同帐号，同密码，虽然感觉自己不是什么大户，也没有什么隐私，但一想到帐号被人登陆，也够自己恶心的，寻思着找个密码管理软件。看了网上各种评测，最好选定了Keepass，全平台开源密码管理软件。选择Keepass主要是因为先期1Password的贵（据说现在免费了，未试），最主要是
 
+<a href="https://www.smzdm.com/fenlei/anzhouji/"  target="_blank">安卓手机</a>端的支持一般，lastpass密码存储在他人
+
+<a href="https://www.smzdm.com/fenlei/fuwuqi/"  target="_blank">服务器</a>上（强迫症始然），跨平台收费（据说现在也免费了，未试）。</p>
 <p>言归正传，keepass做为一款本地密码管理软件（安全），如果跨平台使用，那么就得把密码数据和密码KEY上传到网上，然后进行同步，一 方面，存在第三方网盘感觉不安全（该死的强迫症），一方面网盘不一定支持这种同步，找了很多教程，其中：</p>
+<p>这么好买一个吧的
 
-<p>这么好买一个吧的<a href="https://post.smzdm.com/p/478691/">我的密码我做主 — KEEPASS+群晖实现多平台无忧密码管理</a></p>
+<a href="https://post.smzdm.com/p/478691/"  target="_blank">我的密码我做主 — KEEPASS+群晖实现多平台无忧密码管理</a></p>
+<p>雨侬的
 
-<p>雨侬的<a href="http://www.jianshu.com/p/2a2d9be153f1">KeePass通过坚果云WebDav同步方法</a></p>
-
+<a href="http://www.jianshu.com/p/2a2d9be153f1"  target="_blank">KeePass通过坚果云WebDav同步方法</a></p>
 <p>给了我很大的启发，举一反三下，为什么不通过群晖的WebDAV，达到跟坚果云同样的同步效果呢？</p>
-
 <p>今天主要是讲KeePass与群晖WebDAV完美同步~！</p>
-
 <p>工具如下：</p>
+<p>1、Keepass pro 2.35绿色版+中文语言文件，下载见《
 
-<p>1、Keepass pro 2.35绿色版+中文语言文件，下载见《<a href="https://post.smzdm.com/p/478691/">我的密码我做主 — KEEPASS+群晖实现多平台无忧密码管理</a>》</p>
-
+<a href="https://post.smzdm.com/p/478691/"  target="_blank">我的密码我做主 — KEEPASS+群晖实现多平台无忧密码管理</a>》</p>
 <p>2、Keepass2Android.apk</p>
-
 <p>3、群晖213J，系统6.0.2</p>
+<p>4、安卓
 
-<p>4、安卓<a href="https://www.smzdm.com/fenlei/shouji/">手机</a>一台（DS专用），win7系统电脑一台。</p>
-
+<a href="https://www.smzdm.com/fenlei/shouji/"  target="_blank">手机</a>一台（DS专用），win7系统电脑一台。</p>
 <h2 id="步骤如下">步骤如下：</h2>
+<p>1、开通群晖的WebDAV功能，端口5005不变（https端口5006需要导入签发了的证书），记得在
 
-<p>1、开通群晖的WebDAV功能，端口5005不变（https端口5006需要导入签发了的证书），记得在<a href="https://www.smzdm.com/fenlei/luyouqi/">路由器</a>里设置端口转发（PS：DSM6.0把WebDAV套件单独列出来了，5.0的请到控制面板——文件服务里面找）。</p>
+<a href="https://www.smzdm.com/fenlei/luyouqi/"  target="_blank">路由器</a>里设置端口转发（PS：DSM6.0把WebDAV套件单独列出来了，5.0的请到控制面板——文件服务里面找）。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d5bc4ef216320.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d5bc4ef216320.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d5bc4ef216320.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d686b6f568416.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d686b6f568416.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d686b6f568416.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>2、设置共享
 
-<p>2、设置共享<a href="https://www.smzdm.com/fenlei/wenjianjia/">文件夹</a>，专门给Keepass用，这个大家自己把握，可以是已有的共享文件夹，这里为了讲得明白些，新建一个Keepass的专属共享文件夹。</p>
+<a href="https://www.smzdm.com/fenlei/wenjianjia/"  target="_blank">文件夹</a>，专门给Keepass用，这个大家自己把握，可以是已有的共享文件夹，这里为了讲得明白些，新建一个Keepass的专属共享文件夹。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d688dfabd4000.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d688dfabd4000.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d688dfabd4000.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
-
+</span></p>
 <p>​     3、设置一个专门的用户，专门访问这个文件夹，一切为了安全。权限用一般用户user、除了Keepass文件夹可读写，该用户不能访问其他文件夹、空间无限制、只能用于WebDAV应用等。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68a154ad2626.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68a154ad2626.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68a154ad2626.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68b1af6c5395.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68b1af6c5395.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68b1af6c5395.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68c50b427609.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68c50b427609.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68c50b427609.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68d31c9e8328.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68d31c9e8328.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68d31c9e8328.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68eee8707224.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68eee8707224.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d68eee8707224.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>4、在Keepass共享文件里上传一个1.txt，内容为“你好”，主要是为了测试是否已经正常使用WebDAV服务。（PS：输入
 
-<p>4、在Keepass共享文件里上传一个1.txt，内容为“你好”，主要是为了测试是否已经正常使用WebDAV服务。（PS：输入<a href="http://nasf/">http://NAS</a>地址:5005/keepass/ 1.txt），输入刚设立的群晖帐号,这里是Keepass，密码123456，浏览器显示你好，说明测试通过。</p>
+<a href="http://nasf/"  target="_blank">http://NAS</a>地址:5005/keepass/ 1.txt），输入刚设立的群晖帐号,这里是Keepass，密码123456，浏览器显示你好，说明测试通过。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d690f04fa338.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d690f04fa338.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d690f04fa338.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9ed0b6fd0b1901.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9ed0b6fd0b1901.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9ed0b6fd0b1901.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
-
+</span></p>
 <p>5、现在进行Keepass的远程配置（密码数据库和KEY文件我都建在一个地方，当然，大家尽量不放在一起）。如此，Win7端已经可以完美与群晖的WebDAV同步了，进群晖Keepass就可以看到两个新建的文件。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6937ca881231.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6937ca881231.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6937ca881231.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d694ce8666095.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d694ce8666095.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d694ce8666095.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6964948f6108.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6964948f6108.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6964948f6108.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9f2b7efadb11.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9f2b7efadb11.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9f2b7efadb11.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69ac3a691474.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69ac3a691474.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69ac3a691474.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69ccf19e4700.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69ccf19e4700.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69ccf19e4700.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>6、安卓手机端设置，打开软件——打开文件——http(webdav)——输入或者复制WebDAV地址（http://NAS地址:5005/keepass/pass.kdbx），输入WebDAV帐号keepass，密码123456——输入数据库的登陆密码——输入KEY地址或者复制（http://NAS地址:5005/keepass/pass.key）——输入WebDAV帐号keepass，密码123456——最后按解锁，进入，现在，你可以愉快地完耍了。（PS：Keepass2Android有几个界面不能截图，不过相对比较直观，大家进去就知道了。）</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69e0b8418417.png_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69e0b8418417.png_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p>6、安卓手机端设置，打开软件——打开文件——http(webdav)——输入或者复制WebDAV地址（<a href="http://NAS地址:5005/keepass/pass.kdbx），输入WebDAV帐号keepass，密码123456——输入数据库的登陆密码——输入KEY地址或者复制（http://NAS地址:5005/keepass/pass.key）——输入WebDAV帐号keepass，密码123456——最后按解锁，进入，现在，你可以愉快地完耍了。（PS：Keepass2Android有几个界面不能截图，不过相对比较直观，大家进去就知道了。）">http://NAS地址:5005/keepass/pass.kdbx），输入WebDAV帐号keepass，密码123456——输入数据库的登陆密码——输入KEY地址或者复制（http://NAS地址:5005/keepass/pass.key）——输入WebDAV帐号keepass，密码123456——最后按解锁，进入，现在，你可以愉快地完耍了。（PS：Keepass2Android有几个界面不能截图，不过相对比较直观，大家进去就知道了。）</a></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a2430e92566.jpg_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a2430e92566.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d69e0b8418417.png_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a34a8375885.png_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a34a8375885.png_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a2430e92566.jpg_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a44dca92070.png_e600.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a44dca92070.png_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a34a8375885.png_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/webdav/58d9d6a44dca92070.png_e600.jpg" alt="KeePass与群晖WebDav完美同步" /></p>
-
+</span></p>
 <h2 id="总结">总结</h2>
-
 <p>至此，已经全部设置完毕。Keepass具有强大的同步能力，既可以在webdav中新建，同样，也可以在webdav中打开原来已经设置好的，同时可以进行两个密码数据库（*.kdbx）同步，不同的客户端，无缝链接，妈妈再也不怕我记不住密码了。</p>
+<h2 id="heading"></h2>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/110/>KeePass与群晖WebDav完美同步</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-05<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/110/ target="_blank" >https://3mile.github.io/archives/110/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -408,7 +537,7 @@ if (!doNotTrack) {
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -453,24 +582,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/110/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/110/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/110/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -489,9 +600,11 @@ if (!doNotTrack) {
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -529,24 +642,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/110/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/110/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/110/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -565,24 +660,6 @@ if (!doNotTrack) {
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F110%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F110%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F110%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -598,7 +675,7 @@ if (!doNotTrack) {
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -626,18 +703,28 @@ if (!doNotTrack) {
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

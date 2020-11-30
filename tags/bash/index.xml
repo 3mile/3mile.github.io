@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bash on 3mile博客</title>
+    <link>https://3mile.github.io/tags/bash/</link>
+    <description>Recent content in Bash on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 10 Apr 2020 09:54:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>利用pv命令监视数据的处理进度</title>
+      <link>https://3mile.github.io/archives/2020/0410095448/</link>
+      <pubDate>Fri, 10 Apr 2020 09:54:48 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0410095448/</guid>
+      <description>&lt;p&gt;在处理Linux系统上的大文件时, 特别是拷贝/备份/压缩这些操作, 可能想要了解这些大文件的处理进度, 然而在管道中工作的终端工具可能并没有提供查看进度信息的功&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

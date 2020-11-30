@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="修复highlight框横向滚动 修改文件themes/tranquilpeak_0.47beta/src/scss/themes/_hljs">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="">
+      <meta property="article:section" content="博客系统">
     
   
   
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -271,7 +271,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+      <a class="category-link" href="https://3mile.github.io/categories/%e5%8d%9a%e5%ae%a2%e7%b3%bb%e7%bb%9f">博客系统</a>
     
   
 
@@ -292,27 +292,45 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h2 id="修复highlight框横向滚动">修复highlight框横向滚动</h2>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#修复highlight框横向滚动">修复highlight框横向滚动</a></li>
+    <li><a href="#增加valine评论系统">增加valine评论系统</a>
+      <ul>
+        <li><a href="#获取app-id-和-app-key">获取<code>APP ID</code> 和 <code>APP Key</code></a></li>
+        <li><a href="#configtoml添加参数">config.toml添加参数</a></li>
+        <li><a href="#修改主题文件">修改主题文件</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h2 id="修复highlight框横向滚动">修复highlight框横向滚动</h2>
 <p>修改文件<code>themes/tranquilpeak_0.47beta/src/scss/themes/_hljs-custom.scss</code>
 增加以下内容</p>
-
-<pre><code class="language-css">pre &gt; code.codeblock {
-  overflow-x: auto;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">pre</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">code</span>.<span style="color:#a6e22e">codeblock</span> {
+  <span style="color:#66d9ef">overflow-x</span>: <span style="color:#66d9ef">auto</span>;
 }
-</code></pre>
-
-<h2 id="增加valine评论系统">增加valine评论系统</h2>
-
+</code></pre></div><h2 id="增加valine评论系统">增加valine评论系统</h2>
 <div class="alert success ">
   <p>Valine - 一款快速、简洁且高效的无后端评论系统。
 Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且高效的无后端评论系统。
 理论上支持但不限于静态博客，目前已有Hexo、Jekyll、Typecho等博客程序在使用Valine。
 所以，理论上它也是支持 Hugo 的， 实践证明，确实如此。其特性如下：</p>
 </div>
-
 <ul>
 <li>快速</li>
 <li>安全</li>
@@ -322,54 +340,62 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
 <li>轻量易用(~15kb gzipped)</li>
 <li>文章阅读量统计 v1.2.0-beta1+</li>
 </ul>
-
 <p>这么好的评论系统，值得宣传，希望看到此文章的童鞋，也支持一下 Valine。下面就讲一下我是如何一步步添加 Valine 支持的。</p>
-
 <p>Tips:</p>
-
 <blockquote>
 <p>整个过程，是以Tranquilpeak主题为例的，其它主题操作大同小异。
 配置之前应该先阅读Valine快速开始</p>
 </blockquote>
-
 <p>如果你想在某个网页或者文章页中使用Valine，请参照以下步骤配置</p>
-
-<h3 id="获取-app-id-和-app-key">获取<code>APP ID</code> 和 <code>APP Key</code></h3>
-
+<h3 id="获取app-id-和-app-key">获取<code>APP ID</code> 和 <code>APP Key</code></h3>
 <p>请先登录或注册 LeanCloud, 进入控制台后点击左下角创建应用：
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102145-2019-9-3.png" alt="20190903102145-2019-9-3.png" /></p>
 
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102145-2019-9-3.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102145-2019-9-3.png" alt="20190903102145-2019-9-3.png" /></a>
+</span>
+
+</span></p>
 <p>应用创建好以后，进入刚刚创建的应用，选择左下角的设置&gt;应用Key，然后就能看到你的APP ID和APP Key了：
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102220-2019-9-3.png" alt="20190903102220-2019-9-3.png" /></p>
 
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102220-2019-9-3.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102220-2019-9-3.png" alt="20190903102220-2019-9-3.png" /></a>
+</span>
+
+</span></p>
 <p>因为评论和文章阅读数统计依赖于存储，所以还需要建立两个新的存储 Class，左边栏找到并点击 存储，点击 创建Class:
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102316-2019-9-3.png" alt="20190903102316-2019-9-3.png" /></p>
 
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102316-2019-9-3.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102316-2019-9-3.png" alt="20190903102316-2019-9-3.png" /></a>
+</span>
+
+</span></p>
 <p>创建两个存储Class，分别命名为: Counter 和 Comment;
 还需要为应用添加安全域名，左边栏点击 设置，找到 安全中心，点击后会看到 安全域名 设置框，输入博客使用的域名，点击保存即可：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102401-2019-9-3.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102401-2019-9-3.png" alt="20190903102401-2019-9-3.png" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20190903102401-2019-9-3.png" alt="20190903102401-2019-9-3.png" /></p>
-
-<h3 id="config-toml添加参数">config.toml添加参数</h3>
-
+</span></p>
+<h3 id="configtoml添加参数">config.toml添加参数</h3>
 <p>为了使配置更灵活，将 Valine 中大部分初始化参数项均设置为配置文件中的参数项，在 config.toml 的适当位置，比如我的文件中 [params.gitment] 的下面：</p>
-
-<pre><code class="language-json"># Valine.
-# You can get your appid and appkey from https://leancloud.cn
-# more info please open https://valine.js.org
-[params.valine]
-  enable = true
-  appId = '你的appId'
-  appKey = '你的appKey'
-  notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
-  verify = false # Verification code
-  avatar = 'mm' 
-  placeholder = '说点什么吧...'
-  visitor = true
-</code></pre>
-
-<p>上面几项内容的含义，这里简单一说，具体还是要看 Valine官网中配置相关的内容：</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">Valine.</span>
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">You</span> <span style="color:#960050;background-color:#1e0010">can</span> <span style="color:#960050;background-color:#1e0010">get</span> <span style="color:#960050;background-color:#1e0010">your</span> <span style="color:#960050;background-color:#1e0010">appid</span> <span style="color:#960050;background-color:#1e0010">and</span> <span style="color:#960050;background-color:#1e0010">appkey</span> <span style="color:#960050;background-color:#1e0010">from</span> <span style="color:#960050;background-color:#1e0010">https://leancloud.cn</span>
+<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">more</span> <span style="color:#960050;background-color:#1e0010">info</span> <span style="color:#960050;background-color:#1e0010">please</span> <span style="color:#960050;background-color:#1e0010">open</span> <span style="color:#960050;background-color:#1e0010">https://valine.js.org</span>
+[<span style="color:#960050;background-color:#1e0010">params.valine</span>]
+  <span style="color:#960050;background-color:#1e0010">enable</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#66d9ef">true</span>
+  <span style="color:#960050;background-color:#1e0010">appId</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">&#39;你的appId&#39;</span>
+  <span style="color:#960050;background-color:#1e0010">appKey</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">&#39;你的appKey&#39;</span>
+  <span style="color:#960050;background-color:#1e0010">notify</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#66d9ef">false</span>  <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">mail</span> <span style="color:#960050;background-color:#1e0010">notifier</span> <span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#960050;background-color:#1e0010">https://github.com/xCss/Valine/wiki</span>
+  <span style="color:#960050;background-color:#1e0010">verify</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#66d9ef">false</span> <span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#960050;background-color:#1e0010">Verification</span> <span style="color:#960050;background-color:#1e0010">code</span>
+  <span style="color:#960050;background-color:#1e0010">avatar</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">&#39;mm&#39;</span> 
+  <span style="color:#960050;background-color:#1e0010">placeholder</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#960050;background-color:#1e0010">&#39;说点什么吧...&#39;</span>
+  <span style="color:#960050;background-color:#1e0010">visitor</span> <span style="color:#960050;background-color:#1e0010">=</span> <span style="color:#66d9ef">true</span>
+</code></pre></div><p>上面几项内容的含义，这里简单一说，具体还是要看 Valine官网中配置相关的内容：</p>
 <table>
 <thead>
 <tr>
@@ -377,81 +403,79 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
 <th align="left">用途</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>enable</td>
 <td align="left">这是用于主题中配置的，不是官方Valine的参数，true时控制开启此评论系统</td>
 </tr>
-
 <tr>
 <td>appId</td>
 <td align="left">这是在 leancloud 后台应用中获取的，也就是上面提到的 App ID</td>
 </tr>
-
 <tr>
 <td>appKey</td>
 <td align="left">这是在 leancloud 后台应用中获取的，也就是上面提到的 App Key</td>
 </tr>
-
 <tr>
 <td>notify</td>
 <td align="left">用于控制是否开启邮件通知功能，具体参考邮件提醒配置</td>
 </tr>
-
 <tr>
 <td>verify</td>
 <td align="left">用于控制是否开启评论验证码功能</td>
 </tr>
-
 <tr>
 <td>avatar</td>
 <td align="left">用于配置评论项中用户头像样式，有多种选择：mm, identicon, monsterid, wavatar, retro, hide。详细参考：头像配置</td>
 </tr>
-
 <tr>
 <td>placehoder</td>
 <td align="left">评论框的提示符</td>
 </tr>
-
 <tr>
 <td>visitor</td>
 <td align="left">控制是否开启文章阅读数的统计功能i, 详情阅读文章阅读数统计</td>
 </tr>
 </tbody>
 </table>
-
 <h3 id="修改主题文件">修改主题文件</h3>
-
 <p><code>themes/tranquilpeak_0.47beta/layouts/_default/single.html</code>文件，将以下代码插入到第42行的位置：</p>
-
-<pre><code class="language-html">          {{- if .Site.Params.valine.enable -}}
-          &lt;!-- id 将作为查询条件 --&gt;
-          &lt;span id=&quot;{{ .URL | relURL }}/&quot; class=&quot;leancloud_visitors&quot; data-flag-title=&quot;{{ .Title }}&quot;&gt;
-            &lt;span class=&quot;post-meta-item-text&quot;&gt;文章阅读量 &lt;/span&gt;
-            &lt;span class=&quot;leancloud-visitors-count&quot;&gt;1000000&lt;/span&gt;
-            &lt;p&gt;&lt;/p&gt;
-          &lt;/span&gt;
-          &lt;div id=&quot;vcomments&quot;&gt;&lt;/div&gt;
-          &lt;script src=&quot;//cdn1.lncld.net/static/js/3.0.4/av-min.js&quot;&gt;&lt;/script&gt;
-          &lt;script src='//unpkg.com/valine/dist/Valine.min.js'&gt;&lt;/script&gt;
-          &lt;script type=&quot;text/javascript&quot;&gt;
-            new Valine({
-              el: '#vcomments',
-              appId: '{{ .Site.Params.valine.appId }}',
-              appKey: '{{ .Site.Params.valine.appKey }}',
-              notify: '{{ .Site.Params.valine.notify }}',
-              verify: '{{ .Site.Params.valine.verify }}',
-              avatar: '{{ .Site.Params.valine.avatar }}',
-              placeholder: '{{ .Site.Params.valine.placeholder }}',
-              visitor: '{{ .Site.Params.valine.visitor }}'
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">          {{- if .Site.Params.valine.enable -}}
+          <span style="color:#75715e">&lt;!-- id 将作为查询条件 --&gt;</span>
+          &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .URL | relURL }}/&#34;</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;leancloud_visitors&#34;</span> <span style="color:#a6e22e">data-flag-title</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;{{ .Title }}&#34;</span>&gt;
+            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-meta-item-text&#34;</span>&gt;文章阅读量 &lt;/<span style="color:#f92672">span</span>&gt;
+            &lt;<span style="color:#f92672">span</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;leancloud-visitors-count&#34;</span>&gt;1000000&lt;/<span style="color:#f92672">span</span>&gt;
+            &lt;<span style="color:#f92672">p</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+          &lt;/<span style="color:#f92672">span</span>&gt;
+          &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;vcomments&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+          &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//cdn1.lncld.net/static/js/3.0.4/av-min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+          &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;//unpkg.com/valine/dist/Valine.min.js&#39;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+          &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+            <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Valine</span>({
+              <span style="color:#a6e22e">el</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;#vcomments&#39;</span>,
+              <span style="color:#a6e22e">appId</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{{ .Site.Params.valine.appId }}&#39;</span>,
+              <span style="color:#a6e22e">appKey</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{{ .Site.Params.valine.appKey }}&#39;</span>,
+              <span style="color:#a6e22e">notify</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{{ .Site.Params.valine.notify }}&#39;</span>,
+              <span style="color:#a6e22e">verify</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{{ .Site.Params.valine.verify }}&#39;</span>,
+              <span style="color:#a6e22e">avatar</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{{ .Site.Params.valine.avatar }}&#39;</span>,
+              <span style="color:#a6e22e">placeholder</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{{ .Site.Params.valine.placeholder }}&#39;</span>,
+              <span style="color:#a6e22e">visitor</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;{{ .Site.Params.valine.visitor }}&#39;</span>
             });
-          &lt;/script&gt;
+          &lt;/<span style="color:#f92672">script</span>&gt;
           {{- end }}
-</code></pre>
-
+</code></pre></div>
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0903100406/>Tranquilpeak主题修复高亮代码_增加valing评论</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-09-03<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0903100406/ target="_blank" >https://3mile.github.io/archives/2019/0903100406/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -474,7 +498,7 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -519,24 +543,6 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0903100406/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0903100406/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0903100406/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -555,9 +561,11 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -595,24 +603,6 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0903100406/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0903100406/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0903100406/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -631,24 +621,6 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0903100406%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0903100406%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0903100406%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -664,7 +636,7 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -692,18 +664,28 @@ Valine 诞生于2017年8月7日，是一款基于Leancloud的快速、简洁且�
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

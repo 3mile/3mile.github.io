@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="新晋 Windows 终端模拟器： Windows Terminal，自发布以来就备受开发者的喜爱，并与 WSL 一起，让不少先前非 Linux 不用的开发者朋友们向 Windows 倾斜。Windows Terminal 不">
+
+
+<meta property="og:description" content="新晋 Windows 终端模拟器： Windows Terminal，自发布以来就备受开发者的喜爱，并与 WSL 一起，让不少先前非 Linux 不用的开发者朋友们向 Windows 倾斜。Windows Terminal 不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自定义Windows Terminal">
+<meta name="twitter:title" content="自定义Windows Terminal">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/0404123406/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/0404123406/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="新晋 Windows 终端模拟器： Windows Terminal，自发布以来就备受开发者的喜爱，并与 WSL 一起，让不少先前非 Linux 不用的开发者朋友们向 Windows 倾斜。Windows Terminal 不">
+<meta name="twitter:description" content="新晋 Windows 终端模拟器： Windows Terminal，自发布以来就备受开发者的喜爱，并与 WSL 一起，让不少先前非 Linux 不用的开发者朋友们向 Windows 倾斜。Windows Terminal 不">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-04-04T12:34:06">
+  
+  
+    <meta property="article:modified_time" content="2020-04-04T12:34:06">
+  
+  
+  
+    
+      <meta property="article:section" content="Terminal">
+    
+  
+  
+    
+      <meta property="article:tag" content="Terminal">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/backgroup-2020-04-04.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/backgroup-2020-04-04.jpg">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/7.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/7.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>自定义Windows Terminal</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/0404123406/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/7.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      自定义Windows Terminal
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-04T12:34:06&#43;08:00">
+        
+  
+  
+  
+  
+    2020-04-04
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/terminal">Terminal</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#windows-terminal-的配置文件">Windows Terminal 的配置文件</a></li>
+    <li><a href="#在配置文件中对-windows-terminal-进行自定义">在配置文件中对 Windows Terminal 进行自定义</a>
+      <ul>
+        <li><a href="#全局属性的配置">全局属性的配置</a></li>
+        <li><a href="#设置-windows-terminal-的环境入口">设置 Windows Terminal 的环境入口</a>
+          <ul>
+            <li><a href="#自定义某一个环境的配置">自定义某一个环境的配置</a></li>
+            <li><a href="#启动环境时自动运行命令">启动环境时自动运行命令</a></li>
+          </ul>
+        </li>
+        <li><a href="#添加额外的配色主题">添加额外的配色主题</a></li>
+        <li><a href="#自定义-windows-terminal-的快捷键">自定义 Windows Terminal 的快捷键</a></li>
+      </ul>
+    </li>
+    <li><a href="#如何更快地进入工作环境">如何更快地进入工作环境</a></li>
+    <li><a href="#小结">小结</a></li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>新晋 Windows 终端模拟器：
+
+<a href="https://www.microsoft.com/zh-cn/p/windows-terminal-preview/9n0dx20hk701"  target="_blank">Windows Terminal</a>，自发布以来就备受开发者的喜爱，并与 <em>WSL</em> 一起，让不少先前非 Linux 不用的开发者朋友们向 Windows 倾斜。Windows Terminal 不仅开源免费，还拥有现代化的界面、完整的字体字符渲染机制（包括 Emoji）、GPU 加速和 Fluent 设计风格。这些都让 Windows Terminal 成为 Windows 平台最先进的终端模拟器，力压一众第三方终端以及 Windows 自带的默认终端。
+
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20200404123608-2020-04-04.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20200404123608-2020-04-04.png" alt="20200404123608-2020-04-04" /></a>
+</span>
+
+</span></p>
+<p>事实上，Windows Terminal 不仅速度快、设计美，还有众多可自定义的 UI 元素、快捷键与实用功能。这篇文章中，我希望在 Windows Terminal 1.0 发布的前夕，详细介绍一下 Windows Terminal 的设置与自定义方法，并和大家分享一些让 Windows Terminal 实用且美丽起来的小技巧。</p>
+<h2 id="windows-terminal-的配置文件">Windows Terminal 的配置文件</h2>
+<p>首先，我们进入 Windows Terminal 的设置文件。在 Windows Terminal 的下拉菜单中，选择 Settings（或使用快捷键 <code>Ctrl + ,</code>），这一操作会使用你系统默认的文本编辑器打开 Windows Terminal 的配置文件。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20200404123834-2020-04-04.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20200404123834-2020-04-04.png" alt="点击 Settings 进入 Windows Terminal 的设置" /></a>
+</span>
+
+</span></p>
+<p>Windows Terminal 的配置文件是一个 JSON 格式的文件，我们会在其中定义全部 Windows Terminal 的属性。简单来讲，这个配置文件包含了如下的几个部分：</p>
+<ul>
+<li><strong>全局属性</strong>：位于 JSON 最外侧，包含有设置亮暗主题、默认 Profile 等项目的配置。</li>
+<li><strong>环境入口 <code>profiles</code></strong>：一个列表，其中包含有 Windows Terminal 下拉菜单中唤起的各种环境（比如打开 PowerShell 环境、WSL 环境或 SSH 至远程服务器的环境……）与各种环境里 Windows Terminal 的显示方案（比如字体、背景、色彩方案等）。</li>
+<li><strong>配色主题 <code>schemes</code></strong>：一个配色方案列表，其中包含有 Windows Terminal 在上一项「环境入口」中可以调用的「色彩主题」。</li>
+<li><strong>快捷键绑定 <code>keybindings</code></strong>：自定义快捷键。</li>
+</ul>
+<p>Windows Terminal: profiles.json 配置文件的格式</p>
+<p>熟悉了 Windows Terminal 配置文件的各项含义之后，我们即可开始对 Windows Terminal 的各项属性进行配置。</p>
+<h2 id="在配置文件中对-windows-terminal-进行自定义">在配置文件中对 Windows Terminal 进行自定义</h2>
+<h3 id="全局属性的配置">全局属性的配置</h3>
+<p>设置 Windows Terminal 从设置其全局属性开始，也就是它的配置文件 <code>profiles.json</code> 里面最开始的部分。在这里我们可以定义：</p>
+<ul>
+<li>
+<p>Terminal 亮暗主题设置 <code>&quot;requestedTheme&quot;</code>：可以为 <code>&quot;system&quot;</code>（跟随系统）、<code>&quot;light&quot;</code> 或 <code>&quot;dark&quot;</code></p>
+</li>
+<li>
+<p>Terminal 初始大小：<code>&quot;initialCols&quot;</code> 和 <code>&quot;initialRows&quot;</code></p>
+</li>
+<li>
+<p>Terminal 的默认配置文件：设置打开自动进入的环境（通过 GUID 唯一标识码来识别环境）</p>
+</li>
+<li>
+<p>……</p>
+</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">    <span style="color:#e6db74">&#34;defaultProfile&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#e6db74">&#34;initialCols&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">120</span><span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#e6db74">&#34;initialRows&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">50</span><span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#e6db74">&#34;requestedTheme&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;system&#34;</span><span style="color:#960050;background-color:#1e0010">,</span>
+    <span style="color:#e6db74">&#34;keybindings&#34;</span> <span style="color:#960050;background-color:#1e0010">:</span> []
+    <span style="color:#960050;background-color:#1e0010">...</span>
+</code></pre></div><p>之后，就是三个包含二级设置项目：「环境入口」、「配色主题」和「快捷键绑定」的设置。我们依次进行介绍。</p>
+<h3 id="设置-windows-terminal-的环境入口">设置 Windows Terminal 的环境入口</h3>
+<p>下拉菜单是 Windows Terminal 唤起各个环境的入口。我们通过点击「下拉菜单」的各个选项，即可唤起不同的 Windows Terminal 环境。</p>
+<p>默认情况下，Windows Terminal 已经为我们配置了本机安装的全部命令行环境：包括 PowerShell 环境、cmd 环境以及自家云服务 Azure Cloud Shell 入口。如果你安装了 WSL（Windows Subsystem for Linux），那么 Windows Terminal 也同样将这一环境自动探测并添加。这些环境，就是 Windows Terminal 配置文件中 <code>&quot;profiles&quot;</code> 属性列表里面的内容，我们同样可以在这一列表中：</p>
+<ul>
+<li>自定义某一环境的性质</li>
+<li>添加我们自己的环境或命令</li>
+</ul>
+<h4 id="自定义某一个环境的配置">自定义某一个环境的配置</h4>
+<p>Windows Terminal 的环境配置中可以设置其调用命令（<code>commandline</code>）、字体（<code>fontFace</code>）、颜色方案（<code>colorScheme</code>）、背景颜色（<code>background</code>）与背景图片（<code>backgroundImage</code>）等等。这里我想重点介绍一下为 Windows Terminal 一个特定环境的背景进行设置的方法。</p>
+<p>Windows Terminal 的背景可以是一个纯色，<strong>也可以是一张高清壁纸、GIF 动图等等</strong>。如果是纯色的背景，在未经设置的情况下这一颜色与你环境所定义的配色方案的颜色一致，你也可以通过控制 <code>background</code> 这一属性来更换颜色。比如这里我想让 PowerShell 的背景带有一抹独特的「蓝色」，即可这一进行设置：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#e6db74">&#34;    {
+</span><span style="color:#e6db74">      // Make changes here to the cmd.exe profile
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">closeOnExit</span><span style="color:#e6db74">&#34;: true,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">colorScheme</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">Campbell</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">cursorColor</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">#FFFFFF</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">cursorShape</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">bar</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">historySize</span><span style="color:#e6db74">&#34;: 9001,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">icon</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">ms-appx:///ProfileIcons/</span>{<span style="color:#960050;background-color:#1e0010">0caa0dad-35be-5f56-a8ff-afceeeaa6101</span>}<span style="color:#960050;background-color:#1e0010">.png</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">guid</span><span style="color:#e6db74">&#34;: &#34;</span>{<span style="color:#960050;background-color:#1e0010">0caa0dad-35be-5f56-a8ff-afceeeaa6101</span>}<span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">name</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">cmd</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">fontFace</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">Sarasa</span> <span style="color:#960050;background-color:#1e0010">Mono</span> <span style="color:#960050;background-color:#1e0010">T</span> <span style="color:#960050;background-color:#1e0010">SC</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">fontSize</span><span style="color:#e6db74">&#34;: 12,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">commandline</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">cmd.exe</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">hidden</span><span style="color:#e6db74">&#34;: false,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">padding</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#ae81ff">0</span><span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#ae81ff">0</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">backgroundImage</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">C://Users//name//Pictures//Saved</span> <span style="color:#960050;background-color:#1e0010">Pictures//the-fog</span><span style="color:#ae81ff">-4909513</span><span style="color:#960050;background-color:#1e0010">_</span><span style="color:#ae81ff">1920</span><span style="color:#960050;background-color:#1e0010">.jpg</span><span style="color:#e6db74">&#34;,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">snapOnInput</span><span style="color:#e6db74">&#34;: true,
+</span><span style="color:#e6db74">      &#34;</span><span style="color:#960050;background-color:#1e0010">startingDirectory</span><span style="color:#e6db74">&#34;: &#34;</span><span style="color:#960050;background-color:#1e0010">%USERPROFILE%</span><span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">      //&#34;</span><span style="color:#960050;background-color:#1e0010">useAcrylic</span><span style="color:#e6db74">&#34;: true,
+</span><span style="color:#e6db74">      //&#34;</span><span style="color:#960050;background-color:#1e0010">acrylicOpacity&#34;:</span> <span style="color:#ae81ff">0.25</span>
+    <span style="color:#960050;background-color:#1e0010">},</span>
+</code></pre></div><p>其中：</p>
+<ul>
+<li><code>&quot;background&quot;</code> 与后面的 HEX 颜色即定义了背景颜色</li>
+<li><code>&quot;useAcrylic&quot;</code> 表示我们背景会添加 Windows Fluent 设计风格的亚克力着色</li>
+<li><code>&quot;acrylicOpacity&quot;</code> 定义了亚克力效果的透明度</li>
+</ul>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/Snipaste_2020-04-04_13-29-13-2020-04-04.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/Snipaste_2020-04-04_13-29-13-2020-04-04.jpg" alt="cmd" /></a>
+</span>
+
+</span></p>
+<p>当然，背景的设置不止步于此，我们可以直接一张图片作为 Windows Terminal 的背景，不仅可以用于装饰，还可以用于提醒我们当前所在环境。</p>
+<p>首先我们需要进入 Windows Terminal 的素材文件夹，也就是 Windows Terminal 安装目录 <code>C:\Users\{用户名}\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe</code> 里面的 <strong><code>RoamingState</code> 这一文件夹</strong>，将挑选好的「壁纸」背景放入其中，并记下其文件名。比如，这里我挑选了一张非常有 Windows 特色的壁纸（下载：
+
+<a href="https://wallpaperhub.app/wallpapers/6277"  target="_blank">Untitled Goose Wallpaper</a>），将之命名为 <code>goose.png</code>：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href=":/97efd0a44dbb4730a1c6397467e4c6ab"><img class="img" src=":/97efd0a44dbb4730a1c6397467e4c6ab" alt="Windows 特色桌面壁纸" /></a>
+</span>
+
+</span></p>
+<p>Windows 特色桌面壁纸</p>
+<p>之后，在 Windows Terminal PowerShell 的配置模块，我们加入如下的内容，依次定义：</p>
+<ul>
+<li><code>&quot;backgroundImage&quot;</code>：设置背景图片为 <code>goose.png</code>，具体素材路径的语法格式为 <code>ms-appdata:///roaming/{图片名}</code></li>
+<li><code>&quot;backgroundImageStretchMode&quot;</code>：设置背景图片伸缩模式为「按比例放大」</li>
+<li><code>&quot;backgroundImageOpacity&quot;</code>：设置背景图片透明度为 0.6</li>
+</ul>
+<pre><code>{
+    &quot;backgroundImage&quot;: &quot;ms-appdata:///roaming/goose.png&quot;,
+    &quot;backgroundImageStretchMode&quot;: &quot;uniformToFill&quot;,
+    &quot;backgroundImageOpacity&quot;: 0.6
+}
+
+</code></pre><p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/backgroup-2020-04-04.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/backgroup-2020-04-04.jpg" alt="backgroup-2020-04-04" /></a>
+</span>
+
+</span></p>
+<p>这样，我们就得到了一个非常 Windows 风格的 wsl 终端环境：</p>
+<p>当然，我们同样可以为其他环境配置相应的背景图案。为 Windows Terminal 的环境设置背景，还可以提示我们当前所处的位置，防止在生产环境做出错误的操作等。</p>
+<h4 id="启动环境时自动运行命令">启动环境时自动运行命令</h4>
+<p>Windows Terminal 唤起环境时，实际上是通过执行环境入口配置里面 <code>commandline</code> 这一属性所定义的命令，来进入相应的环境。**那么，我们可以在点击 Windows Terminal 下拉菜单唤起一个环境时，执行我们自定义的一个命令。**这一命令可以是 SSH 登录远程服务器，可以是调用其他系统环境（比如 Anaconda 环境）等等。我们以 SSH 远程登录为例子，具体介绍如何利用 <code>commandline</code> 这一属性。</p>
+<p>默认最简单的环境就是 Windows Terminal 的 cmd 环境了，其 profile 定义为：</p>
+<pre><code>{
+    // Make changes here to the cmd.exe profile
+    &quot;guid&quot;: &quot;{0caa0dad-35be-5f56-a8ff-afceeeaa6101}&quot;,
+    &quot;name&quot;: &quot;cmd&quot;,
+    &quot;commandline&quot;: &quot;cmd.exe&quot;
+}
+
+</code></pre><p>可以看到，事实上这一环境仅定义了 <code>&quot;commandline&quot;: &quot;cmd.exe&quot;</code>，也就是在 Windows Terminal 唤起环境时执行 <code>cmd.exe</code> 这一命令，从而自动进入 cmd 环境。于是，我们只要添加一个执行 SSH 登录服务器的命令的环境配置，即可自动进入远程服务器环境。比如，我们登录服务器的命令是非常简单的：</p>
+<pre><code>ssh root@10.0.0.1
+
+</code></pre><p>即：在 PowerShell 环境下，执行上述命令，以 root 身份登录内网 IP 为 10.0.0.12 的服务器（手动输入密码）。那么我们即可这样添加执行这一命令的 Windows Terminal 环境入口：</p>
+<ul>
+<li>
+<p>使用 
+
+<a href="https://www.uuidgenerator.net/"  target="_blank">在线 UUID 生成器</a> 生成独一无二的 UUID：
+
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/faed67e9db9d48048938824c2eb2b355-2020-04-04.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/faed67e9db9d48048938824c2eb2b355-2020-04-04.png" alt="faed67e9db9d48048938824c2eb2b355-2020-04-04" /></a>
+</span>
+
+</span></p>
+</li>
+<li>
+<p>在 <code>&quot;profiles&quot;</code> 列表中新建一个最简的环境入口配置，填写 UUID、环境名称、以及具体命令（注意这里我们需要指定用 <code>powershell.exe</code>，否则可能默认使用 cmd 环境）：</p>
+<pre><code>{
+  &quot;guid&quot;: &quot;{a060905f-d089-43d9-9422-cd748e7f0230}&quot;,
+  &quot;name&quot;: &quot;SSH&quot;,
+  &quot;commandline&quot;: &quot;powershell.exe ssh root@10.0.0.1&quot;
+}
+    
+</code></pre></li>
+<li>
+<p>为了更加美观实用，我们还可以添加一个图标。我事先准备了一个 GPU 的图标并将之命名为 <code>gpu.png</code>（因为我这台内网服务器是学校训练用的 GPU 服务器），将图标同样放置在 Windows Terminal 素材文件夹 <code>RoamingState</code> 里，并向刚刚创建的环境入口配置中填入图标的定义：</p>
+<pre><code>{
+  &quot;icon&quot;: &quot;ms-appdata:///roaming/gpu.png&quot;
+}
+    
+</code></pre></li>
+</ul>
+<p>这样，我们就可以直接唤起这一命令，执行 SSH 登录，进入远程服务器环境。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/%e7%9b%b4%e6%8e%a5%e7%82%b9%e5%87%bb%e6%a0%87%e7%ad%be%e9%a1%b5%e5%8d%b3%e5%8f%af%e6%89%a7%e8%a1%8c%e7%9b%b8%e5%ba%94%e7%9a%84%e7%99%bb%e5%bd%95%e5%91%bd%e4%bb%a4-2020-04-04.gif"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/%e7%9b%b4%e6%8e%a5%e7%82%b9%e5%87%bb%e6%a0%87%e7%ad%be%e9%a1%b5%e5%8d%b3%e5%8f%af%e6%89%a7%e8%a1%8c%e7%9b%b8%e5%ba%94%e7%9a%84%e7%99%bb%e5%bd%95%e5%91%bd%e4%bb%a4-2020-04-04.gif" alt="直接点击标签页即可执行相应的登录命令-2020-04-04" /></a>
+</span>
+
+</span></p>
+<p>想要寻找更多图标的同学，可以在 
+
+<a href="https://icons8.com/"  target="_blank">icons8</a>、
+
+<a href="https://www.iconfont.cn/"  target="_blank">iconfont</a> 等网站上进行搜索，特别是 icons8 的图标，非常精致，且同一类别风格一致，96px 的尺寸也足够用于 Windows Terminal 上，推荐大家使用！</p>
+<p>另外，如果你日常使用的环境是 WSL 环境并使用 mosh 进行 SSH 登录（因为 mosh 并不支持 Windows），你同样可以在 <code>commandline</code> 一处将命令设置为：</p>
+<pre><code>{
+    &quot;commandline&quot;: &quot;wsl.exe mosh root@10.0.0.1&quot;
+}
+
+</code></pre><p>这样依然可以正常执行相应的操作：进入 WSL 环境 » 执行 Linux 独占工具。</p>
+<h3 id="添加额外的配色主题">添加额外的配色主题</h3>
+<p>Windows Terminal 的色彩主题同样是 JSON 文件，我们可以在上文介绍的 <code>profiles.json</code> 文件的 <code>schemes</code> 属性处，添加自定义的色彩主题。可能是全网最丰富的终端配色方案集合：
+
+<a href="https://github.com/mbadolato/iTerm2-Color-Schemes"  target="_blank">iTerm2 Color Schemes</a>，就包含有为 Windows Terminal 提供的 200 余中色彩方案，位于 
+
+<a href="https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/windowsterminal"  target="_blank"><code>windowsterminal</code></a> 文件夹中。（主题的样式预览可以在 
+
+<a href="https://iterm2colorschemes.com/"  target="_blank">iTerm2 Color Scheme 的官网</a> 查看。）</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/Terminal-2020-04-04.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/Terminal-2020-04-04.png" alt="Terminal-2020-04-04" /></a>
+</span>
+
+</span></p>
+<p>iTerm2 Color Scheme 项目中的 Windows Terminal 主题均为独立的 JSON 文件，我们挑选好想要添加的主题之后，点击打开对应的主题文件，复制整个 JSON 文件的内容，并粘贴到 Windows Terminal 的配置文件的 <code>schemes</code> 主题文件列表之中，即可使用这一色彩主题。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20200404141206-2020-04-04.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20200404141206-2020-04-04.png" alt="将色彩主题的 JSON 内容粘贴到 schemes 属性之中" /></a>
+</span>
+
+</span></p>
+<p>之后，我们在 Windows Terminal 配置文件里各个环境入口的配置中，定义使用相应的「色彩主题」，即可让这一环境的配色方案生效：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20200404141323-2020-04-04.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/20200404141323-2020-04-04.png" alt="定义一个 profile 使用的配色主题" /></a>
+</span>
+
+</span></p>
+<h3 id="自定义-windows-terminal-的快捷键">自定义 Windows Terminal 的快捷键</h3>
+<p>在 Windows Terminal 的配置文件末尾，我们可以在 <code>&quot;keybindings&quot;: []</code> 里定义其快捷键绑定。默认的 Windows Terminal 快捷键实际上就非常好用，可以用来快速开启某个环境、实施分屏操作等。这里举几个比较典型的、无需设置即可使用的例子：</p>
+<ul>
+<li><code>Ctrl + Shift + T</code> 打开新标签页</li>
+<li><code>Ctrl + Shift + 1</code> 进入配置文件中定义的第一个环境（<code>Ctrl + Shift + 2</code> 进入第二个，以此类推）</li>
+<li><code>Alt + Shift + -</code> 横向分屏；<code>Alt + Shift + +</code> 纵向分屏</li>
+<li><code>Ctrl + +</code> 放大、<code>Ctrl + -</code> 缩小、<code>Ctrl + 0</code> 恢复默认缩放比例</li>
+<li>……</li>
+</ul>
+<p>我们可以在按住 <code>Alt</code> 的时候，点击 Windows Terminal 下拉菜单的「设置」，进入 Windows Terminal 自动生成的默认配置文件（不要更改这一文件，更改也不会有用的！）。在文件的最后，有 Windows Terminal 默认快捷键绑定可以参考：</p>
+<h2 id="如何更快地进入工作环境">如何更快地进入工作环境</h2>
+<p>从 
+
+<a href="https://devblogs.microsoft.com/commandline/windows-terminal-preview-v0-9-release/"  target="_blank">Windows Terminal v0.9</a> 版本开始，Windows Terminal 支持了「命令行参数」。也就是说，我们现在可以用 <code>wt -xxx</code> 的命令来唤起 Windows Terminal 打开不同的环境、进入特定的目录，设置直接设置分屏、同时打开多个标签页等。</p>
+<p>举几个比较常用的「命令行参数」的例子：</p>
+<ul>
+<li>
+<p>在当前路径下进入默认的 Windows Terminal 环境：</p>
+<pre><code>wt -d .
+    
+</code></pre></li>
+<li>
+<p>使用名为 <code>Ubuntu</code> 的 WSL 环境打开当前路径：</p>
+<pre><code>wt -p &quot;Ubuntu&quot; -d .
+    
+</code></pre></li>
+<li>
+<p>垂直分屏打开 PowerShell 与 WSL 环境：</p>
+<pre><code>wt -p &quot;Windows PowerShell&quot; -d . ; split-pane -V -p &quot;Ubuntu&quot; -d .
+    
+</code></pre></li>
+</ul>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/8b24bcd17c0e46a687c72e6acce84491-2020-04-04.gif"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/8b24bcd17c0e46a687c72e6acce84491-2020-04-04.gif" alt="使用「命令行参数」唤起 Windows Terminal 的特定环境" /></a>
+</span>
+
+</span></p>
+<p>注：完整的 Windows Terminal 命令行参数文档位于 
+
+<a href="https://github.com/microsoft/terminal/blob/master/doc/user-docs/UsingCommandlineArguments.md"  target="_blank">Using the <code>wt.exe</code> Commandline</a></p>
+<p>你可能也发现了，上面的命令有时候并不简单，进入一个环境可能需要重复手动输入复杂的指令。那么，如何才能更快速的唤起某个 Windows Terminal 状态呢？</p>
+<p>我们都知道 Windows「右键菜单」的快捷之处：快速在 Windows 自带终端中打开当前目录、快速创建文件夹、快速批量压缩文件……Windows 终极效率利器 Quicker，就是利用「右键菜单」的思想，设计了「全局右键菜单」。</p>
+<p><strong>关联阅读：</strong>
+
+<a href="https://sspai.com/post/55382"  target="_blank">Windows 平台的快捷指令：Quicker 使用详解</a></p>
+<p>利用 Quicker，我们就可以<strong>把 Windows Terminal 命令放进右键菜单里</strong>。下面我以「在当前目录下打开 Windows Terminal 的默认环境」这个动作为例子，为大家介绍如何使用 Quicker 自定义打开 Windows Terminal 的方式。</p>
+<p>实际上，从 Quicker 唤起 Windows Terminal 就是使用 Quicker 在当前文件夹下执行这一命令：</p>
+<pre><code>wt -d .
+
+</code></pre><h2 id="小结">小结</h2>
+<p>Windows Terminal 当属 Windows 上第一个兼顾速度、界面与可定制性的终端模拟器。作为微软自家出品的 Windows 终端软件，「亲儿子」的待遇和体验就是不一般。Windows Terminal 的出现可以说是直接拯救了多年来糟糕的 Windows 命令行体验，让 Windows 在命令行环境下的操作感受能够和他 UNIX 的朋友们比一比。相信，在接下来的版本迭代中，Windows Terminal 会随着设置 UI 界面化、插件系统的加入……而越来越强大。希望这篇文章能够让你重新体验到 Windows 命令行环境的强大，提升在 Windows 上的工作、开发效率。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">To</span> <span style="color:#960050;background-color:#1e0010">view</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">default</span> <span style="color:#960050;background-color:#1e0010">settings,</span> <span style="color:#960050;background-color:#1e0010">hold</span> <span style="color:#e6db74">&#34;alt&#34;</span> <span style="color:#960050;background-color:#1e0010">while</span> <span style="color:#960050;background-color:#1e0010">clicking</span> <span style="color:#960050;background-color:#1e0010">on</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#e6db74">&#34;Settings&#34;</span> <span style="color:#960050;background-color:#1e0010">button.</span>
+<span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">For</span> <span style="color:#960050;background-color:#1e0010">documentation</span> <span style="color:#960050;background-color:#1e0010">on</span> <span style="color:#960050;background-color:#1e0010">these</span> <span style="color:#960050;background-color:#1e0010">settings,</span> <span style="color:#960050;background-color:#1e0010">see:</span> <span style="color:#960050;background-color:#1e0010">https://aka.ms/terminal-documentation</span>
+
+{
+  <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;$schema&#34;</span>: <span style="color:#e6db74">&#34;https://aka.ms/terminal-profiles-schema&#34;</span>,
+  <span style="color:#f92672">&#34;$schema&#34;</span>: <span style="color:#e6db74">&#34;https://aka.ms/terminal-profiles-schema&#34;</span>,
+  <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;defaultProfile&#34;</span>: <span style="color:#e6db74">&#34;{61c54bbd-c2c6-5271-96e7-009a87ff44bf}&#34;</span>,
+  <span style="color:#f92672">&#34;defaultProfile&#34;</span>: <span style="color:#e6db74">&#34;{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}&#34;</span>,
+  <span style="color:#f92672">&#34;requestedTheme&#34;</span>: <span style="color:#e6db74">&#34;dark&#34;</span>,
+  <span style="color:#f92672">&#34;profiles&#34;</span>: [
+    {
+      <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Make</span> <span style="color:#960050;background-color:#1e0010">changes</span> <span style="color:#960050;background-color:#1e0010">here</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">powershell.exe</span> <span style="color:#960050;background-color:#1e0010">profile</span>
+      <span style="color:#f92672">&#34;guid&#34;</span>: <span style="color:#e6db74">&#34;{61c54bbd-c2c6-5271-96e7-009a87ff44bf}&#34;</span>,
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Windows PowerShell&#34;</span>,
+      <span style="color:#f92672">&#34;commandline&#34;</span>: <span style="color:#e6db74">&#34;powershell.exe&#34;</span>,
+      <span style="color:#f92672">&#34;colorScheme&#34;</span>: <span style="color:#e6db74">&#34;synthwave-everything&#34;</span>,
+      <span style="color:#f92672">&#34;hidden&#34;</span>: <span style="color:#66d9ef">false</span>
+    },
+    {
+      <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Make</span> <span style="color:#960050;background-color:#1e0010">changes</span> <span style="color:#960050;background-color:#1e0010">here</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">cmd.exe</span> <span style="color:#960050;background-color:#1e0010">profile</span>
+      <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;backgroundImage&#34;</span>: <span style="color:#e6db74">&#34;C://Users//mile3//Pictures//lovewallpaper//IMG_20170414_101214.jpg&#34;</span>,
+      <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;backgroundImageOpacity&#34;</span>: <span style="color:#ae81ff">0.35</span>,
+      <span style="color:#f92672">&#34;closeOnExit&#34;</span>: <span style="color:#66d9ef">true</span>,
+      <span style="color:#f92672">&#34;colorScheme&#34;</span>: <span style="color:#e6db74">&#34;Campbell&#34;</span>,
+      <span style="color:#f92672">&#34;cursorColor&#34;</span>: <span style="color:#e6db74">&#34;#FFFFFF&#34;</span>,
+      <span style="color:#f92672">&#34;cursorShape&#34;</span>: <span style="color:#e6db74">&#34;bar&#34;</span>,
+      <span style="color:#f92672">&#34;historySize&#34;</span>: <span style="color:#ae81ff">9001</span>,
+      <span style="color:#f92672">&#34;icon&#34;</span>: <span style="color:#e6db74">&#34;ms-appx:///ProfileIcons/{0caa0dad-35be-5f56-a8ff-afceeeaa6101}.png&#34;</span>,
+      <span style="color:#f92672">&#34;guid&#34;</span>: <span style="color:#e6db74">&#34;{0caa0dad-35be-5f56-a8ff-afceeeaa6101}&#34;</span>,
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;cmd&#34;</span>,
+      <span style="color:#f92672">&#34;fontFace&#34;</span>: <span style="color:#e6db74">&#34;Sarasa Mono T SC&#34;</span>,
+      <span style="color:#f92672">&#34;fontSize&#34;</span>: <span style="color:#ae81ff">12</span>,
+      <span style="color:#f92672">&#34;commandline&#34;</span>: <span style="color:#e6db74">&#34;cmd.exe&#34;</span>,
+      <span style="color:#f92672">&#34;hidden&#34;</span>: <span style="color:#66d9ef">false</span>,
+      <span style="color:#f92672">&#34;padding&#34;</span>: <span style="color:#e6db74">&#34;0, 0, 0, 0&#34;</span>,
+      <span style="color:#f92672">&#34;backgroundImage&#34;</span>: <span style="color:#e6db74">&#34;C://Users//mile3//Pictures//Saved Pictures//the-fog-4909513_1920.jpg&#34;</span>,
+      <span style="color:#f92672">&#34;snapOnInput&#34;</span>: <span style="color:#66d9ef">true</span>,
+      <span style="color:#f92672">&#34;startingDirectory&#34;</span>: <span style="color:#e6db74">&#34;%USERPROFILE%&#34;</span>
+      <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#e6db74">&#34;useAcrylic&#34;</span>: <span style="color:#66d9ef">true</span>,
+      <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;acrylicOpacity&#34;</span>: <span style="color:#ae81ff">0.25</span>
+    },
+    {
+      <span style="color:#f92672">&#34;guid&#34;</span>: <span style="color:#e6db74">&#34;{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}&#34;</span>,
+      <span style="color:#f92672">&#34;hidden&#34;</span>: <span style="color:#66d9ef">false</span>,
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Ubuntu-18.04&#34;</span>,
+      <span style="color:#f92672">&#34;colorScheme&#34;</span>: <span style="color:#e6db74">&#34;Argonaut&#34;</span>,
+      <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;fontFace&#34;</span>: <span style="color:#e6db74">&#34;Firacode NF&#34;</span>,
+      <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;fontFace&#34;</span>: <span style="color:#e6db74">&#34;UbuntuMono NF&#34;</span>,
+      <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;fontFace&#34;</span>: <span style="color:#e6db74">&#34;DroidSansMono Nerd Font&#34;</span>,<span style="color:#960050;background-color:#1e0010">//用这个字体，图标变大</span>
+      <span style="color:#960050;background-color:#1e0010">//</span><span style="color:#f92672">&#34;fontFace&#34;</span>: <span style="color:#e6db74">&#34;Ubuntu NF&#34;</span>,<span style="color:#960050;background-color:#1e0010">//字距变大，完全不可接受</span>
+      <span style="color:#f92672">&#34;fontFace&#34;</span>: <span style="color:#e6db74">&#34;Firacode NF&#34;</span>,
+      <span style="color:#f92672">&#34;fontSize&#34;</span>: <span style="color:#ae81ff">10</span>,
+      <span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;Windows.Terminal.Wsl&#34;</span>,
+      <span style="color:#f92672">&#34;backgroundImage&#34;</span>: <span style="color:#e6db74">&#34;E://back.jpg&#34;</span>,
+      <span style="color:#f92672">&#34;icon&#34;</span>: <span style="color:#e6db74">&#34;E://谷歌下载//网站图标//Ubuntu.png&#34;</span>,
+      <span style="color:#f92672">&#34;backgroundImageOpacity&#34;</span>: <span style="color:#ae81ff">0.45</span>,
+      <span style="color:#f92672">&#34;startingDirectory&#34;</span>: <span style="color:#e6db74">&#34;.&#34;</span>,
+      <span style="color:#f92672">&#34;tabTitle&#34;</span>: <span style="color:#e6db74">&#34;Ubuntu (WSL)&#34;</span>, <span style="color:#960050;background-color:#1e0010">//标题</span>
+      <span style="color:#f92672">&#34;suppressApplicationTitle&#34;</span>: <span style="color:#66d9ef">true</span> <span style="color:#960050;background-color:#1e0010">//自定义标题这里必须设置，否则还是显示路径</span>
+    },
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;openwrt&#34;</span>,
+      <span style="color:#f92672">&#34;hidden&#34;</span>: <span style="color:#66d9ef">false</span>,
+      <span style="color:#f92672">&#34;guid&#34;</span>: <span style="color:#e6db74">&#34;{22b633da-f3c3-423f-8c34-b7c443c28311}&#34;</span>,
+      <span style="color:#f92672">&#34;colorScheme&#34;</span>: <span style="color:#e6db74">&#34;Snazzy&#34;</span>,
+      <span style="color:#f92672">&#34;fontFace&#34;</span>: <span style="color:#e6db74">&#34;FiraCode NF&#34;</span>,
+      <span style="color:#f92672">&#34;fontSize&#34;</span>: <span style="color:#ae81ff">10</span>,
+      <span style="color:#f92672">&#34;icon&#34;</span>: <span style="color:#e6db74">&#34;E://谷歌下载/网站图标/route.png&#34;</span>,
+      <span style="color:#f92672">&#34;backgroundImage&#34;</span>: <span style="color:#e6db74">&#34;C://Users//mile3//Pictures//Saved Pictures//pexels-photo-370799.jpeg&#34;</span>,
+      <span style="color:#f92672">&#34;backgroundImageOpacity&#34;</span>: <span style="color:#ae81ff">0.45</span>,
+      <span style="color:#f92672">&#34;commandline&#34;</span>: <span style="color:#e6db74">&#34;ssh openwrt&#34;</span>,
+      <span style="color:#f92672">&#34;tabTitle&#34;</span>: <span style="color:#e6db74">&#34;OpenWrt&#34;</span>,
+      <span style="color:#f92672">&#34;suppressApplicationTitle&#34;</span>: <span style="color:#66d9ef">true</span>
+    },
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;搬瓦工&#34;</span>,
+      <span style="color:#f92672">&#34;hidden&#34;</span>: <span style="color:#66d9ef">false</span>,
+      <span style="color:#f92672">&#34;guid&#34;</span>: <span style="color:#e6db74">&#34;{8010e368-e741-498e-bd42-5565160eecd7}&#34;</span>,
+      <span style="color:#f92672">&#34;colorScheme&#34;</span>: <span style="color:#e6db74">&#34;Snazzy&#34;</span>,
+      <span style="color:#f92672">&#34;fontFace&#34;</span>: <span style="color:#e6db74">&#34;FiraCode NF&#34;</span>,
+      <span style="color:#f92672">&#34;fontSize&#34;</span>: <span style="color:#ae81ff">10</span>,
+      <span style="color:#f92672">&#34;icon&#34;</span>: <span style="color:#e6db74">&#34;E://谷歌下载/网站图标/bandwagon1.png&#34;</span>,
+      <span style="color:#f92672">&#34;backgroundImage&#34;</span>: <span style="color:#e6db74">&#34;C://Users//mile3//Pictures//Saved Pictures//abstract-1278052_1920.jpg&#34;</span>,
+      <span style="color:#f92672">&#34;backgroundImageOpacity&#34;</span>: <span style="color:#ae81ff">0.45</span>,
+      <span style="color:#f92672">&#34;commandline&#34;</span>: <span style="color:#e6db74">&#34;ssh 3mile.top&#34;</span>,
+      <span style="color:#f92672">&#34;tabTitle&#34;</span>: <span style="color:#e6db74">&#34;搬瓦工&#34;</span>,
+      <span style="color:#f92672">&#34;suppressApplicationTitle&#34;</span>: <span style="color:#66d9ef">true</span>
+    },
+    {
+      <span style="color:#f92672">&#34;acrylicOpacity&#34;</span> : <span style="color:#ae81ff">0.75</span>,
+      <span style="color:#f92672">&#34;closeOnExit&#34;</span> : <span style="color:#66d9ef">true</span>,
+      <span style="color:#f92672">&#34;colorScheme&#34;</span> : <span style="color:#e6db74">&#34;Snazzy&#34;</span>,
+      <span style="color:#f92672">&#34;commandline&#34;</span> : <span style="color:#e6db74">&#34;\&#34;%PROGRAMFILES%\\git\\usr\\bin\\bash.exe\&#34; -i -l&#34;</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">改为</span> <span style="color:#960050;background-color:#1e0010">bash.exe，在环境变量里面配置了它之前的路径，用绝对路径也应该是可以的</span>
+      <span style="color:#f92672">&#34;cursorColor&#34;</span> : <span style="color:#e6db74">&#34;#FFFFFF&#34;</span>,
+      <span style="color:#f92672">&#34;cursorShape&#34;</span> : <span style="color:#e6db74">&#34;bar&#34;</span>,
+      <span style="color:#f92672">&#34;fontFace&#34;</span> : <span style="color:#e6db74">&#34;Consolas NF&#34;</span>,
+      <span style="color:#f92672">&#34;fontSize&#34;</span> : <span style="color:#ae81ff">10</span>,
+      <span style="color:#f92672">&#34;guid&#34;</span> : <span style="color:#e6db74">&#34;{68fe7d0a-1234-4ff7-a7c9-ceb8ccd51c16}&#34;</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">改一下</span> <span style="color:#960050;background-color:#1e0010">guid，此处我将最后一位改为9</span>
+      <span style="color:#f92672">&#34;historySize&#34;</span> : <span style="color:#ae81ff">9001</span>,
+      <span style="color:#f92672">&#34;icon&#34;</span> : <span style="color:#e6db74">&#34;C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico&#34;</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">git-bash的logo地址</span>
+      <span style="color:#f92672">&#34;name&#34;</span> : <span style="color:#e6db74">&#34;git-bash&#34;</span>, <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">改个名字</span>
+      <span style="color:#f92672">&#34;padding&#34;</span> : <span style="color:#e6db74">&#34;0, 0, 0, 0&#34;</span>,
+      <span style="color:#f92672">&#34;snapOnInput&#34;</span> : <span style="color:#66d9ef">true</span>,
+      <span style="color:#f92672">&#34;startingDirectory&#34;</span> : <span style="color:#e6db74">&#34;%USERPROFILE%&#34;</span>,
+      <span style="color:#f92672">&#34;useAcrylic&#34;</span> : <span style="color:#66d9ef">true</span>,
+      <span style="color:#f92672">&#34;tabTitle&#34;</span>: <span style="color:#e6db74">&#34;Git-Bash&#34;</span>,
+      <span style="color:#f92672">&#34;suppressApplicationTitle&#34;</span>: <span style="color:#66d9ef">true</span>
+  },
+    {
+      <span style="color:#f92672">&#34;guid&#34;</span>: <span style="color:#e6db74">&#34;{b453ae62-4e3d-5e58-b989-0a998ec441b8}&#34;</span>,
+      <span style="color:#f92672">&#34;hidden&#34;</span>: <span style="color:#66d9ef">false</span>,
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Azure Cloud Shell&#34;</span>,
+      <span style="color:#f92672">&#34;source&#34;</span>: <span style="color:#e6db74">&#34;Windows.Terminal.Azure&#34;</span>
+    }
+  ],
+
+  <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Add</span> <span style="color:#960050;background-color:#1e0010">custom</span> <span style="color:#960050;background-color:#1e0010">color</span> <span style="color:#960050;background-color:#1e0010">schemes</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">this</span> <span style="color:#960050;background-color:#1e0010">array</span>
+  <span style="color:#f92672">&#34;schemes&#34;</span>: [
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Campbell&#34;</span>,
+      <span style="color:#f92672">&#34;background&#34;</span>: <span style="color:#e6db74">&#34;#0C0C0C&#34;</span>,
+      <span style="color:#f92672">&#34;black&#34;</span>: <span style="color:#e6db74">&#34;#0C0C0C&#34;</span>,
+      <span style="color:#f92672">&#34;blue&#34;</span>: <span style="color:#e6db74">&#34;#0037DA&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlack&#34;</span>: <span style="color:#e6db74">&#34;#767676&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlue&#34;</span>: <span style="color:#e6db74">&#34;#3B78FF&#34;</span>,
+      <span style="color:#f92672">&#34;brightCyan&#34;</span>: <span style="color:#e6db74">&#34;#61D6D6&#34;</span>,
+      <span style="color:#f92672">&#34;brightGreen&#34;</span>: <span style="color:#e6db74">&#34;#16C60C&#34;</span>,
+      <span style="color:#f92672">&#34;brightPurple&#34;</span>: <span style="color:#e6db74">&#34;#B4009E&#34;</span>,
+      <span style="color:#f92672">&#34;brightRed&#34;</span>: <span style="color:#e6db74">&#34;#E74856&#34;</span>,
+      <span style="color:#f92672">&#34;brightWhite&#34;</span>: <span style="color:#e6db74">&#34;#F2F2F2&#34;</span>,
+      <span style="color:#f92672">&#34;brightYellow&#34;</span>: <span style="color:#e6db74">&#34;#F9F1A5&#34;</span>,
+      <span style="color:#f92672">&#34;cyan&#34;</span>: <span style="color:#e6db74">&#34;#3A96DD&#34;</span>,
+      <span style="color:#f92672">&#34;foreground&#34;</span>: <span style="color:#e6db74">&#34;#CCCCCC&#34;</span>,
+      <span style="color:#f92672">&#34;green&#34;</span>: <span style="color:#e6db74">&#34;#13A10E&#34;</span>,
+      <span style="color:#f92672">&#34;purple&#34;</span>: <span style="color:#e6db74">&#34;#881798&#34;</span>,
+      <span style="color:#f92672">&#34;red&#34;</span>: <span style="color:#e6db74">&#34;#C50F1F&#34;</span>,
+      <span style="color:#f92672">&#34;white&#34;</span>: <span style="color:#e6db74">&#34;#CCCCCC&#34;</span>,
+      <span style="color:#f92672">&#34;yellow&#34;</span>: <span style="color:#e6db74">&#34;#C19C00&#34;</span>
+    },
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Ubuntu&#34;</span>,
+      <span style="color:#f92672">&#34;black&#34;</span>: <span style="color:#e6db74">&#34;#2e3436&#34;</span>,
+      <span style="color:#f92672">&#34;red&#34;</span>: <span style="color:#e6db74">&#34;#cc0000&#34;</span>,
+      <span style="color:#f92672">&#34;green&#34;</span>: <span style="color:#e6db74">&#34;#4e9a06&#34;</span>,
+      <span style="color:#f92672">&#34;yellow&#34;</span>: <span style="color:#e6db74">&#34;#c4a000&#34;</span>,
+      <span style="color:#f92672">&#34;blue&#34;</span>: <span style="color:#e6db74">&#34;#3465a4&#34;</span>,
+      <span style="color:#f92672">&#34;purple&#34;</span>: <span style="color:#e6db74">&#34;#75507b&#34;</span>,
+      <span style="color:#f92672">&#34;cyan&#34;</span>: <span style="color:#e6db74">&#34;#06989a&#34;</span>,
+      <span style="color:#f92672">&#34;white&#34;</span>: <span style="color:#e6db74">&#34;#d3d7cf&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlack&#34;</span>: <span style="color:#e6db74">&#34;#555753&#34;</span>,
+      <span style="color:#f92672">&#34;brightRed&#34;</span>: <span style="color:#e6db74">&#34;#ef2929&#34;</span>,
+      <span style="color:#f92672">&#34;brightGreen&#34;</span>: <span style="color:#e6db74">&#34;#8ae234&#34;</span>,
+      <span style="color:#f92672">&#34;brightYellow&#34;</span>: <span style="color:#e6db74">&#34;#fce94f&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlue&#34;</span>: <span style="color:#e6db74">&#34;#729fcf&#34;</span>,
+      <span style="color:#f92672">&#34;brightPurple&#34;</span>: <span style="color:#e6db74">&#34;#ad7fa8&#34;</span>,
+      <span style="color:#f92672">&#34;brightCyan&#34;</span>: <span style="color:#e6db74">&#34;#34e2e2&#34;</span>,
+      <span style="color:#f92672">&#34;brightWhite&#34;</span>: <span style="color:#e6db74">&#34;#eeeeec&#34;</span>,
+      <span style="color:#f92672">&#34;background&#34;</span>: <span style="color:#e6db74">&#34;#300a24&#34;</span>,
+      <span style="color:#f92672">&#34;foreground&#34;</span>: <span style="color:#e6db74">&#34;#eeeeec&#34;</span>
+    },
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Nord&#34;</span>,
+      <span style="color:#f92672">&#34;background&#34;</span>: <span style="color:#e6db74">&#34;#2e3440&#34;</span>,
+      <span style="color:#f92672">&#34;foreground&#34;</span>: <span style="color:#e6db74">&#34;#eceff4&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlack&#34;</span>: <span style="color:#e6db74">&#34;#3f68b9&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlue&#34;</span>: <span style="color:#e6db74">&#34;#5e81ac&#34;</span>,
+      <span style="color:#f92672">&#34;brightCyan&#34;</span>: <span style="color:#e6db74">&#34;#8fbcbb&#34;</span>,
+      <span style="color:#f92672">&#34;brightGreen&#34;</span>: <span style="color:#e6db74">&#34;#a3be8c&#34;</span>,
+      <span style="color:#f92672">&#34;brightPurple&#34;</span>: <span style="color:#e6db74">&#34;#b48ead&#34;</span>,
+      <span style="color:#f92672">&#34;brightRed&#34;</span>: <span style="color:#e6db74">&#34;#bf616a&#34;</span>,
+      <span style="color:#f92672">&#34;brightWhite&#34;</span>: <span style="color:#e6db74">&#34;#eceff4&#34;</span>,
+      <span style="color:#f92672">&#34;brightYellow&#34;</span>: <span style="color:#e6db74">&#34;#ebcb8b&#34;</span>,
+      <span style="color:#f92672">&#34;black&#34;</span>: <span style="color:#e6db74">&#34;#2e3440&#34;</span>,
+      <span style="color:#f92672">&#34;blue&#34;</span>: <span style="color:#e6db74">&#34;#5e81ac&#34;</span>,
+      <span style="color:#f92672">&#34;cyan&#34;</span>: <span style="color:#e6db74">&#34;#8fbcbb&#34;</span>,
+      <span style="color:#f92672">&#34;green&#34;</span>: <span style="color:#e6db74">&#34;#a3be8c&#34;</span>,
+      <span style="color:#f92672">&#34;purple&#34;</span>: <span style="color:#e6db74">&#34;#b48ead&#34;</span>,
+      <span style="color:#f92672">&#34;red&#34;</span>: <span style="color:#e6db74">&#34;#bf616a&#34;</span>,
+      <span style="color:#f92672">&#34;white&#34;</span>: <span style="color:#e6db74">&#34;#eceff4&#34;</span>,
+      <span style="color:#f92672">&#34;yellow&#34;</span>: <span style="color:#e6db74">&#34;#ebcb8b&#34;</span>
+    },
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Brogrammer&#34;</span>,
+      <span style="color:#f92672">&#34;black&#34;</span>: <span style="color:#e6db74">&#34;#1f1f1f&#34;</span>,
+      <span style="color:#f92672">&#34;red&#34;</span>: <span style="color:#e6db74">&#34;#f81118&#34;</span>,
+      <span style="color:#f92672">&#34;green&#34;</span>: <span style="color:#e6db74">&#34;#2dc55e&#34;</span>,
+      <span style="color:#f92672">&#34;yellow&#34;</span>: <span style="color:#e6db74">&#34;#ecba0f&#34;</span>,
+      <span style="color:#f92672">&#34;blue&#34;</span>: <span style="color:#e6db74">&#34;#2a84d2&#34;</span>,
+      <span style="color:#f92672">&#34;purple&#34;</span>: <span style="color:#e6db74">&#34;#4e5ab7&#34;</span>,
+      <span style="color:#f92672">&#34;cyan&#34;</span>: <span style="color:#e6db74">&#34;#1081d6&#34;</span>,
+      <span style="color:#f92672">&#34;white&#34;</span>: <span style="color:#e6db74">&#34;#d6dbe5&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlack&#34;</span>: <span style="color:#e6db74">&#34;#d6dbe5&#34;</span>,
+      <span style="color:#f92672">&#34;brightRed&#34;</span>: <span style="color:#e6db74">&#34;#de352e&#34;</span>,
+      <span style="color:#f92672">&#34;brightGreen&#34;</span>: <span style="color:#e6db74">&#34;#1dd361&#34;</span>,
+      <span style="color:#f92672">&#34;brightYellow&#34;</span>: <span style="color:#e6db74">&#34;#f3bd09&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlue&#34;</span>: <span style="color:#e6db74">&#34;#1081d6&#34;</span>,
+      <span style="color:#f92672">&#34;brightPurple&#34;</span>: <span style="color:#e6db74">&#34;#5350b9&#34;</span>,
+      <span style="color:#f92672">&#34;brightCyan&#34;</span>: <span style="color:#e6db74">&#34;#0f7ddb&#34;</span>,
+      <span style="color:#f92672">&#34;brightWhite&#34;</span>: <span style="color:#e6db74">&#34;#ffffff&#34;</span>,
+      <span style="color:#f92672">&#34;background&#34;</span>: <span style="color:#e6db74">&#34;#131313&#34;</span>,
+      <span style="color:#f92672">&#34;foreground&#34;</span>: <span style="color:#e6db74">&#34;#d6dbe5&#34;</span>
+    },
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;synthwave-everything&#34;</span>,
+      <span style="color:#f92672">&#34;black&#34;</span>: <span style="color:#e6db74">&#34;#fefefe&#34;</span>,
+      <span style="color:#f92672">&#34;red&#34;</span>: <span style="color:#e6db74">&#34;#f97e72&#34;</span>,
+      <span style="color:#f92672">&#34;green&#34;</span>: <span style="color:#e6db74">&#34;#72f1b8&#34;</span>,
+      <span style="color:#f92672">&#34;yellow&#34;</span>: <span style="color:#e6db74">&#34;#fede5d&#34;</span>,
+      <span style="color:#f92672">&#34;blue&#34;</span>: <span style="color:#e6db74">&#34;#6d77b3&#34;</span>,
+      <span style="color:#f92672">&#34;purple&#34;</span>: <span style="color:#e6db74">&#34;#c792ea&#34;</span>,
+      <span style="color:#f92672">&#34;cyan&#34;</span>: <span style="color:#e6db74">&#34;#f772e0&#34;</span>,
+      <span style="color:#f92672">&#34;white&#34;</span>: <span style="color:#e6db74">&#34;#fefefe&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlack&#34;</span>: <span style="color:#e6db74">&#34;#fefefe&#34;</span>,
+      <span style="color:#f92672">&#34;brightRed&#34;</span>: <span style="color:#e6db74">&#34;#f88414&#34;</span>,
+      <span style="color:#f92672">&#34;brightGreen&#34;</span>: <span style="color:#e6db74">&#34;#72f1b8&#34;</span>,
+      <span style="color:#f92672">&#34;brightYellow&#34;</span>: <span style="color:#e6db74">&#34;#fff951&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlue&#34;</span>: <span style="color:#e6db74">&#34;#36f9f6&#34;</span>,
+      <span style="color:#f92672">&#34;brightPurple&#34;</span>: <span style="color:#e6db74">&#34;#e1acff&#34;</span>,
+      <span style="color:#f92672">&#34;brightCyan&#34;</span>: <span style="color:#e6db74">&#34;#f92aad&#34;</span>,
+      <span style="color:#f92672">&#34;brightWhite&#34;</span>: <span style="color:#e6db74">&#34;#fefefe&#34;</span>,
+      <span style="color:#f92672">&#34;background&#34;</span>: <span style="color:#e6db74">&#34;#2a2139&#34;</span>,
+      <span style="color:#f92672">&#34;foreground&#34;</span>: <span style="color:#e6db74">&#34;#f0eff1&#34;</span>
+    },
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Snazzy&#34;</span>,
+      <span style="color:#f92672">&#34;black&#34;</span>: <span style="color:#e6db74">&#34;#000000&#34;</span>,
+      <span style="color:#f92672">&#34;red&#34;</span>: <span style="color:#e6db74">&#34;#fc4346&#34;</span>,
+      <span style="color:#f92672">&#34;green&#34;</span>: <span style="color:#e6db74">&#34;#50fb7c&#34;</span>,
+      <span style="color:#f92672">&#34;yellow&#34;</span>: <span style="color:#e6db74">&#34;#f0fb8c&#34;</span>,
+      <span style="color:#f92672">&#34;blue&#34;</span>: <span style="color:#e6db74">&#34;#49baff&#34;</span>,
+      <span style="color:#f92672">&#34;purple&#34;</span>: <span style="color:#e6db74">&#34;#fc4cb4&#34;</span>,
+      <span style="color:#f92672">&#34;cyan&#34;</span>: <span style="color:#e6db74">&#34;#8be9fe&#34;</span>,
+      <span style="color:#f92672">&#34;white&#34;</span>: <span style="color:#e6db74">&#34;#ededec&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlack&#34;</span>: <span style="color:#e6db74">&#34;#555555&#34;</span>,
+      <span style="color:#f92672">&#34;brightRed&#34;</span>: <span style="color:#e6db74">&#34;#fc4346&#34;</span>,
+      <span style="color:#f92672">&#34;brightGreen&#34;</span>: <span style="color:#e6db74">&#34;#50fb7c&#34;</span>,
+      <span style="color:#f92672">&#34;brightYellow&#34;</span>: <span style="color:#e6db74">&#34;#f0fb8c&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlue&#34;</span>: <span style="color:#e6db74">&#34;#49baff&#34;</span>,
+      <span style="color:#f92672">&#34;brightPurple&#34;</span>: <span style="color:#e6db74">&#34;#fc4cb4&#34;</span>,
+      <span style="color:#f92672">&#34;brightCyan&#34;</span>: <span style="color:#e6db74">&#34;#8be9fe&#34;</span>,
+      <span style="color:#f92672">&#34;brightWhite&#34;</span>: <span style="color:#e6db74">&#34;#ededec&#34;</span>,
+      <span style="color:#f92672">&#34;background&#34;</span>: <span style="color:#e6db74">&#34;#1e1f29&#34;</span>,
+      <span style="color:#f92672">&#34;foreground&#34;</span>: <span style="color:#e6db74">&#34;#ebece6&#34;</span>
+    },
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Sundried&#34;</span>,
+      <span style="color:#f92672">&#34;black&#34;</span>: <span style="color:#e6db74">&#34;#302b2a&#34;</span>,
+      <span style="color:#f92672">&#34;red&#34;</span>: <span style="color:#e6db74">&#34;#a7463d&#34;</span>,
+      <span style="color:#f92672">&#34;green&#34;</span>: <span style="color:#e6db74">&#34;#587744&#34;</span>,
+      <span style="color:#f92672">&#34;yellow&#34;</span>: <span style="color:#e6db74">&#34;#9d602a&#34;</span>,
+      <span style="color:#f92672">&#34;blue&#34;</span>: <span style="color:#e6db74">&#34;#485b98&#34;</span>,
+      <span style="color:#f92672">&#34;purple&#34;</span>: <span style="color:#e6db74">&#34;#864651&#34;</span>,
+      <span style="color:#f92672">&#34;cyan&#34;</span>: <span style="color:#e6db74">&#34;#9c814f&#34;</span>,
+      <span style="color:#f92672">&#34;white&#34;</span>: <span style="color:#e6db74">&#34;#c9c9c9&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlack&#34;</span>: <span style="color:#e6db74">&#34;#4d4e48&#34;</span>,
+      <span style="color:#f92672">&#34;brightRed&#34;</span>: <span style="color:#e6db74">&#34;#aa000c&#34;</span>,
+      <span style="color:#f92672">&#34;brightGreen&#34;</span>: <span style="color:#e6db74">&#34;#128c21&#34;</span>,
+      <span style="color:#f92672">&#34;brightYellow&#34;</span>: <span style="color:#e6db74">&#34;#fc6a21&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlue&#34;</span>: <span style="color:#e6db74">&#34;#7999f7&#34;</span>,
+      <span style="color:#f92672">&#34;brightPurple&#34;</span>: <span style="color:#e6db74">&#34;#fd8aa1&#34;</span>,
+      <span style="color:#f92672">&#34;brightCyan&#34;</span>: <span style="color:#e6db74">&#34;#fad484&#34;</span>,
+      <span style="color:#f92672">&#34;brightWhite&#34;</span>: <span style="color:#e6db74">&#34;#ffffff&#34;</span>,
+      <span style="color:#f92672">&#34;background&#34;</span>: <span style="color:#e6db74">&#34;#1a1818&#34;</span>,
+      <span style="color:#f92672">&#34;foreground&#34;</span>: <span style="color:#e6db74">&#34;#c9c9c9&#34;</span>
+    },
+    
+    {
+      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Argonaut&#34;</span>,
+      <span style="color:#f92672">&#34;black&#34;</span>: <span style="color:#e6db74">&#34;#232323&#34;</span>,
+      <span style="color:#f92672">&#34;red&#34;</span>: <span style="color:#e6db74">&#34;#ff000f&#34;</span>,
+      <span style="color:#f92672">&#34;green&#34;</span>: <span style="color:#e6db74">&#34;#8ce10b&#34;</span>,
+      <span style="color:#f92672">&#34;yellow&#34;</span>: <span style="color:#e6db74">&#34;#ffb900&#34;</span>,
+      <span style="color:#f92672">&#34;blue&#34;</span>: <span style="color:#e6db74">&#34;#008df8&#34;</span>,
+      <span style="color:#f92672">&#34;purple&#34;</span>: <span style="color:#e6db74">&#34;#6d43a6&#34;</span>,
+      <span style="color:#f92672">&#34;cyan&#34;</span>: <span style="color:#e6db74">&#34;#00d8eb&#34;</span>,
+      <span style="color:#f92672">&#34;white&#34;</span>: <span style="color:#e6db74">&#34;#ffffff&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlack&#34;</span>: <span style="color:#e6db74">&#34;#444444&#34;</span>,
+      <span style="color:#f92672">&#34;brightRed&#34;</span>: <span style="color:#e6db74">&#34;#ff2740&#34;</span>,
+      <span style="color:#f92672">&#34;brightGreen&#34;</span>: <span style="color:#e6db74">&#34;#abe15b&#34;</span>,
+      <span style="color:#f92672">&#34;brightYellow&#34;</span>: <span style="color:#e6db74">&#34;#ffd242&#34;</span>,
+      <span style="color:#f92672">&#34;brightBlue&#34;</span>: <span style="color:#e6db74">&#34;#0092ff&#34;</span>,
+      <span style="color:#f92672">&#34;brightPurple&#34;</span>: <span style="color:#e6db74">&#34;#9a5feb&#34;</span>,
+      <span style="color:#f92672">&#34;brightCyan&#34;</span>: <span style="color:#e6db74">&#34;#67fff0&#34;</span>,
+      <span style="color:#f92672">&#34;brightWhite&#34;</span>: <span style="color:#e6db74">&#34;#ffffff&#34;</span>,
+      <span style="color:#f92672">&#34;background&#34;</span>: <span style="color:#e6db74">&#34;#0e1019&#34;</span>,
+      <span style="color:#f92672">&#34;foreground&#34;</span>: <span style="color:#e6db74">&#34;#fffaf4&#34;</span>
+    }
+  ],
+
+  <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">Add</span> <span style="color:#960050;background-color:#1e0010">any</span> <span style="color:#960050;background-color:#1e0010">keybinding</span> <span style="color:#960050;background-color:#1e0010">overrides</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#960050;background-color:#1e0010">this</span> <span style="color:#960050;background-color:#1e0010">array.</span>
+  <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#960050;background-color:#1e0010">To</span> <span style="color:#960050;background-color:#1e0010">unbind</span> <span style="color:#960050;background-color:#1e0010">a</span> <span style="color:#960050;background-color:#1e0010">default</span> <span style="color:#960050;background-color:#1e0010">keybinding,</span> <span style="color:#960050;background-color:#1e0010">set</span> <span style="color:#960050;background-color:#1e0010">the</span> <span style="color:#960050;background-color:#1e0010">command</span> <span style="color:#960050;background-color:#1e0010">to</span> <span style="color:#f92672">&#34;unbound&#34;</span>
+  <span style="color:#e6db74">&#34;keybindings&#34;</span>: []
+}
+
+</code></pre></div>
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0404123406/>自定义Windows Terminal</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-04-04<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0404123406/ target="_blank" >https://3mile.github.io/archives/2020/0404123406/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/terminal/">Terminal</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/0404123406/" class="leancloud_visitors" data-flag-title="自定义Windows Terminal">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0404112101/" data-tooltip="CentOS如何升级openssl到最新版本">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0406181407/" data-tooltip="Certbot指南">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0404112101/" data-tooltip="CentOS如何升级openssl到最新版本">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0406181407/" data-tooltip="Certbot指南">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debian on 3mile博客</title>
+    <link>https://3mile.github.io/tags/debian/</link>
+    <description>Recent content in Debian on 3mile博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 02 Jul 2018 10:51:10 +0800</lastBuildDate>
+    
+	<atom:link href="https://3mile.github.io/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Debian系统搭建家庭NAS系统</title>
+      <link>https://3mile.github.io/archives/2018/07/02/</link>
+      <pubDate>Mon, 02 Jul 2018 10:51:10 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2018/07/02/</guid>
+      <description>撰写本文的目的是为了将搭建过程中的各种琐碎事项归纳整理，以便需要时查阅。文中以图文形式尽可能详细地将每一步操作记录在案，故亦可供有类似需要的</description>
+    </item>
+    
+  </channel>
+</rss>

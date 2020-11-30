@@ -26,7 +26,7 @@
       <pubDate>Fri, 30 Mar 2018 05:24:38 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/968/</guid>
-      <description>大家群晖玩软路由的基本都是用virtualbox，相对于VMM稳定性差十万八千里了，甚至在群晖上Docker都不如VMM稳定，自由，便捷 但是</description>
+      <description>现在已经稳定运行快一年了！秒杀一切软路由 （R8500设置AP模式后不再区分LAN与WAN，全都相当于交换机模式的LAN口，只需要NAS两个口</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@
       <pubDate>Fri, 30 Mar 2018 05:11:52 +0000</pubDate>
       
       <guid>https://3mile.github.io/archives/890/</guid>
-      <description>一、起因： 我们从一个基准测试开始看： 连接方式： 采用网线连接各个设备进行测试，尽量避免无线WIFI的信号干扰与衰减。 测试环境： 笔记本自带千兆网</description>
+      <description>设备不行怎么办？——换！于是某天一不小心收到两个小盒子，还有一条小小的8G 金士顿DDR3L1600 1.3v低电压笔记本内存条 在旁边观望 开箱！</description>
     </item>
     
   </channel>

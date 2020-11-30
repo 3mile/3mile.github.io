@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="原由 颱風天那都不能去，只好繼續 Coding 人生、看看 Pocket 未讀的文章。不過也因此發現好幾個不錯的東西 Supercharging the Atom Editor for Go Development · marcio.io，最近也開始用 Atom 也開">
@@ -87,7 +87,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -142,7 +142,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -294,339 +294,346 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h3 id="原由">原由</h3>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#原由">原由</a>
+          <ul>
+            <li><a href="#project-site">Project Site</a></li>
+            <li><a href="#step1---安裝-hugo-並建立新專案">Step1 - 安裝 Hugo 並建立新專案</a></li>
+            <li><a href="#step2---安裝新的-themeshttpgohugoiothemesinstalling">Step2 - <a href="http://gohugo.io/themes/installing/">安裝新的 Themes</a></a></li>
+            <li><a href="#step3---編輯專案設定檔">Step3 - 編輯專案設定檔</a></li>
+            <li><a href="#step4---新增新的文章">Step4 - 新增新的文章</a></li>
+            <li><a href="#step5---預覽">Step5 - 預覽</a></li>
+            <li><a href="#step6---發佈-hugo-靜態網站至-github-pages">Step6 - 發佈 Hugo 靜態網站至 Github Pages</a></li>
+          </ul>
+        </li>
+        <li><a href="#organization-site">Organization site</a>
+          <ul>
+            <li><a href="#step1---建立-hugo-repos">Step1 - 建立 Hugo repos</a></li>
+            <li><a href="#step2---建立-hugo-新專案">Step2 - 建立 Hugo 新專案</a></li>
+            <li><a href="#step3---安裝-themes">Step3 - 安裝 Themes</a></li>
+            <li><a href="#step4---編輯專案設定檔">Step4 - 編輯專案設定檔</a></li>
+            <li><a href="#step5---新增文章">Step5 - 新增文章</a></li>
+            <li><a href="#step6---預覽">Step6 - 預覽</a></li>
+            <li><a href="#step7---移除-public">Step7 - 移除 public</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#step8---新增-githubio-public-as-submodule">Step8 - 新增 .github.io public as submodule</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#step8---发布">Step8 - 发布</a></li>
+          </ul>
+        </li>
+        <li><a href="#參考資料">參考資料</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h3 id="原由">原由</h3>
 <p>颱風天那都不能去，只好繼續 Coding 人生、看看 Pocket 未讀的文章。不過也因此發現好幾個不錯的東西</p>
-
 <ol>
-<li><a href="http://marcio.io/2015/07/supercharging-atom-editor-for-go-development/">Supercharging the Atom Editor for Go Development · marcio.io</a>，最近也開始用 Atom 也開始學習 Golang 語言。這一篇作者說明了他自己的使用經驗。</li>
-<li><a href="http://ulricqin.com/post/how-to-use-hugo/">使用Hugo搭建免费个人Blog · Ulric Qin</a> 這一篇文章看到 Hugo，發現在他的 Blog 也是用 Hugo 架的</li>
+<li>
+
+<a href="http://marcio.io/2015/07/supercharging-atom-editor-for-go-development/"  target="_blank">Supercharging the Atom Editor for Go Development · marcio.io</a>，最近也開始用 Atom 也開始學習 Golang 語言。這一篇作者說明了他自己的使用經驗。</li>
+<li>
+
+<a href="http://ulricqin.com/post/how-to-use-hugo/"  target="_blank">使用Hugo搭建免费个人Blog · Ulric Qin</a> 這一篇文章看到 Hugo，發現在他的 Blog 也是用 Hugo 架的</li>
 </ol>
+<p>在 Ulric Quin 的文章中得知他自己的 Blog 是架在大陸的
 
-<p>在 Ulric Quin 的文章中得知他自己的 Blog 是架在大陸的<a href="https://gitcafe.com/">GitCafe</a>，Hugo 可以直接發佈到 GitCafe &amp; Github 的 Page <strong>免費</strong>，當然是立刻自己動手玩一玩</p>
+<a href="https://gitcafe.com/"  target="_blank">GitCafe</a>，Hugo 可以直接發佈到 GitCafe &amp; Github 的 Page <strong>免費</strong>，當然是立刻自己動手玩一玩</p>
+<p>在 
 
-<p>在 <a href="http://gohugo.io/tutorials/github-pages-blog/#configure-git-workflow-the-alternate-way:fcefb200141ace3e7bfd6542457b7a72">Hosting on GitHub Pages</a> 的說明文件中有如何把 Hugo 靜態網站佈署到 Github Pages 中。但因為 <a href="https://pages.github.com/">GitHub Pages</a>提供了二種不同形態的頁面 <code>User or organization site</code> &amp; <code>Project Site</code>。其中個人主頁一個帳號只能有<strong>一個</strong>、而專案頁面則可以<strong>很多個</strong>。</p>
+<a href="http://gohugo.io/tutorials/github-pages-blog/#configure-git-workflow-the-alternate-way:fcefb200141ace3e7bfd6542457b7a72"  target="_blank">Hosting on GitHub Pages</a> 的說明文件中有如何把 Hugo 靜態網站佈署到 Github Pages 中。但因為 
 
+<a href="https://pages.github.com/"  target="_blank">GitHub Pages</a>提供了二種不同形態的頁面 <code>User or organization site</code> &amp; <code>Project Site</code>。其中個人主頁一個帳號只能有<strong>一個</strong>、而專案頁面則可以<strong>很多個</strong>。</p>
 <p>所以在佈署 Hugo 靜態網站也因為對應到不同的型態的 Github Pages 而有所不同。</p>
-
 <blockquote>
 <p>第一種方式是將 Hugo 靜態網站佈署到 Github Page <code>Project Site</code> 面頁中. 只需要在 github 上建立一個 repo，但是利用 git 中 <code>subtree</code> 的概念將 <code>public</code> 資料夾連結到 <code>gh-pages</code> 的分支上，git 操作過程較為繁鎖</p>
 </blockquote>
-
 <p>Url 上的差異</p>
-
-<pre><code class="language-bash"># project site url
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># project site url</span>
 http://github.com/&lt;你的github账号&gt;/&lt;项目名&gt;
 
-# github pages host url
+<span style="color:#75715e"># github pages host url</span>
 http://&lt;你的github账号&gt;.github.io
-</code></pre>
+</code></pre></div><h4 id="project-site">Project Site</h4>
+<h4 id="step1---安裝-hugo-並建立新專案">Step1 - 安裝 Hugo 並建立新專案</h4>
+<p>在
 
-<h4 id="project-site">Project Site</h4>
-
-<h4 id="step1-安裝-hugo-並建立新專案">Step1 - 安裝 Hugo 並建立新專案</h4>
-
-<p>在<a href="https://github.com/spf13/hugo/releases">安裝</a>(詳細步驟請看這)好 Hugo 後，直接建立新的 Hugo 專案</p>
-
-<pre><code class="language-bash"># 建立 Hugo 新專案，-f 是指定 yaml 格式，預設為 toml:frontmatter format
+<a href="https://github.com/spf13/hugo/releases"  target="_blank">安裝</a>(詳細步驟請看這)好 Hugo 後，直接建立新的 Hugo 專案</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 建立 Hugo 新專案，-f 是指定 yaml 格式，預設為 toml:frontmatter format</span>
 $ hugo new site blog-hugo -f yaml
 
-# change directory
+<span style="color:#75715e"># change directory</span>
 $ cd blog-hugo
 
-# git initialized
+<span style="color:#75715e"># git initialized</span>
 $ git init
 $ echo .DS_Store &gt;&gt; .gitignore
 
-# add git remote repo
+<span style="color:#75715e"># add git remote repo</span>
 $ git remote add origin git@github.com:&lt;your-github-account&gt;/blog-hugo.git
-</code></pre>
-
-<p>檢視新專案資料架構</p>
-
-<pre><code class="language-bash"># &lt;project-name&gt; file structure
+</code></pre></div><p>檢視新專案資料架構</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># &lt;project-name&gt; file structure</span>
 ├── archetypes
 ├── config.toml
 ├── content
 ├── data
 ├── layouts
 └── static
-</code></pre>
+</code></pre></div><h4 id="step2---安裝新的-themeshttpgohugoiothemesinstalling">Step2 - 
 
-<h4 id="step2-安裝新的-themes-http-gohugo-io-themes-installing">Step2 - <a href="http://gohugo.io/themes/installing/">安裝新的 Themes</a></h4>
-
+<a href="http://gohugo.io/themes/installing/"  target="_blank">安裝新的 Themes</a></h4>
 <blockquote>
-<p><a href="https://github.com/spf13/hugoThemes">Hugo Themes repository</a></p>
+<p>
+
+<a href="https://github.com/spf13/hugoThemes"  target="_blank">Hugo Themes repository</a></p>
 </blockquote>
-
 <p>本來安裝 themes 可直接新建 themes 資料夾並使用 <code>git clone &lt;themes-url&gt;</code>，不過此方法在後面 push 到 Github Pages 出，Github 會回報</p>
-
 <blockquote>
 <p>The page build failed with the following error: The submodule <code>themes/hyde</code> was not properly initialized with a <code>.gitmodules</code> file. For more information, see &gt;<a href="https://help.github.com/articles/page-build-failed-missing-submodule">https://help.github.com/articles/page-build-failed-missing-submodule</a>.
 If you have any questions you can contact us by replying to this email.</p>
 </blockquote>
-
 <p>所以這邊直接使用 git <code>submodule</code> 的方式來安裝 themes</p>
-
 <pre><code># add hugo themes to project as submodule
 # git submodule add &lt;repository&gt; [&lt;path&gt;]
 $ git submodule add https://github.com/spf13/hyde themes/hyde
-</code></pre>
+</code></pre><h4 id="step3---編輯專案設定檔">Step3 - 編輯專案設定檔</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">baseurl : <span style="color:#e6db74">&#34;http://&lt;你的github账号&gt;.github.com/blog-hugo&#34;</span>
+languageCode : <span style="color:#e6db74">&#34;zh-cn&#34;</span>
+title : <span style="color:#e6db74">&#34;My New Hugo Site&#34;</span>
 
-<h4 id="step3-編輯專案設定檔">Step3 - 編輯專案設定檔</h4>
-
-<pre><code class="language-bash">baseurl : &quot;http://&lt;你的github账号&gt;.github.com/blog-hugo&quot;
-languageCode : &quot;zh-cn&quot;
-title : &quot;My New Hugo Site&quot;
-
-# 新增 theme 的名稱
-theme : 'hyde'
+<span style="color:#75715e"># 新增 theme 的名稱</span>
+theme : <span style="color:#e6db74">&#39;hyde&#39;</span>
 ...
-</code></pre>
-
-<h4 id="step4-新增新的文章">Step4 - 新增新的文章</h4>
-
+</code></pre></div><h4 id="step4---新增新的文章">Step4 - 新增新的文章</h4>
 <p>在 <code>content/posts</code> 建立 <code>first-post.md</code></p>
-
-<pre><code class="language-bash"># 會在專案 content/posts 下產生 first-post.md 檔案
-# -f 使用 yaml 檔案格式
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 會在專案 content/posts 下產生 first-post.md 檔案</span>
+<span style="color:#75715e"># -f 使用 yaml 檔案格式</span>
 $ hugo new posts/first-post.md -f yaml
-</code></pre>
-
-<p>編輯 <code>first-post.md</code></p>
-
-<pre><code class="language-bash">---
+</code></pre></div><p>編輯 <code>first-post.md</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">---
 date: 2015-07-16T23:01:57+08:00
 title: first post
 ---
 
 This is my first post.
-</code></pre>
-
-<h4 id="step5-預覽">Step5 - 預覽</h4>
-
+</code></pre></div><h4 id="step5---預覽">Step5 - 預覽</h4>
 <p>此時就可以在 Local 執行， <a href="http://127.0.0.1:1313/blog-hugo/">http://127.0.0.1:1313/blog-hugo/</a></p>
-
-<pre><code class="language-bash"># -w watch filesystem for changes and recreate as needed
-# -D include content marked as draft
-# Press Ctrl+C to stop
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -w watch filesystem for changes and recreate as needed</span>
+<span style="color:#75715e"># -D include content marked as draft</span>
+<span style="color:#75715e"># Press Ctrl+C to stop</span>
 $ hugo server -w
-</code></pre>
+</code></pre></div><p>應該可以看到下面擷圖的樣式
 
-<p>應該可以看到下面擷圖的樣式
-<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github/first-post-screenshot.jpg" alt="img" /></p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github/first-post-screenshot.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github/first-post-screenshot.jpg" alt="img" /></a>
+</span>
 
-<h4 id="step6-發佈-hugo-靜態網站至-github-pages">Step6 - 發佈 Hugo 靜態網站至 Github Pages</h4>
-
+</span></p>
+<h4 id="step6---發佈-hugo-靜態網站至-github-pages">Step6 - 發佈 Hugo 靜態網站至 Github Pages</h4>
 <p>接下來的動作是一連串的 git 操作，把 Hugo 產生的 <code>public</code> 資料夾推送至 Github Pages</p>
-
-<pre><code class="language-bash"># 删除public文件夹,以后hugo会重新生成
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># 删除public文件夹,以后hugo会重新生成</span>
 $ rm -rf public
 
 $ git add .
-$ git commit -m 'hugo project init'
+$ git commit -m <span style="color:#e6db74">&#39;hugo project init&#39;</span>
 
-# 推送到github下master分枝
+<span style="color:#75715e"># 推送到github下master分枝</span>
 $ git push -u origin master
 
-# 创建一个名为gh-pages的新的孤立分支（无提交历史记录）
+<span style="color:#75715e"># 创建一个名为gh-pages的新的孤立分支（无提交历史记录）</span>
 $ git checkout --orphan gh-pages
 
-# 卸载所有文件
-# -rf themes/hyde
-# 删除所有被跟踪，但在工作目录被删除的文件
-$ git rm -rf --cached $(git ls-files)
+<span style="color:#75715e"># 卸载所有文件</span>
+<span style="color:#75715e"># -rf themes/hyde</span>
+<span style="color:#75715e"># 删除所有被跟踪，但在工作目录被删除的文件</span>
+$ git rm -rf --cached <span style="color:#66d9ef">$(</span>git ls-files<span style="color:#66d9ef">)</span>
 
-# 添加并提交该文件
+<span style="color:#75715e"># 添加并提交该文件</span>
 $ git add .
-$ git commit -m &quot;INIT: initial commit on gh-pages branch&quot;
+$ git commit -m <span style="color:#e6db74">&#34;INIT: initial commit on gh-pages branch&#34;</span>
 
-# 推送到远程gh-pages分支
+<span style="color:#75715e"># 推送到远程gh-pages分支</span>
 $ git push origin gh-pages
 
-# 返回master分支
+<span style="color:#75715e"># 返回master分支</span>
 $ git checkout master
 
-# 删除public文件夹，为gh-pages分支腾出空间
+<span style="color:#75715e"># 删除public文件夹，为gh-pages分支腾出空间</span>
 $ rm -rf public
 
-# 添加存储库的gh-pages分支。它看起来像一个名为public的文件夹. It will look like a folder named public
-$ git subtree add --prefix=public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages --squash
+<span style="color:#75715e"># 添加存储库的gh-pages分支。它看起来像一个名为public的文件夹. It will look like a folder named public</span>
+$ git subtree add --prefix<span style="color:#f92672">=</span>public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages --squash
 
-# 同步我们刚刚提交的文件。这有助于避免合并冲突
-$ git subtree pull --prefix=public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages
+<span style="color:#75715e"># 同步我们刚刚提交的文件。这有助于避免合并冲突</span>
+$ git subtree pull --prefix<span style="color:#f92672">=</span>public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages
 
-# 运行hugo。生成的网站将被放置在public目录中（或者如果您未使用主题，则省略-t ThemeName）
+<span style="color:#75715e"># 运行hugo。生成的网站将被放置在public目录中（或者如果您未使用主题，则省略-t ThemeName）</span>
 $ hugo
 
-# 添加所有的
+<span style="color:#75715e"># 添加所有的</span>
 $ git add -A
 
-# Commit and push to master
-$ git commit -m &quot;Updating site&quot; 
+<span style="color:#75715e"># Commit and push to master</span>
+$ git commit -m <span style="color:#e6db74">&#34;Updating site&#34;</span> 
 $ git push origin master
 
-# 将public子树推到gh-pages分支
-$ git subtree push --prefix=public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages
-</code></pre>
+<span style="color:#75715e"># 将public子树推到gh-pages分支</span>
+$ git subtree push --prefix<span style="color:#f92672">=</span>public git@github.com:&lt;your-github-account&gt;/hugo_blog.git gh-pages
+</code></pre></div><p>這時候，訪問 
 
-<p>這時候，訪問 <a href="http://mile3033.github.com/blog-hugo">http://你的github账号.github.com/hugo_blog</a> 應該就可以正常運作</p>
-
+<a href="http://mile3033.github.com/blog-hugo"  target="_blank">http://你的github账号.github.com/hugo_blog</a> 應該就可以正常運作</p>
 <p>之後如果有任何修改，只有執行最後的3個步驟即可或是將最後的步驟寫成 <code>deploy.sh</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># deploy.sh</span>
+echo -e <span style="color:#e6db74">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
 
-<pre><code class="language-shell"># deploy.sh
-echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
-
-# Build the project.
+<span style="color:#75715e"># Build the project.</span>
 hugo
 
-# Add changes to git.
+<span style="color:#75715e"># Add changes to git.</span>
 git add -A
 
-# Commit changes.
-msg=&quot;rebuilding site `date`&quot;
-if [ $# -eq 1 ]
-  then msg=&quot;$1&quot;
-fi
-git commit -m &quot;$msg&quot;
+<span style="color:#75715e"># Commit changes.</span>
+msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rebuilding site `date`&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>
+  <span style="color:#66d9ef">then</span> msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">fi</span>
+git commit -m <span style="color:#e6db74">&#34;</span>$msg<span style="color:#e6db74">&#34;</span>
 
-# Push source and build repos.
+<span style="color:#75715e"># Push source and build repos.</span>
 git push origin master
-git subtree push --prefix=public git@github.com:&lt;your-github-account&gt;/hugoblog.git gh-pages
-</code></pre>
-
-<hr />
-
+git subtree push --prefix<span style="color:#f92672">=</span>public git@github.com:&lt;your-github-account&gt;/hugoblog.git gh-pages
+</code></pre></div><hr>
 <h3 id="organization-site">Organization site</h3>
-
 <p>Github Pages 除了提供專案主頁(可以多個)之外，也提供了個人主頁(每一個 github 帳號只有一個)的方式。將 Hugo 靜態網站發佈到個人主頁的方式比發佈到專案主頁簡單</p>
-
 <p>在個人主頁中</p>
-
 <ul>
 <li>Github repo 必需取口 .github.io</li>
 <li>master 分支中的內容會被 Build 及發佈到你的 Github Page中 (專案主頁是利用 gh-pages 分支，這點不太一樣)</li>
 </ul>
-
-<h4 id="step1-建立-hugo-repos">Step1 - 建立 Hugo repos</h4>
-
+<h4 id="step1---建立-hugo-repos">Step1 - 建立 Hugo repos</h4>
 <ul>
 <li>建立 <code>blog-hugo</code> repo (用來 host Hugo 的內容)</li>
 <li>建立 <code>mile3033.github.io</code> repo (Hugo public 中靜態網頁的內容)</li>
 </ul>
+<h4 id="step2---建立-hugo-新專案">Step2 - 建立 Hugo 新專案</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new site blog-hugo -f yaml
 
-<h4 id="step2-建立-hugo-新專案">Step2 - 建立 Hugo 新專案</h4>
-
-<pre><code class="language-bash">$ hugo new site blog-hugo -f yaml
-
-# change directory
+<span style="color:#75715e"># change directory</span>
 $ cd blog-hugo
 
-# git initialized
+<span style="color:#75715e"># git initialized</span>
 $ git init
 $ echo .DS_Store &gt;&gt; .gitignore
 
-# add git remote repo
+<span style="color:#75715e"># add git remote repo</span>
 $ git remote add origin git@github.com:3033/blog-hugo.git
-</code></pre>
+</code></pre></div><h4 id="step3---安裝-themes">Step3 - 安裝 Themes</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git submodule add https://github.com/laozhu/hugo-nuo themes/hugo-nuo
+</code></pre></div><h4 id="step4---編輯專案設定檔">Step4 - 編輯專案設定檔</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">baseurl</span>: <span style="color:#e6db74">&#39;http://mile3033.github.com/&#39;</span>
+<span style="color:#66d9ef">languageCode</span>: <span style="color:#e6db74">&#39;zh-cn&#39;</span>
+<span style="color:#66d9ef">title</span>: <span style="color:#e6db74">&#39;My New Hugo Site&#39;</span>
 
-<h4 id="step3-安裝-themes">Step3 - 安裝 Themes</h4>
-
-<pre><code class="language-bash">$ git submodule add https://github.com/laozhu/hugo-nuo themes/hugo-nuo
-</code></pre>
-
-<h4 id="step4-編輯專案設定檔">Step4 - 編輯專案設定檔</h4>
-
-<pre><code class="language-yaml">baseurl: 'http://mile3033.github.com/'
-languageCode: 'zh-cn'
-title: 'My New Hugo Site'
-
-theme: 'hyde'
+<span style="color:#66d9ef">theme</span>: <span style="color:#e6db74">&#39;hyde&#39;</span>
 ...
-</code></pre>
-
-<h4 id="step5-新增文章">Step5 - 新增文章</h4>
-
-<pre><code class="language-bash">$ hugo new posts/first-post.md -f yaml
-</code></pre>
-
-<pre><code class="language-yaml">---
-date: 2015-07-19T17:32:25+08:00
-title: first post
+</code></pre></div><h4 id="step5---新增文章">Step5 - 新增文章</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ hugo new posts/first-post.md -f yaml
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">---
+<span style="color:#66d9ef">date</span>: <span style="color:#e6db74">2015-07-19T17:32:25</span><span style="color:#ae81ff">+08</span>:<span style="color:#ae81ff">00</span>
+<span style="color:#66d9ef">title</span>: first post
 ---
 
 This is my first hugo post
-</code></pre>
-
-<h4 id="step6-預覽">Step6 - 預覽</h4>
-
+</code></pre></div><h4 id="step6---預覽">Step6 - 預覽</h4>
 <p>此時就可以在 Local 執行， <a href="http://127.0.0.1:1313/hugo_blog/">http://127.0.0.1:1313/hugo_blog/</a></p>
-
-<pre><code class="language-bash"># -w watch filesystem for changes and recreate as needed
-# -D include content marked as draft
-# Press Ctrl+C to stop
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># -w watch filesystem for changes and recreate as needed</span>
+<span style="color:#75715e"># -D include content marked as draft</span>
+<span style="color:#75715e"># Press Ctrl+C to stop</span>
 $ hugo server -w
-</code></pre>
-
-<h4 id="step7-移除-public">Step7 - 移除 public</h4>
-
-<pre><code class="language-bash"># it will created by `hugo` command after we executed `deploy.sh`
+</code></pre></div><h4 id="step7---移除-public">Step7 - 移除 public</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># it will created by `hugo` command after we executed `deploy.sh`</span>
 $ rm -rf public
-</code></pre>
+</code></pre></div><h2 id="step8---新增-githubio-public-as-submodule">Step8 - 新增 .github.io public as submodule</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git submodule add git@github.com:mile3033/mile3033.github.io.git public
+</code></pre></div><h4 id="step8---发布">Step8 - 发布</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#deploy.sh</span>
+<span style="color:#75715e">#!/bin/bash</span>
 
-<h2 id="step8-新增-github-io-public-as-submodule">Step8 - 新增 .github.io public as submodule</h2>
+echo -e <span style="color:#e6db74">&#34;\033[0;32mDeploying updates to GitHub...\033[0m&#34;</span>
 
-<pre><code class="language-bash">$ git submodule add git@github.com:mile3033/mile3033.github.io.git public
-</code></pre>
+<span style="color:#75715e"># Build the project.</span>
+hugo <span style="color:#75715e"># if using a theme, replace by `hugo -t &lt;yourtheme&gt;`</span>
 
-<h4 id="step8-发布">Step8 - 发布</h4>
-
-<pre><code class="language-sh">#deploy.sh
-#!/bin/bash
-
-echo -e &quot;\033[0;32mDeploying updates to GitHub...\033[0m&quot;
-
-# Build the project.
-hugo # if using a theme, replace by `hugo -t &lt;yourtheme&gt;`
-
-# Go To Public folder
+<span style="color:#75715e"># Go To Public folder</span>
 cd public
-# Add changes to git.
+<span style="color:#75715e"># Add changes to git.</span>
 git add -A
 
-# Commit changes.
-msg=&quot;rebuilding site `date`&quot;
-if [ $# -eq 1 ]
-  then msg=&quot;$1&quot;
-fi
-git commit -m &quot;$msg&quot;
+<span style="color:#75715e"># Commit changes.</span>
+msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;rebuilding site `date`&#34;</span>
+<span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> $# -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>
+  <span style="color:#66d9ef">then</span> msg<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$1<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">fi</span>
+git commit -m <span style="color:#e6db74">&#34;</span>$msg<span style="color:#e6db74">&#34;</span>
 
-# Push source and build repos.
+<span style="color:#75715e"># Push source and build repos.</span>
 git push origin master
 
-# Come Back
+<span style="color:#75715e"># Come Back</span>
 cd ..
-</code></pre>
+</code></pre></div><p>執行發佈shell後，內容會被推送到 <code>blog-hugo</code>，而 <code>public</code> 會被推送到 <code>mile3033.github.io</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ deploy.sh <span style="color:#e6db74">&#39;your commit message&#39;</span>
+</code></pre></div><p>待 Github Page 編譯發佈後，訪問 
 
-<p>執行發佈shell後，內容會被推送到 <code>blog-hugo</code>，而 <code>public</code> 會被推送到 <code>mile3033.github.io</code></p>
-
-<pre><code class="language-bash">$ deploy.sh 'your commit message'
-</code></pre>
-
-<p>待 Github Page 編譯發佈後，訪問 <a href="http://mile3033.github.io/">http://mile3033.github.io</a> 就會看到結果!</p>
-
+<a href="http://mile3033.github.io/"  target="_blank">http://mile3033.github.io</a> 就會看到結果!</p>
 <h3 id="參考資料">參考資料</h3>
-
 <ul>
-<li><a href="http://imcc.mobi/posts/How-to-build-gohugo-on-github/">快速搭建gohugo博客 · Mac Zealot - A.C Che</a></li>
-<li><a href="http://gohugo.io/tutorials/github-pages-blog/#configure-git-workflow-the-alternate-way:fcefb200141ace3e7bfd6542457b7a72">Hosting on GitHub Pages</a></li>
-<li><a href="https://medium.com/@LovettLovett/github-pages-godaddy-f0318c2f25a">GitHub Pages + GoDaddy — Medium</a></li>
+<li>
+
+<a href="http://imcc.mobi/posts/How-to-build-gohugo-on-github/"  target="_blank">快速搭建gohugo博客 · Mac Zealot - A.C Che</a></li>
+<li>
+
+<a href="http://gohugo.io/tutorials/github-pages-blog/#configure-git-workflow-the-alternate-way:fcefb200141ace3e7bfd6542457b7a72"  target="_blank">Hosting on GitHub Pages</a></li>
+<li>
+
+<a href="https://medium.com/@LovettLovett/github-pages-godaddy-f0318c2f25a"  target="_blank">GitHub Pages + GoDaddy — Medium</a></li>
 </ul>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/04/>在github部署hugo静态网站</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-27<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/04/ target="_blank" >https://3mile.github.io/archives/2018/04/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -651,7 +658,7 @@ cd ..
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -696,24 +703,6 @@ cd ..
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/04/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/04/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/04/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -732,9 +721,11 @@ cd ..
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -772,24 +763,6 @@ cd ..
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/04/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/04/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/04/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -808,24 +781,6 @@ cd ..
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -841,7 +796,7 @@ cd ..
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -869,18 +824,28 @@ cd ..
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

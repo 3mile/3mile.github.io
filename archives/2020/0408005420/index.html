@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="一些命令行工具的增强版 最近在 HN 有一篇《 Cli improved》比较火，讲的是一些命令行工具的增强版，我觉得比较好，替换掉了我之前用的一些工具，在">
+
+
+<meta property="og:description" content="一些命令行工具的增强版 最近在 HN 有一篇《 Cli improved》比较火，讲的是一些命令行工具的增强版，我觉得比较好，替换掉了我之前用的一些工具，在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 命令增强工具">
+<meta name="twitter:title" content="Linux 命令增强工具">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/0408005420/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/0408005420/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="一些命令行工具的增强版 最近在 HN 有一篇《 Cli improved》比较火，讲的是一些命令行工具的增强版，我觉得比较好，替换掉了我之前用的一些工具，在">
+<meta name="twitter:description" content="一些命令行工具的增强版 最近在 HN 有一篇《 Cli improved》比较火，讲的是一些命令行工具的增强版，我觉得比较好，替换掉了我之前用的一些工具，在">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-04-08T00:54:20">
+  
+  
+    <meta property="article:modified_time" content="2020-04-08T00:54:20">
+  
+  
+  
+    
+      <meta property="article:section" content="Linux">
+    
+      <meta property="article:section" content="命令">
+    
+  
+  
+    
+      <meta property="article:tag" content="终端">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/bat-sample-1024x843.png">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/bat-sample-1024x843.png">
+
+
+  <meta property="og:image" content="https://3mile.github.io/cover/8.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/cover/8.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>Linux 命令增强工具</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/0408005420/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('/cover/8.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Linux 命令增强工具
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-04-08T00:54:20&#43;08:00">
+        
+  
+  
+  
+  
+    2020-04-08
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>, 
+    
+      <a class="category-link" href="https://3mile.github.io/categories/%e5%91%bd%e4%bb%a4">命令</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">A beautiful sunrise</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#powerlevel10k随心定制的shell主题">Powerlevel10k：随心定制的shell主题</a></li>
+    <li><a href="#lsd豪华版ls">lsd：豪华版ls</a></li>
+    <li><a href="#bat-替换-cat">bat 替换 cat</a></li>
+    <li><a href="#prettyping-替代-ping">prettyping 替代 ping</a></li>
+    <li><a href="#fzf-替换-ctrlr">fzf 替换 Ctrl+R</a></li>
+    <li><a href="#htop-替换-top">htop 替换 top</a></li>
+    <li><a href="#diff-so-fancy-替换-diff">diff-so-fancy 替换 diff</a></li>
+    <li><a href="#fd-替换-find">fd 替换 find</a></li>
+    <li><a href="#ncdu-替换-du">ncdu 替换 du</a></li>
+    <li><a href="#ack-或-ag-替换-grep">Ack 或 ag 替换 grep</a></li>
+    <li><a href="#jq">jq</a></li>
+    <li><a href="#z">z</a></li>
+    <li><a href="#fpp">fpp</a></li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h1 id="一些命令行工具的增强版httpswwwkawabanggacomposts3084">
+
+<a href="https://www.kawabangga.com/posts/3084"  target="_blank">一些命令行工具的增强版</a></h1>
+<p>最近在 HN 有一篇《
+
+<a href="https://remysharp.com/2018/08/23/cli-improved"  target="_blank">Cli improved</a>》比较火，讲的是一些命令行工具的增强版，我觉得比较好，替换掉了我之前用的一些工具，在这里分享一下。内容基本上是从原文中意译过来的。</p>
+<p>首先本文要介绍的工具基本都是原来工具的增强版，也就是说原来工具有的，增强版也都有。因为习惯很难改变，所以完全可以用 alias 替换掉。但是如果某些情况下想用原版的程序的话，可以使用下面的命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#ae81ff">\c</span>at <span style="color:#75715e"># ignore aliases named &#34;cat&#34; - explanation: https://stackoverflow.com/a/16506263/22617</span>
+command cat <span style="color:#75715e"># ignore functions and aliases</span>
+</code></pre></div><p>安装方法我就不说了，Mac 所有的软件都可以通过 brew 来安装，Linux 参考项目主页吧。</p>
+<h2 id="powerlevel10k随心定制的shell主题">Powerlevel10k：随心定制的shell主题</h2>
+<p>
+
+<a href="https://github.com/romkatv/powerlevel10k"  target="_blank">Powerlevel10k</a>是经典的zsh主题
+
+<a href="https://github.com/Powerlevel9k/powerlevel9k"  target="_blank">Powerlevel9k</a>的一个fork，相比Powerlevel9k，它提升了性能，更新也更加及时。相比于一般的shell主题提供的固定格式，Powerlevel10k可以定制包括前缀，后缀，目录格式，形状等等各种shell元素，</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/dc0ec660dca1049436c3f63a839555fa.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/dc0ec660dca1049436c3f63a839555fa.png" alt="img" /></a>
+</span>
+
+</span>Powerlevel10k的各种可用元素(来自：https://github.com/romkatv/powerlevel10k)</p>
+<p>而且通过一个简单的wizard就可以方便地拼装出自己喜欢的shell主题。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/dfad8158b0a34b6d7739018d46525bed.gif"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/dfad8158b0a34b6d7739018d46525bed.gif" alt="img" /></a>
+</span>
+
+</span>Powerlevel10k configuration wizard(来自https://github.com/romkatv/powerlevel10k)</p>
+<p>甚至还可以用Powerlevel10k复刻其它的主题😂。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/4980c8d44e544d7ad871a075282c5e20.gif"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/4980c8d44e544d7ad871a075282c5e20.gif" alt="img" /></a>
+</span>
+
+</span>用Powerlevel10k复刻各种主题(来自https://github.com/romkatv/powerlevel10k)</p>
+<p>Powerlevel10k也可以说是一款用了就回不去了的工具，赶紧来试试定制属于你自己的主题吧！</p>
+<h2 id="lsd豪华版ls">lsd：豪华版ls</h2>
+<p>替换了cd命令，我们现在要对ls下手了！
+
+<a href="https://github.com/Peltoche/lsd"  target="_blank">lsd</a>堪称豪华版ls，它能将各种文件和目录根据文件类型，访问权限等等渲染成不同颜色，还增加了各种文件类型的图标，配合prezto提供的各种自动补全和Enhancd的方便跳转，在shell里的文件操作方便程度堪比各种文件管理器。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/95685435597ba761676507689edb686f.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/95685435597ba761676507689edb686f.png" alt="img" /></a>
+</span>
+
+</span>lsd(来自https://github.com/Peltoche/lsd)</p>
+<p>类似功能的还有
+
+<a href="https://github.com/ogham/exa"  target="_blank">exa</a>和
+
+<a href="https://github.com/athityakumar/colorls"  target="_blank">colorls</a>，大家可以根据自己的喜好酌情挑选。
+服务器用的是Centos7,yum库里没有lsd,幸好官方有编译二进制文件</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://github.com/Peltoche/lsd/releases/download/0.16.0/lsd-0.16.0-x86_64-unknown-linux-musl.tar.gz
+tar zxvf lsd-0.16.0-x86_64-unknown-linux-musl.tar.gz
+cd lsd-0.16.0-x86_64-unknown-linux-musl 
+cp ./lsd /usr/local/bin/
+
+</code></pre></div><h2 id="bat-替换-cat">bat 替换 cat</h2>
+<p>cat 做的事情就是把文件内容打印出来，但是没有颜色高亮，很不方便(没有颜色我基本看不懂代码 &gt; &lt;)。
+
+<a href="https://github.com/jingweno/ccat"  target="_blank">ccat</a> (Go语言写的)是有颜色的 cat。但是 
+
+<a href="https://github.com/sharkdp/bat"  target="_blank">bcat</a> 不仅有颜色，还有行号、分页、git 加加减减的整合、类似 less 那样的搜索。下图是我自己的展示，最后两行带 <code>+</code> 的是新增的行，非常酷炫。</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/bat-sample.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/bat-sample-1024x843.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/bat-sample-1024x843.png" alt="img" /></a>
+</span>
+
+</span></a></p>
+<p>建议 <code>alias cat=bat</code> 。</p>
+<h2 id="prettyping-替代-ping">prettyping 替代 ping</h2>
+<p>这个不用多介绍了，直接看下效果吧。</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/prettyping.gif"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/prettyping.gif"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/prettyping.gif" alt="img" /></a>
+</span>
+
+</span></a></p>
+<h2 id="fzf-替换-ctrlr">fzf 替换 Ctrl+R</h2>
+<p>Ctrl+R 可以在 history 搜索命令，不过用起来很反人类。
+
+<a href="https://github.com/junegunn/fzf"  target="_blank">fzf</a> 使用效果如下，非常方便，从此再也不用畏惧长命令了。</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/Screen-Shot-2018-09-01-at-1.47.11-PM.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/Screen-Shot-2018-09-01-at-1.47.11-PM-1024x758.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/Screen-Shot-2018-09-01-at-1.47.11-PM-1024x758.png" alt="img" /></a>
+</span>
+
+</span></a></p>
+<p>除了查找历史命令，fzf 可以用来模糊查找文件，也很好用，直接设置一个命令，fzf 查找的结果调用 vim 编辑，效率很高。</p>
+<h2 id="htop-替换-top">htop 替换 top</h2>
+<p>这个应该很多人都知道，
+
+<a href="https://github.com/hishamhm/htop"  target="_blank">htop</a> 提供的信息更明确，熟悉了快捷键效率很高，比如按 <code>P</code> 按照 CPU 排序，<code>t</code> 展示树形，<code>k</code> 来 kill 选中的进程等等。</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/htop.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/htop-1024x676.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/htop-1024x676.png" alt="img" /></a>
+</span>
+
+</span></a></p>
+<h2 id="diff-so-fancy-替换-diff">diff-so-fancy 替换 diff</h2>
+<p>diff-so-fancy 带有高亮，代码的变更等，配合 git 使用可以让你的 git diff 显示效果和 github 上面的 diff 页面一样。</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/diff-so-fancy.jpg"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/diff-so-fancy-1024x640.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/diff-so-fancy-1024x640.jpg" alt="img" /></a>
+</span>
+
+</span></a></p>
+<h2 id="fd-替换-find">fd 替换 find</h2>
+<p>又一个 Rust 写出来的好东西：
+
+<a href="https://github.com/sharkdp/fd"  target="_blank">fd</a>。find 的语法太难记了，fd 好用很多，显示还带高亮。效果如图。</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/fd.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/fd-1024x668.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/fd-1024x668.png" alt="img" /></a>
+</span>
+
+</span></a></p>
+<h2 id="ncdu-替换-du">ncdu 替换 du</h2>
+<p>ncdu 将参数配置好，显示的效果如下。我用的是原作者的的 alias，文件夹是 CPython 的源代码。</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>alias du=&quot;ncdu &ndash;color dark -rr -x &ndash;exclude .git &ndash;exclude node_modules&rdquo;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/ncdu.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/ncdu-1024x668.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/ncdu-1024x668.png" alt="img" /></a>
+</span>
+
+</span></a></p>
+<h2 id="ack-或-ag-替换-grep">Ack 或 ag 替换 grep</h2>
+<p>这俩我都没用过，介绍一个我用的 rg 吧，主要是
+
+<a href="https://github.com/mariomka/regex-benchmark"  target="_blank">速度快</a>。效果如下：</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/rg.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/rg-1024x668.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/rg-1024x668.png" alt="img" /></a>
+</span>
+
+</span></a></p>
+<h2 id="jq">jq</h2>
+<p>操作 json 的一个命令行工具。再也不用组合复杂的 sed，awk，grep 来处理 json 了，我不确定是不是 
+
+<a href="http://jmespath.org/"  target="_blank">jmespath</a> 的语法。教程可以看下
+
+<a href="https://stedolan.github.io/jq/tutorial/"  target="_blank">官方的</a>，很好学。</p>
+<p>类似的 for csv 的有一个叫 
+
+<a href="https://csvkit.readthedocs.io/en/1.0.3/"  target="_blank">csvkit</a>。</p>
+<h2 id="z">z</h2>
+<p>一个根据你的路径历史来 fuzzy 跳转的东西，有一个竞品叫 
+
+<a href="https://github.com/wting/autojump"  target="_blank">autojump</a>。不过我习惯了用 
+
+<a href="https://github.com/rupa/z"  target="_blank">z</a> 了，用了很久没有什么痛点。使用效果如图。</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/z.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/z-1024x668.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/z-1024x668.png" alt="img" /></a>
+</span>
+
+</span></a></p>
+<h2 id="fpp">fpp</h2>
+<p>根据前一个命令的输入，自动识别输入中的文件名，然后可以使用快捷键打开。</p>
+<p>比如 <code>git status | fpp</code> 的效果如下：</p>
+<p>
+
+<a href="https://www.kawabangga.com/wp-content/uploads/2018/09/fpp.png"  target="_blank">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/fpp-1024x668.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/fpp-1024x668.png" alt="img" /></a>
+</span>
+
+</span></a></p>
+<p>未完待续…… 不定期更新，欢迎补充。</p>
+
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0408005420/>Linux 命令增强工具</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-04-08<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/0408005420/ target="_blank" >https://3mile.github.io/archives/2020/0408005420/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/%E7%BB%88%E7%AB%AF/">终端</a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/0408005420/" class="leancloud_visitors" data-flag-title="Linux 命令增强工具">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0406182133/" data-tooltip="Ubuntu 上安装微软TrueType字体">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0408094222/" data-tooltip="Ssh传输文件">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0406182133/" data-tooltip="Ubuntu 上安装微软TrueType字体">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/0408094222/" data-tooltip="Ssh传输文件">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

@@ -5,20 +5,16 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。
-
 udpxy在官方的软件源中，直接安装即可
-
 udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
 
 
 <meta property="og:description" content="udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。
-
 udpxy在官方的软件源中，直接安装即可
-
 udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UDPXY手册">
@@ -27,14 +23,10 @@ udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
 <meta property="twitter:url" content="https://3mile.github.io/archives/2019/0530132110/">
 <meta property="og:site_name" content="3mile博客">
 <meta property="og:description" content="udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。
-
 udpxy在官方的软件源中，直接安装即可
-
 udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
 <meta name="twitter:description" content="udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。
-
 udpxy在官方的软件源中，直接安装即可
-
 udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
 <meta property="og:locale" content="zh-cn">
 
@@ -105,7 +97,7 @@ udpxy没有独立的配置文件，修改参数直接在启动脚本中完成">
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -160,7 +152,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -312,68 +304,71 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#概要"><strong>概要</strong></a></li>
+    <li><a href="#描述"><strong>描述</strong></a></li>
+    <li><a href="#选项"><strong>选项</strong></a></li>
+    <li><a href="#环境"><strong>环境</strong></a></li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
             <p>udpxy的作用是将组播的数据流变成TCP协议的单播流，避免了在数据链路层广播，在无线网络中尤为需要。同时电视也不支持udp格式的视频流。</p>
-
 <p>udpxy在官方的软件源中，直接安装即可</p>
-
 <p>udpxy没有独立的配置文件，修改参数直接在启动脚本中完成</p>
-
 <ul>
-<li><a href="#%e6%a6%82%e8%a6%81"><strong>概要</strong></a></li>
-<li><a href="#%e6%8f%8f%e8%bf%b0"><strong>描述</strong></a></li>
-<li><a href="#%e9%80%89%e9%a1%b9"><strong>选项</strong></a></li>
-<li><a href="#%e7%8e%af%e5%a2%83"><strong>环境</strong></a></li>
-</ul>
+<li>
 
+<a href="#%e6%a6%82%e8%a6%81"  ><strong>概要</strong></a></li>
+<li>
+
+<a href="#%e6%8f%8f%e8%bf%b0"  ><strong>描述</strong></a></li>
+<li>
+
+<a href="#%e9%80%89%e9%a1%b9"  ><strong>选项</strong></a></li>
+<li>
+
+<a href="#%e7%8e%af%e5%a2%83"  ><strong>环境</strong></a></li>
+</ul>
 <p>udpxy手册页
 udpxy - UDP到HTTP多播流量中继守护程序。</p>
-
 <h2 id="概要"><strong>概要</strong></h2>
-
-<pre><code class="language-bash">udpxy [-vTS] [-a &lt;listenaddr&gt;] [-m &lt;mcast_ifc_addr&gt;] [-c &lt;clients&gt;] [-l &lt;logfile&gt;] [-B &lt;sizeK&gt;] [-R &lt;msgs&gt;] [-H &lt;sec&gt;] [-n &lt;nice_incr&gt;] [-M &lt;sec&gt;] -p &lt;port&gt;
-</code></pre>
-
-<h2 id="描述"><strong>描述</strong></h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">udpxy <span style="color:#f92672">[</span>-vTS<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-a &lt;listenaddr&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-m &lt;mcast_ifc_addr&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-c &lt;clients&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-l &lt;logfile&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-B &lt;sizeK&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-R &lt;msgs&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-H &lt;sec&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-n &lt;nice_incr&gt;<span style="color:#f92672">]</span> <span style="color:#f92672">[</span>-M &lt;sec&gt;<span style="color:#f92672">]</span> -p &lt;port&gt;
+</code></pre></div><h2 id="描述"><strong>描述</strong></h2>
 <p>udpxy是UDP到HTTP多播流量中继守护程序：它将UDP流量从给定的多播订阅转发到请求的HTTP客户端。</p>
-
 <p>udpxy监听（在专用地址/端口上）客户端发出的HTTP请求。客户请求的结构应为：</p>
-
-<pre><code class="language-bash">http：//{ address }：{ port }/{ cmd }/{ mgroup_address }[ SEP ]{ mgroup_port }
-</code></pre>
-
-<pre><code>[SEP]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">http：//<span style="color:#f92672">{</span> address <span style="color:#f92672">}</span>：<span style="color:#f92672">{</span> port <span style="color:#f92672">}</span>/<span style="color:#f92672">{</span> cmd <span style="color:#f92672">}</span>/<span style="color:#f92672">{</span> mgroup_address <span style="color:#f92672">}[</span> SEP <span style="color:#f92672">]{</span> mgroup_port <span style="color:#f92672">}</span>
+</code></pre></div><pre><code>[SEP]
 ：|％|〜| + | - | ^
 
 {cmd}，在
 UDP | RTP
-</code></pre>
-
-<p>其中地址和端口与udpxy 的侦听地址/端口组合匹配，mgroup_address：mgroup_port标识要预订的多播组/通道。</p>
-
-<pre><code class="language-bash">UDP
-# udp命令将对已知类型的有效负载（例如MPEG-TS和MPEG-TS上的RTP）进行udpxy探测;
+</code></pre><p>其中地址和端口与udpxy 的侦听地址/端口组合匹配，mgroup_address：mgroup_port标识要预订的多播组/通道。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UDP
+<span style="color:#75715e"># udp命令将对已知类型的有效负载（例如MPEG-TS和MPEG-TS上的RTP）进行udpxy探测;</span>
 
 RTP
-# rtp命令使udpxy假定RTP超过MPEG-TS有效载荷，从而跳过探测器。
-</code></pre>
-
-<p>udpxy将为每个新的中继请求启动一个单独的客户端进程（在活动客户端的指定限制内​​）。客户端进程将（从UDP套接字）接收的所有网络流量从指定的多播组中继/转发到请求的HTTP连接。</p>
-
+<span style="color:#75715e"># rtp命令使udpxy假定RTP超过MPEG-TS有效载荷，从而跳过探测器。</span>
+</code></pre></div><p>udpxy将为每个新的中继请求启动一个单独的客户端进程（在活动客户端的指定限制内​​）。客户端进程将（从UDP套接字）接收的所有网络流量从指定的多播组中继/转发到请求的HTTP连接。</p>
 <p>udpxy还支持一些管理请求：</p>
-
 <p>状态</p>
-
 <pre><code>http：// address：port / status /发回带有守护程序状态和客户端统计信息的HTML页面。
-</code></pre>
-
-<p>重新开始</p>
-
+</code></pre><p>重新开始</p>
 <pre><code>http：// address：port / restart /关闭所有活动连接并重启。
-</code></pre>
-
-<p>例子</p>
-
+</code></pre><p>例子</p>
 <pre><code>http://192.168.0.12:5056/udp/224.0.2.26:24012
 
 http://192.168.0.12:5056/rtp/224.0.2.26:24012
@@ -381,123 +376,116 @@ http://192.168.0.12:5056/rtp/224.0.2.26:24012
 http://192.168.0.15:5056/rtp/224.0.2.26^24055
 
 http://192.168.0.15:5056/status/
-</code></pre>
-
-<h2 id="选项"><strong>选项</strong></h2>
-
+</code></pre><h2 id="选项"><strong>选项</strong></h2>
 <p>udpxy接受以下选项：</p>
-
-<pre><code class="language-bash">-v
-# 启用详细输出[default = disabled ]。
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">-v
+<span style="color:#75715e"># 启用详细输出[default = disabled ]。</span>
 
 -S
-# 启用客户端统计信息[default = disabled ]。
+<span style="color:#75715e"># 启用客户端统计信息[default = disabled ]。</span>
 
 -T
-# 不要作为守护进程运行[default = daemon if root ]。
+<span style="color:#75715e"># 不要作为守护进程运行[default = daemon if root ]。</span>
 
 -a &lt;listenaddr&gt;
-# 要侦听的IPv4地址/接口[default = 0.0.0.0 ]。
+<span style="color:#75715e"># 要侦听的IPv4地址/接口[default = 0.0.0.0 ]。</span>
 
 -m &lt;mcast_ifc_addr&gt;
-# （组播）源的IPv4地址/接口[默认= 0.0.0.0 ]。
+<span style="color:#75715e"># （组播）源的IPv4地址/接口[默认= 0.0.0.0 ]。</span>
 
 -c &lt;clients&gt;
-# 要接受的最大客户端数[default = 3，max = 5000 ]。
+<span style="color:#75715e"># 要接受的最大客户端数[default = 3，max = 5000 ]。</span>
 
 -l &lt;logfile&gt;
-# 将输出记录到文件[default = stderr ]。
+<span style="color:#75715e"># 将输出记录到文件[default = stderr ]。</span>
 
 -B &lt;sizeK&gt;
-# 入站（多播）数据的缓冲区大小（65536,32Kb，1Mb）[默认= 2048字节 ]。
+<span style="color:#75715e"># 入站（多播）数据的缓冲区大小（65536,32Kb，1Mb）[默认= 2048字节 ]。</span>
 
 -R &lt;msgs&gt;
-# 要缓冲的最大消息数（-1 = 全部）[default = 1 ]。
+<span style="color:#75715e"># 要缓冲的最大消息数（-1 = 全部）[default = 1 ]。</span>
 
 -H &lt;sec&gt;
-# 在缓冲区中保存数据的最长时间（以秒为单位）（- 1 = 无限制）[默认值= 1 ]。
+<span style="color:#75715e"># 在缓冲区中保存数据的最长时间（以秒为单位）（- 1 = 无限制）[默认值= 1 ]。</span>
 
 -n &lt;nice_incr&gt;
-# 好的值增量[default = 0 ]。
+<span style="color:#75715e"># 好的值增量[default = 0 ]。</span>
 
 -M &lt;sec&gt;
-# 每M秒更新一次多播订阅（如果为0则跳过）[default = 0 ]。
+<span style="color:#75715e"># 每M秒更新一次多播订阅（如果为0则跳过）[default = 0 ]。</span>
 
 -p &lt;port&gt;
-# 端口。
-</code></pre>
-
-<p>有效载荷类型和处理
+<span style="color:#75715e"># 端口。</span>
+</code></pre></div><p>有效载荷类型和处理
 udpxy 通过中继数据包中的MPEG-TS有效载荷识别MPEG-TS和RTP ; 如果udpxy遇到RTP有效载荷，它会自动将其“转换”为MPEG-TS（通过剥离RTP头），以便不识别RTP的媒体播放器仍然可以播放该流。</p>
-
 <p>到目前为止，没有为其他有效负载类型执行转换。</p>
-
 <p>录制Mpeg流量
 udpxy包括将捕获的流量记录为原始MPEG-TS流到文件中的功能。此功能通过udpxrec启用：与udpxy链接在一起的捆绑应用程序（作为一个可执行文件）。</p>
-
 <p>udpxrec通过符号链接（名为udpxrec）调用udpxy可执行文件（即不重命名 udpxy可执行文件）。</p>
-
-<p>udpxrec创建封装MPEG-TS段的MPEG文件; 某些媒体播放器不会播放此类文件; 为了使它们可播放，必须将流转码为MPEG-PS; vlc&rsquo;知道&rsquo;如何进行这样的转码，这是一个命令行示例：</p>
-
+<p>udpxrec创建封装MPEG-TS段的MPEG文件; 某些媒体播放器不会播放此类文件; 为了使它们可播放，必须将流转码为MPEG-PS; vlc'知道'如何进行这样的转码，这是一个命令行示例：</p>
 <pre><code>vlc input-ts.mpg --sout =“#std {access = file，mux = ps，dst = out-ps.mpg}”
-</code></pre>
-
-<p>由此产生的MPEG-PS文件可以由大多数媒体播放器播放。</p>
-
+</code></pre><p>由此产生的MPEG-PS文件可以由大多数媒体播放器播放。</p>
 <h2 id="环境"><strong>环境</strong></h2>
-
 <p>udpxy利用以下环境变量来补充其命令行选项; 变量被考虑用于大多数人不需要经常更改的选项（或者从命令行使用简单不方便）。</p>
-
 <p>注意：如果存在与功能环境变量相交的命令行开关，则交换机始终具有更高的优先级。</p>
-
-<pre><code class="language-bash">UDPXY_RCV_TMOUT
-# 入站数据流（多播）的超时（秒），默认= 5 ;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">UDPXY_RCV_TMOUT
+<span style="color:#75715e"># 入站数据流（多播）的超时（秒），默认= 5 ;</span>
 
 UDPXY_DHOLD_TMOUT
-# 在发送/刷新到客户端之前保持缓冲数据的超时（秒），默认值= 1 ;
+<span style="color:#75715e"># 在发送/刷新到客户端之前保持缓冲数据的超时（秒），默认值= 1 ;</span>
 
 UDPXY_SREAD_TMOUT
-# 从监听socked（处理HTTP请求）读取超时（秒），默认= 1 ;
+<span style="color:#75715e"># 从监听socked（处理HTTP请求）读取超时（秒），默认= 1 ;</span>
 
 UDPXY_SWRITE_TMOUT
-# 写入侦听socked（处理HTTP请求）的超时（秒），默认值= 1 ;
+<span style="color:#75715e"># 写入侦听socked（处理HTTP请求）的超时（秒），默认值= 1 ;</span>
 
 UDPXY_SSEL_TMOUT
-# 在服务器循环中选择（2）的超时（秒）（如果使用pselect（2）则未使用），默认值= 30 ;
+<span style="color:#75715e"># 在服务器循环中选择（2）的超时（秒）（如果使用pselect（2）则未使用），默认值= 30 ;</span>
 
 UDPXY_LQ_BACKLOG
-# 侦听器套接字的backlog大小，默认值= 16 ;
+<span style="color:#75715e"># 侦听器套接字的backlog大小，默认值= 16 ;</span>
 
 UDPXY_SRV_RLWMARK
-# 接收（m-cast）套接字上的低watermaek，默认= 0（未设置）;
+<span style="color:#75715e"># 接收（m-cast）套接字上的低watermaek，默认= 0（未设置）;</span>
 
 UDPXY_SSOCKBUF_NOSYNC
-# 不同步入站（UDP）套接字的缓冲区大小（由-B设置的值），默认= 1（同步）;
+<span style="color:#75715e"># 不同步入站（UDP）套接字的缓冲区大小（由-B设置的值），默认= 1（同步）;</span>
 
 UDPXY_DSOCKBUF_NOSYNC
-# 不同步出站（TCP）套接字的缓冲区大小（由-B设置的值），默认= 1（同步）;
+<span style="color:#75715e"># 不同步出站（TCP）套接字的缓冲区大小（由-B设置的值），默认= 1（同步）;</span>
 
 UDPXY_TCP_NODELAY
-# 在新接受的套接字上禁用Nagle算法（更快的频道切换），默认= 1 ;
+<span style="color:#75715e"># 在新接受的套接字上禁用Nagle算法（更快的频道切换），默认= 1 ;</span>
 
 UDPXY_HTTP200_FTR_FILE
-# 将给定文本文件的内容追加到HTTP 200响应中，default = none ;
+<span style="color:#75715e"># 将给定文本文件的内容追加到HTTP 200响应中，default = none ;</span>
 
 UDPXY_HTTP200_FTR_LN
-# 将文本（行）附加到HTTP 200响应，默认= 无 ;
+<span style="color:#75715e"># 将文本（行）附加到HTTP 200响应，默认= 无 ;</span>
 
 UDPXY_ALLOW_PAUSES
-# 如果在写入（2）上被阻塞，则继续读取数据直到缓冲区（-B &lt;sizeK&gt;）已满，默认= 禁用 ;
+<span style="color:#75715e"># 如果在写入（2）上被阻塞，则继续读取数据直到缓冲区（-B &lt;sizeK&gt;）已满，默认= 禁用 ;</span>
 
 UDPXY_PAUSE_MSEC
-# 在写入时阻塞时仅允许N毫秒读取数据（2）。
+<span style="color:#75715e"># 在写入时阻塞时仅允许N毫秒读取数据（2）。</span>
 
 UDPXY_CONTENT_TYPE
-# 在HTTP响应中指定自定义Content-Type。
+<span style="color:#75715e"># 在HTTP响应中指定自定义Content-Type。</span>
 
-</code></pre>
+</code></pre></div>
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0530132110/>UDPXY手册</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-05-30<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0530132110/ target="_blank" >https://3mile.github.io/archives/2019/0530132110/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -524,7 +512,7 @@ UDPXY_CONTENT_TYPE
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -569,24 +557,6 @@ UDPXY_CONTENT_TYPE
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0530132110/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0530132110/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0530132110/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -605,9 +575,11 @@ UDPXY_CONTENT_TYPE
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -645,24 +617,6 @@ UDPXY_CONTENT_TYPE
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0530132110/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0530132110/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0530132110/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -681,24 +635,6 @@ UDPXY_CONTENT_TYPE
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0530132110%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0530132110%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0530132110%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -714,7 +650,7 @@ UDPXY_CONTENT_TYPE
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -742,18 +678,28 @@ UDPXY_CONTENT_TYPE
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

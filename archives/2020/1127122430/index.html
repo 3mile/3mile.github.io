@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="author" content="3mile">
+<meta name="keywords" content="">
+<meta name="description" content="介绍 Docker是一个很好的工具，用于在软件容器中自动部署Linux应用程序，但要充分利用其潜力，应用程序的每个组件都应该在自己的单独容器中">
+
+
+<meta property="og:description" content="介绍 Docker是一个很好的工具，用于在软件容器中自动部署Linux应用程序，但要充分利用其潜力，应用程序的每个组件都应该在自己的单独容器中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何在Ubuntu 18上安装Docker Compose">
+<meta name="twitter:title" content="如何在Ubuntu 18上安装Docker Compose">
+<meta property="og:url" content="https://3mile.github.io/archives/2020/1127122430/">
+<meta property="twitter:url" content="https://3mile.github.io/archives/2020/1127122430/">
+<meta property="og:site_name" content="3mile博客">
+<meta property="og:description" content="介绍 Docker是一个很好的工具，用于在软件容器中自动部署Linux应用程序，但要充分利用其潜力，应用程序的每个组件都应该在自己的单独容器中">
+<meta name="twitter:description" content="介绍 Docker是一个很好的工具，用于在软件容器中自动部署Linux应用程序，但要充分利用其潜力，应用程序的每个组件都应该在自己的单独容器中">
+<meta property="og:locale" content="zh-cn">
+
+  
+    <meta property="article:published_time" content="2020-11-27T12:24:30">
+  
+  
+    <meta property="article:modified_time" content="2020-11-27T12:24:30">
+  
+  
+  
+    
+      <meta property="article:section" content="">
+    
+  
+  
+    
+      <meta property="article:tag" content="">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+  <meta name="twitter:site" content="@3mile1">
+
+
+  <meta name="twitter:creator" content="@3mile1">
+
+
+
+
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/docker-compose-button.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/docker-compose-button.jpg">
+
+
+  <meta property="og:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/docker-compose-button.jpg">
+  <meta property="twitter:image" content="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/docker-compose-button.jpg">
+
+
+
+
+  <meta property="og:image" content="https://3mile.github.io/img/a.jpg">
+  <meta property="twitter:image" content="https://3mile.github.io/img/a.jpg">
+
+
+    <title>如何在Ubuntu 18上安装Docker Compose</title>
+
+    <link rel="icon" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/3m.png">
+    
+
+    
+
+    <link rel="canonical" href="https://3mile.github.io/archives/2020/1127122430/">
+
+    
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" rel="stylesheet">
+    
+    
+
+    
+    
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117920425-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+
+<body>
+  <div id="blog">
+    <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://3mile.github.io/">3mile博客</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://3mile.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+    <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://3mile.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">3mile</h4>
+        
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.github.io/about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/3mile" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd/dl" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-download"></i>
+      
+      <span class="sidebar-button-desc">Aria2NG</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://3mile.ltd" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-folder"></i>
+      
+      <span class="sidebar-button-desc">文件服务器</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+    
+  <div class="post-header-cover
+              text-left
+              post-header-cover--partial"
+       style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/picgo/docker-compose-button.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      如何在Ubuntu 18上安装Docker Compose
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2020-11-27T12:24:30&#43;08:00">
+        
+  
+  
+  
+  
+    2020-11-27
+  
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+    <div id="main" data-behavior="5" class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+      <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+        
+        <span class="post-header-cover-caption caption">如何在Ubuntu 18</span>
+        
+        
+        <div class="post-content markdown" itemprop="articleBody">
+          <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
+            
+
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#准备"><strong>准备</strong></a></li>
+    <li><a href="#第1步---安装docker-compose"><strong>第1步 - 安装Docker Compose</strong></a></li>
+    <li><a href="#第2步---使用docker-compose运行容器"><strong>第2步 - 使用Docker Compose运行容器</strong></a></li>
+    <li><a href="#第3步---删除镜像可选"><strong>第3步 - 删除镜像（可选）</strong></a></li>
+    <li><a href="#结论"><strong>结论</strong></a></li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h1 id="介绍"><strong>介绍</strong></h1>
+<p>
+
+<a href="https://docs.docker.com/"  target="_blank">Docker</a>是一个很好的工具，用于在软件容器中自动部署Linux应用程序，但要充分利用其潜力，应用程序的每个组件都应该在自己的单独容器中运行。对于具有大量组件的复杂应用程序，编排所有容器以启动，通信和关闭可能很快变得难以处理。</p>
+<p>Docker社区提出了一个名为
+
+<a href="http://www.fig.sh/"  target="_blank">Fig</a>的流行解决方案，它允许您使用单个YAML文件来编排所有Docker容器和配置。这变得如此受欢迎，以至于Docker团队决定基于Fig源制作<em>Docker Compose</em>，现在已弃用。Docker Compose使用户可以更轻松地编排Docker容器的进程，包括启动，关闭和设置容器内链接和卷。</p>
+<p>在本教程中，我们将向您展示如何安装最新版本的Docker Compose以帮助您管理多容器应用程序。</p>
+<h2 id="准备"><strong>准备</strong></h2>
+<p>要阅读本文，您需要一台具有以下内容的Ubuntu 18.04服务器：</p>
+<ul>
+<li>一台已经设置好可以使用<code>sudo</code>命令的非root账号的Ubuntu<strong>服务器</strong>，并且已开启防火墙。没有服务器的同学可以在
+
+<a href="https://cloud.tencent.com/product/cvm?from=10680"  target="_blank">这里购买</a>，不过我个人更推荐您使用<strong>免费</strong>的腾讯云
+
+<a href="https://cloud.tencent.com/developer/labs?from=10680"  target="_blank">开发者实验室</a>进行试验，学会安装后再
+
+<a href="https://cloud.tencent.com/product/cvm?from=10680"  target="_blank">购买服务器</a>。</li>
+<li>安装Docker。</li>
+</ul>
+<p>一旦这些到位，您就可以随时跟进了。</p>
+<p>**注意：**尽管前提条件提供了在Ubuntu 18.04上安装Docker的说明，但只要安装了Docker，本文中的<code>docker</code>命令就可以在其他操作系统上运行。</p>
+<h2 id="第1步---安装docker-compose"><strong>第1步 - 安装Docker Compose</strong></h2>
+<p>虽然我们可以从官方的Ubuntu存储库安装Docker Compose，但它是最新版本背后的几个次要版本，所以我们将从Docker的GitHub存储库安装Docker Compose。以下命令与您在“ 
+
+<a href="https://github.com/docker/compose/releases"  target="_blank">版本”</a>页面上找到的命令略有不同。通过使用<code>-o</code>标志首先指定输出文件而不是重定向输出，此语法可避免遇到使用sudo时导致的权限被拒绝错误``。</p>
+<p>我们将检查
+
+<a href="https://github.com/docker/compose/releases"  target="_blank">当前版本</a>，如有必要，请在以下命令中进行更新：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">sudo</span> <span style="color:#a6e22e">curl</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">L</span> <span style="color:#a6e22e">https</span><span style="color:#f92672">:</span><span style="color:#75715e">//github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+</span></code></pre></div><p>接下来我们将设置权限：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">sudo</span> <span style="color:#a6e22e">chmod</span> <span style="color:#f92672">+</span><span style="color:#a6e22e">x</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">usr</span><span style="color:#f92672">/</span><span style="color:#a6e22e">local</span><span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">docker</span><span style="color:#f92672">-</span><span style="color:#a6e22e">compose</span>
+</code></pre></div><p>然后我们将通过检查版本来验证安装是否成功：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">docker</span><span style="color:#f92672">-</span><span style="color:#a6e22e">compose</span> <span style="color:#f92672">--</span><span style="color:#a6e22e">version</span>
+</code></pre></div><p>这将打印出我们安装的版本：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">docker</span><span style="color:#f92672">-</span><span style="color:#a6e22e">compose</span> <span style="color:#a6e22e">version</span> <span style="color:#ae81ff">1.21.2</span>, <span style="color:#a6e22e">build</span> <span style="color:#a6e22e">a133471</span>
+</code></pre></div><p>现在我们已经安装了Docker Compose，我们已准备好运行“Hello World”示例。</p>
+<h2 id="第2步---使用docker-compose运行容器"><strong>第2步 - 使用Docker Compose运行容器</strong></h2>
+<p>公共Docker注册表Docker Hub包含一个用于演示和测试的<em>Hello World</em>镜像。它说明了使用Docker Compose运行容器所需的最小配置：调用单个映像的YAML文件：</p>
+<p>首先，我们将为YAML文件创建一个目录并移入其中：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">mkdir</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">-</span><span style="color:#a6e22e">world</span>
+<span style="color:#a6e22e">cd</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">-</span><span style="color:#a6e22e">world</span>
+</code></pre></div><p>然后，我们将创建YAML文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">nano</span> <span style="color:#a6e22e">docker</span><span style="color:#f92672">-</span><span style="color:#a6e22e">compose</span>.<span style="color:#a6e22e">yml</span>
+</code></pre></div><p>将以下内容放入文件，保存文件，然后退出文本编辑器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">test</span><span style="color:#f92672">:</span>
+ <span style="color:#a6e22e">image</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">-</span><span style="color:#a6e22e">world</span>
+</code></pre></div><p>YAML文件中的第一行用作容器名称的一部分。第二行指定用于创建容器的镜像。当我们运行<code>docker-compose up</code>命令时，它将按我们指定的名称查找本地镜像<code>hello-world</code>。有了这个，我们将保存并退出该文件。</p>
+<p>我们可以使用以下<code>docker images</code>命令手动查看系统上的镜像：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">docker</span> <span style="color:#a6e22e">images</span>
+</code></pre></div><p>当根本没有本地镜像时，只显示列标题：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">REPOSITORY</span>          <span style="color:#a6e22e">TAG</span>                 <span style="color:#a6e22e">IMAGE</span> <span style="color:#a6e22e">ID</span>            <span style="color:#a6e22e">CREATED</span>             <span style="color:#a6e22e">SIZE</span>
+</code></pre></div><p>现在，在仍然在<code>~/hello-world</code>目录中时，我们将执行以下命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">docker</span><span style="color:#f92672">-</span><span style="color:#a6e22e">compose</span> <span style="color:#a6e22e">up</span>
+</code></pre></div><p>我们第一次运行命令时，如果没有指定本地映像<code>hello-world</code>，Docker Compose将从Docker Hub公共存储库中提取它：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Pulling</span> <span style="color:#a6e22e">my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">test</span> (<span style="color:#a6e22e">hello</span><span style="color:#f92672">-</span><span style="color:#a6e22e">world</span><span style="color:#f92672">:</span><span style="color:#a6e22e">latest</span>)...
+<span style="color:#a6e22e">latest</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Pulling</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">library</span><span style="color:#f92672">/</span><span style="color:#a6e22e">hello</span><span style="color:#f92672">-</span><span style="color:#a6e22e">world</span>
+<span style="color:#a6e22e">c04b14da8d14</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Downloading</span> [<span style="color:#f92672">==================================================&gt;</span>] <span style="color:#a6e22e">c04b14da8d14</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Extracting</span> [<span style="color:#f92672">==================================================&gt;</span>]  <span style="color:#a6e22e">c04b14da8d14</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Extracting</span> [<span style="color:#f92672">==================================================&gt;</span>]  <span style="color:#a6e22e">c04b14da8d14</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Pull</span> <span style="color:#a6e22e">complete</span>
+<span style="color:#a6e22e">Digest</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">sha256</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0256</span><span style="color:#a6e22e">e8a36e2070f7bf2d0b0763dbabdd67798512411de4cdcf9431a1feb60fd9</span>
+<span style="color:#a6e22e">Status</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">Downloaded</span> <span style="color:#a6e22e">newer</span> <span style="color:#a6e22e">image</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">-</span><span style="color:#a6e22e">world</span><span style="color:#f92672">:</span><span style="color:#a6e22e">latest</span>
+. . .
+</code></pre></div><p>拉动镜像后，<code>docker-compose</code>创建一个容器，附加并运行
+
+<a href="https://github.com/docker-library/hello-world/blob/85fd7ab65e079b08019032479a3f306964a28f4d/hello-world/Dockerfile"  target="_blank">hello</a>程序，然后确认安装似乎正在工作：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">. . .
+<span style="color:#a6e22e">Creating</span> <span style="color:#a6e22e">helloworld_my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">test_1</span>...
+<span style="color:#a6e22e">Attaching</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">helloworld_my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">test_1</span>
+<span style="color:#a6e22e">my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">test_1</span> <span style="color:#f92672">|</span>
+<span style="color:#a6e22e">my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">test_1</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Hello</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">Docker</span>.
+<span style="color:#a6e22e">my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">test_1</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">This</span> <span style="color:#a6e22e">message</span> <span style="color:#a6e22e">shows</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">your</span> <span style="color:#a6e22e">installation</span> <span style="color:#a6e22e">appears</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">be</span> <span style="color:#a6e22e">working</span> <span style="color:#a6e22e">correctly</span>.
+<span style="color:#a6e22e">my</span><span style="color:#f92672">-</span><span style="color:#a6e22e">test_1</span> <span style="color:#f92672">|</span>
+. . .
+</code></pre></div><p>然后它打印出它所做的解释：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ae81ff">1.</span> <span style="color:#a6e22e">The</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">client</span> <span style="color:#a6e22e">contacted</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">daemon</span>.
+<span style="color:#ae81ff">2.</span> <span style="color:#a6e22e">The</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">daemon</span> <span style="color:#a6e22e">pulled</span> <span style="color:#a6e22e">the</span> <span style="color:#e6db74">&#34;hello-world&#34;</span> <span style="color:#a6e22e">image</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">Hub</span>.
+<span style="color:#ae81ff">3.</span> <span style="color:#a6e22e">The</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">daemon</span> <span style="color:#a6e22e">created</span> <span style="color:#a6e22e">a</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">container</span> <span style="color:#a6e22e">from</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">image</span> <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">runs</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">executable</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">produces</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">output</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">are</span> <span style="color:#a6e22e">currently</span> <span style="color:#a6e22e">reading</span>.
+<span style="color:#ae81ff">4.</span> <span style="color:#a6e22e">The</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">daemon</span> <span style="color:#a6e22e">streamed</span> <span style="color:#a6e22e">that</span> <span style="color:#a6e22e">output</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">Docker</span> <span style="color:#a6e22e">client</span>, <span style="color:#a6e22e">which</span> <span style="color:#a6e22e">sent</span> <span style="color:#a6e22e">it</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">your</span> <span style="color:#a6e22e">terminal</span>.
+</code></pre></div><p>Docker容器只在命令处于活动状态时才运行，因此一旦<code>hello</code>完成运行，容器就会停止。因此，当我们查看活动进程时，将显示列标题，但<code>hello-world</code>不会列出容器，因为它没有运行。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">docker</span> <span style="color:#a6e22e">ps</span>
+<span style="color:#a6e22e">CONTAINER</span> <span style="color:#a6e22e">ID</span>        <span style="color:#a6e22e">IMAGE</span>               <span style="color:#a6e22e">COMMAND</span>             <span style="color:#a6e22e">CREATED</span>             <span style="color:#a6e22e">STATUS</span>                      <span style="color:#a6e22e">PORTS</span>               <span style="color:#a6e22e">NAMES</span>
+</code></pre></div><p>通过使用<code>-a</code>显示所有容器的标志，我们可以看到容器信息，我们将在下一步中使用它，而不仅仅是活动容器：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">docker</span> <span style="color:#a6e22e">ps</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">a</span>
+<span style="color:#a6e22e">CONTAINER</span> <span style="color:#a6e22e">ID</span>        <span style="color:#a6e22e">IMAGE</span>               <span style="color:#a6e22e">COMMAND</span>             <span style="color:#a6e22e">CREATED</span>             <span style="color:#a6e22e">STATUS</span>                      <span style="color:#a6e22e">PORTS</span>               <span style="color:#a6e22e">NAMES</span>
+<span style="color:#ae81ff">06069</span><span style="color:#a6e22e">fd5ca23</span>        <span style="color:#a6e22e">hello</span><span style="color:#f92672">-</span><span style="color:#a6e22e">world</span>         <span style="color:#e6db74">&#34;/hello&#34;</span>            <span style="color:#ae81ff">35</span> <span style="color:#a6e22e">minutes</span> <span style="color:#a6e22e">ago</span>      <span style="color:#a6e22e">Exited</span> (<span style="color:#ae81ff">0</span>) <span style="color:#ae81ff">35</span> <span style="color:#a6e22e">minutes</span> <span style="color:#a6e22e">ago</span>                       <span style="color:#a6e22e">drunk_payne</span>
+</code></pre></div><p>这将显示我们完成后删除容器所需的信息。</p>
+<h2 id="第3步---删除镜像可选"><strong>第3步 - 删除镜像（可选）</strong></h2>
+<p>为避免使用不必要的磁盘空间，我们将删除本地映像。为此，我们需要使用<code>docker rm</code>命令删除引用该镜像的所有容器，然后删除CONTAINER ID或NAME。下面，我们使用我们刚刚运行的<code>docker ps -a</code>命令中的CONTAINER ID 。请务必替换容器的ID：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">docker</span> <span style="color:#a6e22e">rm</span> <span style="color:#ae81ff">06069</span><span style="color:#a6e22e">fd5ca23</span>
+</code></pre></div><p>一旦删除了引用该镜像的所有容器，我们就可以删除该镜像：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">docker</span> <span style="color:#a6e22e">rmi</span> <span style="color:#a6e22e">hello</span><span style="color:#f92672">-</span><span style="color:#a6e22e">world</span>
+</code></pre></div><h2 id="结论"><strong>结论</strong></h2>
+<p>我们现在已经安装了Docker Compose，通过运行Hello World示例测试了我们的安装，并删除了测试镜像和容器。</p>
+<p>虽然Hello World示例确认了我们的安装，但简单的配置并没有显示Docker Compose的主要优点之一 - 能够同时上下一组Docker容器。</p>
+
+            
+          </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/1127122430/>如何在Ubuntu 18上安装Docker Compose</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2020-11-27<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2020/1127122430/ target="_blank" >https://3mile.github.io/archives/2020/1127122430/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+        </div>
+        <div id="post-footer" class="post-footer main-content-wrap">
+          
+          
+          
+          
+          <div class="post-footer-tags">
+            <span class="text-color-light text-small">标签</span><br />
+            
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+
+          </div>
+          
+          
+          
+          <span id="/archives/2020/1127122430/" class="leancloud_visitors" data-flag-title="如何在Ubuntu 18上安装Docker Compose">
+            <span class="post-meta-item-text">文章阅读量 </span>
+            <span class="leancloud-visitors-count">1000000</span>
+            <p></p>
+          </span>
+          <div id="vcomments"></div>
+          <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
+          <script type="text/javascript">
+            new Valine({
+              el: '#vcomments' ,
+              appId: 'SfzAQzjSOErgEHrHx3rhhwc3-MdYXbMMI',
+              appKey: 'o5fbHlzJhiWYk3wEYaSAeoOt',
+              notify: 'false',
+              verify: 'false',
+              avatar:'mm', 
+              placeholder: '说点什么吧...',
+              visitor: 'true'
+            });
+          </script>
+          <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1117094714/" data-tooltip="使用endlessh来保护你的ssh服务">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1127123706/" data-tooltip="Certbot移除不需要的域名证书">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+          
+          
+          
+        </div>
+      </article>
+      
+      <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    
+    &copy; 2020  By 3mile
+  </span>
+</footer>
+
+    </div>
+    <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+      <div class="post-actions-wrap">
+  
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1117094714/" data-tooltip="使用endlessh来保护你的ssh服务">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">上一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2020/1127123706/" data-tooltip="Certbot移除不需要的域名证书">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+      
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  
+</div>
+
+    </div>
+    <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+  </div>
+      
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://3mile.github.io/img/a.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">3mile</h4>
+    
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        苦逼码农一枚
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        中国.成都
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    <div id="cover" style="background-image:url('https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/c.jpg');"></div>
+  
+
+
+    
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
+
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
+
+
+  
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
+  
+
+<script lang="javascript">
+window.onload = updateMinWidth;
+window.onresize = updateMinWidth;
+document.getElementById("sidebar").addEventListener("transitionend", updateMinWidth);
+function updateMinWidth() {
+  var sidebar = document.getElementById("sidebar");
+  var main = document.getElementById("main");
+  main.style.minWidth = "";
+  var w1 = getComputedStyle(main).getPropertyValue("min-width");
+  var w2 = getComputedStyle(sidebar).getPropertyValue("width");
+  var w3 = getComputedStyle(sidebar).getPropertyValue("left");
+  main.style.minWidth = `calc(${w1} - ${w2} - ${w3})`;
+}
+</script>
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+  
+
+
+
+
+    
+  </body>
+</html>

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="由于最近再次安装hugo,就想纪录一下这个过程，有什么不对的地方请指出来。 一. 安装hugo hugo有两种安装方式，homebrew包管理工具">
@@ -91,7 +91,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -146,7 +146,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -298,264 +298,240 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<blockquote>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一-安装hugo">一. 安装hugo</a></li>
+        <li><a href="#二-创建site生成静态页面">二. 创建Site，生成静态页面</a></li>
+        <li><a href="#三-托管到github-pages">三. 托管到github pages</a></li>
+        <li><a href="#四-添加评论模块">四. 添加评论模块</a>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#获取disqusshortname">获取disqusShortname</a></li>
+                <li><a href="#配置disqusshortname">配置disqusShortname</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#五-我做的一些改动">五. 我做的一些改动</a></li>
+        <li><a href="#参考链接">参考链接</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <blockquote>
 <p>由于最近再次安装hugo,就想纪录一下这个过程，有什么不对的地方请指出来。</p>
 </blockquote>
-
 <h3 id="一-安装hugo">一. 安装hugo</h3>
-
 <p><em>hugo有两种安装方式，homebrew包管理工具安装以及github源码下载安装</em></p>
-
 <ul>
-<li>homebrew安装</li>
-</ul>
-
+<li>
+<p>homebrew安装</p>
 <blockquote>
 <p>homebrew简称brew, 是Mac OSX上的软件包管理工具，能在Mac中方便的安装软件或者卸载软件</p>
 </blockquote>
-
 <p>通过下面命令就可以安装brew</p>
-
-<pre><code>     ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 
-</code></pre>
-
-<p>然后安装hugo</p>
-
-<pre><code>     brew install hugo
-</code></pre>
-
-<ul>
-<li><p>github源码编译安装，首先安装好依赖的工具：</p>
-
+<pre><code>   ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot; 
+</code></pre><p>然后安装hugo</p>
+<pre><code>   brew install hugo
+</code></pre></li>
+<li>
+<p>github源码编译安装，首先安装好依赖的工具：</p>
 <ul>
 <li>Git</li>
 <li>Mercurial</li>
 <li>Go 1.3+ (Go 1.4+ on Windows)</li>
-</ul></li>
 </ul>
-
 <p>设置好 GOPATH 环境变量，获取源码并编译：</p>
-
-<pre><code>     $ export GOPATH=$HOME/go
-     $ go get -v github.com/spf13/hugo
-</code></pre>
-
-<p>源码会下载到</p>
-
+<pre><code>   $ export GOPATH=$HOME/go
+   $ go get -v github.com/spf13/hugo
+</code></pre><p>源码会下载到</p>
 <p>GOPATH/src</p>
-
 <p>目录，二进制在</p>
-
 <p>$GOPATH/bin/</p>
-
-<h3 id="二-创建site-生成静态页面">二. 创建Site，生成静态页面</h3>
-
+</li>
+</ul>
+<h3 id="二-创建site生成静态页面">二. 创建Site，生成静态页面</h3>
 <ul>
-<li><p>创建站点</p>
+<li>
+<p>创建站点</p>
+<pre><code>  hugo new site MyBlog
+</code></pre><p>然后hugo会自动在MyBlog目录下生成这样一个目录结构：</p>
+<pre><code>  |-archetypes   //包括内容类型，在创建新内容时自动生成内容的配置
+  |-config.toml  // 网站的配置文件，这是一个TOML文件
+  |-content	   // content目录里放你写的markdown文章
+  |-data		   //
+  |-layouts	   // 网站的模板文件
+  |-static	   // 放一些图片、css、js等资源
+  |-themes	   // 网站的主题，这里spf13上面有很多theme
+</code></pre><p>关于config.toml配置文件，下面会详细说明
 
-<pre><code>hugo new site MyBlog
+<a href="https://tracydeng.github.io/2016/07/hugo/#fn:1"  target="_blank">1</a></p>
+</li>
+<li>
+<p>创建md文档 ( <em>需先进到MyBlog目录下</em> )</p>
+<pre><code> hugo new about.md
+</code></pre><p>执行完后，会在content目录自动生成一个MarkDown格式的about.md文件，内容如下：</p>
+<pre><code> +++
+ date = &quot;2016-04-27T20:37:17+08:00&quot;
+ draft = true
+ title = &quot;about&quot;
+ +++
+</code></pre><p>如果是博客日志，最好将md文件放在content的post目录里。</p>
+<pre><code> hugo new post/first.md
 </code></pre></li>
 </ul>
-
-<p>然后hugo会自动在MyBlog目录下生成这样一个目录结构：</p>
-
-<pre><code>    |-archetypes   //包括内容类型，在创建新内容时自动生成内容的配置
-    |-config.toml  // 网站的配置文件，这是一个TOML文件
-    |-content	   // content目录里放你写的markdown文章
-    |-data		   //
-    |-layouts	   // 网站的模板文件
-    |-static	   // 放一些图片、css、js等资源
-    |-themes	   // 网站的主题，这里spf13上面有很多theme
-</code></pre>
-
-<p>关于config.toml配置文件，下面会详细说明<a href="https://tracydeng.github.io/2016/07/hugo/#fn:1">1</a></p>
-
-<ul>
-<li><p>创建md文档 ( <em>需先进到MyBlog目录下</em> )</p>
-
-<pre><code>hugo new about.md
-</code></pre></li>
-</ul>
-
-<p>执行完后，会在content目录自动生成一个MarkDown格式的about.md文件，内容如下：</p>
-
-<pre><code>   +++
-   date = &quot;2016-04-27T20:37:17+08:00&quot;
-   draft = true
-   title = &quot;about&quot;
-   +++
-</code></pre>
-
-<p>如果是博客日志，最好将md文件放在content的post目录里。</p>
-
-<pre><code>   hugo new post/first.md
-</code></pre>
-
 <p>执行完后，会在content/post目录创建一个MarkDown格式的first.md文件</p>
-
 <ul>
-<li>添加主题模版</li>
-</ul>
-
+<li>
+<p>添加主题模版</p>
 <blockquote>
 <p>默认生成的网站是没有任何皮肤模板的，还得去Github上下载一个网页模板下来。如果你网络够好，网速够快，你可以在刚才的目录将Hugo官方的所有模板都下载下来：</p>
 </blockquote>
-
-<pre><code>   git clone --recursive https://github.com/spf13/hugoThemes themes
-</code></pre>
-
-<p>下载的主题存放在 themes/ 文件夹中,也可以只选择下载自己喜欢的模版： 进到themes目录</p>
-
-<pre><code>   cd themes
-</code></pre>
-
-<p>下载hyde主题模版</p>
-
-<pre><code>   git clone https://github.com/spf13/hyde.git
-</code></pre>
-
-<ul>
-<li><p>本地调试</p>
-
-<pre><code>hugo server --theme=hyde --buildDrafts --watch
+<pre><code> git clone --recursive https://github.com/spf13/hugoThemes themes
+</code></pre><p>下载的主题存放在 themes/ 文件夹中,也可以只选择下载自己喜欢的模版： 进到themes目录</p>
+<pre><code> cd themes
+</code></pre><p>下载hyde主题模版</p>
+<pre><code> git clone https://github.com/spf13/hyde.git
 </code></pre></li>
+<li>
+<p>本地调试</p>
+<pre><code> hugo server --theme=hyde --buildDrafts --watch
+</code></pre><p>参数说明：</p>
+<pre><code>  --theme 选择主题，如果安装了多个主题，这里指定就好，随意切换
+  --watch 监控到文章的改动从而自动去刷新浏览器，不需要自己手工去刷新浏览器，非常方便, 现在默认是这样的，可以不用带 (hugo server --theme=hyde --buildDrafts也是同样效果)
+  --buildDrafts  与content目录下的md文件结合来，如果md文档中 draft = true,就必须要加上--buildDrafts参数
+</code></pre><p>效果图如下：
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/first-post-screenshot.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/first-post-screenshot.jpg" alt="img" /></a>
+</span>
+
+</span></p>
+</li>
 </ul>
-
-<p>参数说明：</p>
-
-<pre><code>    --theme 选择主题，如果安装了多个主题，这里指定就好，随意切换
-    --watch 监控到文章的改动从而自动去刷新浏览器，不需要自己手工去刷新浏览器，非常方便, 现在默认是这样的，可以不用带 (hugo server --theme=hyde --buildDrafts也是同样效果)
-    --buildDrafts  与content目录下的md文件结合来，如果md文档中 draft = true,就必须要加上--buildDrafts参数
-</code></pre>
-
-<p>效果图如下：<img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/first-post-screenshot.jpg" alt="img" /></p>
-
 <h3 id="三-托管到github-pages">三. 托管到github pages</h3>
-
 <blockquote>
 <p>其实这一步更像是git操作，即将生成的静态页面push到git服务端。</p>
 </blockquote>
-
 <p>要部署在 GitHub Pages 上，首先你需要在GitHub上创建一个Repository，命名为：tracydeng.github.io （tracydeng替换为你的github用户名）</p>
-
 <p>接着回到站点根目录，也就是MyBlog目录下，执行命令：</p>
-
-<pre><code class="language-bash">  hugo --theme=hyde --baseUrl=&quot;http://mile3033.github.io/&quot;
-</code></pre>
-
-<p>命令执行完在站点根目录下会生成一个public目录，该目录下包含了所有通过hugo生成的静态页面，接下来要做的就是将这些静态页面push到刚刚创建仓库的master分支。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">  hugo --theme<span style="color:#f92672">=</span>hyde --baseUrl<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://mile3033.github.io/&#34;</span>
+</code></pre></div><p>命令执行完在站点根目录下会生成一个public目录，该目录下包含了所有通过hugo生成的静态页面，接下来要做的就是将这些静态页面push到刚刚创建仓库的master分支。</p>
 <p>首先进到public目录</p>
-
-<pre><code class="language-bash">$ cd public
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cd public
 $ git init
 $ git remote add origin https://github.com/tracydeng/traydeng.github.io.git
 $ git add -A
-$ git commit -m &quot;first commit&quot;
+$ git commit -m <span style="color:#e6db74">&#34;first commit&#34;</span>
 $ git push -u origin master
-</code></pre>
-
-<p>如果没出错的话，到这里也就已经执行完了，到浏览器输入tracydeng.github.io就可以访问你刚才写的内容了。</p>
-
+</code></pre></div><p>如果没出错的话，到这里也就已经执行完了，到浏览器输入tracydeng.github.io就可以访问你刚才写的内容了。</p>
 <h3 id="四-添加评论模块">四. 添加评论模块</h3>
-
 <p>下载的模版里基本上都带了评论模块，找到自己使用的theme，到layouts/partials目录下，可以看到comments.html(有些不是这个名字，像hyde模版是disqus.html)，没有的话，就是模版没带这个模块，需要自己添加，打开我使用的hugo－uno模版下面的comments.html,可以看到以下代码：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#f92672">section</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;post-comments&#34;</span>&gt;
+ &lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">class</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;muut&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://muut.com/i//comments:&#34;</span>&gt;Comments&lt;/<span style="color:#f92672">a</span>&gt;
+ &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;//cdn.muut.com/1/moot.min.js&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;/<span style="color:#f92672">section</span>&gt;
 
-<pre><code class="language-html">&lt;section class=&quot;post-comments&quot;&gt;
- &lt;a class=&quot;muut&quot; href=&quot;https://muut.com/i//comments:&quot;&gt;Comments&lt;/a&gt;
- &lt;script src=&quot;//cdn.muut.com/1/moot.min.js&quot;&gt;&lt;/script&gt;
-&lt;/section&gt;
 
-
-&lt;div id=&quot;discourse-comments&quot;&gt;&lt;/div&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-  	var discourseUrl = ,
-    discourseEmbedUrl = ;
-  	(function() {
-  	 	var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
-  	    d.src = discourseUrl + 'javascripts/embed.js';
-    	(document.getElementsByTagName('head')[0] || 		document.getElementsByTagName('body')[0]).appendChild(d);
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;discourse-comments&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+  	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">discourseUrl</span> <span style="color:#f92672">=</span> ,
+    <span style="color:#a6e22e">discourseEmbedUrl</span> <span style="color:#f92672">=</span> ;
+  	(<span style="color:#66d9ef">function</span>() {
+  	 	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>); <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">type</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text/javascript&#39;</span>; <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">async</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+  	    <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">discourseUrl</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;javascripts/embed.js&#39;</span>;
+    	(document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#39;head&#39;</span>)[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">||</span> 		document.<span style="color:#a6e22e">getElementsByTagName</span>(<span style="color:#e6db74">&#39;body&#39;</span>)[<span style="color:#ae81ff">0</span>]).<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">d</span>);
 	})();
-&lt;/script&gt;
+&lt;/<span style="color:#f92672">script</span>&gt;
 
 
-&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
- 	 var disqusUsername = ;
- 	(function() { // DON'T EDIT BELOW THIS LINE
-  		var d = document, s = d.createElement('script');
-  		s.src = '//' + disqusUsername + '.disqus.com/embed.js';
-  		s.setAttribute('data-timestamp', +new Date());
-  		(d.head || d.body).appendChild(s);
+&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;disqus_thread&#34;</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+&lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/javascript&#34;</span>&gt;
+ 	 <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">disqusUsername</span> <span style="color:#f92672">=</span> ;
+ 	(<span style="color:#66d9ef">function</span>() { <span style="color:#75715e">// DON&#39;T EDIT BELOW THIS LINE
+</span><span style="color:#75715e"></span>  		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">d</span> <span style="color:#f92672">=</span> document, <span style="color:#a6e22e">s</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">createElement</span>(<span style="color:#e6db74">&#39;script&#39;</span>);
+  		<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">src</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;//&#39;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">disqusUsername</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#39;.disqus.com/embed.js&#39;</span>;
+  		<span style="color:#a6e22e">s</span>.<span style="color:#a6e22e">setAttribute</span>(<span style="color:#e6db74">&#39;data-timestamp&#39;</span>, <span style="color:#f92672">+</span><span style="color:#66d9ef">new</span> Date());
+  		(<span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">head</span> <span style="color:#f92672">||</span> <span style="color:#a6e22e">d</span>.<span style="color:#a6e22e">body</span>).<span style="color:#a6e22e">appendChild</span>(<span style="color:#a6e22e">s</span>);
  	 })();
-&lt;/script&gt;
-&lt;noscript&gt;Please enable JavaScript to view the &lt;a 	href=&quot;https://disqus.com/?ref_noscript&quot; rel=&quot;nofollow&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;
+&lt;/<span style="color:#f92672">script</span>&gt;
+&lt;<span style="color:#f92672">noscript</span>&gt;Please enable JavaScript to view the &lt;<span style="color:#f92672">a</span> 	<span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://disqus.com/?ref_noscript&#34;</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;nofollow&#34;</span>&gt;comments powered by Disqus.&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">noscript</span>&gt;
 
 	
-</code></pre>
-
-<p>上面代码可以看到是支持到了muut，discourse，disqus的评论，除了这些比较出名的第三方评论服务还有多说，这里以disqus为例来说下添加评论模块：</p>
-
+</code></pre></div><p>上面代码可以看到是支持到了muut，discourse，disqus的评论，除了这些比较出名的第三方评论服务还有多说，这里以disqus为例来说下添加评论模块：</p>
 <h5 id="获取disqusshortname">获取disqusShortname</h5>
-
 <p>到disqus注册一个账号，登录，选择<strong>add a newsite to disqus</strong>,Site就填写自己的博客地址：<em>tracydeng.github.io</em>,并且设置好你的disqusShortname，默认时你站点拼接<strong>tracydenggithubio</strong>，当然自己可以修改，我改短一点改成<strong>tracydeng</strong>，这个name就是之后配置时要用到的,其它操作就是下一步，下一步了</p>
-
 <h5 id="配置disqusshortname">配置disqusShortname</h5>
-
 <p>这里要结合/theme/layouts/partials下.html文件来配置 ，在MyBlog/config.toml中配置disqusShortname/disqus, 如上comments.html文件中:</p>
-
-<pre><code class="language-toml">  var disqusUsername = ;
-</code></pre>
-
-<p>disqusUsername便是取的站点下配置文件中的参数disqus，于是在config.toml文件中params下面添加disqus就好。</p>
-
-<pre><code class="language-toml"> [params]
-   	disqus = &quot;3mile&quot;
-</code></pre>
-
-<h3 id="五-我做的一些改动">五. 我做的一些改动</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">  <span style="color:#a6e22e">var</span> <span style="color:#a6e22e">disqusUsername</span> = <span style="color:#960050;background-color:#1e0010">;</span>
+</code></pre></div><p>disqusUsername便是取的站点下配置文件中的参数disqus，于是在config.toml文件中params下面添加disqus就好。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml"> [<span style="color:#a6e22e">params</span>]
+   	<span style="color:#a6e22e">disqus</span> = <span style="color:#e6db74">&#34;3mile&#34;</span>
+</code></pre></div><h3 id="五-我做的一些改动">五. 我做的一些改动</h3>
 <ul>
-<li><p>修改config.toml</p>
-
-<pre><code class="language-toml">title : 修改为Coder Steven
-     
-description : &quot;3mile&quot;
-</code></pre></li>
-
-<li><p>修改.md  文档</p></li>
+<li>修改config.toml</li>
 </ul>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">   <span style="color:#a6e22e">title</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#a6e22e">修改为Coder</span> <span style="color:#a6e22e">Steven</span>
+     
+   <span style="color:#a6e22e">description</span> <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#e6db74">&#34;3mile&#34;</span>
+</code></pre></div><ul>
+<li>修改.md  文档</li>
+</ul>
 <p>添加menu菜单</p>
-
-<pre><code class="language-toml">   +++
-   date = &quot;2016-04-27T20:37:17+08:00&quot;
-   draft = true
-   title = &quot;about&quot;
-   menu ＝ &quot;main&quot;
-   +++
-</code></pre>
-
-<p>当然这里还可以添加category等，看自己需求了</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-toml" data-lang="toml">   <span style="color:#960050;background-color:#1e0010">+++</span>
+   <span style="color:#a6e22e">date</span> = <span style="color:#e6db74">&#34;2016-04-27T20:37:17+08:00&#34;</span>
+   <span style="color:#a6e22e">draft</span> = <span style="color:#66d9ef">true</span>
+   <span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;about&#34;</span>
+   <span style="color:#a6e22e">menu</span> <span style="color:#960050;background-color:#1e0010">＝</span> <span style="color:#e6db74">&#34;main&#34;</span>
+   <span style="color:#960050;background-color:#1e0010">+++</span>
+</code></pre></div><p>当然这里还可以添加category等，看自己需求了</p>
 <p>再次启动，可以看到刚刚修改后的效果图：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github/first-post-screenshot.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github/first-post-screenshot.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github/first-post-screenshot.jpg" alt="" /></p>
-
+</span></p>
 <h3 id="参考链接">参考链接</h3>
-
 <ul>
 <li><a href="http://www.tuicool.com/articles/yeaYFjF">http://www.tuicool.com/articles/yeaYFjF</a></li>
 </ul>
-
 <ol>
-<li>包括 baseurl :主站地址, title：标题 , theme：主题，copyright 等等网站参数。 <a href="https://tracydeng.github.io/2016/07/hugo/#fnref:1">↩</a></li>
+<li>包括 baseurl :主站地址, title：标题 , theme：主题，copyright 等等网站参数。 
+
+<a href="https://tracydeng.github.io/2016/07/hugo/#fnref:1"  target="_blank">↩</a></li>
 </ol>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/04/001/>Hugo &#43; Github Pages搭建静态博客</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-27<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/04/001/ target="_blank" >https://3mile.github.io/archives/2018/04/001/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -584,7 +560,7 @@ description : &quot;3mile&quot;
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -612,7 +588,7 @@ description : &quot;3mile&quot;
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/2018/05/highlighted-code-showcase/" data-tooltip="highlighted code showcase">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2018/04/002/" data-tooltip="标签插件展示">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -628,24 +604,6 @@ description : &quot;3mile&quot;
             <i class="fa fa-share-alt"></i>
           </a>
         </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/04/001/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/04/001/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/04/001/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
         
       
       
@@ -665,9 +623,11 @@ description : &quot;3mile&quot;
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -688,7 +648,7 @@ description : &quot;3mile&quot;
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/2018/05/highlighted-code-showcase/" data-tooltip="highlighted code showcase">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://3mile.github.io/archives/2018/04/002/" data-tooltip="标签插件展示">
               
                   <span class="hide-xs hide-sm text-small icon-mr">下一篇</span>
                   <i class="fa fa-angle-right"></i>
@@ -704,24 +664,6 @@ description : &quot;3mile&quot;
             <i class="fa fa-share-alt"></i>
           </a>
         </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/04/001/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/04/001/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/04/001/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
         
       
       
@@ -741,24 +683,6 @@ description : &quot;3mile&quot;
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F001%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F001%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F04%2F001%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -774,7 +698,7 @@ description : &quot;3mile&quot;
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -802,18 +726,28 @@ description : &quot;3mile&quot;
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

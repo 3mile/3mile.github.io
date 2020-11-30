@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不">
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -292,141 +292,241 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<p>发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不用担心被攻击，如果你不要独立域名直接就是0成本！</p>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#一windows-10上的部署">一、Windows 10上的部署</a>
+      <ul>
+        <li><a href="#1安装git">1.安装Git</a></li>
+        <li><a href="#2配置git">2.配置Git</a></li>
+        <li><a href="#3生成密钥文件">3.生成密钥文件</a></li>
+        <li><a href="#4安装nodejs">4.安装NodeJS</a></li>
+        <li><a href="#5安装hexo">5.安装Hexo</a></li>
+      </ul>
+    </li>
+    <li><a href="#二hexo的使用">二、Hexo的使用</a>
+      <ul>
+        <li><a href="#1新建站点">1.新建站点</a></li>
+        <li><a href="#2hexo的配置">2.Hexo的配置</a>
+          <ul>
+            <li><a href="#1替换主题">（1）替换主题</a></li>
+            <li><a href="#2插入图片">（2）插入图片</a></li>
+          </ul>
+        </li>
+        <li><a href="#3新建博文">3.新建博文</a></li>
+        <li><a href="#4本地预览">4.本地预览</a></li>
+      </ul>
+    </li>
+    <li><a href="#三配置github-pages或coding-pages">三、配置Github Pages或Coding Pages</a></li>
+    <li><a href="#github的配置方法">Github的配置方法</a>
+      <ul>
+        <li><a href="#1注册并登录github帐号">1.注册并登录Github帐号。</a></li>
+        <li><a href="#2添加ssh-key">2.添加SSH KEY</a></li>
+        <li><a href="#3测试ssh连接">3.测试SSH连接</a></li>
+      </ul>
+    </li>
+    <li><a href="#coding中的配置方法">Coding中的配置方法</a>
+      <ul>
+        <li><a href="#添加ssh-keys">添加SSH keys</a></li>
+        <li><a href="#测试ssh连接">测试SSH连接</a></li>
+      </ul>
+    </li>
+    <li><a href="#四部署你的博客">四、部署你的博客</a></li>
+    <li><a href="#五独立域名绑定">五、独立域名绑定</a>
+      <ul>
+        <li><a href="#1dns解析">1.DNS解析</a></li>
+        <li><a href="#2hexo上的设置">2.Hexo上的设置</a></li>
+        <li><a href="#域名绑定github">域名绑定Github</a></li>
+        <li><a href="#域名绑定coding-pages">域名绑定Coding Pages</a></li>
+      </ul>
+    </li>
+    <li><a href="#六其他辅助工具">六、其他辅助工具</a>
+      <ul>
+        <li><a href="#markdown书写工具">Markdown书写工具</a></li>
+        <li><a href="#markdown渲染插件">Markdown渲染插件</a></li>
+        <li><a href="#图床">图床</a></li>
+        <li><a href="#七牛">七牛</a></li>
+        <li><a href="#mpic">MPic</a></li>
+      </ul>
+    </li>
+    <li><a href="#七扩展阅读">七、扩展阅读</a></li>
+    <li><a href="#八参考文章">八、参考文章</a></li>
+    <li><a href="#九总结">九、总结</a></li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <p>发现在VPS上部署Hexo博客看着太麻烦了，还是本地配合Github搞吧，这样既不失装B还能超低成本有自己的一个博客，不用自己出服务器钱，不用担心被攻击，如果你不要独立域名直接就是0成本！</p>
 <p>在dalao界Hexo博客一直令我等鶸膜拜，在网上找了很多资料后终于搞定了Hexo的博客，以后也可以装B去了。不过你要是不差钱，就是个小白还是用WP吧，这玩意用着其实挺别扭的。。。</p>
-
 <p>Table of Contents</p>
-
 <ul>
 <li>一、Windows 10上的部署
-
 <ul>
-<li><a href="#1.1">1.安装Git</a></li>
-<li><a href="#1.2">2.配置Git</a></li>
-<li><a href="#1.3">3.生成密钥文件</a></li>
-<li><a href="#1.4">4.安装NodeJS</a></li>
-<li><a href="#1.5">5.安装Hexo</a></li>
-</ul></li>
-<li>二、Hexo的使用
+<li>
 
-<ul>
-<li><a href="#2.1">1.新建站点</a></li>
-<li>2.Hexo的配置</li>
-<li><a href="#2.2.1">（1）替换主题</a></li>
-<li><a href="#2.2.2">（2）插入图片</a></li>
-<li><a href="#2.3">3.新建博文</a></li>
-<li><a href="#2.4">4.本地预览</a></li>
-</ul></li>
-<li><a href="#3">三、配置Github Pages或Coding Pages</a></li>
-<li>Github的配置方法
+<a href="#1.1"  >1.安装Git</a></li>
+<li>
 
-<ul>
-<li><a href="#3.1.1">1.注册并登录Github帐号。</a></li>
-<li><a href="#3.1.2">2.添加SSH KEY</a></li>
-<li><a href="#3.1.3">3.测试SSH连接</a></li>
-</ul></li>
-<li>Coding中的配置方法
+<a href="#1.2"  >2.配置Git</a></li>
+<li>
 
-<ul>
-<li><a href="#3.2.1">添加SSH keys</a></li>
-<li><a href="#3.2.2">测试SSH连接</a></li>
-</ul></li>
-<li><a href="#4">四、部署你的博客</a></li>
-<li>五、独立域名绑定
+<a href="#1.3"  >3.生成密钥文件</a></li>
+<li>
 
-<ul>
-<li><a href="#5.1">1.DNS解析</a></li>
-<li><a href="#5.2">2.Hexo上的设置</a></li>
-<li><a href="#5.3">域名绑定Github</a></li>
-<li><a href="#5.4">域名绑定Coding Pages</a></li>
-</ul></li>
-<li>六、其他辅助工具
+<a href="#1.4"  >4.安装NodeJS</a></li>
+<li>
 
-<ul>
-<li><a href="#Markdown">Markdown书写工具</a></li>
-<li><a href="#Markdown-2">Markdown渲染插件</a></li>
-<li><a href="#i-4">图床</a></li>
-<li><a href="#i-5">七牛</a></li>
-<li><a href="#MPic">MPic</a></li>
-</ul></li>
-<li><a href="#i-6">七、扩展阅读</a></li>
-<li><a href="#i-7">八、参考文章</a></li>
-<li><a href="#i-8">九、总结</a></li>
+<a href="#1.5"  >5.安装Hexo</a></li>
 </ul>
+</li>
+<li>二、Hexo的使用
+<ul>
+<li>
 
-<h2 id="一-windows-10上的部署">一、Windows 10上的部署</h2>
+<a href="#2.1"  >1.新建站点</a></li>
+<li>2.Hexo的配置
+<ul>
+<li>
 
+<a href="#2.2.1"  >（1）替换主题</a></li>
+<li>
+
+<a href="#2.2.2"  >（2）插入图片</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#2.3"  >3.新建博文</a></li>
+<li>
+
+<a href="#2.4"  >4.本地预览</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#3"  >三、配置Github Pages或Coding Pages</a></li>
+<li>Github的配置方法
+<ul>
+<li>
+
+<a href="#3.1.1"  >1.注册并登录Github帐号。</a></li>
+<li>
+
+<a href="#3.1.2"  >2.添加SSH KEY</a></li>
+<li>
+
+<a href="#3.1.3"  >3.测试SSH连接</a></li>
+</ul>
+</li>
+<li>Coding中的配置方法
+<ul>
+<li>
+
+<a href="#3.2.1"  >添加SSH keys</a></li>
+<li>
+
+<a href="#3.2.2"  >测试SSH连接</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#4"  >四、部署你的博客</a></li>
+<li>五、独立域名绑定
+<ul>
+<li>
+
+<a href="#5.1"  >1.DNS解析</a></li>
+<li>
+
+<a href="#5.2"  >2.Hexo上的设置</a></li>
+<li>
+
+<a href="#5.3"  >域名绑定Github</a></li>
+<li>
+
+<a href="#5.4"  >域名绑定Coding Pages</a></li>
+</ul>
+</li>
+<li>六、其他辅助工具
+<ul>
+<li>
+
+<a href="#Markdown"  >Markdown书写工具</a></li>
+<li>
+
+<a href="#Markdown-2"  >Markdown渲染插件</a></li>
+<li>
+
+<a href="#i-4"  >图床</a></li>
+<li>
+
+<a href="#i-5"  >七牛</a></li>
+<li>
+
+<a href="#MPic"  >MPic</a></li>
+</ul>
+</li>
+<li>
+
+<a href="#i-6"  >七、扩展阅读</a></li>
+<li>
+
+<a href="#i-7"  >八、参考文章</a></li>
+<li>
+
+<a href="#i-8"  >九、总结</a></li>
+</ul>
+<h2 id="一windows-10上的部署">一、Windows 10上的部署</h2>
 <p>本次以比较流行的Win10为例，Win7、8也差不多，XP直接打死。</p>
-
-<p><span id="1.1"></span></p>
-
-<h3 id="1-安装git">1.安装Git</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="1安装git">1.安装Git</h3>
 <p>Git是上传到Github的工具，如果在Github上有项目都会用到这个。</p>
+<p>下载：
 
-<p>下载：<a href="https://www.zrj96.com/go/?url=https://git-scm.com/download/win">https://git-scm.com/download/win</a> 选择对应系统的版本即可，一路下一步，记住选择几个功能，这样操作更像是在Linux Shell里操作。</p>
-
+<a href="https://www.zrj96.com/go/?url=https://git-scm.com/download/win"  target="_blank">https://git-scm.com/download/win</a> 选择对应系统的版本即可，一路下一步，记住选择几个功能，这样操作更像是在Linux Shell里操作。</p>
 <p><code>Use Git from Bash only</code>、<code>Checkout Windows-style,commit Unix-style line endings</code>、<code>Use MinTTY(the default terminal of MSYS2)</code></p>
-
-<p><span id="1.2"></span></p>
-
-<h3 id="2-配置git">2.配置Git</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="2配置git">2.配置Git</h3>
 <p>安装好后需要几行命令说清楚你是谁，这样才能认对人。自行替换自己的用户名和邮箱。</p>
-
-<pre><code class="language-Bash">git config --global user.name &quot;Your Name&quot;
-git config --global user.email &quot;email@example.com&quot;
-</code></pre>
-
-<p><span id="1.3"></span></p>
-
-<h3 id="3-生成密钥文件">3.生成密钥文件</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">git config --global user.name <span style="color:#e6db74">&#34;Your Name&#34;</span>
+git config --global user.email <span style="color:#e6db74">&#34;email@example.com&#34;</span>
+</code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="3生成密钥文件">3.生成密钥文件</h3>
 <p>这个操作加密你的通信过程，同时后期上传到Github都会用到。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ssh-keygen -t rsa -b <span style="color:#ae81ff">4096</span> -C <span style="color:#e6db74">&#34;email@example.com&#34;</span>
+</code></pre></div><p>按3次回车，全部无视，证书文件会在C:\User\用户名.ssh 生成两个文件。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="4安装nodejs">4.安装NodeJS</h3>
+<p>去官网下载NodeJS Windows版本，建议选择LTS版本，
 
-<pre><code class="language-Bash">ssh-keygen -t rsa -b 4096 -C &quot;email@example.com&quot;
-</code></pre>
-
-<p>按3次回车，全部无视，证书文件会在C:\User\用户名.ssh 生成两个文件。</p>
-
-<p><span id="1.4"></span></p>
-
-<h3 id="4-安装nodejs">4.安装NodeJS</h3>
-
-<p>去官网下载NodeJS Windows版本，建议选择LTS版本，<a href="https://www.zrj96.com/go/?url=https://nodejs.org/en/">https://nodejs.org/en/</a>，安装的时候务必选择Add to PATH选项。</p>
-
-<p><span id="1.5"></span></p>
-
-<h3 id="5-安装hexo">5.安装Hexo</h3>
-
+<a href="https://www.zrj96.com/go/?url=https://nodejs.org/en/"  target="_blank">https://nodejs.org/en/</a>，安装的时候务必选择Add to PATH选项。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="5安装hexo">5.安装Hexo</h3>
 <p>在Git程序里运行命令行即可安装</p>
-
-<pre><code class="language-Bash">npm install -g hexo-cli
-</code></pre>
-
-<p>至此在Win上的部署安装已经完成，接下来就是如何使用了。</p>
-
-<h2 id="二-hexo的使用">二、Hexo的使用</h2>
-
-<p><span id="2.1"></span></p>
-
-<h3 id="1-新建站点">1.新建站点</h3>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">npm install -g hexo-cli
+</code></pre></div><p>至此在Win上的部署安装已经完成，接下来就是如何使用了。</p>
+<h2 id="二hexo的使用">二、Hexo的使用</h2>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="1新建站点">1.新建站点</h3>
 <p>假设代码存放在D:\hexo\blog</p>
-
-<pre><code class="language-Bash">cd /d
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd /d
 mkdir hexo
 cd hexo
 hexo init blog
 cd blog
 npm install
-</code></pre>
-
-<p>在D:\hexo\blog 里就能看到所有文件了，下面是文件说明：</p>
-
+</code></pre></div><p>在D:\hexo\blog 里就能看到所有文件了，下面是文件说明：</p>
 <table>
 <thead>
 <tr>
@@ -434,292 +534,251 @@ npm install
 <th>说明</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>scaffolds</td>
-<td><a href="https://www.zrj96.com/go/?url=https://hexo.io/zh-cn/docs/writing.html"><strong>模版</strong></a> 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。 Hexo的模板是指在新建的markdown文件中默认填充的内容。例如，如果您修改scaffold/post.md中的Front-matter内容，那么每次新建一篇文章时都会包含这个修改。</td>
-</tr>
+<td>
 
+<a href="https://www.zrj96.com/go/?url=https://hexo.io/zh-cn/docs/writing.html"  target="_blank"><strong>模版</strong></a> 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。 Hexo的模板是指在新建的markdown文件中默认填充的内容。例如，如果您修改scaffold/post.md中的Front-matter内容，那么每次新建一篇文章时都会包含这个修改。</td>
+</tr>
 <tr>
 <td>source</td>
 <td>资源文件夹是存放用户资源的地方。除 <code>_posts</code> 文件夹之外，开头命名为 <code>_</code> (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 <code>public</code> 文件夹，而其他文件会被拷贝过去。</td>
 </tr>
-
 <tr>
 <td>themes</td>
-<td><a href="https://www.zrj96.com/go/?url=https://hexo.io/zh-cn/docs/themes.html"><strong>主题</strong></a> 文件夹。Hexo 会根据主题来生成静态页面。</td>
-</tr>
+<td>
 
+<a href="https://www.zrj96.com/go/?url=https://hexo.io/zh-cn/docs/themes.html"  target="_blank"><strong>主题</strong></a> 文件夹。Hexo 会根据主题来生成静态页面。</td>
+</tr>
 <tr>
 <td>_config.yml</td>
-<td>网站的 <a href="https://www.zrj96.com/go/?url=https://hexo.io/zh-cn/docs/configuration.html"><strong>配置</strong></a> 信息，您可以在此配置大部分的参数。</td>
-</tr>
+<td>网站的 
 
+<a href="https://www.zrj96.com/go/?url=https://hexo.io/zh-cn/docs/configuration.html"  target="_blank"><strong>配置</strong></a> 信息，您可以在此配置大部分的参数。</td>
+</tr>
 <tr>
 <td>package.json</td>
-<td>应用程序的信息。<a href="https://www.zrj96.com/go/?url=http://embeddedjs.com/"><strong>EJS</strong></a>, <a href="https://www.zrj96.com/go/?url=http://learnboost.github.io/stylus/"><strong>Stylus</strong></a> 和 <a href="https://www.zrj96.com/go/?url=http://daringfireball.net/projects/markdown/"><strong>Markdown</strong></a> renderer 已默认安装，您可以自由移除。</td>
+<td>应用程序的信息。
+
+<a href="https://www.zrj96.com/go/?url=http://embeddedjs.com/"  target="_blank"><strong>EJS</strong></a>, 
+
+<a href="https://www.zrj96.com/go/?url=http://learnboost.github.io/stylus/"  target="_blank"><strong>Stylus</strong></a> 和 
+
+<a href="https://www.zrj96.com/go/?url=http://daringfireball.net/projects/markdown/"  target="_blank"><strong>Markdown</strong></a> renderer 已默认安装，您可以自由移除。</td>
 </tr>
 </tbody>
 </table>
+<h3 id="2hexo的配置">2.Hexo的配置</h3>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="1替换主题">（1）替换主题</h4>
+<p>推荐
 
-<h3 id="2-hexo的配置">2.Hexo的配置</h3>
-
-<p><span id="2.2.1"></span></p>
-
-<h4 id="1-替换主题">（1）替换主题</h4>
-
-<p>推荐<a href="https://www.zrj96.com/go/?url=http://theme-next.iissnan.com/"><strong>NexT</strong></a>主题，这是一款知名的Hexo主题，非常漂亮简洁。</p>
-
-<pre><code class="language-Bash">cd /d/hexo/blog
+<a href="https://www.zrj96.com/go/?url=http://theme-next.iissnan.com/"  target="_blank"><strong>NexT</strong></a>主题，这是一款知名的Hexo主题，非常漂亮简洁。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd /d/hexo/blog
 git clone https://github.com/iissnan/hexo-theme-next themes/next
-</code></pre>
+</code></pre></div><p>回到根目录，找到_config.yml 文件，在第66行的theme字段里把默认主题名字换成next即可。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h4 id="2插入图片">（2）插入图片</h4>
+<p><code>Markdown</code>支持插入本地图片或外部链接图片，要保证本地和网络上都能访问图片，使用
 
-<p>回到根目录，找到_config.yml 文件，在第66行的theme字段里把默认主题名字换成next即可。</p>
-
-<p><span id="2.2.2"></span></p>
-
-<h4 id="2-插入图片">（2）插入图片</h4>
-
-<p><code>Markdown</code>支持插入本地图片或外部链接图片，要保证本地和网络上都能访问图片，使用<a href="https://www.zrj96.com/go/?url=https://github.com/CodeFalling/hexo-asset-image"><strong>hexo-asset-image</strong></a></p>
-
-<pre><code class="language-Bash"># 安装插件
+<a href="https://www.zrj96.com/go/?url=https://github.com/CodeFalling/hexo-asset-image"  target="_blank"><strong>hexo-asset-image</strong></a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#75715e"># 安装插件</span>
 npm install https://github.com/CodeFalling/hexo-asset-image --save
-启用插件，确保主题配置文件D:\hexo\blog\_config.yml中
+启用插件，确保主题配置文件D:<span style="color:#ae81ff">\h</span>exo<span style="color:#ae81ff">\b</span>log<span style="color:#ae81ff">\_</span>config.yml中
 post_asset_folder: true
-# 新增博文后，会在D:\hexo\blog\source\_posts目录下生成 xxx.md 和 xxx 目录，将图片存放该目录中，使用时 ![](***.jpg)，这样Typora预览和发布到网上时Hexo博客都能正常显示图片
-</code></pre>
-
-<p><span id="2.3"></span></p>
-
-<h3 id="3-新建博文">3.新建博文</h3>
-
-<pre><code class="language-Bash">hexo new &quot;Hello World&quot;
-</code></pre>
-
-<p>在目录<code>D:\hexo\blog\source\_posts</code>下会生成Markdown文件Hello World.md</p>
-
+<span style="color:#75715e"># 新增博文后，会在D:\hexo\blog\source\_posts目录下生成 xxx.md 和 xxx 目录，将图片存放该目录中，使用时 ![](***.jpg)，这样Typora预览和发布到网上时Hexo博客都能正常显示图片</span>
+</code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="3新建博文">3.新建博文</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">hexo new <span style="color:#e6db74">&#34;Hello World&#34;</span>
+</code></pre></div><p>在目录<code>D:\hexo\blog\source\_posts</code>下会生成Markdown文件Hello World.md</p>
 <p><strong>手动添加Markdown文件到D:\hexo\blog\source_posts目录效果一样</strong></p>
-
-<p><span id="2.4"></span></p>
-
-<h3 id="4-本地预览">4.本地预览</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="4本地预览">4.本地预览</h3>
 <p>如果以后修改了主题和写了一篇新文章都可以使用这个方法在本地查看，解决BUG。</p>
-
-<pre><code class="language-Bash">cd /d/hexo/blog
-# 生成静态文件
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd /d/hexo/blog
+<span style="color:#75715e"># 生成静态文件</span>
 hexo generate
-# 启动本地服务器
+<span style="color:#75715e"># 启动本地服务器</span>
 hexo server --debug
-</code></pre>
+</code></pre></div><p>打开浏览器，输入http://localhost:4000 即可看到站点的预览了。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ui.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ui.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></a>
+</span>
 
-<p>打开浏览器，输入<a href="http://localhost:4000">http://localhost:4000</a> 即可看到站点的预览了。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ui.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
-
+</span></p>
 <p>提醒一点，生成静态化可以使用简化命令</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">hexo g
+</code></pre></div><p><strong>在后面的上传到Github中，如果你发现明明写了一篇文章，但是网站却没有？那么一定是MD的语法有问题，生成静态化文件的时候就会报错，务必检查一下哪里出问题，修复后才能成功上传和展现文章。</strong></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/error.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/error.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></a>
+</span>
 
-<pre><code class="language-Bash">hexo g
-</code></pre>
-
-<p><strong>在后面的上传到Github中，如果你发现明明写了一篇文章，但是网站却没有？那么一定是MD的语法有问题，生成静态化文件的时候就会报错，务必检查一下哪里出问题，修复后才能成功上传和展现文章。</strong></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/error.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
-
-<p><span id="3"></span></p>
-
-<h2 id="三-配置github-pages或coding-pages">三、配置Github Pages或Coding Pages</h2>
-
+</span></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="三配置github-pages或coding-pages">三、配置Github Pages或Coding Pages</h2>
 <p>Github比较出名些，Coding是国内的平台，和Github基本差不多，如果担心访问速度或者其他原因可以选择国内的。</p>
-
 <h2 id="github的配置方法">Github的配置方法</h2>
-
-<p><span id="3.1.1"></span></p>
-
-<h3 id="1-注册并登录github帐号">1.注册并登录Github帐号。</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="1注册并登录github帐号">1.注册并登录Github帐号。</h3>
 <p>新建一个仓库，建好后可以在仓库首页的Setting里修改为：yourname.github.io</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-1.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-1.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-1.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" />](<a href="https://odg1">https://odg1</a></p>
+</span>](https://odg1</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-2.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-2.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-2.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
-
-<p><span id="3.1.2"></span></p>
-
-<h3 id="2-添加ssh-key">2.添加SSH KEY</h3>
-
+</span></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="2添加ssh-key">2.添加SSH KEY</h3>
 <p>点击Github右上角的头像，有个Setting，找到SSH and GPG keys，新建一个New keys，随便起名，把密钥内容复制进去。密钥是啥？就是最开始生成的那个密钥，id_rsa.pub文件。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-3.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-3.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-3.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
-
-<p><span id="3.1.3"></span></p>
-
-<h3 id="3-测试ssh连接">3.测试SSH连接</h3>
-
+</span></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="3测试ssh连接">3.测试SSH连接</h3>
 <p>在本地的Git中执行，</p>
-
-<pre><code class="language-Bash">ssh -T git@github.com
-</code></pre>
-
-<p>如果出现<code>Hi username! You've successfully authenticated, but GitHub does not provide shell access.</code>提示，则表示连接成功。如果不行就重新生成一个密钥再重新上传密钥试试。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ssh -T git@github.com
+</code></pre></div><p>如果出现<code>Hi username! You've successfully authenticated, but GitHub does not provide shell access.</code>提示，则表示连接成功。如果不行就重新生成一个密钥再重新上传密钥试试。</p>
 <h2 id="coding中的配置方法">Coding中的配置方法</h2>
+<p>Github免费用户只能新建公开的代码仓库，而且是国外的服务器，而Coding可以新建私有代码仓库，国内用户访问速度更快。注册
 
-<p>Github免费用户只能新建公开的代码仓库，而且是国外的服务器，而Coding可以新建私有代码仓库，国内用户访问速度更快。注册<a href="https://www.zrj96.com/go/?url=https://coding.net/"><strong>Coding</strong></a>，添加项目，<code>项目名称为Coding用户名</code>，分支选择<code>master</code>，同时还需要在<code>D:\hexo\blog\source</code>目录下创建一个空白文件<code>Staticfile</code>:</p>
-
-<pre><code class="language-Bash">cd /d/hexo/blog/source
+<a href="https://www.zrj96.com/go/?url=https://coding.net/"  target="_blank"><strong>Coding</strong></a>，添加项目，<code>项目名称为Coding用户名</code>，分支选择<code>master</code>，同时还需要在<code>D:\hexo\blog\source</code>目录下创建一个空白文件<code>Staticfile</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">cd /d/hexo/blog/source
 touch Staticfile
-</code></pre>
-
-<p><span id="3.2.1"></span></p>
-
+</code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="添加ssh-keys">添加SSH keys</h3>
+<p>
 
-<p><a href="https://www.zrj96.com/go/?url=https://coding.net/help/doc/git/ssh-key.html">https://coding.net/help/doc/git/ssh-key.html</a></p>
-
+<a href="https://www.zrj96.com/go/?url=https://coding.net/help/doc/git/ssh-key.html"  target="_blank">https://coding.net/help/doc/git/ssh-key.html</a></p>
 <p>在Coding <code>账户</code>中找到<code>SSH 公钥</code>，新增公钥，复制公钥文件<code>id_rsa.pub</code>中的内容</p>
-
-<p><span id="3.2.2"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="测试ssh连接">测试SSH连接</h3>
-
 <p>在<code>Git Bash</code>中执行:</p>
-
-<pre><code class="language-Bash">ssh -T git@git.coding.net
-</code></pre>
-
-<p>如果出现<code>Hello username! You have connected to Coding.net by SSH successfully!</code>提示，则表示连接成功。</p>
-
-<p><span id="4"></span></p>
-
-<h2 id="四-部署你的博客">四、部署你的博客</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">ssh -T git@git.coding.net
+</code></pre></div><p>如果出现<code>Hello username! You have connected to Coding.net by SSH successfully!</code>提示，则表示连接成功。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="四部署你的博客">四、部署你的博客</h2>
 <p>注意<strong>站点配置文件</strong><code>D:\hexo\blog\_config.yml</code>中<code>deploy</code>参数配置如下：</p>
-
-<pre><code class="language-Bash"># Deployment
-## Docs: https://hexo.io/docs/deployment.html
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#75715e"># Deployment</span>
+<span style="color:#75715e">## Docs: https://hexo.io/docs/deployment.html</span>
 deploy:
   type: git
   repo: 
     github: git@github.com:zrj766/zrj766.github.io.git,master
     coding: git@git.coding.net:zrj766/zrj766.git,master
-</code></pre>
-
-<p>在本地Git中执行：</p>
-
-<pre><code class="language-Bash"># git方式需要先安装插件
+</code></pre></div><p>在本地Git中执行：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash"><span style="color:#75715e"># git方式需要先安装插件</span>
 npm install hexo-deployer-git --save
-# 上传代码到仓库
-hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy
+<span style="color:#75715e"># 上传代码到仓库</span>
+hexo clean <span style="color:#f92672">&amp;&amp;</span> hexo generate <span style="color:#f92672">&amp;&amp;</span> hexo deploy
 或者:
-hexo clean &amp;&amp; hexo generate -d
-</code></pre>
+hexo clean <span style="color:#f92672">&amp;&amp;</span> hexo generate -d
+</code></pre></div><p>如果出现<code>INFO Deploy done: git</code>提示，则表示部署成功。访问<code>用户名.github.io</code>和<code>用户名.coding.me</code>都可以正常打开博客了。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-4.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-4.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></a>
+</span>
 
-<p>如果出现<code>INFO Deploy done: git</code>提示，则表示部署成功。访问<code>用户名.github.io</code>和<code>用户名.coding.me</code>都可以正常打开博客了。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/github-4.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
-
-<p><span id="5"></span></p>
-
-<h2 id="五-独立域名绑定">五、独立域名绑定</h2>
-
+</span></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="五独立域名绑定">五、独立域名绑定</h2>
 <p>用个二级域名总是不爽，何况现在主流域名都不贵，现在来绑定自己的域名。</p>
-
-<p><span id="5.1"></span></p>
-
-<h3 id="1-dns解析">1.DNS解析</h3>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="1dns解析">1.DNS解析</h3>
 <p>www和@记录做CNAME解析到 用户名.github.io</p>
-
 <p>如果使用的是Coding同样的方法解析到 pages.coding.me</p>
-
-<p><span id="5.2"></span></p>
-
-<h3 id="2-hexo上的设置">2.Hexo上的设置</h3>
-
-<p><span id="5.3"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h3 id="2hexo上的设置">2.Hexo上的设置</h3>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="域名绑定github">域名绑定Github</h3>
-
 <p>在<code>D:\hexo\blog\source</code>目录下新建一个文件<code>CNAME</code>，内容为要绑定的域名：</p>
-
 <p><strong>文件去掉格式，直接空白</strong></p>
-
-<pre><code class="language-Bash">www.example.com
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">www.example.com
 example.com
-</code></pre>
-
-<p><span id="5.4"></span></p>
-
+</code></pre></div><p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="域名绑定coding-pages">域名绑定Coding Pages</h3>
-
 <p>在Coding网站中进入刚新建的项目，依次单击<code>代码</code>、<code>Pages服务</code>自定义域名：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="assets/coding-domain.png"><img class="img" src="assets/coding-domain.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></a>
+</span>
 
-<p><img src="assets/coding-domain.png" alt="轻快装B低成本–Win10搭建Hexo博客 – 初行博客 - 回归初心，记录生活点滴" /></p>
-
+</span></p>
 <p>重新部署一次代码即可。</p>
-
-<h2 id="六-其他辅助工具">六、其他辅助工具</h2>
-
-<p><span id="Markdown"></span></p>
-
+<h2 id="六其他辅助工具">六、其他辅助工具</h2>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="markdown书写工具">Markdown书写工具</h3>
-
-<p>推荐<strong>Typora，介绍文章：<a href="http://www.iplaysoft.com/typora.html">http://www.iplaysoft.com/typora.html</a></strong></p>
-
-<p><span id="Markdown-2"></span></p>
-
+<p>推荐<strong>Typora，介绍文章：http://www.iplaysoft.com/typora.html</strong></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="markdown渲染插件">Markdown渲染插件</h3>
+<p>推荐
 
-<p>推荐<a href="https://www.zrj96.com/go/?url=http://markdown-here.com/get.html"><strong>Markdown Here</strong></a></p>
-
-<p><span id="i-4"></span></p>
-
+<a href="https://www.zrj96.com/go/?url=http://markdown-here.com/get.html"  target="_blank"><strong>Markdown Here</strong></a></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="图床">图床</h3>
-
 <p>由于markdown要导入网络图片才能让本地用户和网络用户都能正常访问图片，而且像有道云笔记这种还不能支持插入图片，所以要借助图床和快捷插入图片的小插件来提高写作效率。</p>
-
-<p><span id="i-5"></span></p>
-
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="七牛">七牛</h3>
+<p>注册
 
-<p>注册<a href="https://www.zrj96.com/go/?url=https://portal.qiniu.com/signup?code=3layz9bl08bwy"><strong>七牛</strong></a>，在<code>对象存储</code>中新建存储空间，要选择公开空间，不然上传图片后无法分享外部链接。</p>
-
-<p><span id="MPic"></span></p>
-
+<a href="https://www.zrj96.com/go/?url=https://portal.qiniu.com/signup?code=3layz9bl08bwy"  target="_blank"><strong>七牛</strong></a>，在<code>对象存储</code>中新建存储空间，要选择公开空间，不然上传图片后无法分享外部链接。</p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
 <h3 id="mpic">MPic</h3>
+<p>下载
 
-<p>下载<a href="https://www.zrj96.com/go/?url=http://mpic.lzhaofu.cn/"><strong>MPic-图床神器</strong></a>，设置账号，<code>空间名</code>为七牛对象存储空间名称，<code>AccessKey</code>和<code>SecretKey</code>在七牛<code>个人面板</code>下的<code>密钥管理</code>中，<code>域名</code>为七牛对象存储空间中<code>内容管理</code>页签下的<code>外链默认域名。</code></p>
-
-<p><span id="i-6"></span></p>
-
-<h2 id="七-扩展阅读">七、扩展阅读</h2>
-
+<a href="https://www.zrj96.com/go/?url=http://mpic.lzhaofu.cn/"  target="_blank"><strong>MPic-图床神器</strong></a>，设置账号，<code>空间名</code>为七牛对象存储空间名称，<code>AccessKey</code>和<code>SecretKey</code>在七牛<code>个人面板</code>下的<code>密钥管理</code>中，<code>域名</code>为七牛对象存储空间中<code>内容管理</code>页签下的<code>外链默认域名。</code></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="七扩展阅读">七、扩展阅读</h2>
 <p>推荐一些文章可以帮助你更快的学习使用和解决问题</p>
+<p>
 
-<p><a href="https://www.zrj96.com/go/?url=http://jingyan.baidu.com/article/63f236280da7770208ab3d27.html">Hexo 入门指南（三） – 文章 &amp; 草稿</a></p>
+<a href="https://www.zrj96.com/go/?url=http://jingyan.baidu.com/article/63f236280da7770208ab3d27.html"  target="_blank">Hexo 入门指南（三） – 文章 &amp; 草稿</a></p>
+<p>
 
-<p><a href="https://www.zrj96.com/go/?url=http://www.jianshu.com/p/a2fe56d11c4f">搭建Hexo博客中碰到的坑</a></p>
-
-<p><span id="i-7"></span></p>
-
-<h2 id="八-参考文章">八、参考文章</h2>
-
+<a href="https://www.zrj96.com/go/?url=http://www.jianshu.com/p/a2fe56d11c4f"  target="_blank">搭建Hexo博客中碰到的坑</a></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="八参考文章">八、参考文章</h2>
 <p>本篇文章的写成参考了以下文章，感谢原作者的奉献！</p>
+<p>
 
-<p><a href="https://www.zrj96.com/go/?url=http://www.madmalls.com/2017/02/11/Win10%E6%90%AD%E5%BB%BAhexo-Github-Coding%E5%8D%9A%E5%AE%A2/">Win10搭建hexo-Github-Coding博客</a></p>
+<a href="https://www.zrj96.com/go/?url=http://www.madmalls.com/2017/02/11/Win10%E6%90%AD%E5%BB%BAhexo-Github-Coding%E5%8D%9A%E5%AE%A2/"  target="_blank">Win10搭建hexo-Github-Coding博客</a></p>
+<p>
 
-<p><a href="https://www.zrj96.com/go/?url=http://www.jianshu.com/p/a2fe56d11c4f">搭建Hexo博客中碰到的坑</a></p>
-
-<p><span id="i-8"></span></p>
-
-<h2 id="九-总结">九、总结</h2>
-
+<a href="https://www.zrj96.com/go/?url=http://www.jianshu.com/p/a2fe56d11c4f"  target="_blank">搭建Hexo博客中碰到的坑</a></p>
+<p><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<h2 id="九总结">九、总结</h2>
 <p>Hexo这种静态化博客真是轻快，打开速度飞快，比臃肿的WP强了很多。不过因为没有后台之类的东西所以新建文章等操作需要手动操作，不过Hexo的可塑性还是不错的，流行的MD语法，还有文件在本地都可以自由修改，只要懂得一些代码知识就能打造自己的站点。加上配合Github、Coding的使用，完全可以做到0成本拥有自己的博客。如果你对他感兴趣就一起来部署拥有自己的第一个博客吧！</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/130/>Win10搭建Hexo博客</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-04-21<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/130/ target="_blank" >https://3mile.github.io/archives/130/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -742,7 +801,7 @@ example.com
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -787,24 +846,6 @@ example.com
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/130/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/130/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/130/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -823,9 +864,11 @@ example.com
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -863,24 +906,6 @@ example.com
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/130/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/130/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/130/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -899,24 +924,6 @@ example.com
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F130%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F130%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F130%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -932,7 +939,7 @@ example.com
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -960,18 +967,28 @@ example.com
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

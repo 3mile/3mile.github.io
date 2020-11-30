@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="Stylish 是什么？ 开门见山，Stylish 的作用是，它可以把百度首页变成这样： 它还能把知乎「拍扁」，让微博网页版变得简洁无比，让 Feedly 用上 Material Design">
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -292,119 +292,215 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h2 id="stylish-是什么">Stylish 是什么？</h2>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#stylish-是什么">Stylish 是什么？</a></li>
+    <li><a href="#css-高深但-stylish-也可以很易用">CSS 高深但 Stylish 也可以很易用</a></li>
+    <li><a href="#你应该试试这些-css-模板">你应该试试这些 CSS 模板</a>
+      <ul>
+        <li><a href="#1-给你一个干净的微博weibo_v6httpsuserstylesorgstyles106272weibo-v6">1. 给你一个干净的微博：<a href="https://userstyles.org/styles/106272/weibo-v6">Weibo_v6</a></a></li>
+        <li><a href="#2-百度也用上-material-design百度轻httpsuserstylesorgstyles123858baidu-lite">2. 百度也用上 Material Design：<a href="https://userstyles.org/styles/123858/baidu-lite">百度轻</a></a></li>
+        <li><a href="#3-google-搜索的再美化google-search---material-designhttpsuserstylesorgstyles109717google-search-material-design">3. Google 搜索的再美化：<a href="https://userstyles.org/styles/109717/google-search-material-design">Google Search - Material Design</a></a></li>
+        <li><a href="#4-扁平版知乎flat_zhihuhttpsuserstylesorgstyles108011flat-zhihu-v2-3-1-beta3">4. 扁平版知乎：<a href="https://userstyles.org/styles/108011/flat-zhihu-v2-3-1-beta3">Flat_Zhihu</a></a></li>
+        <li><a href="#5-全局夜间模式nightshift---eye-carehttpsuserstylesorgstyles18192nightshift-eye-care">5. 全局夜间模式：<a href="https://userstyles.org/styles/18192/nightshift-eye-care">NightShift - eye care</a></a>
+          <ul>
+            <li><a href="#6-mac-风格滚动条universial-minimalist-scroll-barhttpsuserstylesorgstyles126013universial-minimalist-scroll-bar">6. Mac 风格滚动条：<a href="https://userstyles.org/styles/126013/universial-minimalist-scroll-bar">Universial Minimalist Scroll Bar</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#使用-stylish-自定义网页字体">使用 Stylish 自定义网页字体</a></li>
+    <li><a href="#最后">最后</a></li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h2 id="stylish-是什么">Stylish 是什么？</h2>
 <p>开门见山，Stylish 的作用是，它可以把百度首页变成这样：</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s1.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s1.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s1.png" alt="img" /></p>
-
+</span></p>
 <p>它还能把知乎「拍扁」，让微博网页版变得简洁无比，让 Feedly 用上 Material Design……</p>
+<p>这个神奇的 Stylish 实际上是一个浏览器插件，适用于 
 
-<p>这个神奇的 Stylish 实际上是一个浏览器插件，适用于 <a href="https://chrome.google.com/webstore/detail/fjnbnpbmkenffdnngjfgmeleoegfcffe">Chrome</a>，<a href="https://addons.mozilla.org/en-US/firefox/addon/stylish/?src=external-userstyleshome">Firefox</a>，<a href="https://addons.opera.com/extensions/details/stylish/">Opera</a> 以及 <a href="http://sobolev.us/stylish/">Safari</a> 浏览器（点击浏览器名称即可下载）。Stylish 通过替换网页本身的 CSS 来达到的「美化」的目的。</p>
+<a href="https://chrome.google.com/webstore/detail/fjnbnpbmkenffdnngjfgmeleoegfcffe"  target="_blank">Chrome</a>，
 
-<p>什么是 CSS？CSS 的中文全称是 <a href="https://zh.wikipedia.org/wiki/%E5%B1%82%E5%8F%A0%E6%A0%B7%E5%BC%8F%E8%A1%A8?oldformat=true">层叠样式表</a>，是一种用来表现HTML 或 XML ……这是个晦涩的东西。换个通俗易懂说法，CSS 就好比是一个网页的衣服，虽然不能添加网页本身的功能，但可以决定排版、字体，甚至滚动条等一切与外表有关的东西。至于外表的重要性，我想不必多言，你也许比我更有体会。</p>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/stylish/?src=external-userstyleshome"  target="_blank">Firefox</a>，
 
+<a href="https://addons.opera.com/extensions/details/stylish/"  target="_blank">Opera</a> 以及 
+
+<a href="http://sobolev.us/stylish/"  target="_blank">Safari</a> 浏览器（点击浏览器名称即可下载）。Stylish 通过替换网页本身的 CSS 来达到的「美化」的目的。</p>
+<p>什么是 CSS？CSS 的中文全称是 
+
+<a href="https://zh.wikipedia.org/wiki/%E5%B1%82%E5%8F%A0%E6%A0%B7%E5%BC%8F%E8%A1%A8?oldformat=true"  target="_blank">层叠样式表</a>，是一种用来表现HTML 或 XML ……这是个晦涩的东西。换个通俗易懂说法，CSS 就好比是一个网页的衣服，虽然不能添加网页本身的功能，但可以决定排版、字体，甚至滚动条等一切与外表有关的东西。至于外表的重要性，我想不必多言，你也许比我更有体会。</p>
 <h2 id="css-高深但-stylish-也可以很易用">CSS 高深但 Stylish 也可以很易用</h2>
-
 <p>Stylish 的基本用法非常简单，从官网安装 Stylish 到你的浏览器。在 Stylish 的选项菜单中你可以更新、停用、卸载、编辑已经安装的 CSS，这和 Chrome 的扩展程序管理类似。</p>
-
 <p>** 不同浏览器界面略有区别，但使用方法相同，本文以 Chrome 为例*</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s2.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s2.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s2.png" alt="img" /></p>
-
+</span></p>
 <p>现在你的 Stylish 里面空空如也，接下来就是要添加 CSS 样式模板了。别怕，你只需要信手打开一个网站，打开 Stylish 的菜单，点击「查找适合此网站的更多样式」，Stylish 就会为你列出该网站合适的 CSS 模板。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s3.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s3.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s3.png" alt="img" />你也可以直接前往 <a href="https://userstyles.org/">userstyles.org</a> 寻找已经编写好的 CSS 模板，这里就是 Stylish 的「应用商店」，不过网站的界面并不友好，建议善用左上角的搜索功能。</p>
+</span>你也可以直接前往 
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s4.png" alt="img" /></p>
+<a href="https://userstyles.org/"  target="_blank">userstyles.org</a> 寻找已经编写好的 CSS 模板，这里就是 Stylish 的「应用商店」，不过网站的界面并不友好，建议善用左上角的搜索功能。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s4.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s4.png" alt="img" /></a>
+</span>
 
+</span></p>
 <p>找到心仪的模板之后，点击绿色按钮即可安装，像安装浏览器插件一样无痛。而某些 CSS 还有更多可选项，如图。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s5.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s5.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s5.png" alt="img" /></p>
-
+</span></p>
 <h2 id="你应该试试这些-css-模板">你应该试试这些 CSS 模板</h2>
+<h3 id="1-给你一个干净的微博weibo_v6httpsuserstylesorgstyles106272weibo-v6">1. 给你一个干净的微博：
 
-<h3 id="1-给你一个干净的微博-weibo-v6-https-userstyles-org-styles-106272-weibo-v6">1. 给你一个干净的微博：<a href="https://userstyles.org/styles/106272/weibo-v6">Weibo_v6</a></h3>
-
+<a href="https://userstyles.org/styles/106272/weibo-v6"  target="_blank">Weibo_v6</a></h3>
 <p>这款 CSS 和一款叫做「微博急简」的 Chrome 插件有同样的功效，把微博来个大换装，去掉广告等多余元素，重新排版，给你一个干净的微博。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s6.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s6.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s6.png" alt="img" /></p>
+</span></p>
+<h3 id="2-百度也用上-material-design百度轻httpsuserstylesorgstyles123858baidu-lite">2. 百度也用上 Material Design：
 
-<h3 id="2-百度也用上-material-design-百度轻-https-userstyles-org-styles-123858-baidu-lite">2. 百度也用上 Material Design：<a href="https://userstyles.org/styles/123858/baidu-lite">百度轻</a></h3>
-
+<a href="https://userstyles.org/styles/123858/baidu-lite"  target="_blank">百度轻</a></h3>
 <p>这就是文首看到的能让百度用上 Material Design 风格的 CSS 了。它同样适用于搜索结果页面。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s7.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s7.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s7.png" alt="img" /></p>
+</span></p>
+<h3 id="3-google-搜索的再美化google-search---material-designhttpsuserstylesorgstyles109717google-search-material-design">3. Google 搜索的再美化：
 
-<h3 id="3-google-搜索的再美化-google-search-material-design-https-userstyles-org-styles-109717-google-search-material-design">3. Google 搜索的再美化：<a href="https://userstyles.org/styles/109717/google-search-material-design">Google Search - Material Design</a></h3>
+<a href="https://userstyles.org/styles/109717/google-search-material-design"  target="_blank">Google Search - Material Design</a></h3>
+<p>这款 CSS 是根据 Dribbble 上的设计师 
 
-<p>这款 CSS 是根据 Dribbble 上的设计师 <a href="https://dribbble.com/aureliensalomon">Aurélien Salomon ➔</a> <a href="https://dribbble.com/shots/1790652-Google-Material-exploration">重新设计的 Google 搜索</a>做出来的。类似上文的百度轻，由于 Google 本身已经很干净，所以效果提升并没有百度那么明显，好看倒是真的。</p>
+<a href="https://dribbble.com/aureliensalomon"  target="_blank">Aurélien Salomon ➔</a> 
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s8.png" alt="img" /></p>
+<a href="https://dribbble.com/shots/1790652-Google-Material-exploration"  target="_blank">重新设计的 Google 搜索</a>做出来的。类似上文的百度轻，由于 Google 本身已经很干净，所以效果提升并没有百度那么明显，好看倒是真的。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s8.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s8.png" alt="img" /></a>
+</span>
 
-<h3 id="4-扁平版知乎-flat-zhihu-https-userstyles-org-styles-108011-flat-zhihu-v2-3-1-beta3">4. 扁平版知乎：<a href="https://userstyles.org/styles/108011/flat-zhihu-v2-3-1-beta3">Flat_Zhihu</a></h3>
+</span></p>
+<h3 id="4-扁平版知乎flat_zhihuhttpsuserstylesorgstyles108011flat-zhihu-v2-3-1-beta3">4. 扁平版知乎：
 
+<a href="https://userstyles.org/styles/108011/flat-zhihu-v2-3-1-beta3"  target="_blank">Flat_Zhihu</a></h3>
 <p>这款 CSS 不仅是把知乎拍平，还优化了字体，动效，以及页面宽度。总之看起来比原版舒服多了，看知乎终于不用开页面缩放了。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s9.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s9.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s9.png" alt="img" /></p>
+</span></p>
+<h3 id="5-全局夜间模式nightshift---eye-carehttpsuserstylesorgstyles18192nightshift-eye-care">5. 全局夜间模式：
 
-<h3 id="5-全局夜间模式-nightshift-eye-care-https-userstyles-org-styles-18192-nightshift-eye-care">5. 全局夜间模式：<a href="https://userstyles.org/styles/18192/nightshift-eye-care">NightShift - eye care</a></h3>
-
+<a href="https://userstyles.org/styles/18192/nightshift-eye-care"  target="_blank">NightShift - eye care</a></h3>
 <p>这款全局 CSS 能将页面中白色的部分变黑，图片亮度降低，用起来就像开了「夜间模式」一样。会出现些许兼容问题，不影响使用。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s10.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s10.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s10.png" alt="img" /></p>
+</span></p>
+<h4 id="6-mac-风格滚动条universial-minimalist-scroll-barhttpsuserstylesorgstyles126013universial-minimalist-scroll-bar">6. Mac 风格滚动条：
 
-<h4 id="6-mac-风格滚动条-universial-minimalist-scroll-bar-https-userstyles-org-styles-126013-universial-minimalist-scroll-bar">6. Mac 风格滚动条：<a href="https://userstyles.org/styles/126013/universial-minimalist-scroll-bar">Universial Minimalist Scroll Bar</a></h4>
-
+<a href="https://userstyles.org/styles/126013/universial-minimalist-scroll-bar"  target="_blank">Universial Minimalist Scroll Bar</a></h4>
 <p>这是针对 Windows 系统的全局 CSS 样式。他能让你的浏览器拥有 Mac OS X 样式的透明极简滚动条。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s11.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s11.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s11.png" alt="img" /></p>
-
+</span></p>
 <h2 id="使用-stylish-自定义网页字体">使用 Stylish 自定义网页字体</h2>
-
 <p>除了使用上面的模板改变网页样式之外，很多人都希望能用自己喜欢的字体来浏览网页，使用 Stylish 可以轻松达到这个目的，在 userstyles 网站搜索「字体」，你可以轻松找到很多现成的模板供你挑选使用，下载后几乎不需调整即可直接使用。</p>
+<p>在这里要推荐一款叫做 
 
-<p>在这里要推荐一款叫做 <a href="https://userstyles.org/styles/100473/004-forcemyfonts-chinese-firefoxchromeie-catcat520">ForceMyFont </a>的模板，这个模板内置的选项非常丰富，允许你手动选择多款中英文字体，即使你对于 CSS 一窍不通，也可以轻松地完成字体设置，在列表中选定你要使用的字体，之后选择安装即可，非常方便。不过要注意你的电脑上是否已经安装了对应字体，如果没有则需要额外下载安装。</p>
+<a href="https://userstyles.org/styles/100473/004-forcemyfonts-chinese-firefoxchromeie-catcat520"  target="_blank">ForceMyFont </a>的模板，这个模板内置的选项非常丰富，允许你手动选择多款中英文字体，即使你对于 CSS 一窍不通，也可以轻松地完成字体设置，在列表中选定你要使用的字体，之后选择安装即可，非常方便。不过要注意你的电脑上是否已经安装了对应字体，如果没有则需要额外下载安装。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s12.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s12.png" alt="img" /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s12.png" alt="img" /></p>
-
+</span></p>
 <p>如果你懂一些 CSS 样式，你当然也可以手动编写页面效果。这样做的好处是自由度高，可以按自己的喜好想改啥改啥，但使用门槛也成正比的高。在这里我举一个自定义字体 CSS 的例子。</p>
-
 <p>首先，打开 Stylish 的选项菜单，选择「编写新样式」，填入下面的代码：</p>
-
 <pre><code>*{font-weight:600!important;}
-</code></pre>
+</code></pre><pre><code>*{font-family: Arial, ”方正兰亭黑简体”;}
+</code></pre><p>其中第一行是定义字体的粗细，越大越粗。第二行是指定的字体，填入一个电脑中已安装的字体就好。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s13.png"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s13.png" alt="img" /></a>
+</span>
 
-<pre><code>*{font-family: Arial, ”方正兰亭黑简体”;}
-</code></pre>
-
-<p>其中第一行是定义字体的粗细，越大越粗。第二行是指定的字体，填入一个电脑中已安装的字体就好。</p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/chrome/s13.png" alt="img" /></p>
-
+</span></p>
 <p>如果你喜欢字体阴影，可以加入下面这行代码：</p>
-
 <pre><code>*{text-shadow:0.01em 0.01em 0.01em #999999 !important;}
-</code></pre>
-
-<p>其中的数值依次代表阴影的 X 轴偏移、Y 轴偏移、阴影大小，以及字体颜色。</p>
-
+</code></pre><p>其中的数值依次代表阴影的 X 轴偏移、Y 轴偏移、阴影大小，以及字体颜色。</p>
 <p>当填写好「应用对象」之后去页面查看一下效果吧。如果想要应用到全局，如上图配置即可。</p>
-
-<p><strong>最后要说一下，</strong>如果你是 Mac 用户，想要调用最新的 San Francisco 字体，可能会发现这个字体并不在 Font Book 里，而在 CSS 中直接键入<code>&quot;San Francisco&quot;</code>也没有效果，这是因为苹果并没有把这个字体放在 Font Book 中供大家使用，如果想在网页上使用这个字体，需要用 <code>-apple-system, BlinkMacSystemFont,</code> 才行</p>
-
+<p>**最后要说一下，**如果你是 Mac 用户，想要调用最新的 San Francisco 字体，可能会发现这个字体并不在 Font Book 里，而在 CSS 中直接键入<code>&quot;San Francisco&quot; </code>也没有效果，这是因为苹果并没有把这个字体放在 Font Book 中供大家使用，如果想在网页上使用这个字体，需要用 <code>-apple-system, BlinkMacSystemFont,</code> 才行</p>
 <h2 id="最后">最后</h2>
-
 <p>可以看到，Stylish 可以优化页面的样式。对于大多数普通用户来说，使用 Stylish 套用那些现成的模板，来优化那些设计不佳或风格不喜欢的网站，是个很好的解决方案。</p>
-
 <p>更进阶一点的话，Stylish 实际上还可以实现去除广告、补全浏览器部分功能。但这不在本文的范围之中，这篇文章仅作为抛砖引玉，以便让更多人先知道并初步了解这样一款浏览器扩展。</p>
-
 <p>欢迎各位在评论里一起讨论 Stylish 的更多用法，或分享你喜欢的 CSS 模板。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/135/>谷歌插件Stylish</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-05-05<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/135/ target="_blank" >https://3mile.github.io/archives/135/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -427,7 +523,7 @@ if (!doNotTrack) {
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -472,24 +568,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/135/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/135/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/135/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -508,9 +586,11 @@ if (!doNotTrack) {
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -548,24 +628,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/135/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/135/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/135/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -584,24 +646,6 @@ if (!doNotTrack) {
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F135%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F135%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F135%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -617,7 +661,7 @@ if (!doNotTrack) {
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -645,18 +689,28 @@ if (!doNotTrack) {
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

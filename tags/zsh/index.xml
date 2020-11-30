@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>zsh on 3mile博客</title>
+    <title>Zsh on 3mile博客</title>
     <link>https://3mile.github.io/tags/zsh/</link>
-    <description>Recent content in zsh on 3mile博客</description>
+    <description>Recent content in Zsh on 3mile博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 21 Feb 2019 19:48:49 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 09 Apr 2020 12:37:55 +0800</lastBuildDate>
     
 	<atom:link href="https://3mile.github.io/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Centos7 编译zsh 5.7</title>
+      <link>https://3mile.github.io/archives/2020/0409123755/</link>
+      <pubDate>Thu, 09 Apr 2020 12:37:55 +0800</pubDate>
+      
+      <guid>https://3mile.github.io/archives/2020/0409123755/</guid>
+      <description>&lt;p&gt;Oh-my-zsh 安装Powerlevel10k主题出错，发现Centos7 yum 安装的zsh是5.02版的。
+并且yum update无法升级到更高的版本，看来只能编译安装了。&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Linux Mint下oh MyZsh</title>

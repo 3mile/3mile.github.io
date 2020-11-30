@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="首先进入theme目录,克隆tranquilpeak主题 cd themes git clone https://github.com/kakawait/hugo-tranquilpeak-theme.git tranquilpeak_0.47beta&quot; cd tranquilpeak_0.47beta 然后修改src/scss/themes/_hljs-custom.s">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="">
+      <meta property="article:section" content="博客系统">
     
   
   
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -271,7 +271,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+      <a class="category-link" href="https://3mile.github.io/categories/%e5%8d%9a%e5%ae%a2%e7%b3%bb%e7%bb%9f">博客系统</a>
     
   
 
@@ -292,213 +292,225 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h3 id="首先进入theme目录-克隆tranquilpeak主题">首先进入theme目录,克隆tranquilpeak主题</h3>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#首先进入theme目录克隆tranquilpeak主题">首先进入theme目录,克隆tranquilpeak主题</a></li>
+        <li><a href="#然后修改srcscssthemes_hljs-customscss">然后修改<code>src/scss/themes/_hljs-custom.scss</code></a></li>
+        <li><a href="#修改tranquilpeakscss">修改tranquilpeak.scss</a></li>
+        <li><a href="#修改完成后即可编译">修改完成后，即可编译</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h3 id="首先进入theme目录克隆tranquilpeak主题">首先进入theme目录,克隆tranquilpeak主题</h3>
 <pre><code>cd themes
 git clone https://github.com/kakawait/hugo-tranquilpeak-theme.git tranquilpeak_0.47beta&quot;
 cd tranquilpeak_0.47beta
-</code></pre>
-
-<h3 id="然后修改-src-scss-themes-hljs-custom-scss">然后修改<code>src/scss/themes/_hljs-custom.scss</code></h3>
-
+</code></pre><h3 id="然后修改srcscssthemes_hljs-customscss">然后修改<code>src/scss/themes/_hljs-custom.scss</code></h3>
 <p>根据<code>_hljs-custom.scss</code>文件的内容提示</p>
-
-<pre><code class="language-css">// Highlight.js custom theme
-// Follow guidelines
-// 1. Uncomment the block just below - remove `/*` and `*/`
-// 2. Fill `background`, `color`, `border-right-color` properties
-// with properties of `.hljs` CSS class of your theme
-// 3. Put your theme where it's indicated just below
-// 4. Remove `.hljs {...}` rules
-// 5. Remove `hljs-` of all CSS class name. E.g : `.hljs-comment` becomes `.comment`
-// 6. Comment line 61 (`'themes/tranquilpeak',`) of `source/_css/tranquilpeak.scss` file
-// 7. Run `grunt buildProd` to build the theme and see the result
-// Default code block
-
-// Highlight.js自定义主题
-//遵循指南
-// 1.取消注释下面的块 - 删除`/ *`和`* /`
-// 2.填充`background，`color`，`border-right-color`属性
-//具有主题的`.hljs` CSS类属性
-// 3.将您的主题放在下方所示的位置
-// 4.删除`.hljs {...}`规则
-// 5.删除所有CSS类名的`hljs -`。 例如：`.hljs-comment`变为`.comment`
-// 6.注释`source / _css / tranquilpeak.scss`文件的第61行（`'themes / tranquilpeak'，`）
-// 7.运行`grunt buildProd`来构建主题并查看结果
-</code></pre>
-
-<p>修改成下面的样子，我个人使用的是solarized-dark样式</p>
-
-<pre><code class="language-css">// Highlight.js custom theme
-// Follow guidelines
-// 1. Uncomment the block just below - remove `/*` and `*/`
-// 2. Fill `background`, `color`, `border-right-color` properties
-// with properties of `.hljs` CSS class of your theme
-// 3. Put your theme where it's indicated just below
-// 4. Remove `.hljs {...}` rules
-// 5. Remove `hljs-` of all CSS class name. E.g : `.hljs-comment` becomes `.comment`
-// 6. Comment line 61 (`'themes/tranquilpeak',`) of `source/_css/tranquilpeak.scss` file
-// 7. Run `grunt buildProd` to build the theme and see the result
-// Default code block
-
-// Highlight.js自定义主题
-//遵循指南
-// 1.取消注释下面的块 - 删除`/ *`和`* /`
-// 2.填充`background，`color`，`border-right-color`属性
-//具有主题的`.hljs` CSS类属性
-// 3.将您的主题放在下方所示的位置
-// 4.删除`.hljs {...}`规则
-// 5.删除所有CSS类名的`hljs -`。 例如：`.hljs-comment`变为`.comment`
-// 6.注释`source / _css / tranquilpeak.scss`文件的第61行（`'themes / tranquilpeak'，`）
-// 7.运行`grunt buildProd`来构建主题并查看结果
-//默认代码块
-/*
-pre &gt; code {
-    background: #002b36;
-    color: #839496;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">//</span> <span style="color:#f92672">Highlight</span>.<span style="color:#a6e22e">js</span> <span style="color:#f92672">custom</span> <span style="color:#f92672">theme</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">Follow</span> <span style="color:#f92672">guidelines</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">1</span><span style="color:#f92672">.</span> <span style="color:#f92672">Uncomment</span> <span style="color:#f92672">the</span> <span style="color:#f92672">block</span> <span style="color:#f92672">just</span> <span style="color:#f92672">below</span> <span style="color:#f92672">-</span> <span style="color:#f92672">remove</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#75715e">/*` and `*/</span><span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">2</span><span style="color:#f92672">.</span> <span style="color:#f92672">Fill</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">background</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">,</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">color</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">,</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">border-right-color</span><span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">properties</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">with</span> <span style="color:#f92672">properties</span> <span style="color:#f92672">of</span> <span style="color:#960050;background-color:#1e0010">`</span>.<span style="color:#a6e22e">hljs</span><span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">CSS</span> <span style="color:#f92672">class</span> <span style="color:#f92672">of</span> <span style="color:#f92672">your</span> <span style="color:#f92672">theme</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">3</span><span style="color:#f92672">.</span> <span style="color:#f92672">Put</span> <span style="color:#f92672">your</span> <span style="color:#f92672">theme</span> <span style="color:#f92672">where</span> <span style="color:#f92672">it</span><span style="color:#e6db74">&#39;s indicated just below
+</span><span style="color:#e6db74">// 4. Remove `.hljs {...}` rules
+</span><span style="color:#e6db74">// 5. Remove `hljs-` of all CSS class name. E.g : `.hljs-comment` becomes `.comment`
+</span><span style="color:#e6db74">// 6. Comment line 61 (`&#39;</span><span style="color:#f92672">themes</span><span style="color:#f92672">/</span><span style="color:#f92672">tranquilpeak</span><span style="color:#e6db74">&#39;,`) of `source/_css/tranquilpeak.scss` file
+</span><span style="color:#e6db74">// 7. Run `grunt buildProd` to build the theme and see the result
+</span><span style="color:#e6db74">// Default code block
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">// Highlight.js自定义主题
+</span><span style="color:#e6db74">//遵循指南
+</span><span style="color:#e6db74">// 1.取消注释下面的块 - 删除`/ *`和`* /`
+</span><span style="color:#e6db74">// 2.填充`background，`color`，`border-right-color`属性
+</span><span style="color:#e6db74">//具有主题的`.hljs` CSS类属性
+</span><span style="color:#e6db74">// 3.将您的主题放在下方所示的位置
+</span><span style="color:#e6db74">// 4.删除`.hljs {...}`规则
+</span><span style="color:#e6db74">// 5.删除所有CSS类名的`hljs -`。 例如：`.hljs-comment`变为`.comment`
+</span><span style="color:#e6db74">// 6.注释`source / _css / tranquilpeak.scss`文件的第61行（`&#39;</span><span style="color:#f92672">themes</span> <span style="color:#f92672">/</span> <span style="color:#f92672">tranquilpeak</span><span style="color:#960050;background-color:#1e0010">&#39;，`）</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">7</span>.<span style="color:#a6e22e">运行</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">grunt</span> <span style="color:#f92672">buildProd</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">来构建主题并查看结果</span>
+</code></pre></div><p>修改成下面的样子，我个人使用的是solarized-dark样式</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#f92672">//</span> <span style="color:#f92672">Highlight</span>.<span style="color:#a6e22e">js</span> <span style="color:#f92672">custom</span> <span style="color:#f92672">theme</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">Follow</span> <span style="color:#f92672">guidelines</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">1</span><span style="color:#f92672">.</span> <span style="color:#f92672">Uncomment</span> <span style="color:#f92672">the</span> <span style="color:#f92672">block</span> <span style="color:#f92672">just</span> <span style="color:#f92672">below</span> <span style="color:#f92672">-</span> <span style="color:#f92672">remove</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#75715e">/*` and `*/</span><span style="color:#960050;background-color:#1e0010">`</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">2</span><span style="color:#f92672">.</span> <span style="color:#f92672">Fill</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">background</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">,</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">color</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">,</span> <span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">border-right-color</span><span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">properties</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">with</span> <span style="color:#f92672">properties</span> <span style="color:#f92672">of</span> <span style="color:#960050;background-color:#1e0010">`</span>.<span style="color:#a6e22e">hljs</span><span style="color:#960050;background-color:#1e0010">`</span> <span style="color:#f92672">CSS</span> <span style="color:#f92672">class</span> <span style="color:#f92672">of</span> <span style="color:#f92672">your</span> <span style="color:#f92672">theme</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">3</span><span style="color:#f92672">.</span> <span style="color:#f92672">Put</span> <span style="color:#f92672">your</span> <span style="color:#f92672">theme</span> <span style="color:#f92672">where</span> <span style="color:#f92672">it</span><span style="color:#e6db74">&#39;s indicated just below
+</span><span style="color:#e6db74">// 4. Remove `.hljs {...}` rules
+</span><span style="color:#e6db74">// 5. Remove `hljs-` of all CSS class name. E.g : `.hljs-comment` becomes `.comment`
+</span><span style="color:#e6db74">// 6. Comment line 61 (`&#39;</span><span style="color:#f92672">themes</span><span style="color:#f92672">/</span><span style="color:#f92672">tranquilpeak</span><span style="color:#e6db74">&#39;,`) of `source/_css/tranquilpeak.scss` file
+</span><span style="color:#e6db74">// 7. Run `grunt buildProd` to build the theme and see the result
+</span><span style="color:#e6db74">// Default code block
+</span><span style="color:#e6db74">
+</span><span style="color:#e6db74">// Highlight.js自定义主题
+</span><span style="color:#e6db74">//遵循指南
+</span><span style="color:#e6db74">// 1.取消注释下面的块 - 删除`/ *`和`* /`
+</span><span style="color:#e6db74">// 2.填充`background，`color`，`border-right-color`属性
+</span><span style="color:#e6db74">//具有主题的`.hljs` CSS类属性
+</span><span style="color:#e6db74">// 3.将您的主题放在下方所示的位置
+</span><span style="color:#e6db74">// 4.删除`.hljs {...}`规则
+</span><span style="color:#e6db74">// 5.删除所有CSS类名的`hljs -`。 例如：`.hljs-comment`变为`.comment`
+</span><span style="color:#e6db74">// 6.注释`source / _css / tranquilpeak.scss`文件的第61行（`&#39;</span><span style="color:#f92672">themes</span> <span style="color:#f92672">/</span> <span style="color:#f92672">tranquilpeak</span><span style="color:#960050;background-color:#1e0010">&#39;，`）</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">7</span>.<span style="color:#a6e22e">运行</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">grunt</span> <span style="color:#f92672">buildProd</span><span style="color:#960050;background-color:#1e0010">`</span><span style="color:#f92672">来构建主题并查看结果</span>
+<span style="color:#f92672">//</span><span style="color:#f92672">默认代码块</span>
+<span style="color:#75715e">/*
+</span><span style="color:#75715e">pre &gt; code {
+</span><span style="color:#75715e">    background: #002b36;
+</span><span style="color:#75715e">    color: #839496;
+</span><span style="color:#75715e">}
+</span><span style="color:#75715e">
+</span><span style="color:#75715e">// Default inline code
+</span><span style="color:#75715e">code {
+</span><span style="color:#75715e">    background-color: #002b36;
+</span><span style="color:#75715e">}
+</span><span style="color:#75715e">*/</span>
+<span style="color:#f92672">pre</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">code</span> {
+  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#f7f8f8</span>;
+  <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#aaa</span>;
 }
 
-// Default inline code
-code {
-    background-color: #002b36;
-}
-*/
-pre &gt; code {
-  background: #f7f8f8;
-  color: #aaa;
-}
-
-// Default inline code
-code {
-  background-color: #f7f8f8;
+<span style="color:#f92672">//</span> <span style="color:#f92672">Default</span> <span style="color:#f92672">inline</span> <span style="color:#f92672">code</span>
+<span style="color:#f92672">code</span> {
+  <span style="color:#66d9ef">background-color</span>: <span style="color:#ae81ff">#f7f8f8</span>;
 }
 
 
-// Tabbed code block tab
-// If your theme is dark then use a lighter background
-// to see clearly which tab is active
-.codeblock--tabbed figcaption .tab.active {
-    background: #002b36;
-    color: #839496;
+<span style="color:#f92672">//</span> <span style="color:#f92672">Tabbed</span> <span style="color:#f92672">code</span> <span style="color:#f92672">block</span> <span style="color:#f92672">tab</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">If</span> <span style="color:#f92672">your</span> <span style="color:#f92672">theme</span> <span style="color:#f92672">is</span> <span style="color:#f92672">dark</span> <span style="color:#f92672">then</span> <span style="color:#f92672">use</span> <span style="color:#f92672">a</span> <span style="color:#f92672">lighter</span> <span style="color:#f92672">background</span>
+<span style="color:#f92672">//</span> <span style="color:#f92672">to</span> <span style="color:#f92672">see</span> <span style="color:#f92672">clearly</span> <span style="color:#f92672">which</span> <span style="color:#f92672">tab</span> <span style="color:#f92672">is</span> <span style="color:#f92672">active</span>
+.<span style="color:#a6e22e">codeblock--tabbed</span> <span style="color:#f92672">figcaption</span> .<span style="color:#a6e22e">tab</span>.<span style="color:#a6e22e">active</span> {
+    <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#002b36</span>;
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#839496</span>;
 }
 
-// highlight code block
-figure.highlight,
-.codeblock {
-    background: #002b36;
-    color: #839496;
+<span style="color:#f92672">//</span> <span style="color:#f92672">highlight</span> <span style="color:#f92672">code</span> <span style="color:#f92672">block</span>
+<span style="color:#f92672">figure</span>.<span style="color:#a6e22e">highlight</span><span style="color:#f92672">,</span>
+.<span style="color:#a6e22e">codeblock</span> {
+    <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#002b36</span>;
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#839496</span>;
 
-    figcaption {
-        background: #002b36;
-        color: #839496;
+    <span style="color:#960050;background-color:#1e0010">figcaption</span> <span style="color:#960050;background-color:#1e0010">{</span>
+        <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#002b36</span>;
+        <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#839496</span>;
     }
-    .gutter {
-        background: #002b36;
-        border-right-color: #f7f8f8;
-        .line {
-            color: #839496;
+    .<span style="color:#a6e22e">gutter</span> {
+        <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#002b36</span>;
+        <span style="color:#66d9ef">border-right-color</span>: <span style="color:#ae81ff">#f7f8f8</span>;
+        <span style="color:#960050;background-color:#1e0010">.line</span> <span style="color:#960050;background-color:#1e0010">{</span>
+            <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#839496</span>;
         }
-    }
-    // PUT YOUR THEME HERE
-      /* Solarized Green */
-  .keyword,
-  .selector-tag,
-  .addition {
-    color: #859900;
+    <span style="color:#960050;background-color:#1e0010">}</span>
+    <span style="color:#f92672">//</span> <span style="color:#f92672">PUT</span> <span style="color:#f92672">YOUR</span> <span style="color:#f92672">THEME</span> <span style="color:#f92672">HERE</span>
+      <span style="color:#75715e">/* Solarized Green */</span>
+  .<span style="color:#a6e22e">keyword</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">selector-tag</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">addition</span> {
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#859900</span>;
   }
   
-  /* Solarized Cyan */
-  .number,
-  .string,
-  .meta .meta-string,
-  .literal,
-  .doctag,
-  .regexp {
-    color: #2aa198;
+  <span style="color:#75715e">/* Solarized Cyan */</span>
+  .<span style="color:#a6e22e">number</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">string</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">meta</span> .<span style="color:#a6e22e">meta-string</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">literal</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">doctag</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">regexp</span> {
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#2aa198</span>;
   }
   
-  /* Solarized Blue */
-  .title,
-  .section,
-  .name,
-  .selector-id,
-  .selector-class {
-    color: #268bd2;
+  <span style="color:#75715e">/* Solarized Blue */</span>
+  .<span style="color:#a6e22e">title</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">section</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">name</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">selector-id</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">selector-class</span> {
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#268bd2</span>;
   }
   
-  /* Solarized Yellow */
-  .attribute,
-  .attr,
-  .variable,
-  .template-variable,
-  .class .title,
-  .type {
-    color: #b58900;
+  <span style="color:#75715e">/* Solarized Yellow */</span>
+  .<span style="color:#a6e22e">attribute</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">attr</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">variable</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">template-variable</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">class</span> .<span style="color:#a6e22e">title</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">type</span> {
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#b58900</span>;
   }
   
-  /* Solarized Orange */
-  .symbol,
-  .bullet,
-  .subst,
-  .meta,
-  .meta .keyword,
-  .selector-attr,
-  .selector-pseudo,
-  .link {
-    color: #cb4b16;
+  <span style="color:#75715e">/* Solarized Orange */</span>
+  .<span style="color:#a6e22e">symbol</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">bullet</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">subst</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">meta</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">meta</span> .<span style="color:#a6e22e">keyword</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">selector-attr</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">selector-pseudo</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">link</span> {
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#cb4b16</span>;
   }
   
-  /* Solarized Red */
-  .built_in,
-  .deletion {
-    color: #dc322f;
+  <span style="color:#75715e">/* Solarized Red */</span>
+  .<span style="color:#a6e22e">built_in</span><span style="color:#f92672">,</span>
+  .<span style="color:#a6e22e">deletion</span> {
+    <span style="color:#66d9ef">color</span>: <span style="color:#ae81ff">#dc322f</span>;
   }
   
-  .formula {
-    background: #073642;
+  .<span style="color:#a6e22e">formula</span> {
+    <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#073642</span>;
   }
   
-  .emphasis {
-    font-style: italic;
+  .<span style="color:#a6e22e">emphasis</span> {
+    <span style="color:#66d9ef">font-style</span>: <span style="color:#66d9ef">italic</span>;
   }
   
-  .strong {
-    font-weight: bold;
+  .<span style="color:#a6e22e">strong</span> {
+    <span style="color:#66d9ef">font-weight</span>: <span style="color:#66d9ef">bold</span>;
   }
 
-}
-</code></pre>
-
-<h3 id="修改tranquilpeak-scss">修改tranquilpeak.scss</h3>
-
+<span style="color:#960050;background-color:#1e0010">}</span>
+</code></pre></div><h3 id="修改tranquilpeakscss">修改tranquilpeak.scss</h3>
 <p>然后修改<code>src\scss\tranquilpeak.scss</code>第66行，把    &lsquo;themes/hljs-tranquilpeak&rsquo;,注释掉</p>
-
-<h3 id="修改完成后-即可编译">修改完成后，即可编译</h3>
-
+<h3 id="修改完成后即可编译">修改完成后，即可编译</h3>
 <p>首先安装</p>
-
-<pre><code class="language-bash">npm install
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm install
 npm install grunt-cli -g
 grunt buildProd
-</code></pre>
-
-<p>如果有问题的话，可以先安装</p>
-
-<pre><code class="language-bash">npm run start
-</code></pre>
-
-<p>其中出现</p>
-
+</code></pre></div><p>如果有问题的话，可以先安装</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">npm run start
+</code></pre></div><p>其中出现</p>
 <pre><code>Running &quot;watch&quot; task
 Waiting...
-</code></pre>
-
-<p>的时候直接ctrl+c</p>
+</code></pre><p>的时候直接ctrl+c</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0826154529/>Tranquilpeak主题修改编译</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2019-08-26<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2019/0826154529/ target="_blank" >https://3mile.github.io/archives/2019/0826154529/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -521,7 +533,7 @@ Waiting...
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -566,24 +578,6 @@ Waiting...
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0826154529/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0826154529/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0826154529/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -602,9 +596,11 @@ Waiting...
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -642,24 +638,6 @@ Waiting...
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2019/0826154529/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2019/0826154529/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2019/0826154529/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -678,24 +656,6 @@ Waiting...
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0826154529%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0826154529%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2019%2F0826154529%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -711,7 +671,7 @@ Waiting...
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -739,18 +699,28 @@ Waiting...
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

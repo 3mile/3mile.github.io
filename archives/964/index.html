@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="需求 当VPS暴露在外网中，就会有人不断暴力破解你的SSH登录。于是就有必要使用SSH密钥来登录。并关闭密码登录。 用以下命令可以查看别人暴力破">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="vps">
+      <meta property="article:section" content="Linux">
     
   
   
@@ -81,7 +81,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -136,7 +136,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -267,7 +267,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/vps">vps</a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -288,73 +288,89 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h3 id="需求">需求</h3>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#需求">需求</a></li>
+        <li><a href="#生成">生成</a></li>
+        <li><a href="#配置Vultr">配置Vultr</a></li>
+        <li><a href="#其他">其他</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h3 id="需求">需求</h3>
 <p>当VPS暴露在外网中，就会有人不断暴力破解你的SSH登录。于是就有必要使用SSH密钥来登录。并关闭密码登录。</p>
+<p>用以下命令可以查看别人暴力破解你SSH密码登录的大概情况！<!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+<p> <!-- raw HTML omitted --></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/media/20170528149595407252948.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/media/20170528149595407252948.jpg" alt /></a>
+</span>
 
-<p>用以下命令可以查看别人暴力破解你SSH密码登录的大概情况！<figure class="highlight plain"></p>
-
-<pre class="lang:default decode:true ">grep "Failed password for invalid user" /var/log/secure | awk '{print $13}' | sort | uniq -c | sort -nr | more</pre>
-
-<p>&nbsp;</figure></p>
-
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/media/20170528149595407252948.jpg" alt="" /></p>
-
+</span></p>
 <p>就我自己的购买的VPS来说。暴力破解次数最多达到2475次！各位也可以去看看自己的。。</p>
-
 <h3 id="生成">生成</h3>
-
-<p>使用<code>ssh-keygen</code>在自己的PC上来生成密钥对。Linux或者macOS都可以直接通过terminal来操作！如果是windows。需要用PuTTYgen软件来生成。<figure class="highlight plain"></p>
-
-<pre><code class="language-bash">&quot;&gt;[root@host ~]$ ssh-keygen -t rsa &amp;lt;== 建立密钥对
-Generating public/private rsa key pair.
-Enter file in which to save the key (/root/.ssh/id_rsa): &amp;lt;== 按 Enter
-Created directory '/root/.ssh'.
-Enter passphrase (empty for no passphrase): &amp;lt;== 输入密钥锁码，或直接按 Enter 留空
-Enter same passphrase again: &amp;lt;== 再输入一遍密钥锁码
-Your identification has been saved in /root/.ssh/id_rsa. &amp;lt;== 私钥
-Your public key has been saved in /root/.ssh/id_rsa.pub. &amp;lt;== 公钥
-</code></pre>
-
-<p>&nbsp;</figure></p>
-
-<p>可参考<a href="https://www.vultr.com/docs/how-do-i-generate-ssh-keys/" target="_blank" rel="external noopener">Vultr官方生成教程</a></p>
-
+<p>使用<code>ssh-keygen</code>在自己的PC上来生成密钥对。Linux或者macOS都可以直接通过terminal来操作！如果是windows。需要用PuTTYgen软件来生成。<!-- raw HTML omitted --></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#e6db74">&#34;&gt;[root@host ~]</span>$<span style="color:#e6db74"> ssh-keygen -t rsa &amp;lt;== 建立密钥对
+</span><span style="color:#e6db74">Generating public/private rsa key pair.
+</span><span style="color:#e6db74">Enter file in which to save the key (/root/.ssh/id_rsa): &amp;lt;== 按 Enter
+</span><span style="color:#e6db74">Created directory &#39;/root/.ssh&#39;.
+</span><span style="color:#e6db74">Enter passphrase (empty for no passphrase): &amp;lt;== 输入密钥锁码，或直接按 Enter 留空
+</span><span style="color:#e6db74">Enter same passphrase again: &amp;lt;== 再输入一遍密钥锁码
+</span><span style="color:#e6db74">Your identification has been saved in /root/.ssh/id_rsa. &amp;lt;== 私钥
+</span><span style="color:#e6db74">Your public key has been saved in /root/.ssh/id_rsa.pub. &amp;lt;== 公钥
+</span></code></pre></div><p> <!-- raw HTML omitted --></p>
+<p>可参考<!-- raw HTML omitted -->Vultr官方生成教程<!-- raw HTML omitted --></p>
 <h3 id="配置Vultr">配置Vultr</h3>
-
 <p>创建VPS的时候可以直接制定SSH密钥登录。。如果是已经创建好的VPS。</p>
-
 <ol>
 <li>将<code>id_rsa.pub</code> 放到<code>/root/.ssh</code>目录下。并改名为<code>authorized_keys</code></li>
 <li>修改sshd_config配置文件<code>vi /etc/ssh/sshd_config</code></li>
 <li>重启SSH服务，centos7使用命令<code>systemctl restart sshd</code>，centos6使用命令<code>/etc/init.d/sshd restart</code></li>
 </ol>
-
 <p>sshd_config配置文件修改相关选项如下：</p>
-
-<pre><code class="language-conf">RSAAuthentication yes #RSA认证
+<pre><code class="language-conf" data-lang="conf">RSAAuthentication yes #RSA认证
 PubkeyAuthentication yes #开启公钥验证
 AuthorizedKeysFile .ssh/authorized_keys #验证文件路径
 PasswordAuthentication no #禁止密码认证
 PermitEmptyPasswords no #禁止空密码
-</code></pre>
-
-<p>自此。便成功更改为密钥登录！</p>
-
+</code></pre><p>自此。便成功更改为密钥登录！</p>
 <h3 id="其他">其他</h3>
-
 <p>如果你用的是Window系统要登录VPS需要将私钥下载到客户端，然后转换为 PuTTY 能使用的格式</p>
-
 <p>使用 WinSCP、SFTP 等工具将私钥文件 id_rsa 下载到客户端机器上。然后打开 PuTTYGen，单击 Actions 中的 Load 按钮，载入你刚才下载到的私钥文件。如果你刚才设置了密钥锁码，这时则需要输入。</p>
-
 <p>载入成功后，PuTTYGen 会显示密钥相关的信息。在 Key comment 中键入对密钥的说明信息，然后单击 Save private key 按钮即可将私钥文件存放为 PuTTY 能使用的格式。</p>
-
 <p>今后，当你使用 PuTTY 登录时，可以在左侧的 Connection -&gt; SSH -&gt; Auth 中的 Private key file for authentication: 处选择你的私钥文件，然后即可登录了，过程中只需输入密钥锁码即可。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/964/>Vultr VPS SSH密钥登录</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-03-30<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/964/ target="_blank" >https://3mile.github.io/archives/964/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -367,7 +383,7 @@ PermitEmptyPasswords no #禁止空密码
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -412,24 +428,6 @@ PermitEmptyPasswords no #禁止空密码
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/964/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/964/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/964/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -448,9 +446,11 @@ PermitEmptyPasswords no #禁止空密码
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -488,24 +488,6 @@ PermitEmptyPasswords no #禁止空密码
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/964/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/964/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/964/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -524,24 +506,6 @@ PermitEmptyPasswords no #禁止空密码
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F964%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F964%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F964%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -557,7 +521,7 @@ PermitEmptyPasswords no #禁止空密码
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -585,18 +549,28 @@ PermitEmptyPasswords no #禁止空密码
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

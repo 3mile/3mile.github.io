@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="Rufus Rufus 轻松创建USB启动盘 Rufus 是一个可以帮助格式化和创建可引导USB闪存盘的工具，比如 USB 随身碟，记忆棒等等。 在如下场景中会非常有用： 你需要把一些">
@@ -31,12 +31,12 @@
   
   
     
-      <meta property="article:section" content="">
+      <meta property="article:section" content="windows软件">
     
   
   
     
-      <meta property="article:tag" content="">
+      <meta property="article:tag" content="U盘">
     
   
 
@@ -85,7 +85,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -140,7 +140,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -271,7 +271,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/"></a>
+      <a class="category-link" href="https://3mile.github.io/categories/windows%e8%bd%af%e4%bb%b6">windows软件</a>
     
   
 
@@ -292,77 +292,145 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h1 id="rufus-icon-http-rufus-akeo-ie-pics-rufus-128-png-rufus-https-github-com-pbatard-rufus"><img src="http://rufus.akeo.ie/pics/rufus-128.png" alt="[rufus icon]" /> <a href="https://github.com/pbatard/rufus">Rufus</a></h1>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#下载">下载</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#系统需求">系统需求：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#用法">用法</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#对dos支持的说明">对DOS支持的说明：</a></li>
+            <li><a href="#对iso支持的说明">对ISO支持的说明：</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#常见问题faq">常见问题（FAQ）</a></li>
+  </ul>
+</nav>
 
-<h1 id="rufus-icon-https-rufus-ie-pics-rufus-en-2x-png-rufus-https-github-com-pbatard-rufus"><img src="https://rufus.ie/pics/rufus_en_2x.png" alt="[rufus icon]" /> <a href="https://github.com/pbatard/rufus">Rufus</a></h1>
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h1 id="rufus-iconhttprufusakeoiepicsrufus-128png-rufushttpsgithubcompbatardrufus">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="http://rufus.akeo.ie/pics/rufus-128.png"><img class="img" src="http://rufus.akeo.ie/pics/rufus-128.png" alt="[rufus icon]" /></a>
+</span>
 
+</span> 
+
+<a href="https://github.com/pbatard/rufus"  target="_blank">Rufus</a></h1>
+<h1 id="rufus-iconhttpsrufusiepicsrufus_en_2xpng-rufushttpsgithubcompbatardrufus">
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://rufus.ie/pics/rufus_en_2x.png"><img class="img" src="https://rufus.ie/pics/rufus_en_2x.png" alt="[rufus icon]" /></a>
+</span>
+
+</span> 
+
+<a href="https://github.com/pbatard/rufus"  target="_blank">Rufus</a></h1>
 <p>轻松创建USB启动盘</p>
-
 <p>Rufus 是一个可以帮助格式化和创建可引导USB闪存盘的工具，比如 USB 随身碟，记忆棒等等。</p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="http://rufus.akeo.ie/pics/rufus_en_2x.png"><img class="img" src="http://rufus.akeo.ie/pics/rufus_en_2x.png" alt /></a>
+</span>
 
-<p><img src="http://rufus.akeo.ie/pics/rufus_en_2x.png" alt="" /></p>
-
+</span></p>
 <p>在如下场景中会非常有用：</p>
-
 <ul>
 <li>你需要把一些可引导的ISO格式的镜像（Windows，Linux，UEFI等）创建成USB安装盘的时候</li>
 <li>你需要使用一个还没有安装操作系统的设备的时候</li>
 <li>你需要从DOS系统刷写BIOS或者其他固件的时候</li>
 <li>你需要运行一个非常底层的工具的时候</li>
 </ul>
-
 <p>Rufus 麻雀虽小，五脏俱全，体积虽小，功能全面。</p>
+<p>哦，对了，Rufus 还 <strong>非常快</strong>，比如，在从ISO镜像创建 Windows 7 USB安装盘的时候，他比 
 
-<p>哦，对了，Rufus 还 <strong>非常快</strong>，比如，在从ISO镜像创建 Windows 7 USB安装盘的时候，他比 <a href="http://unetbootin.sourceforge.net/">UNetbootin</a>，<a href="http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3">Universal USB Installer</a> 或者 <a href="http://wudt.codeplex.com/">Windows 7 USB download tool</a> 大约快2倍。当然，在创建 Linux 可引导USB设备的时候也比较快。 <a href="http://rufus.akeo.ie/?locale=zh_CN#ref1">(1)</a>
-页面底部也粗略列举了一些 Rufus 支持的ISO镜像。 <a href="http://rufus.akeo.ie/?locale=zh_CN#ref2">(2)</a></p>
+<a href="http://unetbootin.sourceforge.net/"  target="_blank">UNetbootin</a>，
 
+<a href="http://www.pendrivelinux.com/universal-usb-installer-easy-as-1-2-3"  target="_blank">Universal USB Installer</a> 或者 
+
+<a href="http://wudt.codeplex.com/"  target="_blank">Windows 7 USB download tool</a> 大约快2倍。当然，在创建 Linux 可引导USB设备的时候也比较快。 
+
+<a href="http://rufus.akeo.ie/?locale=zh_CN#ref1"  target="_blank">(1)</a>
+页面底部也粗略列举了一些 Rufus 支持的ISO镜像。 
+
+<a href="http://rufus.akeo.ie/?locale=zh_CN#ref2"  target="_blank">(2)</a></p>
 <h2 id="下载">下载</h2>
-
 <p><strong>最后更新于 2018.05.29：</strong></p>
-
 <ul>
 <li><strong>Rufus 3.0</strong> (993 KB)</li>
-<li><a href="http://rufus.akeo.ie/downloads/rufus-3.0p.exe">Rufus 3.0 Portable</a> (993 KB)</li>
-<li><a href="http://rufus.akeo.ie/downloads/">其他版本</a></li>
+<li>
+
+<a href="http://rufus.akeo.ie/downloads/rufus-3.0p.exe"  target="_blank">Rufus 3.0 Portable</a> (993 KB)</li>
+<li>
+
+<a href="http://rufus.akeo.ie/downloads/"  target="_blank">其他版本</a></li>
 </ul>
-
 <h4 id="系统需求">系统需求：</h4>
-
 <p>需要Windows 7以上的操作系统，无所谓32位还是64位，下载后开箱即用。</p>
-
 <p>在这里我要借这个机会表达对那些把 Rufus 和这个网页翻译成各种语言的翻译者们的谢意。如果你发现 Rufus 可以支持你们使用的语言，你也应该感谢他们。</p>
-
 <h2 id="用法">用法</h2>
-
 <p>下载可执行文件后直接运行 – 无需安装，绿色环保。</p>
-
 <p>可执行文件已经进行数字签名，详情如下：</p>
-
 <ul>
 <li><em>&ldquo;Akeo Consulting&rdquo;</em> (v1.3.0 或者更新的版本)</li>
 <li><em>&ldquo;Pete Batard - Open Source Developer&rdquo;</em> (v1.2.0 或者更老的版本)</li>
 </ul>
-
 <h4 id="对dos支持的说明">对DOS支持的说明：</h4>
+<p>如果你创建了一个DOS启动盘，但是没有使用美式键盘，Rufus 会尝试根据设备选择一个键盘布局，在那种情况下推荐使用 
 
-<p>如果你创建了一个DOS启动盘，但是没有使用美式键盘，Rufus 会尝试根据设备选择一个键盘布局，在那种情况下推荐使用 <a href="http://www.freedos.org/">FreeDOS</a>（默认选项）而不是 MS-DOS，因为前者支持更多的键盘布局。</p>
-
+<a href="http://www.freedos.org/"  target="_blank">FreeDOS</a>（默认选项）而不是 MS-DOS，因为前者支持更多的键盘布局。</p>
 <h4 id="对iso支持的说明">对ISO支持的说明：</h4>
+<p>Rufus v1.10 及其以后的所有版本都支持从 
 
-<p>Rufus v1.10 及其以后的所有版本都支持从 <a href="http://en.wikipedia.org/wiki/ISO_image">ISO 镜像</a> (.iso) 创建可引导USB。</p>
+<a href="http://en.wikipedia.org/wiki/ISO_image"  target="_blank">ISO 镜像</a> (.iso) 创建可引导USB。</p>
+<p>通过使用类似 
 
-<p>通过使用类似 <a href="http://cdburnerxp.se/">CDBurnerXP</a> 或者 <a href="http://www.imgburn.com/">ImgBurn</a> 之类的免费CD镜像烧录程序，可以非常方便的从实体光盘或者一系列文件中创建 ISO 镜像。</p>
+<a href="http://cdburnerxp.se/"  target="_blank">CDBurnerXP</a> 或者 
 
-<h2 id="常见问题-faq">常见问题（FAQ）</h2>
-
+<a href="http://www.imgburn.com/"  target="_blank">ImgBurn</a> 之类的免费CD镜像烧录程序，可以非常方便的从实体光盘或者一系列文件中创建 ISO 镜像。</p>
+<h2 id="常见问题faq">常见问题（FAQ）</h2>
 <p>Rufus 的常见问题（FAQ）<strong>在此</strong>。</p>
+<p>您可以使用 github 的 
 
-<p>您可以使用 github 的 <a href="https://github.com/pbatard/rufus/issues">issue tracker</a> 来提供反馈，报告 BUG，或者提交功能需求。当然也可以直接发 <a href="mailto:pete@akeo.ie?subject=Rufus">电子邮件</a>。</p>
+<a href="https://github.com/pbatard/rufus/issues"  target="_blank">issue tracker</a> 来提供反馈，报告 BUG，或者提交功能需求。当然也可以直接发 
+
+<a href="mailto:pete@akeo.ie?subject=Rufus"  >电子邮件</a>。</p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/06/01/>Rufus_Usb启动制作</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-06-01<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/06/01/ target="_blank" >https://3mile.github.io/archives/2018/06/01/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -372,7 +440,7 @@ if (!doNotTrack) {
           <div class="post-footer-tags">
             <span class="text-color-light text-small">标签</span><br />
             
-  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags//"></a>
+  <a class="tag tag--primary tag--small" href="https://3mile.github.io/tags/u%E7%9B%98/">U盘</a>
 
           </div>
           
@@ -385,7 +453,7 @@ if (!doNotTrack) {
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -430,24 +498,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/06/01/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/06/01/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/06/01/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -466,9 +516,11 @@ if (!doNotTrack) {
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -506,24 +558,6 @@ if (!doNotTrack) {
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/06/01/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/06/01/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/06/01/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -542,24 +576,6 @@ if (!doNotTrack) {
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F06%2F01%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F06%2F01%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F06%2F01%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -575,7 +591,7 @@ if (!doNotTrack) {
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -603,18 +619,28 @@ if (!doNotTrack) {
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">

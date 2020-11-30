@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Hugo 0.59.1 with theme Tranquilpeak 0.4.7-BETA">
+<meta name="generator" content="Hugo 0.68.3 with theme Tranquilpeak 0.4.7-BETA">
 <meta name="author" content="3mile">
 <meta name="keywords" content="">
 <meta name="description" content="介绍 最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket &#43; TLS &#43; nginx/caddy”是最后留下来用的，抗封锁最好。 vmess">
@@ -31,7 +31,7 @@
   
   
     
-      <meta property="article:section" content="建站">
+      <meta property="article:section" content="Linux">
     
   
   
@@ -89,7 +89,7 @@
 
     
     
-    <link rel="stylesheet" href="https://3mile.github.io/css/style-9oczgonhz7vx0pkjdwuqvrjarczng3h0qbpd6plau9nklcug0sjbu0dh.min.css" />
+    <link rel="stylesheet" href="https://3mile.github.io/css/tranquilpeak.css" />
     
     
 
@@ -144,7 +144,7 @@ if (!doNotTrack) {
         </a>
         <h4 class="sidebar-profile-name">3mile</h4>
         
-          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></h5>
+          <h5 class="sidebar-profile-bio"><strong>无聊到</strong>只有努力学习技术</h5>
         
       </div>
     
@@ -275,7 +275,7 @@ if (!doNotTrack) {
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://3mile.github.io/categories/%e5%bb%ba%e7%ab%99">建站</a>
+      <a class="category-link" href="https://3mile.github.io/categories/linux">Linux</a>
     
   
 
@@ -296,28 +296,42 @@ if (!doNotTrack) {
         
         <div class="post-content markdown" itemprop="articleBody">
           <div class="main-content-wrap">
+            <div class="post-toc" id="post-toc">
+     
+        <aside>
             
 
-<h1 id="介绍">介绍</h1>
+            
+            
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#第一步安装球童的最新稳定版本">第一步：安装球童的最新稳定版本</a></li>
+    <li><a href="#第2步配置球童">第2步：配置球童</a></li>
+    <li><a href="#第3步修改防火墙规则">第3步：修改防火墙规则</a></li>
+    <li><a href="#第4步为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</a></li>
+    <li><a href="#配置v2ray服务器端">配置V2ray服务器端</a></li>
+    <li><a href="#配置v2ray客户端">配置V2ray客户端</a></li>
+  </ul>
+</nav>
 
+            
+            <a href="#" id="toc-toggle"><i class="fa fa-arrow-up">返回顶部</i></a>
+        </aside>
+        
+     
+</div>
+            <h1 id="介绍">介绍</h1>
 <p>最近试过了下列多种v2ray组合，直接给出结论，第四个”websocket + TLS + nginx/caddy”是最后留下来用的，抗封锁最好。</p>
-
 <ul>
 <li>vmess</li>
 <li>vmess + http</li>
 <li>TLS + http2</li>
 <li>websocket + TLS + nginx/caddy</li>
 </ul>
-
 <p>#安装V2Ray</p>
-
 <p>运行下面的指令下载并安装 V2Ray。当 yum 或 apt-get 可用的情况下，此脚本会自动安装 unzip 和 daemon。这两个组件是安装 V2Ray 的必要组件。如果你使用的系统不支持 yum 或 apt-get，请自行安装 unzip 和 daemon</p>
-
-<pre><code class="language-bash">bash &lt;(curl -L -s https://install.direct/go.sh)
-</code></pre>
-
-<p>此脚本会自动安装以下文件：</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">bash &lt;<span style="color:#f92672">(</span>curl -L -s https://install.direct/go.sh<span style="color:#f92672">)</span>
+</code></pre></div><p>此脚本会自动安装以下文件：</p>
 <ul>
 <li><code>/usr/bin/v2ray/v2ray</code>：V2Ray 程序；</li>
 <li><code>/usr/bin/v2ray/v2ctl</code>：V2Ray 工具；</li>
@@ -325,373 +339,320 @@ if (!doNotTrack) {
 <li><code>/usr/bin/v2ray/geoip.dat</code>：IP 数据文件</li>
 <li><code>/usr/bin/v2ray/geosite.dat</code>：域名数据文件</li>
 </ul>
-
 <p>此脚本会配置自动运行脚本。自动运行脚本会在系统重启之后，自动运行 V2Ray。目前自动运行脚本只支持带有 Systemd 的系统，以及 Debian / Ubuntu 全系列。</p>
-
 <p>运行脚本位于系统的以下位置：</p>
-
 <ul>
 <li><code>/etc/systemd/system/v2ray.service</code>: Systemd</li>
 <li><code>/etc/init.d/v2ray</code>: SysV</li>
 </ul>
-
 <p>脚本运行完成后，你需要：</p>
-
 <ol>
 <li>编辑 /etc/v2ray/config.json 文件来配置你需要的代理方式；</li>
 <li>运行 service v2ray start 来启动 V2Ray 进程；</li>
 <li>之后可以使用 service v2ray start|stop|status|reload|restart|force-reload 控制 V2Ray 的运行。</li>
 </ol>
-
 <h1 id="安装caddy">安装Caddy</h1>
-
 <p><strong>首先安装Caddy</strong></p>
-
-<h2 id="第一步-安装球童的最新稳定版本">第一步：安装球童的最新稳定版本</h2>
-
+<h2 id="第一步安装球童的最新稳定版本">第一步：安装球童的最新稳定版本</h2>
 <p>在Linux，Mac或BSD操作系统上，使用以下命令安装Caddy最新稳定的系统特定版本：</p>
-
 <p>其中http.filemanager,http.forwardproxy不是必须安装的</p>
-
-<pre><code class="language-Bash">curl https://getcaddy.com | bash -s personal http.filemanager,http.forwardproxy,http.proxyprotocol
-</code></pre>
-
-<p>出现提示时，输入您的sudo密码以完成安装。</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">curl https://getcaddy.com | bash -s personal http.filemanager,http.forwardproxy,http.proxyprotocol
+</code></pre></div><p>出现提示时，输入您的sudo密码以完成安装。</p>
 <p>Caddy二进制文件将被安装到该<code>/usr/local/bin</code>目录。使用以下命令确认：</p>
-
-<pre><code class="language-Bash">which caddy
-</code></pre>
-
-<p>输出应该是：</p>
-
-<pre><code class="language-Bash">/usr/local/bin/caddy
-</code></pre>
-
-<p>为了安全起见，<strong>切勿</strong>以root身份运行Caddy二进制文件。为了让Caddy能够以非root用户的身份绑定到特权端口（例如80,443），您需要<code>setcap</code>按如下所示运行该命令：</p>
-
-<pre><code class="language-Bash">sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
-</code></pre>
-
-<h2 id="第2步-配置球童">第2步：配置球童</h2>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">which caddy
+</code></pre></div><p>输出应该是：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">/usr/local/bin/caddy
+</code></pre></div><p>为了安全起见，<strong>切勿</strong>以root身份运行Caddy二进制文件。为了让Caddy能够以非root用户的身份绑定到特权端口（例如80,443），您需要<code>setcap</code>按如下所示运行该命令：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo setcap <span style="color:#e6db74">&#39;cap_net_bind_service=+ep&#39;</span> /usr/local/bin/caddy
+</code></pre></div><h2 id="第2步配置球童">第2步：配置球童</h2>
 <p>创建一个专门的系统用户：<code>caddy</code> 和一组同名的Caddy：</p>
-
-<pre><code class="language-Bash">sudo useradd -r -d /var/www -M -s /sbin/nologin caddy
-</code></pre>
-
-<p><strong>注意</strong>：*此处创建*<em>的用户caddy只能用于管理Caddy服务，不能用于登录。</em></p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo useradd -r -d /var/www -M -s /sbin/nologin caddy
+</code></pre></div><p><strong>注意</strong>：<em>此处创建**的用户caddy只能用于管理Caddy服务，不能用于登录。</em></p>
 <p><code>/var/www</code>为Caddy Web服务器创建主目录，并<code>/var/www/example.com</code>为您的站点创建主目录：</p>
-
-<pre><code class="language-Bash">sudo mkdir -p /var/www/example.com
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo mkdir -p /var/www/example.com
 sudo chown -R caddy:caddy /var/www
-</code></pre>
-
-<p>创建一个目录来存储SSL证书：</p>
-
-<pre><code class="language-Bash">sudo mkdir /etc/ssl/caddy
+</code></pre></div><p>创建一个目录来存储SSL证书：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo mkdir /etc/ssl/caddy
 sudo chown -R caddy:root /etc/ssl/caddy
-sudo chmod 0770 /etc/ssl/caddy
-</code></pre>
-
-<p>创建专用目录来存储Caddy配置文件<code>Caddyfile</code>：</p>
-
-<pre><code class="language-Bash">sudo mkdir /etc/caddy
+sudo chmod <span style="color:#ae81ff">0770</span> /etc/ssl/caddy
+</code></pre></div><p>创建专用目录来存储Caddy配置文件<code>Caddyfile</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo mkdir /etc/caddy
 sudo chown -R root:caddy /etc/caddy
-</code></pre>
-
-<p>创建名为的Caddy配置文件<code>Caddyfile</code>：</p>
-
-<pre><code class="language-bash">sudo touch /etc/caddy/Caddyfile
+</code></pre></div><p>创建名为的Caddy配置文件<code>Caddyfile</code>：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo touch /etc/caddy/Caddyfile
 sudo chown caddy:caddy /etc/caddy/Caddyfile
-sudo chmod 444 /etc/caddy/Caddyfile
-cat &lt;&lt;EOF | sudo tee -a /etc/caddy/Caddyfile
-xxx.xxx #(你的域名)
-{
-    root /var/www/site #(页面路径)
-    gzip
-    tls xxx@xxx.com #申请证书的邮箱地址
-	proxy /2018 localhost:12345 { #其中/2018是路径,和v2ray服务端相同,后面的端口号也与v2ray相同
-	websocket
-	header_upstream -Origin
-	}
-}
-EOF
-</code></pre>
-
-<p><strong>注意</strong>：其中 <code>xxx.xxx</code> 改成自己的域名 <code>/2018</code> 改成自己的路径，（无须追求复杂，不容易猜出来即可） <code>12345</code> 改成 Project V 的 WS 监听的内网地址</p>
-
+sudo chmod <span style="color:#ae81ff">444</span> /etc/caddy/Caddyfile
+cat <span style="color:#e6db74">&lt;&lt;EOF | sudo tee -a /etc/caddy/Caddyfile
+</span><span style="color:#e6db74">xxx.xxx #(你的域名)
+</span><span style="color:#e6db74">{
+</span><span style="color:#e6db74">    root /var/www/site #(页面路径)
+</span><span style="color:#e6db74">    gzip
+</span><span style="color:#e6db74">    tls xxx@xxx.com #申请证书的邮箱地址
+</span><span style="color:#e6db74">	proxy /2018 localhost:12345 { #其中/2018是路径,和v2ray服务端相同,后面的端口号也与v2ray相同
+</span><span style="color:#e6db74">	websocket
+</span><span style="color:#e6db74">	header_upstream -Origin
+</span><span style="color:#e6db74">	}
+</span><span style="color:#e6db74">}
+</span><span style="color:#e6db74">EOF</span>
+</code></pre></div><p><strong>注意</strong>：其中 <code>xxx.xxx</code> 改成自己的域名 <code>/2018</code> 改成自己的路径，（无须追求复杂，不容易猜出来即可） <code>12345</code> 改成 Project V 的 WS 监听的内网地址</p>
 <p>为了方便Caddy的操作，您可以<code>systemd</code>为Caddy 设置一个单元文件，然后用它<code>systemd</code>来管理Caddy。</p>
-
 <p>使用<code>vi</code>编辑器创建Caddy <code>systemd</code>单元文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo vi /etc/systemd/system/caddy.service
+</code></pre></div><p>填充文件：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#a6e22e">[Unit]</span>
+<span style="color:#a6e22e">Description</span><span style="color:#f92672">=</span><span style="color:#e6db74">Caddy HTTP/2 web server</span>
+<span style="color:#a6e22e">Documentation</span><span style="color:#f92672">=</span><span style="color:#e6db74">https://caddyserver.com/docs</span>
+<span style="color:#a6e22e">After</span><span style="color:#f92672">=</span><span style="color:#e6db74">network-online.target</span>
+<span style="color:#a6e22e">Wants</span><span style="color:#f92672">=</span><span style="color:#e6db74">network-online.target systemd-networkd-wait-online.service</span>
 
-<pre><code class="language-Bash">sudo vi /etc/systemd/system/caddy.service
-</code></pre>
+<span style="color:#a6e22e">[Service]</span>
+<span style="color:#a6e22e">Restart</span><span style="color:#f92672">=</span><span style="color:#e6db74">on-abnormal</span>
 
-<p>填充文件：</p>
+<span style="color:#75715e">; User and group the process will run as.</span>
+<span style="color:#a6e22e">User</span><span style="color:#f92672">=</span><span style="color:#e6db74">caddy</span>
+<span style="color:#a6e22e">Group</span><span style="color:#f92672">=</span><span style="color:#e6db74">caddy</span>
 
-<pre><code class="language-ini">[Unit]
-Description=Caddy HTTP/2 web server
-Documentation=https://caddyserver.com/docs
-After=network-online.target
-Wants=network-online.target systemd-networkd-wait-online.service
+<span style="color:#75715e">; Letsencrypt-issued certificates will be written to this directory.</span>
+<span style="color:#a6e22e">Environment</span><span style="color:#f92672">=</span><span style="color:#e6db74">CADDYPATH=/etc/ssl/caddy</span>
 
-[Service]
-Restart=on-abnormal
+<span style="color:#75715e">; Always set &#34;-root&#34; to something safe in case it gets forgotten in the Caddyfile.</span>
+<span style="color:#a6e22e">ExecStart</span><span style="color:#f92672">=</span><span style="color:#e6db74">/usr/local/bin/caddy -log stdout -agree=true -conf=/etc/caddy/Caddyfile -root=/var/tmp</span>
+<span style="color:#a6e22e">ExecReload</span><span style="color:#f92672">=</span><span style="color:#e6db74">/bin/kill -USR1 $MAINPID</span>
 
-; User and group the process will run as.
-User=caddy
-Group=caddy
+<span style="color:#75715e">; Use graceful shutdown with a reasonable timeout</span>
+<span style="color:#a6e22e">KillMode</span><span style="color:#f92672">=</span><span style="color:#e6db74">mixed</span>
+<span style="color:#a6e22e">KillSignal</span><span style="color:#f92672">=</span><span style="color:#e6db74">SIGQUIT</span>
+<span style="color:#a6e22e">TimeoutStopSec</span><span style="color:#f92672">=</span><span style="color:#e6db74">5s</span>
 
-; Letsencrypt-issued certificates will be written to this directory.
-Environment=CADDYPATH=/etc/ssl/caddy
+<span style="color:#75715e">; Limit the number of file descriptors; see `man systemd.exec` for more limit settings.</span>
+<span style="color:#a6e22e">LimitNOFILE</span><span style="color:#f92672">=</span><span style="color:#e6db74">1048576</span>
+<span style="color:#75715e">; Unmodified caddy is not expected to use more than that.</span>
+<span style="color:#a6e22e">LimitNPROC</span><span style="color:#f92672">=</span><span style="color:#e6db74">512</span>
 
-; Always set &quot;-root&quot; to something safe in case it gets forgotten in the Caddyfile.
-ExecStart=/usr/local/bin/caddy -log stdout -agree=true -conf=/etc/caddy/Caddyfile -root=/var/tmp
-ExecReload=/bin/kill -USR1 $MAINPID
+<span style="color:#75715e">; Use private /tmp and /var/tmp, which are discarded after caddy stops.</span>
+<span style="color:#a6e22e">PrivateTmp</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+<span style="color:#75715e">; Use a minimal /dev</span>
+<span style="color:#a6e22e">PrivateDevices</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+<span style="color:#75715e">; Hide /home, /root, and /run/user. Nobody will steal your SSH-keys.</span>
+<span style="color:#a6e22e">ProtectHome</span><span style="color:#f92672">=</span><span style="color:#e6db74">true</span>
+<span style="color:#75715e">; Make /usr, /boot, /etc and possibly some more folders read-only.</span>
+<span style="color:#a6e22e">ProtectSystem</span><span style="color:#f92672">=</span><span style="color:#e6db74">full</span>
+<span style="color:#75715e">; … except /etc/ssl/caddy, because we want Letsencrypt-certificates there.</span>
+<span style="color:#75715e">;   This merely retains r/w access rights, it does not add any new. Must still be writable on the host!</span>
+<span style="color:#a6e22e">ReadWriteDirectories</span><span style="color:#f92672">=</span><span style="color:#e6db74">/etc/ssl/caddy</span>
 
-; Use graceful shutdown with a reasonable timeout
-KillMode=mixed
-KillSignal=SIGQUIT
-TimeoutStopSec=5s
+<span style="color:#75715e">; The following additional security directives only work with systemd v229 or later.</span>
+<span style="color:#75715e">; They further retrict privileges that can be gained by caddy. Uncomment if you like.</span>
+<span style="color:#75715e">; Note that you may have to add capabilities required by any plugins in use.</span>
+<span style="color:#75715e">;CapabilityBoundingSet=CAP_NET_BIND_SERVICE</span>
+<span style="color:#75715e">;AmbientCapabilities=CAP_NET_BIND_SERVICE</span>
+<span style="color:#75715e">;NoNewPrivileges=true</span>
 
-; Limit the number of file descriptors; see `man systemd.exec` for more limit settings.
-LimitNOFILE=1048576
-; Unmodified caddy is not expected to use more than that.
-LimitNPROC=512
-
-; Use private /tmp and /var/tmp, which are discarded after caddy stops.
-PrivateTmp=true
-; Use a minimal /dev
-PrivateDevices=true
-; Hide /home, /root, and /run/user. Nobody will steal your SSH-keys.
-ProtectHome=true
-; Make /usr, /boot, /etc and possibly some more folders read-only.
-ProtectSystem=full
-; … except /etc/ssl/caddy, because we want Letsencrypt-certificates there.
-;   This merely retains r/w access rights, it does not add any new. Must still be writable on the host!
-ReadWriteDirectories=/etc/ssl/caddy
-
-; The following additional security directives only work with systemd v229 or later.
-; They further retrict privileges that can be gained by caddy. Uncomment if you like.
-; Note that you may have to add capabilities required by any plugins in use.
-;CapabilityBoundingSet=CAP_NET_BIND_SERVICE
-;AmbientCapabilities=CAP_NET_BIND_SERVICE
-;NoNewPrivileges=true
-
-[Install]
-WantedBy=multi-user.target
-</code></pre>
-
-<p>保存并退出：</p>
-
-<pre><code class="language-Bash">:wq!
-</code></pre>
-
-<p>启动Caddy服务并使其在系统引导时自动启动：</p>
-
-<pre><code class="language-Bash">sudo systemctl daemon-reload
+<span style="color:#a6e22e">[Install]</span>
+<span style="color:#a6e22e">WantedBy</span><span style="color:#f92672">=</span><span style="color:#e6db74">multi-user.target</span>
+</code></pre></div><p>保存并退出：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">:wq!
+</code></pre></div><p>启动Caddy服务并使其在系统引导时自动启动：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo systemctl daemon-reload
 sudo systemctl start caddy.service
 sudo systemctl enable caddy.service
-</code></pre>
-
-<h2 id="第3步-修改防火墙规则">第3步：修改防火墙规则</h2>
-
+</code></pre></div><h2 id="第3步修改防火墙规则">第3步：修改防火墙规则</h2>
 <p>为了允许访问者访问您的球童网站，您需要打开端口80和443,以及V2ray监听端口：</p>
-
-<pre><code class="language-Bash">sudo firewall-cmd --permanent --zone=public --add-service=http 
-sudo firewall-cmd --permanent --zone=public --add-service=https
-sudo firewall-cmd --zone=public --add-port=12345/tcp --permanent
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-service<span style="color:#f92672">=</span>http 
+sudo firewall-cmd --permanent --zone<span style="color:#f92672">=</span>public --add-service<span style="color:#f92672">=</span>https
+sudo firewall-cmd --zone<span style="color:#f92672">=</span>public --add-port<span style="color:#f92672">=</span>12345/tcp --permanent
 sudo firewall-cmd --reload
-</code></pre>
-
-<p>然后检查防火墙开放情况</p>
-
-<pre><code class="language-Bash">sudo firewall-cmd --list-all
-</code></pre>
-
-<h2 id="第4步-为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</h2>
-
+</code></pre></div><p>然后检查防火墙开放情况</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo firewall-cmd --list-all
+</code></pre></div><h2 id="第4步为您的网站创建一个测试页面">第4步：为您的网站创建一个测试页面</h2>
 <p>使用以下命令<code>index.html</code>在您的Caddy网站主目录中创建一个名为的文件：</p>
-
-<pre><code class="language-Bash">echo '&lt;h1&gt;Hello World!&lt;/h1&gt;' | sudo tee /var/www/example.com/index.html
-</code></pre>
-
-<p>重新启动Caddy服务以加载新内容：</p>
-
-<pre><code class="language-Bash">sudo systemctl restart caddy.service
-</code></pre>
-
-<p>最后，将您的网页浏览器指向<code>http://example.com</code>或<code>https://example.com</code>。您应该看到<code>Hello World!</code>预期的消息。</p>
-
-<hr />
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">echo <span style="color:#e6db74">&#39;&lt;h1&gt;Hello World!&lt;/h1&gt;&#39;</span> | sudo tee /var/www/example.com/index.html
+</code></pre></div><p>重新启动Caddy服务以加载新内容：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Bash" data-lang="Bash">sudo systemctl restart caddy.service
+</code></pre></div><p>最后，将您的网页浏览器指向<code>http://example.com</code>或<code>https://example.com</code>。您应该看到<code>Hello World!</code>预期的消息。</p>
+<hr>
 <h2 id="配置v2ray服务器端">配置V2ray服务器端</h2>
-
 <p>V2ray服务器端配置文件 <code>/etc/v2ray/config.json</code></p>
-
-<pre><code class="language-json">{
-  &quot;inbound&quot;: {
-    &quot;port&quot;: 12345,
-    &quot;listen&quot;:&quot;127.0.0.1&quot;,
-    &quot;protocol&quot;: &quot;vmess&quot;,
-    &quot;settings&quot;: {
-      &quot;clients&quot;: [
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;inbound&#34;</span>: {
+    <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">12345</span>,
+    <span style="color:#f92672">&#34;listen&#34;</span>:<span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;vmess&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;</span>: {
+      <span style="color:#f92672">&#34;clients&#34;</span>: [
         {
-          &quot;id&quot;: &quot;b831381d-6324-4d53-ad4f-8cda48b30811&quot;,
-          &quot;alterId&quot;: 64
+          <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>,
+          <span style="color:#f92672">&#34;alterId&#34;</span>: <span style="color:#ae81ff">64</span>
         }
       ]
     },
-    &quot;streamSettings&quot;: {
-      &quot;network&quot;: &quot;ws&quot;,
-      &quot;wsSettings&quot;: {
-      &quot;path&quot;: &quot;/2018&quot;
+    <span style="color:#f92672">&#34;streamSettings&#34;</span>: {
+      <span style="color:#f92672">&#34;network&#34;</span>: <span style="color:#e6db74">&#34;ws&#34;</span>,
+      <span style="color:#f92672">&#34;wsSettings&#34;</span>: {
+      <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/2018&#34;</span>
       }
     }
   },
-  &quot;outbound&quot;: {
-    &quot;protocol&quot;: &quot;freedom&quot;,
-    &quot;settings&quot;: {}
+  <span style="color:#f92672">&#34;outbound&#34;</span>: {
+    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;freedom&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;</span>: {}
   },
-  &quot;outboundDetour&quot;: [
+  <span style="color:#f92672">&#34;outboundDetour&#34;</span>: [
     {
-      &quot;protocol&quot;: &quot;blackhole&quot;,
-      &quot;settings&quot;: {},
-      &quot;tag&quot;: &quot;blocked&quot;
+      <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;blackhole&#34;</span>,
+      <span style="color:#f92672">&#34;settings&#34;</span>: {},
+      <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;blocked&#34;</span>
     }
   ],
-  &quot;routing&quot;: {
-    &quot;strategy&quot;: &quot;rules&quot;,
-    &quot;settings&quot;: {
-      &quot;rules&quot;: [
+  <span style="color:#f92672">&#34;routing&#34;</span>: {
+    <span style="color:#f92672">&#34;strategy&#34;</span>: <span style="color:#e6db74">&#34;rules&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;</span>: {
+      <span style="color:#f92672">&#34;rules&#34;</span>: [
         {
-          &quot;type&quot;: &quot;field&quot;,
-          &quot;ip&quot;: [
-            &quot;0.0.0.0/8&quot;,
-            &quot;10.0.0.0/8&quot;,
-            &quot;100.64.0.0/10&quot;,
-            &quot;127.0.0.0/8&quot;,
-            &quot;169.254.0.0/16&quot;,
-            &quot;172.16.0.0/12&quot;,
-            &quot;192.0.0.0/24&quot;,
-            &quot;192.0.2.0/24&quot;,
-            &quot;192.168.0.0/16&quot;,
-            &quot;198.18.0.0/15&quot;,
-            &quot;198.51.100.0/24&quot;,
-            &quot;203.0.113.0/24&quot;,
-            &quot;::1/128&quot;,
-            &quot;fc00::/7&quot;,
-            &quot;fe80::/10&quot;
+          <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;field&#34;</span>,
+          <span style="color:#f92672">&#34;ip&#34;</span>: [
+            <span style="color:#e6db74">&#34;0.0.0.0/8&#34;</span>,
+            <span style="color:#e6db74">&#34;10.0.0.0/8&#34;</span>,
+            <span style="color:#e6db74">&#34;100.64.0.0/10&#34;</span>,
+            <span style="color:#e6db74">&#34;127.0.0.0/8&#34;</span>,
+            <span style="color:#e6db74">&#34;169.254.0.0/16&#34;</span>,
+            <span style="color:#e6db74">&#34;172.16.0.0/12&#34;</span>,
+            <span style="color:#e6db74">&#34;192.0.0.0/24&#34;</span>,
+            <span style="color:#e6db74">&#34;192.0.2.0/24&#34;</span>,
+            <span style="color:#e6db74">&#34;192.168.0.0/16&#34;</span>,
+            <span style="color:#e6db74">&#34;198.18.0.0/15&#34;</span>,
+            <span style="color:#e6db74">&#34;198.51.100.0/24&#34;</span>,
+            <span style="color:#e6db74">&#34;203.0.113.0/24&#34;</span>,
+            <span style="color:#e6db74">&#34;::1/128&#34;</span>,
+            <span style="color:#e6db74">&#34;fc00::/7&#34;</span>,
+            <span style="color:#e6db74">&#34;fe80::/10&#34;</span>
           ],
-          &quot;outboundTag&quot;: &quot;blocked&quot;
+          <span style="color:#f92672">&#34;outboundTag&#34;</span>: <span style="color:#e6db74">&#34;blocked&#34;</span>
         }
       ]
     }
   }
 }
 
-</code></pre>
-
-<p><strong>其中修改port,uuid,patch</strong></p>
-
-<hr />
-
+</code></pre></div><p><strong>其中修改port,uuid,patch</strong></p>
+<hr>
 <h2 id="配置v2ray客户端">配置V2ray客户端</h2>
-
-<pre><code class="language-json">{
-  &quot;inbound&quot;: {
-    &quot;port&quot;: 1080,
-    &quot;listen&quot;: &quot;127.0.0.1&quot;,
-    &quot;protocol&quot;: &quot;socks&quot;,
-    &quot;settings&quot;: {
-      &quot;auth&quot;: &quot;noauth&quot;,
-      &quot;udp&quot;: false
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json">{
+  <span style="color:#f92672">&#34;inbound&#34;</span>: {
+    <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">1080</span>,
+    <span style="color:#f92672">&#34;listen&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>,
+    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;socks&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;</span>: {
+      <span style="color:#f92672">&#34;auth&#34;</span>: <span style="color:#e6db74">&#34;noauth&#34;</span>,
+      <span style="color:#f92672">&#34;udp&#34;</span>: <span style="color:#66d9ef">false</span>
     }
   },
-  &quot;outbound&quot;: {
-    &quot;protocol&quot;: &quot;vmess&quot;,
-    &quot;settings&quot;: {
-      &quot;vnext&quot;: [
+  <span style="color:#f92672">&#34;outbound&#34;</span>: {
+    <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;vmess&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;</span>: {
+      <span style="color:#f92672">&#34;vnext&#34;</span>: [
         {
-          &quot;address&quot;: &quot;xxx.xxx&quot;,
-          &quot;port&quot;: 443,
-          &quot;users&quot;: [
+          <span style="color:#f92672">&#34;address&#34;</span>: <span style="color:#e6db74">&#34;xxx.xxx&#34;</span>,
+          <span style="color:#f92672">&#34;port&#34;</span>: <span style="color:#ae81ff">443</span>,
+          <span style="color:#f92672">&#34;users&#34;</span>: [
             {
-              &quot;id&quot;: &quot;b831381d-6324-4d53-ad4f-8cda48b30811&quot;,
-              &quot;alterId&quot;: 64
+              <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#e6db74">&#34;b831381d-6324-4d53-ad4f-8cda48b30811&#34;</span>,
+              <span style="color:#f92672">&#34;alterId&#34;</span>: <span style="color:#ae81ff">64</span>
             }
           ]
         }
       ]
     },
-    &quot;streamSettings&quot;: {
-      &quot;network&quot;: &quot;ws&quot;,
-      &quot;security&quot;: &quot;tls&quot;,
-      &quot;tlsSettings&quot;: {
-        &quot;serverName&quot;: &quot;xxx.xxx&quot;
+    <span style="color:#f92672">&#34;streamSettings&#34;</span>: {
+      <span style="color:#f92672">&#34;network&#34;</span>: <span style="color:#e6db74">&#34;ws&#34;</span>,
+      <span style="color:#f92672">&#34;security&#34;</span>: <span style="color:#e6db74">&#34;tls&#34;</span>,
+      <span style="color:#f92672">&#34;tlsSettings&#34;</span>: {
+        <span style="color:#f92672">&#34;serverName&#34;</span>: <span style="color:#e6db74">&#34;xxx.xxx&#34;</span>
       },
-      &quot;wsSettings&quot;: {
-        &quot;path&quot;: &quot;/2018&quot;
+      <span style="color:#f92672">&#34;wsSettings&#34;</span>: {
+        <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/2018&#34;</span>
       }
     }
   },
-  &quot;outboundDetour&quot;: [
+  <span style="color:#f92672">&#34;outboundDetour&#34;</span>: [
     {
-      &quot;protocol&quot;: &quot;freedom&quot;,
-      &quot;settings&quot;: {},
-      &quot;tag&quot;: &quot;direct&quot;
+      <span style="color:#f92672">&#34;protocol&#34;</span>: <span style="color:#e6db74">&#34;freedom&#34;</span>,
+      <span style="color:#f92672">&#34;settings&#34;</span>: {},
+      <span style="color:#f92672">&#34;tag&#34;</span>: <span style="color:#e6db74">&#34;direct&#34;</span>
     }
   ],
-  &quot;routing&quot;: {
-    &quot;strategy&quot;: &quot;rules&quot;,
-    &quot;settings&quot;: {
-      &quot;domainStrategy&quot;: &quot;IPIfNonMatch&quot;,
-      &quot;rules&quot;: [
+  <span style="color:#f92672">&#34;routing&#34;</span>: {
+    <span style="color:#f92672">&#34;strategy&#34;</span>: <span style="color:#e6db74">&#34;rules&#34;</span>,
+    <span style="color:#f92672">&#34;settings&#34;</span>: {
+      <span style="color:#f92672">&#34;domainStrategy&#34;</span>: <span style="color:#e6db74">&#34;IPIfNonMatch&#34;</span>,
+      <span style="color:#f92672">&#34;rules&#34;</span>: [
         {
-          &quot;type&quot;: &quot;field&quot;,
-          &quot;ip&quot;: [
-            &quot;0.0.0.0/8&quot;,
-            &quot;10.0.0.0/8&quot;,
-            &quot;100.64.0.0/10&quot;,
-            &quot;127.0.0.0/8&quot;,
-            &quot;169.254.0.0/16&quot;,
-            &quot;172.16.0.0/12&quot;,
-            &quot;192.0.0.0/24&quot;,
-            &quot;192.0.2.0/24&quot;,
-            &quot;192.168.0.0/16&quot;,
-            &quot;198.18.0.0/15&quot;,
-            &quot;198.51.100.0/24&quot;,
-            &quot;203.0.113.0/24&quot;,
-            &quot;::1/128&quot;,
-            &quot;fc00::/7&quot;,
-            &quot;fe80::/10&quot;
+          <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;field&#34;</span>,
+          <span style="color:#f92672">&#34;ip&#34;</span>: [
+            <span style="color:#e6db74">&#34;0.0.0.0/8&#34;</span>,
+            <span style="color:#e6db74">&#34;10.0.0.0/8&#34;</span>,
+            <span style="color:#e6db74">&#34;100.64.0.0/10&#34;</span>,
+            <span style="color:#e6db74">&#34;127.0.0.0/8&#34;</span>,
+            <span style="color:#e6db74">&#34;169.254.0.0/16&#34;</span>,
+            <span style="color:#e6db74">&#34;172.16.0.0/12&#34;</span>,
+            <span style="color:#e6db74">&#34;192.0.0.0/24&#34;</span>,
+            <span style="color:#e6db74">&#34;192.0.2.0/24&#34;</span>,
+            <span style="color:#e6db74">&#34;192.168.0.0/16&#34;</span>,
+            <span style="color:#e6db74">&#34;198.18.0.0/15&#34;</span>,
+            <span style="color:#e6db74">&#34;198.51.100.0/24&#34;</span>,
+            <span style="color:#e6db74">&#34;203.0.113.0/24&#34;</span>,
+            <span style="color:#e6db74">&#34;::1/128&#34;</span>,
+            <span style="color:#e6db74">&#34;fc00::/7&#34;</span>,
+            <span style="color:#e6db74">&#34;fe80::/10&#34;</span>
           ],
-          &quot;outboundTag&quot;: &quot;direct&quot;
+          <span style="color:#f92672">&#34;outboundTag&#34;</span>: <span style="color:#e6db74">&#34;direct&#34;</span>
         },
         {
-          &quot;type&quot;: &quot;chinasites&quot;,
-          &quot;outboundTag&quot;: &quot;direct&quot;
+          <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;chinasites&#34;</span>,
+          <span style="color:#f92672">&#34;outboundTag&#34;</span>: <span style="color:#e6db74">&#34;direct&#34;</span>
         },
         {
-          &quot;type&quot;: &quot;chinaip&quot;,
-          &quot;outboundTag&quot;: &quot;direct&quot;
+          <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;chinaip&#34;</span>,
+          <span style="color:#f92672">&#34;outboundTag&#34;</span>: <span style="color:#e6db74">&#34;direct&#34;</span>
         }
       ]
     }
   }
 }
-</code></pre>
+</code></pre></div><p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra1.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra1.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra1.jpg" alt="" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra2.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra2.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra2.jpg" alt="" /></p>
+</span></p>
+<p>
+<span class="image-container">
+<span class="link">
+    <a target="_blank" rel="noopener noreferrer" href="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra3.jpg"><img class="img" src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra3.jpg" alt /></a>
+</span>
 
-<p><img src="https://mile3-1253674458.cos.ap-chengdu.myqcloud.com/assets/assets/ra3.jpg" alt="" /></p>
+</span></p>
 
             
           </div>
+          
+        </div>
+        <div id="copyright" class='copyright'>
+          <div class="article-footer-copyright" >
+    <span>本文标题:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/07/21/>Caddy&#43;WebSocket&#43;TLS&#43;Web</a><br>
+    <span>发布时间:</span>&nbsp;&nbsp;&nbsp;&nbsp;2018-07-21<br>
+    <span>文章作者:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://3mile.github.io/">3mile</a> <br>
+    <span>原始链接:</span>&nbsp;&nbsp;&nbsp;&nbsp;<a herf=https://3mile.github.io/archives/2018/07/21/ target="_blank" >https://3mile.github.io/archives/2018/07/21/</a><br>
+    <p><span>许可协议:</span>&nbsp;&nbsp;&nbsp;&nbsp; <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
         </div>
         <div id="post-footer" class="post-footer main-content-wrap">
           
@@ -718,7 +679,7 @@ sudo firewall-cmd --reload
           </span>
           <div id="vcomments"></div>
           <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-          <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+          <script src='https://cdn.jsdelivr.net/npm/valine@1.4.4/dist/Valine.min.js'></script>
           <script type="text/javascript">
             new Valine({
               el: '#vcomments' ,
@@ -763,24 +724,6 @@ sudo firewall-cmd --reload
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/07/21/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/07/21/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/07/21/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -799,9 +742,11 @@ sudo firewall-cmd --reload
           
         </div>
       </article>
+      
       <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2019 3mile. 版权所有
+    
+    &copy; 2020  By 3mile
   </span>
 </footer>
 
@@ -839,24 +784,6 @@ sudo firewall-cmd --reload
           </a>
         </li>
         
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://3mile.github.io/archives/2018/07/21/">
-              <i class="fa fa-facebook-official"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://3mile.github.io/archives/2018/07/21/">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        
-          <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://3mile.github.io/archives/2018/07/21/">
-              <i class="fa fa-google-plus"></i>
-            </a>
-          </li>
-        
       
       
       <li class="post-action">
@@ -875,24 +802,6 @@ sudo firewall-cmd --reload
   <i id="btn-close-shareoptions" class="fa fa-close"></i>
   <ul class="share-options">
     
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F21%2F">
-          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F21%2F">
-          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
-        </a>
-      </li>
-    
-      <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2F3mile.github.io%2Farchives%2F2018%2F07%2F21%2F">
-          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
-        </a>
-      </li>
-    
   </ul>
 </div>
 <div id="share-options-mask" class="share-options-mask"></div>
@@ -908,7 +817,7 @@ sudo firewall-cmd --reload
     
     <h4 id="about-card-name">3mile</h4>
     
-      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术<br><strong>Email:</strong><a href="mailto:mile3@live.cn">mile3@live.cn</a></div>
+      <div id="about-card-bio"><strong>无聊到</strong>只有努力学习技术</div>
     
     
       <div id="about-card-job">
@@ -936,18 +845,28 @@ sudo firewall-cmd --reload
 
 
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+  <script src="https://cdn.bootcss.com/highlight.js/9.18.1/highlight.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/fancybox/2.1.7/js/jquery.fancybox.min.js"></script>
 
 
-<script src="https://3mile.github.io/js/script-xnvatncmzeyt0wu1wgir2hwcsdfanplteeymxdgky8vhhfmbedf29ba2.min.js"></script>
+
+
+<script src="https://3mile.github.io/js/tranquilpeak.js"></script>
 
 
   
-    <script async crossorigin="anonymous" defer integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+    <script src="https://3mile.github.io/js/ripple.js"></script>
+  
+
+  
+    <script src="https://cdn.bootcss.com/highlight.js/9.18.1/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://3mile.github.io/js/toc.js"></script>
   
 
 <script lang="javascript">
